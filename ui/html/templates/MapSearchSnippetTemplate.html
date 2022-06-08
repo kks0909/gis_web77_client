@@ -1,0 +1,28 @@
+<div version="7.7.4.0" id="searchId_{postId}" class="searchWrapper">
+    <div id="searchHeaderId_{postId}_title" class="searchHeader">
+        <div class="searchHeaderLeftColumn searchHeaderTitle" title="{title}">{title}</div>
+    </div>
+    <div id="searchHeaderId_{postId}_content" class="searchHeader searchHeaderContent">
+        <div class="searchHeaderLeftColumn">{content}</div>
+    </div>
+    <div id="searchContentId_{postId}" class="searchContentWrapper">
+        <a href="#" onclick="if (typeof App.openDocFile=='function') App.openDocFile('{filePath}','{postId}'); return false;" style="text-align: center;">
+            <img src="{imageSrc}">
+        </a>
+    </div>
+    <div id="searchFooterId_{postId}" class="postFooter">
+        <div class="searchFooterBox">
+            <div class="searchFooterBottomLeft">
+                <span>
+                    <a href="#" onclick="if (typeof SearchEngineViewForm.prototype.showOnMap_ === 'function') SearchEngineViewForm.prototype.showOnMap_('{owner}_{tableName}:{keyValue}','{categoryId}');return false;">
+                        <img class="searchFileLinkButton" src="/ui/images/showOnMap.png">
+                        Показать на карте
+                    </a>
+                </span>
+            </div>
+            <div class="searchFooterBottomRight">
+                <span>{categoryId}</span>
+            </div>
+        </div>
+    </div>
+</div>

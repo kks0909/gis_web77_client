@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns="view.data.*" xmlns:data="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" 
+						xmlns:controls="view.controls.*" 
+						xmlns:mx="http://www.adobe.com/2006/mxml" 
+						title="Паспорт исполнительной документации" 
+						width="760" 
+						ext_data_id="" 
+						excelTemplate="">
+	<dataProvider>SUTSTPA_SEM.xml</dataProvider>
+	<panel:buttons>
+		<picPutton:PanelButton source="../images/catalog.png" 
+			tooltip="Прикрепленные документы / комментарии" 
+			clickEvent="DocsEvent" />
+		<picPutton:PanelButton source="../images/save.png" 
+			tooltip="Сохранить" 
+			clickEvent="SaveEvent" />
+		<picPutton:PanelButton source="../images/undo.png" 
+			tooltip="Отменить изменения" 
+			clickEvent="UndoEvent" />
+		<picPutton:PanelButton source="../images/delete.png" 
+			tooltip="Удалить" 
+			clickEvent="DeleteEvent" />
+		<picPutton:PanelButton source="../images/excel.png" 
+			tooltip="Экспорт в Excel" 
+			clickEvent="ExportToExcelEvent" />
+		<picPutton:PanelButton source="../images/back.png" 
+			tooltip="Вернуться к предыдущему объекту" 
+			clickEvent="BackEvent" />
+		<picPutton:PanelButton source="../images/forward.png" 
+			tooltip="Отменить возврат к предыдущему объекту" 
+			clickEvent="ForwardEvent" />
+	</panel:buttons>
+	<mx:VBox width="790">
+		    <mx:HBox percentWidth="100">
+				<mx:Text textAlign="right" text="Кран" width="140" />
+				<mx:HBox percentWidth="90" styleName="comboBoxUnit">
+					<mx:ComboBox id="VALVE_ID" width="600" maxChars="1000" height="20" dataProvider="SUTSTPA_SEM_DICT.xml#SUTSTPA_VALVE_GCL" selectedValue="VALVE_ID"/>
+						     <mx:Button id="BTN_LIST_VALVE_ID" selectedField="SUTSTPA_VALVE_GCL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>						   
+				</mx:HBox>
+			</mx:HBox>
+			<mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Описание" width="70"/>
+                <mx:TextInput id="DESCRIPTION" width="600" maxChars="254" height="60"/>
+            </mx:HBox>
+	</mx:VBox>	
+	<validatorsArray>
+	<controls:ComboBoxValidator source="{VALVE_ID}" property="selectedItem" enabled="false" required="true" notDefaultError="В списке 'Кран' нужно выбрать значение."/> 
+	</validatorsArray>
+</DATA_EDIT_FORM>

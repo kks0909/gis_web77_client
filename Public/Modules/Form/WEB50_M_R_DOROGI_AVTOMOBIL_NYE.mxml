@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns:mx="http://www.adobe.com/2006/mxml"
+                title="ДОРОГИ_АВТОМОБИЛЬНЫЕ"
+                width="780">
+  <dataProvider>M_R_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="780">
+      <mx:HBox width="100%">
+         <mx:VBox width="50%">
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Номер дороги" width="140"/>
+               <mx:TextInput id="ДОРОГА_ИД" width="85" maxChars="15" height="20"/>
+            </mx:HBox>
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Номер дороги 1" width="140"/>
+               <mx:TextInput id="ДОРОГА_ИД1" width="85" maxChars="15" height="20"/>
+            </mx:HBox>
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Номер дороги 2" width="140"/>
+               <mx:TextInput id="ДОРОГА_ИД2" width="85" maxChars="15" height="20"/>
+            </mx:HBox>
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Номер дороги 3" width="140"/>
+               <mx:TextInput id="ДОРОГА_ИД3" width="85" maxChars="15" height="20"/>
+            </mx:HBox>
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Номер дороги 4" width="140"/>
+               <mx:TextInput id="ДОРОГА_ИД4" width="85" maxChars="15" height="20"/>
+            </mx:HBox>
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Статус дороги (код)" width="140"/>
+               <controls:NumberInput id="ДОРОГА_СТАТУС" width="40" maxChars="4" height="20"/>
+               <mx:Text textAlign="right" text="Покрытие дороги (код)" width="140"/>
+               <controls:NumberInput id="ПОКРЫТИЕ" width="40" maxChars="4" height="20"/>
+            </mx:HBox>
+         </mx:VBox>
+         <mx:VBox width="50%">
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Ширина, м" width="140"/>
+               <controls:NumberInput id="ШИРИНА" width="40" maxChars="12" height="20"/>
+               <mx:Text textAlign="right" text="Количество полос" width="140"/>
+               <controls:NumberInput id="КОЛ_ВО_ПОЛОС" width="40" maxChars="4" height="20"/>
+            </mx:HBox>
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Пропускная способность (код)" width="140"/>
+               <controls:NumberInput id="ПРОПУСК_СПОСОБНОСТЬ" width="40" maxChars="12" height="20"/>
+               <mx:Text textAlign="right" text="Трафик (код)" width="140"/>
+               <controls:NumberInput id="ТРАФФИК" width="40" maxChars="4" height="20"/>
+            </mx:HBox>
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Период действия" width="140"/>
+               <mx:TextInput id="ПЕРИОД_ДЕЙСТВ" width="85" maxChars="12" height="20"/>
+            </mx:HBox>
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Класс объекта" width="140"/>
+               <controls:NumberInput id="КЛАСС_ИД" editable="false" width="85" maxChars="9" height="20"/>
+            </mx:HBox>
+            <mx:HBox width="100%" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+               <mx:Text textAlign="right" text="Идентификатор объекта" width="140"/>
+               <controls:NumberInput id="ID" editable="false" width="85" maxChars="16" height="20"/>
+            </mx:HBox>
+         </mx:VBox>
+      </mx:HBox>
+  </mx:VBox>
+</DATA_EDIT_FORM>

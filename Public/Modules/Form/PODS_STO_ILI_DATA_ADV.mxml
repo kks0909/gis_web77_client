@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"  initialId="ADV_ID"
+                xmlns="view.data.*"
+                title="Допсведения"
+                width="790"
+                ext_data_id="PODS_EXPORT.xml#PODS_STO_ILI_DATA_ADV"
+                excelTemplate="PODS_STO_ILI_DATA_ADV">
+	  <dataProvider>STO_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+   </panel:buttons>
+	  <mx:VBox width="790">
+		    <!--<mx:HBox percentWidth="100">
+			      <mx:Text textAlign="right" text="Обследование" width="140"/>
+			      <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+				        <mx:ComboBox id="ILI_INSPECTION_ID" enabled="false" editable="false" width="585" height="20"
+                         dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION"/>
+				       
+			      </mx:HBox>
+		    </mx:HBox>-->
+		    <mx:HBox percentWidth="100">
+			      <mx:VBox percentWidth="50">
+              <mx:HBox percentWidth="100">
+                    <mx:Text textAlign="right" text="Номер/Длина,м/Тип трубы" width="140"/>
+                    <mx:TextInput id="WELD_ID" width="60" maxChars="16" height="20"/>
+                    <mx:TextInput id="PIPE_LENGTH" width="60" maxChars="16" height="20"/>
+                    <mx:TextInput id="PIPE_TYPE_DESCR" width="60" maxChars="22" height="20"/>
+              </mx:HBox>
+              <mx:HBox percentWidth="100">
+                    <mx:Text textAlign="right" text="Вх. ПШ, ч/Вых. ПШ, ч" width="140"/>
+                    <controls:NumberInput id="INCOME_PSH" width="40" maxChars="22" height="20"/>
+                    <controls:NumberInput id="OUTCOME_PSH" width="40" maxChars="22" height="20"/>
+              </mx:HBox>
+              <mx:HBox percentWidth="100">
+                    <mx:Text textAlign="right" text="От репера, м/До репера, м" width="140"/>
+                    <mx:TextInput id="FROM_REPER" width="80" maxChars="16" height="20"/>
+                    <mx:TextInput id="TO_REPER" width="80" maxChars="16" height="20"/>
+              </mx:HBox>
+              <mx:HBox percentWidth="100">
+               <mx:Text textAlign="right" text="Комментарий к трубе" width="140"/>
+               <mx:TextInput id="PIPE_COMMENT" width="73" maxChars="300" height="20"/>
+            </mx:HBox>
+              <mx:HBox percentWidth="100">
+                    <mx:Text textAlign="right" text="SSID" width="140"/>
+                    <controls:NumberInput id="SSID" width="70" maxChars="22" height="20"/>
+                </mx:HBox>
+              <mx:HBox percentWidth="100">
+                    <mx:Text textAlign="right" text="Расстояние, м" width="140"/>
+                    <controls:NumberInput id="ABSOLUTE_ODOMETER" width="70" maxChars="22" height="20"/>
+                </mx:HBox>
+              <mx:HBox percentWidth="100">
+                    <mx:Text textAlign="right" text="От лев. шва до точ макс,м/до нач,м" width="140"/>
+                    <controls:NumberInput id="LEFT_SHOV_TO_MAX" width="40" maxChars="22" height="20"/>
+                    <controls:NumberInput id="LEFT_SHOV_TO_BEGIN" width="40" maxChars="22" height="20"/>
+              </mx:HBox>
+              <mx:HBox percentWidth="100">
+                    <mx:Text textAlign="right" text="От прав. шва до точ макс,м/до нач,м" width="140"/>
+                    <controls:NumberInput id="RIGHT_SHOV_TO_MAX" width="40" maxChars="22" height="20"/>
+                    <controls:NumberInput id="RIGHT_SHOV_TO_BEGIN" width="40" maxChars="22" height="20"/>
+              </mx:HBox>
+              <mx:HBox percentWidth="100">
+                    <mx:Text textAlign="right" text="От прод. шва до точ нач дефекта,мм/до точ макс,мм/до центра,мм" width="140"/>
+                    <controls:NumberInput id="PSH_TO_BEGIN" width="40" maxChars="22" height="20"/>
+                    <controls:NumberInput id="PSH_TO_MAX" width="40" maxChars="22" height="20"/>
+                    <controls:NumberInput id="PSH_TO_CENTER" width="40" maxChars="22" height="20"/>
+              </mx:HBox>
+              <mx:HBox percentWidth="100">
+                    <mx:Text textAlign="right" text="Мин расст. до прод. шва,мм/до кольц. шва,мм" width="140"/>
+                    <controls:NumberInput id="MIS_DIST_TO_PSH" width="40" maxChars="22" height="20"/>
+                    <controls:NumberInput id="_DIST_TO_WELD_SH" width="40" maxChars="22" height="20"/>
+              </mx:HBox>
+              </mx:VBox>
+			      <mx:VBox percentWidth="50">
+			         <mx:HBox percentWidth="100">
+               <mx:Text textAlign="right" text="Тип/Характер особенности" width="140"/>
+               <mx:TextInput id="ANOMALY_CATEGORY_DESCR" width="73" maxChars="300" height="20"/>
+               <mx:TextInput id="ANOMALY_TYPE_DESCR" width="73" maxChars="300" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+               <mx:Text textAlign="right" text="Описание" width="140"/>
+               <mx:TextInput id="DESCRIPTION" width="100" maxChars="300" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+               <mx:Text textAlign="right" text="Класс размера/Класс размера аббр." width="140"/>
+               <mx:TextInput id="SIZE_CLASS" width="73" maxChars="300" height="20"/>
+               <mx:TextInput id="ABBR_SIZE_CLASS" width="73" maxChars="300" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+               <mx:Text textAlign="right" text="Тип/Характер аббр." width="140"/>
+               <mx:TextInput id="ABBR_CATEGORY" width="73" maxChars="300" height="20"/>
+               <mx:TextInput id="ABBR_TYPE" width="73" maxChars="300" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                    <mx:Text textAlign="right" text="Ориент.точ нач дефекта,ч/точ макс,ч/центра,ч" width="180"/>
+                    <controls:NumberInput id="ORIENTATION_BEGIN" width="40" maxChars="22" height="20"/>
+                    <controls:NumberInput id="ORIENTATION_MAX" width="40" maxChars="22" height="20"/>
+                    <controls:NumberInput id="ORIENTATION_CENTER" width="40" maxChars="22" height="20"/>
+              </mx:HBox>
+              <mx:HBox percentWidth="100">
+                    <mx:Text textAlign="right" text="Толщина,мм/Длина,мм/ Ширина,мм/Глубина,%" width="140"/>
+                    <controls:NumberInput id="THICKNESS" width="40" maxChars="22" height="20"/>
+                    <controls:NumberInput id="DEF_LENGTH" width="40" maxChars="22" height="20"/>
+                    <controls:NumberInput id="DEF_WIDTH" width="40" maxChars="22" height="20"/>
+                    <controls:NumberInput id="DEF_DEPTH" width="40" maxChars="22" height="20"/>
+              </mx:HBox>
+            <mx:HBox percentWidth="100">
+               <mx:Text textAlign="right" text="Расположение" width="140"/>
+               <mx:TextInput id="INS_OUT_LOCATION" width="73" maxChars="300" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+               <mx:Text textAlign="right" text="Комментарий" width="140"/>
+               <mx:TextInput id="DEF_COMMENT" width="73" maxChars="300" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                    <mx:Text textAlign="right" text="Широта/Долгота/Высота" width="140"/>
+                    <controls:NumberInput id="LATITUDE" width="40" maxChars="22" height="20"/>
+                    <controls:NumberInput id="LONGITUDE" width="40" maxChars="22" height="20"/>
+                    <controls:NumberInput id="HEIGHT" width="40" maxChars="22" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                    <mx:Text textAlign="right" text="Срок НО, лет" width="140"/>
+                    <controls:NumberInput id="TIME_TO_EXT_EXAM" width="40" maxChars="22" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                    <mx:Text textAlign="right" text="КБД" width="140"/>
+                    <controls:NumberInput id="KBD" width="40" maxChars="22" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                    <mx:Text textAlign="right" text="Pd, МПа/MAOP, МПа/Psw, МПа/Pf, МПа" width="140"/>
+                    <controls:NumberInput id="PRESSURE_D" width="40" maxChars="22" height="20"/>
+                    <controls:NumberInput id="PRESSURE_MAOP" width="40" maxChars="22" height="20"/>
+                    <controls:NumberInput id="PRESSURE_SW" width="40" maxChars="22" height="20"/>
+                    <controls:NumberInput id="PRESSURE_F" width="40" maxChars="22" height="20"/>
+              </mx:HBox>
+              <mx:HBox percentWidth="100">
+               <mx:Text textAlign="right" text="Опасность" width="140"/>
+               <mx:TextInput id="DANGER" width="73" maxChars="300" height="20"/>
+              </mx:HBox>
+              <mx:HBox percentWidth="100" visible="false">
+               <mx:TextInput id="ADV_ID" width="73" maxChars="300" height="20"/>
+              </mx:HBox>
+			      </mx:VBox>
+		    </mx:HBox>
+	  </mx:VBox>
+	 
+</DATA_EDIT_FORM>

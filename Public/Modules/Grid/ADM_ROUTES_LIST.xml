@@ -1,0 +1,124 @@
+﻿<!--7.7.5.0-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="6"  headerVertSize="50"
+            id="ADM_ROUTES_LIST"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelTemplateName="PODS_ROUTE_LIST"
+            excelDataRequest="PODS_EXPORT.xml#PODS_ROUTE"
+            excelMaxExport="1000"
+            layerId="PODS_ROUTE" propertyPanelName="PODS_ROUTE"
+            dataRequest="GAZPROM_ADM_SEM.xml#PODS_ROUTE"
+            totalRecordsRequest="GAZPROM_ADM_SEM.xml#PODS_ROUTE_CNT"
+            initialSortField="TYPE_CL_DESCR,LINE_DESCR,ROUTE_DESCR,STATION_BEGIN,STATION_END,ID"
+            >
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/createObject.png"
+        tooltip="Создать объект"
+        clickEvent="ru.corelight.business.events.CreateObjectEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../Public/assets/excel.png"
+        tooltip="Экспортировать в Excel"
+        clickEvent="ru.corelight.business.events.ExportToExcelEvent"
+        selectedObjects="this" />
+  <!--  <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />-->
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Пересчет линейной дистанции"
+        clickEvent="gridAdmRoutesLrsCalc"
+        selectedObjects="this"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Пересчет километража"
+        clickEvent="gridAdmRoutesKmCalc"
+        selectedObjects="this"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Группировка пересек. объектов"
+        clickEvent="gridAdmRoutesGroupByRoute"
+        selectedObjects="this"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Привязка вдольтрассовых объектов"
+        clickEvent="gridAdmRoutesOfflineBindingByRoute"
+        selectedObjects="this"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Привязка трассовых объектов"
+        clickEvent="gridAdmRoutesLineBindingByRoute"
+        selectedObjects="this"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Разбивка на интервалы"
+        clickEvent="gridAdmRoutesIntervalDividing"
+        selectedObjects="this"
+        position="top"/>
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=showInfoEvent;toolTip=Показать информацию по объекту"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/excel.png;eventName=ru.corelight.business.events.ExportToExcelPicketingByRouteEvent;toolTip=Экспорт пикетажа по участку газопровода;templateName=PODS_ROUTE"
+                          editable="true"/>
+      <columns:GridColumn headerText="Идентификатор" dataField="ID"  itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          hidden="true" editable="false" filterComparisionType="number" width="40" />                    
+      <columns:GridColumn headerText="Тип\nтрубопровода" dataField="TYPE_CL"
+                          filterRequestId="PODS_POLICY.xml#PODS_ROUTE_TYPE_GRID"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_POLICY.xml#PODS_ROUTE_TYPE_GRID"
+                          filterComparisionType="array"
+                          editable="true"
+                          sortField="TYPE_CL_DESCR"
+                          width="100"/>
+      <columns:GridColumn headerText="Трубопровод" dataField="LINE_ID"
+                          filterRequestId="PODS_POLICY.xml#PODS_LINE_GRID"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_POLICY.xml#PODS_LINE_GRID"
+                          filterComparisionType="array"
+                          editable="true"
+                          sortField="LINE_DESCR"
+                          width="160"/>
+      <columns:GridColumn headerText="Нач. км." dataField="STATION_BEGIN"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="Кон. км." dataField="STATION_END"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="Участок (ROUTE_DESCR)" dataField="ROUTE_DESCR"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="360"/>
+      <columns:GridColumn headerText="Участок\nИД\n(ROUTE_ID)" dataField="ROUTE_ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="70"/>
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

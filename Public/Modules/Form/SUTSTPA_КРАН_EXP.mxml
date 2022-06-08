@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns="view.data.*" xmlns:data="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns:mx="http://www.adobe.com/2006/mxml"
+                title="Краны"
+                width="760"
+                ext_data_id=""
+                excelTemplate="">
+  <dataProvider>SUTSTPA_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+    </panel:buttons>
+    <mx:HBox percentWidth="100">
+        <!--левая колонка полей-->  
+        <mx:VBox percentWidth="50">
+            <mx:HBox percentWidth="100">
+                <mx:Text textAlign="left" text="Уплотнит.паста (смазка), кг:"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="90">
+                <mx:Text textAlign="right" text="Объем по паспорту/Плановый расход" width="140" />
+                <controls:NumberInput id="LUBRICANT_VALUE" editable="true" width="60" maxChars="22" height="20" />
+                <controls:NumberInput id="SEAL_PAST_CONS_PLAN" editable="true" width="60" maxChars="22" height="20" /> 
+            </mx:HBox> 
+            <mx:HBox percentWidth="100">
+                <mx:Text textAlign="left" text="Гидравлическая жидкость, л:"/>
+            </mx:HBox>
+          <mx:HBox percentWidth="90">
+                <mx:Text textAlign="right" text="Объем по паспорту/Плановый расход" width="140" />
+                <controls:NumberInput id="HYDROFLUID_VALUE" editable="true" width="60" maxChars="22" height="20" />
+                <controls:NumberInput id="HYDROFLUID_CONS_PLAN" editable="true" width="60" maxChars="22" height="20" /> 
+            </mx:HBox>
+          <mx:HBox percentWidth="90">               
+                <mx:Text textAlign="right" text="Налич. паспорта крана" width="140"/>
+                <mx:TextInput id="PASSPORT_DOCUMENT_DESCR" width="70" maxChars="50" height="20"/>      
+                <mx:Text textAlign="right" text="Фактич.раб. давление" width="120"/>
+                <controls:NumberInput id="WORK_PRESSURE_FACT" editable="true" width="60" maxChars="22" height="20" />
+             </mx:HBox>
+          </mx:VBox>
+          
+          <!--Правая колонка полей-->
+         <mx:VBox percentWidth="50">
+           <mx:HBox percentWidth="90">
+                <mx:Text textAlign="right" text="Рабочая температура: Проектная/Фактическая " width="140" />
+                <controls:NumberInput id="WORK_TEMP_PROJECT" editable="true" width="60" maxChars="22" height="20" />
+                <controls:NumberInput id="WORK_TEMP_FACT" editable="true" width="60" maxChars="22" height="20" />
+            </mx:HBox>
+            <mx:HBox percentWidth="90">               
+                <mx:Text textAlign="right" text="Дата кап.ремонта" width="140"/>
+                <mx:DateField id="DATE_REPAIR" width="96" height="20" formatString="DD.MM.YYYY"/>
+                <mx:Text textAlign="right" text="Завод.номер после ремонта" width="120"/>
+                <mx:TextInput id="SERIAL_NUMBER_REPAIR" width="60" maxChars="50" height="20"/>
+            </mx:HBox>  
+          </mx:VBox>
+    </mx:HBox>
+</DATA_EDIT_FORM>

@@ -1,0 +1,1857 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- В запросах для работы ПКА используются следующие переменные: HEIGHT - высота конкретной диаграммы, "LABEL" - подпись в карте легенды для этой диаграммы, "LABEL"_UNIT - подпись единиц измерения в карте легенды (работает только для 2D-диаграмм), "TYPE" - тип диаграммы (может быть 1D или 2D) , FILTERED_CLASS - класс для фильтра нижнего уровня (фильтруемый класс), START_FILTER - идентификатор запроса первоначальной фильтрации (объекты с ID из этого запроса будут отображены на диаграмме)-->
+<root version="postgres 7.7.7.6">
+
+<data id="CAS_PODS_ILI_PIPE_LENGTH" comment="Трубный журнал ВТД" schema="PODS" table="ILI_CLUSTER">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="Группы взаимодействующих дефектов"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>
+   <var name="TYPE" default="2D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+			<var name="Y_MAX" default="10000"/>
+			<var name="Y_MIN" default="0"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_ILI_CLUSTER_LIST"/>
+   <query>
+with lim as (select spb.line_id,spb.station station_begin,spe.station station_end from pods.event_range e,
+pods.station_point spb,
+pods.station_point spe where e.event_id={ID} and e.station_id_begin=spb.station_id
+and e.station_id_end=spe.station_id),
+insp_prev as (select r.event_id,r.ili_inspection_id,s.route_id from 
+	  pods.ili_inspection_range r,
+	  pods.event_range e,
+          pods.station_point s,lim l where 
+			r.event_id=e.event_id and e.station_id_begin=s.station_id and 
+			s.line_id=l.line_id and s.station&gt;=l.station_begin and s.station&lt;=l.station_end
+union all 
+select r.event_id,r.ili_inspection_id,s.route_id from 
+	  pods.ili_inspection_range r,
+	  pods.event_range e,
+          pods.station_point s,lim l where 
+		 r.event_id=e.event_id and e.station_id_end=s.station_id and 
+			s.line_id=l.line_id and s.station&gt;=l.station_begin and s.station&lt;=l.station_end),
+insp as (select distinct max(i.ili_inspection_id) over (partition by i.route_id order by ii.begin_date desc) ili_inspection_id
+from insp_prev i,pods.ili_inspection ii where
+ i.ili_inspection_id=ii.ili_inspection_id)
+select id.event_id  ID
+			  ,( (s.station_begin + (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000) -  {START_KM})  X
+			  ,0 Y       
+		   ,round(id.NOMINAL_WALL_THICKNESS/10) "TYPE"
+		   ,id.weld_number  "LABEL"
+	  FROM pods.ili_pipe_length id   
+		   JOIN pods.event_range er  
+			 ON er.event_id = id.event_id
+		   JOIN pods.station_point sp
+			 ON er.station_id_begin = sp.station_id
+			 		   JOIN pods.series s
+			 ON s.series_id = sp.series_id
+		   JOIN pods.location l
+			 ON l.location_id = sp.location_id
+		   join insp ii
+			 on  ii.ili_inspection_id=id.ili_inspection_id
+	  WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+			  AND  sp.line_id = {LINE_ID}
+			  AND {FILTER}
+union all
+SELECT id.event_id  ID
+			  ,( (s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000) -  {START_KM})  X
+			  ,0 Y       
+		   ,round(id.NOMINAL_WALL_THICKNESS/10) "TYPE"
+		   ,id.weld_number  "LABEL" 
+	  FROM pods.ili_pipe_length id   
+		   JOIN pods.event_range er  
+			 ON er.event_id = id.event_id
+		   JOIN pods.station_point sp
+			 ON er.station_id_end = sp.station_id
+			 		   JOIN pods.series s
+			 ON s.series_id = sp.series_id
+		   JOIN pods.location l
+			 ON l.location_id = sp.location_id
+		   join insp ii
+			 on  ii.ili_inspection_id=id.ili_inspection_id
+	  WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+			  AND sp.line_id = {LINE_ID}
+			  AND {FILTER}
+
+        </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_ILI_CLUSTER" comment="Группы взаимодействующих дефектов" schema="PODS" table="ILI_CLUSTER">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="Группы взаимодействующих дефектов"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>
+   <var name="TYPE" default="2D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+			<var name="Y_MAX" default="10000"/>
+			<var name="Y_MIN" default="0"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_ILI_CLUSTER_LIST"/>
+   <query>
+with lim as (select spb.line_id,spb.station station_begin,spe.station station_end from pods.event_range e,
+pods.station_point spb,
+pods.station_point spe where e.event_id={ID} and e.station_id_begin=spb.station_id
+and e.station_id_end=spe.station_id),
+insp_prev as (select r.event_id,r.ili_inspection_id,s.route_id from 
+	  pods.ili_inspection_range r,
+	  pods.event_range e,
+          pods.station_point s,lim l where 
+			r.event_id=e.event_id and e.station_id_begin=s.station_id and 
+			s.line_id=l.line_id and s.station&gt;=l.station_begin and s.station&lt;=l.station_end
+union all 
+select r.event_id,r.ili_inspection_id,s.route_id from 
+	  pods.ili_inspection_range r,
+	  pods.event_range e,
+          pods.station_point s,lim l where 
+		 r.event_id=e.event_id and e.station_id_end=s.station_id and 
+			s.line_id=l.line_id and s.station&gt;=l.station_begin and s.station&lt;=l.station_end),
+insp as (select distinct max(i.ili_inspection_id) over (partition by i.route_id order by ii.begin_date desc) ili_inspection_id
+from insp_prev i,pods.ili_inspection ii where
+ i.ili_inspection_id=ii.ili_inspection_id)
+     SELECT id.ili_cluster_id ID
+     ,( (s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000) - {START_KM})  X
+     ,(CASE WHEN coalesce(id.effective_area ,0) &lt;  {Y_MIN}
+     THEN {Y_MIN}
+     WHEN coalesce(id.effective_area ,0) &gt;  {Y_MAX}
+     THEN {Y_MAX}
+     ELSE coalesce(id.effective_area ,0)
+      END  - {Y_MIN})  Y       
+     ,round(effective_area::NUMERIC,2) "LABEL"
+   FROM pods.ili_cluster id  
+     JOIN pods.event_range er  
+    ON er.event_id = id.event_id
+     JOIN pods.station_point sp
+    ON er.station_id_begin = sp.station_id
+     JOIN pods.series s
+    ON s.series_id = sp.series_id
+     JOIN pods.location l
+    ON l.location_id = sp.location_id
+       join insp ii
+     ON id.ili_inspection_id=ii.ili_inspection_id
+     WHERE  {FILTER}
+        </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_REPAIR_METHOD" comment="Р Газпром 2-2.3-595-2011.  Методы ремонта" schema="PODS" table="STO_ILI_DATA_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="Р Газпром 2-2.3-595-2011.  Методы ремонта"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_REPAIR_METHOD_LIST"/>
+   <query>
+with lim as (select spb.line_id,spb.station station_begin,spe.station station_end from pods.event_range e,
+pods.station_point spb,
+pods.station_point spe where e.event_id={ID} and e.station_id_begin=spb.station_id
+and e.station_id_end=spe.station_id),
+insp_prev as (select r.event_id,r.ili_inspection_id,s.route_id from 
+	  pods.ili_inspection_range r,
+	  pods.event_range e,
+          pods.station_point s,lim l where 
+			r.event_id=e.event_id and e.station_id_begin=s.station_id and 
+			s.line_id=l.line_id and s.station&gt;=l.station_begin and s.station&lt;=l.station_end
+union all 
+select r.event_id,r.ili_inspection_id,s.route_id from 
+	  pods.ili_inspection_range r,
+	  pods.event_range e,
+          pods.station_point s,lim l where 
+		 r.event_id=e.event_id and e.station_id_end=s.station_id and 
+			s.line_id=l.line_id and s.station&gt;=l.station_begin and s.station&lt;=l.station_end),
+insp as (select distinct max(i.ili_inspection_id) over (partition by i.route_id order by ii.begin_date desc) ili_inspection_id
+from insp_prev i,pods.ili_inspection ii where
+ i.ili_inspection_id=ii.ili_inspection_id)
+     SELECT id.ili_data_id ID
+     ,( (s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000) - {START_KM})  X
+     ,0  Y
+     ,R_595_2011_REPAIR_METHOD "LABEL"
+     ,R_595_2011_REPAIR_METHOD "TYPE"
+     FROM pods.sto_ili_data_calc id
+     JOIN pods.ili_data d
+     ON id.ili_data_id=d.ili_data_id
+     JOIN pods.event_range er
+     ON er.event_id = d.event_id
+     JOIN pods.station_point sp
+     ON er.station_id_begin = sp.station_id
+     JOIN pods.series s
+     ON s.series_id = sp.series_id
+     JOIN pods.location l
+     ON l.location_id = sp.location_id
+     join insp ii
+     ON d.ili_inspection_id=ii.ili_inspection_id
+     WHERE  {FILTER}
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_DANGER_RANK" comment="СТО Газпром 2-2.3-292-2007. Ранги опасности дефектов" schema="PODS" table="STO_ILI_DATA_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="СТО Газпром 2-2.3-292-2007. Ранги опасности дефектов"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_DANGER_RANK_LIST"/>
+   <query>
+with lim as (select spb.line_id,spb.station station_begin,spe.station station_end from pods.event_range e,
+pods.station_point spb,
+pods.station_point spe where e.event_id={ID} and e.station_id_begin=spb.station_id
+and e.station_id_end=spe.station_id),
+insp_prev as (select r.event_id,r.ili_inspection_id,s.route_id from 
+	  pods.ili_inspection_range r,
+	  pods.event_range e,
+          pods.station_point s,lim l where 
+			r.event_id=e.event_id and e.station_id_begin=s.station_id and 
+			s.line_id=l.line_id and s.station&gt;=l.station_begin and s.station&lt;=l.station_end
+union all 
+select r.event_id,r.ili_inspection_id,s.route_id from 
+	  pods.ili_inspection_range r,
+	  pods.event_range e,
+          pods.station_point s,lim l where 
+		 r.event_id=e.event_id and e.station_id_end=s.station_id and 
+			s.line_id=l.line_id and s.station&gt;=l.station_begin and s.station&lt;=l.station_end),
+insp as (select distinct max(i.ili_inspection_id) over (partition by i.route_id order by ii.begin_date desc) ili_inspection_id
+from insp_prev i,pods.ili_inspection ii where
+ i.ili_inspection_id=ii.ili_inspection_id)
+     SELECT id.ili_data_id ID
+     ,( (s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000) - {START_KM})  X
+     ,0  Y
+     , round(id.STO_292_2007_DANGER_RANK,3) "LABEL",
+     CASE WHEN id.STO_292_2007_DANGER_RANK &lt;= 0.3 THEN 0
+     WHEN id.STO_292_2007_DANGER_RANK &lt;= 0.6 AND id.STO_292_2007_DANGER_RANK > 0.3 THEN 0.5
+     WHEN id.STO_292_2007_DANGER_RANK &lt;= 1 AND id.STO_292_2007_DANGER_RANK > 0.6 THEN 1
+     ELSE id.STO_292_2007_DANGER_RANK END "TYPE"
+     FROM pods.sto_ili_data_calc id
+     JOIN pods.ili_data d
+     ON id.ili_data_id=d.ili_data_id
+     JOIN pods.event_range er
+     ON er.event_id = d.event_id
+     JOIN pods.station_point sp
+     ON er.station_id_begin = sp.station_id
+     JOIN pods.series s
+     ON s.series_id = sp.series_id
+     JOIN pods.location l
+     ON l.location_id = sp.location_id
+     join insp ii
+     ON d.ili_inspection_id=ii.ili_inspection_id
+     WHERE  {FILTER}
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_100_DANGER_DEG" comment="ВНИИГАЗ 2004. Инструкция. 100 м. участки. Противокоррозийная защита. Степень коррозионной опасности" schema="PODS" table="STO_EHZ_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="ВНИИГАЗ 2004. Инструкция. 100 м. участки. Противокоррозийная защита. Степень коррозионной опасности"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <query>
+with lim as (select spb.line_id,spb.station station_begin,spe.station station_end from pods.event_range e,
+pods.station_point spb,
+pods.station_point spe where e.event_id={ID} and e.station_id_begin=spb.station_id
+and e.station_id_end=spe.station_id),
+insp_prev as (select r.event_id,r.ili_inspection_id,s.route_id from 
+	  pods.ili_inspection_range r,
+	  pods.event_range e,
+          pods.station_point s,lim l where 
+			r.event_id=e.event_id and e.station_id_begin=s.station_id and 
+			s.line_id=l.line_id and s.station&gt;=l.station_begin and s.station&lt;=l.station_end
+union all 
+select r.event_id,r.ili_inspection_id,s.route_id from 
+	  pods.ili_inspection_range r,
+	  pods.event_range e,
+          pods.station_point s,lim l where 
+		 r.event_id=e.event_id and e.station_id_end=s.station_id and 
+			s.line_id=l.line_id and s.station&gt;=l.station_begin and s.station&lt;=l.station_end),
+insp_r as (select distinct max(i.ili_inspection_id) over (partition by i.route_id order by ii.begin_date desc) ili_inspection_id
+from insp_prev i,pods.ili_inspection ii where
+ i.ili_inspection_id=ii.ili_inspection_id),
+insp as (select r.ili_inspection_id,s.route_id from insp_r i,pods.ili_inspection_range r,pods.station_point s,pods.event_range e where i.ili_inspection_id=r.ili_inspection_id and e.event_id=r.event_id
+ and e.station_id_begin=s.station_id),
+     spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end,(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     from pods.series s
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     join insp ii
+     ON s.route_id=ii.route_id 
+     where  EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id ))
+     SELECT *  FROM (SELECT v.DANGER_DEG "LABEL",
+     v.DANGER_DEG "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure   / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_EHZ_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id and er.feature_id like 'INTERVAL_REGULAR' and abs(v.begin_odometer-v.end_odometer)&lt;120
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+     join insp ii
+     ON v.ili_inspection_id=ii.ili_inspection_id
+     UNION
+     SELECT v.DANGER_DEG "LABEL",
+     v.DANGER_DEG "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_EHZ_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id and er.feature_id like 'INTERVAL_REGULAR' and abs(v.begin_odometer-v.end_odometer)&lt;120
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+     join insp ii
+     ON v.ili_inspection_id=ii.ili_inspection_id)  mainQuery
+     ORDER BY ID, X  </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_VALVE_DANGER_DEG" comment="ВНИИГАЗ 2004. Инструкция. Межкрановые участки. Противокоррозийная защита. Степень коррозионной опасности" schema="PODS" table="STO_EHZ_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="ВНИИГАЗ 2004. Инструкция. Межккрановые участки. Противокоррозийная защита. Степень коррозионной опасности"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <query>
+with lim as (select spb.line_id,spb.station station_begin,spe.station station_end from pods.event_range e,
+pods.station_point spb,
+pods.station_point spe where e.event_id={ID} and e.station_id_begin=spb.station_id
+and e.station_id_end=spe.station_id),
+insp_prev as (select r.event_id,r.ili_inspection_id,s.route_id from 
+	  pods.ili_inspection_range r,
+	  pods.event_range e,
+          pods.station_point s,lim l where 
+			r.event_id=e.event_id and e.station_id_begin=s.station_id and 
+			s.line_id=l.line_id and s.station&gt;=l.station_begin and s.station&lt;=l.station_end
+union all 
+select r.event_id,r.ili_inspection_id,s.route_id from 
+	  pods.ili_inspection_range r,
+	  pods.event_range e,
+          pods.station_point s,lim l where 
+		 r.event_id=e.event_id and e.station_id_end=s.station_id and 
+			s.line_id=l.line_id and s.station&gt;=l.station_begin and s.station&lt;=l.station_end),
+insp_r as (select distinct max(i.ili_inspection_id) over (partition by i.route_id order by ii.begin_date desc) ili_inspection_id
+from insp_prev i,pods.ili_inspection ii where
+ i.ili_inspection_id=ii.ili_inspection_id),
+insp as (select r.ili_inspection_id,s.route_id from insp_r i,pods.ili_inspection_range r,pods.station_point s,pods.event_range e where i.ili_inspection_id=r.ili_inspection_id and e.event_id=r.event_id
+ and e.station_id_begin=s.station_id),
+     spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end,(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     from pods.series s
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     join insp ii
+     ON s.route_id=ii.route_id 
+     where  EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id ))
+     SELECT *  FROM (SELECT v.DANGER_DEG "LABEL",
+     v.DANGER_DEG "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_EHZ_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id and er.feature_id like 'INTERVAL_PER_OBJ' and abs(v.begin_odometer-v.end_odometer)&gt;120
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+     join insp ii
+     ON v.ili_inspection_id=ii.ili_inspection_id
+     UNION
+     SELECT v.DANGER_DEG "LABEL",
+     v.DANGER_DEG "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_EHZ_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id and er.feature_id like 'INTERVAL_PER_OBJ' and abs(v.begin_odometer-v.end_odometer)&gt;120
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+     join insp ii
+     ON v.ili_inspection_id=ii.ili_inspection_id
+)  mainQuery
+     ORDER BY ID, X </query>
+  </geoQuery>
+ </select>
+</data>
+
+  <!-- Интенсивы. Новые графики (добавлены 10.03.2021-->
+    <data id="PI_UTZVKL" comment="Интенсивные измерения. UтзВкл" schema="PODS" table="PI_CP_INSPECTION">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="LABEL" default="Интенсивные измерения.\n UтзВкл"/>
+        <var name="LABEL_UNIT" default="В"/>
+        <var name="HEIGHT" default="30"/>
+        <var name="TYPE" default="2D"/>
+        <var name="START_KM"/>
+        <var name="FINISH_KM"/>
+        <var name="LINE_ID"/>
+		<var name="COSMETIC_ELEMENT_0" default="topology=line;coord=0,-0.9,1000000,-0.9;style=CAS_COSMETIC_ELEMENT_RED"/>
+		<var name="COSMETIC_ELEMENT_1" default="topology=line;coord=0,-3.5,1000000,-3.5;style=CAS_COSMETIC_ELEMENT_GREEN"/>
+        <var name="Y_MAX" default="0"/>
+        <var name="Y_MIN" default="-3.7"/>
+        <var name="Y_STEPS" default="25" />
+        <var name="FILTER" default="1=1"/>
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+          WITH common_info
+          AS (SELECT i.event_id ID
+          ,lt.description
+                || ' '
+                || l.description 
+                || ' '
+                || substr(i.description,NULLIF(strpos(i.description,'полугодие'),0)-2)  "LABEL"
+          ,TO_CHAR(i.inspection_date,'YYYY ') INSPECTION_YEAR
+          FROM pods.pi_cp_inspection i
+               JOIN pods.event_range eri
+                 ON eri.event_id = i.event_id
+               JOIN pods.station_point spb
+                 ON eri.station_id_begin = spb.station_id
+               JOIN pods.station_point spe
+                 ON eri.station_id_end = spe.station_id
+               JOIN pods.line l
+                 ON l.line_id = spb.line_id
+               JOIN pods.line_type_cl lt
+                 ON lt.code = l.type_cl
+          ),
+          measures
+          AS (SELECT m.event_id ID
+          ,m.pi_cp_event_id inspection_id
+          ,s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000 km
+          ,m.utz_vkl val
+          FROM pods.pi_cis_reading m
+          JOIN pods.event_range er
+          ON er.event_id = m.event_id
+          JOIN pods.station_point sp
+          ON er.station_id_begin = sp.station_id
+          JOIN pods.series s
+          ON s.series_id = sp.series_id
+          JOIN pods.location l
+          ON l.location_id = sp.location_id
+          WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+          AND m.pi_cp_event_id={ID})
+          SELECT i.ID
+          ,( m.km - {START_KM})  X
+          , (CASE WHEN m.val &lt;  {Y_MIN}
+          THEN {Y_MIN}
+          WHEN m.val &gt;  {Y_MAX}
+          THEN {Y_MAX}
+          ELSE m.val
+          END) Y
+         ,"LABEL"
+          ,INSPECTION_YEAR "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          ORDER BY 1,2
+        </query>
+      </geoQuery>
+    </select>
+  </data>
+  
+    <data id="PI_UTZVIKL" comment="Интенсивные измерения. Потенциал включения" schema="PODS" table="PI_CP_INSPECTION">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="LABEL" default="Интенсивные измерения.\n UтзВыкл"/>
+        <var name="LABEL_UNIT" default="В"/>
+        <var name="HEIGHT" default="30"/>
+        <var name="TYPE" default="2D"/>
+        <var name="START_KM"/>
+        <var name="FINISH_KM"/>
+        <var name="LINE_ID"/>
+		<var name="COSMETIC_ELEMENT_0" default="topology=line;coord=0,-0.9,1000000,-0.9;style=CAS_COSMETIC_ELEMENT_RED"/>
+		<var name="COSMETIC_ELEMENT_1" default="topology=line;coord=0,-3.5,1000000,-3.5;style=CAS_COSMETIC_ELEMENT_GREEN"/>
+        <var name="Y_MAX" default="0"/>
+        <var name="Y_MIN" default="-3.7"/>
+        <var name="Y_STEPS" default="25" />
+        <var name="FILTER" default="1=1"/>
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+          WITH common_info
+          AS (SELECT i.event_id ID
+          ,lt.description
+                || ' '
+                || l.description 
+                || ' '
+                || substr(i.description,NULLIF(strpos(i.description,'полугодие'),0)-2)  "LABEL"
+          ,TO_CHAR(i.inspection_date,'YYYY ') INSPECTION_YEAR
+          FROM pods.pi_cp_inspection i
+               JOIN pods.event_range eri
+                 ON eri.event_id = i.event_id
+               JOIN pods.station_point spb
+                 ON eri.station_id_begin = spb.station_id
+               JOIN pods.station_point spe
+                 ON eri.station_id_end = spe.station_id
+               JOIN pods.line l
+                 ON l.line_id = spb.line_id
+               JOIN pods.line_type_cl lt
+                 ON lt.code = l.type_cl
+          ),
+          measures
+          AS (SELECT m.event_id ID
+          ,m.pi_cp_event_id inspection_id
+          ,s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000 km
+          ,m.utz_vikl val
+          FROM pods.pi_cis_reading m
+          JOIN pods.event_range er
+          ON er.event_id = m.event_id
+          JOIN pods.station_point sp
+          ON er.station_id_begin = sp.station_id
+          JOIN pods.series s
+          ON s.series_id = sp.series_id
+          JOIN pods.location l
+          ON l.location_id = sp.location_id
+          WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+          AND m.pi_cp_event_id={ID})
+          SELECT i.ID
+          ,( m.km - {START_KM})  X
+          , (CASE WHEN m.val &lt;  {Y_MIN}
+          THEN {Y_MIN}
+          WHEN m.val &gt;  {Y_MAX}
+          THEN {Y_MAX}
+          ELSE m.val
+          END) Y
+         ,"LABEL"
+          ,INSPECTION_YEAR "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          ORDER BY 1,2
+        </query>
+      </geoQuery>
+    </select>
+  </data>
+  
+    <data id="PI_UPOL" comment="Интенсивные измерения. Uпол" schema="PODS" table="PI_CP_INSPECTION">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="LABEL" default="Интенсивные измерения.\n Uпол"/>
+        <var name="LABEL_UNIT" default="В"/>
+        <var name="HEIGHT" default="30"/>
+        <var name="TYPE" default="2D"/>
+        <var name="START_KM"/>
+        <var name="FINISH_KM"/>
+        <var name="LINE_ID"/>
+        <var name="Y_MAX" default="0"/>
+        <var name="Y_MIN" default="-3.7"/>
+        <var name="Y_STEPS" default="25" />
+        <var name="FILTER" default="1=1"/>
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+          WITH common_info
+          AS (SELECT i.event_id ID
+          ,lt.description
+                || ' '
+                || l.description 
+                || ' '
+                || substr(i.description,NULLIF(strpos(i.description,'полугодие'),0)-2)  "LABEL"
+          ,TO_CHAR(i.inspection_date,'YYYY ') INSPECTION_YEAR
+          FROM pods.pi_cp_inspection i
+               JOIN pods.event_range eri
+                 ON eri.event_id = i.event_id
+               JOIN pods.station_point spb
+                 ON eri.station_id_begin = spb.station_id
+               JOIN pods.station_point spe
+                 ON eri.station_id_end = spe.station_id
+               JOIN pods.line l
+                 ON l.line_id = spb.line_id
+               JOIN pods.line_type_cl lt
+                 ON lt.code = l.type_cl
+          ),
+          measures
+          AS (SELECT m.event_id ID
+          ,m.pi_cp_event_id inspection_id
+          ,s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000 km
+          ,m.upol val
+          FROM pods.pi_cis_reading m
+          JOIN pods.event_range er
+          ON er.event_id = m.event_id
+          JOIN pods.station_point sp
+          ON er.station_id_begin = sp.station_id
+          JOIN pods.series s
+          ON s.series_id = sp.series_id
+          JOIN pods.location l
+          ON l.location_id = sp.location_id
+          WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+          AND m.pi_cp_event_id={ID})
+          SELECT i.ID
+          ,( m.km - {START_KM})  X
+          , (CASE WHEN m.val &lt;  {Y_MIN}
+          THEN {Y_MIN}
+          WHEN m.val &gt;  {Y_MAX}
+          THEN {Y_MAX}
+          ELSE m.val
+          END) Y
+         ,"LABEL"
+          ,INSPECTION_YEAR "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          ORDER BY 1,2
+        </query>
+      </geoQuery>
+    </select>
+  </data>
+  
+    <data id="PI_GRADVKL_LEFT" comment="Интенсивные измерения. ГрадВклЛ" schema="PODS" table="PI_CP_INSPECTION">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="LABEL" default="Интенсивные измерения.\n ГрадВклЛ"/>
+        <var name="LABEL_UNIT" default="В"/>
+        <var name="HEIGHT" default="30"/>
+        <var name="TYPE" default="2D"/>
+        <var name="START_KM"/>
+        <var name="FINISH_KM"/>
+        <var name="LINE_ID"/>
+	    <var name="Y_MAX" default="500"/>
+        <var name="Y_MIN" default="0"/>
+        <var name="Y_STEPS" default="25" />
+        <var name="FILTER" default="1=1"/>
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+          WITH common_info
+          AS (SELECT i.event_id ID
+          ,lt.description
+                || ' '
+                || l.description 
+                || ' '
+                || substr(i.description,NULLIF(strpos(i.description,'полугодие'),0)-2)  "LABEL"
+          ,TO_CHAR(i.inspection_date,'YYYY ') INSPECTION_YEAR
+          FROM pods.pi_cp_inspection i
+               JOIN pods.event_range eri
+                 ON eri.event_id = i.event_id
+               JOIN pods.station_point spb
+                 ON eri.station_id_begin = spb.station_id
+               JOIN pods.station_point spe
+                 ON eri.station_id_end = spe.station_id
+               JOIN pods.line l
+                 ON l.line_id = spb.line_id
+               JOIN pods.line_type_cl lt
+                 ON lt.code = l.type_cl
+          ),
+          measures
+          AS (SELECT m.event_id ID
+          ,m.pi_cp_event_id inspection_id
+          ,s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000 km
+          ,m.grad_vkl_left val
+          FROM pods.pi_cis_reading m
+          JOIN pods.event_range er
+          ON er.event_id = m.event_id
+          JOIN pods.station_point sp
+          ON er.station_id_begin = sp.station_id
+          JOIN pods.series s
+          ON s.series_id = sp.series_id
+          JOIN pods.location l
+          ON l.location_id = sp.location_id
+          WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+          AND m.pi_cp_event_id={ID})
+          SELECT i.ID
+          ,( m.km - {START_KM})  X
+          , (CASE WHEN m.val &lt;  {Y_MIN}
+          THEN {Y_MIN}
+          WHEN m.val &gt;  {Y_MAX}
+          THEN {Y_MAX}
+          ELSE m.val
+          END) Y
+         ,"LABEL"
+          ,INSPECTION_YEAR "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          ORDER BY 1,2
+        </query>
+      </geoQuery>
+    </select>
+  </data>
+  
+    <data id="PI_GRADVKL_RIGHT" comment="Интенсивные измерения. ГрадВклП" schema="PODS" table="PI_CP_INSPECTION">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="LABEL" default="Интенсивные измерения.\n ГрадВклП"/>
+        <var name="LABEL_UNIT" default="В"/>
+        <var name="HEIGHT" default="30"/>
+        <var name="TYPE" default="2D"/>
+        <var name="START_KM"/>
+        <var name="FINISH_KM"/>
+        <var name="LINE_ID"/>
+	    <var name="Y_MAX" default="500"/>
+        <var name="Y_MIN" default="0"/>
+        <var name="Y_STEPS" default="25" />
+        <var name="FILTER" default="1=1"/>
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+          WITH common_info
+          AS (SELECT i.event_id ID
+          ,lt.description
+                || ' '
+                || l.description 
+                || ' '
+                || substr(i.description,NULLIF(strpos(i.description,'полугодие'),0)-2)  "LABEL"
+          ,TO_CHAR(i.inspection_date,'YYYY ') INSPECTION_YEAR
+          FROM pods.pi_cp_inspection i
+               JOIN pods.event_range eri
+                 ON eri.event_id = i.event_id
+               JOIN pods.station_point spb
+                 ON eri.station_id_begin = spb.station_id
+               JOIN pods.station_point spe
+                 ON eri.station_id_end = spe.station_id
+               JOIN pods.line l
+                 ON l.line_id = spb.line_id
+               JOIN pods.line_type_cl lt
+                 ON lt.code = l.type_cl
+          ),
+          measures
+          AS (SELECT m.event_id ID
+          ,m.pi_cp_event_id inspection_id
+          ,s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000 km
+          ,m.grad_vkl_right val
+          FROM pods.pi_cis_reading m
+          JOIN pods.event_range er
+          ON er.event_id = m.event_id
+          JOIN pods.station_point sp
+          ON er.station_id_begin = sp.station_id
+          JOIN pods.series s
+          ON s.series_id = sp.series_id
+          JOIN pods.location l
+          ON l.location_id = sp.location_id
+          WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+          AND m.pi_cp_event_id={ID})
+          SELECT i.ID
+          ,( m.km - {START_KM})  X
+          , (CASE WHEN m.val &lt;  {Y_MIN}
+          THEN {Y_MIN}
+          WHEN m.val &gt;  {Y_MAX}
+          THEN {Y_MAX}
+          ELSE m.val
+          END) Y
+         ,"LABEL"
+          ,INSPECTION_YEAR "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          ORDER BY 1,2
+        </query>
+      </geoQuery>
+    </select>
+  </data>
+  
+    <!-- Интенсивы. Новые графики закончились. Далее - старые графики-->
+  
+  <data id="CAS_PI_PS_ON" comment="Интенсивные измерения. Потенциал включения" schema="PODS" table="PI_CP_INSPECTION">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="LABEL" default="Интенсивные измерения.\n Потенциал включения"/>
+        <var name="LABEL_UNIT" default="В"/>
+        <var name="HEIGHT" default="30"/>
+        <var name="TYPE" default="2D"/>
+        <var name="START_KM"/>
+        <var name="FINISH_KM"/>
+        <var name="LINE_ID"/>
+		<var name="COSMETIC_ELEMENT_0" default="topology=line;coord=0,-0.9,1000000,-0.9;style=CAS_COSMETIC_ELEMENT_RED"/>
+		<var name="COSMETIC_ELEMENT_1" default="topology=line;coord=0,-3.5,1000000,-3.5;style=CAS_COSMETIC_ELEMENT_GREEN"/>
+        <var name="Y_MAX" default="0"/>
+        <var name="Y_MIN" default="-3.7"/>
+        <var name="Y_STEPS" default="25" />
+        <var name="FILTER" default="1=1"/>
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+          WITH common_info
+          AS (SELECT i.event_id ID
+          ,lt.description
+                || ' '
+                || l.description 
+                || ' '
+                || substr(i.description,NULLIF(strpos(i.description,'полугодие'),0)-2)  "LABEL"
+          ,TO_CHAR(i.inspection_date,'YYYY ') INSPECTION_YEAR
+          FROM pods.pi_cp_inspection i
+               JOIN pods.event_range eri
+                 ON eri.event_id = i.event_id
+               JOIN pods.station_point spb
+                 ON eri.station_id_begin = spb.station_id
+               JOIN pods.station_point spe
+                 ON eri.station_id_end = spe.station_id
+               JOIN pods.line l
+                 ON l.line_id = spb.line_id
+               JOIN pods.line_type_cl lt
+                 ON lt.code = l.type_cl
+          ),
+          measures
+          AS (SELECT m.event_id ID
+          ,m.pi_cp_event_id inspection_id
+          ,s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000 km
+          ,m.ps_on val
+          FROM pods.pi_cis_reading m
+          JOIN pods.event_range er
+          ON er.event_id = m.event_id
+          JOIN pods.station_point sp
+          ON er.station_id_begin = sp.station_id
+          JOIN pods.series s
+          ON s.series_id = sp.series_id
+          JOIN pods.location l
+          ON l.location_id = sp.location_id
+          WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+          AND m.pi_cp_event_id={ID})
+          SELECT i.ID
+          ,( m.km - {START_KM})  X
+          , (CASE WHEN m.val &lt;  {Y_MIN}
+          THEN {Y_MIN}
+          WHEN m.val &gt;  {Y_MAX}
+          THEN {Y_MAX}
+          ELSE m.val
+          END) Y
+         ,"LABEL"
+          ,INSPECTION_YEAR "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          ORDER BY 1,2
+        </query>
+      </geoQuery>
+    </select>
+  </data>
+  <data id="CAS_PI_PS_OFF" comment="Интенсивные измерения. Потенциал отключения" schema="PODS" table="PI_CP_INSPECTION">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="LABEL" default="Интенсивные измерения.\n Потенциал отключения"/>
+        <var name="LABEL_UNIT" default="В"/>
+        <var name="HEIGHT" default="30"/>
+        <var name="TYPE" default="2D"/>
+        <var name="START_KM"/>
+        <var name="FINISH_KM"/>
+        <var name="LINE_ID"/>
+		<var name="COSMETIC_ELEMENT_0" default="topology=line;coord=0,-0.9,1000000,-0.9;style=CAS_COSMETIC_ELEMENT_RED"/>
+		<var name="COSMETIC_ELEMENT_1" default="topology=line;coord=0,-3.5,1000000,-3.5;style=CAS_COSMETIC_ELEMENT_GREEN"/>
+        <var name="Y_MAX" default="0"/>
+        <var name="Y_MIN" default="-3.7"/>
+        <var name="Y_STEPS" default="25" />
+        <var name="FILTER" default="1=1"/>
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+          WITH common_info
+          AS (SELECT i.event_id ID
+          ,lt.description
+                || ' '
+                || l.description 
+                || ' '
+                || substr(i.description,NULLIF(strpos(i.description,'полугодие'),0)-2)  "LABEL"
+          ,TO_CHAR(i.inspection_date,'YYYY ') INSPECTION_YEAR
+          FROM pods.pi_cp_inspection i
+               JOIN pods.event_range eri
+                 ON eri.event_id = i.event_id
+               JOIN pods.station_point spb
+                 ON eri.station_id_begin = spb.station_id
+               JOIN pods.station_point spe
+                 ON eri.station_id_end = spe.station_id
+               JOIN pods.line l
+                 ON l.line_id = spb.line_id
+               JOIN pods.line_type_cl lt
+                 ON lt.code = l.type_cl
+          ),
+          measures
+          AS (SELECT m.event_id ID
+          ,m.pi_cp_event_id inspection_id
+          ,s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000 km
+          ,m.ps_off val
+          FROM pods.pi_cis_reading m
+          JOIN pods.event_range er
+          ON er.event_id = m.event_id
+          JOIN pods.station_point sp
+          ON er.station_id_begin = sp.station_id
+          JOIN pods.series s
+          ON s.series_id = sp.series_id
+          JOIN pods.location l
+          ON l.location_id = sp.location_id
+          WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+          AND m.pi_cp_event_id={ID})
+          SELECT i.ID
+          ,( m.km - {START_KM})  X
+          , (CASE WHEN m.val &lt;  {Y_MIN}
+          THEN {Y_MIN}
+          WHEN m.val &gt;  {Y_MAX}
+          THEN {Y_MAX}
+          ELSE m.val
+          END) Y
+         ,"LABEL"
+          ,INSPECTION_YEAR "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          ORDER BY 1,2
+        </query>
+      </geoQuery>
+    </select>
+  </data>
+  <data id="CAS_PI_DC_POTENTIAL_VOLTS" comment="Интенсивные измерения. Минимальный поляризационный потенциал" schema="PODS" table="PI_CP_INSPECTION">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="LABEL" default="Интенсивные измерения.\n Минимальный поляризационный потенциал"/>
+        <var name="LABEL_UNIT" default="В"/>
+        <var name="HEIGHT" default="30"/>
+        <var name="TYPE" default="2D"/>
+        <var name="START_KM"/>
+        <var name="FINISH_KM"/>
+        <var name="LINE_ID"/>
+		<var name="COSMETIC_ELEMENT_0" default="topology=line;coord=0,-0.9,1000000,-0.9;style=CAS_COSMETIC_ELEMENT_RED"/>
+		<var name="COSMETIC_ELEMENT_1" default="topology=line;coord=0,-3.5,1000000,-3.5;style=CAS_COSMETIC_ELEMENT_GREEN"/>
+        <var name="Y_MAX" default="0"/>
+        <var name="Y_MIN" default="-3.7"/>
+        <var name="FILTER" default="1=1"/>
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+          WITH common_info
+          AS (SELECT i.event_id ID
+          ,lt.description
+                || ' '
+                || l.description 
+                || ' '
+                || substr(i.description,NULLIF(strpos(i.description,'полугодие'),0)-2)  "LABEL"
+          ,TO_CHAR(i.inspection_date,'YYYY ') INSPECTION_YEAR
+          FROM pods.pi_cp_inspection i
+               JOIN pods.event_range eri
+                 ON eri.event_id = i.event_id
+               JOIN pods.station_point spb
+                 ON eri.station_id_begin = spb.station_id
+               JOIN pods.station_point spe
+                 ON eri.station_id_end = spe.station_id
+               JOIN pods.line l
+                 ON l.line_id = spb.line_id
+               JOIN pods.line_type_cl lt
+                 ON lt.code = l.type_cl
+          ),
+          measures
+          AS (SELECT m.event_id ID
+          ,m.pi_cp_event_id inspection_id
+          ,s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000 km
+          ,m.DC_POTENTIAL_VOLTS val
+          FROM pods.pi_cis_reading m
+          JOIN pods.event_range er
+          ON er.event_id = m.event_id
+          JOIN pods.station_point sp
+          ON er.station_id_begin = sp.station_id
+          JOIN pods.series s
+          ON s.series_id = sp.series_id
+          JOIN pods.location l
+          ON l.location_id = sp.location_id
+          WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+          AND m.pi_cp_event_id={ID})
+          SELECT i.ID
+          ,( m.km - {START_KM})  X
+          , (CASE WHEN m.val &lt;  {Y_MIN}
+          THEN {Y_MIN}
+          WHEN m.val &gt;  {Y_MAX}
+          THEN {Y_MAX}
+          ELSE m.val
+          END) Y
+         ,"LABEL"
+          ,INSPECTION_YEAR "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          ORDER BY 1,2
+        </query>
+      </geoQuery>
+    </select>
+  </data>
+  <data id="CAS_PI_STATIC" comment="Интенсивные измерения. Защитный потенциал" schema="PODS" table="PI_CP_INSPECTION">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="LABEL" default="Интенсивные измерения.\n Защитный потенциал"/>
+        <var name="LABEL_UNIT" default="В"/>
+        <var name="HEIGHT" default="30"/>
+        <var name="TYPE" default="2D"/>
+        <var name="START_KM"/>
+        <var name="FINISH_KM"/>
+        <var name="LINE_ID"/>
+		<var name="COSMETIC_ELEMENT_0" default="topology=line;coord=0,-0.9,1000000,-0.9;style=CAS_COSMETIC_ELEMENT_RED"/>
+		<var name="COSMETIC_ELEMENT_1" default="topology=line;coord=0,-3.5,1000000,-3.5;style=CAS_COSMETIC_ELEMENT_GREEN"/>
+
+        <var name="Y_MAX" default="0"/>
+        <var name="Y_MIN" default="-3.7"/>
+        <var name="FILTER" default="1=1"/>
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+          WITH common_info
+          AS (SELECT i.event_id ID
+          ,lt.description
+                || ' '
+                || l.description 
+                || ' '
+                || substr(i.description,NULLIF(strpos(i.description,'полугодие'),0)-2)  "LABEL"
+          ,TO_CHAR(i.inspection_date,'YYYY ') INSPECTION_YEAR
+          FROM pods.pi_cp_inspection i
+               JOIN pods.event_range eri
+                 ON eri.event_id = i.event_id
+               JOIN pods.station_point spb
+                 ON eri.station_id_begin = spb.station_id
+               JOIN pods.station_point spe
+                 ON eri.station_id_end = spe.station_id
+               JOIN pods.line l
+                 ON l.line_id = spb.line_id
+               JOIN pods.line_type_cl lt
+                 ON lt.code = l.type_cl
+          ),
+          measures
+          AS (SELECT m.event_id ID
+          ,m.pi_cp_event_id inspection_id
+          ,s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000 km
+          ,m.STATIC val
+          FROM pods.pi_cis_reading m
+          JOIN pods.event_range er
+          ON er.event_id = m.event_id
+          JOIN pods.station_point sp
+          ON er.station_id_begin = sp.station_id
+          JOIN pods.series s
+          ON s.series_id = sp.series_id
+          JOIN pods.location l
+          ON l.location_id = sp.location_id
+          WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+          /*AND sp.station locked BETWEEN {START_KM} AND {FINISH_KM} */
+          AND m.pi_cp_event_id={ID})
+          SELECT i.ID
+          ,( m.km - {START_KM})  X
+          , (CASE WHEN m.val &lt;  {Y_MIN}
+          THEN {Y_MIN}
+          WHEN m.val &gt;  {Y_MAX}
+          THEN {Y_MAX}
+          ELSE m.val
+          END) Y
+         ,"LABEL"
+          ,INSPECTION_YEAR "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          ORDER BY 1,2
+        </query>
+      </geoQuery>
+    </select>
+  </data>
+  
+  <!-- КИП.Новые графики от 10.03.2021  -->
+  <data id="POTENTIAL_BOS" comment="Измерения КИП. Потенциал СОС" schema="PODS" table="PI_CP_INSPECTION">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="LABEL" default="Измерения КИП.\n Потенциал СОС"/>
+        <var name="LABEL_UNIT" default="В"/>
+        <var name="HEIGHT" default="30"/>
+        <var name="TYPE" default="2D"/>
+        <var name="START_KM"/>
+        <var name="FINISH_KM"/>
+        <var name="LINE_ID"/>
+		<var name="COSMETIC_ELEMENT_0" default="topology=line;coord=0,-0.9,1000000,-0.9;style=CAS_COSMETIC_ELEMENT_RED"/>
+		<var name="COSMETIC_ELEMENT_1" default="topology=line;coord=0,-3.5,1000000,-3.5;style=CAS_COSMETIC_ELEMENT_GREEN"/>
+       <var name="Y_MAX" default="-0.5"/>
+        <var name="Y_MIN" default="-3.7"/>
+        <var name="Y_STEPS" default="25" />
+        <var name="FILTER" default="1=1"/>
+		
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+          WITH common_info
+          AS (SELECT i.event_id ID
+          ,lt.description
+                || ' '
+                || l.description 
+                || ' '
+                || substr(i.description,NULLIF(strpos(i.description,'полугодие'),0)-2)  "LABEL"
+          ,TO_CHAR(i.inspection_date,'YYYY ') INSPECTION_YEAR
+          FROM pods.pi_cp_inspection i
+               JOIN pods.event_range eri
+                 ON eri.event_id = i.event_id
+               JOIN pods.station_point spb
+                 ON eri.station_id_begin = spb.station_id
+               JOIN pods.station_point spe
+                 ON eri.station_id_end = spe.station_id
+               JOIN pods.line l
+                 ON l.line_id = spb.line_id
+               JOIN pods.line_type_cl lt
+                 ON lt.code = l.type_cl
+          ),
+          measures
+          AS (SELECT m.event_id ID
+          ,m.pi_cp_event_id inspection_id
+          ,s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000 km
+          ,m.potential_bos val
+          FROM pods.pi_cp_reading m
+          JOIN pods.event_range er
+          ON er.event_id = m.event_id
+          JOIN pods.station_point sp
+          ON er.station_id_begin = sp.station_id
+          JOIN pods.series s
+          ON s.series_id = sp.series_id
+          JOIN pods.location l
+          ON l.location_id = sp.location_id
+          WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+          /*AND sp.station locked BETWEEN {START_KM} AND {FINISH_KM} */
+          AND m.pi_cp_event_id={ID})
+          SELECT i.ID
+          ,( m.km - {START_KM})  X
+          , (CASE WHEN m.val &lt;  {Y_MIN}
+          THEN {Y_MIN}
+          WHEN m.val &gt;  {Y_MAX}
+          THEN {Y_MAX}
+          ELSE m.val
+          END) Y
+         ,"LABEL"
+          ,INSPECTION_YEAR "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          ORDER BY 1,2
+        </query>
+      </geoQuery>
+    </select>
+  </data>
+  
+  <data id="TOK_BLUJ" comment="Измерения КИП. Наличие блуждающих токов" schema="PODS" table="PI_CP_INSPECTION">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="LABEL" default="Измерения КИП.\n Наличие блуждающих токов"/>
+        <var name="LABEL_UNIT" default="В"/>
+        <var name="HEIGHT" default="30"/>
+        <var name="TYPE" default="2D"/>
+        <var name="START_KM"/>
+        <var name="FINISH_KM"/>
+        <var name="LINE_ID"/>
+        <var name="Y_MAX" default="1"/>
+        <var name="Y_MIN" default="0"/>
+        <var name="Y_STEPS" default="25" />
+        <var name="FILTER" default="1=1"/>
+		
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+          WITH common_info
+          AS (SELECT i.event_id ID
+          ,lt.description
+                || ' '
+                || l.description 
+                || ' '
+                || substr(i.description,NULLIF(strpos(i.description,'полугодие'),0)-2)  "LABEL"
+          ,TO_CHAR(i.inspection_date,'YYYY ') INSPECTION_YEAR
+          FROM pods.pi_cp_inspection i
+               JOIN pods.event_range eri
+                 ON eri.event_id = i.event_id
+               JOIN pods.station_point spb
+                 ON eri.station_id_begin = spb.station_id
+               JOIN pods.station_point spe
+                 ON eri.station_id_end = spe.station_id
+               JOIN pods.line l
+                 ON l.line_id = spb.line_id
+               JOIN pods.line_type_cl lt
+                 ON lt.code = l.type_cl
+          ),
+          measures
+          AS (SELECT m.event_id ID
+          ,m.pi_cp_event_id inspection_id
+          ,s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000 km
+		  ,CASE
+           WHEN substring(upper(m.TOK_BLUJ),1,1) = 'Д' THEN 1
+           WHEN substring(upper(m.TOK_BLUJ),1,1) = 'Н' THEN 0
+           ELSE 0
+          END val
+          FROM pods.pi_cp_reading m
+          JOIN pods.event_range er
+          ON er.event_id = m.event_id
+          JOIN pods.station_point sp
+          ON er.station_id_begin = sp.station_id
+          JOIN pods.series s
+          ON s.series_id = sp.series_id
+          JOIN pods.location l
+          ON l.location_id = sp.location_id
+          WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+          /*AND sp.station locked BETWEEN {START_KM} AND {FINISH_KM} */
+          AND m.pi_cp_event_id={ID})
+          SELECT i.ID
+          ,( m.km - {START_KM})  X
+          , (CASE WHEN m.val &lt;  {Y_MIN}
+          THEN {Y_MIN}
+          WHEN m.val &gt;  {Y_MAX}
+          THEN {Y_MAX}
+          ELSE m.val
+          END) Y
+         ,"LABEL"
+          ,INSPECTION_YEAR "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          ORDER BY 1,2
+        </query>
+      </geoQuery>
+    </select>
+  </data>
+
+  <data id="R_PER" comment="Измерения КИП. Переходное сопротивление Rпер" schema="PODS" table="PI_CP_INSPECTION">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="LABEL" default="Измерения КИП.\n Переходное сопротивление Rпер"/>
+        <var name="LABEL_UNIT" default="Ом x м2"/>
+        <var name="HEIGHT" default="30"/>
+        <var name="TYPE" default="2D"/>
+        <var name="START_KM"/>
+        <var name="FINISH_KM"/>
+        <var name="LINE_ID"/>
+		<var name="COSMETIC_ELEMENT_0" default="topology=line;coord=0,-0.9,1000000,-0.9;style=CAS_COSMETIC_ELEMENT_RED"/>
+		<var name="COSMETIC_ELEMENT_1" default="topology=line;coord=0,-3.5,1000000,-3.5;style=CAS_COSMETIC_ELEMENT_GREEN"/>
+       <var name="Y_MAX" default="350000"/>
+        <var name="Y_MIN" default="10000"/>
+        <var name="Y_STEPS" default="25" />
+        <var name="FILTER" default="1=1"/>
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+          WITH common_info
+          AS (SELECT i.event_id ID
+          ,lt.description
+                || ' '
+                || l.description 
+                || ' '
+                || substr(i.description,NULLIF(strpos(i.description,'полугодие'),0)-2)  "LABEL"
+          ,TO_CHAR(i.inspection_date,'YYYY ') INSPECTION_YEAR
+          FROM pods.pi_cp_inspection i
+               JOIN pods.event_range eri
+                 ON eri.event_id = i.event_id
+               JOIN pods.station_point spb
+                 ON eri.station_id_begin = spb.station_id
+               JOIN pods.station_point spe
+                 ON eri.station_id_end = spe.station_id
+               JOIN pods.line l
+                 ON l.line_id = spb.line_id
+               JOIN pods.line_type_cl lt
+                 ON lt.code = l.type_cl
+          ),
+          measures
+          AS (SELECT m.event_id ID
+          ,m.pi_cp_event_id inspection_id
+          ,s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000 km
+          ,m.r_per val
+          FROM pods.pi_cp_reading m
+          JOIN pods.event_range er
+          ON er.event_id = m.event_id
+          JOIN pods.station_point sp
+          ON er.station_id_begin = sp.station_id
+          JOIN pods.series s
+          ON s.series_id = sp.series_id
+          JOIN pods.location l
+          ON l.location_id = sp.location_id
+          WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+          /*AND sp.station locked BETWEEN {START_KM} AND {FINISH_KM} */
+          AND m.pi_cp_event_id={ID})
+          SELECT i.ID
+          ,( m.km - {START_KM})  X
+          , (CASE WHEN m.val &lt;  {Y_MIN}
+          THEN {Y_MIN}
+          WHEN m.val &gt;  {Y_MAX}
+          THEN {Y_MAX}
+          ELSE m.val
+          END) Y
+         ,"LABEL"
+          ,INSPECTION_YEAR "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          ORDER BY 1,2
+        </query>
+      </geoQuery>
+    </select>
+  </data>
+  
+  <!-- КИП.Старые графики  -->
+  <data id="CAS_PI_CP_PS_ON" comment="Измерения КИП. Потенциал БОС" schema="PODS" table="PI_CP_INSPECTION">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="LABEL" default="Измерения КИП.\n Потенциал БОС"/>
+        <var name="LABEL_UNIT" default="В"/>
+        <var name="HEIGHT" default="30"/>
+        <var name="TYPE" default="2D"/>
+        <var name="START_KM"/>
+        <var name="FINISH_KM"/>
+        <var name="LINE_ID"/>
+		<var name="COSMETIC_ELEMENT_0" default="topology=line;coord=0,-0.9,1000000,-0.9;style=CAS_COSMETIC_ELEMENT_RED"/>
+		<var name="COSMETIC_ELEMENT_1" default="topology=line;coord=0,-3.5,1000000,-3.5;style=CAS_COSMETIC_ELEMENT_GREEN"/>
+       <var name="Y_MAX" default="-0.5"/>
+        <var name="Y_MIN" default="-3.7"/>
+        <var name="Y_STEPS" default="25" />
+        <var name="FILTER" default="1=1"/>
+		
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+          WITH common_info
+          AS (SELECT i.event_id ID
+          ,lt.description
+                || ' '
+                || l.description 
+                || ' '
+                || substr(i.description,NULLIF(strpos(i.description,'полугодие'),0)-2)  "LABEL"
+          ,TO_CHAR(i.inspection_date,'YYYY ') INSPECTION_YEAR
+          FROM pods.pi_cp_inspection i
+               JOIN pods.event_range eri
+                 ON eri.event_id = i.event_id
+               JOIN pods.station_point spb
+                 ON eri.station_id_begin = spb.station_id
+               JOIN pods.station_point spe
+                 ON eri.station_id_end = spe.station_id
+               JOIN pods.line l
+                 ON l.line_id = spb.line_id
+               JOIN pods.line_type_cl lt
+                 ON lt.code = l.type_cl
+          ),
+          measures
+          AS (SELECT m.event_id ID
+          ,m.pi_cp_event_id inspection_id
+          ,s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000 km
+          ,m.ps_on val
+          FROM pods.pi_cp_reading m
+          JOIN pods.event_range er
+          ON er.event_id = m.event_id
+          JOIN pods.station_point sp
+          ON er.station_id_begin = sp.station_id
+          JOIN pods.series s
+          ON s.series_id = sp.series_id
+          JOIN pods.location l
+          ON l.location_id = sp.location_id
+          WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+          /*AND sp.station locked BETWEEN {START_KM} AND {FINISH_KM} */
+          AND m.pi_cp_event_id={ID})
+          SELECT i.ID
+          ,( m.km - {START_KM})  X
+          , (CASE WHEN m.val &lt;  {Y_MIN}
+          THEN {Y_MIN}
+          WHEN m.val &gt;  {Y_MAX}
+          THEN {Y_MAX}
+          ELSE m.val
+          END) Y
+         ,"LABEL"
+          ,INSPECTION_YEAR "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          ORDER BY 1,2
+        </query>
+      </geoQuery>
+    </select>
+  </data>
+  <data id="CAS_PI_CP_PS_OFF" comment="Измерения КИП. Потенциал отключения" schema="PODS" table="PI_CP_INSPECTION">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="LABEL" default="Измерения КИП.\n Потенциал отключения"/>
+        <var name="LABEL_UNIT" default="В"/>
+        <var name="HEIGHT" default="30"/>
+        <var name="TYPE" default="2D"/>
+        <var name="START_KM"/>
+        <var name="FINISH_KM"/>
+        <var name="LINE_ID"/>
+		<var name="COSMETIC_ELEMENT_0" default="topology=line;coord=0,-0.9,1000000,-0.9;style=CAS_COSMETIC_ELEMENT_RED"/>
+		<var name="COSMETIC_ELEMENT_1" default="topology=line;coord=0,-3.5,1000000,-3.5;style=CAS_COSMETIC_ELEMENT_GREEN"/>
+        <var name="Y_MAX" default="-0.5"/>
+        <var name="Y_MIN" default="-3.7"/>
+        <var name="Y_STEPS" default="25" />
+        <var name="FILTER" default="1=1"/>
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+          WITH common_info
+          AS (SELECT i.event_id ID
+          ,lt.description
+                || ' '
+                || l.description 
+                || ' '
+                || substr(i.description,NULLIF(strpos(i.description,'полугодие'),0)-2)  "LABEL"
+          ,TO_CHAR(i.inspection_date,'YYYY ') INSPECTION_YEAR
+          FROM pods.pi_cp_inspection i
+               JOIN pods.event_range eri
+                 ON eri.event_id = i.event_id
+               JOIN pods.station_point spb
+                 ON eri.station_id_begin = spb.station_id
+               JOIN pods.station_point spe
+                 ON eri.station_id_end = spe.station_id
+               JOIN pods.line l
+                 ON l.line_id = spb.line_id
+               JOIN pods.line_type_cl lt
+                 ON lt.code = l.type_cl
+          ),
+          measures
+          AS (SELECT m.event_id ID
+          ,m.pi_cp_event_id inspection_id
+          ,s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000 km
+          ,m.ps_off val
+          FROM pods.pi_cp_reading m
+          JOIN pods.event_range er
+          ON er.event_id = m.event_id
+          JOIN pods.station_point sp
+          ON er.station_id_begin = sp.station_id
+          JOIN pods.series s
+          ON s.series_id = sp.series_id
+          JOIN pods.location l
+          ON l.location_id = sp.location_id
+          WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+          AND m.pi_cp_event_id={ID})
+          SELECT i.ID
+          ,( m.km - {START_KM})  X
+          , (CASE WHEN m.val &lt;  {Y_MIN}
+          THEN {Y_MIN}
+          WHEN m.val &gt;  {Y_MAX}
+          THEN {Y_MAX}
+          ELSE m.val
+          END) Y
+         ,"LABEL"
+          ,INSPECTION_YEAR "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          ORDER BY 1,2
+        </query>
+      </geoQuery>
+    </select>
+  </data>
+  <data id="CAS_PI_CP_POTENTIAL_READING" comment="Измерения КИП. Защитный потенциал" schema="PODS" table="PI_CP_READING">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="LABEL" default="Измерения КИП.\n Защитный потенциал"/>
+        <var name="LABEL_UNIT" default="В"/>
+        <var name="HEIGHT" default="20"/>
+        <var name="TYPE" default="2D"/>
+        <var name="START_KM"/>
+        <var name="FINISH_KM"/>
+        <var name="LINE_ID"/>
+		<var name="COSMETIC_ELEMENT_0" default="topology=line;coord=0,-0.9,1000000,-0.9;style=CAS_COSMETIC_ELEMENT_RED"/>
+		<var name="COSMETIC_ELEMENT_1" default="topology=line;coord=0,-3.5,1000000,-3.5;style=CAS_COSMETIC_ELEMENT_GREEN"/>
+        <var name="Y_MAX" default="0"/>
+        <var name="Y_MIN" default="-3"/>
+        <var name="FILTER" default="1=1"/>
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+          WITH common_info
+          AS (SELECT i.event_id ID
+          ,TO_CHAR(i.inspection_date,'YYYY ')|| l.description ||' ('||spb.station||'—'||spe.station||' км) ' "LABEL",TO_CHAR(i.inspection_date,'YYYY ') INSPECTION_YEAR
+          FROM pods.pi_cp_inspection i
+          JOIN pods.event_range eri
+          ON eri.event_id = i.event_id
+          JOIN pods.station_point spb
+          ON eri.station_id_begin = spb.station_id
+          JOIN pods.station_point spe
+          ON eri.station_id_end = spe.station_id
+          JOIN pods.line l
+          ON l.line_id = spb.line_id
+          ),
+          measures
+          AS (SELECT m.event_id ID
+          ,m.pi_cp_event_id inspection_id
+          ,s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000 km
+          ,m.POTENTIAL_READING val
+          FROM pods.pi_cp_reading m
+          JOIN pods.event_range er
+          ON er.event_id = m.event_id
+          JOIN pods.station_point sp
+          ON er.station_id_begin = sp.station_id
+          JOIN pods.series s
+          ON s.series_id = sp.series_id
+          JOIN pods.location l
+          ON l.location_id = sp.location_id
+          WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+          AND m.pi_cp_event_id={ID})
+          SELECT m.ID
+          ,( m.km - {START_KM})  X
+          ,(CASE WHEN m.val &lt;  {Y_MIN}
+          THEN {Y_MIN}
+          WHEN m.val &gt;  {Y_MAX}
+          THEN {Y_MAX}
+          ELSE m.val
+          END) Y
+          ,INSPECTION_YEAR "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          ORDER BY 1,2
+        </query>
+      </geoQuery>
+    </select>
+  </data>
+  <data id="CAS_PI_CP_CURRENT_READING" comment="Измерения КИП. Сила тока" schema="PODS" table="PI_CP_READING">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="LABEL" default="Измерения КИП.\n Сила тока"/>
+        <var name="LABEL_UNIT" default="А"/>
+        <var name="HEIGHT" default="30"/>
+        <var name="TYPE" default="2D"/>
+        <var name="START_KM"/>
+        <var name="FINISH_KM"/>
+        <var name="LINE_ID"/>
+        <var name="Y_MAX" default="8"/>
+        <var name="Y_MIN" default="0"/>
+        <var name="FILTER" default="1=1"/>
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+        <!--<var name="FILTERED_CLASS" default="PODS_PI_CP_READING_LIST"/>
+        <var name="START_FILTER" default="CAS_PODS_CAS_CP_GEO.xml#CAS_PI_CP_CURRENT_READING_FIRST"/>-->
+        <query>
+          WITH common_info
+          AS (SELECT i.event_id ID
+          ,TO_CHAR(i.inspection_date,'YYYY ')|| l.description ||' ('||spb.station||'—'||spe.station||' км) ' "LABEL",TO_CHAR(i.inspection_date,'YYYY ') INSPECTION_YEAR
+          FROM pods.pi_cp_inspection i
+          JOIN pods.event_range eri
+          ON eri.event_id = i.event_id
+          JOIN pods.station_point spb
+          ON eri.station_id_begin = spb.station_id
+          JOIN pods.station_point spe
+          ON eri.station_id_end = spe.station_id
+          JOIN pods.line l
+          ON l.line_id = spb.line_id
+          ),
+          measures
+          AS (SELECT m.event_id ID
+          ,m.pi_cp_event_id inspection_id
+          ,s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000 km
+          ,m.CURRENT_READING val
+          FROM pods.pi_cp_reading m
+          JOIN pods.event_range er
+          ON er.event_id = m.event_id
+          JOIN pods.station_point sp
+          ON er.station_id_begin = sp.station_id
+          JOIN pods.series s
+          ON s.series_id = sp.series_id
+          JOIN pods.location l
+          ON l.location_id = sp.location_id
+          WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+          AND m.pi_cp_event_id={ID})
+          SELECT m.ID
+          ,( m.km - {START_KM})  X
+          , (CASE WHEN m.val &lt;  {Y_MIN}
+          THEN {Y_MIN}
+          WHEN m.val &gt;  {Y_MAX}
+          THEN {Y_MAX}
+          ELSE m.val
+          END) Y
+          ,INSPECTION_YEAR "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          ORDER BY 1,2
+        </query>
+      </geoQuery>
+    </select>
+  </data>
+  <data id="CAS_PI_CP_RESISTANCE_READING" comment="Измерения КИП. Удельное сопротивление грунта" schema="PODS" table="PI_CP_READING">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="LABEL" default="Измерения КИП.\n Удельное сопротивление грунта"/>
+        <var name="LABEL_UNIT" default="Ом x м"/>
+        <var name="HEIGHT" default="30"/>
+        <var name="TYPE" default="2D"/>
+        <var name="START_KM"/>
+        <var name="FINISH_KM"/>
+        <var name="LINE_ID"/>
+        <var name="Y_MAX" default="0.1"/>
+        <var name="Y_MIN" default="0"/>
+        <var name="FILTER" default="1=1"/>
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>  
+        <query>
+          WITH common_info
+          AS (SELECT i.event_id ID
+          ,TO_CHAR(i.inspection_date,'YYYY ')|| l.description ||' ('||spb.station||'—'||spe.station||' км) ' "LABEL",TO_CHAR(i.inspection_date,'YYYY ') INSPECTION_YEAR
+          FROM pods.pi_cp_inspection i
+          JOIN pods.event_range eri
+          ON eri.event_id = i.event_id
+          JOIN pods.station_point spb
+          ON eri.station_id_begin = spb.station_id
+          JOIN pods.station_point spe
+          ON eri.station_id_end = spe.station_id
+          JOIN pods.line l
+          ON l.line_id = spb.line_id
+          ),
+          measures
+          AS (SELECT m.event_id ID
+          ,m.pi_cp_event_id inspection_id
+          ,s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000 km
+          ,m.RESISTANCE_READING val
+          FROM pods.pi_cp_reading m
+          JOIN pods.event_range er
+          ON er.event_id = m.event_id
+          JOIN pods.station_point sp
+          ON er.station_id_begin = sp.station_id
+          JOIN pods.series s
+          ON s.series_id = sp.series_id
+          JOIN pods.location l
+          ON l.location_id = sp.location_id
+          WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+	  AND m.pi_cp_event_id={ID})
+          SELECT m.ID
+          ,( m.km - {START_KM})  X
+          , (CASE WHEN m.val &lt;  {Y_MIN}
+          THEN {Y_MIN}
+          WHEN m.val &gt;  {Y_MAX}
+          THEN {Y_MAX}
+          ELSE m.val
+          END) Y
+          ,INSPECTION_YEAR "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          ORDER BY 1,2
+        </query>
+      </geoQuery>
+    </select>
+  </data>
+  <data id="PI_PS_ON_TO_CURRENT_READING" comment="Измерения КИП. Оценка состояния изоляции по критерию delta U/delta I" schema="PODS" table="PI_CP_READING">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="LABEL" default="Измерения КИП.\n Критерий отношения delta U к delta I"/>
+        <var name="LABEL_UNIT" default="В"/>
+        <var name="HEIGHT" default="50"/>
+        <var name="TYPE" default="2D"/>
+        <var name="START_KM"/>
+        <var name="FINISH_KM"/>
+        <var name="LINE_ID"/>
+        <var name="Y_MAX" default="2"/>
+        <var name="Y_MIN" default="0"/>
+        <var name="Y_STEPS" default="5" />
+        <var name="FILTER" default="1=1"/>
+        <query>
+WITH common_info
+          AS (SELECT i.event_id ID
+          ,lt.description
+                || ' '
+                || l.description 
+                || ' '
+                || substr(i.description,NULLIF(strpos(i.description,'полугодие'),0)-2)  "LABEL"
+          ,TO_CHAR(i.inspection_date,'YYYY ') INSPECTION_YEAR
+          FROM pods.pi_cp_inspection i
+               JOIN pods.event_range eri
+                 ON eri.event_id = i.event_id
+               JOIN pods.station_point spb
+                 ON eri.station_id_begin = spb.station_id
+               JOIN pods.station_point spe
+                 ON eri.station_id_end = spe.station_id
+               JOIN pods.line l
+                 ON l.line_id = spb.line_id
+               JOIN pods.line_type_cl lt
+                 ON lt.code = l.type_cl
+          )
+          ,
+          measures
+          AS (SELECT m.event_id ID
+          ,m.pi_cp_event_id inspection_id
+          ,s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000 km
+          ,round(m.POTENTIAL_READING/(case when coalesce(m.ps_on,0)=0 then 10000000 else m.ps_on end),2) val
+          ,m.resistance_reading
+          FROM pods.pi_cp_reading m
+          JOIN pods.event_range er
+          ON er.event_id = m.event_id and m.pi_cp_event_id={ID}
+          JOIN pods.station_point sp
+          ON er.station_id_begin = sp.station_id
+          JOIN pods.series s
+          ON s.series_id = sp.series_id
+          WHERE {FILTER})
+          select ID,0 P_ID, X, Y,"LABEL", "TYPE" from 
+          (SELECT 
+          m.inspection_id||'|'||round(m.km) ID
+          ,round( m.km - {START_KM})  X
+          , avg(m.val) Y
+          ,1 SEQUENCE_NO
+          ,avg(m.val) "LABEL"
+          ,(CASE WHEN avg(m.val) &gt;= 5000
+          THEN 'GREEN'
+          WHEN avg(m.resistance_reading) &lt;  5000 and avg(m.resistance_reading)&gt;=800
+          THEN 'YELLOW'
+          WHEN avg(m.resistance_reading) &gt;= 300  and avg(m.resistance_reading)&lt;800
+          THEN 'ORANGE'
+          WHEN avg(m.resistance_reading) &lt; 300
+          THEN 'RED' END) "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          group by round( m.km - {START_KM}),m.inspection_id||'|'||round(m.km)
+          
+          union all
+                    SELECT 
+          m.inspection_id||'|'||round(m.km) ID
+          ,round( m.km - {START_KM})+1  X
+          , avg(m.val) Y
+          ,2 SEQUENCE_NO
+          ,avg(m.val) "LABEL"
+          ,(CASE WHEN avg(m.resistance_reading) &gt;= 5000
+          THEN 'GREEN'
+          WHEN avg(m.resistance_reading) &lt;  5000 and avg(m.resistance_reading)&gt;=800
+          THEN 'YELLOW'
+          WHEN avg(m.resistance_reading) &gt;= 300  and avg(m.resistance_reading)&lt;800
+          THEN 'ORANGE'
+          WHEN avg(m.resistance_reading) &lt; 300
+          THEN 'RED' END) "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          group by round( m.km - {START_KM}),m.inspection_id||'|'||round(m.km)
+          
+          union all
+                    SELECT 
+          m.inspection_id||'|'||round(m.km) ID
+          ,round( m.km - {START_KM})+1  X
+          ,0 Y
+          ,3 SEQUENCE_NO
+          ,avg(m.val) "LABEL"
+          ,(CASE WHEN avg(m.resistance_reading) &gt;= 5000
+          THEN 'GREEN'
+          WHEN avg(m.resistance_reading) &lt;  5000 and avg(m.resistance_reading)&gt;=800
+          THEN 'YELLOW'
+          WHEN avg(m.resistance_reading) &gt;= 300  and avg(m.resistance_reading)&lt;800
+          THEN 'ORANGE'
+          WHEN avg(m.resistance_reading) &lt; 300
+          THEN 'RED' END) "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          group by round( m.km - {START_KM}),m.inspection_id||'|'||round(m.km)
+          
+          union all
+                    SELECT 
+          m.inspection_id||'|'||round(m.km) ID
+          ,round( m.km - {START_KM})  X
+          ,0 Y
+          ,4 SEQUENCE_NO
+          ,avg(m.val) "LABEL"
+          ,(CASE WHEN avg(m.resistance_reading) &gt;= 5000
+          THEN 'GREEN'
+          WHEN avg(m.resistance_reading) &lt;  5000 and avg(m.resistance_reading)&gt;=800
+          THEN 'YELLOW'
+          WHEN avg(m.resistance_reading) &gt;= 300  and avg(m.resistance_reading)&lt;800
+          THEN 'ORANGE'
+          WHEN avg(m.resistance_reading) &lt; 300
+          THEN 'RED' END) "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          group by round( m.km - {START_KM}),m.inspection_id||'|'||round(m.km)
+          
+          union all
+                    SELECT 
+          m.inspection_id||'|'||round(m.km) ID
+          ,round( m.km - {START_KM})  X
+          , avg(m.val) Y
+          ,5 SEQUENCE_NO
+          ,avg(m.val) "LABEL"
+          ,(CASE WHEN avg(m.resistance_reading) &gt;= 5000
+          THEN 'GREEN'
+          WHEN avg(m.resistance_reading) &lt;  5000 and avg(m.resistance_reading)&gt;=800
+          THEN 'YELLOW'
+          WHEN avg(m.resistance_reading) &gt;= 300  and avg(m.resistance_reading)&lt;800
+          THEN 'ORANGE'
+          WHEN avg(m.resistance_reading) &lt; 300
+          THEN 'RED' END) "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          group by round( m.km - {START_KM}),m.inspection_id||'|'||round(m.km)) t
+ 	  order by ID, SEQUENCE_NO
+        </query>
+      </geoQuery>
+    </select>
+  </data>      
+ <data id="CAS_PI_CP_UKO_VKO" comment="Новый график 2021 года. Зоны УКО, ВКО по данным от Трансгаза" schema="PODS" table="PI_CP_READING">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="LABEL" default="Измерения КИП.\n Зоны УКО, ВКО"/>
+        <var name="LABEL_UNIT" default="Ом x м"/>
+        <var name="HEIGHT" default="30"/>
+        <var name="TYPE" default="2D"/>
+        <var name="START_KM"/>
+        <var name="FINISH_KM"/>
+        <var name="LINE_ID"/>
+        <var name="Y_MAX" default="1"/>
+        <var name="Y_MIN" default="0"/>
+        <var name="FILTER" default="1=1"/>
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>  
+        <query>
+          WITH common_info
+          AS (SELECT i.event_id ID
+          ,TO_CHAR(i.inspection_date,'YYYY ')|| l.description ||' ('||spb.station||'—'||spe.station||' км) ' "LABEL",TO_CHAR(i.inspection_date,'YYYY ') INSPECTION_YEAR
+          FROM pods.pi_cp_inspection i
+          JOIN pods.event_range eri
+          ON eri.event_id = i.event_id
+          JOIN pods.station_point spb
+          ON eri.station_id_begin = spb.station_id
+          JOIN pods.station_point spe
+          ON eri.station_id_end = spe.station_id
+          JOIN pods.line l
+          ON l.line_id = spb.line_id
+          ),
+          measures
+          AS (SELECT m.event_id ID
+          ,m.pi_cp_event_id inspection_id
+          ,s.station_begin +(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/ 1000 km
+          ,case when upper(r.event_guid) like '%ВКО%' then 1 else 0 end  val
+          FROM pods.pi_cp_reading m
+          JOIN pods.event_range er
+          ON er.event_id = m.event_id
+          JOIN pods.station_point sp
+          ON er.station_id_begin = sp.station_id
+          JOIN pods.series s
+          ON s.series_id = sp.series_id
+          JOIN pods.location l
+          ON l.location_id = sp.location_id
+          WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+	  AND m.pi_cp_event_id={ID})
+          SELECT m.ID
+          ,( m.km - {START_KM})  X
+          , (CASE WHEN m.val &lt;  {Y_MIN}
+          THEN {Y_MIN}
+          WHEN m.val &gt;  {Y_MAX}
+          THEN {Y_MAX}
+          ELSE m.val
+          END) Y
+          ,INSPECTION_YEAR "TYPE"
+          FROM common_info i
+          JOIN measures m
+          ON i.id = m.inspection_id
+          WHERE m.val IS NOT NULL
+          ORDER BY 1,2
+        </query>
+      </geoQuery>
+    </select>
+  </data>
+</root>

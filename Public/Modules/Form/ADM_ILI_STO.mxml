@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="885" xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml" title="Расчет линейных показателей в соответствии с СТО 095, 292, 401">
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="885">
+    <mx:HBox width="100%" horizontalAlign="right">
+      <mx:Text text=".Внимание! Убедитесь, что для данного отчета выполнен расчет точечных показателей (кнопка №2)" width="300" textAlign="left"/>
+    </mx:HBox>
+    <mx:HBox width="100%" horizontalAlign="right">
+      <mx:Text text="Расчет для межкамерного участка" width="215" textAlign="right"/>
+      <mx:CheckBox id="calc_line_events" selected="true"/>
+      <mx:Text text="Запрос для определения границ участка" width="245" textAlign="right"/>
+      <mx:TextInput id="line_events_query" width="410" height="22" enabled="{calc_line_events.selected}" text="select event_id from PODS.ILI_INSPECTION_RANGE where ili_inspection_id = {INSPECTION_ID}"/>
+    </mx:HBox>
+    <mx:HBox width="100%" horizontalAlign="right">
+      <mx:Text text="Расчет для межкранового участка" width="215" textAlign="right"/>
+      <mx:CheckBox id="calc_construction_intervals" selected="true"/>
+      <mx:Text text="Запрос для определения границ участка" width="245" textAlign="right"/>
+      <mx:TextInput id="construction_element_query" width="410" height="22" enabled="{calc_construction_intervals.selected}" text="select event_id from pods.valve"/>
+    </mx:HBox>
+    <mx:HBox width="100%" horizontalAlign="left">
+      <mx:Text text="Расчет для участка заданной длины" width="215" textAlign="right"/>
+      <mx:CheckBox id="calc_regular_intervals" selected="true"/>
+      <mx:Text text="Длина участка" width="245" textAlign="right"/>
+      <controls:NumberInput id="regular_intervals_distance" width="50" height="22" enabled="{calc_regular_intervals.selected}" text="100"/>
+      <mx:Text text=" " width="385" textAlign="right"/>
+    </mx:HBox>
+
+    <mx:HBox width="100%" horizontalAlign="right" horizontalGap="3">
+      <mx:VBox width="260" horizontalAlign="right">
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Рабочее давление, МПа" width="215" textAlign="right"/>
+          <controls:NumberInput id="pressure" width="50" height="22" text="7.36"/>
+        </mx:HBox>
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Коэф-т  надежности по  внутреннему рабочему давлению" width="215" textAlign="right"/>
+          <controls:NumberInput id="safety_factor_of_internal_pressure" width="50" height="22" text="1.1"/>
+        </mx:HBox>
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Коэф-т надежности по материалу труб" width="215" textAlign="right"/>
+          <controls:NumberInput id="safety_factor_of_material" width="50" height="22" text="1"/>
+        </mx:HBox>
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Толщина стенки, мм" width="215" textAlign="right"/>
+          <controls:NumberInput id="thickness" width="50" height="22" text="16"/>
+        </mx:HBox>
+      </mx:VBox>
+      <mx:VBox width="260" horizontalAlign="right">
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Предел прочности, МПа" width="205" textAlign="right"/>
+          <controls:NumberInput id="breaking_point" width="50" height="22" text="588"/>
+        </mx:HBox>
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Коэф-т  условий работы газопровода" width="205" textAlign="right"/>
+          <controls:NumberInput id="safety_factor_of_working_conditions" width="50" height="22" text="0.9"/>
+        </mx:HBox>
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Коэф-т надежности по назначению" width="205" textAlign="right"/>
+          <controls:NumberInput id="safety_factor_of_destination" width="50" height="22" text="1.34"/>
+        </mx:HBox>
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Срок эксплуатации, лет" width="205" textAlign="right"/>
+          <controls:NumberInput id="lifetime" width="50" height="22" text="25"/>
+        </mx:HBox>
+      </mx:VBox>
+      <mx:VBox width="360" horizontalAlign="right">
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Значение средних затрат на ликвидацию последствий одного отказа на участке МГ, млн.руб" width="300" textAlign="right"/>
+          <controls:NumberInput id="average_cost_of_responding" width="50" height="22" text="150"/>
+        </mx:HBox>
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Значение затрат на замену одной трубы, млн.руб" width="300" textAlign="right"/>
+          <controls:NumberInput id="cost_of_replacing_a_pipe" width="50" height="22" text="0.6"/>
+        </mx:HBox>
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Значение затрат на проведение ВТД на одном километре участка МГ, млн.руб" width="300" textAlign="right"/>
+          <controls:NumberInput id="cost_of_the_ILI_per_km" width="50" height="22" text="0.1"/>
+        </mx:HBox>
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Значение затрат на одно шурфование, млн.руб" width="300" textAlign="right"/>
+          <controls:NumberInput id="cost_per_hole" width="50" height="22" text="0.2"/>
+        </mx:HBox>
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Затраты на капитальный ремонт одного километра газопровода, млн.руб" width="300" textAlign="right"/>
+          <controls:NumberInput id="cost_of_repair_per_km" width="50" height="22" text="23.8"/>
+        </mx:HBox>
+      </mx:VBox>
+    </mx:HBox>
+
+    <mx:HBox width="100%" horizontalAlign="right">
+      <mx:Text text="Расчет СТО Газпром 2-2.3-292-2009 Определение ТС ЛЧ МГ по результатам ВТД" width="420" textAlign="right"/>
+      <mx:CheckBox id="calc_sto_2_2_3_292_2007" selected="true"/>
+      <mx:Text text="Расчет СТО Газпром 2-2.3-095-2007 Методические указания по диагностическому обследованию ЛЧ МГ. Определение периодичности проведения диагностирования ЛЧ МГ" width="450" textAlign="right"/>
+      <mx:CheckBox id="calc_sto_2_2_3_095_2007" selected="true"/>
+    </mx:HBox>
+    <mx:HBox width="100%" horizontalAlign="right">
+      <mx:Text text="Расчет СТО Газпром 2-2.3-401-2003 Оптимизация диагностического обследования" width="420" textAlign="right"/>
+      <mx:CheckBox id="calc_sto_2_2_3_401_2003" selected="true"/>
+      <mx:Text text="Неизвестный вид отчета" width="450" textAlign="right"/>
+      <mx:CheckBox id="calc_sto_xxx" selected="true"/>
+    </mx:HBox>
+  </mx:VBox>
+  <validatorsArray>
+    <!--<controls:DefaultNumberValidator source="{pressure}" property="text" enabled="false" required="true" allowNegative="false" requiredFieldError="Поле 'Рабочее давление, МПа' обязательно для заполнения." precision="1000" precisionError="Значение в поле 'Рабочее давление, МПа' должно иметь не более 4 цифр после запятой" maxValue="99999" exceedsMaxError="Значение в поле 'Рабочее давление, МПа' может иметь 5 цифр до запятой" lowerThanMinError="Значение в поле 'Рабочее давление, МПа' не может быть меньше 0" negativeError="Значение в поле 'Рабочее давление, МПа' не может быть меньше 0"/>
+    <controls:DefaultNumberValidator source="{breaking_point}" property="text" enabled="false" required="true" allowNegative="false" requiredFieldError="Поле 'Предел прочности, МПа' обязательно для заполнения." precision="1000" precisionError="Значение в поле 'Предел прочности, МПа' должно иметь не более 4 цифр после запятой" maxValue="99999" exceedsMaxError="Значение в поле 'Предел прочности, МПа' может иметь 5 цифр до запятой" lowerThanMinError="Значение в поле 'Предел прочности, МПа' не может быть меньше 0" negativeError="Значение в поле 'Предел прочности, МПа' не может быть меньше 0"/>
+    <controls:DefaultNumberValidator source="{safety_factor_of_internal_pressure}" property="text" enabled="false" required="true" allowNegative="false" requiredFieldError="Поле 'Коэф-т  надежности по  внутреннему рабочему давлению' обязательно для заполнения." precision="1000" precisionError="Значение в поле 'Коэф-т  надежности по  внутреннему рабочему давлению' должно иметь не более 4 цифр после запятой" maxValue="99999" exceedsMaxError="Значение в поле 'Коэф-т  надежности по  внутреннему рабочему давлению' может иметь 5 цифр до запятой" lowerThanMinError="Значение в поле 'Коэф-т  надежности по  внутреннему рабочему давлению' не может быть меньше 0" negativeError="Значение в поле 'Коэф-т  надежности по  внутреннему рабочему давлению' не может быть меньше 0"/>
+    <controls:DefaultNumberValidator source="{safety_factor_of_working_conditions}" property="text" enabled="false" required="true" allowNegative="false" requiredFieldError="Поле 'Коэф-т  условий работы газопровода' обязательно для заполнения." precision="1000" precisionError="Значение в поле 'Коэф-т  условий работы газопровода' должно иметь не более 4 цифр после запятой" maxValue="99999" exceedsMaxError="Значение в поле 'Коэф-т  условий работы газопровода' может иметь 5 цифр до запятой" lowerThanMinError="Значение в поле 'Коэф-т  условий работы газопровода' не может быть меньше 0" negativeError="Значение в поле 'Коэф-т  условий работы газопровода' не может быть меньше 0"/>
+    <controls:DefaultNumberValidator source="{safety_factor_of_material}" property="text" enabled="false" required="true" allowNegative="false" requiredFieldError="Поле 'Коэф-т надежности по материалу труб' обязательно для заполнения." precision="1000" precisionError="Значение в поле 'Коэф-т надежности по материалу труб' должно иметь не более 4 цифр после запятой" maxValue="99999" exceedsMaxError="Значение в поле 'Коэф-т надежности по материалу труб' может иметь 5 цифр до запятой" lowerThanMinError="Значение в поле 'Коэф-т надежности по материалу труб' не может быть меньше 0" negativeError="Значение в поле 'Коэф-т надежности по материалу труб' не может быть меньше 0"/>
+    <controls:DefaultNumberValidator source="{safety_factor_of_destination}" property="text" enabled="false" required="true" allowNegative="false" requiredFieldError="Поле 'Коэф-т надежности по назначению' обязательно для заполнения." precision="1000" precisionError="Значение в поле 'Коэф-т надежности по назначению' должно иметь не более 4 цифр после запятой" maxValue="99999" exceedsMaxError="Значение в поле 'Коэф-т надежности по назначению' может иметь 5 цифр до запятой" lowerThanMinError="Значение в поле 'Коэф-т надежности по назначению' не может быть меньше 0" negativeError="Значение в поле 'Коэф-т надежности по назначению' не может быть меньше 0"/>
+    <controls:DefaultNumberValidator source="{thickness}" property="text" enabled="false" required="true" allowNegative="false" requiredFieldError="Поле 'Толщина стенки, мм' обязательно для заполнения." precision="1000" precisionError="Значение в поле 'Толщина стенки, мм' должно иметь не более 4 цифр после запятой" maxValue="99999" exceedsMaxError="Значение в поле 'Толщина стенки, мм' может иметь 5 цифр до запятой" lowerThanMinError="Значение в поле 'Толщина стенки, мм' не может быть меньше 0" negativeError="Значение в поле 'Толщина стенки, мм' не может быть меньше 0"/>
+    <controls:DefaultNumberValidator source="{lifetime}" property="text" enabled="false" required="true" allowNegative="false" requiredFieldError="Поле 'Срок эксплуатации, лет' обязательно для заполнения." precision="1000" precisionError="Значение в поле 'Срок эксплуатации, лет' должно иметь не более 4 цифр после запятой" maxValue="99999" exceedsMaxError="Значение в поле 'Срок эксплуатации, лет' может иметь 5 цифр до запятой" lowerThanMinError="Значение в поле 'Срок эксплуатации, лет' не может быть меньше 0" negativeError="Значение в поле 'Срок эксплуатации, лет' не может быть меньше 0"/>
+    <controls:DefaultNumberValidator source="{average_cost_of_responding}" property="text" enabled="false" required="true" allowNegative="false" requiredFieldError="Поле 'Значение средних затрат на ликвидацию последствий одного отказа на участке МГ, млн.руб' обязательно для заполнения." precision="1000" precisionError="Значение в поле 'Значение средних затрат на ликвидацию последствий одного отказа на участке МГ, млн.руб' должно иметь не более 4 цифр после запятой" maxValue="99999" exceedsMaxError="Значение в поле 'Значение средних затрат на ликвидацию последствий одного отказа на участке МГ, млн.руб' может иметь 5 цифр до запятой" lowerThanMinError="Значение в поле 'Значение средних затрат на ликвидацию последствий одного отказа на участке МГ, млн.руб' не может быть меньше 0" negativeError="Значение в поле 'Значение средних затрат на ликвидацию последствий одного отказа на участке МГ, млн.руб' не может быть меньше 0"/>
+    <controls:DefaultNumberValidator source="{cost_of_replacing_a_pipe}" property="text" enabled="false" required="true" allowNegative="false" requiredFieldError="Поле 'Значение затрат на замену одной трубы, млн.руб' обязательно для заполнения." precision="1000" precisionError="Значение в поле 'Значение затрат на замену одной трубы, млн.руб' должно иметь не более 4 цифр после запятой" maxValue="99999" exceedsMaxError="Значение в поле 'Значение затрат на замену одной трубы, млн.руб' может иметь 5 цифр до запятой" lowerThanMinError="Значение в поле 'Значение затрат на замену одной трубы, млн.руб' не может быть меньше 0" negativeError="Значение в поле 'Значение затрат на замену одной трубы, млн.руб' не может быть меньше 0"/>
+    <controls:DefaultNumberValidator source="{cost_of_the_ILI_per_km}" property="text" enabled="false" required="true" allowNegative="false" requiredFieldError="Поле 'Значение затрат на проведение ВТД на одном километре участка МГ, млн.руб' обязательно для заполнения." precision="1000" precisionError="Значение в поле 'Значение затрат на проведение ВТД на одном километре участка МГ, млн.руб' должно иметь не более 4 цифр после запятой" maxValue="99999" exceedsMaxError="Значение в поле 'Значение затрат на проведение ВТД на одном километре участка МГ, млн.руб' может иметь 5 цифр до запятой" lowerThanMinError="Значение в поле 'Значение затрат на проведение ВТД на одном километре участка МГ, млн.руб' не может быть меньше 0" negativeError="Значение в поле 'Значение затрат на проведение ВТД на одном километре участка МГ, млн.руб' не может быть меньше 0"/>
+    <controls:DefaultNumberValidator source="{cost_per_hole}" property="text" enabled="false" required="true" allowNegative="false" requiredFieldError="Поле 'Значение затрат на одно шурфование, млн.руб' обязательно для заполнения." precision="1000" precisionError="Значение в поле 'Значение затрат на одно шурфование, млн.руб' должно иметь не более 4 цифр после запятой" maxValue="99999" exceedsMaxError="Значение в поле 'Значение затрат на одно шурфование, млн.руб' может иметь 5 цифр до запятой" lowerThanMinError="Значение в поле 'Значение затрат на одно шурфование, млн.руб' не может быть меньше 0" negativeError="Значение в поле 'Значение затрат на одно шурфование, млн.руб' не может быть меньше 0"/>
+    <controls:DefaultNumberValidator source="{cost_of_repair_per_km}" property="text" enabled="false" required="true" allowNegative="false" requiredFieldError="Поле 'Затраты на капитальный ремонт одного километра газопровода, млн.руб' обязательно для заполнения." precision="1000" precisionError="Значение в поле 'Затраты на капитальный ремонт одного километра газопровода, млн.руб' должно иметь не более 4 цифр после запятой" maxValue="99999" exceedsMaxError="Значение в поле 'Затраты на капитальный ремонт одного километра газопровода, млн.руб' может иметь 5 цифр до запятой" lowerThanMinError="Значение в поле 'Затраты на капитальный ремонт одного километра газопровода, млн.руб' не может быть меньше 0" negativeError="Значение в поле 'Затраты на капитальный ремонт одного километра газопровода, млн.руб' не может быть меньше 0"/>-->
+  </validatorsArray>
+</DATA_EDIT_FORM>

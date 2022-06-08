@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.6.7">
+  <data id="TR_MAPSHEM_COUNTY" comment="FLOW_CHART.TR_MAPSHEM_COUNTY" schema="FLOW_CHART" table="TR_MAPSHEM_COUNTY">
+    <select><geoQuery idField="ID" geoField="WKB_GEOMETRY"><var name="FILTER" default="1=1" /><query>
+      select a.id, a.wkb_geometry, a.mi_style "type" from flow_chart.tr_mapshem_county a order by id
+    </query></geoQuery></select>
+      <insert>
+        <geoCommand>
+          <param name="ID" type="Int64" direction="Input" />
+          <param name="MI_STYLE" type="String" />
+          <object>
+            BEGIN
+            UPDATE FLOW_CHART.TR_MAPSHEM_COUNTY SET WKB_GEOMETRY=:WKB,MI_STYLE=:MI_STYLE WHERE ID = :ID;
+            END;
+          </object>
+        </geoCommand>
+    </insert>
+    <update>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <object>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_COUNTY SET WKB_GEOMETRY=:WKB WHERE ID = :ID;
+          END;
+        </object>
+      </geoCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <query>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_COUNTY SET WKB_GEOMETRY=NULL, MI_STYLE=NULL WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </delete>
+  </data>
+
+  <data id="TR_MAPSHEM_GIS" comment="FLOW_CHART.TR_MAPSHEM_GIS" schema="FLOW_CHART" table="TR_MAPSHEM_GIS">
+    <select><geoQuery idField="ID" geoField="WKB_GEOMETRY"><var name="FILTER" default="1=1" /><query>
+      SELECT a.ID, a.WKB_GEOMETRY, a.MI_STYLE "TYPE" FROM FLOW_CHART.TR_MAPSHEM_GIS a ORDER BY ID
+    </query></geoQuery></select>
+      <insert>
+        <geoCommand>
+          <param name="ID" type="Int64" direction="Input" />
+          <param name="MI_STYLE" type="String" />
+          <object>
+            BEGIN
+            UPDATE FLOW_CHART.TR_MAPSHEM_GIS SET WKB_GEOMETRY=:WKB,MI_STYLE=:MI_STYLE WHERE ID = :ID;
+            END;
+          </object>
+        </geoCommand>
+    </insert>
+    <update>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <object>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_GIS SET WKB_GEOMETRY=:WKB WHERE ID = :ID;
+          END;
+        </object>
+      </geoCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <query>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_GIS SET WKB_GEOMETRY=NULL, MI_STYLE=NULL WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </delete>
+  </data>
+
+  <data id="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS">
+    <select><geoQuery idField="ID" geoField="WKB_GEOMETRY"><var name="FILTER" default="1=1" /><query>
+      WITH t
+      AS (SELECT ID
+      ,substr(REPLACE(MI_STYLE,  ' ',''),length(REPLACE(MI_STYLE,  ' ','')) - strpos(reverse(REPLACE(MI_STYLE,  ' ','')),',')+2,length(REPLACE(MI_STYLE,  ' ',''))-(length(REPLACE(MI_STYLE,  ' ','')) - strpos(reverse(REPLACE(MI_STYLE,  ' ','')),',')+2))::integer orient
+      ,WKB_GEOMETRY
+      ,REPLACE(MI_STYLE,  ' ','') MI_STYLE
+      ,REPLACE(REPLACE(SUBSTR(REPLACE(MI_STYLE,  ' ',''),1,length(REPLACE(MI_STYLE,  ' ','')) - strpos(reverse(REPLACE(MI_STYLE,  ' ','')),',')+1),'Symbol(54','Symbol(53'),'Symbol(51','Symbol(53') translated
+      FROM FLOW_CHART.TR_MAPSHEM_GRS)
+      SELECT ID
+      ,WKB_GEOMETRY
+      ,CASE
+      WHEN orient &gt;-22 AND orient &lt; 22 THEN translated||'0'||')' 
+        WHEN orient &gt;21 AND orient &lt; 67 THEN translated||'45'||')' 
+        WHEN orient &gt;66 AND orient &lt; 112 THEN translated||'90'||')' 
+        WHEN orient &gt;111 AND orient &lt; 157 THEN translated||'135'||')' 
+        WHEN orient &gt;156 AND orient &lt; 202 THEN translated||'180'||')' 
+        WHEN orient &gt;201 AND orient &lt; 247 THEN translated||'225'||')' 
+        WHEN orient &gt;246 AND orient &lt; 292 THEN translated||'270'||')' 
+        WHEN orient &gt;292 AND orient &lt; 340 THEN translated||'315'||')' 
+        WHEN orient &gt;339 AND orient &lt; 0 THEN translated||'0'||')' 
+        WHEN orient &gt;201-360 AND orient &lt; 247-360 THEN translated||'225'||')' 
+        WHEN orient &gt;246-360 AND orient &lt; 292-360 THEN translated||'270'||')' 
+        WHEN orient &gt;292-360 AND orient &lt; 340-360 THEN translated||'315'||')'
+      ELSE MI_STYLE
+      end  "TYPE"
+      FROM t
+      ORDER BY ID
+
+    </query></geoQuery></select>
+    <insert>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="MI_STYLE" type="String" />
+        <object>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_GRS SET WKB_GEOMETRY=:WKB,MI_STYLE=:MI_STYLE WHERE ID = :ID;
+          END;
+        </object>
+      </geoCommand>
+    </insert>
+    <update>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <object>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_GRS SET WKB_GEOMETRY=:WKB WHERE ID = :ID;
+          END;
+        </object>
+      </geoCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <query>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_GRS SET WKB_GEOMETRY=NULL, MI_STYLE=NULL WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="TR_MAPSHEM_PTG" comment="FLOW_CHART.TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG">
+    <select><geoQuery idField="ID" geoField="WKB_GEOMETRY"><var name="FILTER" default="1=1" /><query>
+      SELECT a.ID, a.WKB_GEOMETRY, a.MI_STYLE "TYPE" FROM FLOW_CHART.TR_MAPSHEM_PTG a WHERE {FILTER} ORDER BY ID
+    </query></geoQuery></select>
+    <insert>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="MI_STYLE" type="String" />
+        <object>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_PTG SET WKB_GEOMETRY=:WKB,MI_STYLE=:MI_STYLE WHERE ID = :ID;
+          END;
+        </object>
+      </geoCommand>
+    </insert>
+    <update>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <object>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_PTG SET WKB_GEOMETRY=:WKB WHERE ID = :ID;
+          END;
+        </object>
+      </geoCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <query>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_PTG SET WKB_GEOMETRY=NULL, MI_STYLE=NULL WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="TR_MAPSHEM_ROAD" comment="FLOW_CHART.TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD">
+    <select><geoQuery idField="ID" geoField="WKB_GEOMETRY"><var name="FILTER" default="1=1" /><query>
+      SELECT a.ID, a.WKB_GEOMETRY,
+      CASE WHEN a.MI_STYLE LIKE '%Font%'
+      THEN SUBSTR (a.MI_STYLE,strpos (a.MI_STYLE, 'F'))
+      ELSE a.MI_STYLE
+      END "TYPE",
+      a.mif_text "LABEL"
+      FROM FLOW_CHART.TR_MAPSHEM_ROAD a
+      ORDER BY ID
+    </query></geoQuery></select>
+    <insert>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="MI_STYLE" type="String" />
+        <object>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_ROAD SET WKB_GEOMETRY=:WKB,MI_STYLE=:MI_STYLE WHERE ID = :ID;
+          END;
+        </object>
+      </geoCommand>
+    </insert>
+    <update>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <object>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_ROAD SET WKB_GEOMETRY=:WKB WHERE ID = :ID;
+          END;
+        </object>
+      </geoCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <query>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_ROAD SET WKB_GEOMETRY=NULL, MI_STYLE=NULL WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="TR_MAPSHEM_TEXT" comment="FLOW_CHART.TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT">
+    <select><geoQuery idField="ID" geoField="WKB_GEOMETRY"><var name="FILTER" default="1=1" /><query>
+      SELECT ID, WKB_GEOMETRY,
+      CASE WHEN MI_STYLE LIKE '%Font%'
+      THEN SUBSTR (SUBSTR (MI_STYLE,strpos(MI_STYLE, 'F')), 0, strpos(SUBSTR(MI_STYLE,strpos(MI_STYLE, 'F')), ')'))||')'
+      ELSE MI_STYLE
+      END "TYPE",
+      mif_text "LABEL"
+      FROM FLOW_CHART.TR_MAPSHEM_TEXT where  mi_style like '%Font ("Times New Roman CYR",0,0,0)%'
+    </query></geoQuery></select>
+    <insert>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="MI_STYLE" type="String" />
+        <object>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_TEXT SET WKB_GEOMETRY=:WKB,MI_STYLE=:MI_STYLE WHERE ID = :ID;
+          END;
+        </object>
+      </geoCommand>
+    </insert>
+    <update>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <object>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_TEXT SET WKB_GEOMETRY=:WKB WHERE ID = :ID;
+          END;
+        </object>
+      </geoCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <query>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_TEXT SET WKB_GEOMETRY=NULL, MI_STYLE=NULL WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="TR_MAPSHEM_WATERWAY" comment="FLOW_CHART.TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY">
+    <select><geoQuery idField="ID" geoField="WKB_GEOMETRY"><var name="FILTER" default="1=1" /><query>
+      WITH t
+      AS (SELECT ID
+      ,CASE
+      WHEN upper(MI_STYLE) LIKE 'SYMBOL%' THEN
+      SUBSTR(REPLACE(MI_STYLE,  ' ',''), length(REPLACE(MI_STYLE,  ' ','')) - strpos(reverse(REPLACE(MI_STYLE,  ' ','')),',')+2,length(REPLACE(MI_STYLE,  ' ',''))-(length(REPLACE(MI_STYLE,  ' ','')) - strpos(reverse(REPLACE(MI_STYLE,  ' ','')),',')+2))::integer 
+      ELSE NULL END ORIENT
+      ,REPLACE(REPLACE(SUBSTR(REPLACE(MI_STYLE,  ' ',''),1,length(REPLACE(MI_STYLE,  ' ','')) - strpos(reverse(REPLACE(MI_STYLE,  ' ','')),',')+1),'Symbol(54','Symbol(53'),'Symbol(51','Symbol(53') translated
+      ,WKB_GEOMETRY
+      ,mi_Style
+      ,mif_text
+      FROM FLOW_CHART.TR_MAPSHEM_WATERWAY    )
+      SELECT ID, WKB_GEOMETRY
+      ,CASE
+      WHEN upper(MI_STYLE) LIKE 'SYMBOL%' THEN
+      CASE
+      WHEN orient&gt;-22 AND orient&lt;22 THEN translated||'0'||')'
+      WHEN orient&gt;21 AND orient&lt;67 THEN  translated||'45'||')'
+      WHEN orient&gt;66 AND orient&lt;112 THEN translated||'90'||')'
+      WHEN orient&gt;111 AND orient&lt;157 THEN translated||'135'||')'
+      WHEN orient&gt;156 AND orient&lt;202 THEN translated||'180'||')'
+      WHEN orient&gt;201 AND orient&lt;247 THEN translated||'225'||')'
+      WHEN orient&gt;246 AND orient&lt;292 THEN translated||'270'||')'
+      WHEN orient&gt;292 AND orient&lt;340 THEN translated||'315'||')'
+      WHEN orient&gt;339 AND orient&lt;0 THEN translated||'0'||')'
+      WHEN orient&gt;135-360 AND orient&lt;201-360 THEN translated||'180'||')'
+      WHEN orient&gt;201-360 AND orient&lt;247-360 THEN translated||'225'||')'
+      WHEN orient&gt;246-360 AND orient&lt;292-360 THEN translated||'270'||')'
+      WHEN orient&gt;292-360 AND orient&lt;340-360 THEN translated||'315'||')'
+      ELSE REPLACE(MI_STYLE,  ' ','')
+      END
+      WHEN upper(MI_STYLE) LIKE '%FONT%'
+      THEN SUBSTR (MI_STYLE,strpos (MI_STYLE, 'F'))
+      ELSE REPLACE(MI_STYLE,  ' ','')
+      END "TYPE"
+      , mif_text "LABEL"
+      FROM t
+    ORDER BY ID</query></geoQuery></select>
+    <insert>
+        <geoCommand>
+          <param name="ID" type="Int64" direction="Input" />
+          <param name="MI_STYLE" type="String" />
+          <object>
+            BEGIN
+            UPDATE FLOW_CHART.TR_MAPSHEM_WATERWAY SET WKB_GEOMETRY=:WKB,MI_STYLE=:MI_STYLE WHERE ID = :ID;
+            END;
+          </object>
+        </geoCommand>
+    </insert>
+    <update>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <object>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_WATERWAY SET WKB_GEOMETRY=:WKB WHERE ID = :ID;
+          END;
+        </object>
+      </geoCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <query>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_WATERWAY SET WKB_GEOMETRY=NULL, MI_STYLE=NULL WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </delete>
+  </data>
+
+  <data id="WKB_TR_MAPSHEM_ROUTE_PART" comment="Линии между объектами" schema="FLOW_CHART" table="WKB_TR_MAPSHEM_ROUTE_PART">
+    <select>
+<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+   <var name="ROUTE_ID" default="null"/>
+<query>
+        WITH route_part_info as (
+select * from (
+select sb.station station_begin,se.station station_end,sb.route_id,c.*,
+rank() over (partition by sb.route_id,sb.station,se.station order by ii.begin_date,e.create_date desc) n
+ from pods.event_range e,pods.station_point sb,pods.station_point se,pods.sto_ili_inspection_calc c,
+ pods.ili_inspection ii
+where e.event_id=c.event_id
+and c.type_cl like 'Оценка состояния по межконструкционным участкам'
+and e.station_id_begin=sb.station_id
+and e.station_id_end=se.station_id
+and ii.ili_inspection_id=c.ili_inspection_id) d where  n=1),
+route_part_info_otv as (
+select * from (
+select sb.station station_begin,se.station station_end,sb.route_id,c.*,
+rank() over (partition by sb.route_id,sb.station,se.station order by ii.begin_date,e.create_date desc) n
+ from pods.event_range e,pods.station_point sb,pods.station_point se,pods.sto_ili_inspection_calc c,
+ pods.ili_inspection ii,pods.route r
+where e.event_id=c.event_id
+and c.type_cl like 'Оценка состояния по линейному event-объекту'
+and e.station_id_begin=sb.station_id
+and e.station_id_end=se.station_id
+and ii.ili_inspection_id=c.ili_inspection_id and r.route_id=sb.route_id and r.type_cl not like '%10' ) d where  n=1)
+select 
+  r.id,
+   CASE WHEN coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.03 THEN 'vas5_line'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.03 AND coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.06 THEN 'vas6_line'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.3 AND coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.06 THEN  'vas7_line'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.3 THEN 'vas8_line'
+     ELSE    'vas_unk' END "TYPE",
+  round(coalesce(i.STO_292_2007_VALUE_CONDITION,0),3) "label",
+  r.wkb_geometry
+ from flow_chart.wkb_tr_mapshem_route_part r
+ join 
+route_part_info i on i.route_id=r.route_id
+and abs(i.station_begin-r.station_begin)&lt;0.3 and abs(i.station_end-r.station_end)&lt;0.3 and r.station_begin&gt;-1
+union ALL
+select 
+  r.id,
+   CASE WHEN coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.03 THEN 'vas5_line'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.06 AND coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.03 THEN 'vas6_line'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.3 AND coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.06 THEN 'vas7_line'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.3 THEN 'vas8_line'
+     ELSE    'vas_unk' END "TYPE",
+  round(coalesce(i.STO_292_2007_VALUE_CONDITION,0),3) "label",
+  r.wkb_geometry
+ from flow_chart.wkb_tr_mapshem_route_part r
+  join 
+route_part_info_otv i on i.route_id=r.route_id and r.station_begin=-1
+    </query>
+</geoQuery>
+</select>
+  </data>
+
+   <data id="KAP_REMONT_PLAN" comment="FLOW_CHART.KAP_REMONT_PLAN" schema="FLOW_CHART" table="KAP_REMONT_PLAN">
+    <select>
+      <geoQuery idField="ID" geoField="WKB_GEOMETRY">
+        <var name="FILTER" default="1=1" />
+        <query>
+select ROW_NUMBER() OVER (order BY  id) id,
+              id semantic_id,
+               "TYPE",
+               "label",
+              wkb_geometry, station_begin from 
+            (select 
+              p.id,
+              p.type_id "TYPE",
+              coalesce(to_char(p.date_begin,'DD.MM.YY'),'НД')||'-'||coalesce(to_char(p.date_end,'DD.MM.YY'),'НД') "label",
+              rp.wkb_geometry, p.station_begin,p.date_begin
+              from  flow_chart.kap_remont_plan p,pods.route r,pods.line l,flow_chart.wkb_tr_mapshem_route_part rp where p.station_begin is not null and l.description=p.line_description
+            and r.line_id=l.line_id and rp.route_id=r.route_id and rp.station_begin&gt;=p.station_begin-0.1 and rp.station_end&lt;=p.station_end+0.1
+            union all 
+            select 
+            p.id,
+              p.type_id "TYPE",
+              coalesce(to_char(p.date_begin,'DD.MM.YY'),'НД')||'-'||coalesce(to_char(p.date_end,'DD.MM.YY'),'НД') "label",
+              rp.wkb_geometry, p.station_begin,p.date_begin
+            from  flow_chart.kap_remont_plan p,pods.route r,pods.line l,flow_chart.wkb_tr_mapshem_route_part rp where p.station_begin is not null and l.description=p.line_description
+            and r.line_id=l.line_id and rp.route_id=r.route_id and rp.station_begin&lt;=p.station_begin and rp.station_end&gt;=p.station_end and
+			p.id not in 
+			(select p.id from  flow_chart.kap_remont_plan p,pods.route r,pods.line l,flow_chart.wkb_tr_mapshem_route_part rp where p.station_begin is not null and l.description=p.line_description
+            and r.line_id=l.line_id and rp.route_id=r.route_id and rp.station_begin&gt;=p.station_begin-0.1 and rp.station_end&lt;=p.station_end+0.1)
+            union all
+            select 
+            p.id,
+              p.type_id "TYPE",
+              coalesce(to_char(p.date_begin,'DD.MM.YY'),'НД')||'-'||coalesce(to_char(p.date_end,'DD.MM.YY'),'НД') "label",
+              rp.wkb_geometry, p.station_begin,p.date_begin
+            from  flow_chart.kap_remont_plan p,pods.route r,pods.line l,flow_chart.wkb_tr_mapshem_route_part rp where l.description=p.line_description
+            and r.line_id=l.line_id and rp.route_id=r.route_id and r.type_cl like '%04'
+            union ALL
+            select 
+            p.id,
+              p.type_id "TYPE",
+              coalesce(to_char(p.date_begin,'DD.MM.YY'),'НД')||'-'||coalesce(to_char(p.date_end,'DD.MM.YY'),'НД') "label",
+              dp.wkb_geometry, p.station_begin,p.date_begin
+              from flow_chart.kap_remont_plan p,flow_chart.wkb_tr_mapshem_ks_department dp where p.object_name=dp.object_name) dd
+             where {FILTER} order by dd.date_begin
+        </query>
+      </geoQuery>
+    </select>
+    <insert>
+        <geoCommand>
+          <param name="ID" type="Int64" direction="Input" />
+          <param name="MI_STYLE" type="String" />
+          <object>
+            BEGIN
+            UPDATE FLOW_CHART.KAP_REMONT_PLAN SET WKB_GEOMETRY=:WKB,MI_STYLE=:MI_STYLE WHERE ID = :ID;
+            END;
+          </object>
+        </geoCommand>
+    </insert>
+    <update>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <object>
+          BEGIN
+          UPDATE FLOW_CHART.KAP_REMONT_PLAN SET WKB_GEOMETRY=:WKB WHERE ID = :ID;
+          END;
+        </object>
+      </geoCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <query>
+          BEGIN
+          UPDATE FLOW_CHART.KAP_REMONT_PLAN SET WKB_GEOMETRY=NULL, MI_STYLE=NULL WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </delete>
+  </data>
+
+<data id="TR_MAPSHEM_TEXT_NO_WATER_ROAD" comment="FLOW_CHART.TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT">
+    <select><geoQuery idField="ID" geoField="WKB_GEOMETRY"><var name="FILTER" default="1=1" /><query>
+      SELECT ID, WKB_GEOMETRY,
+      CASE WHEN MI_STYLE LIKE '%Font%'
+      THEN SUBSTR (SUBSTR (MI_STYLE,strpos(MI_STYLE, 'F')), 0, strpos(SUBSTR(MI_STYLE,strpos(MI_STYLE, 'F')), ')'))||')'
+      ELSE MI_STYLE
+      END "TYPE",
+      mif_text "LABEL"
+      FROM FLOW_CHART.TR_MAPSHEM_TEXT where  mi_style like '%Font ("Times New Roman CYR",0,0,0)%'
+    </query>
+   </geoQuery>
+  </select>
+    </data>
+
+<data id="TR_MAPSHEM_TEXT_WATER_ROAD" comment="FLOW_CHART.TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT">
+    <select><geoQuery idField="ID" geoField="WKB_GEOMETRY"><var name="FILTER" default="1=1" /><query>
+      SELECT ID, WKB_GEOMETRY,
+      CASE WHEN MI_STYLE LIKE '%Font%'
+      THEN SUBSTR (SUBSTR (MI_STYLE,strpos(MI_STYLE, 'F')), 0, strpos(SUBSTR(MI_STYLE,strpos(MI_STYLE, 'F')), ')'))||')'
+      ELSE MI_STYLE
+      END "TYPE",
+      mif_text "LABEL"
+      FROM FLOW_CHART.TR_MAPSHEM_TEXT where  mi_style not like '%Font ("Times New Roman CYR",0,0,0)%'
+      ORDER BY ID
+    </query>
+   </geoQuery>
+  </select>
+    </data>
+</root>

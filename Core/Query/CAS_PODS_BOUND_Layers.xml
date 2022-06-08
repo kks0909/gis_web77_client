@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.5.0" descr="Разграничения территорий">
+  <dataProvider type="style" source="PODS_BOUND_STYLE.xml" />
+  <dataProvider type="style" source="PODS_EQUIP_STYLE.xml" />
+  <layer id="PODS_COUNTY_BOUNDARY" visible="false" type="common" topology="line" schema="CAS" table="COUNTY_BOUNDARY_CAS" spacing="common" projection="EPSG:5807" order="10" labelField="LABEL" fitMap="false" descr="Административные территории вблизи трубопроводов" dataType="vector" cover="false" comment="PODS_COUNTY_BOUNDARY" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_COUNTY_BOUNDARY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_COUNTY_BOUNDARY" />
+    <dataProvider type="spatial" source="CAS_PODS_BOUND_GEO.xml#CAS_PODS_COUNTY_BOUNDARY" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_COUNTY_BOUNDARY" />
+  </layer>
+  <layer id="PODS_TOWNSHIP_BOUNDARY" visible="false" type="common" topology="line" schema="CAS" table="TOWNSHIP_BOUNDARY_CAS" spacing="common" projection="EPSG:5807" order="20" labelField="LABEL" fitMap="false" descr="Изменения наименований участков трубопроводов" dataType="vector" cover="false" comment="PODS_TOWNSHIP_BOUNDARY" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_TOWNSHIP_BOUNDARY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_TOWNSHIP_BOUNDARY" />
+    <dataProvider type="spatial" source="CAS_PODS_BOUND_GEO.xml#CAS_PODS_TOWNSHIP_BOUNDARY" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_TOWNSHIP_BOUNDARY" />
+  </layer>
+  <layer id="PODS_LEGACY_LINE_BOUNDARY" visible="false" type="common" topology="line" schema="CAS" table="LEGACY_LINE_BOUNDARY_CAS" spacing="common" projection="EPSG:5807" order="30" labelField="LABEL" fitMap="false" descr="Номенклатурные листы карт вблизи трубопроводов" dataType="vector" cover="false" comment="PODS_LEGACY_LINE_BOUNDARY" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_LEGACY_LINE_BOUNDARY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_LEGACY_LINE_BOUNDARY" />
+    <dataProvider type="spatial" source="CAS_PODS_BOUND_GEO.xml#CAS_PODS_LEGACY_LINE_BOUNDARY" />
+    <dataProvider type="style" source="PODS_BOUND_STYLE.xml#PODS_LEGACY_LINE_BOUNDARY" />
+  </layer>
+  <layer id="PODS_LAND_USE" visible="false" type="common" topology="line" schema="CAS" table="LAND_USE_CAS" spacing="common" projection="EPSG:5807" order="40" labelField="LABEL" fitMap="false" descr="Типы землепользования вблизи трубопроводов" dataType="vector" cover="false" comment="PODS_LAND_USE" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_LAND_USE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_LAND_USE" />
+    <dataProvider type="spatial" source="CAS_PODS_BOUND_GEO.xml#CAS_PODS_LAND_USE" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_LAND_USE" />
+  </layer>
+  <layer id="PODS_ACTIVITY_ZONE" visible="false" type="common" topology="line" schema="CAS" table="ACTIVITY_ZONE_CAS" spacing="common" projection="EPSG:5807" order="50" labelField="LABEL" fitMap="false" descr="Зоны активной деятельности вблизи трубопроводов" dataType="vector" cover="false" comment="PODS_ACTIVITY_ZONE" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ACTIVITY_ZONE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ACTIVITY_ZONE" />
+    <dataProvider type="spatial" source="CAS_PODS_BOUND_GEO.xml#CAS_PODS_ACTIVITY_ZONE" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_ACTIVITY_ZONE" />
+  </layer>
+  <layer id="PODS_SRV_DISTRICT_BOUNDARY" visible="false" type="common" topology="line" schema="CAS" table="SRV_DISTRICT_BOUNDARY_CAS" spacing="none" projection="EPSG:5807" order="60" labelField="LABEL" fitMap="false" descr="Зоны ответственности линейных управлений" dataType="vector" cover="false" comment="PODS_SRV_DISTRICT_BOUNDARY" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_SRV_DISTRICT_BOUNDARY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_SRV_DISTRICT_BOUNDARY" />
+    <dataProvider type="spatial" source="CAS_PODS_BOUND_GEO.xml#CAS_PODS_SRV_DISTRICT_BOUNDARY" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_SRV_DISTRICT_BOUNDARY" />
+  </layer>
+  <layer id="PODS_OWNER_OPERATOR_RANGE" visible="false" type="common" topology="line" schema="CAS" table="OWNER_OPERATOR_RANGE_CAS" spacing="common" projection="EPSG:5807" order="70" labelField="LABEL" fitMap="false" descr="Компании-операторы трубопроводов" dataType="vector" cover="false" comment="PODS_OWNER_OPERATOR_RANGE" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_OWNER_OPERATOR_RANGE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_OWNER_OPERATOR_RANGE" />
+    <dataProvider type="spatial" source="CAS_PODS_BOUND_GEO.xml#CAS_PODS_OWNER_OPERATOR_RANGE" />
+    <dataProvider type="style" source="PODS_BOUND_STYLE.xml#PODS_OWNER_OPERATOR_RANGE" />
+  </layer>
+  <layer id="PODS_TAX_DISTRICT_BOUNDARY" visible="false" type="common" topology="line" schema="CAS" table="TAX_DISTRICT_BOUNDARY_CAS" spacing="common" projection="EPSG:5807" order="80" labelField="LABEL" fitMap="false" descr="Налоговые ставки по трубопроводам" dataType="vector" cover="false" comment="PODS_TAX_DISTRICT_BOUNDARY" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_TAX_DISTRICT_BOUNDARY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_TAX_DISTRICT_BOUNDARY" />
+    <dataProvider type="spatial" source="CAS_PODS_BOUND_GEO.xml#CAS_PODS_TAX_DISTRICT_BOUNDARY" />
+    <dataProvider type="style" source="PODS_BOUND_STYLE.xml#PODS_TAX_DISTRICT_BOUNDARY" />
+  </layer>
+  <layer id="PODS_STATUS_RANGE" visible="false" type="common" topology="line" schema="CAS" table="STATUS_RANGE_CAS" spacing="common" projection="EPSG:5807" order="90" labelField="LABEL" fitMap="false" descr="Операционный статус трубопровода" dataType="vector" cover="false" comment="PODS_STATUS_RANGE" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STATUS_RANGE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STATUS_RANGE" />
+    <dataProvider type="spatial" source="CAS_PODS_BOUND_GEO.xml#CAS_PODS_STATUS_RANGE" />
+    <dataProvider type="style" source="PODS_BOUND_STYLE.xml#PODS_STATUS_RANGE" />
+  </layer>
+  <layer id="PODS_DEPTH_OF_COVER" visible="false" type="common" topology="line" schema="CAS" table="DEPTH_OF_COVER_CAS" spacing="none" projection="EPSG:5807" order="100" labelField="LABEL" fitMap="false" descr="Глубины заложения участков трубопроводов" dataType="vector" cover="false" comment="PODS_DEPTH_OF_COVER" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_DEPTH_OF_COVER" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_DEPTH_OF_COVER" />
+    <dataProvider type="spatial" source="CAS_PODS_BOUND_GEO.xml#CAS_PODS_DEPTH_OF_COVER" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_DEPTH_OF_COVER" />
+  </layer>
+  <layer id="PODS_FLOW_DIRECTION_RANGE" visible="false" type="common" topology="line" schema="CAS" table="FLOW_DIRECTION_RANGE_CAS" spacing="common" projection="EPSG:5807" order="110" labelField="LABEL" fitMap="false" descr="Направление потока по участкам трубопроводов" dataType="vector" cover="false" comment="PODS_FLOW_DIRECTION_RANGE" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_FLOW_DIRECTION_RANGE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_FLOW_DIRECTION_RANGE" />
+    <dataProvider type="spatial" source="CAS_PODS_BOUND_GEO.xml#CAS_PODS_FLOW_DIRECTION_RANGE" />
+    <dataProvider type="style" source="PODS_BOUND_STYLE.xml#PODS_FLOW_DIRECTION_RANGE" />
+  </layer>
+  <layer id="PODS_PRODUCT_RANGE" visible="false" type="common" topology="line" schema="CAS" table="PRODUCT_RANGE_CAS" spacing="common" projection="EPSG:5807" order="120" labelField="LABEL" fitMap="false" descr="Участки транспортировки однотипных продуктов" dataType="vector" cover="false" comment="PODS_PRODUCT_RANGE" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PRODUCT_RANGE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PRODUCT_RANGE" />
+    <dataProvider type="spatial" source="CAS_PODS_BOUND_GEO.xml#CAS_PODS_PRODUCT_RANGE" />
+    <dataProvider type="style" source="PODS_BOUND_STYLE.xml#PODS_PRODUCT_RANGE" />
+  </layer>
+  <layer id="PODS_HCA_BOUNDARY" visible="false" type="common" topology="line" schema="CAS" table="HCA_BOUNDARY_CAS" spacing="common" projection="EPSG:5807" order="130" labelField="LABEL" fitMap="false" descr="Участки трубопроводов в зонах опасных последствий" dataType="vector" cover="false" comment="PODS_HCA_BOUNDARY" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_HCA_BOUNDARY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_HCA_BOUNDARY" />
+    <dataProvider type="spatial" source="CAS_PODS_BOUND_GEO.xml#CAS_PODS_HCA_BOUNDARY" />
+    <dataProvider type="style" source="PODS_BOUND_STYLE.xml#PODS_HCA_BOUNDARY" />
+  </layer>
+  <layer id="PODS_PIPE_SYSTEM_BOUNDARY" visible="false" type="common" topology="line" schema="CAS" table="PIPE_SYSTEM_BOUNDARY_CAS" spacing="none" projection="EPSG:5807" order="140" labelField="LABEL" fitMap="false" descr="Участки трубопроводов по газотранспортным коридорам" dataType="vector" cover="false" comment="PODS_PIPE_SYSTEM_BOUNDARY" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PIPE_SYSTEM_BOUNDARY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PIPE_SYSTEM_BOUNDARY" />
+    <dataProvider type="spatial" source="CAS_PODS_BOUND_GEO.xml#CAS_PODS_PIPE_SYSTEM_BOUNDARY" />
+    <dataProvider type="style" source="PODS_BOUND_STYLE.xml#PODS_PIPE_SYSTEM_BOUNDARY" />
+  </layer>
+  <layer id="PODS_ODORANT_RANGE" visible="false" type="common" topology="line" schema="CAS" table="ODORANT_RANGE_CAS" spacing="common" projection="EPSG:5807" order="150" labelField="LABEL" fitMap="false" descr="Участки трубопроводов по типам одоризации" dataType="vector" cover="false" comment="PODS_ODORANT_RANGE" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ODORANT_RANGE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ODORANT_RANGE" />
+    <dataProvider type="spatial" source="CAS_PODS_BOUND_GEO.xml#CAS_PODS_ODORANT_RANGE" />
+    <dataProvider type="style" source="PODS_BOUND_STYLE.xml#PODS_ODORANT_RANGE" />
+  </layer>
+  <layer id="PODS_CATHODIC_PROTECTION_RANGE" visible="false" type="common" topology="line" schema="CAS" table="CATHODIC_PROTECTION_RANGE_CAS" spacing="common" projection="EPSG:5807" order="160" labelField="LABEL" fitMap="false" descr="Участки трубопроводов, оснащённые системой ЭХЗ" dataType="vector" cover="false" comment="PODS_CATHODIC_PROTECTION_RANGE" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_CATHODIC_PROTECTION_RANGE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_CATHODIC_PROTECTION_RANGE" />
+    <dataProvider type="spatial" source="CAS_PODS_BOUND_GEO.xml#CAS_PODS_CATHODIC_PROTECTION_RANGE" />
+    <dataProvider type="style" source="PODS_BOUND_STYLE.xml#PODS_CATHODIC_PROTECTION_RANGE" />
+  </layer>
+  <layer id="PODS_ILI_RANGE" visible="false" type="common" topology="line" schema="CAS" table="ILI_RANGE_CAS" spacing="common" projection="EPSG:5807" order="170" labelField="LABEL" fitMap="false" descr="Участки трубопроводов, подготовленные для ВТД" dataType="vector" cover="false" comment="PODS_ILI_RANGE" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ILI_RANGE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ILI_RANGE" />
+    <dataProvider type="spatial" source="CAS_PODS_BOUND_GEO.xml#CAS_PODS_ILI_RANGE" />
+    <dataProvider type="style" source="PODS_BOUND_STYLE.xml#PODS_ILI_RANGE" />
+  </layer>
+</root>

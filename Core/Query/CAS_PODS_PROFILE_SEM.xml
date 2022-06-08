@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root version="postgres 7.7.3.0">
+  <data table="PROFILE" schema="PODS" id="CAS_PROFILE" comment="CAS.PROFILE">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+                SELECT * FROM (SELECT LINE_ID ID, t.* FROM PODS.LINE t) d WHERE {FILTER}
+              </query>
+      </dbQuery>
+    </select>
+  </data>
+</root>

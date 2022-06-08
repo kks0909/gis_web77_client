@@ -1,0 +1,3374 @@
+﻿<root version="7.7.6.0">
+	<!-- GDAL_FILE_NAME - сам файл. Если приходит параметр с таким именем, то будем работать с файлом , а не с бд -->
+	<!-- GDAL_FILE_TYPE - название драйвера/флага, который скажет, как манипулировать с файлом -->
+	<!-- GDAL_LAYER_NAME - название слоя. Для открытия mif имя слоя совпадает с названием файла -->
+	<data table="GTS_PIPELINE_L" schema="GDAL" id="GTS_PIPELINE_L" comment="Трубопроводы ГТС">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,idinfotech,name,pipelinename,km_begin,topocode,cost"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="LABEL_COLUMN" default="pipelinename"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared_pipes.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="gts_pipeline_l" />
+				<query> </query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="IDINFOTECH" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="PIPELINENAME" default="" type="String"/>
+				<param name="KM_BEGIN" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="COLUMN_LIST" default="PIPELINENAME=pipelinename,NAME=name,KM_BEGIN=km_begin,COST=cost,IDINFOTECH=idinfotech,TOPOCODE=topocode"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared_pipes.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="gts_pipeline_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="IDINFOTECH" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="PIPELINENAME" default="" type="String"/>
+				<param name="KM_BEGIN" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="COLUMN_LIST" default="PIPELINENAME=pipelinename,NAME=name,KM_BEGIN=km_begin,COST=cost,IDINFOTECH=idinfotech,TOPOCODE=topocode"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared_pipes.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="gts_pipeline_l"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared_pipes.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="gts_pipeline_l"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>		
+	</data>
+	<data table="AMBIT_BUILDINGS_A" schema="GDAL" id="AMBIT_BUILDINGS_A" comment="ОО_Строения">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,manufacture,name,material,yearcommiss,topocode,cost,height,area_,floors,buildingpurpose,materialgroup,population"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_buildings_a" />
+				<query> </query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="MANUFACTURE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="MATERIAL" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="HEIGHT" default="" type="String"/>
+				<param name="AREA_" default="" type="String"/>
+				<param name="FLOORS" default="" type="String"/>
+				<param name="BUILDINGPURPOSE" default="" type="String"/>
+				<param name="MATERIALGROUP" default="" type="String"/>
+				<param name="POPULATION" default="" type="String"/>
+				<param name="COLUMN_LIST" default="COST=cost,YEARCOMMISS=yearcommiss,HEIGHT=height,AREA_=area_,FLOORS=floors,POPULATION=population,NAME=name,LABEL=label,TOPOCODE=topocode,MANUFACTURE=manufacture,MATERIAL=material,BUILDINGPURPOSE=buildingpurpose,MATERIALGROUP=materialgroup"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_buildings_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="MANUFACTURE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="MATERIAL" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="HEIGHT" default="" type="String"/>
+				<param name="AREA_" default="" type="String"/>
+				<param name="FLOORS" default="" type="String"/>
+				<param name="BUILDINGPURPOSE" default="" type="String"/>
+				<param name="MATERIALGROUP" default="" type="String"/>
+				<param name="POPULATION" default="" type="String"/>
+				<param name="COLUMN_LIST" default="COST=cost,YEARCOMMISS=yearcommiss,HEIGHT=height,AREA_=area_,FLOORS=floors,POPULATION=population,NAME=name,LABEL=label,TOPOCODE=topocode,MANUFACTURE=manufacture,MATERIAL=material,BUILDINGPURPOSE=buildingpurpose,MATERIALGROUP=materialgroup"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="ambit_buildings_a"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_buildings_a"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>		
+	</data>
+	<data table="GTS_OBJECTS_P" schema="GDAL" id="GTS_OBJECTS_P" comment="Объекты ГТС, точечные">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,name,kmonpipe,idinfotech,pipelinename,cost,pipeidinfotech,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="gts_objects_p" />
+				<query> </query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="KMONPIPE" default="" type="String"/>
+				<param name="IDINFOTECH" default="" type="String"/>
+				<param name="PIPELINENAME" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="PIPEIDINFOTECH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="KMONPIPE=kmonpipe,IDINFOTECH=idinfotech,COST=cost,PIPEIDINFOTECH=pipeidinfotech,NAME=name,PIPELINENAME=pipelinename,TOPOCODE=topocode"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="gts_objects_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="KMONPIPE" default="" type="String"/>
+				<param name="IDINFOTECH" default="" type="String"/>
+				<param name="PIPELINENAME" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="PIPEIDINFOTECH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="KMONPIPE=kmonpipe,IDINFOTECH=idinfotech,COST=cost,PIPEIDINFOTECH=pipeidinfotech,NAME=name,PIPELINENAME=pipelinename,TOPOCODE=topocode"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="gts_objects_p"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="gts_objects_p"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>	
+	<data table="AMBIT_INDUSTRY_PIPELINE_P" schema="GDAL" id="AMBIT_INDUSTRY_PIPELINE_P" comment="ОО_Переходы и пересечения трубопровода">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,diameter,topocode,angle,name,yearcommiss,pressuredesign,cost,number_,pipelining,producttrans"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_p" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="DIAMETER" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="PRESSUREDESIGN" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="NUMBER_" default="" type="String"/>
+				<param name="PIPELINING" default="" type="String"/>
+				<param name="PRODUCTTRANS" default="" type="String"/>
+				<param name="COLUMN_LIST" default="DIAMETER=diameter,ANGLE=angle,YEARCOMMISS=yearcommiss,PRESSUREDESIGN=pressuredesign,COST=cost,NUMBER_=number_,NAME=name,LABEL=label,TOPOCODE=topocode,PRODUCTTRANS=producttrans,PIPELINING=pipelining"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="DIAMETER" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="PRESSUREDESIGN" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="NUMBER_" default="" type="String"/>
+				<param name="PIPELINING" default="" type="String"/>
+				<param name="PRODUCTTRANS" default="" type="String"/>
+				<param name="COLUMN_LIST" default="DIAMETER=diameter,ANGLE=angle,YEARCOMMISS=yearcommiss,PRESSUREDESIGN=pressuredesign,COST=cost,NUMBER_=number_,NAME=name,LABEL=label,TOPOCODE=topocode,PRODUCTTRANS=producttrans,PIPELINING=pipelining"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_p"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_p"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>		
+	</data>	
+	<data table="AMBIT_INDUSTRY_COMM_P" schema="GDAL" id="AMBIT_INDUSTRY_COMM_P" comment="ОО_Опоры">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,angle,name,lines,cost,voltage,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_p" />
+				<query> </query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="LINES" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="VOLTAGE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="ANGLE=angle,LINES=lines,COST=cost,NAME=name,LABEL=label,TOPOCODE=topocode,VOLTAGE=voltage"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="LINES" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="VOLTAGE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="ANGLE=angle,LINES=lines,COST=cost,NAME=name,LABEL=label,TOPOCODE=topocode,VOLTAGE=voltage"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_p"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_p"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>	
+	<data table="AMBIT_INDUSTRY_PIPE_UNITS_P" schema="GDAL" id="AMBIT_INDUSTRY_PIPE_UNITS_P" comment="ОО_Трубопроводная арматура">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,pressurenominal,name,valvetype,instplace,technum,yearcommiss,cost,pipediameter,drivetype,angle,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_p" />
+				<query> </query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="PRESSURENOMINAL" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="VALVETYPE" default="" type="String"/>
+				<param name="INSTPLACE" default="" type="String"/>
+				<param name="TECHNUM" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="PIPEDIAMETER" default="" type="String"/>
+				<param name="DRIVETYPE" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="PRESSURENOMINAL=pressurenominal,YEARCOMMISS=yearcommiss,COST=cost,ANGLE=angle,NAME=name,TECHNUM=technum,LABEL=label,TOPOCODE=topocode,VALVETYPE=valvetype,INSTPLACE=instplace,PIPEDIAMETER=pipediameter,DRIVETYPE=drivetype"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="PRESSURENOMINAL" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="VALVETYPE" default="" type="String"/>
+				<param name="INSTPLACE" default="" type="String"/>
+				<param name="TECHNUM" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="PIPEDIAMETER" default="" type="String"/>
+				<param name="DRIVETYPE" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="PRESSURENOMINAL=pressurenominal,YEARCOMMISS=yearcommiss,COST=cost,ANGLE=angle,NAME=name,TECHNUM=technum,LABEL=label,TOPOCODE=topocode,VALVETYPE=valvetype,INSTPLACE=instplace,PIPEDIAMETER=pipediameter,DRIVETYPE=drivetype"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_p"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_p"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>				
+	</data>	
+	<data table="AMBIT_INDUSTRY_PROTECT_P" schema="GDAL" id="AMBIT_INDUSTRY_PROTECT_P" comment="ОО_СПКЗ">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,name,cost,topocode,yearcommiss"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_protect_p" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="COLUMN_LIST" default="YEARCOMMISS=yearcommiss,COST=cost,NAME=name,LABEL=label,TOPOCODE=topocode"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_protect_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="COLUMN_LIST" default="YEARCOMMISS=yearcommiss,COST=cost,NAME=name,LABEL=label,TOPOCODE=topocode"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_protect_p"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_protect_p"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>	
+	<data table="AMBIT_INDUSTRY_FILTERS_P" schema="GDAL" id="AMBIT_INDUSTRY_FILTERS_P" comment="ОО_Технологические объекты, не выражающиеся в масштабе">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,diameter,topocode,angle,name,yearcommiss,length,cost,devicetype,height"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_filters_p" />
+				<query> </query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="DIAMETER" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="LENGTH" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="DEVICETYPE" default="" type="String"/>
+				<param name="HEIGHT" default="" type="String"/>
+				<param name="COLUMN_LIST" default="ANGLE=angle,YEARCOMMISS=yearcommiss,LENGTH=length,COST=cost,HEIGHT=height,NAME=name,LABEL=label,TOPOCODE=topocode,DIAMETER=diameter,DEVICETYPE=devicetype"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_filters_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="DIAMETER" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="LENGTH" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="DEVICETYPE" default="" type="String"/>
+				<param name="HEIGHT" default="" type="String"/>
+				<param name="COLUMN_LIST" default="ANGLE=angle,YEARCOMMISS=yearcommiss,LENGTH=length,COST=cost,HEIGHT=height,NAME=name,LABEL=label,TOPOCODE=topocode,DIAMETER=diameter,DEVICETYPE=devicetype"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_filters_p"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_filters_p"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>	
+	<data table="AMBIT_INDUSTRY_CAPACITIES_P" schema="GDAL" id="AMBIT_INDUSTRY_CAPACITIES_P" comment="ОО_Резервуары и ёмкости">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,diameter,topocode,angle,name,capacitieform,length,yearcommiss,productstorage,cost,height"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_capacities_p" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="DIAMETER" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="CAPACITIEFORM" default="" type="String"/>
+				<param name="LENGTH" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="PRODUCTSTORAGE" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="HEIGHT" default="" type="String"/>
+				<param name="COLUMN_LIST" default="ANGLE=angle,LENGTH=length,YEARCOMMISS=yearcommiss,COST=cost,HEIGHT=height,NAME=name,LABEL=label,TOPOCODE=topocode,DIAMETER=diameter,CAPACITIEFORM=capacitieform,PRODUCTSTORAGE=productstorage"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_capacities_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="DIAMETER" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="CAPACITIEFORM" default="" type="String"/>
+				<param name="LENGTH" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="PRODUCTSTORAGE" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="HEIGHT" default="" type="String"/>
+				<param name="COLUMN_LIST" default="ANGLE=angle,LENGTH=length,YEARCOMMISS=yearcommiss,COST=cost,HEIGHT=height,NAME=name,LABEL=label,TOPOCODE=topocode,DIAMETER=diameter,CAPACITIEFORM=capacitieform,PRODUCTSTORAGE=productstorage"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_capacities_p"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_capacities_p"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>		
+	</data>	
+	<data table="AMBIT_INDUSTRY_ICS_P" schema="GDAL" id="AMBIT_INDUSTRY_ICS_P" comment="ОО_Мачты">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,topocode,angle,name,stpower,yearcommiss,height,cost"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_ics_p" />
+				<query> </query>
+			</dbQuery>
+		</select>		
+		<insert>
+			<dbCommand>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="STPOWER" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="HEIGHT" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="COLUMN_LIST" default="ANGLE=angle,STPOWER=stpower,YEARCOMMISS=yearcommiss,HEIGHT=height,COST=cost,NAME=name,LABEL=label,TOPOCODE=topocode"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_ics_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="STPOWER" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="HEIGHT" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="COLUMN_LIST" default="ANGLE=angle,STPOWER=stpower,YEARCOMMISS=yearcommiss,HEIGHT=height,COST=cost,NAME=name,LABEL=label,TOPOCODE=topocode"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_ics_p"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_ics_p"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>	
+	</data>		
+	<data table="GEO_BOUNDARIES_P" schema="GDAL" id="GEO_BOUNDARIES_P" comment="ОТ_Пограничные знаки">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,relheight,topocode,name,boundtype"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_p" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="BOUNDTYPE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="RELHEIGHT=relheight,NAME=name,TOPOCODE=topocode,BOUNDTYPE=boundtype"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="BOUNDTYPE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="RELHEIGHT=relheight,NAME=name,TOPOCODE=topocode,BOUNDTYPE=boundtype"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_p"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_p"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>	
+	<data table="GEO_HYDRAULICSTRUCT_P" schema="GDAL" id="GEO_HYDRAULICSTRUCT_P" comment="ОТ_Гидротехнические сооружения">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,lowwatermark,name,highwatermark,relheight,objstate,objmaterial,absheight,depth,angle,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_p" />
+				<query> </query>
+			</dbQuery>
+		</select>		
+		<insert>
+			<dbCommand>
+				<param name="LOWWATERMARK" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="HIGHWATERMARK" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LOWWATERMARK=lowwatermark,HIGHWATERMARK=highwatermark,RELHEIGHT=relheight,ABSHEIGHT=absheight,DEPTH=depth,ANGLE=angle,NAME=name,TOPOCODE=topocode,OBJSTATE=objstate,OBJMATERIAL=objmaterial"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="LOWWATERMARK" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="HIGHWATERMARK" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LOWWATERMARK=lowwatermark,HIGHWATERMARK=highwatermark,RELHEIGHT=relheight,ABSHEIGHT=absheight,DEPTH=depth,ANGLE=angle,NAME=name,TOPOCODE=topocode,OBJSTATE=objstate,OBJMATERIAL=objmaterial"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_p"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_p"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>	
+	</data>	
+	<data table="GEO_HYDROGRAPHY_P" schema="GDAL" id="GEO_HYDROGRAPHY_P" comment="ОТ_Водоёмы, не выражающиеся в масштабе">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,angle,name,navigable,moveperiod,absheight,depth,topocode,speed"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_p" />
+				<query> </query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="NAVIGABLE" default="" type="String"/>
+				<param name="MOVEPERIOD" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="SPEED" default="" type="String"/>
+				<param name="COLUMN_LIST" default="ANGLE=angle,ABSHEIGHT=absheight,DEPTH=depth,SPEED=speed,NAME=name,MOVEPERIOD=moveperiod,TOPOCODE=topocode,NAVIGABLE=navigable"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="NAVIGABLE" default="" type="String"/>
+				<param name="MOVEPERIOD" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="SPEED" default="" type="String"/>
+				<param name="COLUMN_LIST" default="ANGLE=angle,ABSHEIGHT=absheight,DEPTH=depth,SPEED=speed,NAME=name,MOVEPERIOD=moveperiod,TOPOCODE=topocode,NAVIGABLE=navigable"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_p"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_p"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>		
+	<data table="GEO_INDUCTRIALOBJ_P" schema="GDAL" id="GEO_INDUCTRIALOBJ_P" comment="ОТ_Промышленные и вспомогательные объекты, не выражающиеся в масштабе">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,angle,name,relheight,objstate,objmaterial,length,width,depth,funcpurpose,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_p" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="LENGTH" default="" type="String"/>
+				<param name="WIDTH" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="FUNCPURPOSE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="ANGLE=angle,RELHEIGHT=relheight,LENGTH=length,WIDTH=width,DEPTH=depth,NAME=name,FUNCPURPOSE=funcpurpose,TOPOCODE=topocode,OBJSTATE=objstate,OBJMATERIAL=objmaterial"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="LENGTH" default="" type="String"/>
+				<param name="WIDTH" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="FUNCPURPOSE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="ANGLE=angle,RELHEIGHT=relheight,LENGTH=length,WIDTH=width,DEPTH=depth,NAME=name,FUNCPURPOSE=funcpurpose,TOPOCODE=topocode,OBJSTATE=objstate,OBJMATERIAL=objmaterial"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_p"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_p"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>				
+	</data>	
+	<data table="GEO_ROADSTRUCTURES_P" schema="GDAL" id="GEO_ROADSTRUCTURES_P" comment="ОТ_Транспортные объекты, не выражающиеся в масштабе">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,clearance,angle,name,relheight,objstate,objmaterial,absheight,length,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_p" />
+				<query> </query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="CLEARANCE" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="LENGTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="CLEARANCE=clearance,ANGLE=angle,RELHEIGHT=relheight,ABSHEIGHT=absheight,LENGTH=length,NAME=name,TOPOCODE=topocode,OBJSTATE=objstate,OBJMATERIAL=objmaterial"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="CLEARANCE" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="LENGTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="CLEARANCE=clearance,ANGLE=angle,RELHEIGHT=relheight,ABSHEIGHT=absheight,LENGTH=length,NAME=name,TOPOCODE=topocode,OBJSTATE=objstate,OBJMATERIAL=objmaterial"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_p"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_p"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>		
+	<data table="GEO_ROADS_P" schema="GDAL" id="GEO_ROADS_P" comment="ОТ_Перевалы и съезды с автодорог">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,topocode,lanes,name,objstate,moveperiod,roadnum,angle,coatingmaterial"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>		
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roads_p" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="LANES" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="MOVEPERIOD" default="" type="String"/>
+				<param name="ROADNUM" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="COATINGMATERIAL" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LANES=lanes,ANGLE=angle,NAME=name,MOVEPERIOD=moveperiod,ROADNUM=roadnum,TOPOCODE=topocode,OBJSTATE=objstate,COATINGMATERIAL=coatingmaterial"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roads_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="LANES" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="MOVEPERIOD" default="" type="String"/>
+				<param name="ROADNUM" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="COATINGMATERIAL" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LANES=lanes,ANGLE=angle,NAME=name,MOVEPERIOD=moveperiod,ROADNUM=roadnum,TOPOCODE=topocode,OBJSTATE=objstate,COATINGMATERIAL=coatingmaterial"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_roads_p"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roads_p"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>				
+	</data>	
+	<data table="GEO_RELIEF_P" schema="GDAL" id="GEO_RELIEF_P" comment="ОТ_Элементарные формы рельефа">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,origin,angle,name,maxwidth,relheight,depth,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_p" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="ORIGIN" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="MAXWIDTH" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="ANGLE=angle,MAXWIDTH=maxwidth,RELHEIGHT=relheight,ABSHEIGHT=absheight,DEPTH=depth,NAME=name,TOPOCODE=topocode,ORIGIN=origin"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="ORIGIN" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="MAXWIDTH" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="ANGLE=angle,MAXWIDTH=maxwidth,RELHEIGHT=relheight,ABSHEIGHT=absheight,DEPTH=depth,NAME=name,TOPOCODE=topocode,ORIGIN=origin"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_relief_p"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_p"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>				
+	</data>	
+	<data table="GEO_HYDROGRAPHYREL_P" schema="GDAL" id="GEO_HYDROGRAPHYREL_P" comment="ОТ_Водные преграды и направления течения">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,groundtype,lowwatermark,name,highwatermark,relheight,absheight,width,depth,shorelinetype,angle,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_p" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="GROUNDTYPE" default="" type="String"/>
+				<param name="LOWWATERMARK" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="HIGHWATERMARK" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="WIDTH" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="SHORELINETYPE" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LOWWATERMARK=lowwatermark,HIGHWATERMARK=highwatermark,RELHEIGHT=relheight,ABSHEIGHT=absheight,WIDTH=width,DEPTH=depth,ANGLE=angle,NAME=name,TOPOCODE=topocode,GROUNDTYPE=groundtype,SHORELINETYPE=shorelinetype"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="GROUNDTYPE" default="" type="String"/>
+				<param name="LOWWATERMARK" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="HIGHWATERMARK" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="WIDTH" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="SHORELINETYPE" default="" type="String"/>
+				<param name="ANGLE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LOWWATERMARK=lowwatermark,HIGHWATERMARK=highwatermark,RELHEIGHT=relheight,ABSHEIGHT=absheight,WIDTH=width,DEPTH=depth,ANGLE=angle,NAME=name,TOPOCODE=topocode,GROUNDTYPE=groundtype,SHORELINETYPE=shorelinetype"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_p"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_p"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>				
+	</data>	
+	<data table="GEO_SETTLEMENTS_P" schema="GDAL" id="GEO_SETTLEMENTS_P" comment="ОТ_Стоянки юрт и чумов">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,belongterritory,administratunit,objstate,objmaterial,settlementunit,settlementtype,topocode,population,name"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>		
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_p" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="BELONGTERRITORY" default="" type="String"/>
+				<param name="ADMINISTRATUNIT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="SETTLEMENTUNIT" default="" type="String"/>
+				<param name="SETTLEMENTTYPE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="POPULATION" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="COLUMN_LIST" default="POPULATION=population,NAME=name,TOPOCODE=topocode,BELONGTERRITORY=belongterritory,ADMINISTRATUNIT=administratunit,OBJSTATE=objstate,OBJMATERIAL=objmaterial,SETTLEMENTUNIT=settlementunit,SETTLEMENTTYPE=settlementtype"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="BELONGTERRITORY" default="" type="String"/>
+				<param name="ADMINISTRATUNIT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="SETTLEMENTUNIT" default="" type="String"/>
+				<param name="SETTLEMENTTYPE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="POPULATION" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="COLUMN_LIST" default="POPULATION=population,NAME=name,TOPOCODE=topocode,BELONGTERRITORY=belongterritory,ADMINISTRATUNIT=administratunit,OBJSTATE=objstate,OBJMATERIAL=objmaterial,SETTLEMENTUNIT=settlementunit,SETTLEMENTTYPE=settlementtype"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_p"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_p"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>	
+	<data table="GEO_VEGETATION_P" schema="GDAL" id="GEO_VEGETATION_P" comment="ОТ_Одиночная растительность">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,name,relheight,vegetationtype,treethickness,passability,topocode,treedistance"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_p" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="VEGETATIONTYPE" default="" type="String"/>
+				<param name="TREETHICKNESS" default="" type="String"/>
+				<param name="PASSABILITY" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="TREEDISTANCE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="RELHEIGHT=relheight,TREETHICKNESS=treethickness,TREEDISTANCE=treedistance,NAME=name,TOPOCODE=topocode,VEGETATIONTYPE=vegetationtype,PASSABILITY=passability"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="VEGETATIONTYPE" default="" type="String"/>
+				<param name="TREETHICKNESS" default="" type="String"/>
+				<param name="PASSABILITY" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="TREEDISTANCE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="RELHEIGHT=relheight,TREETHICKNESS=treethickness,TREEDISTANCE=treedistance,NAME=name,TOPOCODE=topocode,VEGETATIONTYPE=vegetationtype,PASSABILITY=passability"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_p"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_p"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>	
+	<data table="AMBIT_INDUSTRY_PIPELINE_L" schema="GDAL" id="AMBIT_INDUSTRY_PIPELINE_L" comment="ОО_Трубопроводы внешние">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,diameter,topocode,name,yearcommiss,pressuredesign,cost,number_,pipelining,producttrans"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_l" />
+				<query> </query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="DIAMETER" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="PRESSUREDESIGN" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="NUMBER_" default="" type="String"/>
+				<param name="PIPELINING" default="" type="String"/>
+				<param name="PRODUCTTRANS" default="" type="String"/>
+				<param name="COLUMN_LIST" default="DIAMETER=diameter,YEARCOMMISS=yearcommiss,PRESSUREDESIGN=pressuredesign,COST=cost,NUMBER_=number_,NAME=name,LABEL=label,TOPOCODE=topocode,PIPELINING=pipelining,PRODUCTTRANS=producttrans"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="DIAMETER" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="PRESSUREDESIGN" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="NUMBER_" default="" type="String"/>
+				<param name="PIPELINING" default="" type="String"/>
+				<param name="PRODUCTTRANS" default="" type="String"/>
+				<param name="COLUMN_LIST" default="DIAMETER=diameter,YEARCOMMISS=yearcommiss,PRESSUREDESIGN=pressuredesign,COST=cost,NUMBER_=number_,NAME=name,LABEL=label,TOPOCODE=topocode,PIPELINING=pipelining,PRODUCTTRANS=producttrans"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_l"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_l"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>	
+	<data table="GEO_ROADSTRUCTURES_L" schema="GDAL" id="GEO_ROADSTRUCTURES_L" comment="ОТ_Транспортные сооружения">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,clearance,name,relheight,objstate,objmaterial,absheight,length,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_l" />
+				<query> </query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="CLEARANCE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="LENGTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="CLEARANCE=clearance,RELHEIGHT=relheight,ABSHEIGHT=absheight,LENGTH=length,NAME=name,TOPOCODE=topocode,OBJSTATE=objstate,OBJMATERIAL=objmaterial"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="CLEARANCE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="LENGTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="CLEARANCE=clearance,RELHEIGHT=relheight,ABSHEIGHT=absheight,LENGTH=length,NAME=name,TOPOCODE=topocode,OBJSTATE=objstate,OBJMATERIAL=objmaterial"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_l"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_l"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>				
+	</data>	
+	<data table="AMBIT_INDUSTRY_COMM_L" schema="GDAL" id="AMBIT_INDUSTRY_COMM_L" comment="ОО_Линии электропередач и связи">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,name,lines,cost,voltage,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_l" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="LINES" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="VOLTAGE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LINES=lines,COST=cost,NAME=name,LABEL=label,TOPOCODE=topocode,VOLTAGE=voltage"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="LINES" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="VOLTAGE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LINES=lines,COST=cost,NAME=name,LABEL=label,TOPOCODE=topocode,VOLTAGE=voltage"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_l"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_l"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>	
+	<data table="AMBIT_ROADS_L" schema="GDAL" id="AMBIT_ROADS_L" comment="ОО_Дорожная сеть">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,lanes,name,electricity,roadstatus,moveperiod,cost,roadnum,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_roads_l" />
+				<query> </query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="LANES" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="ELECTRICITY" default="" type="String"/>
+				<param name="ROADSTATUS" default="" type="String"/>
+				<param name="MOVEPERIOD" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="ROADNUM" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LANES=lanes,COST=cost,NAME=name,MOVEPERIOD=moveperiod,ROADNUM=roadnum,LABEL=label,TOPOCODE=topocode,ELECTRICITY=electricity,ROADSTATUS=roadstatus"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_roads_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="LANES" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="ELECTRICITY" default="" type="String"/>
+				<param name="ROADSTATUS" default="" type="String"/>
+				<param name="MOVEPERIOD" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="ROADNUM" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LANES=lanes,COST=cost,NAME=name,MOVEPERIOD=moveperiod,ROADNUM=roadnum,LABEL=label,TOPOCODE=topocode,ELECTRICITY=electricity,ROADSTATUS=roadstatus"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="ambit_roads_l"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_roads_l"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>	
+	<data table="GEO_INDUCTRIALOBJ_L" schema="GDAL" id="GEO_INDUCTRIALOBJ_L" comment="ОТ_Вспомогательные трубопроводы и ограды">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,name,relheight,objstate,objmaterial,length,width,depth,funcpurpose,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_l" />
+				<query> </query>
+			</dbQuery>
+		</select>		
+		<insert>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="LENGTH" default="" type="String"/>
+				<param name="WIDTH" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="FUNCPURPOSE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="RELHEIGHT=relheight,LENGTH=length,WIDTH=width,DEPTH=depth,NAME=name,FUNCPURPOSE=funcpurpose,TOPOCODE=topocode,OBJSTATE=objstate,OBJMATERIAL=objmaterial"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="LENGTH" default="" type="String"/>
+				<param name="WIDTH" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="FUNCPURPOSE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="RELHEIGHT=relheight,LENGTH=length,WIDTH=width,DEPTH=depth,NAME=name,FUNCPURPOSE=funcpurpose,TOPOCODE=topocode,OBJSTATE=objstate,OBJMATERIAL=objmaterial"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_l"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_l"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>
+	</data>		
+	<data table="GEO_HYDRAULICSTRUCT_L" schema="GDAL" id="GEO_HYDRAULICSTRUCT_L" comment="ОТ_Водопроводящие и водоподпорные сооружения">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,lowwatermark,name,highwatermark,relheight,objstate,objmaterial,absheight,depth,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_l" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="LOWWATERMARK" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="HIGHWATERMARK" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LOWWATERMARK=lowwatermark,HIGHWATERMARK=highwatermark,RELHEIGHT=relheight,ABSHEIGHT=absheight,DEPTH=depth,NAME=name,TOPOCODE=topocode,OBJMATERIAL=objmaterial,OBJSTATE=objstate"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="LOWWATERMARK" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="HIGHWATERMARK" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LOWWATERMARK=lowwatermark,HIGHWATERMARK=highwatermark,RELHEIGHT=relheight,ABSHEIGHT=absheight,DEPTH=depth,NAME=name,TOPOCODE=topocode,OBJMATERIAL=objmaterial,OBJSTATE=objstate"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_l"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_l"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>		
+	</data>		
+	<data table="AMBIT_HYDRO_L" schema="GDAL" id="AMBIT_HYDRO_L" comment="ОО_Реки и ручьи">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,width_area,topocode,depth,watercoursetype"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>		
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_l" />
+				<query> </query>
+			</dbQuery>
+		</select>		
+		<insert>
+			<dbCommand>
+				<param name="WIDTH_AREA" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="WATERCOURSETYPE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="WIDTH_AREA=width_area,DEPTH=depth,LABEL=label,TOPOCODE=topocode,WATERCOURSETYPE=watercoursetype"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="WIDTH_AREA" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="WATERCOURSETYPE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="WIDTH_AREA=width_area,DEPTH=depth,LABEL=label,TOPOCODE=topocode,WATERCOURSETYPE=watercoursetype"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_l"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_l"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>	
+	</data>	
+	<data table="GEO_HYDROGRAPHY_L" schema="GDAL" id="GEO_HYDROGRAPHY_L" comment="ОТ_Подземные участки рек, каналы и канавы">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,name,navigable,moveperiod,absheight,depth,topocode,speed"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_l" />
+				<query> </query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="NAVIGABLE" default="" type="String"/>
+				<param name="MOVEPERIOD" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="SPEED" default="" type="String"/>
+				<param name="COLUMN_LIST" default="ABSHEIGHT=absheight,DEPTH=depth,SPEED=speed,NAME=name,MOVEPERIOD=moveperiod,TOPOCODE=topocode,NAVIGABLE=navigable"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="NAVIGABLE" default="" type="String"/>
+				<param name="MOVEPERIOD" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="SPEED" default="" type="String"/>
+				<param name="COLUMN_LIST" default="ABSHEIGHT=absheight,DEPTH=depth,SPEED=speed,NAME=name,MOVEPERIOD=moveperiod,TOPOCODE=topocode,NAVIGABLE=navigable"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_l"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_l"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>	
+	<data table="GEO_ROADS_L" schema="GDAL" id="GEO_ROADS_L" comment="ОТ_Вспомогательные дороги">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,topocode,lanes,name,objstate,moveperiod,roadnum,coatingmaterial"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roads_l" />
+				<query> </query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="LANES" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="MOVEPERIOD" default="" type="String"/>
+				<param name="ROADNUM" default="" type="String"/>
+				<param name="COATINGMATERIAL" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LANES=lanes,NAME=name,MOVEPERIOD=moveperiod,ROADNUM=roadnum,TOPOCODE=topocode,OBJSTATE=objstate,COATINGMATERIAL=coatingmaterial"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roads_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="LANES" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="MOVEPERIOD" default="" type="String"/>
+				<param name="ROADNUM" default="" type="String"/>
+				<param name="COATINGMATERIAL" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LANES=lanes,NAME=name,MOVEPERIOD=moveperiod,ROADNUM=roadnum,TOPOCODE=topocode,OBJSTATE=objstate,COATINGMATERIAL=coatingmaterial"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_roads_l"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roads_l"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>	
+	<data table="GEO_BOUNDARIES_L" schema="GDAL" id="GEO_BOUNDARIES_L" comment="ОТ_Границы">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,relheight,topocode,name,boundtype"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_l" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="BOUNDTYPE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="RELHEIGHT=relheight,NAME=name,TOPOCODE=topocode,BOUNDTYPE=boundtype"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="BOUNDTYPE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="RELHEIGHT=relheight,NAME=name,TOPOCODE=topocode,BOUNDTYPE=boundtype"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_l"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_l"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>				
+	</data>	
+	<data table="GEO_VEGETATION_L" schema="GDAL" id="GEO_VEGETATION_L" comment="ОТ_Полосы древесных насаждений и просеки">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,name,relheight,vegetationtype,treethickness,passability,topocode,treedistance"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_l" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="VEGETATIONTYPE" default="" type="String"/>
+				<param name="TREETHICKNESS" default="" type="String"/>
+				<param name="PASSABILITY" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="TREEDISTANCE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="RELHEIGHT=relheight,TREETHICKNESS=treethickness,TREEDISTANCE=treedistance,NAME=name,TOPOCODE=topocode,VEGETATIONTYPE=vegetationtype,PASSABILITY=passability"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="VEGETATIONTYPE" default="" type="String"/>
+				<param name="TREETHICKNESS" default="" type="String"/>
+				<param name="PASSABILITY" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="TREEDISTANCE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="RELHEIGHT=relheight,TREETHICKNESS=treethickness,TREEDISTANCE=treedistance,NAME=name,TOPOCODE=topocode,VEGETATIONTYPE=vegetationtype,PASSABILITY=passability"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_l"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_l"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>					
+	</data>	
+	<data table="GEO_HYDROGRAPHYREL_L" schema="GDAL" id="GEO_HYDROGRAPHYREL_L" comment="ОТ_Гидрографический рельеф">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,groundtype,lowwatermark,name,highwatermark,relheight,absheight,width,depth,shorelinetype,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_l" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="GROUNDTYPE" default="" type="String"/>
+				<param name="LOWWATERMARK" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="HIGHWATERMARK" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="WIDTH" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="SHORELINETYPE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LOWWATERMARK=lowwatermark,HIGHWATERMARK=highwatermark,RELHEIGHT=relheight,ABSHEIGHT=absheight,WIDTH=width,DEPTH=depth,NAME=name,TOPOCODE=topocode,GROUNDTYPE=groundtype,SHORELINETYPE=shorelinetype"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="GROUNDTYPE" default="" type="String"/>
+				<param name="LOWWATERMARK" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="HIGHWATERMARK" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="WIDTH" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="SHORELINETYPE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LOWWATERMARK=lowwatermark,HIGHWATERMARK=highwatermark,RELHEIGHT=relheight,ABSHEIGHT=absheight,WIDTH=width,DEPTH=depth,NAME=name,TOPOCODE=topocode,GROUNDTYPE=groundtype,SHORELINETYPE=shorelinetype"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_l"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_l"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>							
+	</data>	
+	<data table="GEO_RELIEF_L" schema="GDAL" id="GEO_RELIEF_L" comment="ОТ_Рельеф">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,origin,name,maxwidth,relheight,absheight,depth,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>		
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_l" />
+				<query> </query>
+			</dbQuery>
+		</select>		
+		<insert>
+			<dbCommand>
+				<param name="ORIGIN" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="MAXWIDTH" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="MAXWIDTH=maxwidth,RELHEIGHT=relheight,ABSHEIGHT=absheight,DEPTH=depth,NAME=name,TOPOCODE=topocode,ORIGIN=origin"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="ORIGIN" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="MAXWIDTH" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="MAXWIDTH=maxwidth,RELHEIGHT=relheight,ABSHEIGHT=absheight,DEPTH=depth,NAME=name,TOPOCODE=topocode,ORIGIN=origin"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_relief_l"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_l"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="AMBIT_INDUSTRY_PIPE_UNITS_A" schema="GDAL" id="AMBIT_INDUSTRY_PIPE_UNITS_A" comment="ОО_Технологические узлы и ГИС">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,pressurenominal,name,valvetype,instplace,technum,yearcommiss,cost,pipediameter,drivetype,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_a" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="PRESSURENOMINAL" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="VALVETYPE" default="" type="String"/>
+				<param name="INSTPLACE" default="" type="String"/>
+				<param name="TECHNUM" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="PIPEDIAMETER" default="" type="String"/>
+				<param name="DRIVETYPE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="PRESSURENOMINAL=pressurenominal,YEARCOMMISS=yearcommiss,COST=cost,NAME=name,TECHNUM=technum,LABEL=label,TOPOCODE=topocode,VALVETYPE=valvetype,INSTPLACE=instplace,PIPEDIAMETER=pipediameter,DRIVETYPE=drivetype"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="PRESSURENOMINAL" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="VALVETYPE" default="" type="String"/>
+				<param name="INSTPLACE" default="" type="String"/>
+				<param name="TECHNUM" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="PIPEDIAMETER" default="" type="String"/>
+				<param name="DRIVETYPE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="PRESSURENOMINAL=pressurenominal,YEARCOMMISS=yearcommiss,COST=cost,NAME=name,TECHNUM=technum,LABEL=label,TOPOCODE=topocode,VALVETYPE=valvetype,INSTPLACE=instplace,PIPEDIAMETER=pipediameter,DRIVETYPE=drivetype"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_a"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_a"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>		
+	</data>	
+	<data table="AMBIT_INDUSTRY_OILSTATIONS_A" schema="GDAL" id="AMBIT_INDUSTRY_OILSTATIONS_A" comment="ОО_АГНКС и АЗС">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,name,yearcommiss,cost,sttype,numofstations,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_oilstations_a" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="STTYPE" default="" type="String"/>
+				<param name="NUMOFSTATIONS" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="YEARCOMMISS=yearcommiss,COST=cost,NUMOFSTATIONS=numofstations,NAME=name,LABEL=label,TOPOCODE=topocode,STTYPE=sttype"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_oilstations_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="YEARCOMMISS" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="STTYPE" default="" type="String"/>
+				<param name="NUMOFSTATIONS" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="YEARCOMMISS=yearcommiss,COST=cost,NUMOFSTATIONS=numofstations,NAME=name,LABEL=label,TOPOCODE=topocode,STTYPE=sttype"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_oilstations_a"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_oilstations_a"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>		
+	<data table="AMBIT_PLATFORMS_A" schema="GDAL" id="AMBIT_PLATFORMS_A" comment="ОО_Площадки технологические и стоянки">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,name,area_,topocode,platformtype,cost"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_platforms_a" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="AREA_" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="PLATFORMTYPE" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="COLUMN_LIST" default="AREA_=area_,COST=cost,NAME=name,LABEL=name,TOPOCODE=topocode,PLATFORMTYPE=platformtype"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_platforms_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="AREA_" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="PLATFORMTYPE" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="COLUMN_LIST" default="AREA_=area_,COST=cost,NAME=name,LABEL=name,TOPOCODE=topocode,PLATFORMTYPE=platformtype"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="ambit_platforms_a"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_platforms_a"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>		
+	</data>		
+	<data table="GEO_ROADSTRUCTURES_A" schema="GDAL" id="GEO_ROADSTRUCTURES_A" comment="ОТ_Станции, платформы и стоянки">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,clearance,name,relheight,objstate,objmaterial,absheight,length,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_a" />
+				<query> </query>
+			</dbQuery>
+		</select>		
+		<insert>
+			<dbCommand>
+				<param name="CLEARANCE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="LENGTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="CLEARANCE=clearance,RELHEIGHT=relheight,ABSHEIGHT=absheight,LENGTH=length,NAME=name,TOPOCODE=topocode,OBJSTATE=objstate,OBJMATERIAL=objmaterial"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="CLEARANCE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="LENGTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="CLEARANCE=clearance,RELHEIGHT=relheight,ABSHEIGHT=absheight,LENGTH=length,NAME=name,TOPOCODE=topocode,OBJSTATE=objstate,OBJMATERIAL=objmaterial"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_a"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_a"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_HYDRAULICSTRUCT_A" schema="GDAL" id="GEO_HYDRAULICSTRUCT_A" comment="ОТ_Судоремонтные сооружения и насосные станции">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,lowwatermark,name,highwatermark,relheight,objstate,objmaterial,absheight,depth,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_a" />
+				<query> </query>
+			</dbQuery>
+		</select>		
+		<insert>
+			<dbCommand>
+				<param name="LOWWATERMARK" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="HIGHWATERMARK" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LOWWATERMARK=lowwatermark,HIGHWATERMARK=highwatermark,RELHEIGHT=relheight,ABSHEIGHT=absheight,DEPTH=depth,NAME=name,TOPOCODE=topocode,OBJMATERIAL=objmaterial,OBJSTATE=objstate"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="LOWWATERMARK" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="HIGHWATERMARK" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LOWWATERMARK=lowwatermark,HIGHWATERMARK=highwatermark,RELHEIGHT=relheight,ABSHEIGHT=absheight,DEPTH=depth,NAME=name,TOPOCODE=topocode,OBJMATERIAL=objmaterial,OBJSTATE=objstate"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_a"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_a"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>
+	</data>		
+	<data table="GEO_INDUCTRIALOBJ_A" schema="GDAL" id="GEO_INDUCTRIALOBJ_A" comment="ОТ_Промышленные и вспомогательные сооружения и территории">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,name,relheight,objstate,objmaterial,length,width,depth,funcpurpose,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_a" />
+				<query> </query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="LENGTH" default="" type="String"/>
+				<param name="WIDTH" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="FUNCPURPOSE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="RELHEIGHT=relheight,LENGTH=length,WIDTH=width,DEPTH=depth,NAME=name,FUNCPURPOSE=funcpurpose,TOPOCODE=topocode,OBJSTATE=objstate,OBJMATERIAL=objmaterial"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="LENGTH" default="" type="String"/>
+				<param name="WIDTH" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="FUNCPURPOSE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="RELHEIGHT=relheight,LENGTH=length,WIDTH=width,DEPTH=depth,NAME=name,FUNCPURPOSE=funcpurpose,TOPOCODE=topocode,OBJSTATE=objstate,OBJMATERIAL=objmaterial"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_a"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_a"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>		
+	</data>	
+	<data table="GEO_SETTLEMENTS_A" schema="GDAL" id="GEO_SETTLEMENTS_A" comment="ОТ_Кварталы и улицы, ОТ_Населенные пункты">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,belongterritory,administratunit,objstate,objmaterial,settlementunit,settlementtype,topocode,population,name"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_a" />
+				<query> </query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="BELONGTERRITORY" default="" type="String"/>
+				<param name="ADMINISTRATUNIT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="SETTLEMENTUNIT" default="" type="String"/>
+				<param name="SETTLEMENTTYPE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="POPULATION" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="COLUMN_LIST" default="POPULATION=population,NAME=name,TOPOCODE=topocode,BELONGTERRITORY=belongterritory,ADMINISTRATUNIT=administratunit,OBJSTATE=objstate,OBJMATERIAL=objmaterial,SETTLEMENTUNIT=settlementunit,SETTLEMENTTYPE=settlementtype"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="BELONGTERRITORY" default="" type="String"/>
+				<param name="ADMINISTRATUNIT" default="" type="String"/>
+				<param name="OBJSTATE" default="" type="String"/>
+				<param name="OBJMATERIAL" default="" type="String"/>
+				<param name="SETTLEMENTUNIT" default="" type="String"/>
+				<param name="SETTLEMENTTYPE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="POPULATION" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="COLUMN_LIST" default="POPULATION=population,NAME=name,TOPOCODE=topocode,BELONGTERRITORY=belongterritory,ADMINISTRATUNIT=administratunit,OBJSTATE=objstate,OBJMATERIAL=objmaterial,SETTLEMENTUNIT=settlementunit,SETTLEMENTTYPE=settlementtype"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_a"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_a"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>	
+	<data table="GEO_HYDROGRAPHYREL_A" schema="GDAL" id="GEO_HYDROGRAPHYREL_A" comment="ОТ_Берега и водная растительность">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,groundtype,lowwatermark,name,highwatermark,relheight,absheight,width,depth,shorelinetype,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_a" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="GROUNDTYPE" default="" type="String"/>
+				<param name="LOWWATERMARK" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="HIGHWATERMARK" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="WIDTH" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="SHORELINETYPE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LOWWATERMARK=lowwatermark,HIGHWATERMARK=highwatermark,RELHEIGHT=relheight,ABSHEIGHT=absheight,WIDTH=width,DEPTH=depth,NAME=name,TOPOCODE=topocode,GROUNDTYPE=groundtype,SHORELINETYPE=shorelinetype"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="GROUNDTYPE" default="" type="String"/>
+				<param name="LOWWATERMARK" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="HIGHWATERMARK" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="WIDTH" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="SHORELINETYPE" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="LOWWATERMARK=lowwatermark,HIGHWATERMARK=highwatermark,RELHEIGHT=relheight,ABSHEIGHT=absheight,WIDTH=width,DEPTH=depth,NAME=name,TOPOCODE=topocode,GROUNDTYPE=groundtype,SHORELINETYPE=shorelinetype"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_a"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_a"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>	
+	<data table="GEO_SOIL_A" schema="GDAL" id="GEO_SOIL_A" comment="ОТ_Грунты и поверхности">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,relheight,depth,topocode,passability,name"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_soil_a" />
+				<query> </query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="PASSABILITY" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="COLUMN_LIST" default="RELHEIGHT=relheight,DEPTH=depth,NAME=name,TOPOCODE=topocode,PASSABILITY=passability"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_soil_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="PASSABILITY" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="COLUMN_LIST" default="RELHEIGHT=relheight,DEPTH=depth,NAME=name,TOPOCODE=topocode,PASSABILITY=passability"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_soil_a"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_soil_a"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>	
+	<data table="AMBIT_HYDRO_A" schema="GDAL" id="AMBIT_HYDRO_A" comment="ОО_Водоёмы">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,width_area,topocode,depth,watercoursetype"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_a" />
+				<query> </query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="WIDTH_AREA" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="WATERCOURSETYPE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="WIDTH_AREA=width_area,DEPTH=depth,LABEL=label,TOPOCODE=topocode,WATERCOURSETYPE=watercoursetype"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="WIDTH_AREA" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="WATERCOURSETYPE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="WIDTH_AREA=width_area,DEPTH=depth,LABEL=label,TOPOCODE=topocode,WATERCOURSETYPE=watercoursetype"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_a"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_a"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>		
+	</data>	
+	<data table="GEO_RELIEF_A" schema="GDAL" id="GEO_RELIEF_A" comment="ОТ_Поверхности рельефа">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,origin,name,maxwidth,relheight,absheight,depth,topocode"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_a" />
+				<query> </query>
+			</dbQuery>
+		</select>	
+		<insert>
+			<dbCommand>
+				<param name="ORIGIN" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="MAXWIDTH" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="MAXWIDTH=maxwidth,RELHEIGHT=relheight,ABSHEIGHT=absheight,DEPTH=depth,NAME=name,TOPOCODE=topocode,ORIGIN=origin"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="ORIGIN" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="MAXWIDTH" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="ABSHEIGHT" default="" type="String"/>
+				<param name="DEPTH" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="MAXWIDTH=maxwidth,RELHEIGHT=relheight,ABSHEIGHT=absheight,DEPTH=depth,NAME=name,TOPOCODE=topocode,ORIGIN=origin"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_relief_a"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_a"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>		
+	</data>	
+	<data table="AMBIT_VEGETATION_FOREST_A" schema="GDAL" id="AMBIT_VEGETATION_FOREST_A" comment="ОО_Растительность лесная">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,cost,forestsection,treeheight,treethickness,unitcost,name,topocode,treedistance,vegtype"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_forest_a" />
+				<query> </query>
+			</dbQuery>
+		</select>		
+		<insert>
+			<dbCommand>
+				<param name="COST" default="" type="String"/>
+				<param name="FORESTSECTION" default="" type="String"/>
+				<param name="TREEHEIGHT" default="" type="String"/>
+				<param name="TREETHICKNESS" default="" type="String"/>
+				<param name="UNITCOST" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="TREEDISTANCE" default="" type="String"/>
+				<param name="VEGTYPE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="COST=cost,TREEHEIGHT=treeheight,TREETHICKNESS=treethickness,UNITCOST=unitcost,TREEDISTANCE=treedistance,NAME=name,FORESTSECTION=forestsection,LABEL=label,TOPOCODE=topocode,VEGTYPE=vegtype"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_forest_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="COST" default="" type="String"/>
+				<param name="FORESTSECTION" default="" type="String"/>
+				<param name="TREEHEIGHT" default="" type="String"/>
+				<param name="TREETHICKNESS" default="" type="String"/>
+				<param name="UNITCOST" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="TREEDISTANCE" default="" type="String"/>
+				<param name="VEGTYPE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="COST=cost,FORESTSECTION=forestsection,TREEHEIGHT=treeheight,TREETHICKNESS=treethickness,UNITCOST=unitcost,NAME=name,LABEL=label,TOPOCODE=topocode,TREEDISTANCE=treedistance,VEGTYPE=vegtype"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_forest_a"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_forest_a"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>	
+	</data>	
+	<data table="AMBIT_VEGETATION_FIELDS_A" schema="GDAL" id="AMBIT_VEGETATION_FIELDS_A" comment="ОО_Растительность культурная">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,topocode,cost,name,crop"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_fields_a" />
+				<query> </query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="CROP" default="" type="String"/>
+				<param name="COLUMN_LIST" default="COST=cost,NAME=name,LABEL=name,TOPOCODE=topocode,CROP=crop"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_fields_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="COST" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="CROP" default="" type="String"/>
+				<param name="COLUMN_LIST" default="COST=cost,NAME=name,LABEL=name,TOPOCODE=topocode,CROP=crop"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_fields_a"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_fields_a"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>	
+	<data table="GEO_VEGETATION_A" schema="GDAL" id="GEO_VEGETATION_A" comment="ОТ_Растительность вспомогательная">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,name,relheight,vegetationtype,treethickness,passability,topocode,treedistance"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_a" />
+				<query> </query>
+			</dbQuery>
+		</select>		
+		<insert>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="VEGETATIONTYPE" default="" type="String"/>
+				<param name="TREETHICKNESS" default="" type="String"/>
+				<param name="PASSABILITY" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="TREEDISTANCE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="RELHEIGHT=relheight,TREETHICKNESS=treethickness,TREEDISTANCE=treedistance,NAME=name,TOPOCODE=topocode,VEGETATIONTYPE=vegetationtype,PASSABILITY=passability"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="NAME" default="" type="String"/>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="VEGETATIONTYPE" default="" type="String"/>
+				<param name="TREETHICKNESS" default="" type="String"/>
+				<param name="PASSABILITY" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="TREEDISTANCE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="RELHEIGHT=relheight,TREETHICKNESS=treethickness,TREEDISTANCE=treedistance,NAME=name,TOPOCODE=topocode,VEGETATIONTYPE=vegetationtype,PASSABILITY=passability"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_a"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_a"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>	
+	</data>
+	<data table="GEO_BOUNDARIES_A" schema="GDAL" id="GEO_BOUNDARIES_A" comment="ОТ_Административные территории">
+		<select>
+			<dbQuery idField="ID">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,relheight,topocode,name,boundtype"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_a" />
+				<query> </query>
+			</dbQuery>
+		</select>		
+		<insert>
+			<dbCommand>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="BOUNDTYPE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="RELHEIGHT=relheight,NAME=name,TOPOCODE=topocode,BOUNDTYPE=boundtype"/>
+				<param name="ID" type="String" direction="Output"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+				<query>					
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="RELHEIGHT" default="" type="String"/>
+				<param name="TOPOCODE" default="" type="String"/>
+				<param name="NAME" default="" type="String"/>
+				<param name="BOUNDTYPE" default="" type="String"/>
+				<param name="COLUMN_LIST" default="RELHEIGHT=relheight,NAME=name,TOPOCODE=topocode,BOUNDTYPE=boundtype"/>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite"/>
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_a"/>
+				<param name="GDAL_COMMAND_TYPE" default="update"/>
+				<query>					
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_a"/>
+				<param name="COLUMN_LIST" default="ID=id"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GDAL_COMMAND_TYPE" default="delete"/>
+				<query>
+				</query>
+			</dbCommand>
+		</delete>	
+	</data>		
+</root>

@@ -1,0 +1,13 @@
+﻿<ROOT prevTask="close" version="6.0.2.0">
+  <hbox percentWidth="100" percentHeight="100">
+	<panel id="ADM_VIDEOMONITOR" percentWidth="100" percentHeight="100" reload="true">
+		<settings>
+			<requestFilterByType>PODS_SEM_DICT.xml#PODS_ROUTE_TYPE_CL</requestFilterByType>
+			<requestFilterByLine>GAZPROM_ADM_SEM.xml#PODS_LINE_WITHOUT_DEFAULT</requestFilterByLine>
+      <requestGetVideos>LIB_DOC_GRID.xml#LIB_DOC_GEO_VIDEO</requestGetVideos>
+      <requestGetRoutes>GAZPROM_ADM_SEM.xml#PODS_ROUTE_FOR_HODO</requestGetRoutes>
+      <requestGetRoutesForVideo>GAZPROM_ADM_SEM.xml#ROUTES_FOR_LIB_DOC_GEO_VIDEO</requestGetRoutesForVideo>
+		</settings>
+	</panel>
+  </hbox>
+</ROOT>

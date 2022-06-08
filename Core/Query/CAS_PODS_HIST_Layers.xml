@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.5.0" descr="Журналы оперативных данных">
+  <dataProvider type="style" source="PODS_HIST_STYLE.xml" />
+  <layer id="PODS_CHEMICAL_INJECTION_LOG" visible="false" type="common" topology="line" table="CHEMICAL_INJECTION_LOG_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="10" labelField="LABEL" fitMap="false" descr="Журнал добавления в грунт химических реагентов" dataType="vector" cover="false" comment="PODS_CHEMICAL_INJECTION_LOG" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_CHEMICAL_INJECTION_LOG" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_CHEMICAL_INJECTION_LOG" />
+    <dataProvider type="spatial" source="CAS_PODS_HIST_GEO.xml#CAS_PODS_CHEMICAL_INJECTION_LOG" />
+  </layer>
+  <layer id="PODS_GRANDFATHER_PRESSURE" visible="false" type="common" topology="line" table="GRANDFATHER_PRESSURE_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="20" labelField="LABEL" fitMap="false" descr="Журнал изменений рабочего давления" dataType="vector" cover="false" comment="PODS_GRANDFATHER_PRESSURE" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_GRANDFATHER_PRESSURE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_GRANDFATHER_PRESSURE" />
+    <dataProvider type="spatial" source="CAS_PODS_HIST_GEO.xml#CAS_PODS_GRANDFATHER_PRESSURE" />
+  </layer>
+  <layer id="PODS_CUSTOMER_INTERRUPT" visible="false" type="common" topology="line" table="CUSTOMER_INTERRUPT_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="30" labelField="LABEL" fitMap="false" descr="Журнал отключения потребителей" dataType="vector" cover="false" comment="PODS_CUSTOMER_INTERRUPT" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_CUSTOMER_INTERRUPT" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_CUSTOMER_INTERRUPT" />
+    <dataProvider type="spatial" source="CAS_PODS_HIST_GEO.xml#CAS_PODS_CUSTOMER_INTERRUPT" />
+  </layer>
+  <layer id="PODS_LEAK_HISTORY" visible="false" type="common" topology="point,line" table="LEAK_HISTORY_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="40" labelField="LABEL" fitMap="false" descr="Журнал регистрации аварийных заявок" dataType="vector" cover="false" comment="PODS_LEAK_HISTORY" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_LEAK_HISTORY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_LEAK_HISTORY" />
+    <dataProvider type="spatial" source="CAS_PODS_HIST_GEO.xml#CAS_PODS_LEAK_HISTORY" />
+  </layer>
+  <layer id="PODS_PIPE_OPERATING_HISTORY" visible="false" type="common" topology="point,line" table="PIPE_OPERATING_HISTORY_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="50" labelField="LABEL" fitMap="false" descr="Оперативный журнал трубопровода" dataType="vector" cover="false" comment="PODS_PIPE_OPERATING_HISTORY" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PIPE_OPERATING_HISTORY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PIPE_OPERATING_HISTORY" />
+    <dataProvider type="spatial" source="CAS_PODS_HIST_GEO.xml#CAS_PODS_PIPE_OPERATING_HISTORY" />
+  </layer>
+</root>

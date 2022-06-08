@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root version="7.7.7.0">
+  <data id="CAS_WATERWAY_ROUTES" table="WATERWAY" schema="WEB50" comment="CAS.MAIN">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <var name="ZONE_ID" default="-1" />
+        <query>
+           select distinct s.route_id,s.begin_date,to_char(s.begin_date,'YYYY')||' год. '||rt.description||' '||l.description||', '||c.station_begin||' - '||c.station_end||' км.' layer_name,l.description,rt.description
+          FROM web50.waterway_cross_station_point s,web50.waterway_cross c,pods.route r,pods.line l,pods.route_type_cl rt
+          where c.zone_id={ZONE_ID} and s.waterway_cross_id=c.waterway_cross_id and s.route_id=r.route_id and r.line_id=l.line_id and rt.code=r.type_cl
+          order by l.description,rt.description,s.begin_date
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="CAS_MAIN" table="WATERWAY" schema="WEB50" comment="CAS.MAIN">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+                SELECT * FROM (SELECT LINE_ID ID, t.* FROM WEB50.LINE t) d WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+ <data id="NEW_CAS_MG_PROFILE" comment="CAS.MAIN" schema="WEB50" table="WATERWAY">
+		<select>
+			<dbQuery>
+				<var name="START_KM" />
+				<var name="FINISH_KM" />
+				<var name="LINE_ID" />
+				<var name="ROUTE_ID" />
+				<var name="BEGIN_DATE" />
+				<var name="ZONE_ID" default="-1" />
+				<query>
+select * from (
+          select {START_KM} abs_measure union all
+          select max(ddd.abs_measure) from (select {START_KM}+max(s.measure/1000)-min(s.measure/1000) abs_measure
+          FROM web50.waterway_cross_station_point s,web50.waterway_cross c
+          where c.zone_id={ZONE_ID} and s.waterway_cross_id=c.waterway_cross_id group by c.waterway_cross_id) ddd ) dd order by dd.abs_measure
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+</root>

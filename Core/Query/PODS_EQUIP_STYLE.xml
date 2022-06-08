@@ -1,0 +1,2260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<kml version="7.7.5.0">
+  <Document>
+    <Style id="PODS_ANODE" schema="PODS" table="ANODE" comment="PODS.ANODE" descr="Аноды" short_name="" topology="1">
+      <!-- Код класса в 4.3 C1200042 -->
+      <zoomMin>0</zoomMin>
+      <zoomMax>6000</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/ANODE.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (34,0,24,"UZdorogi",0,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pikets_make.xml" viewpoint="0">
+          Transform  {	translation 0 -1 0  children  [
+          Shape { appearance Appearance { material Material { diffuseColor 0.69 .69 .69 } }
+          geometry Cylinder { bottom  FALSE  height  3 radius  .1 top  FALSE }}] }
+        </data>
+      </VRMLStyle>
+    </Style>
+    <Style id="PODS_CLOSURE" schema="PODS" table="CLOSURE" comment="PODS.CLOSURE" descr="Заглушки" short_name="" topology="1">
+      <!-- Код класса в 4.3 C1100037 -->
+      <zoomMin>0</zoomMin>
+      <zoomMax>1500</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/CLOSURE.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (58,0,9,"Russian Topograph",0,*90)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="0x6513" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pikets_make.xml" viewpoint="0">
+          Shape { appearance Appearance { material Material { diffuseColor 1 0 0  } }
+          geometry Sphere {  radius  $RADIUS$ }}
+        </data>
+      </VRMLStyle>
+    </Style>
+    <Style id="PODS_COMPRESSOR_STATION" schema="PODS" table="COMPRESSOR_STATION" comment="PODS.COMPRESSOR_STATION" descr="Компрессорные станции" short_name="" topology="3">
+      <!-- Код класса в 4.3 C3000047 -->
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/COMPRESSOR_STATION.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>1</outline>
+        <rotation>0</rotation>
+      </IconStyle>
+      <LabelStyle>
+        <color>B2990033</color>
+        <fontSize>10</fontSize>
+        <bold>1</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <duplicate>0</duplicate>
+        <overlap>1</overlap>
+        <auto>1</auto>
+        <parallel>0</parallel>
+        <align>right|middle</align>
+        <rotation>0</rotation>
+      </LabelStyle>
+      <MIStyle>
+        <data>Pen (1,1,0) Brush(1,0,16777215)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_area_make.xml" viewpoint="0">
+          appearance Appearance { material Material { diffuseColor 0.69 .69 .69 } }
+        </data>
+      </VRMLStyle>
+    </Style>
+    <Style id="PODS_DISTRIBUTION_PLANT" schema="PODS" table="DISTRIBUTION_PLANT" comment="PODS.DISTRIBUTION_PLANT" descr="Газораспределительные и шкафные распределительные пункты" short_name="" topology="3">
+      <!-- Код класса в 4.3 C3000048  -->
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/DISTR_PLANT.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>1</outline>
+        <rotation>0</rotation>
+      </IconStyle>
+      <LabelStyle>
+        <color>FF0000FF</color>
+        <fontSize>10</fontSize>
+        <bold>1</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+        <auto>1</auto>
+        <parallel>0</parallel>
+        <align>center|middle</align>
+        <rotation>0</rotation>
+      </LabelStyle>
+    </Style>
+    <Style id="PODS_DISTRIBUTION_PLANT" schema="PODS" table="DISTRIBUTION_PLANT" comment="PODS.DISTRIBUTION_PLANT" descr="Газораспределительная станция">
+      <value>DP_TYPE_05</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/DISTRIBUTION_PLANT.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>1</outline>
+        <rotation>0</rotation>
+      </IconStyle>
+      <LabelStyle>
+        <color>FF0000FF</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+        <auto>1</auto>
+        <parallel>0</parallel>
+        <align>left|middle</align>
+        <rotation>0</rotation>
+      </LabelStyle>
+      <MIStyle>
+        <data>Pen (1,1,0) Brush(1,0,16777215)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_area_make.xml" viewpoint="0">
+          appearance Appearance { material Material { diffuseColor 0.69 .69 .69 } }
+        </data>
+      </VRMLStyle>
+    </Style>
+    <Style id="PODS_DISTRIBUTION_PLANT" schema="PODS" table="DISTRIBUTION_PLANT" comment="PODS.DISTRIBUTION_PLANT" descr="Газорегуляторный пункт шкафной" short_name="" topology="3">
+      <!-- Код класса в 4.3 V3030002  -->
+      <value>DP_TYPE_01</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/DISTRIBUTION_PLANT.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Pen (1,2,0) Brush(2,16777215,16777215)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+    </Style>
+    <Style id="PODS_DISTRIBUTION_PLANT" schema="PODS" table="DISTRIBUTION_PLANT" comment="PODS.DISTRIBUTION_PLANT" descr="Стационарный газорегуляторный пункт" short_name="" topology="3">
+      <!-- Код класса в 4.3 V3030001  -->
+      <value>DP_TYPE_04</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/DISTRIBUTION_PLANT.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Pen (1,2,0) Brush(2,16777215,16777215)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+    </Style>
+    <Style id="PODS_DISTRIBUTION_PLANT" schema="PODS" table="DISTRIBUTION_PLANT" comment="PODS.DISTRIBUTION_PLANT" descr="Газораспределительные и шкафные распределительные пункты">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FFFFFFFF</color>
+        <width>5</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FF000000</color>
+        <fill>0</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style id="PODS_CP_FOREIGN_LINE_CROSSING" schema="PODS" table="CP_FOREIGN_LINE_CROSSING" comment="PODS.FOREIGN_LINE_CROSSING" descr="Линии электропередач" topology="2" short_name="">
+      <zoomMin>0</zoomMin>
+      <zoomMax>15000</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+        <pattern>
+          <dasharray>19 8 1 10</dasharray>
+          <join>bevel</join>
+          <caps>round</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <duplicate>1</duplicate>
+        <overlap>0</overlap>
+        <auto>1</auto>
+        <parallel>0</parallel>
+        <align>center|top</align>
+        <rotation>0</rotation>
+      </LabelStyle>
+    </Style>
+    <!-- Конец ВТД-->
+    <Style table="JUNCTION_BOX" schema="PODS" id="PODS_JUNCTION_BOX" comment="PODS.JUNCTION_BOX" short_name="" descr="Необслуживаемые усилительные пункты">
+      <zoomMin>0</zoomMin>
+      <zoomMax>11500</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/JUNCTION_BOX.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (45,0,16,"MapInfo Cartographic",0,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+    </Style>
+    <Style table="LAUNCHER_RECEIVER" schema="PODS" id="PODS_LAUNCHER_RECEIVER" comment="PODS.LAUNCHER_RECEIVER" descr="Камеры приёма-запуска">
+      <zoomMin>0</zoomMin>
+      <zoomMax>15000</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/LAUNCHER_RECEIVER.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data />
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+    </Style>
+    <Style table="LAUNCHER_RECEIVER" schema="PODS" id="PODS_LAUNCHER_RECEIVER" comment="PODS.LAUNCHER_RECEIVER" descr="Камера запуска">
+      <zoomMin>0</zoomMin>
+      <zoomMax>15000</zoomMax>
+      <value>LAUNCH_R_TYPE_06</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/LAUNCHER_RECEIVER.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (195,0,10,"NEVA Cartographic",0,*)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="0x640e" type1="0x640e" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_cell_make.xml" viewpoint="0">
+          appearance Appearance {
+          material Material { diffuseColor 1 .9 0 emissiveColor 1 .9 0     transparency 0.000  } }"
+        </data>
+      </VRMLStyle>
+    </Style>
+    <Style table="LAUNCHER_RECEIVER" schema="PODS" id="PODS_LAUNCHER_RECEIVER" comment="PODS.LAUNCHER_RECEIVER" descr="Камера приема">
+      <zoomMin>0</zoomMin>
+      <zoomMax>15000</zoomMax>
+      <value>LAUNCH_R_TYPE_07</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/LAUNCHER_RECEIVER.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (195,0,10,"NEVA Cartographic",0,*)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="0x640e" type1="0x640e" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_cell_make.xml" viewpoint="0">
+          appearance Appearance {
+          material Material { diffuseColor 1 .9 0 emissiveColor 1 .8  0     transparency 0.000  } }"
+        </data>
+      </VRMLStyle>
+    </Style>
+    <Style id="PODS_MARKER" descr="Маркеры" schema="PODS" table="MARKER" comment="PODS.MARKER" short_name="Маркеры" topology="1">
+      <!--value>MARKER_TYPE_01</value-->
+      <!-- Код класса в 4.3 C1100002 -->
+      <zoomMin>0</zoomMin>
+      <zoomMax>1500</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/MARKER.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>1</outline>
+        <rotation>0</rotation>
+      </IconStyle>
+      <LabelStyle>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <duplicate>0</duplicate>
+        <overlap>1</overlap>
+        <auto>0</auto>
+        <parallel>0</parallel>
+        <align>center|middle</align>
+        <rotation>0</rotation>
+      </LabelStyle>
+      <MIStyle>
+        <data>Symbol (64,0,6,"NEVA Cartographic",0,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="0x5800" type1="0x5800" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pikets_make.xml" viewpoint="0">
+          Transform {	   translation 0 $RADIUS$ 0   children   [
+          Shape { appearance Appearance { material Material { diffuseColor 0 1 0 }     }
+          geometry Cylinder { height .03 radius   $RADIUS$ }    }  ]}
+          Transform {  translation 0 $RADIUS_2$ 0   children   [
+          Shape {  appearance Appearance { material Material { diffuseColor 0 1 0  } }
+          geometry Cylinder { height  $RADIUS_2$ radius  .03}  }   ]  }
+          Transform { translation 0 $RADIUS_2$ 0 children[
+          Transform { translation 0 .1 0 children[$TEXT_SIGN$]}]}
+        </data>
+      </VRMLStyle>
+    </Style>
+    <Style id="PODS_MARKER_KM" descr="Километровые столбы" schema="PODS" table="MARKER" comment="PODS.MARKER" short_name="Столбы км." topology="1">
+      <!--value>MARKER_TYPE_05</value-->
+      <!-- Код класса в 4.3  C1400003 -->
+      <zoomMin>0</zoomMin>
+      <zoomMax>1500</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/MARKER_MARKER_TYPE_05.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (117,0,12,"Russian Topograph",0,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="0x2d05" type1="0x2d05" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pikets_make.xml" viewpoint="0">
+          Transform {	 translation 0 2.5 0 children [
+          Shape {  appearance Appearance  {  material Material { diffuseColor 1 1 0 transparency 0.0 } }
+          geometry Cylinder { height 5 radius   .03 }}]}
+          Transform { translation 0 5 0  children[
+          Transform { translation 0 .1 0 children[ $TEXT_SIGN$ ]}]}
+        </data>
+      </VRMLStyle>
+    </Style>
+    <Style id="PODS_MARKER_POINT" descr="Указатели газопровода" schema="PODS" table="MARKER" comment="PODS.MARKER" short_name="Указатель газопровода" topology="1">
+      <!--value>MARKER_TYPE_06</value-->
+      <!-- Код класса в 4.3 C1400013  -->
+      <zoomMin>0</zoomMin>
+      <zoomMax>1500</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/MARKER.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>1</underline>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+      </LabelStyle>
+      <MIStyle>
+        <data>Symbol (176,65535,12,"NEVA Cartographic",16,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="0x2d05" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pikets_make.xml" viewpoint="0">
+          Transform {  translation 0 1 0   children   [
+          Shape    {  appearance Appearance  {  material Material  {  diffuseColor 1 1 0  transparency 0.0 } }
+          geometry Cylinder { height 2 radius   .03 }}]}
+          Transform {	 translation 0 2 0  children [
+          Shape   { appearance Appearance  {    material Material      {  diffuseColor 1 1 0 emissiveColor 1 1 0 transparency 0.0  } }
+          geometry Box { size .1 .5 1 }}]}
+        </data>
+      </VRMLStyle>
+    </Style>
+    <Style table="RECTIFIER" schema="PODS" id="PODS_RECTIFIER" comment="PODS.RECTIFIER" descr="Установки катодной/дренажной защиты">
+      <zoomMin>0</zoomMin>
+      <zoomMax>6000</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/RECTIFIER.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>1</outline>
+        <rotation>0</rotation>
+      </IconStyle>
+      <LabelStyle>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+        <auto>0</auto>
+        <parallel>0</parallel>
+        <align>center|middle</align>
+        <rotation>0</rotation>
+      </LabelStyle>
+      <MIStyle>
+        <data />
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+    </Style>
+    <Style table="RECTIFIER" schema="PODS" id="PODS_RECTIFIER" comment="PODS.RECTIFIER" descr="Станция(установка),трансформатор катодной защиты">
+      <zoomMin>0</zoomMin>
+      <zoomMax>6000</zoomMax>
+      <value>RECT_TYPE_01</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/RECTIFIER.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (211,0,10,"NEVA Cartographic",0,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="0x1c06" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pikets_make.xml" viewpoint="0">
+          Transform {	 translation 0 .5 0  children [
+          Shape   { appearance Appearance  {    material Material      {  diffuseColor 0.69 0.69 0.69    transparency 0.0  } }
+          geometry Box { size 1 1 1 }}]}
+        </data>
+      </VRMLStyle>
+    </Style>
+    <Style table="RECTIFIER" schema="PODS" id="PODS_RECTIFIER" comment="PODS.RECTIFIER" descr="Станция дренажной защиты">
+      <zoomMin>0</zoomMin>
+      <zoomMax>6000</zoomMax>
+      <value>RECT_TYPE_03</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/RECTIFIER_RECT_TYPE_03.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (80,0,14,"MapInfo Real Estate",1,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pikets_make.xml" viewpoint="0">
+          Shape {
+          appearance Appearance { material Material { diffuseColor 1 1 0  } }
+          geometry Sphere {  radius  $RADIUS_1_15$ }}
+          Transform {	 translation 0 $RADIUS_3$ 0 children [
+          Shape { appearance Appearance { material Material { diffuseColor 1 1 0  } }
+          geometry Cylinder { bottom  FALSE  height  $RADIUS_6$ radius  $RADIUS_0_8$ top     FALSE}
+          }]}
+        </data>
+      </VRMLStyle>
+    </Style>
+    <Style table="ROUTE" schema="PODS" id="PODS_ROUTE" comment="PODS.ROUTE" descr="Нитки трубопроводов">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <MIStyle>
+        <data />
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+	<LabelStyle>
+		<zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+		<color>FF000000</color>
+		<align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="ROUTE" schema="PODS" id="PODS_ROUTE" comment="PODS.ROUTE" descr="Трубопровод">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <value>ROUTE_TYPE_01</value>
+      <MIStyle>
+        <data />
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFFF0000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>0</overlap>
+        <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="ROUTE" schema="PODS" id="PODS_ROUTE" comment="PODS.ROUTE" descr="Соединительная перемычка">
+      <zoomMin>0</zoomMin>
+      <zoomMax>25000</zoomMax>
+      <value>ROUTE_TYPE_02</value>
+      <MIStyle>
+        <data />
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>8</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>0</overlap>
+        <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="ROUTE" schema="PODS" id="PODS_ROUTE" comment="PODS.ROUTE" descr="Отвод" topology="2" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <value>ROUTE_TYPE_04</value>
+      <LineStyle>
+        <color>FF660099</color>
+        <width>3</width>
+        <pattern>
+          <join>round</join>
+          <caps>round</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>25</zoomMin>
+        <zoomMax>10</zoomMax>
+        <color>FFA0522D</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>0</overlap>
+        <parallel>0</parallel>
+        <align>center|middle</align>
+        <fontFamily>Times New Roman</fontFamily>
+        <rotation>0</rotation>
+      </LabelStyle>
+      <MIStyle>
+        <data>Pen (17,2,16711680)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="0x001c" type1="0x001c" type2="0x001c" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pipeline_make.xml" viewpoint="">appearance Appearance {material Material { diffuseColor 0 .6 1 emissiveColor .3 .3 .5 transparency 0.000  } }</data>
+      </VRMLStyle>
+    </Style>
+    <Style table="ROUTE" schema="PODS" id="PODS_ROUTE" comment="PODS.ROUTE" descr="Распределительный низкого давления">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <value>ROUTE_TYPE_06</value>
+      <MIStyle>
+        <data>Pen (17,2,8388608)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="0x001c" type1="0x001c" type2="0x001c" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pipeline_make.xml" viewpoint="">appearance Appearance { material Material { diffuseColor 0 .6 1 emissiveColor .3 .3 .5     transparency 0.000  } }</data>
+      </VRMLStyle>
+      <LineStyle>
+        <color>FF342DFF</color>
+        <width>2</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF342DFF</color>
+        <fontSize>8</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>0</overlap>
+        <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="ROUTE" schema="PODS" id="PODS_ROUTE" comment="PODS.ROUTE" descr="Распределительный среднего давления">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <value>ROUTE_TYPE_07</value>
+      <MIStyle>
+        <data>Pen (17,2,8388736)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="0x001c" type1="0x001c" type2="0x001c" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pipeline_make.xml" viewpoint="">appearance Appearance {material Material { diffuseColor 0 .6 1 emissiveColor .3 .3 .5     transparency 0.000  } }</data>
+      </VRMLStyle>
+      <LineStyle>
+        <color>FF008000</color>
+        <width>2</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF008000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>0</overlap>
+        <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="ROUTE" schema="PODS" id="PODS_ROUTE" comment="PODS.ROUTE" descr="Распределительный высокого давления 1 категории">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <value>ROUTE_TYPE_08</value>
+      <MIStyle>
+        <data>Pen (17,2,8388736)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="0x001c" type1="0x001c" type2="0x001c" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pipeline_make.xml" viewpoint="">appearance Appearance {material Material { diffuseColor 0 .6 1 emissiveColor .3 .3 .5     transparency 0.000  } }</data>
+      </VRMLStyle>
+      <LineStyle>
+        <color>FF660099</color>
+        <width>2</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFFF0000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>0</overlap>
+        <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="ROUTE" schema="PODS" id="PODS_ROUTE" comment="PODS.ROUTE" descr="Распределительный высокого давления 2 категории">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <value>ROUTE_TYPE_09</value>
+      <MIStyle>
+        <data>Pen (17,2,8388736)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="0x001c" type1="0x001c" type2="0x001c" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pipeline_make.xml" viewpoint="">appearance Appearance {material Material { diffuseColor 0 .6 1 emissiveColor .3 .3 .5     transparency 0.000  } }</data>
+      </VRMLStyle>
+      <LineStyle>
+        <color>FF660099</color>
+        <width>2</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFFF0000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>0</overlap>
+        <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="ROUTE" schema="PODS" id="PODS_ROUTE" comment="PODS.ROUTE" descr="Магистральный" topology="2" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <value>ROUTE_TYPE_10</value>
+      <LineStyle>
+        <color>FF660099</color>
+        <width>3</width>
+        <pattern>
+          <join>round</join>
+          <caps>round</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>25</zoomMin>
+        <zoomMax>10</zoomMax>
+        <color>FFFF0000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+        <auto>1</auto>
+        <parallel>0</parallel>
+        <align>center|middle</align>
+        <rotation>0</rotation>
+        <fontFamily>Times New Roman</fontFamily>
+      </LabelStyle>
+      <MIStyle>
+        <data>Pen (17,2,8388736)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="0x001c" type1="0x001c" type2="0x001c" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pipeline_make.xml" viewpoint="">appearance Appearance {material Material { diffuseColor 0 .6 1 emissiveColor .3 .3 .5     transparency 0.000  } }</data>
+      </VRMLStyle>
+    </Style>
+    <Style table="ROUTE" schema="PODS" id="PODS_ROUTE" comment="PODS.ROUTE" descr="Резервный">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <value>ROUTE_TYPE_11</value>
+      <MIStyle>
+        <data>Pen (17,2,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="0x001c" type1="0x001c" type2="0x001c" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pipeline_make.xml" viewpoint="">appearance Appearance { material Material { diffuseColor 0.46 0.98 0.95 emissiveColor .3 .3 .5     transparency 0.000  } }</data>
+      </VRMLStyle>
+      <LineStyle>
+        <color>FF008000</color>
+        <width>2</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF008000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>0</overlap>
+        <align>center|middle</align>
+      </LabelStyle>
+    </Style><Style table="ROUTE" schema="PODS" id="PODS_ROUTE" comment="PODS.ROUTE" descr="Лупинг" topology="2" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <value>ROUTE_TYPE_12</value>
+      <LineStyle>
+        <color>FF0000FF</color>
+        <width>2</width>
+        <pattern>
+          <join>round</join>
+          <caps>round</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF0000FF</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>0</overlap>
+        <parallel>0</parallel>
+        <align>center|middle</align>
+        <fontFamily>Times New Roman</fontFamily>
+        <rotation>0</rotation>
+      </LabelStyle>
+      <MIStyle>
+        <data>Pen (17,2,32768)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="0x001c" type1="0x001c" type2="0x001c"/>
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pipeline_make.xml" viewpoint="">appearance Appearance {material Material { diffuseColor 0 .6 1 emissiveColor .3 .3 .5     transparency 0.000  } }</data>
+      </VRMLStyle>
+    </Style>
+    <Style table="TEST_LEAD" schema="PODS" id="PODS_TEST_LEAD" comment="PODS.TEST_LEAD" descr="Контрольно-измерительные пункты">
+      <zoomMin>0</zoomMin>
+      <zoomMax>6000</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/TEST_LEAD.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>1</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+        <auto>1</auto>
+        <parallel>0</parallel>
+        <align>right|top</align>
+        <rotation>0</rotation>
+      </LabelStyle>
+      <MIStyle>
+        <data />
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+    </Style>
+    <Style table="VALVE" schema="PODS" id="PODS_VALVE" comment="PODS.VALVE" descr="Запорно-регулирующая арматура">
+      <zoomMin>0</zoomMin>
+      <zoomMax>15000</zoomMax>
+      <MIStyle>
+        <data />
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/VALVE.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>1</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+        <auto>1</auto>
+        <parallel>0</parallel>
+        <align>right|top</align>
+        <rotation>0</rotation>
+      </LabelStyle>
+    </Style>
+    <Style table="VALVE" schema="PODS" id="PODS_VALVE" comment="PODS.VALVE" descr="Кран линейный">
+      <zoomMin>0</zoomMin>
+      <zoomMax>15000</zoomMax>
+      <value>VALVE_TYPE_14</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/VALVE_VALVE_TYPE_14.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <LabelStyle>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+        <auto>1</auto>
+        <parallel>0</parallel>
+        <align>center|middle</align>
+        <rotation>0</rotation>
+      </LabelStyle>
+      <MIStyle>
+        <data>Symbol (210,0,14,"NEVA Cartographic",0,*)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="0x160d" type1="0x160d" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pikets_make.xml" viewpoint="0">
+          Shape  { appearance Appearance { material Material  { diffuseColor $COLOR_RGB$  transparency 0.5} }
+          geometry Sphere {  radius  $RADIUS_1_15$ } }
+        </data>
+      </VRMLStyle>
+    </Style>
+    <Style table="VALVE" schema="PODS" id="PODS_VALVE" comment="PODS.VALVE" descr="Кран отводной">
+      <zoomMin>0</zoomMin>
+      <zoomMax>15000</zoomMax>
+      <value>VALVE_TYPE_15</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/VALVE_VALVE_TYPE_15.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (210,8388608,14,"NEVA Cartographic",0,*)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pikets_make.xml" viewpoint="">
+          Shape  { appearance Appearance { material Material  { diffuseColor 0.6 0 0.6 } }
+          geometry Sphere {  radius  $RADIUS_1_15$ } }
+          Transform  {	 translation 0 $RADIUS_3$ 0   children  [
+          Shape  { appearance Appearance { material Material { diffuseColor 0.6 0 0.6 } }
+          geometry Cylinder { bottom  FALSE  height  $RADIUS_4$ radius  .03 top  FALSE }}]}
+          Transform   {	 translation 0 $RADIUS_5$ 0  children [
+          Shape { appearance Appearance { material Material { diffuseColor 0.6 0 0.6 } }
+          geometry Cylinder { height .03 radius $RADIUS_0_8$ }}]}
+          Transform { translation 0 $RADIUS_5$ 0  children[
+          Transform { translation 0 0.1 0
+          children[$TEXT_SIGN$]}]}
+        </data>
+      </VRMLStyle>
+    </Style>
+    <Style table="VALVE" schema="PODS" id="PODS_VALVE" comment="PODS.VALVE" descr="Кран газовый обводной,свечной">
+      <zoomMin>0</zoomMin>
+      <zoomMax>15000</zoomMax>
+      <value>VALVE_TYPE_16</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/VALVE.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (198,0,10,"NEVA Cartographic",0,*)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pikets_make.xml" viewpoint="">
+          Shape { appearance Appearance { material Material  { diffuseColor 0.6 0 0.6 } }
+          geometry Sphere {  radius  $RADIUS_1_15$ } }
+          Transform  {	 translation 0 $RADIUS_3$ 0  children [
+          Shape  { appearance Appearance { material Material { diffuseColor 0.6 0 0.6 } }
+          geometry Cylinder { bottom  FALSE  height  $RADIUS_4$ radius  .03 top  FALSE }}]}
+          Transform  {	 translation 0 $RADIUS_5$ 0  children  [
+          Shape  { appearance Appearance { material Material { diffuseColor 0.6 0 0.6 } }
+          geometry Cylinder { height .03 radius $RADIUS_0_8$ }}] }
+          Transform { translation 0 $RADIUS_5$ 0  children[
+          Transform { translation 0 0.1 0 children[$TEXT_SIGN$]}]}
+        </data>
+      </VRMLStyle>
+    </Style>
+    <Style table="VENT_PIPE" schema="PODS" id="PODS_VENT_PIPE" comment="PODS.VENT_PIPE" descr="Выпускные свечи">
+      <zoomMin>0</zoomMin>
+      <zoomMax>1500</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/VENT_PIPE.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data />
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+    </Style>
+    <Style table="PIPE_LENGTH" schema="PODS" id="PODS_PIPE_LENGTH" comment="PODS.PIPE_LENGTH" descr="Трубный журнал" topology="2" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF99B898</color>
+        <width>4</width>
+        <pattern>
+          <join>round</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FF0000CC</color>
+        <width>7</width>
+        <pattern>
+          <join>round</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF009966</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+        <auto>1</auto>
+        <parallel>0</parallel>
+        <align>right|middle</align>
+        <rotation>0</rotation>
+        <fontFamily>Times New Roman</fontFamily>
+      </LabelStyle>
+    </Style>
+    <Style table="PIPE_SEGMENT" schema="PODS" id="PODS_PIPE_SEGMENT" comment="PIPE_SEGMENT" descr="Секции труб" topology="2" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFD2B4D4</color>
+        <width>4</width>
+        <pattern>
+          <join>round</join>
+          <caps>round</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>7</width>
+        <pattern>
+          <join>round</join>
+          <caps>round</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+        <parallel>0</parallel>
+        <align>right|top</align>
+        <fontFamily>Times New Roman</fontFamily>
+        <rotation>0</rotation>
+      </LabelStyle>
+    </Style>
+    <Style table="PIPE_SEGMENT" schema="PODS" id="PODS_PIPE_SEGMENT" comment="PIPE_SEGMENT" descr="Номинальный диаметр 1020 мм">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <value>1020</value>
+      <LineStyle>
+        <color>FFD2B4D4</color>
+        <width>2</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+      </LabelStyle>
+    </Style>
+    <Style table="PIPE_SEGMENT" schema="PODS" id="PODS_PIPE_SEGMENT" comment="PIPE_SEGMENT" descr="Номинальный диаметр 1120 мм">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <value>1120</value>
+      <LineStyle>
+        <color>FFD2B4D4</color>
+        <width>4</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>6</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+      </LabelStyle>
+    </Style>
+    <Style table="PIPE_SEGMENT" schema="PODS" id="PODS_PIPE_SEGMENT" comment="PIPE_SEGMENT" descr="Номинальный диаметр 1220 мм">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <value>1220</value>
+      <LineStyle>
+        <color>FFD2B4D4</color>
+        <width>6</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>8</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>14</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+      </LabelStyle>
+    </Style>
+    <Style table="PIPE_SEGMENT" schema="PODS" id="PODS_PIPE_SEGMENT" comment="PIPE_SEGMENT" descr="Номинальный диаметр 1420 мм">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <value>1420</value>
+      <LineStyle>
+        <color>FFD2B4D4</color>
+        <width>8</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>10</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+      </LabelStyle>
+    </Style>
+    <Style table="PIPE_SEGMENT" schema="PODS" id="PODS_PIPE_SEGMENT" comment="PIPE_SEGMENT" descr="Номинальный диаметр 1620 мм">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <value>1620</value>
+      <LineStyle>
+        <color>FFD2B4D4</color>
+        <width>10</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>12</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+      </LabelStyle>
+    </Style>
+    <Style table="METER_STATION" schema="PODS" id="PODS_METER_STATION" comment="PODS.METER_STATION" descr="Газоизмерительные станции">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/METER_STATION.png</href>
+          <form>bitmap</form>
+          <size>21</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+    </Style>
+    <Style table="RAILROAD" schema="PODS" id="PODS_RAILROAD" comment="PODS.RAILROAD" descr="Железные переходы" topology="2" short_name="">
+      <zoomMin>0</zoomMin>
+      <zoomMax>15000</zoomMax>
+      <LineStyle>
+        <color>FF2C7A3C</color>
+        <width>5</width>
+        <pattern>
+          <join>round</join>
+          <caps>round</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FFFFFFFF</color>
+        <width>7</width>
+        <pattern>
+          <join>round</join>
+          <caps>round</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <color>FF006633</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+        <auto>1</auto>
+        <parallel>0</parallel>
+        <align>right|middle</align>
+        <rotation>0</rotation>
+      </LabelStyle>
+      <MIStyle>
+        <data>Pen (1,1,0)</data>
+      </MIStyle>
+      <VRMLStyle>
+        <data process="vrml_railway_make.xml" viewpoint="0">appearance Appearance { material Material { diffuseColor 0 0.50 0.50 emissiveColor 0 0.50 0.50  transparency 0.000  } }</data>
+      </VRMLStyle>
+    </Style>
+    <Style table="RAILROAD" schema="PODS" id="PODS_RAILROAD" comment="PODS.RAILROAD" descr="Железные переходы" topology="1" short_name="">
+      <zoomMin>0</zoomMin>
+      <zoomMax>15000</zoomMax>
+      <IconStyle>
+        <Icon>
+          <form>circle</form>
+          <size>3</size>
+        </Icon>
+        <color>FF006600</color>
+        <outline>0</outline>
+        <rotation>0</rotation>
+      </IconStyle>
+      <LabelStyle>
+        <color>FF006600</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+        <auto>1</auto>
+        <parallel>0</parallel>
+        <align>center|middle</align>
+        <rotation>0</rotation>
+      </LabelStyle>
+    </Style>
+    <Style table="ROAD" schema="PODS" id="PODS_ROAD" comment="PODS.ROAD" descr="Автомобильные переходы" topology="2" short_name="">
+      <zoomMin>0</zoomMin>
+      <zoomMax>15000</zoomMax>
+      <LineStyle>
+        <color>FF7F1416</color>
+        <width>6</width>
+        <pattern />
+      </LineStyle>
+      <LabelStyle>
+        <color>FF993333</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+        <auto>1</auto>
+        <parallel>0</parallel>
+        <align>right|top</align>
+        <rotation>0</rotation>
+      </LabelStyle>
+    </Style>
+    <Style table="ROAD" schema="PODS" id="PODS_ROAD" comment="PODS.ROAD" descr="Автомобильные переходы" topology="1" short_name="">
+      <zoomMin>0</zoomMin>
+      <zoomMax>15000</zoomMax>
+      <IconStyle>
+        <Icon>
+          <form>circle</form>
+          <size>3</size>
+        </Icon>
+        <color>FF993333</color>
+        <outline>0</outline>
+        <rotation>0</rotation>
+      </IconStyle>
+      <LabelStyle>
+        <color>FF993333</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+        <auto>1</auto>
+        <parallel>0</parallel>
+        <align>center|middle</align>
+        <rotation>0</rotation>
+      </LabelStyle>
+    </Style>
+    <Style table="WATERWAY" schema="PODS" id="PODS_WATERWAY" comment="PODS.WATERWAY" descr="Водные переходы" topology="2" short_name="">
+      <zoomMin>0</zoomMin>
+      <zoomMax>15000</zoomMax>
+      <LineStyle>
+        <color>FF000099</color>
+        <width>5</width>
+        <pattern />
+      </LineStyle>
+      <LineStyle>
+        <color>FFFFFFFF</color>
+        <width>7</width>
+      </LineStyle>
+      <LabelStyle>
+        <color>FF000099</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+        <auto>1</auto>
+        <parallel>0</parallel>
+        <align>right|middle</align>
+        <rotation>0</rotation>
+      </LabelStyle>
+    </Style>
+    <Style id="PODS_WATERWAY" schema="PODS" table="WATERWAY" comment="PODS.WATERWAY" descr="Водные переходы точка по умолч" short_name="" topology="1">
+      <zoomMin>0</zoomMin>
+      <zoomMax>15000</zoomMax>
+      <IconStyle>
+        <Icon>
+          <form>circle</form>
+          <size>3</size>
+        </Icon>
+        <color>FF000099</color>
+        <outline>1</outline>
+        <rotation>0</rotation>
+      </IconStyle>
+      <LabelStyle>
+        <color>FF000099</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+        <auto>1</auto>
+        <parallel>0</parallel>
+        <align>center|middle</align>
+        <rotation>0</rotation>
+      </LabelStyle>
+    </Style>
+    <Style table="LEGACY_LINE_BOUNDARY" schema="PODS" id="PODS_LEGACY_LINE_BOUNDARY" comment="LEGACY_LINE_BOUNDARY" descr="Изменения наименований участков трубопроводов">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FFFF9A14</color>
+        <width>4</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>6</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+      </LabelStyle>
+    </Style>
+    <Style table="LAND_USE" schema="PODS" id="PODS_LAND_USE" comment="LAND_USE" descr="Типы землепользования вблизи трубопроводов">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF002EFF</color>
+        <width>12</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+      </LabelStyle>
+    </Style>
+    <Style table="ACTIVITY_ZONE" schema="PODS" id="PODS_ACTIVITY_ZONE" comment="ACTIVITY_ZONE" descr="Зоны активной деятельности вблизи трубопроводов">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FFD22ED4</color>
+        <width>12</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+      </LabelStyle>
+    </Style>
+    <Style table="SRV_DISTRICT_BOUNDARY" schema="PODS" id="PODS_SRV_DISTRICT_BOUNDARY" comment="SRV_DISTRICT_BOUNDARY" descr="Зоны ответственности линейных управлений">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FFFFFFFF</color>
+        <width>6</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+      </LabelStyle>
+    </Style>
+    <Style table="DEPTH_OF_COVER" schema="PODS" id="PODS_DEPTH_OF_COVER" comment="PODS.DEPTH_OF_COVER" descr="Глубина заложения = 0 м">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <value>0</value>
+      <LineStyle>
+        <color>FFFFFF4F</color>
+        <width>10</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+      </LabelStyle>
+    </Style>
+    <Style table="DEPTH_OF_COVER" schema="PODS" id="PODS_DEPTH_OF_COVER" comment="PODS.DEPTH_OF_COVER" descr="Глубина заложения  от -1 до -6 м">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <value>-1</value>
+      <LineStyle>
+        <color>FF75923C</color>
+        <width>10</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+      </LabelStyle>
+    </Style>
+    <Style table="DEPTH_OF_COVER" schema="PODS" id="PODS_DEPTH_OF_COVER" comment="PODS.DEPTH_OF_COVER" descr="Глубина заложения менее -6 м">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <value>-6</value>
+      <LineStyle>
+        <color>FF770B62</color>
+        <width>10</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+      </LabelStyle>
+    </Style>
+    <Style table="DEPTH_OF_COVER" schema="PODS" id="PODS_DEPTH_OF_COVER" comment="PODS.DEPTH_OF_COVER" descr="Глубины заложения участков трубопроводов">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FFC00000</color>
+        <width>10</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+      </LabelStyle>
+    </Style>
+    <Style table="DEPTH_OF_COVER" schema="PODS" id="PODS_DEPTH_OF_COVER" comment="PODS.DEPTH_OF_COVER" descr="Глубина заложения &gt; 0 м">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <value>1</value>
+      <LineStyle>
+        <color>FFC00000</color>
+        <width>10</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+      </LabelStyle>
+    </Style>
+    <Style table="STRUCTURE_CP_BLOCK" schema="PODS" id="PODS_STRUCTURE_CP_BLOCK" comment="PODS.STRUCTURE" descr="Блок-боксы" topology="3" short_name="">
+      <zoomMin>25</zoomMin>
+      <zoomMax>11</zoomMax>
+      <LineStyle>
+        <color>FF666666</color>
+        <width>1</width>
+        <pattern>
+          <join>round</join>
+          <caps>round</caps>
+        </pattern>
+      </LineStyle>
+      <PolyStyle>
+        <color>FF666666</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+      <MIStyle>
+        <data>Pen (1,2,0) Brush(2,16777215,16777215)</data>
+      </MIStyle>
+    </Style>
+    <Style table="STRUCTURE_CP_BLOCK" schema="PODS" id="PODS_STRUCTURE_CP_BLOCK" comment="PODS.STRUCTURE" descr="Блок-боксы" topology="1" short_name="">
+     <zoomMin>25</zoomMin>
+     <zoomMax>11</zoomMax>
+     <MIStyle>
+       <data />
+     </MIStyle>
+     <IMGStyle>
+       <data type0="" type1="" type2="" />
+     </IMGStyle>
+     <VRMLStyle>
+       <data process="" viewpoint="" />
+     </VRMLStyle>
+     <IconStyle>
+       <Icon>
+         <href>Public/assets/buttons_box.png</href>
+         <form>bitmap</form>
+         <size>16</size>
+       </Icon>
+       <color>FF000000</color>
+     </IconStyle>
+   </Style>
+    <Style table="STRUCTURE_CP_TRANS" schema="PODS" id="PODS_STRUCTURE_CP_TRANS" comment="PODS.STRUCTURE" descr="Комплексные трансформаторные станции" topology="3" short_name="">
+      <zoomMin>25</zoomMin>
+      <zoomMax>11</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>3</width>
+        <pattern>
+          <join>round</join>
+          <caps>round</caps>
+        </pattern>
+      </LineStyle>
+      <PolyStyle>
+        <color>7F666666</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="SHEET_NOTE" schema="PODS" id="PODS_SHEET_NOTE_LINK" comment="PODS.SHEET_NOTE" descr="Вышки РРС">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/RRS.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (95,0,14,"UZprom_obiekt",0,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+    </Style>
+    <Style id="PODS_FOREIGN_LINE_CROSSING_LINK" schema="PODS" table="FOREIGN_LINE_CROSSING" comment="PODS.FOREIGN_LINE_CROSSING" descr="Кабельные линии связи" short_name="" topology="2">
+      <zoomMin>25</zoomMin>
+      <zoomMax>13</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+        <pattern>
+          <dasharray>4 4</dasharray>
+          <join>round</join>
+          <caps>round</caps>
+        </pattern>
+      </LineStyle>
+    </Style>
+    <Style table="SHEET_NOTE" schema="PODS" id="PODS_SHEET_NOTE_FUND" comment="PODS.SHEET_NOTE" descr="Опоры ЛЭП" topology="1" short_name="">
+      <zoomMin>25</zoomMin>
+      <zoomMax>16</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/SHEET_NOTE.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+        <rotation>0</rotation>
+      </IconStyle>
+      <LabelStyle>
+        <color>FFCC0066</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <duplicate>0</duplicate>
+        <overlap>1</overlap>
+        <auto>1</auto>
+        <parallel>0</parallel>
+        <align>right|middle</align>
+        <rotation>0</rotation>
+        <zoomMin>25</zoomMin>
+        <zoomMax>1</zoomMax>
+      </LabelStyle>
+      <MIStyle>
+        <data>Symbol (202,16711680,8,"NEVA Cartographic",0,0)</data>
+      </MIStyle>
+      <VRMLStyle>
+        <data process="vrml_pikets_make.xml" viewpoint="0">Transform {	 translation 0 5 0  children  [
+
+
+
+          Shape { appearance Appearance { material Material { diffuseColor 0.69 .69 .69 emissiveColor 0.44 0.44 0.44  transparency 0.0 }}
+
+          geometry Cylinder { height 10 radius   .07 }}]}</data>
+      </VRMLStyle>
+    </Style>
+    <Style table="STRUCTURE" schema="PODS" id="PODS_STRUCTURE" comment="PODS.STRUCTURE" descr="Сооружения линейной части (площадки)">
+      <zoomMin>0</zoomMin>
+      <zoomMax>51800</zoomMax>
+      <MIStyle>
+        <data />
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7FFFFFFF</color>
+        <fill>0</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="STRUCTURE" schema="PODS" id="PODS_STRUCTURE" comment="PODS.STRUCTURE" descr="Ограда крановой площадки, установки катодной защиты">
+      <zoomMin>0</zoomMin>
+      <zoomMax>51800</zoomMax>
+      <value>STRUCT_TYPE_06</value>
+      <MIStyle>
+        <data>Pen (1,5,0) Brush(1,0,16777215)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="0x001d" type1="0x001d" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_fencing_make.xml" viewpoint="">
+          appearance Appearance { material Material { diffuseColor 0.88 0.88 0.88 emissiveColor  0.88 0.88 0.88 transparency 0.0  } }
+        </data>
+      </VRMLStyle>
+      <LineStyle>
+        <color>FFF59A9A</color>
+        <width>2</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FFFFFFFF</color>
+        <width>5</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>00FF9393</color>
+        <fill>0</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="STRUCTURE" schema="PODS" id="PODS_STRUCTURE" comment="PODS.STRUCTURE" descr="Ферма линейная">
+      <zoomMin>0</zoomMin>
+      <zoomMax>51800</zoomMax>
+      <value>STRUCT_TYPE_07</value>
+      <MIStyle>
+        <data>Pen (1,5,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7FFFFFFF</color>
+        <fill>0</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="STRUCTURE" schema="PODS" id="PODS_STRUCTURE" comment="PODS.STRUCTURE" descr="Оттяжка">
+      <zoomMin>0</zoomMin>
+      <zoomMax>51800</zoomMax>
+      <value>STRUCT_TYPE_08</value>
+      <MIStyle>
+        <data>Pen (1,5,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7FFFFFFF</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="STRUCTURE" schema="PODS" id="PODS_STRUCTURE" comment="PODS.STRUCTURE" descr="Тип неизвестен">
+      <zoomMin>0</zoomMin>
+      <zoomMax>51800</zoomMax>
+      <value>STRUCT_TYPE_09</value>
+      <MIStyle>
+        <data />
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+      <LineStyle>
+        <color>FFFF9393</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7FFF9393</color>
+        <fill>0</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="STRUCTURE" schema="PODS" id="PODS_STRUCTURE" comment="PODS.STRUCTURE" descr="Тип неизвестен">
+      <zoomMin>0</zoomMin>
+      <zoomMax>51800</zoomMax>
+      <value>STRUCT_TYPE_10</value>
+      <MIStyle>
+        <data />
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+      <LineStyle>
+        <color>FFFF9393</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7FFF9393</color>
+        <fill>0</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="STRUCTURE" schema="PODS" id="PODS_STRUCTURE" comment="PODS.STRUCTURE" descr="Дом оператора">
+      <zoomMin>0</zoomMin>
+      <zoomMax>51800</zoomMax>
+      <value>STRUCT_TYPE_11</value>
+      <MIStyle>
+        <data>Pen (1,1,0) Brush(1,0,16777215)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_area_make.xml" viewpoint="0">appearance Appearance {  material Material { diffuseColor 0.69 .69 .69 } }</data>
+      </VRMLStyle>
+      <LineStyle>
+        <color>FFFFFFFF</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FFFFFFFF</color>
+        <fill>0</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="STRUCTURE" schema="PODS" id="PODS_STRUCTURE" comment="PODS.STRUCTURE" descr="Аварийный запас труб">
+      <zoomMin>0</zoomMin>
+      <zoomMax>51800</zoomMax>
+      <value>STRUCT_TYPE_12</value>
+      <MIStyle>
+        <data>Pen (1,2,12632256) Brush(5,12632256,16777215)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_area_make.xml" viewpoint="0">appearance Appearance { material Material { diffuseColor 0.69 .69 .69  transparency 0.000  } }</data>
+      </VRMLStyle>
+      <LineStyle>
+        <color>FFA0A0A0</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FFFFFFFF</color>
+        <fill>0</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="STRUCTURE" schema="PODS" id="PODS_STRUCTURE" comment="PODS.STRUCTURE" descr="Вертолетная площадка">
+      <zoomMin>0</zoomMin>
+      <zoomMax>51800</zoomMax>
+      <value>STRUCT_TYPE_13</value>
+      <MIStyle>
+        <data>Pen (1,2,16711935) Brush(1,0,16777215)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_area_make.xml" viewpoint="0">appearance Appearance { material Material { diffuseColor 0.44 .44 .44  transparency 0 } }</data>
+      </VRMLStyle>
+      <LineStyle>
+        <color>FFFF00FF</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FFFFFFFF</color>
+        <fill>0</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="STRUCTURE" schema="PODS" id="PODS_STRUCTURE" comment="PODS.STRUCTURE" descr="Строения">
+      <zoomMin>0</zoomMin>
+      <zoomMax>51800</zoomMax>
+      <value>STRUCT_TYPE_14</value>
+      <MIStyle>
+        <data>Pen (1,2,0) Brush(5,16756832,16777215)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_building_make.xml" viewpoint="0">appearance Appearance { material Material { diffuseColor 0.69 0.69 0.41 emissiveColor 0.69 0.69 0.41     transparency 0 } }</data>
+      </VRMLStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7FFFC882</color>
+        <fill>0</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="STRUCTURE" schema="PODS" id="PODS_STRUCTURE" comment="PODS.STRUCTURE" descr="Ферма">
+      <zoomMin>0</zoomMin>
+      <zoomMax>51800</zoomMax>
+      <value>STRUCT_TYPE_15</value>
+      <MIStyle>
+        <data>Pen (1,5,0) Brush(1,0,16777215)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FFFFFFFF</color>
+        <fill>0</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="PROFILE" schema="PODS" id="PODS_PROFILE" comment="PODS.PROFILE" descr="Участки труб относительно уровня моря">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FFC00000</color>
+        <width>10</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="PODS_FOREIGN_LINE_CROSSING" schema="PODS" table="FOREIGN_LINE_CROSSING" comment="PODS.FOREIGN_LINE_CROSSING" descr="Пересечения со сторонними трубопроводами, кабелями" short_name="" topology="1">
+      <zoomMin>0</zoomMin>
+      <zoomMax>15000</zoomMax>
+      <IconStyle>
+        <Icon>
+          <form>circle</form>
+          <size>3</size>
+        </Icon>
+        <color>FFFFCC33</color>
+        <outline>1</outline>
+        <rotation>0</rotation>
+      </IconStyle>
+      <LabelStyle>
+        <color>FFFFCC00</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+        <auto>1</auto>
+        <parallel>0</parallel>
+        <align>center|middle</align>
+        <rotation>0</rotation>
+      </LabelStyle>
+    </Style>
+    <Style id="PODS_FOREIGN_LINE_CROSSING" schema="PODS" table="FOREIGN_LINE_CROSSING" comment="PODS.FOREIGN_LINE_CROSSING" descr="Пересечения со сторонними трубопроводами, кабелями" short_name="" topology="2">
+      <zoomMin>0</zoomMin>
+      <zoomMax>15000</zoomMax>
+      <LineStyle>
+        <color>FFF5E407</color>
+        <width>6</width>
+      </LineStyle>
+    </Style>
+    <Style table="METER" schema="PODS" id="PODS_METER" comment="PODS.METER" descr="Измерительные приборы и датчики">
+      <zoomMin>0</zoomMin>
+      <zoomMax>1500</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/METER.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (75,0,12,"UZ_reggaz",0,0.)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+    </Style>
+    <Style table="ROAD" schema="PODS" id="PODS_ROAD_ENTITY" comment="PODS.ROAD" descr="Вдольтрассовые проезды" topology="3" short_name="">
+      <zoomMin>25</zoomMin>
+      <zoomMax>12</zoomMax>
+      <LineStyle>
+        <color>66CC6600</color>
+        <width>1</width>
+        <pattern>
+          <join>round</join>
+          <caps>round</caps>
+        </pattern>
+      </LineStyle>
+      <PolyStyle>
+        <color>FFCC6600</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="ROAD" schema="PODS" id="PODS_ROAD_ENTITY" comment="PODS.ROAD" descr="Вдольтрассовые проезды" topology="2" short_name="">
+      <zoomMin>25</zoomMin>
+      <zoomMax>12</zoomMax>
+      <LineStyle>
+        <color>FFCC6600</color>
+        <width>2</width>
+        <pattern>
+          <join>round</join>
+          <caps>round</caps>
+        </pattern>
+      </LineStyle>
+    </Style>
+    <Style table="ROAD" schema="PODS" id="PODS_ROAD_ENTITY" comment="PODS.ROAD" descr="Вдольтрассовые проезды">
+      <zoomMin>0</zoomMin>
+      <zoomMax>25000</zoomMax>
+      <IconStyle>
+        <Icon>
+          <form>circle</form>
+          <size>10</size>
+        </Icon>
+        <color>FF4E3416</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>
+    <Style table="WATERWAY" schema="PODS" id="PODS_WATERWAY_ENTITY" comment="PODS.WATERWAY" descr="Реки, ручьи">
+      <zoomMin>0</zoomMin>
+      <zoomMax>25000</zoomMax>
+      <MIStyle>
+        <data />
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+      <LineStyle>
+        <color>66935D8D</color>
+        <width>1</width>
+      </LineStyle>
+      <LineStyle>
+        <color>66FFFFFF</color>
+        <width>3</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>00000000</color>
+        <fill>0</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="WATERWAY" schema="PODS" id="PODS_WATERWAY_ENTITY" comment="PODS.WATERWAY" descr="Реки, ручьи">
+      <zoomMin>0</zoomMin>
+      <zoomMax>25000</zoomMax>
+      <LineStyle>
+        <color>FF4E3416</color>
+        <width>3</width>
+      </LineStyle>
+    </Style>
+    <Style table="WATERWAY" schema="PODS" id="PODS_WATERWAY_ENTITY" comment="PODS.WATERWAY" descr="Реки, ручьи">
+      <zoomMin>0</zoomMin>
+      <zoomMax>25000</zoomMax>
+      <IconStyle>
+        <Icon>
+          <form>circle</form>
+          <size>10</size>
+        </Icon>
+        <color>FF4E3416</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>
+  </Document>
+</kml>

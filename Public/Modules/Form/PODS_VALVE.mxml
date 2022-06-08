@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns="view.data.*" xmlns:data="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns:mx="http://www.adobe.com/2006/mxml"
+                title="Запорно-регулирующая арматура"
+                width="760"
+                ext_data_id="PODS_EXPORT.xml#PODS_VALVE"
+                excelTemplate="PODS_VALVE">
+  <dataProvider>PODS_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:HBox percentWidth="100">
+      <mx:VBox percentWidth="50">
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Описание" width="140"/>
+            <mx:TextInput id="DESCRIPTION" width="225" maxChars="50" height="40"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Наименование" width="140"/>
+            <mx:TextInput id="NAME" width="225" maxChars="50" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Тип арматуры" width="140"/>
+            <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+               <mx:ComboBox id="TYPE_CL" width="200" height="20"
+                            dataProvider="PODS_SEM_DICT.xml#PODS_VALVE_TYPE_GCL"/>
+               <mx:Button id="BTN_LIST_TYPE_CL" selectedField="PODS_VALVE_TYPE_GCL" enabled="false"
+                          styleName="refList"
+                          toolTip="Перейти к редактированию справочника"
+                          width="16"
+                          height="16"/>
+            </mx:HBox>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Функция изделия" width="140"/>
+            <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+               <mx:ComboBox id="FUNCTION_CL" width="200" height="20"
+                            dataProvider="PODS_SEM_DICT.xml#PODS_VALVE_FUNCTION_CL"/>
+               <mx:Button id="BTN_LIST_FUNCTION_CL" selectedField="PODS_VALVE_FUNCTION_CL"
+                          enabled="false"
+                          styleName="refList"
+                          toolTip="Перейти к редактированию справочника"
+                          width="16"
+                          height="16"/>
+            </mx:HBox>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Материал" width="140"/>
+            <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+               <mx:ComboBox id="MATERIAL_CL" width="200" height="20"
+                            dataProvider="PODS_SEM_DICT.xml#PODS_VALVE_MATERIAL_CL"/>
+               <mx:Button id="BTN_LIST_MATERIAL_CL" selectedField="PODS_VALVE_MATERIAL_CL"
+                          enabled="false"
+                          styleName="refList"
+                          toolTip="Перейти к редактированию справочника"
+                          width="16"
+                          height="16"/>
+            </mx:HBox>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Компания-изготовитель" width="140"/>
+            <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+               <mx:ComboBox id="MANUFACTURER_CL" width="200" height="20"
+                            dataProvider="PODS_SEM_DICT.xml#PODS_VALVE_MANUFACTURER_CL"/>
+               <mx:Button id="BTN_LIST_MANUFACTURER_CL" selectedField="PODS_VALVE_MANUFACTURER_CL"
+                          enabled="false"
+                          styleName="refList"
+                          toolTip="Перейти к редактированию справочника"
+                          width="16"
+                          height="16"/>
+            </mx:HBox>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Технические требования" width="140"/>
+            <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+               <mx:ComboBox id="SPECIFICATION_CL" width="200" height="20"
+                            dataProvider="PODS_SEM_DICT.xml#PODS_VALVE_SPECIFICATION_CL"/>
+               <mx:Button id="BTN_LIST_SPECIFICATION_CL" selectedField="PODS_VALVE_SPECIFICATION_CL"
+                          enabled="false"
+                          styleName="refList"
+                          toolTip="Перейти к редактированию справочника"
+                          width="16"
+                          height="16"/>
+            </mx:HBox>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Тип присоединения изделия к трубопроводу" width="140"/>
+            <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+               <mx:ComboBox id="JOINT_TYPE_CL" width="200" height="20"
+                            dataProvider="PODS_SEM_DICT.xml#PODS_VALVE_JOINT_TYPE_CL"/>
+               <mx:Button id="BTN_LIST_JOINT_TYPE_CL" selectedField="PODS_VALVE_JOINT_TYPE_CL"
+                          enabled="false"
+                          styleName="refList"
+                          toolTip="Перейти к редактированию справочника"
+                          width="16"
+                          height="16"/>
+            </mx:HBox>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Номинальный диаметр на входе/выходе, мм" width="140"/>
+            <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+               <mx:ComboBox id="NOMINAL_DIAMETER_INLET_GCL" width="75" height="20"
+                            dataProvider="PODS_SEM_DICT.xml#PODS_NOMINAL_DIAMETER_GCL"/>
+               <mx:Button id="BTN_LIST_NOMINAL_DIAMETER_INLET_GCL"
+                          selectedField="PODS_NOMINAL_DIAMETER_GCL"
+                          enabled="false"
+                          styleName="refList"
+                          toolTip="Перейти к редактированию справочника"
+                          width="16"
+                          height="16"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+               <mx:ComboBox id="NOMINAL_DIAMETER_OUTLET_GCL" width="75" height="20"
+                            dataProvider="PODS_SEM_DICT.xml#PODS_NOMINAL_DIAMETER_GCL"/>
+               <mx:Button id="BTN_LIST_NOMINAL_DIAMETER_OUTLET_GCL"
+                          selectedField="PODS_NOMINAL_DIAMETER_GCL"
+                          enabled="false"
+                          styleName="refList"
+                          toolTip="Перейти к редактированию справочника"
+                          width="16"
+                          height="16"/>
+            </mx:HBox>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Номер модели" width="140"/>
+            <mx:TextInput id="MODEL" width="160" maxChars="32" height="20"/>
+         </mx:HBox>
+      </mx:VBox>
+      <mx:VBox percentWidth="50">
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Заводской номер" width="140"/>
+            <mx:TextInput id="SERIAL_NUMBER" width="160" maxChars="32" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Идентификатор на схеме" width="140"/>
+            <mx:TextInput id="VALVE_IDENTIFIER" width="80" maxChars="16" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Рабочее/ заводское испытательное давление, КПа"
+                     width="140"/>
+            <controls:NumberInput id="NOMINAL_PRESSURE_RATING" width="40" maxChars="22" height="20"/>
+            <controls:NumberInput id="MILL_TEST_PRESSURE" width="40" maxChars="22" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Рабочее давление на входе/ выходе, КПа" width="140"/>
+            <controls:NumberInput id="NOMINAL_PRESSURE_RATING_INLET" width="40" maxChars="22" height="20"/>
+            <controls:NumberInput id="NOMINAL_PRESSURE_RATING_OUTLET" width="40" maxChars="22" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Дата изготовления/ установки-монтажа" width="140"/>
+            <mx:DateField id="DATE_MANUFACTURED" width="96" height="20" formatString="DD.MM.YYYY"/>
+            <mx:DateField id="DATE_INSTALLED" width="96" height="20" formatString="DD.MM.YYYY"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Комментарии" width="140"/>
+            <mx:TextInput id="COMMENTS" width="225" maxChars="255" height="40"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+            <mx:Text textAlign="right" text="Источник информации" width="140"/>
+            <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+               <mx:ComboBox id="SOURCE_GCL" enabled="false" editable="false" width="200" height="20"
+                            dataProvider="PODS_SEM_DICT.xml#PODS_SOURCE_GCL"/>
+               <mx:Button id="BTN_LIST_SOURCE_GCL" selectedField="PODS_SOURCE_GCL" enabled="false"
+                          styleName="refList"
+                          toolTip="Перейти к редактированию справочника"
+                          width="16"
+                          height="16"/>
+            </mx:HBox>
+         </mx:HBox>
+         <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+            <mx:Text textAlign="right" text="Идентификатор объекта" width="140"/>
+            <controls:NumberInput id="EVENT_ID" editable="false" width="85" maxChars="22" height="20"/>
+         </mx:HBox>
+      </mx:VBox>
+  </mx:HBox>
+  <validatorsArray>
+      <controls:DefaultStringValidator source="{VALVE_IDENTIFIER}" property="text" enabled="false" minLength="1"
+                                       requiredFieldError="Поле 'Идентификатор на схеме' обязательно для заполнения."
+                                       tooShortError="Поле 'Идентификатор на схеме' обязательно для заполнения."/>
+      <controls:DefaultNumberValidator source="{MILL_TEST_PRESSURE}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="0"
+                                       precisionError="Значение в поле должно иметь не более 0 цифр после запятой"
+                                       maxValue="99999"
+                                       exceedsMaxError="Значение в поле может иметь 5 цифр до запятой и 0 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+      <controls:DefaultNumberValidator source="{NOMINAL_PRESSURE_RATING}" property="text" enabled="false"
+                                       required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="0"
+                                       precisionError="Значение в поле должно иметь не более 0 цифр после запятой"
+                                       maxValue="99999"
+                                       exceedsMaxError="Значение в поле может иметь 5 цифр до запятой и 0 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+      <controls:DefaultNumberValidator source="{NOMINAL_PRESSURE_RATING_INLET}" property="text" enabled="false"
+                                       required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="0"
+                                       precisionError="Значение в поле должно иметь не более 0 цифр после запятой"
+                                       maxValue="99999"
+                                       exceedsMaxError="Значение в поле может иметь 5 цифр до запятой и 0 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+      <controls:DefaultNumberValidator source="{NOMINAL_PRESSURE_RATING_OUTLET}" property="text" enabled="false"
+                                       required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="0"
+                                       precisionError="Значение в поле должно иметь не более 0 цифр после запятой"
+                                       maxValue="99999"
+                                       exceedsMaxError="Значение в поле может иметь 5 цифр до запятой и 0 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+  </validatorsArray>
+</DATA_EDIT_FORM>

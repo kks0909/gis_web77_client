@@ -1,0 +1,784 @@
+﻿/* 6.0.0.0 */
+
+.flatColorRoundedRectangleSkin {
+	
+    fontFamily: Arial;
+    fontSize: 12;
+    color: #FFFFFF;
+    textAlign:left;
+    width:150;
+    height:30;
+    
+    upSkin:ClassReference('org.view.components.skins.FlatColorRoundedRectangleSkin');
+	downSkin:ClassReference('org.view.components.skins.FlatColorRoundedRectangleSkin');
+	overSkin:ClassReference('org.view.components.skins.FlatColorRoundedRectangleSkin');
+	disabledSkin:ClassReference('org.view.components.skins.FlatColorRoundedRectangleSkin');
+}
+/* стиль списка базовых слоев карты */
+List.baseLayers
+{
+	color: #FFFFFF;
+	fontFamily: Arial;
+	fontSize: 10;
+	borderColor: #005E9A;
+	backgroundColor: #005E9A;
+	selectionColor: #FFA311;
+	rollOverColor: #FFA311;
+	textRollOverColor: #FFFFFF;
+	textSelectedColor: #005E9A;
+	themeColor: #005E9A;
+}
+/* стиль подсветки фильтра при ошибке валидации*/
+FilterPopUp
+{
+	textAlign: left;
+}
+FilterPopUp.warning
+{
+	color: #FFFFFF;
+	fillColors: #FF0000, #FF0000, #FF0000, #FF0000;
+}
+/* ячейки таблицы */
+GridItemRenderer
+{
+	color: #005E9A;
+}
+/* столбец с номером текущей строки таблицы */
+FirstGridItemRenderer
+{
+	color: #005E9A;
+}
+CheckBoxRenderer
+{
+	color: #000000;
+}
+Tree
+{
+	color: #005E9A;
+	indentation: 20;
+	textRollOverColor: #FFA311;
+	textSelectedColor: #FFA311;
+	selectionColor: #005E9A;
+	rollOverColor: #4C93C2;
+/* изза проблемы itemHightlight, rollover, rollout*/
+	paddingLeft: 2;
+	paddingRight: 2;
+	paddingTop: 2;
+	paddingBottom: 2;
+}
+Panel
+{
+	color: #005E9A;
+	borderColor: #005E9A;
+	backgroundColor: #4C93C2;
+}
+Panel.light
+{
+	backgroundColor: #4C93C2;
+}
+DividedBox
+{
+	backgroundColor: #4C93C2;
+}
+VDividedBox
+{
+	
+}
+HDividedBox
+{
+}
+List
+{
+	color: #000000;
+}
+List.listExportForm
+{
+	color: #005E9A;
+	alternatingItemColors: #FFFFFF, #EEEEEE;
+	
+}
+List.listPkaForm
+{
+	color: #005E9A;
+	alternatingItemColors: #FFFFFF, #EEEEEE;
+}
+DataGrid.dgInfoForm
+{
+	color: #005E9A;
+	textSelectedColor: #005E9A;
+	textRollOverColor: #005E9A;
+}
+Grid
+{
+	fontFamily: Arial;
+	fontSize: 9;
+	color: #005E9A;
+	textSelectedColor: #FFA311;
+}
+
+AdvancedDataGrid
+{
+	fontFamily: Arial;
+	fontSize: 9;
+	color: #005E9A;
+	textSelectedColor: #FFA311;
+}
+AdvancedDataGrid.propertiesForm
+{
+	color: #005E9A;
+	textSelectedColor: #005E9A;
+	textRollOverColor: #005E9A;
+}
+AdvancedDataGrid.filledDataGrid
+{
+	color: #005E9A;
+	textSelectedColor: #005E9A;
+	textRollOverColor: #005E9A;
+}
+AdvancedDataGrid.emptyDataGrid
+{
+	alternatingItemColors: #4C93C2;
+}
+TabNavigator
+{
+	fillColors: #005E9A, #005E9A, #FFA411, #FFA411;
+	color: #FFFFFF;
+	backgroundColor: #005E9A;
+        tabHeight: 18;
+	borderColor: #005E9A;
+	cornerRadius: 0;
+	themeColor: #FFA411;
+}
+TabNavigator.tabWork
+{
+	backgroundColor: #005E9A;
+	color: #005E9A;
+	textRollOverColor: #FFA311;
+}
+TabNavigator.tabWorkSelected
+{
+	backgroundColor: #005E9A;
+	color: #FFFFFF;
+	textRollOverColor: #FFFFFF;
+}
+TitleWindow
+{
+	backgroundColor: #4C93C2;
+	borderColor: #005E9A;
+}
+TitleWindow.aboutSystem
+{
+	backgroundColor: #005E9A;
+	borderColor: #4C93C2;
+	cornerRadius: 0;
+}
+TitledBorderBox
+{
+    color: #FFFFFF;
+    borderColor: #FFFFFF;
+}
+Alert
+{
+	color: #005E9A;
+	borderColor: #005E9A;
+	backgroundColor: #4C93C2;
+	borderAlpha: 1;
+	backgroundAlpha: 1;
+}
+Alert:UITextField
+{
+	color: #FFFFFF;
+}
+Text
+{
+	/*color: #005E9A;*/
+	color: #FFFFFF;
+}
+DateRenderer
+{
+	color: #005E9A;
+}
+
+Canvas
+{
+	backgroundDisabledColor: #4C93C2;
+}
+
+TextArea
+{
+	color: #FFFFFF;
+	backgroundColor: #4C93C2;
+}
+TextArea.addPointTrackInfo
+{
+	color: #005E9A;
+	backgroundColor: #FFFFFF;
+}
+DataGrid.TextArea.addPointTrackInfo
+{
+	color: #005E9A;
+	backgroundColor: #FFFFFF;
+}
+TextArea.fileEdit
+{
+	color: #000000;
+	backgroundColor: #FFFFFF;
+}
+TextArea.aboutSystem
+{
+	backgroundAlpha: 0.0;
+	backgroundColor: #4C93C2;
+	borderStyle: none;
+	fontSize: 12;
+	color: #FFFFFF;
+}
+Box.boxScaleBar
+{
+	backgroundColor: Yellow;
+	borderColor: Black;
+	borderStyle: solid;
+}
+VBox.mapScale
+{
+	backgroundColor: #4C93C2;
+}
+LinkButton.mailButton
+{
+	textRollOverColor: #FFA311;
+	color: #FFA311;
+	textSelectedColor: #FFA311;
+	fontSize: 11;
+}
+Button
+{
+	borderColor: #005E9A;
+	fillColors: #FFFFFF, #FFFFFF, #FFA311, #FFA311;
+	color: #005E9A;
+	textRollOverColor: #005E9A;
+	textSelectedColor: #005E9A;
+	themeColor: #FFA311;
+}
+TextInput
+{
+	borderColor: #4C93C2;
+	color: #005E9A;
+	errorColor: #FF0000;
+}
+TextArea
+{
+	borderColor: #4C93C2;
+	color: #005E9A;
+	errorColor: #FF0000;
+}
+MenuBar
+{
+	textAlign: left;
+}
+MenuBar.mainMenu
+{
+}
+/* элемент верхнего меню*/
+MenuBarItem
+{
+	themeColor: #FFA311;
+}
+FormItemLabel
+{
+	color: #FFFFFF;
+}
+PopUpMenuButton.menuButton
+{
+	borderColor: #4C93C2;
+	textRollOverColor: #FFA311;
+}
+HBox.mainMenuBox
+{
+}
+HBox.userMenu
+{
+}
+/*Объединение combobox и кнопки*/
+HBox.comboBoxUnit
+{
+	horizontalGap: 0;
+	verticalAlign: middle;
+}
+Button.refList
+{
+}
+Button.objectRefButton
+{
+	color: #005E9A;
+	textRollOverColor: #005E9A;
+	textSelectedColor: #005E9A;
+	borderColor: #4C93C2;
+	themeColor: #FFA311;
+	textAlign: left;
+	fillColors: #FFFFFF, #FFFFFF, #FFA311, #FFA311;
+	paddingLeft: 5;
+	cornerRadius: 4;
+}
+HBox.infoLabelRenderer
+{
+	backgroundColor: #FFA411;
+	borderStyle: solid;
+	borderColor: Black;
+}
+/* Кнопки в меню */
+Button.menuButton
+{
+	color: #FFFFFF;
+	textRollOverColor: #FFA311;
+	textSelectedColor: #FFA311;
+	borderColor: #005E9A;
+	themeColor: #005E9A;
+	fillColors: #005E9A, #005E9A;
+}
+Button.userMenuButton
+{
+	color: #005E9A;
+	textRollOverColor: #005E9A;
+	textSelectedColor: #005E9A;
+	borderColor: #4C93C2;
+	themeColor: #FFA311;
+	fillColors: #FFFFFF, #FFFFFF, #FFA311, #FFA311;
+}
+Canvas.menuPanel
+{
+	backgroundColor: #4C93C2;
+}
+Canvas.darkCanvas
+{
+	backgroundColor: #005E9A;
+}
+Canvas.propPanelCanvas
+{
+	backgroundColor: #4C93C2;
+}
+/* используется в NextVersion - для фона текста*/
+Canvas.textCanvas
+{
+	backgroundColor: #FFA311;
+	borderColor: #FFA311;
+}
+/* Кнопки с иконками на карте */
+Button.mapIcon
+{
+	fillColors: #4C93C2, #4C93C2, #FFA311, #FFA311;
+}
+Button.mapSelectedIcon
+{
+    borderColor: #FFA311;
+	fillColors: #4C93C2, #4C93C2, #FFA311, #FFA311;
+}
+/* Кнопки переключения режимов */
+Button.mapButton
+{
+	fillColors: #005E9A, #005E9A, #FFA411, #FFA411;
+	themeColor: #FFA411;
+	color: #FFFFFF;
+	textRollOverColor: #FFFFFF;
+}
+.menuVerticalScrollBar
+{
+}
+.panelTitle
+{
+	color: #FFFFFF;
+}
+.titleWindowTitle
+{
+	color: #FFFFFF;
+}
+.leftHeader
+{
+}
+CheckBox
+{
+	color: #FFFFFF;
+	textRollOverColor: #FFA411;
+}
+/* Для ComboBox, показывающего изменение первоначального значения */
+CheckBox.checkBoxChanged
+{
+	color: #FFFFFF;
+	iconColor: #FFFFFF;
+	textAlign: center;
+	borderColor: #000000;
+	fillColors: #005E9A, #005E9A, #FFA411, #FFA411;
+	textRollOverColor: #FFA411;
+}
+CheckBox.checkBoxNotChanged
+{
+	color: #FFFFFF;
+	textRollOverColor: #FFA411;
+	textAlign: center;
+}
+RadioButton
+{
+	color: #FFFFFF;
+	textRollOverColor: #FFA411;
+}	
+DateChooser
+{
+    color: #005E9A;
+}
+/* PKA */
+/* легенда при печати */
+LineChart
+{
+	fill: #FFFFFF;
+}
+Legend
+{
+	backgroundColor: #FFFFFF;
+}
+Legend.print
+{
+}
+/* легенда с checkBox-ами */
+Legend.onlineCheckboxLegend
+{
+}
+/* отображаемая легенда */
+Legend.onlineLegend
+{
+	fontFamily: "Arial";
+	markerWidth: 16;
+}
+/* дерево легенды */
+Tree.onlineLegend
+{
+	backgroundColor: #FFFFFF;
+}
+/* панель, в которой группируются все легенды при печати */
+VBox.printColumn
+{
+}
+/* панель, группирующая легенду и название при печати*/
+VBox.printTitledLegend
+{
+}
+/* панель, в которой отображаются все диаграммы */
+VDividedBox.diagrams 
+{
+	backgroundColor: #FFFFFF;
+}
+/* панель аналитики */
+VBox.analyticBox
+{
+	backgroundColor: #FFFFFF;
+}
+/* панелька, в которой отображается диаграмма */
+HDividedBox.diagram1D
+{
+	backgroundColor: #FFFFFF;
+}
+HDividedBox.diagram2D
+{
+	backgroundColor: #FFFFFF;
+}
+/* окно, в котором отображается диаграмма*/
+Pod.diagramWindow
+{
+	backgroundColor: #FFFFFF;
+}
+
+
+
+/* Цвет текста в панели кореляционного анализа и подобных */
+Label
+{
+	color: #005E9A;
+}
+/* Подписи на диаграмме */
+InternalLabel
+{
+	color: #000000;
+}
+/* Цвет текста маштаба на карте */
+Label.mapScaleLabel
+{
+	color: #005E9A;
+}
+/* Цвет текста во всплывающей менюшке при измерением линейкой */
+Label.mapRuleLabel
+{
+	color: #005E9A;
+}
+/* Заголовок легенды при печати */
+Label.printLegendTitle
+{
+}
+/* Подпись ДСП на карте */
+Label.mapLabel
+{
+	color: #C0C0C0;
+}
+/* надпись "Техническая поддержка" в aboutSystem  */
+Label.labelAboutSystem
+{
+	color: #FFA311;
+	fontSize: 12;
+}
+/* надпись "Нет настраиваемых слоев" в LayerForm  */
+Label.labelNoLayers
+{
+	color: #FFA311;
+	fontSize: 16;
+}
+/* надпись "Данные отсутствуют в системе." в форме интеграции  */
+Label.noData
+{
+	color: #FFFFFF;
+	fontSize: 16;
+	fontFamily: "Arial";
+}
+/* надпись "Нет данных для отображения." в панели свойств */
+Label.noProperty
+{
+	color: #005E9A;
+	fontSize: 16;
+	fontFamily: "Arial";
+}
+/* Линейка, новый трек и новая точка*/
+Stroke.ruleLine
+{
+	color: #FF0000;
+}
+Stroke.poiTrack
+{
+	color: #FF0000;
+}
+SolidColor.poiPoints
+{
+	color: #FF0000;
+}
+/* Стиль горизонтальной разделительной линии */
+HRule
+{
+	strokeColor: #000000;
+}
+
+/*  стиль  для панели у дерева    */
+Panel.treePanelHeader
+{
+	color: #005E9A;
+	borderColor: #005E9A;
+	backgroundColor: #005E9A;
+	borderThicknessRight: 0;
+	borderThicknessLeft: 0;
+	borderThicknessBottom: 0;
+}
+/*  стиль  ExtendedToolBar    */
+.treeToolbarStyle
+{
+	backgroundColor: #4C93C2;
+}
+
+VBox.extDataGrid
+{
+	fontFamily: Arial;
+	fontSize: 9;
+	color: #005E9A;
+	textSelectedColor: #FFA311;
+}
+
+
+
+ExtendedDataGrid
+{
+	footerBackgroundColor: #CFCFCF;
+	filterBackgroundColor: #4C93C2;
+	pagerBackgroundColor: #EFF1F2;
+	headerStyleName: 			"mydataGridHeaderStyle";
+	font-family:				arial;
+	font-weight:				normal;
+	font-size:					11;
+	color:						#005E9A;
+	text-roll-over-color:		#005E9A;
+	text-selected-color:		#005E9A;
+	roll-over-color:			#e4e4e4;
+	selection-color:			#cdcdcd;
+	alternating-item-colors:	#005E9A;
+	
+}
+MultiSelectComboBox
+{
+	font-family: 			arial;
+	font-weight:			normal;
+}
+ImageButton
+{
+	overBorderColor:	#6F6F6F;
+}
+
+
+
+
+
+
+@font-face
+{
+	src:					url("../fonts/frabk.ttf");
+	fontFamily: 			arial;
+	font-weight: 			normal;
+	embedAsCFF: false;
+}
+@font-face
+{
+	src:					url("../fonts/framd.ttf");
+	fontFamily: 			arial;
+	font-weight: 			normal;
+	embedAsCFF: false;
+	
+}
+
+
+
+.mydataGridHeaderStyle {
+	textAlign: 				left;
+	color:					#005E9A;
+	font-family:				arial;
+	font-weight:				normal;
+	font-size:				11;
+}
+ComboBox
+{
+	font-family: 			arial;
+	font-weight:			normal;
+}
+PopUpButton
+{
+	font-family: 			arial;
+	font-weight:			normal;
+}
+
+
+
+Text.gridTextStyle
+{
+	color: #005E9A;
+}
+
+Label.infoFormLabel
+{
+	color: #ffffff;
+}
+
+PopUpButton .InListComboBox
+{
+	borderColor: #005E9A;
+	fillColors: #ffffff, #ffffff, #FFA311, #FFA311;
+	color: #005E9A;
+	textRollOverColor: #FFFFFF;
+	textSelectedColor: #005E9A;
+	themeColor: #FFA311;
+}
+
+FilterPopUpButton
+{	
+	fontSize: 11;
+	textAlign: left;
+}
+
+.gridHeaderStyle
+{
+	fontWeight: normal;
+	textAlign: center;
+	color: #000000;
+	verticalAlign: middle;
+}
+
+/* Стили отображения элементов всплывающего окна предпросмотра */
+Text.previewTextStyle
+{
+	color: #005E9A;
+}
+
+Canvas.previewCanvasStyle
+{
+    borderThickness: 1;
+    borderColor: #005E9A;
+    borderStyle: solid;
+    backgroundColor: #FFFFFF;
+}
+
+
+/*  Вертикальные вкладки рубрикатора  */
+VTab
+{
+	fillColors: #005E9A,#005E9A;
+	color: #ffffff;
+	fontFamily: TimesNewRoman;
+	fontSize: 13;
+}
+
+.nonSelectedTabs 
+{
+	backgroundColor: white;
+	textRollOverColor:white;
+}
+
+.selectedTab 
+{
+	color: #005E9A;
+	textRollOverColor:#005E9A;
+}
+
+VerticalTabNavigator.vTabStyle
+{
+	fontSize: 11;
+}
+
+
+/* Стили отображения элементов всплывающего окна видеоплеера */
+/* Стиль подписи текущего километра */
+Text.videoPlayerLineTextStyle
+{
+	color: #FFFFFF;
+	fontSize: 20;
+	left: 70;
+	top: 3;
+}
+/* Стиль подписи названия текущего газопровода */
+Text.videoPlayerLineDescrStyle
+{
+	color: #FFFFFF;
+	fontSize: 12;
+	left: 180;
+	top: 10;
+}
+/* Стиль подписи текущего масштаба видеозаписи */
+Text.videoPlayerScaleTextStyle
+{
+	color: #FFFFFF;
+	fontSize: 12;
+	fontWeight: bold;
+	fontAntiAliasType: advanced;
+}
+/* Стиль подписи "Видео недоступно" */
+Text.noVideoTextStyle
+{
+	color: #FFFFFF;
+	fontSize: 24;
+	fontWeight: bold;
+}
+
+/*   Стиль для формы перехода по координатам  */
+.centerPanelBox
+{
+	borderColor: #005E9A;
+	borderStyle: solid;
+	borderThickness: 1;
+}
+
+/*   Стиль текущего экстента карты в обзорной карте  */
+.centerOverviewPanelBox
+{
+	borderColor: #0000FF;
+	borderStyle: solid;
+	borderThickness: 1;
+	backgroundColor: #005E9A;
+	backgroundAlpha: 0.2;
+}

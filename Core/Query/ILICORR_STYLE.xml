@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<kml version="7.7.6.0">
+  <Document>
+    <Style table="ILI_REPER" schema="PODS" id="PODS_ILI_REPER" comment="PODS.ILI_REPER" descr="Данные ВТД. РЕПЕРЫ">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/ILI_DATA_FEATURE.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <outline>0</outline>
+      </IconStyle>
+    </Style>
+    <Style table="ILI_REPER" schema="PODS" id="PODS_ILI_REPER" comment="PODS.ILI_REPER" descr="Маркер, не связан">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <value>1004_NOTLNK</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/1004_NOTLNK.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+    </Style>
+    <Style table="ILI_REPER" schema="PODS" id="PODS_ILI_REPER" comment="PODS.ILI_REPER" descr="Маркер, связан">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <value>1004_LNK</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/1004_LNK.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+    </Style>
+    <Style table="ILI_REPER" schema="PODS" id="PODS_ILI_REPER" comment="PODS.ILI_REPER" descr="Кран, не связан">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <value>1003_NOTLNK</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/1003_NOTLNK.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+    </Style>
+    <Style table="ILI_REPER" schema="PODS" id="PODS_ILI_REPER" comment="PODS.ILI_REPER" descr="Кран, связан">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <value>1003_LNK</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/1003_LNK.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+    </Style>
+  </Document>
+</kml>

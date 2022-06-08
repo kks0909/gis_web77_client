@@ -1,0 +1,34 @@
+﻿<root version="postgres 7.7.3.0">
+  <data id="COSMETIC_OBJECT" comment="COSMETIC.OBJECT" schema="COSMETIC" table="OBJECT">
+    <select>
+      <dbQuery idField="ID">
+        <query>SELECT 'Объект косметического слоя' AS NAME </query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" default="select floor(random()*10000000) ID" direction="Output"/>
+        <query>	
+                	
+		select floor(random()*100)	
+	</query>
+      </dbCommand>
+    </insert>
+    <update>
+     <dbCommand>
+        <var name="ID" type="Int64" default="select floor(random()*10000000) ID" direction="Output"/>
+        <query>		
+		select floor(random()*100)	
+	</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64"/>
+        <query>		
+		UPDATE WEB50.POI_POINT SET COORD_ID=0 WHERE 1=2		
+	</query>
+      </dbCommand>
+    </delete>
+  </data>
+</root>

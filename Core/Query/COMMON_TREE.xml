@@ -1,0 +1,30 @@
+﻿<root version="7.7.3.0">
+<data id="LAYER_STYLE_BASE" comment="Базовый стиль слоя" schema="-" table="-" descr="Базовый стиль слоя">
+    <select>
+      <xmlQuery source="{FILE_NAME}" xpath="//Style[@id='{LAYER_ID}'][not(value)][position() = 1]">
+		<var name="HIGH_LIMIT" default="1000" />
+    <var name="LAYER_ID" />
+</xmlQuery>
+    </select>
+</data>
+<data id="LAYER_STYLE_ALL" comment="Все стили слоя" schema="-" table="-" descr="Все стили слоя">
+    <select>
+      <xmlQuery source="{FILE_NAME}" xpath="//Style[@id='{LAYER_ID}'][count(./value) &gt; 0][position() &lt; {HIGH_LIMIT}][position() &gt;= {LOW_LIMIT}]">
+<var name="LOW_LIMIT" default="1" />
+		<var name="HIGH_LIMIT" default="1000" />
+    <var name="LAYER_ID" />
+</xmlQuery>
+    </select>
+</data>
+  
+  <data id="LAYER_STYLE_TYPED" comment="Стиль с определенным типом без учета слоя" schema="-" table="-" descr="Стиль с определенным типом без учета слоя">
+    <select>
+      <xmlQuery source="{FILE_NAME}" xpath="//Style[value='{OBJ_CLS_ID}'][position() &lt; {HIGH_LIMIT}][position() &gt;= {LOW_LIMIT}]">
+        <var name="LOW_LIMIT" default="1" />
+        <var name="HIGH_LIMIT" default="1000" />
+        <var name="OBJ_CLS_ID" />
+        <var name="LAYER_ID" />
+      </xmlQuery>
+    </select>
+  </data>  
+</root> 	

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Файл описания слоёв "Вдольтрассовые объекты" -->
+<root version="7.7.7.4" descr="МГ: Вдольтрассовые объекты" name="PODS_OFFLINE">
+  <dataProvider type="style" source="PODS_OFFLINE_STYLE.xml" />
+  <layer id="PODS_HCA_CA_SEGMENT" comment="PODS.HCA_CA_SEGMENT" descr="Участки трубопроводов, находящиеся в зонах опасных последствий" topology="line" projection="EPSG:4326" zoomMin="0" zoomMax="15000" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1160" visible="false" labelField="DESCRIPTION" classField="" schema="PODS" table="HCA_CA_SEGMENT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_HCA_CA_SEGMENT" />
+    <dataProvider type="style" source="PODS_OFFLINE_STYLE.xml#PODS_HCA_CA_SEGMENT" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_HCA_CA_SEGMENT" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_HCA_CA_SEGMENT" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_HCA_CA_SEGMENT" />
+  </layer>
+  <layer id="PODS_HCA_IDENTIFIED_SITE" comment="PODS.HCA_IDENTIFIED_SITE" descr="Зоны опасных последствий" projection="EPSG:4326" zoomMin="0" zoomMax="15000" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1620" visible="false" topology="point,polygon" labelField="" classField="" schema="PODS" table="HCA_IDENTIFIED_SITE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_HCA_IDENTIFIED_SITE" />
+    <dataProvider type="style" source="PODS_OFFLINE_STYLE.xml#PODS_HCA_IDENTIFIED_SITE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_HCA_IDENTIFIED_SITE" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_HCA_IDENTIFIED_SITE" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_HCA_IDENTIFIED_SITE" />
+  </layer>
+  <layer id="PODS_POPULATED_AREA" comment="PODS.POPULATED_AREA" descr="Населённые пункты (территории)" projection="EPSG:4326" zoomMin="0" zoomMax="15000" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1470" visible="false" topology="point,polygon" classField="" schema="PODS" table="POPULATED_AREA">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_POPULATED_AREA" />
+    <dataProvider type="style" source="PODS_OFFLINE_STYLE.xml#PODS_POPULATED_AREA" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_POPULATED_AREA" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_POPULATED_AREA" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_POPULATED_AREA" />
+  </layer>
+  <layer id="PODS_RIGHT_OF_WAY" comment="PODS.RIGHT_OF_WAY" descr="Земельные участки" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1380" visible="false" topology="polygon" classField="TYPE_CL" schema="PODS" table="RIGHT_OF_WAY">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_RIGHT_OF_WAY" />
+    <dataProvider type="style" source="PODS_OFFLINE_STYLE.xml#PODS_RIGHT_OF_WAY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_RIGHT_OF_WAY" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_RIGHT_OF_WAY" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_RIGHT_OF_WAY" />
+  </layer>
+  <layer id="PODS_SHEET_NOTE" comment="PODS.SHEET_NOTE" descr="Прочие точечные объекты" projection="EPSG:4326" zoomMin="0" zoomMax="1500" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="335" visible="true" topology="point" labelField="DESCRIPTION" classField="TYPE_CL" schema="PODS" table="SHEET_NOTE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_SHEET_NOTE" />
+    <dataProvider type="style" source="PODS_OFFLINE_STYLE.xml#PODS_SHEET_NOTE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_SHEET_NOTE" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_SHEET_NOTE" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_SHEET_NOTE" />
+  </layer>
+</root>

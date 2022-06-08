@@ -1,0 +1,189 @@
+﻿<html>
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+<meta name="Version" content="5.5.4.1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!--  BEGIN Browser History required section -->
+<link rel="stylesheet" type="text/css" href="Public/Modules/history/history.css" />
+<!--  END Browser History required section -->
+
+<title>Пример работы через widget</title>
+<script src="Public/JS/AC_OETags.js" language="javascript"></script>
+
+<!--  BEGIN Browser History required section -->
+<script src="Public/Modules/history/history.js" language="javascript"></script>
+<!--  END Browser History required section -->
+
+<style>
+body { margin: 0px; 
+		overflow:hidden;
+		font-family: Arial;
+		font-size: 12px;
+		text-align: center; 
+	}
+.main {
+		margin: 50px;
+		background-color: #4C93C2;
+		padding: 20px;
+		width: 600px;
+	}
+	.image {
+		width: 60px;
+		height: 60px;
+		float: left;
+		background-color: red;
+		border: 2px solid white;
+		margin-right: 5px;
+	}
+	.text {
+		color: white;
+		font-size: 16px;
+		background-color: #0000FF;
+		height: 60px;
+		padding: 10px 5px;
+		text-align: center;
+        height: 100px;
+	}
+	.orange {
+		color: #FFA311;
+	}
+	.link {
+		clear: both;
+		padding: 5px 0px;
+	}
+	.whitebg {
+        clear: both;
+		color: #005E9A;
+		background-color: white;
+		padding: 5px 2px;
+	}
+</style>
+<script language="JavaScript" type="text/javascript"> 
+<!-- 
+function getFlexApp(appName) { 
+  if (navigator.appName.indexOf ("Microsoft") != -1) { 
+    return window[appName]; 
+  } 
+  else { 
+    return document[appName]; 
+  } 
+}
+ 
+function setWindowName(name) {
+    document.title = name;
+}
+
+// работа c widget
+
+function onLogin()
+{
+    var app = getFlexApp("SysWidget");
+    if (app != null)
+        app.login('user', 'gfhjkm.pth');
+}
+function initTask()
+{
+    //var s = '<TASK><panel id="MAPWIDGET" url="Public/SWF/Modules/WidgetMap.SWF" percentWidth="100" percentHeight="100" reload="false"><settings><Models><model name="PODS" descr="Паспорта оборудования" /></Models></settings></panel></TASK>';
+    //var app = getFlexApp("SysWidget");
+    //if (app != null)
+    //    app.task(s);
+}
+
+function taskReady(tsk, success)
+{
+    if (tsk == 'showCAS')
+    {
+        if (success)
+        {
+            var app = getFlexApp("SysWidget");
+            if (app != null)
+                app.showCAS('MG', sys_id.value, id_infoteh.value, '', sKM.value, poKM.value);
+        }
+    }
+}
+ --> 
+</script>  
+<script language="JavaScript" type="text/javascript">
+<!--
+// -----------------------------------------------------------------------------
+// Globals
+// Major version of Flash required
+var requiredMajorVersion = 10;
+// Minor version of Flash required
+var requiredMinorVersion = 0;
+// Minor version of Flash required
+var requiredRevision = 0;
+// -----------------------------------------------------------------------------
+// -->
+</script>
+</head>
+
+<body scroll="no">
+
+<script language="JavaScript" type="text/javascript">
+<!--
+// Version check for the Flash Player that has the ability to start Player Product Install (6.0r65)
+var hasProductInstall = DetectFlashVer(6, 0, 65);
+
+
+// Version check based upon the values defined in globals
+var hasRequestedVersion = DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision);
+var alternateContent = '<div class="main">'+
+		'<div class="image"><a href="Public/install/install_flash_player.exe" unselectable="on" ><img src="Public/assets/FlashPlayer_Logo.jpg" width="100" height="100" alt="Установить Adobe Flash Player" unselectable="on" title="Установить Adobe Flash Player"/></a></div>' +
+		'<div class="text">Для отображения содержимого страницы необходимо установить <a class="orange" href="Public/install/install_flash_player_ax.exe" title="Установить Adobe Flash Player">Adobe Flash Player</a><br/><br/>' +
+		'При возникновении проблем с отображением содержимого скачайте <a class="orange" href="Public/install/uninstall_flash_player.exe" title="Программа удаления Adobe Flash Player">программу удаления Adobe Flash Player</a>' +
+		' и выполните установку <a class="orange" href="Public/install/install_flash_player.exe" title="Установить Adobe Flash Player">повторно</a><br /> </div>' +
+		'<div class="whitebg">' +
+		'	После инсталляции необходимо повторно открыть страницу в новом окне браузера' +
+		'</div>'+
+	'</div>';
+
+	var IE='\v'=='v';
+if(IE) {
+alternateContent = '<div class="main">'+
+		'<div class="image"><a href="Public/install/install_flash_player_ax.exe" unselectable="on" ><img src="Public/assets/FlashPlayer_Logo.jpg" width="100" height="100" alt="Установить Adobe Flash Player" unselectable="on" title="Установить Adobe Flash Player"/></a></div>' +
+		'<div class="text">Для отображения содержимого страницы необходимо установить <a class="orange" href="Public/install/install_flash_player_ax.exe" title="Установить Adobe Flash Player">Adobe Flash Player</a><br/><br/>' +
+		'При возникновении проблем с отображением содержимого скачайте <a class="orange" href="Public/install/uninstall_flash_player.exe" title="Программа удаления Adobe Flash Player">программу удаления Adobe Flash Player</a>' +
+		' и выполните установку <a class="orange" href="Public/install/install_flash_player_ax.exe" title="Установить Adobe Flash Player">повторно</a><br /> </div>' +
+		'<div class="whitebg">' +
+		'	После инсталляции необходимо повторно открыть страницу в новом окне браузера' +
+		'</div>'+
+	'</div>';
+}
+
+if ( hasProductInstall && !hasRequestedVersion ) {
+	// DO NOT MODIFY THE FOLLOWING FOUR LINES
+	// Location visited after installation is complete if installation is required
+	document.write(alternateContent);
+} else if (hasRequestedVersion) {
+	// if we've detected an acceptable version
+	// embed the Flash Content SWF when all tests are passed
+	AC_FL_RunContent(
+			"src", "Public/SWF/SysWidget",
+			"width", "100%",
+			"height", "100%",
+			"align", "left",
+			"id", "SysWidget",
+			"quality", "high",
+			"bgcolor", "#ffffff",
+			"name", "SysWidget",
+			"allowScriptAccess","always",
+			"type", "application/x-shockwave-flash",
+			"pluginspage", "http://www.adobe.com/go/getflashplayer"
+	);
+  } else {  // flash is too old or we can't detect the plugin
+    
+    document.write(alternateContent);  // insert non-flash content
+  }
+  setTimeout('onLogin()',5000);
+// -->
+</script>
+
+<noscript>
+    <!-- Widget работает только через JavaScript, поэтому выводим сообщение о необходимости включения JavaScript -->
+  	<div class="text">Для работы с картой необходимо разрешить использование JavaScript</div>
+</noscript>
+</body>
+</html>

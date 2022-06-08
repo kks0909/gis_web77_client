@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root version="6.1.6.0">
+	<layer id="MixedTiles" type="gis.map.layer.OSMMultiLayer">
+		<name>Карта</name>
+		<isBaseLayer>true</isBaseLayer>
+		<visible>true</visible>
+		<projection>EPSG:900913</projection>
+		<proxy></proxy>
+		<properties>
+			<showInfo>true</showInfo>
+			<layers>PODS_EQUIP;M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</layers>
+			<zoomLevels>22</zoomLevels>
+		</properties>
+		<urls>
+			<url extension=".png" useInterimTilesOnError="true">{SERVER}/tiletrees/Default/</url>
+			<url extension=".png" useInterimTilesOnError="true">{SERVER}/tiletrees/PodsRaster/</url>
+		</urls>
+	</layer>
+	
+</root>

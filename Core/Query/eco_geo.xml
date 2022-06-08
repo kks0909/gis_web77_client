@@ -1,0 +1,1485 @@
+﻿<root version="7.7.4.10">
+	<!-- GDAL_FILE_NAME - сам файл. Если приходит параметр с таким именем, то будем работать с файлом , а не с бд -->
+	<!-- GDAL_FILE_TYPE - название драйвера/флага, который скажет, как манипулировать с файлом -->
+	<!-- GDAL_LAYER_NAME - название слоя. Для открытия mif имя слоя совпадает с названием файла -->
+	<data table="1_ZONI_BOLOT" schema="GDAL" id="1_ZONI_BOLOT" comment="1.Зоны болот">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,foto"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/1 Zoni bolot.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="1 Zoni bolot" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/1 Zoni bolot.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="1 Zoni bolot" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/1 Zoni bolot.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="1 Zoni bolot" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/1 Zoni bolot.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="1 Zoni bolotT" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="2_ZONI_EROZ" schema="GDAL" id="2_ZONI_EROZ" comment="2.Зоны эрозионных процессов на территориях, покрытых болотами">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,foto"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/2 Zoni erozionnih processov na territoriyah, pokritih bolotami.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="2 Zoni erozionnih processov na territoriyah, pokritih bolotami" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/2 Zoni erozionnih processov na territoriyah, pokritih bolotami.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="2 Zoni erozionnih processov na territoriyah, pokritih bolotami" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/2 Zoni erozionnih processov na territoriyah, pokritih bolotami.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="2 Zoni erozionnih processov na territoriyah, pokritih bolotami" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/2 Zoni erozionnih processov na territoriyah, pokritih bolotami.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="2 Zoni erozionnih processov na territoriyah, pokritih bolotami" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="3_ZONI_RAZV" schema="GDAL" id="3_ZONI_RAZV" comment="3.Зоны развития геодинамических и связанных с ними гравитаций">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,foto"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/3 Zoni razvitiya geodinamicheskih i svyazannih s nimi gravitaci.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="3 Zoni razvitiya geodinamicheskih i svyazannih s nimi gravitaci" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/3 Zoni razvitiya geodinamicheskih i svyazannih s nimi gravitaci.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="3 Zoni razvitiya geodinamicheskih i svyazannih s nimi gravitaci" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/3 Zoni razvitiya geodinamicheskih i svyazannih s nimi gravitaci.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="3 Zoni razvitiya geodinamicheskih i svyazannih s nimi gravitaci" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/3 Zoni razvitiya geodinamicheskih i svyazannih s nimi gravitaci.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="3 Zoni razvitiya geodinamicheskih i svyazannih s nimi gravitaci" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="4_ZONI_GEOD" schema="GDAL" id="4_ZONI_GEOD" comment="4.Зоны геодинамических и связанных с ними эрозионных процессов">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,foto"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/4 Zoni geodinamicheskih i svyazannih s nimi erozionnih processo.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="4 Zoni geodinamicheskih i svyazannih s nimi erozionnih processo" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/4 Zoni geodinamicheskih i svyazannih s nimi erozionnih processo.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="4 Zoni geodinamicheskih i svyazannih s nimi erozionnih processo" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/4 Zoni geodinamicheskih i svyazannih s nimi erozionnih processo.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="4 Zoni geodinamicheskih i svyazannih s nimi erozionnih processo" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/4 Zoni geodinamicheskih i svyazannih s nimi erozionnih processo.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="4 Zoni geodinamicheskih i svyazannih s nimi erozionnih processo" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="5_ZONI_KOMP" schema="GDAL" id="5_ZONI_KOMP" comment="5.Зоны комплексной (антропогенной и природной) опасности">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,foto"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/5 Zoni kompleksnoj (antropogennoj i prirodnoj) opasnosti.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="5 Zoni kompleksnoj (antropogennoj i prirodnoj) opasnosti" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/5 Zoni kompleksnoj (antropogennoj i prirodnoj) opasnosti.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="5 Zoni kompleksnoj (antropogennoj i prirodnoj) opasnosti" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/5 Zoni kompleksnoj (antropogennoj i prirodnoj) opasnosti.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="5 Zoni kompleksnoj (antropogennoj i prirodnoj) opasnosti" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/5 Zoni kompleksnoj (antropogennoj i prirodnoj) opasnosti.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="5 Zoni kompleksnoj (antropogennoj i prirodnoj) opasnosti" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="7_ZONI_VOZM" schema="GDAL" id="7_ZONI_VOZM" comment="7.Зоны возможной просадки грунтов под воздействием ряда причин">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,foto"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/7 Zoni vozmozhnoj prosadki gruntov pod vozdejstviem ryada prich.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="7 Zoni vozmozhnoj prosadki gruntov pod vozdejstviem ryada prich" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/7 Zoni vozmozhnoj prosadki gruntov pod vozdejstviem ryada prich.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="7 Zoni vozmozhnoj prosadki gruntov pod vozdejstviem ryada prich" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/7 Zoni vozmozhnoj prosadki gruntov pod vozdejstviem ryada prich.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="7 Zoni vozmozhnoj prosadki gruntov pod vozdejstviem ryada prich" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/7 Zoni vozmozhnoj prosadki gruntov pod vozdejstviem ryada prich.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="7 Zoni vozmozhnoj prosadki gruntov pod vozdejstviem ryada prich" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="9_PREDPOLAG" schema="GDAL" id="9_PREDPOLAG" comment="9.Предполагаемые разломы, активированные в настоящее время">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,foto"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/9 Predpolagaemie razlomi, aktivirovannie v nastoyaschee vremya.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="9 Predpolagaemie razlomi, aktivirovannie v nastoyaschee vremya" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/9 Predpolagaemie razlomi, aktivirovannie v nastoyaschee vremya.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="9 Predpolagaemie razlomi, aktivirovannie v nastoyaschee vremya" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/9 Predpolagaemie razlomi, aktivirovannie v nastoyaschee vremya.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="9 Predpolagaemie razlomi, aktivirovannie v nastoyaschee vremya" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/9 Predpolagaemie razlomi, aktivirovannie v nastoyaschee vremya.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="9 Predpolagaemie razlomi, aktivirovannie v nastoyaschee vremya" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="10_REPER" schema="GDAL" id="10_REPER" comment="10.Реперные точки контроля состояния береговой зоны">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,foto"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/10 Repernie tochki kontrolya sostoyaniya beregovoj zoni.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="10 Repernie tochki kontrolya sostoyaniya beregovoj zoni" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/10 Repernie tochki kontrolya sostoyaniya beregovoj zoni.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="10 Repernie tochki kontrolya sostoyaniya beregovoj zoni" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/10 Repernie tochki kontrolya sostoyaniya beregovoj zoni.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="10 Repernie tochki kontrolya sostoyaniya beregovoj zoni" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/10 Repernie tochki kontrolya sostoyaniya beregovoj zoni.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="10 Repernie tochki kontrolya sostoyaniya beregovoj zoni" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="11_REPER" schema="GDAL" id="11_REPER" comment="11.Реперные точки контроля заиления">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,foto"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/11 Repernie tochki kontrolya zaileniya.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="11 Repernie tochki kontrolya zaileniya" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/11 Repernie tochki kontrolya zaileniya.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="11 Repernie tochki kontrolya zaileniya" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/11 Repernie tochki kontrolya zaileniya.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="11 Repernie tochki kontrolya zaileniya" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/11 Repernie tochki kontrolya zaileniya.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="11 Repernie tochki kontrolya zaileniya" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="13_REPER" schema="GDAL" id="13_REPER" comment="13.Реперные точки в зоне возможного тектонического разлома">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,foto"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/13 Repernie tochki v zone vozmozhnogo tektonicheskogo razloma.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="13 Repernie tochki v zone vozmozhnogo tektonicheskogo razloma" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/13 Repernie tochki v zone vozmozhnogo tektonicheskogo razloma.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="13 Repernie tochki v zone vozmozhnogo tektonicheskogo razloma" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/13 Repernie tochki v zone vozmozhnogo tektonicheskogo razloma.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="13 Repernie tochki v zone vozmozhnogo tektonicheskogo razloma" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/13 Repernie tochki v zone vozmozhnogo tektonicheskogo razloma.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="13 Repernie tochki v zone vozmozhnogo tektonicheskogo razloma" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="14_REPER" schema="GDAL" id="14_REPER" comment="14.Реперные точки на склонах">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,foto"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/14 Repernie tochki na sklonah.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="14 Repernie tochki na sklonah" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/14 Repernie tochki na sklonah.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="14 Repernie tochki na sklonah" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/14 Repernie tochki na sklonah.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="14 Repernie tochki na sklonah" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/14 Repernie tochki na sklonah.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="14 Repernie tochki na sklonah" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="15_TORFORAZ" schema="GDAL" id="15_TORFORAZ" comment="15.Торфоразработки">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,foto"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/15 Torforazrabotki.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="15 Torforazrabotkih" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/15 Torforazrabotki.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="15 Torforazrabotkih" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/15 Torforazrabotki.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="15 Torforazrabotkih" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/15 Torforazrabotki.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="15 Torforazrabotkih" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="16_PERESECH" schema="GDAL" id="16_PERESECH" comment="16.Пересечение с линейными объектами">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,foto"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/16 Peresechenie s linejnimi objektami.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="16 Peresechenie s linejnimi objektami" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/16 Peresechenie s linejnimi objektami.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="16 Peresechenie s linejnimi objektami" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/16 Peresechenie s linejnimi objektami.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="16 Peresechenie s linejnimi objektami" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/16 Peresechenie s linejnimi objektami.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="16 Peresechenie s linejnimi objektami" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="17_BEREGOV" schema="GDAL" id="17_BEREGOV" comment="17.Береговые эрозионно-аккумулятивные процессы">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,foto"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/17 Beregovie erozionno-akkumulyativnie processi.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="17 Beregovie erozionno-akkumulyativnie processi" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/17 Beregovie erozionno-akkumulyativnie processi.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="17 Beregovie erozionno-akkumulyativnie processi" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/17 Beregovie erozionno-akkumulyativnie processi.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="17 Beregovie erozionno-akkumulyativnie processi" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/17 Beregovie erozionno-akkumulyativnie processi.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="17 Beregovie erozionno-akkumulyativnie processi" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="18_ABRAZION" schema="GDAL" id="18_ABRAZION" comment="18.Абразионные-аккумулятивные процессы береговой зоны">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,foto"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/18 Abrazionnie-akkumulyativnie processi beregovoj zoni.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="18 Abrazionnie-akkumulyativnie processi beregovoj zoni" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/18 Abrazionnie-akkumulyativnie processi beregovoj zoni.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="18 Abrazionnie-akkumulyativnie processi beregovoj zoni" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/18 Abrazionnie-akkumulyativnie processi beregovoj zoni.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="18 Abrazionnie-akkumulyativnie processi beregovoj zoni" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/18 Abrazionnie-akkumulyativnie processi beregovoj zoni.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="18 Abrazionnie-akkumulyativnie processi beregovoj zoni" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="19_MALIE_VOD" schema="GDAL" id="19_MALIE_VOD" comment="19.Малые водотоки">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,name"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/19 Malie vodotoki.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="19 Malie vodotoki" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/19 Malie vodotoki.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="19 Malie vodotoki" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/19 Malie vodotoki.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="19 Malie vodotoki" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/OGP/19 Malie vodotoki.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="19 Malie vodotoki" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="VIRUBKI_2020" schema="GDAL" id="VIRUBKI_2020" comment="Вырубки 2020">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,type,year,status"/>
+				<param name="TYPE_COLUMN" default="type"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2020.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2018" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2020.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2018" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2020.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2018" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2020.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2018" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="VIRUBKI_2019" schema="GDAL" id="VIRUBKI_2019" comment="Вырубки 2019">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,type,year,status"/>
+				<param name="TYPE_COLUMN" default="type"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2019.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2018" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2019.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2018" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2019.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2018" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2019.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2018" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="VIRUBKI_2018" schema="GDAL" id="VIRUBKI_2018" comment="Вырубки 2018">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,type,year,status"/>
+				<param name="TYPE_COLUMN" default="type"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2018.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2018" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2018.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2018" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2018.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2018" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2018.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2018" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="VIRUBKI_2017" schema="GDAL" id="VIRUBKI_2017" comment="Вырубки 2017">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,type,year,status"/>
+				<param name="TYPE_COLUMN" default="type"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2017.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2017" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2017.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2017" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2017.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2017" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2017.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2017" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="VIRUBKI_2016" schema="GDAL" id="VIRUBKI_2016" comment="Вырубки 2016">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,type,year,status"/>
+				<param name="TYPE_COLUMN" default="type"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2016.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2016" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2016.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2016" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2016.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2016" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2016.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2016" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="VIRUBKI_2015" schema="GDAL" id="VIRUBKI_2015" comment="Вырубки 2015">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,type,year,status"/>
+				<param name="TYPE_COLUMN" default="type"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2015.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2015" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2015.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2015" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2015.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2015" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2015.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2015" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="VIRUBKI_2014" schema="GDAL" id="VIRUBKI_2014" comment="Вырубки 2014">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,type,year,status"/>
+				<param name="TYPE_COLUMN" default="type"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2014.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2014" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2014.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2014" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2014.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2014" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2014.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2014" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="VIRUBKI_2013" schema="GDAL" id="VIRUBKI_2013" comment="Вырубки 2013">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,type,year,status"/>
+				<param name="TYPE_COLUMN" default="type"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2013.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2013" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2013.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2013" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2013.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2013" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Virubki/Virubki 2013.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Virubki 2013" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="PODTOPL_2019" schema="GDAL" id="PODTOPL_2019" comment="Подтопления 2019">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,foto"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Podtopleniya/Podtopleniya_2019.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Podtopleniya_2017" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Podtopleniya/Podtopleniya_2019.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Podtopleniya_2017" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Podtopleniya/Podtopleniya_2019.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Podtopleniya_2017" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Podtopleniya/Podtopleniya_2019.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Podtopleniya_2017" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="PODTOPL_2017" schema="GDAL" id="PODTOPL_2017" comment="Подтопления 2017">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,index,foto"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="index"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Podtopleniya/Podtopleniya_2017.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Podtopleniya_2017" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Podtopleniya/Podtopleniya_2017.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Podtopleniya_2017" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Podtopleniya/Podtopleniya_2017.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Podtopleniya_2017" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/LI/Podtopleniya/Podtopleniya_2017.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="Podtopleniya_2017" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="200_METERS_Z" schema="GDAL" id="200_METERS_Z" comment="200-метровые зоны">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,length,buff_dist"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default=""/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/200-meters_zone 200-meters zone Polygon.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="200-meters_zone 200-meters zone Polygon" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/200-meters_zone 200-meters zone Polygon.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="200-meters_zone 200-meters zone Polygon" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/200-meters_zone 200-meters zone Polygon.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="200-meters_zone 200-meters zone Polygon" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/200-meters_zone 200-meters zone Polygon.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="200-meters_zone 200-meters zone Polygon" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="10_KM_ZONE" schema="GDAL" id="10_KM_ZONE" comment="10-км зоны">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,legth,buff_dist"/>
+				<param name="TYPE_COLUMN" default=""/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default=""/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/10-km zone.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="10-km zone" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/10-km zone.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="10-km zone" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/10-km zone.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="10-km zone" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/10-km zone.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="10-km zone" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data table="CHECK_POINTS" schema="GDAL" id="CHECK_POINTS" comment="Контрольные пункты">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="id,type,km"/>
+				<param name="TYPE_COLUMN" default="type"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="LABEL_COLUMN" default="Km"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/CheckPoints.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="CheckPoints" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/CheckPoints.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="CheckPoints" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/CheckPoints.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="CheckPoints" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="id"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/seg2018/Vector/CheckPoints.shp"/>
+				<param name="GDAL_FILE_TYPE" default="ESRI Shapefile" />
+				<param name="GDAL_LAYER_NAME" default="CheckPoints" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+
+</root>

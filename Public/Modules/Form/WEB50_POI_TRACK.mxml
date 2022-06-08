@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="760" xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml" title="Трек">
+  <dataProvider>POI_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="760">
+    <mx:HBox percentWidth="100">
+      <mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Описание трека" width="140" />
+          <mx:TextInput id="DESCR" width="225" maxChars="250" height="40" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Название трека" width="140" />
+          <mx:TextInput id="NAME" width="225" maxChars="30" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Статус трека" width="140" />
+          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+            <mx:ComboBox id="STATUS_ID" width="200" height="20" dataProvider="SYS_SEM.xml#WEB50_B_STATUS_REF" />
+            <mx:Button id="BTN_LIST_STATUS_ID" selectedField="WEB50_B_STATUS_REF" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16" />
+          </mx:HBox>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Поле из GPS-приемника" width="140" />
+          <mx:TextInput id="TYPE" editable="false" width="225" maxChars="250" height="20" />
+        </mx:HBox>
+      </mx:VBox>
+      <mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Дата создания" width="140" />
+          <mx:DateField id="CTIME" width="90" editable="false" height="20" formatString="DD.MM.YYYY" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Кто создал" width="140" />
+          <mx:TextInput id="CUSER" editable="false" width="225" maxChars="80" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Дата изменения" width="140" />
+          <mx:DateField id="MTIME" width="90" editable="false" height="20" formatString="DD.MM.YYYY" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Кто изменил" width="140" />
+          <mx:TextInput id="MUSER" editable="false" width="225" maxChars="80" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Идентификатор трека" width="140" />
+          <controls:NumberInput id="TRACK_ID" editable="false" width="225" maxChars="22" height="20" />
+        </mx:HBox>
+      </mx:VBox>
+    </mx:HBox>
+  </mx:VBox>
+  <validatorsArray>
+    <controls:DefaultStringValidator source="{NAME}" property="text" enabled="false" minLength="1" requiredFieldError="Поле 'Название трека' обязательно для заполнения." tooShortError="Поле 'Название трека' обязательно для заполнения." />
+  </validatorsArray>
+</DATA_EDIT_FORM>

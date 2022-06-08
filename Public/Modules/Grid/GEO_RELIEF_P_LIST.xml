@@ -1,0 +1,111 @@
+﻿<!--7.7.6.0-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="6"
+            id="GEO_RELIEF_P_LIST"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelTemplateName="GEO_RELIEF_P_LIST"
+			excelDataRequest="IUST_EXPORT.xml#GEO_RELIEF_P"
+            layerId="GEO_RELIEF_P" propertyPanelName="GEO_RELIEF_P"
+            dataRequest="IUST_GRID.xml#GEO_RELIEF_P"
+            totalRecordsRequest="IUST_GRID.xml#GEO_RELIEF_P_CNT"
+            initialSortField="ID">
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/exportNAV.png"
+        tooltip="Экспорт/Импорт GPX,KML"
+        clickEvent="ru.corelight.business.events.ExportToGPXEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/createObject.png"
+        tooltip="Создать объект"
+        clickEvent="ru.corelight.business.events.CreateObjectEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../Public/assets/showOnMap.png"
+        tooltip="Показать на карте"
+        clickEvent="ru.corelight.business.events.ShowOnMapEvent"
+        isEnabled="length" />
+
+    <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/paste.png"
+        tooltip="Вставить данные из excel"
+        clickEvent="PasteFromExcelEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+<picPutton:GridButton source="../../ui/images/save.png"
+       tooltip="Сохранить изменения"
+       clickEvent="ApplyUpdatedCellEvent"
+       isEnabled="null" />
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=showInfoEvent;toolTip=Показать информацию по объекту"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/photo.png;eventName=ShowCarouselEvent;toolTip=Показать документы по объекту;columns=LG_ATTACH"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/map.png;eventName=ru.corelight.business.events.ShowOnMapEvent;toolTip=Показать на карте;layerId=GEO_RELIEF_P"
+                          editable="true"/>
+      
+      <columns:GridColumn headerText="Идентификатор" dataField="ID"  itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          hidden="true" editable="false" filterComparisionType="number" width="40" />                    
+	   <columns:GridColumn headerText="Тип объекта (топокод)" dataField="TOPOCODE" sortField="TOPOCODE_LBL" 
+						  itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=IUST_SEM_DICT.xml#GEO_RELIEF_P_TOPOCODE" filterComparisionType="array" filterRequestId="IUST_SEM_DICT.xml#GEO_RELIEF_P_TOPOCODE" 
+						  editable="true" 
+						  filterRenderer="ru.corelight.view.controls.dynamicFilter.InListControl"
+						  width="160"/>							  
+      <columns:GridColumn headerText="Наименование" dataField="NAME"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="160"/>	
+	   <columns:GridColumn headerText="Происхождение" dataField="ORIGIN" sortField="ORIGIN_LBL" 
+						  itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=IUST_SEM_DICT.xml#GEO_RELIEF_P_ORIGIN" filterComparisionType="array" filterRequestId="IUST_SEM_DICT.xml#GEO_RELIEF_P_ORIGIN" 
+						  hidden="true" editable="true" 
+						  filterRenderer="ru.corelight.view.controls.dynamicFilter.InListControl"
+						  width="160"/>	
+	  <columns:GridColumn headerText="Угол поворота объекта, град." dataField="ANGLE"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="60"/>						  
+	  <columns:GridColumn headerText="Максимальная ширина (м)" dataField="MAXWIDTH"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="60"/>	
+	  <columns:GridColumn headerText="Относительная высота (м)" dataField="RELHEIGHT"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="60"/>
+	  <columns:GridColumn headerText="Абсолютная высота (м)" dataField="ABSHEIGHT"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="60"/>
+	  <columns:GridColumn headerText="Глубина (м)" dataField="DEPTH"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="60"/>					  
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

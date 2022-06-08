@@ -1,0 +1,89 @@
+﻿<!--7.7.6.8-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="6"  headerVertSize="50"
+            id="EDIT_STYLE_XML"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelTemplateName="EDIT_STYLE_XML_ADM"
+            layerId="ADM_MAP_LAYER_STYLES" propertyPanelName="EDIT_STYLE_XML"
+            dataRequest="ADM_SEM.xml#EDIT_STYLE_XML"
+            totalRecordsRequest="ADM_SEM.xml#EDIT_STYLE_XML_CNT"
+            >
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/createObject.png"
+        tooltip="Создать объект"
+        clickEvent="ru.corelight.business.events.CreateObjectEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../Public/assets/excel.png"
+        tooltip="Экспортировать в Excel"
+        clickEvent="ru.corelight.business.events.ExportToExcelEvent"
+        selectedObjects="this" />
+    <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../Public/assets/unknown.png"
+        tooltip="Редактировать"
+        clickEvent=""
+        selectedObjects="this"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/unknown.png"
+        tooltip="Создать"
+        clickEvent=""
+        selectedObjects="this"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/unknown.png"
+        tooltip="Копировать"
+        clickEvent=""
+        selectedObjects="this"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/unknown.png"
+        tooltip="Вставить"
+        clickEvent=""
+        selectedObjects="this"
+        position="top"/>
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+      <columns:GridColumn headerText="Идентификатор" dataField="ID"  itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          hidden="true" editable="false" filterComparisionType="number" width="40" />                    
+      <columns:GridColumn headerText="Описание стиля" dataField="   "
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="120"/>
+      <columns:GridColumn headerText="По-умолчанию" dataField="     "
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="40"/>
+      <columns:GridColumn headerText="Тип" dataField="   "
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="50"/>
+      <columns:GridColumn headerText="Типы топологии" dataField="     "
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="50"/>
+      <columns:GridColumn headerText="Идентификатор стиля" dataField="   "
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="120"/>
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

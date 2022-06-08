@@ -1,0 +1,337 @@
+﻿<html>
+
+<head>
+<meta name="Version" content="5.5.4.4"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!--  BEGIN Browser History required section -->
+<link rel="stylesheet" type="text/css" href="Public/Modules/history/history.css" />
+<!--  END Browser History required section -->
+
+<title>Пример работы через widget</title>
+<script src="Public/JS/AC_OETags.js" language="javascript"></script>
+
+<!--  BEGIN Browser History required section -->
+<script src="Public/Modules/history/history.js" language="javascript"></script>
+<!--  END Browser History required section -->
+
+<style>
+body { margin: 0px; 
+		overflow:hidden;
+		font-family: Arial;
+		font-size: 12px;
+		text-align: center; 
+	}
+.main {
+		margin: 50px;
+		background-color: #4C93C2;
+		padding: 20px;
+		width: 600px;
+	}
+	.image {
+		width: 60px;
+		height: 60px;
+		float: left;
+		background-color: red;
+		border: 2px solid white;
+		margin-right: 5px;
+	}
+	.text {
+		color: white;
+		font-size: 16px;
+		background-color: #0000FF;
+		height: 60px;
+		padding: 10px 5px;
+		text-align: center;
+        height: 100px;
+	}
+	.orange {
+		color: #FFA311;
+	}
+	.link {
+		clear: both;
+		padding: 5px 0px;
+	}
+	.whitebg {
+        clear: both;
+		color: #005E9A;
+		background-color: white;
+		padding: 5px 2px;
+	}
+</style>
+<script language="JavaScript" type="text/javascript"> 
+<!-- 
+function getFlexApp(appName) { 
+  if (navigator.appName.indexOf ("Microsoft") != -1) { 
+    return window[appName]; 
+  } 
+  else { 
+    return document[appName]; 
+  } 
+}
+ 
+function setWindowName(name) {
+    //document.title = name;
+}
+
+// работа c widget
+function loginReady(loginIsReady)
+{
+    if (loginIsReady == true)
+    {
+        onLogin();
+    }
+    else
+    {
+        alert("авторизация прошла неудачно");
+    }
+}
+
+function onLogin()
+{
+    var app = getFlexApp("SysWidget");
+    if (app != null)
+        app.login(loginE.value, passE.value);
+}
+function onFind()
+{
+    var app = getFlexApp("SysWidget");
+    if (app != null)
+        app.findExternalObject(sys_id.value,id_infoteh.value);
+}
+
+function onFindKM()
+{
+    var app = getFlexApp("SysWidget");
+    if (app != null)
+        app.findExternalPipeKm(sys_id.value,id_infoteh.value,sKM.value);
+}
+
+function mapReady()
+{
+    //alert("карта загружена");
+}
+function login(s)
+{
+    if (s == true)
+    {
+        initTask();
+    }
+    else
+        alert("авторизация прошла неудачно");
+}
+function initTask()
+{
+    //var s = '<TASK><panel id="MAPWIDGET" url="Public/SWF/Modules/WidgetMap.SWF" percentWidth="100" percentHeight="100" reload="false"><settings><Models><model name="PODS_EQUIP" descr="Паспорта оборудования" /></Models></settings></panel></TASK>';
+    //var app = getFlexApp("SysWidget");
+    //if (app != null)
+    //    app.task(s);
+}
+
+function onCASCall()
+{
+    var s = '<TASK><panel id="CAS" url="Public/SWF/modules/CAS_Module.swf" percentWidth="100" percentHeight="100"><settings><requestSource>GAZPROM_SYS_SEM.xml</requestSource></settings></panel><functional id="PROP" url="Public/SWF/modules/PropertiesM.swf"><settings><editable>false</editable><width>790</width><height>250</height><dataSource>SYS_PROP.xml#PROP_LIST</dataSource></settings></functional><functional id="CAS_BALLOON" url="Public/SWF/modules/CASBalloonModule.swf" reload="true" percentWidth="0" percentHeight="0"/></TASK>';
+    var app = getFlexApp("SysWidget");
+    if (app != null)
+        app.task(s);
+}
+
+function onMapCall()
+{
+    var s = '<TASK><panel id="MAPWIDGET" url="Public/SWF/Modules/WidgetMap.SWF" percentWidth="100" percentHeight="100" reload="false"><settings><Models><model name="PODS_EQUIP" descr="Паспорта оборудования" /></Models></settings></panel><functional id="PROP" url="Public/SWF/modules/PropertiesM.swf"><settings><editable>false</editable><width>790</width><height>250</height><dataSource>SYS_PROP.xml#PROP_LIST</dataSource></settings></functional></TASK>';
+    var app = getFlexApp("SysWidget");
+    if (app != null)
+        app.task(s);
+}
+function onPOICall()
+{
+    var s = '<TASK><panel id="MAPWIDGET" url="Public/SWF/Modules/WidgetMap.SWF" percentWidth="100" percentHeight="100" reload="false"><settings><Models><model name="PODS_EQUIP" descr="Паспорта оборудования" /><model name="POI" descr="Спутниковый мониторинг" /></Models></settings></panel><functional id="PROP" url="Public/SWF/modules/PropertiesM.swf"><settings><editable>false</editable><width>790</width><height>250</height><dataSource>SYS_PROP.xml#PROP_LIST</dataSource></settings></functional></TASK>';
+    var app = getFlexApp("SysWidget");
+    if (app != null)
+        app.task(s);
+}
+function onIMGCall()
+{
+    var s = '<TASK><functional id="EXPORTIMG" url="Public/SWF/modules/ExportIMG_FM.swf" percentWidth="0" percentHeight="0"><settings><requestSource>SYS_SEM.xml</requestSource></settings></functional></TASK>';
+    var app = getFlexApp("SysWidget");
+    if (app != null)
+        app.task(s);
+}
+function onVRMLCall()
+{
+    var s = '<TASK><functional id="EXPORT3D" url="Public/SWF/modules/ExportScene3D_FM.swf" percentWidth="0" percentHeight="0"><settings><requestSource>SYS_SEM.xml</requestSource></settings></functional></TASK>';
+    var app = getFlexApp("SysWidget");
+    if (app != null)
+        app.task(s);
+}
+function onGPXCall()
+{
+    var s = '<TASK><functional id="EXPORTGPX" url="Public/SWF/modules/ExportGPX_FM.swf" percentWidth="0" percentHeight="0"></functional></TASK>';
+    var app = getFlexApp("SysWidget");
+    if (app != null)
+        app.task(s);
+}
+function onExcelCall() {
+    var s = '<TASK><functional id="EXPORTEXCEL" url="Public/SWF/modules/ExportExcel_FM.swf" percentWidth="0" percentHeight="0"></functional></TASK>';
+    var app = getFlexApp("SysWidget");
+    if (app != null)
+        app.task(s);
+}
+
+function taskReady(tsk, success)
+{
+    if (tsk == 'exportGPX')
+    {
+        if (success)
+        {
+            var app = getFlexApp("SysWidget");
+            if (app != null)
+                app.exportGPX(sys_id.value, id_infoteh.value);
+        }
+        return;
+    }
+    if (tsk == 'showCAS')
+    {
+        if (success)
+        {
+            var app = getFlexApp("SysWidget");
+            if (app != null)
+                app.showCAS('MG', sys_id.value, id_infoteh.value, '', sKM.value, poKM.value);
+        }
+    }
+    if (tsk == 'exportExcel') {
+        if (success) {
+            var app = getFlexApp("SysWidget");
+            if (app != null)
+                app.exportExcel(sys_id.value, id_infoteh.value);
+        }
+        return;
+    }
+}
+function onexportGPX(success, message)
+{
+    alert(success + "\n" + message);
+}
+function onexportExcel(success, message) {
+    alert(success + "\n" + message);
+}
+ --> 
+</script>  
+<script language="JavaScript" type="text/javascript">
+<!--
+// -----------------------------------------------------------------------------
+// Globals
+// Major version of Flash required
+var requiredMajorVersion = 10;
+// Minor version of Flash required
+var requiredMinorVersion = 0;
+// Minor version of Flash required
+var requiredRevision = 0;
+// -----------------------------------------------------------------------------
+// -->
+</script>
+</head>
+
+<body scroll="no">
+
+<script language="JavaScript" type="text/javascript">
+<!--
+// Version check for the Flash Player that has the ability to start Player Product Install (6.0r65)
+var hasProductInstall = DetectFlashVer(6, 0, 65);
+
+
+// Version check based upon the values defined in globals
+var hasRequestedVersion = DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision);
+var alternateContent = '<div class="main">'+
+		'<div class="image"><a href="Public/install/install_flash_player.exe" unselectable="on" ><img src="Public/assets/FlashPlayer_Logo.jpg" width="100" height="100" alt="Установить Adobe Flash Player" unselectable="on" title="Установить Adobe Flash Player"/></a></div>' +
+		'<div class="text">Для отображения содержимого страницы необходимо установить <a class="orange" href="Public/install/install_flash_player_ax.exe" title="Установить Adobe Flash Player">Adobe Flash Player</a><br/><br/>' +
+		'При возникновении проблем с отображением содержимого скачайте <a class="orange" href="Public/install/uninstall_flash_player.exe" title="Программа удаления Adobe Flash Player">программу удаления Adobe Flash Player</a>' +
+		' и выполните установку <a class="orange" href="Public/install/install_flash_player.exe" title="Установить Adobe Flash Player">повторно</a><br /> </div>' +
+		'<div class="whitebg">' +
+		'	После инсталляции необходимо повторно открыть страницу в новом окне браузера' +
+		'</div>'+
+	'</div>';
+
+	var IE='\v'=='v';
+if(IE) {
+alternateContent = '<div class="main">'+
+		'<div class="image"><a href="Public/install/install_flash_player_ax.exe" unselectable="on" ><img src="Public/assets/FlashPlayer_Logo.jpg" width="100" height="100" alt="Установить Adobe Flash Player" unselectable="on" title="Установить Adobe Flash Player"/></a></div>' +
+		'<div class="text">Для отображения содержимого страницы необходимо установить <a class="orange" href="Public/install/install_flash_player_ax.exe" title="Установить Adobe Flash Player">Adobe Flash Player</a><br/><br/>' +
+		'При возникновении проблем с отображением содержимого скачайте <a class="orange" href="Public/install/uninstall_flash_player.exe" title="Программа удаления Adobe Flash Player">программу удаления Adobe Flash Player</a>' +
+		' и выполните установку <a class="orange" href="Public/install/install_flash_player_ax.exe" title="Установить Adobe Flash Player">повторно</a><br /> </div>' +
+		'<div class="whitebg">' +
+		'	После инсталляции необходимо повторно открыть страницу в новом окне браузера' +
+		'</div>'+
+	'</div>';
+}
+
+if ( hasProductInstall && !hasRequestedVersion ) {
+	// DO NOT MODIFY THE FOLLOWING FOUR LINES
+	// Location visited after installation is complete if installation is required
+	document.write(alternateContent);
+} else if (hasRequestedVersion) {
+	// if we've detected an acceptable version
+	// embed the Flash Content SWF when all tests are passed
+	AC_FL_RunContent(
+			"src", "Public/SWF/SysWidget",
+			"width", "80%",
+			"height", "100%",
+			"align", "left",
+			"id", "SysWidget",
+			"quality", "high",
+			"bgcolor", "#ffffff",
+			"name", "SysWidget",
+			"allowScriptAccess","always",
+			"type", "application/x-shockwave-flash",
+			"pluginspage", "http://www.adobe.com/go/getflashplayer"
+	);
+  } else {  // flash is too old or we can't detect the plugin
+    
+    document.write(alternateContent);  // insert non-flash content
+  }
+  setTimeout('onLogin()',5000);
+// -->
+</script>
+<input id="loginE" type="text" value="user" />
+<br/>
+<input id="passE" type="password" value="gfhjkm.pth" />
+<br/>
+<button title="Войти" onclick="onLogin()">Войти</button><br />
+<br/>
+Идентификатор объекта Инфотех
+<br/>
+<input id="id_infoteh" type="text" value="17716223985201" />
+<br/>
+<input id="sys_id" type="text" value="ASMO" />
+<br/>
+<button title="Найти" onclick="onFind()">Найти</button>
+<br/>
+<input id="sKM" type="text" value="70" />
+<br/>
+<input id="poKM" type="text" value="110" />
+<br/>
+<button title="Войти" onclick="onFindKM()">Найти КM</button>
+<br/>
+<button title="Линейная развертка" onclick="onCASCall()">Линейная развертка</button><br />
+<br/>
+<button title="Карта" onclick="onMapCall()">Карта</button><br />
+<br/>
+<button title="Спутниковый мониторинг" onclick="onPOICall()">Спутниковый мониторинг</button>
+<br />
+<button title="Открыть IMG" onclick="onIMGCall()">Открыть IMG</button>
+<br/>
+<button title="Открыть VRML" onclick="onVRMLCall()">Открыть VRML</button>
+<br />
+<button title="Сохранить в GPX" onclick="onGPXCall()">Сохранить в GPX</button>
+<br />
+<button title="Сохранить в Excel" onclick="onExcelCall()">Сохранить в Excel</button>
+<br />
+<br />
+
+
+<noscript>
+    <!-- Widget работает только через JavaScript, поэтому выводим сообщение о необходимости включения JavaScript -->
+  	<div class="text">Для работы с картой необходимо разрешить использование JavaScript</div>
+</noscript>
+</body>
+</html>

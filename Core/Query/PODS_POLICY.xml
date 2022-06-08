@@ -1,0 +1,231 @@
+﻿<root version="postgres 7.7.6.0">
+    <data id="PODS_LPU" comment="PODS_LPU" schema="PODS" table="PODS_LPU">
+        <select>
+            <dbQuery>
+                <param name="USER_ID" default="-1" type="Int64" direction="Input"/>
+                <query>
+
+WITH granted_lpu
+                    AS (SELECT rf.value srv_district_id
+                    FROM web50.b_user_to_b_role u2r
+                    JOIN web50.b_role_to_b_policy r2p
+                    ON u2r.role_id = r2p.role_id
+                    JOIN web50.b_policy_rules pr
+                    ON r2p.policy_id = pr.policy_id
+                    JOIN web50.b_policy_rule_filters rf
+                    ON pr.rule_id = rf.rule_id
+                    WHERE user_id = :USER_ID
+                    AND pr.class_id = 'PODS_SRV_DISTRICT_GCL'
+                    AND rf.operator = '='),
+                    some_grants
+                    AS (SELECT 1
+                    FROM web50.b_user_to_b_role u2r
+                    JOIN web50.b_role_to_b_policy r2p
+                    ON u2r.role_id = r2p.role_id
+                    JOIN web50.b_policy_rules pr
+                    ON r2p.policy_id = pr.policy_id
+                    WHERE user_id = :USER_ID
+                    AND pr.class_id = 'PODS_SRV_DISTRICT_GCL' and pr.select_permitted::numeric&gt;0)
+                    SELECT CODE,DESCR,"XMAX","XMIN","YMAX","YMIN"
+                    FROM (
+                    SELECT srv_district_id CODE
+                    ,description DESCR
+                    ,CASE WHEN srv_district_id = 0
+                    THEN 1
+                    ELSE 0
+                    END sorter,
+                    g."XMAX",
+                    g."XMIN",
+                    g."YMAX",
+                    g."YMIN"
+                    FROM pods.srv_district_gcl lpu
+                    left join pods.srv_district_g g on g.gid=lpu.srv_district_id 
+		    where
+                    (EXISTS (SELECT 1
+                    FROM granted_lpu gl
+                    WHERE (lpu.srv_district_id)::text = gl.srv_district_id)
+                    AND EXISTS (SELECT 1 FROM some_grants))
+                    OR NOT EXISTS (SELECT 1 FROM some_grants)) x01
+                    ORDER BY SORTER,LOWER(DESCR)
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+    <data id="PODS_ROUTE_TYPE" comment="PODS_ROUTE_TYPE" schema="PODS" table="PODS_ROUTE_TYPE">
+        <select>
+            <dbQuery>
+                <var name="LINE_ID_FILTER" default="select line_id from pods.line" />
+                <param name="USER_ID" default="-1" type="Int64" direction="Input"/>
+                <query>
+                    SELECT CODE, DESCR
+                    FROM ( SELECT CODE, DESCRIPTION DESCR
+                    ,CASE WHEN  CODE = 'UNKNOWN'
+                    THEN 1
+                    ELSE 0
+                    END SORTER
+                    FROM pods.route_type_cl rt
+                    WHERE EXISTS (SELECT 1
+                    FROM pods.route r
+                    WHERE r.type_cl = rt.code
+                    AND r.line_id IN ({LINE_ID_FILTER}))) x01
+                    ORDER BY SORTER,UPPER(DESCR)
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+    <data id="PODS_LINE_ID" comment="PODS_LINE_ID" schema="PODS"
+          table="PODS_LINE">
+        <select>
+            <dbQuery>
+            	<var name="LINE_ID_FILTER" default="select line_id from pods.line" />
+                <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+                <var name="ROUTE_TYPE_FILTER" default="SELECT code FROM pods.route_type_cl"/>
+                <param name="USER_ID" default="-1" type="Int64" direction="Input"/>
+                <query>
+                    WITH granted_lpu
+                    AS (SELECT rf.value srv_district_id
+                    FROM web50.b_user_to_b_role u2r
+                    JOIN web50.b_role_to_b_policy r2p
+                    ON u2r.role_id = r2p.role_id
+                    JOIN web50.b_policy_rules pr
+                    ON r2p.policy_id = pr.policy_id
+                    JOIN web50.b_policy_rule_filters rf
+                    ON pr.rule_id = rf.rule_id
+                    WHERE user_id = :USER_ID
+                    AND pr.class_id = 'PODS_SRV_DISTRICT_GCL'
+                    AND rf.operator = '=' AND rf.value::integer in ({LPU_ACCESS_FILTER}) ),
+                    some_grants
+                    AS (SELECT 1
+                    FROM web50.b_user_to_b_role u2r
+                    JOIN web50.b_role_to_b_policy r2p
+                    ON u2r.role_id = r2p.role_id
+                    JOIN web50.b_policy_rules pr
+                    ON r2p.policy_id = pr.policy_id
+                    WHERE user_id = :USER_ID
+                    AND pr.class_id = 'PODS_SRV_DISTRICT_GCL' and pr.select_permitted::numeric &gt; 0),
+                    good_lines
+                    AS (SELECT line_id
+                    ,line_id CODE
+                    ,CASE WHEN line_id = 0
+                    THEN 'Неизвестно'
+                    ELSE description
+                    END DESCR
+                    ,CASE WHEN line_id = 0
+                    THEN 1
+                    ELSE 0
+                    END sorter
+                    FROM pods.line ln
+                    WHERE ln.description IS NOT NULL AND ln.line_id in ({LINE_ID_FILTER}))
+                    SELECT CODE,DESCR
+                    FROM
+                    (SELECT *
+                    FROM good_lines ln
+                    WHERE  ln.line_id = ANY (SELECT r.line_id
+                    FROM pods.route r
+                    JOIN pods.series s
+                    ON r.route_id = s.route_id AND r.type_cl in ({ROUTE_TYPE_FILTER})
+                    JOIN pods.station_point sp
+                    ON sp.series_id = s.series_id
+                    JOIN pods.location l
+                    ON l.location_id = sp.location_id
+                    WHERE EXISTS (SELECT 1
+                    FROM granted_lpu gl
+                    WHERE gl.srv_district_id = (l.srv_district_gcl)::text))
+                    AND EXISTS (SELECT 1 FROM some_grants)
+                    UNION ALL
+                    SELECT *
+                    FROM good_lines ln
+                    WHERE NOT EXISTS (SELECT 1
+                    FROM pods.route r
+                    JOIN pods.series s
+                    ON r.route_id = s.route_id AND r.type_cl in ({ROUTE_TYPE_FILTER})
+                    JOIN pods.station_point sp
+                    ON sp.series_id = s.series_id
+                    WHERE ln.line_id = r.line_id)
+                    OR NOT EXISTS (SELECT 1 FROM some_grants)) all_data
+                    ORDER BY SORTER,LOWER(DESCR)
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+    <data id="PODS_LPU_GRID" comment="PODS_LPU_GRID" schema="PODS" table="PODS_LPU">
+        <select>
+            <dbQuery>
+                <param name="USER_ID" default="-1" type="Int64" direction="Input"/>
+                <var name="LINE_ID_FILTER" default="select line_id from pods.line" />
+                <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+                <var name="ROUTE_TYPE_FILTER" default="SELECT code FROM pods.route_type_cl"/>
+                <query>
+                    SELECT CODE,DESCR
+                    FROM (
+                    SELECT srv_district_id CODE
+                    ,description DESCR
+                    ,CASE WHEN srv_district_id = 0
+                    THEN 1
+                    ELSE 0
+                    END sorter
+                    FROM pods.srv_district_gcl lpu
+                    WHERE  lpu.srv_district_id IN ({LPU_ACCESS_FILTER}))   x01
+                    ORDER BY SORTER,LOWER(DESCR)
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+    <data id="PODS_ROUTE_TYPE_GRID" comment="PODS_ROUTE_TYPE_GRID" schema="PODS" table="PODS_ROUTE_TYPE">
+        <select>
+            <dbQuery>
+                <param name="USER_ID" default="-1" type="Int64" direction="Input"/>
+                <var name="LINE_ID_FILTER" default="select line_id from pods.line" />
+                <var name="ROUTE_TYPE_FILTER" default="SELECT code FROM pods.route_type_cl"/>
+                <query>
+                    SELECT CODE, DESCR
+                    FROM ( SELECT CODE, DESCRIPTION DESCR
+                    ,CASE WHEN  CODE = 'UNKNOWN'
+                    THEN 1
+                    ELSE 0
+                    END SORTER
+                    FROM pods.route_type_cl rt
+                    WHERE code IN ({ROUTE_TYPE_FILTER})) x01
+                    ORDER BY SORTER,UPPER(DESCR)
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+    <data id="PODS_LINE_GRID" comment="PODS_ROUTE_TYPE_GRID" schema="PODS" table="PODS_ROUTE_TYPE">
+        <select>
+            <dbQuery>
+                <var name="LINE_ID_FILTER" default="select line_id from pods.line" />
+                <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+                <var name="ROUTE_TYPE_FILTER" default="SELECT code FROM pods.route_type_cl"/>
+                <param name="USER_ID" default="-1" type="Int64" direction="Input"/>
+                <query>
+                    SELECT LINE_ID AS CODE, DESCRIPTION AS DESCR
+                    FROM PODS.LINE
+                    WHERE DESCRIPTION IS NOT NULL AND LINE_ID IN ({LINE_ID_FILTER})
+                    ORDER BY LOWER(DESCRIPTION)
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+    <data id="M_1_ZONE" comment="Запрос на получение списка зон" schema="WEB50" table="M_1_ZONE">
+        <select>
+            <dbQuery>
+                <query>
+                   SELECT ZONE_ID CODE, DESCR
+                   FROM WEB50.M_1_ZONE
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+    <data id="WATERWAY" comment="Запрос на получение списка водных переходов" schema="WEB50" table="WATERWAY">
+        <select>
+            <dbQuery>
+                <query>
+                   SELECT waterway_id CODE, description DESCR FROM web50.waterway
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+</root>

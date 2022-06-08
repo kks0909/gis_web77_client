@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.7.2" descr="Загрузчик-валидатор">
+  <dataProvider type="style" source="SUTSTPAVALIDATE_STYLE.xml" />
+	<layer id="SUTSTPAVALIDATE_VALVE" comment="Краны, полевые данные" schema="sutstpa" table="VALVE_VALIDATE" descr="VALIDATE_VALVE" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="" classField="" spacing="VALIDATE_VALVE" cover="false" fitMap="false" order="1" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPAVALIDATE_VALVE" />
+		<dataProvider type="style" source="SUTSTPAVALIDATE_STYLE.xml#SUTSTPAVALIDATE_VALVE" />
+		<dataProvider type="semantic" source="SUTSTPAVALIDATE_SEM.xml#SUTSTPAVALIDATE_VALVE" />
+		<dataProvider type="spatial" source="SUTSTPAVALIDATE_GEO.xml#SUTSTPAVALIDATE_VALVE" />
+	</layer>
+	<layer id="SUTSTPAVALIDATE_STRUCTURE" comment="Крановые площадки, полевые данные" schema="sutstpa" table="STRUCTURE_VALIDATE" descr="VALIDATE_STRUCTURE" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="" classField="" spacing="VALIDATE_STRUCTURE" cover="false" fitMap="false" order="1" visible="true" topology="point,polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPAVALIDATE_STRUCTURE" />
+		<dataProvider type="style" source="SUTSTPAVALIDATE_STYLE.xml#SUTSTPAVALIDATE_STRUCTURE" />
+		<dataProvider type="semantic" source="SUTSTPAVALIDATE_SEM.xml#SUTSTPAVALIDATE_STRUCTURE" />
+		<dataProvider type="spatial" source="SUTSTPAVALIDATE_GEO.xml#SUTSTPAVALIDATE_STRUCTURE" />
+	</layer>
+	<layer id="SUTSTPAVALIDATE_VENT_PIPE" comment="Свечи, полевые данные" schema="sutstpa" table="VENT_PIPE_VALIDATE" descr="VALIDATE_VENT_PIPE" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="" classField="" spacing="VALIDATE_VENT_PIPE" cover="false" fitMap="false" order="1" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPAVALIDATE_VENT_PIPE" />
+		<dataProvider type="style" source="SUTSTPAVALIDATE_STYLE.xml#SUTSTPAVALIDATE_VENT_PIPE" />
+		<dataProvider type="semantic" source="SUTSTPAVALIDATE_SEM.xml#SUTSTPAVALIDATE_VENT_PIPE" />
+		<dataProvider type="spatial" source="SUTSTPAVALIDATE_GEO.xml#SUTSTPAVALIDATE_VENT_PIPE" />
+	</layer>
+	<layer id="SUTSTPAVALIDATE_VALVE_BAD" comment="Краны, выявленные ошибки" schema="sutstpa" table="VALVE_VALIDATE" descr="VALIDATE_VALVE">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPAVALIDATE_VALVE" />
+		<dataProvider type="semantic" source="SUTSTPAVALIDATE_SEM.xml#SUTSTPAVALIDATE_VALVE" />
+	</layer>
+	<layer id="SUTSTPAVALIDATE_STRUCTURE_BAD" comment="Крановые площадки, выявленные ошибки" schema="sutstpa" table="STRUCTURE_VALIDATE" descr="VALIDATE_STRUCTURE">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPAVALIDATE_STRUCTURE" />
+		<dataProvider type="semantic" source="SUTSTPAVALIDATE_SEM.xml#SUTSTPAVALIDATE_STRUCTURE" />
+	</layer>
+	<layer id="SUTSTPAVALIDATE_VENT_PIPE_BAD" comment="Свечи, выявленные ошибки" schema="sutstpa" table="VENT_PIPE_VALIDATE" descr="VALIDATE_VENT_PIPE">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPAVALIDATE_VENT_PIPE" />
+		<dataProvider type="semantic" source="SUTSTPAVALIDATE_SEM.xml#SUTSTPAVALIDATE_VENT_PIPE" />
+	</layer>
+	
+	
+</root>

@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<kml version="7.7.3.0">
+	  <Document>
+				
+					
+					
+	
+	
+    
+				
+		<!-- Конец ВТД-->
+		<Style table="LEAK_HISTORY" schema="PODS" id="PODS_LEAK_HISTORY"
+             comment="PODS.LEAK_HISTORY"
+             descr="Журнал регистрации аварийных заявок">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/LEAK_HISTORY.png</href>
+					          <form>bitmap</form>
+					          <size>16</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+			      <MIStyle>
+				        <data/>
+			      </MIStyle>
+			      <IMGStyle>
+				        <data type0="" type1="" type2=""/>
+			      </IMGStyle>
+			      <VRMLStyle>
+				        <data process="" viewpoint=""/>
+			      </VRMLStyle>
+		    </Style>
+		    <Style table="CHEMICAL_INJECTION_LOG" schema="PODS" id="PODS_CHEMICAL_INJECTION_LOG"
+             comment="CHEMICAL_INJECTION_LOG"
+             descr="Журнал добавления в грунт химических реагентов">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+				        <color>FFFFAA00</color>
+				        <width>12</width>
+			      </LineStyle>
+			      <LabelStyle>
+				        <zoomMin>NaN</zoomMin>
+				        <zoomMax>NaN</zoomMax>
+				        <color>FF000000</color>
+				        <fontSize>10</fontSize>
+				        <bold>0</bold>
+				        <italic>0</italic>
+				        <underline>0</underline>
+                                        <auto>1</auto>
+				        <duplicate>0</duplicate>
+				        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="CHEMICAL_INJECTION_LOG" schema="PODS" id="PODS_CHEMICAL_INJECTION_LOG"
+             comment="PODS.CHEMICAL_INJECTION_LOG"
+             descr="Журнал добавления в грунт химических реагентов">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/CHEMICAL_INJECTION_LOG.png</href>
+					          <form>bitmap</form>
+					          <size>24</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="GRANDFATHER_PRESSURE" schema="PODS" id="PODS_GRANDFATHER_PRESSURE"
+             comment="GRANDFATHER_PRESSURE"
+             descr="Журнал изменений рабочего давления">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+				        <color>FFFFE0D4</color>
+				        <width>12</width>
+			      </LineStyle>
+			      <LabelStyle>
+				        <zoomMin>NaN</zoomMin>
+				        <zoomMax>NaN</zoomMax>
+				        <color>FF000000</color>
+				        <fontSize>10</fontSize>
+				        <bold>0</bold>
+				        <italic>0</italic>
+				        <underline>0</underline>
+                                        <auto>1</auto>
+				        <duplicate>0</duplicate>
+				        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="GRANDFATHER_PRESSURE" schema="PODS" id="PODS_GRANDFATHER_PRESSURE"
+             comment="PODS.GRANDFATHER_PRESSURE"
+             descr="Журнал изменений рабочего давления">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/GRANDFATHER_PRESSURE.png</href>
+					          <form>bitmap</form>
+					          <size>16</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="CUSTOMER_INTERRUPT" schema="PODS" id="PODS_CUSTOMER_INTERRUPT"
+             comment="CUSTOMER_INTERRUPT"
+             descr="Журнал отключения потребителей">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+				        <color>FFDA70B4</color>
+				        <width>12</width>
+			      </LineStyle>
+			      <LabelStyle>
+				        <zoomMin>NaN</zoomMin>
+				        <zoomMax>NaN</zoomMax>
+				        <color>FF000000</color>
+				        <fontSize>10</fontSize>
+				        <bold>0</bold>
+				        <italic>0</italic>
+				        <underline>0</underline>
+                                        <auto>1</auto>
+				        <duplicate>0</duplicate>
+				        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="CUSTOMER_INTERRUPT" schema="PODS" id="PODS_CUSTOMER_INTERRUPT"
+             comment="PODS.CUSTOMER_INTERRUPT"
+             descr="Журнал отключения потребителей">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/CUSTOMER_INTERRUPT.png</href>
+					          <form>bitmap</form>
+					          <size>24</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="PIPE_OPERATING_HISTORY" schema="PODS" id="PODS_PIPE_OPERATING_HISTORY"
+             comment="PIPE_OPERATING_HISTORY"
+             descr="Оперативный журнал трубопровода">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+				        <color>FFC2A465</color>
+				        <width>12</width>
+			      </LineStyle>
+			      <LabelStyle>
+				        <zoomMin>NaN</zoomMin>
+				        <zoomMax>NaN</zoomMax>
+				        <color>FF000000</color>
+				        <fontSize>10</fontSize>
+				        <bold>0</bold>
+				        <italic>0</italic>
+				        <underline>0</underline>
+                                        <auto>1</auto>
+				        <duplicate>0</duplicate>
+				        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="PIPE_OPERATING_HISTORY" schema="PODS" id="PODS_PIPE_OPERATING_HISTORY"
+             comment="PODS.PIPE_OPERATING_HISTORY"
+             descr="Оперативный журнал трубопровода">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/PIPE_OPERATING_HISTORY.png</href>
+					          <form>bitmap</form>
+					          <size>24</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		</Document>
+</kml>

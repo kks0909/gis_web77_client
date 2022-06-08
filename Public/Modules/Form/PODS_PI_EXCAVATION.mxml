@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns="view.data.*"
+                title="Протяженных шурфы. Данные наружных обследований"
+                width="760"
+                ext_data_id="PODS_EXPORT.xml#PODS_PI_EXCAVATION"
+                excelTemplate="PODS_PI_EXCAVATION">
+	  <dataProvider>PODS_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	  <mx:VBox width="760">
+		    <mx:HBox percentWidth="100">
+			      <mx:Text textAlign="right" text="Обследование" width="140"/>
+			      <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+				        <mx:ComboBox id="PI_EVENT_ID" width="585" height="20"
+                         dataProvider="PODS_SEM_DICT.xml#PODS_PHYSICAL_INSPECTION"/>
+				        <mx:Button id="BUTTON_PI_EVENT_ID" selectedField="PODS_PHYSICAL_INSPECTION"
+                       enabled="false"
+                       styleName="refObject"
+                       toolTip="Перейти к обследованию"
+                       width="16"
+                       height="16"/>
+			      </mx:HBox>
+		    </mx:HBox>
+		    <mx:HBox percentWidth="100">
+			      <mx:VBox percentWidth="50">
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Описание" width="140"/>
+					          <mx:TextInput id="DESCRIPTION" width="225" maxChars="50" height="40"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Дата измерения" width="140"/>
+					          <mx:DateField id="INSPECTION_DATE" width="97" height="20" formatString="DD.MM.YYYY"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Наименование шурфа" width="140"/>
+					          <mx:TextInput id="SITE_NAME" width="225" maxChars="50" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Описание шурфа" width="140"/>
+					          <mx:TextInput id="SITE_DESCRIPTION" width="225" maxChars="254" height="40"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Дата вскрытия траншеи" width="140"/>
+					          <mx:DateField id="EXCAVATION_DATE" width="97" height="20" formatString="DD.MM.YYYY"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Метод обследования" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="MPI_METHOD_CL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_MPI_METHOD_CL"/>
+						            <mx:Button id="BTN_LIST_MPI_METHOD_CL" selectedField="PODS_MPI_METHOD_CL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Способ разработки траншеи" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="SURFACE_PREP_METHOD_CL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_SURFACE_PREP_METHOD_CL"/>
+						            <mx:Button id="BTN_LIST_SURFACE_PREP_METHOD_CL"
+                             selectedField="PODS_SURFACE_PREP_METHOD_CL"
+                             enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Вскрытие верха трубы" width="140"/>
+					          <mx:CheckBox id="PIPE_EXCAVATED_TOP_LF" width="20" height="20"/>
+					          <mx:Text textAlign="right" text="Вскрытие низа трубы" width="173"/>
+					          <mx:CheckBox id="PIPE_EXCAVATED_BOTTOM_LF" width="20" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Вскрытие левой стенки" width="140"/>
+					          <mx:CheckBox id="PIPE_EXCAVATED_LEFT_LF" width="20" height="20"/>
+					          <mx:Text textAlign="right" text="Вскрытие правой стенки" width="173"/>
+					          <mx:CheckBox id="PIPE_EXCAVATED_RIGHT_LF" width="20" height="20"/>
+				        </mx:HBox>
+			      </mx:VBox>
+			      <mx:VBox percentWidth="50">
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Подрядчик на шурфовку" width="140"/>
+					          <mx:TextInput id="EXCAVATION_CONTRACTOR" width="200" maxChars="40" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Подрядчик на обследование" width="140"/>
+					          <mx:TextInput id="MPI_CONTRACTOR" width="200" maxChars="40" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Вид заключения" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="RESPONSE_CL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_EXCAVATION_RESPONSE_CL"/>
+						            <mx:Button id="BTN_LIST_RESPONSE_CL" selectedField="PODS_EXCAVATION_RESPONSE_CL"
+                             enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Комментарии" width="140"/>
+					          <mx:TextInput id="COMMENTS" width="225" maxChars="255" height="40"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Источник информации" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="SOURCE_GCL" enabled="false" editable="false" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_SOURCE_GCL"/>
+						            <mx:Button id="BTN_LIST_SOURCE_GCL" selectedField="PODS_SOURCE_GCL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Идентификатор рабочей документации" width="140"/>
+					          <controls:NumberInput id="EXCAVATION_PROJECT_ID" editable="false" width="85" maxChars="22"
+                                     height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Идентификатор объекта" width="140"/>
+					          <controls:NumberInput id="EVENT_ID" editable="false" width="85" maxChars="22" height="20"/>
+				        </mx:HBox>
+			      </mx:VBox>
+		    </mx:HBox>
+	  </mx:VBox>
+	  <validatorsArray>
+		    <controls:DefaultStringValidator source="{DESCRIPTION}" property="text" enabled="false" minLength="1"
+                                       requiredFieldError="Поле 'Описание' обязательно для заполнения."
+                                       tooShortError="Поле 'Описание' обязательно для заполнения."/>
+		    <controls:DefaultStringValidator source="{SITE_NAME}" property="text" enabled="false" minLength="1"
+                                       requiredFieldError="Поле 'Наименование шурфа' обязательно для заполнения."
+                                       tooShortError="Поле 'Наименование шурфа' обязательно для заполнения."/>
+		    <controls:DefaultStringValidator source="{SITE_DESCRIPTION}" property="text" enabled="false" minLength="1"
+                                       requiredFieldError="Поле 'Описание шурфа' обязательно для заполнения."
+                                       tooShortError="Поле 'Описание шурфа' обязательно для заполнения."/>
+		    <controls:DefaultStringValidator source="{EXCAVATION_CONTRACTOR}" property="text" enabled="false" minLength="1"
+                                       requiredFieldError="Поле 'Подрядчик на шурфовку' обязательно для заполнения."
+                                       tooShortError="Поле 'Подрядчик на шурфовку' обязательно для заполнения."/>
+		    <controls:DefaultStringValidator source="{MPI_CONTRACTOR}" property="text" enabled="false" minLength="1"
+                                       requiredFieldError="Поле 'Подрядчик на обследование' обязательно для заполнения."
+                                       tooShortError="Поле 'Подрядчик на обследование' обязательно для заполнения."/>
+		    <controls:DefaultDateValidator source="{INSPECTION_DATE}" property="selectedDate" enabled="false"
+                                     mахValue="new Date()"
+                                     exceedsMaxError="'Дата измерения' должна быть не позднее текущей даты"
+                                     requiredFieldError="Поле 'Дата измерения' обязательно для заполнения"/>
+		    <controls:DefaultDateValidator source="{EXCAVATION_DATE}" property="selectedDate" enabled="false"
+                                     mахValue="new Date()"
+                                     exceedsMaxError="'Дата вскрытия траншеи' должна быть не позднее текущей даты"
+                                     requiredFieldError="Поле 'Дата вскрытия траншеи' обязательно для заполнения"/>
+	  </validatorsArray>
+</DATA_EDIT_FORM>

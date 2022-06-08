@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DATA_GRID_FORM xmlns="view.data.*" readOnly="true" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml" percentWidth="100" percentHeight="100" >
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	<mx:VBox percentWidth="100" percentHeight="100" >
+		<DataGridWithScript id="DATA_GRID" percentWidth="100" percentHeight="100" styleName="dgInfoForm">
+			<columns>
+				<mx:DataGridColumn headerText="№" width="30" itemRenderer="view.controls.renderer.FirstGridItemRenderer" editable="false"/>
+				<mx:DataGridColumn headerText="Широта" dataField="Y_COORD" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Долгота" dataField="X_COORD" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Абсолютная высота" dataField="Z_COORD" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="№ точки в контуре" dataField="COORD_IN_PART" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="№ контура" dataField="PART_NO" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+			</columns>
+			<selectScript>GAZPROM_SYS_SEM.xml#PODS_COORD_GE_SHAPE_LIST_DATA_GRID</selectScript>
+			<insertScript></insertScript>
+			<updateScript></updateScript>
+			<deleteScript></deleteScript>
+		</DataGridWithScript>
+		<mx:HBox width="100%" visible="{CONFIG.SHOW_SYSTEM_INFO}" >
+			<mx:Text textAlign="right" text="Идентификатор описания координат" width="140" />
+			<controls:NumberInput id="SHAPE_ID" editable="false" width="85" maxChars="22" height="20" />
+		</mx:HBox>
+	</mx:VBox>
+</DATA_GRID_FORM>

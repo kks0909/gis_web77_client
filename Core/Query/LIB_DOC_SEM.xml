@@ -1,0 +1,538 @@
+﻿<root version="postgres 7.7.3.0">
+  <!-- Запрос также используется в модуле предпросмотра документов для получения FILE_NAME -->
+  <data id="LIB_DOC" comment="WEB50.LIB_DOC" schema="WEB50" table="LIB_DOC" descr="Геокодированные документы">
+    <select>
+      <dbQuery idField="ID">
+        <var name="USER_ID" type="Int64" direction="Input" />
+		<var name="FILTER" default="1=1"/>
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID ={USER_ID} 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID ={USER_ID} 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                   AND pr.SELECT_PERMITTED = '1')
+SELECT * 
+  FROM (
+SELECT  ld.DOC_ID ID
+        ,ld.NAME
+        ,ld.DESCR
+        ,ld.PROVIDER
+        ,ld.STATUS_ID
+        ,ld.TIME_STAMP
+        ,ld.GID
+        ,ld.DOC_TYPE_ID
+        ,ld.PARENT_DOC_ID
+        ,ld.CTIME
+        ,ld.CUSER_ID
+        ,ld.MUSER_ID
+        ,ld.MTIME
+        ,ld.DOC_ID
+        ,ldv.STORAGE_ID
+        ,ldv.FILE_NAME
+        FROM WEB50.LIB_DOC ld
+             LEFT JOIN WEB50.LIB_DOC_VERSION ldv
+               ON ldv.DOC_ID=ld.DOC_ID
+       WHERE ld.DOC_TYPE_ID NOT IN (37,38,41,0)
+         AND (((ld.status_id = 1
+                      OR (ld.cuser_id ={USER_ID} 
+                         AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))) d
+WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+    <!-- В скрипте используется вставка только файла, поэтому DOC_TYPE_ID=1 !!! В этом же скрипте вставляется LIB_DOC_VERSION -->
+    <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(DOC_ID) id FROM WEB50.LIB_DOC" />
+        <var name="NAME" type="String" direction="Input" />
+        <var name="DESCR" type="String" direction="Input" />
+        <var name="PARENT_DOC_ID" type="Int64" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+        <var name="STORAGE_ID" type="Int64" direction="Input" default="0"/>
+        <var name="FILE_NAME" type="String" direction="Input" />
+        <var name="STATUS_ID" type="Int64" direction="Input" />
+	<var name="POLICY" default="POLICY.xml#INSERT_LIB_DOC_GEO"  />		
+        <query>
+		DO $$
+            DECLARE varDocId bigint;
+                  BEGIN
+                  INSERT INTO WEB50.LIB_DOC(NAME,DESCR,PROVIDER,STATUS_ID
+                                           ,TIME_STAMP,DOC_TYPE_ID,PARENT_DOC_ID
+                                           ,CTIME,CUSER_ID)
+                  VALUES('{NAME}','{DESCR}',NULL,{STATUS_ID},current_timestamp,1,{PARENT_DOC_ID},current_timestamp,{USER_ID})
+                  RETURNING DOC_ID INTO varDocId;
+                  INSERT INTO WEB50.LIB_DOC_VERSION (DOC_ID,NEXT_DOC_VERSION_ID,MIME_TYPE_ID,STORAGE_ID,NAME,DESCR,VERSION_NUMBER,BODY,FILE_NAME,CTIME,CUSER_ID,MTIME,MUSER_ID)
+                  VALUES (varDocId,NULL,0,{STORAGE_ID},NULL,'Начальная вставка',1.0,NULL,'{FILE_NAME}',current_timestamp,{USER_ID},NULL,NULL);
+                  END $$;  
+    </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="NAME" type="String" direction="Input" />
+        <var name="DESCR" type="String" direction="Input" />
+        <var name="PARENT_DOC_ID" type="Int64" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+        <var name="ID" type="Int64" direction="Input" />
+        <var name="STATUS_ID" type="Int64" direction="Input" />
+	<var name="POLICY" default="POLICY.xml#UPDATE_LIB_DOC_GEO"  />		
+        <query>
+		DO $$
+                  BEGIN
+	            UPDATE WEB50.LIB_DOC
+                SET
+                NAME = '{NAME}'
+                ,DESCR = '{DESCR}'
+                ,PARENT_DOC_ID = {PARENT_DOC_ID}
+                ,MTIME = current_timestamp
+                ,MUSER_ID = {USER_ID}
+                ,STATUS_ID = {STATUS_ID}
+                WHERE DOC_ID = {ID};
+                UPDATE WEB50.LIB_DOC_VERSION SET MIME_TYPE_ID=0,
+	            NAME='Документ изменен',FILE_NAME='{FILE_NAME}',MTIME=current_timestamp,MUSER_ID={USER_ID}
+	            WHERE DOC_ID = {ID};
+            END $$; 
+			</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#DELETE_LIB_DOC_GEO"  />		
+        <query>
+		DO $$
+			      BEGIN
+			      DELETE
+			      FROM WEB50.LIB_DOC_VERSION
+			      WHERE DOC_ID = {ID};
+
+			      DELETE FROM WEB50.LIB_DOC WHERE DOC_ID = {ID};
+			      END $$;
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="LIB_DOC_WRL" comment="WEB50.LIB_DOC" schema="WEB50" table="LIB_DOC" descr="Документы 3D-сцен">
+    <select>
+      <dbQuery idField="ID">
+        <var name="USER_ID" type="Int64" direction="Input" />
+		<var name="FILTER" default="1=1"/>		
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = {USER_ID} 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = {USER_ID} 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                   AND pr.SELECT_PERMITTED = '1')
+SELECT * 
+  FROM (
+SELECT  ld.DOC_ID ID
+        ,ld.NAME
+        ,ld.DESCR
+        ,ld.PROVIDER
+        ,ld.STATUS_ID
+        ,ld.TIME_STAMP
+        ,ld.GID
+        ,ld.DOC_TYPE_ID
+        ,ld.PARENT_DOC_ID
+        ,ld.CTIME
+        ,ld.CUSER_ID
+        ,ld.MUSER_ID
+        ,ld.MTIME
+        ,ld.DOC_ID
+        ,ldv.STORAGE_ID
+        ,ldv.FILE_NAME
+        FROM WEB50.LIB_DOC ld
+             LEFT JOIN WEB50.LIB_DOC_VERSION ldv
+               ON ldv.DOC_ID=ld.DOC_ID
+       WHERE ld.DOC_TYPE_ID = 37
+         AND (((ld.status_id = 1
+                      OR (ld.cuser_id = {USER_ID}
+                         AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))) d
+WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+    <!-- В скрипте используется вставка только WRL-файла, поэтому DOC_TYPE_ID=37 !!! В этом же скрипте вставляется LIB_DOC_VERSION -->
+    <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output"  default="SELECT max(DOC_ID) id FROM WEB50.LIB_DOC"/>
+        <var name="NAME" type="String" direction="Input" />
+        <var name="DESCR" type="String" direction="Input" />
+        <var name="PARENT_DOC_ID" type="Int64" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+        <var name="MIME_NAME" type="String" direction="Input" />
+        <var name="STORAGE_ID" type="Int64" direction="Input" default="0"/>
+        <var name="FILE_NAME" type="String" direction="Input" />
+        <var name="STATUS_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#INSERT_LIB_DOC_GEO"  />		
+        <query>
+		DO $$
+            DECLARE varDocId bigint;
+                  BEGIN
+                  INSERT INTO WEB50.LIB_DOC(NAME,DESCR,PROVIDER,STATUS_ID
+                                           ,TIME_STAMP,DOC_TYPE_ID,PARENT_DOC_ID
+                                           ,CTIME,CUSER_ID)
+                  VALUES('{NAME}','{DESCR}',NULL,{STATUS_ID},current_timestamp,37,{PARENT_DOC_ID},current_timestamp,{USER_ID})
+                  RETURNING DOC_ID INTO varDocId;
+                  INSERT INTO WEB50.LIB_DOC_VERSION (DOC_ID,NEXT_DOC_VERSION_ID,MIME_TYPE_ID,STORAGE_ID,NAME,DESCR,VERSION_NUMBER,BODY,FILE_NAME,CTIME,CUSER_ID,MTIME,MUSER_ID)
+                  VALUES (varDocId,NULL,0,
+                  {STORAGE_ID},NULL,'Начальная вставка',1.0,NULL,'{FILE_NAME}',current_timestamp,{USER_ID},NULL,NULL);
+                  END $$;    
+    </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="NAME" type="String" direction="Input" />
+        <var name="DESCR" type="String" direction="Input" />
+        <var name="PARENT_DOC_ID" type="Int64" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+        <var name="MIME_NAME" type="String" direction="Input" />
+        <var name="ID" type="Int64" direction="Input" />
+        <var name="STATUS_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#UPDATE_LIB_DOC_GEO"  />		
+        <query>
+		DO $$
+                  BEGIN
+	            UPDATE WEB50.LIB_DOC
+                SET
+                NAME = '{NAME}'
+                ,DESCR = '{DESCR}'
+                ,PARENT_DOC_ID = {PARENT_DOC_ID}
+                ,MTIME = current_timestamp
+                ,MUSER_ID = {USER_ID}
+                ,STATUS_ID = {STATUS_ID}
+                WHERE DOC_ID = {ID};
+                UPDATE WEB50.LIB_DOC_VERSION SET MIME_TYPE_ID=0,
+	            NAME='Документ изменен',FILE_NAME='{FILE_NAME}',MTIME=current_timestamp,MUSER_ID={USER_ID}
+	            WHERE DOC_ID = {ID};
+            END $$;
+    </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#DELETE_LIB_DOC_GEO"  />		
+        <query>
+		DO $$
+			      BEGIN
+			      DELETE
+			      FROM WEB50.LIB_DOC_VERSION
+			      WHERE DOC_ID = {ID};
+
+			      DELETE FROM WEB50.LIB_DOC WHERE DOC_ID = {ID};
+			      END $$;
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="LIB_DOC_IMG" comment="WEB50.LIB_DOC" schema="WEB50" table="LIB_DOC" descr="Навигационные карты (IMG)">
+    <select>
+      <dbQuery idField="ID">
+        <param name="USER_ID" type="Int64" direction="Input" />
+		<var name="FILTER" default="1=1"/>
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = {USER_ID}
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = {USER_ID} 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                   AND pr.SELECT_PERMITTED = '1')
+SELECT * 
+  FROM (
+SELECT  ld.DOC_ID ID
+        ,ld.NAME
+        ,ld.DESCR
+        ,ld.PROVIDER
+        ,ld.STATUS_ID
+        ,ld.TIME_STAMP
+        ,ld.GID
+        ,ld.DOC_TYPE_ID
+        ,ld.PARENT_DOC_ID
+        ,ld.CTIME
+        ,ld.CUSER_ID
+        ,ld.MUSER_ID
+        ,ld.MTIME
+        ,ld.DOC_ID
+        ,ldv.STORAGE_ID
+        ,ldv.FILE_NAME
+        FROM WEB50.LIB_DOC ld
+             LEFT JOIN WEB50.LIB_DOC_VERSION ldv
+               ON ldv.DOC_ID=ld.DOC_ID
+       WHERE ld.DOC_TYPE_ID = 38
+         AND (((ld.status_id = 1
+                      OR (ld.cuser_id = :USER_ID
+                         AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))) d
+WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+    <!-- В скрипте используется вставка только IMG-файла, поэтому DOC_TYPE_ID=38 !!! В этом же скрипте вставляется LIB_DOC_VERSION -->
+    <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output"  default="SELECT max(DOC_ID) id FROM WEB50.LIB_DOC"/>
+        <var name="NAME" type="String" direction="Input" />
+        <var name="DESCR" type="String" direction="Input" />
+        <var name="PARENT_DOC_ID" type="Int64" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+        <var name="MIME_NAME" type="String" direction="Input" />
+        <var name="STORAGE_ID" type="Int64" direction="Input" default="0"/>
+        <var name="FILE_NAME" type="String" direction="Input" />
+        <var name="STATUS_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#INSERT_LIB_DOC_GEO"  />		
+        <query>
+		DO $$
+            DECLARE varDocId bigint;
+                  BEGIN
+                  INSERT INTO WEB50.LIB_DOC(NAME,DESCR,PROVIDER,STATUS_ID
+                                           ,TIME_STAMP,DOC_TYPE_ID,PARENT_DOC_ID
+                                           ,CTIME,CUSER_ID)
+                  VALUES('{NAME}','{DESCR}',NULL,{STATUS_ID},current_timestamp,38,{PARENT_DOC_ID},current_timestamp,{USER_ID})
+                  RETURNING DOC_ID INTO varDocId;
+                  INSERT INTO WEB50.LIB_DOC_VERSION (DOC_ID,NEXT_DOC_VERSION_ID,MIME_TYPE_ID,STORAGE_ID,NAME,DESCR,VERSION_NUMBER,BODY,FILE_NAME,CTIME,CUSER_ID,MTIME,MUSER_ID)
+                  VALUES (varDocId,NULL,0,
+                  {STORAGE_ID},NULL,'Начальная вставка',1.0,NULL,'{FILE_NAME}',current_timestamp,{USER_ID},NULL,NULL);
+                  END $$;       
+    </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="NAME" type="String" direction="Input" />
+        <var name="DESCR" type="String" direction="Input" />
+        <var name="PARENT_DOC_ID" type="Int64" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+        <var name="MIME_NAME" type="String" direction="Input" />
+        <var name="ID" type="Int64" direction="Input" />
+        <var name="STATUS_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#UPDATE_LIB_DOC_GEO"  />		
+        <query>
+		DO $$
+		DECLARE
+                  BEGIN
+	            UPDATE WEB50.LIB_DOC
+                SET
+                NAME = '{NAME}'
+                ,DESCR = '{DESCR}'
+                ,PARENT_DOC_ID = {PARENT_DOC_ID}
+                ,MTIME = current_timestamp
+                ,MUSER_ID = {USER_ID}
+                ,STATUS_ID = {STATUS_ID}
+                WHERE DOC_ID = {ID};
+                UPDATE WEB50.LIB_DOC_VERSION SET MIME_TYPE_ID=0,
+	            NAME='Документ изменен',FILE_NAME='{FILE_NAME}',MTIME=current_timestamp,MUSER_ID={USER_ID}
+	            WHERE DOC_ID = {ID};
+            END $$;
+    </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#DELETE_LIB_DOC_GEO"  />		
+        <query>
+		DO $$
+			      BEGIN
+			      DELETE
+			      FROM WEB50.LIB_DOC_VERSION
+			      WHERE DOC_ID = {ID};
+
+			      DELETE FROM WEB50.LIB_DOC WHERE DOC_ID = {ID};
+			      END $$;
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="LIB_DOC_GEO_VIDEO" comment="WEB50.LIB_DOC" schema="WEB50" table="LIB_DOC" descr="Данные видеомониторинга">
+    <select>
+      <dbQuery idField="ID">
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = {USER_ID} 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = {USER_ID} 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                   AND pr.SELECT_PERMITTED = '1')
+SELECT * 
+  FROM (
+SELECT  ld.DOC_ID ID
+        ,ld.NAME
+        ,ld.DESCR
+        ,ld.PROVIDER
+        ,ld.STATUS_ID
+        ,ld.TIME_STAMP
+        ,ld.GID
+        ,ld.DOC_TYPE_ID
+        ,ld.PARENT_DOC_ID
+        ,ld.CTIME
+        ,ld.CUSER_ID
+        ,ld.MUSER_ID
+        ,ld.MTIME
+        ,ld.DOC_ID
+        ,ldv.STORAGE_ID
+        ,ldv.FILE_NAME
+        FROM WEB50.LIB_DOC ld
+             LEFT JOIN WEB50.LIB_DOC_VERSION ldv
+               ON ldv.DOC_ID=ld.DOC_ID
+       WHERE ld.DOC_TYPE_ID = 41
+         AND (((ld.status_id = 1
+                      OR (ld.cuser_id = {USER_ID}
+                         AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))) d
+WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+    <!-- В скрипте используется вставка только IMG-файла, поэтому DOC_TYPE_ID=41 !!! В этом же скрипте вставляется LIB_DOC_VERSION -->
+    <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output"  default="SELECT max(DOC_ID) id FROM WEB50.LIB_DOC"/>
+        <var name="NAME" type="String" direction="Input" />
+        <var name="DESCR" type="String" direction="Input" />
+        <var name="PARENT_DOC_ID" type="Int64" direction="Input" default="40"/>
+        <var name="USER_ID" type="Int64" direction="Input" />
+        <var name="MIME_NAME" type="String" direction="Input" />
+        <var name="STORAGE_ID" type="Int64" direction="Input" default="0"/>
+        <var name="FILE_NAME" type="String" direction="Input" />
+        <var name="STATUS_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#INSERT_LIB_DOC_GEO"  />		
+        <query>
+		DO $$
+            DECLARE varDocId bigint;
+                  BEGIN
+                  INSERT INTO WEB50.LIB_DOC(NAME,DESCR,PROVIDER,STATUS_ID
+                                           ,TIME_STAMP,DOC_TYPE_ID,PARENT_DOC_ID
+                                           ,CTIME,CUSER_ID)
+                  VALUES('{NAME}','{DESCR}',NULL,{STATUS_ID},current_timestamp,41,{PARENT_DOC_ID},current_timestamp,{USER_ID})
+                  RETURNING DOC_ID INTO varDocId;
+                  INSERT INTO WEB50.LIB_DOC_VERSION (DOC_ID,NEXT_DOC_VERSION_ID,MIME_TYPE_ID,STORAGE_ID,NAME,DESCR,VERSION_NUMBER,BODY,FILE_NAME,CTIME,CUSER_ID,MTIME,MUSER_ID)
+                  VALUES (varDocId,NULL,0,
+                  {STORAGE_ID},NULL,'Начальная вставка',1.0,NULL,'{FILE_NAME}',current_timestamp,{USER_ID},NULL,NULL);
+                  END $$;            
+    </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="NAME" type="String" direction="Input" />
+        <var name="DESCR" type="String" direction="Input" />
+        <var name="PARENT_DOC_ID" type="Int64" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+        <var name="MIME_NAME" type="String" direction="Input" />
+        <var name="ID" type="Int64" direction="Input" />
+        <var name="STATUS_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#UPDATE_LIB_DOC_GEO"  />		
+        <query>
+		DO $$
+		DECLARE
+                  BEGIN
+	            UPDATE WEB50.LIB_DOC
+                SET
+                NAME = '{NAME}'
+                ,DESCR = '{DESCR}'
+                ,PARENT_DOC_ID = {PARENT_DOC_ID}
+                ,MTIME = current_timestamp
+                ,MUSER_ID = {USER_ID}
+                ,STATUS_ID = {STATUS_ID}
+                WHERE DOC_ID = {ID};
+                UPDATE WEB50.LIB_DOC_VERSION SET MIME_TYPE_ID=0,
+	            NAME='Документ изменен',FILE_NAME='{FILE_NAME}',MTIME=current_timestamp,MUSER_ID={USER_ID}
+	            WHERE DOC_ID = {ID};
+            END $$;
+    </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#DELETE_LIB_DOC_GEO"  />		
+        <query>
+		DO $$
+			      BEGIN
+			      DELETE
+			      FROM WEB50.LIB_DOC_VERSION
+			      WHERE DOC_ID = {ID};
+
+			      DELETE FROM WEB50.LIB_DOC WHERE DOC_ID = {ID};
+            
+            DELETE FROM WEB50.LNK_GATE 
+             WHERE left_obj_id = 'WEB50_LIB_DOC/'||({ID})::numeric
+                OR right_obj_id = 'WEB50_LIB_DOC/'||({ID})::numeric;
+                
+			      END $$;
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+</root>

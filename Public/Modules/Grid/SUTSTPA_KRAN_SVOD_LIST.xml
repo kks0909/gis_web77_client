@@ -1,0 +1,116 @@
+﻿<!--7.7.7.0-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="5"  headerVertSize="50"
+            id="kran_svod"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            layerId="SUTSTPA_KRAN_SVOD" propertyPanelName="SUTSTPA_KRAN_SVOD"
+            dataRequest="SUTSTPA_GRID.xml#SUTSTPA_KRAN_SVOD"
+            initialSortField="">
+  <grids:buttons>
+      <picPutton:GridButton source="../../Public/assets/filter.png"
+            tooltip="Задать условия фильтрации"
+            clickEvent="ru.corelight.business.events.GridFilterEvent"
+            isEnabled="true" />
+      <picPutton:GridButton source="../../ui/images/copy.png"
+            tooltip="Копировать данные для вставки в excel"
+            clickEvent="CopyToExcelEvent"
+            selectedObjects="this" />
+      <picPutton:GridButton source="../../Public/assets/dashboard.png"
+           tooltip="Дашборды"
+           clickEvent="ShowDashboardEvent"
+           isEnabled="null" />
+  </grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+      <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="id" dataField="ID" 
+						              itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" 
+            						  editable="false" 
+            						  filterComparisionType="number" 
+            						  width="50" />
+      <columns:GridColumn headerText="" width="95" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=/ui/images/GRID.png;eventName=showDetailKranSvodEvent;layerId==SUTSTPA_Layers.xml#SUTSTPA_КРАН;columns=sql_query;classname=gridTextButton;text=ДЕТАЛИЗАЦИЯ;toolTip=Показать список объектов;paneltitle=Кран;"
+                          editable="true"/>       
+      <columns:GridColumn headerText="Характеристика" dataField="DESCRIPTION"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="250"/>					  
+      <columns:GridColumn headerText="Диаметр\n1400 мм" dataField="D1400"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50"/>                    
+      <columns:GridColumn headerText="Диаметр\n1200 мм" dataField="D1200"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="Диаметр\n1000 мм" dataField="D1000"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="Диаметр\n700 мм" dataField="D700"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50"/>                    
+      <columns:GridColumn headerText="Диаметр\n500 мм" dataField="D500"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="Диаметр\n400 мм" dataField="D400"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="Диаметр\n300 мм" dataField="D300"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50"/>                    
+      <columns:GridColumn headerText="Диаметр\n200 мм" dataField="D200"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="Диаметр\n150 мм" dataField="D150"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="Диаметр\n100 мм" dataField="D100"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50"/>                    
+      <columns:GridColumn headerText="Диаметр\n80 мм" dataField="D80"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="Диаметр\n50 мм" dataField="D50"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50"/>                    
+      <columns:GridColumn headerText="Диаметр\nНеизвестно" dataField="DUNK"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50"/>               
+      <columns:GridColumn headerText="SQL_QUERY" dataField="SQL_QUERY"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          hidden="true"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50">
+      </columns:GridColumn>                                             
+   </grids:columns>
+</grids:Grid>

@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root version="postgres 7.7.7.6" >
+	<data id="CAS_PROFILE" comment="CAS.PROFILE" schema="PODS" table="ROUTE">
+		<select>
+			<geoQuery idField="ID" geoField="X,Y" partField="P_ID">
+				<var name="START_KM" />
+				<var name="FINISH_KM" />
+				<var name="LINE_ID" />
+				<var name="LABEL" default="Профиль" />
+				<var name="LABEL_UNIT" default="Высота, [м]" />
+				<var name="HEIGHT" default="50" />
+				<var name="TYPE" default="2D" />
+				<var name="Y_STEPS" default="8" />
+				<var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL" />
+				<var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10" />
+				<query>
+					WITH l AS 
+                           (SELECT ln.line_id ID
+                                  ,1 P_ID
+                                  ,CASE WHEN c.z_coord IS NULL THEN 0
+                                         ELSE c.z_coord
+                                   END Y
+                                  ,(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000 + s.station_begin - {START_KM}  X
+                                  ,' '::TEXT "LABEL"
+                                  ,row_number() over (ORDER BY (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000 + s.station_begin) rwn
+                              FROM pods.line ln
+                                   JOIN pods.route r
+                                     ON r.line_id = ln.line_id
+                                     AND r.type_cl = CASE ln.type_cl
+                                                          WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+                                                          WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+                                                          WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+                                                          WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+                                                     END
+                                   JOIN pods.series s
+                                     ON s.route_id = r.route_id
+                                   JOIN pods.station_point sp
+                                     ON sp.series_id = s.series_id
+                                   JOIN pods.LOCATION l
+                                     ON l.location_id = sp.location_id
+                                   JOIN pods.coordinate c
+                                     ON c.location_id = l.location_id
+                    WHERE ln.line_id = {LINE_ID}
+                      AND l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+                      AND c.z_coord IS NOT NULL
+                      AND sp.type_cl IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+                      AND ((sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000 + s.station_begin) &gt;= {START_KM}
+                      AND ((sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000 + s.station_begin) &lt;= {FINISH_KM}
+                    ORDER BY (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000 + s.station_begin)
+                    select ID, P_ID, X,0 Y, "LABEL" from l where rwn=1
+                    union all
+                    select ID, P_ID, X,Y, "LABEL" from l
+                    union all
+                    select ID, P_ID, X,0 Y, "LABEL" from l where l.x = (select max(X) from l)
+                    union all
+                    select  ID, P_ID, X,0 Y, "LABEL" from l where rwn=1
+				</query>
+			</geoQuery>
+		</select>
+	</data>
+  <data id="CAS_DEPTH_OF_COVER" comment="CAS.DEPTH_OF_COVER" schema="CAS" table="DEPTH_OF_COVER">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+			  <var name="LABEL" default="Глубины заложения трубопровода"/>
+			  <var name="LABEL_UNIT" default="Глубина, [м]"/>
+			  <var name="HEIGHT" default="20"/>
+			  <var name="TYPE" default="2D"/>
+			  <var name="START_KM"/>
+			  <var name="FINISH_KM"/>
+			  <var name="LINE_ID"/>
+			  <var name="FILTER" default="1=1"/>
+			  <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+			  <query>
+SELECT ln.line_id ID
+      ,1 P_ID
+      ,l.depth_of_cover Y
+      ,(sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000 + s.station_begin - {START_KM}  X
+      ,' '::TEXT "LABEL"
+  FROM pods.line ln
+       JOIN pods.route r
+         ON r.line_id = ln.line_id
+         AND r.type_cl = CASE ln.type_cl
+                              WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+                              WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+                              WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+                              WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+                         END
+       JOIN pods.series s
+         ON s.route_id = r.route_id
+       JOIN pods.station_point sp
+         ON sp.series_id = s.series_id
+       JOIN pods.LOCATION l
+         ON l.location_id = sp.location_id
+WHERE ln.line_id = {LINE_ID}
+  AND l.depth_of_cover IS NOT NULL
+  AND l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+  AND sp.type_cl IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+  AND ((sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000 + s.station_begin) &gt;= {START_KM}
+  AND ((sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000 + s.station_begin) &lt;= {FINISH_KM}
+ORDER BY (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000 + s.station_begin
+			  </query>
+		  </geoQuery>
+    </select>
+  </data>
+</root>

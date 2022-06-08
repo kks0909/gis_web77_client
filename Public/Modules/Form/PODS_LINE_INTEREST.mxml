@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM title="Связи трубопроводов с компаниями-собственниками" xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns="view.data.*" width="760" ext_data_id="PODS_EXPORT.xml#PODS_LINE_INTEREST" excelTemplate="PODS_LINE_INTEREST">
+	<dataProvider>PODS_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	<mx:VBox width="760">
+		<mx:HBox percentWidth="100">
+			<mx:VBox percentWidth="50">
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Компания-собственник" width="140"/>
+					<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						<mx:ComboBox id="COMPANY_GCL" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_COMPANY_GCL"/>
+						<mx:Button id="BTN_LIST_COMPANY_GCL" selectedField="PODS_COMPANY_GCL" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16"/>
+					</mx:HBox>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Правовой статус компании" width="140"/>
+					<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						<mx:ComboBox id="TYPE_CL" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_LINE_INTEREST_TYPE_CL"/>
+						<mx:Button id="BTN_LIST_TYPE_CL" selectedField="PODS_LINE_INTEREST_TYPE_CL" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16"/>
+					</mx:HBox>
+				</mx:HBox>
+			</mx:VBox>
+			<mx:VBox percentWidth="50">
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Доля компании в собственности" width="140"/>
+					<controls:NumberInput id="PERCENT_INTEREST" width="40" maxChars="22" height="20"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Перейти к трубопроводу" width="140"/>
+					<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						<mx:ComboBox id="LINE_ID" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_LINE"/>
+						<mx:Button id="BUTTON_LINE_ID" selectedField="PODS_LINE" enabled="false" styleName="refObject" toolTip="Перейти к трубопроводу" width="16" height="16"/>
+					</mx:HBox>
+				</mx:HBox>
+			</mx:VBox>
+		</mx:HBox>
+	</mx:VBox>
+	<validatorsArray>
+		<controls:DefaultNumberValidator source="{PERCENT_INTEREST}" property="text" enabled="false" required="true" allowNegative="true" minLength="0" requiredFieldError="Поле обязательно для заполнения." tooShortError="Поле обязательно для заполнения." precision="4" precisionError="Значение в поле должно иметь не более 4 цифр после запятой" maxValue="999.9999" exceedsMaxError="Значение в поле может иметь 3 цифр до запятой и 4 после" lowerThanMinError="Значение в поле не может быть меньше 0" negativeError="Значение в поле не может быть меньше 0"/>
+	</validatorsArray>
+</DATA_EDIT_FORM>

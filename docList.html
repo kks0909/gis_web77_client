@@ -1,0 +1,169 @@
+<!--  version 7.7.7.5 -->
+<!DOCTYPE html>
+<html>
+<head> <title></title>
+    <!-- тег нужен, чтобы указать браузеру IE в каком режиме просматривать документы. Если IE использует режим документов для IE-5, сайт будет отображаться некорректно -->
+    <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=edge" />
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=9" />-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./ui/build/js/lang-min-7.7.7.5.js"></script>
+    <link href="./ui/build/css/jquery.fileupload.css" rel="stylesheet">
+    <link href="./ui/build/css/normalize.css" rel="stylesheet">
+    <link href="./ui/build/css/core-styles-7.7.7.5.css" rel="stylesheet">
+    
+    <!-- локальный вариант сборки-->
+    <script src="./ui/lib/modernizr-2.6.2.min.js"></script>
+    <script src="./ui/lib/jquery-1.9.1.js"></script>
+    <script src="./ui/lib/jquery-ui-1.10.3/ui/jquery-ui.js"></script>
+    <link href="./ui/lib/jquery-ui-1.10.3/themes/base/jquery-ui.css" rel="stylesheet">
+    <script src="./ui/lib/jquery.cookie.js"></script>
+    <script src="./ui/lib/jquery.ba-outside-events.min.js"></script>
+    <script src="./ui/lib/md5.js"></script>
+        <!-- ECMAScript 5 compatibility shims for legacy JavaScript engines -->
+    <script src="./ui/lib/es5-shim.min.js"></script>
+
+    <link rel="stylesheet" href="./jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="./jqwidgets/styles/jqx.gis-blueorange.css" type="text/css" />
+    <link href="./ui/build/css/doclist-styles-7.7.7.5.css" rel="stylesheet">
+
+        <!-- Скрипты для загрузки файла на сервер (вариант не Дениса, плагин https://github.com/blueimp/jQuery-File-Upload/) -->
+    <script src="./ui/lib/jquery.ui.widget.js"></script>
+    <script src="./ui/lib/jquery.iframe-transport.js"></script>
+    <script src="./ui/lib/jquery.fileupload.js"></script>
+
+    <script type="text/javascript" src="./jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="./jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="./jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="./jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="./jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="./jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="./jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="./jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="./jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="./jqwidgets/jqxexpander.js"></script>
+
+    <script src="./ol/build/ol-debug.js"></script>
+    <script src="./ol/build/ol-deps.js"></script>
+
+    <!-- скрипт для определения совместимости сайта с текущим браузером -->
+    <script src="./ui/build/js/doclist-min-7.7.7.5.js"></script>
+</head>
+<body scroll="no" unselectable="on">
+
+<div class="taskContent">    
+    <div id="postswrapper" class="postsWrapper">
+        <div class="postsHeader" id="postsHeader">
+            <div class="postsAddPostHBox">
+                <span class="postsHeaderRecords">Показано 0 из 0 записей</span>
+            </div>
+            <div class="postsAddPost">
+               <div class="postsAddPostHBox"><span>Создание записи: заполните поля и нажмите "Добавить"</span>
+                </div>
+                <div class="postsAddPostHBox"><span>1. Название:</span>
+                    <textarea class="postsAddPostName" maxlength="250"></textarea>
+                </div>
+                <div class="postsAddPostHBox"><span>2. Описание (до 250 символов):</span>
+                    <textarea class="postsAddPostDescr" maxlength="250"></textarea>
+                </div>
+                <div id="postsAddPostHBox">
+                    <span>3. Ссылка на файл(ы):</span>
+                    <span id="divFI_myElement" >
+                        <input id="myElement" style="display: none !important;" />
+                        <input id="myElementText" class="postsAddPostFileFolder"/>
+
+                        <form method="POST" id="fr_myElement" action="" data-action="./api/files/upload?path=LIB" style="position: absolute;    margin-top: -18px;    margin-left: 436px;" enctype="multipart/form-data" target="ifr_myElement">
+                            <input id="iFI_myElement" type="file"  name="fileinput" style="width:100px; display:none;" />
+                            <label for="iFI_myElement" class="btn">Обзор...</label>
+                        </form>
+                        <iframe id="ifr_myElement" name="ifr_myElement" style="display: none !important;"></iframe>
+                    </span>
+                </div>
+                <div class="postsAddPostHBox">
+                    <span class="fileinput-button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" style="float: left;">
+                        <span class="ui-button-icon-primary ui-icon ui-icon-plusthick"></span>
+                        <span class="ui-button-text"><span>Добавить</span></span>
+                        <input class="postsAddPostButton" type="button" value="Добавить"/>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="postsContentWrapper">
+            <div class="postsContent"></div>
+            <div class="postsLoader" style="display:none;"><center><img src="jqwidgets/styles/images/loader.gif" /></center></div>
+            <input class="loadMoreButton" type="button" value="Показать следующие 20 записей" style="display:none;"/>
+        </div>
+        <div class="postsFooter">
+          
+        </div>
+    </div>    
+</div>
+
+<script type="text/javascript">
+    /*head55.js*/
+
+    function callFunction(windowId, funcName, params) {
+        var wnd = window.opener;
+
+        //добавляем id окна, в который opener должен вернуть данные
+        if (wnd == "") {
+            return -1;
+        }
+        if (typeof wnd == "string") {
+            return wnd;
+        }
+        if (!wnd) {
+            return -1; //окно еще не создавалось
+        }
+        if (wnd.closed) {
+            return -1; //закрыто
+        }
+
+        try {
+            wnd[funcName].apply(wnd, params); //устанавливаем this = opener
+            wnd.focus(); //Передаем фокус в родительское окно
+        }
+        catch (e) {
+            return 0;
+        }
+
+        return 1;
+    }
+    /*head55.js*/
+
+    //Получаем и парсим web.config (возвращается ссылка на запрос, по ней можно отменить загрузку)
+    var configReq = App.getClientConfig();
+
+    var hrefParams = {};
+
+    //Слушатель окончания загрузки страницы
+    $(document).ready(function(){
+        var urlWithoutHash = window.location.href.split('#')[0];
+        /*Получаем параметры из url (туда должен быть передан полный id объекта)*/
+        var hrefParamsStr = urlWithoutHash.split('?')[1];
+        if(hrefParamsStr) hrefParamsStr = hrefParamsStr.replace(/&quot;/g, '"');
+        var hrefParamsArr = [];
+        if(hrefParamsStr)
+            hrefParamsArr = hrefParamsStr.split('&');
+        for (var i = 0; i < hrefParamsArr.length; i++) {
+            var splitParamArr = hrefParamsArr[i].split('=');
+            if (splitParamArr.length==2) hrefParams[splitParamArr[0]] = splitParamArr[1];
+        }
+        //Загружаем первую порцию
+        if (hrefParams.objId)
+            App.loadDocuments('#postswrapper', hrefParams['objId'], 'objId');
+        else if (hrefParams.folderId)
+            App.loadDocuments('#postswrapper', hrefParams['folderId'], 'folderId');
+        else
+            ExternalInteraction.parseTask('posts');
+        //Устанавливаем заголовок окна из конфига
+        setTimeout(function setWinTitle(){
+            var windowTitle = (App.config && App.config.SYSTEM_NAME !== undefined) ? App.config.SYSTEM_NAME : '';
+            windowTitle += ' Лента документов';
+            document.title = windowTitle;
+        }, 10);
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="postgres 7.7.7.6">
+  <data table="COUNTY_BOUNDARY" schema="PODS" id="CAS_PODS_COUNTY_BOUNDARY" descr="Административные территории вблизи трубопроводов" comment="PODS_COUNTY_BOUNDARY">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="START_KM" />
+        <var name="FINISH_KM" />
+        <var name="LINE_ID" />
+        <var name="LABEL" default="Административные территории\n вблизи трубопроводов" />
+        <var name="LABEL_UNIT" default="" />
+        <var name="HEIGHT" default="5" />
+        <var name="TYPE" default="1D" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL" />
+        <var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10" />
+        <var name="FILTERED_CLASS" default="PODS_COUNTY_BOUNDARY_LIST"/>
+        <query>WITH spline AS (SELECT sp.station_id, s.station_begin, s.station_end, sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id) measure FROM pods.line l JOIN pods.route r ON r.line_id = l.line_id AND r.type_cl = CASE l.type_cl WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10' WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11' WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12' WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04' END JOIN pods.series s ON s.route_id = r.route_id JOIN pods.station_point sp ON s.series_id = sp.series_id  WHERE /*sp.station locked BETWEEN {START_KM} AND {FINISH_KM} AND*/ l.line_id = {LINE_ID}  AND EXISTS (SELECT 1 FROM pods.location l WHERE l.location_id = sp.location_id AND l.srv_district_gcl in ({LPU_ACCESS_FILTER}))) select * from (SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID,( sp.station_begin + sp.measure / 1000 - {START_KM})  X,0  Y FROM PODS.COUNTY_BOUNDARY v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_begin = sp.station_id UNION SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID, ( sp.station_begin + sp.measure / 1000 - {START_KM})  X ,0  Y   FROM PODS.COUNTY_BOUNDARY v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_end = sp.station_id) mainQuery ORDER BY ID,X</query>
+      </geoQuery>
+    </select>
+  </data>
+  <data table="TOWNSHIP_BOUNDARY" schema="PODS" id="CAS_PODS_TOWNSHIP_BOUNDARY" descr="Изменения наименований участков трубопроводов" comment="PODS_TOWNSHIP_BOUNDARY">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="START_KM" />
+        <var name="FINISH_KM" />
+        <var name="LINE_ID" />
+        <var name="LABEL" default="Изменения наименований\n участков трубопроводов" />
+        <var name="LABEL_UNIT" default="" />
+        <var name="HEIGHT" default="5" />
+        <var name="TYPE" default="1D" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL" />
+        <var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10" />
+        <var name="FILTERED_CLASS" default="PODS_TOWNSHIP_BOUNDARY_LIST"/>
+        <query>WITH spline AS (SELECT sp.station_id, s.station_begin, s.station_end, sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id) measure FROM pods.line l JOIN pods.route r ON r.line_id = l.line_id AND r.type_cl = CASE l.type_cl WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10' WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11' WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12' WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04' END JOIN pods.series s ON s.route_id = r.route_id JOIN pods.station_point sp ON s.series_id = sp.series_id  WHERE /*sp.station locked BETWEEN {START_KM} AND {FINISH_KM} AND*/ l.line_id = {LINE_ID}  AND EXISTS (SELECT 1 FROM pods.location l WHERE l.location_id = sp.location_id AND l.srv_district_gcl in ({LPU_ACCESS_FILTER}))) select * from (SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID,( sp.station_begin + sp.measure / 1000 - {START_KM})  X,0  Y FROM PODS.TOWNSHIP_BOUNDARY v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_begin = sp.station_id UNION SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID, ( sp.station_begin + sp.measure / 1000 - {START_KM})  X ,0  Y   FROM PODS.TOWNSHIP_BOUNDARY v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_end = sp.station_id) mainQuery ORDER BY ID,X</query>
+      </geoQuery>
+    </select>
+  </data>
+  <data table="LEGACY_LINE_BOUNDARY" schema="PODS" id="CAS_PODS_LEGACY_LINE_BOUNDARY" descr="Номенклатурные листы карт вблизи трубопроводов" comment="PODS_LEGACY_LINE_BOUNDARY">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="START_KM" />
+        <var name="FINISH_KM" />
+        <var name="LINE_ID" />
+        <var name="LABEL" default="Номенклатурные листы карт\n вблизи трубопроводов" />
+        <var name="LABEL_UNIT" default="" />
+        <var name="HEIGHT" default="5" />
+        <var name="TYPE" default="1D" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL" />
+        <var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10" />
+        <var name="FILTERED_CLASS" default="PODS_LEGACY_LINE_BOUNDARY_LIST"/>
+        <query>WITH spline AS (SELECT sp.station_id, s.station_begin, s.station_end, sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id) measure FROM pods.line l JOIN pods.route r ON r.line_id = l.line_id AND r.type_cl = CASE l.type_cl WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10' WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11' WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12' WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04' END JOIN pods.series s ON s.route_id = r.route_id JOIN pods.station_point sp ON s.series_id = sp.series_id  WHERE /*sp.station locked BETWEEN {START_KM} AND {FINISH_KM} AND*/ l.line_id = {LINE_ID}  AND EXISTS (SELECT 1 FROM pods.location l WHERE l.location_id = sp.location_id AND l.srv_district_gcl in ({LPU_ACCESS_FILTER}))) select * from (SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID,( sp.station_begin + sp.measure / 1000 - {START_KM})  X,0  Y FROM PODS.LEGACY_LINE_BOUNDARY v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_begin = sp.station_id UNION SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID, ( sp.station_begin + sp.measure / 1000 - {START_KM})  X ,0  Y   FROM PODS.LEGACY_LINE_BOUNDARY v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_end = sp.station_id) mainQuery ORDER BY ID,X</query>
+      </geoQuery>
+    </select>
+  </data>
+  <data table="LAND_USE" schema="PODS" id="CAS_PODS_LAND_USE" descr="Типы землепользования вблизи трубопроводов" comment="PODS_LAND_USE">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="START_KM" />
+        <var name="FINISH_KM" />
+        <var name="LINE_ID" />
+        <var name="LABEL" default="Типы землепользования\n вблизи трубопроводов" />
+        <var name="LABEL_UNIT" default="" />
+        <var name="HEIGHT" default="5" />
+        <var name="TYPE" default="1D" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL" />
+        <var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10" />
+        <var name="FILTERED_CLASS" default="PODS_LAND_USE_LIST"/>
+        <query>WITH spline AS (SELECT sp.station_id, s.station_begin, s.station_end, sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id) measure FROM pods.line l JOIN pods.route r ON r.line_id = l.line_id AND r.type_cl = CASE l.type_cl WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10' WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11' WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12' WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04' END JOIN pods.series s ON s.route_id = r.route_id JOIN pods.station_point sp ON s.series_id = sp.series_id  WHERE /*sp.station locked BETWEEN {START_KM} AND {FINISH_KM} AND*/ l.line_id = {LINE_ID}  AND EXISTS (SELECT 1 FROM pods.location l WHERE l.location_id = sp.location_id AND l.srv_district_gcl in ({LPU_ACCESS_FILTER}))) select * from (SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID,( sp.station_begin + sp.measure / 1000 - {START_KM})  X,0  Y FROM PODS.LAND_USE v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_begin = sp.station_id UNION SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID, ( sp.station_begin + sp.measure / 1000 - {START_KM})  X ,0  Y   FROM PODS.LAND_USE v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_end = sp.station_id) mainQuery ORDER BY ID,X</query>
+      </geoQuery>
+    </select>
+  </data>
+  <data table="ACTIVITY_ZONE" schema="PODS" id="CAS_PODS_ACTIVITY_ZONE" descr="Зоны активной деятельности вблизи трубопроводов" comment="PODS_ACTIVITY_ZONE">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="START_KM" />
+        <var name="FINISH_KM" />
+        <var name="LINE_ID" />
+        <var name="LABEL" default="Зоны активной деятельности\n вблизи трубопроводов" />
+        <var name="LABEL_UNIT" default="" />
+        <var name="HEIGHT" default="5" />
+        <var name="TYPE" default="1D" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL" />
+        <var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10" />
+        <var name="FILTERED_CLASS" default="PODS_ACTIVITY_ZONE_LIST"/>
+        <query>WITH spline AS (SELECT sp.station_id, s.station_begin, s.station_end, sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id) measure FROM pods.line l JOIN pods.route r ON r.line_id = l.line_id AND r.type_cl = CASE l.type_cl WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10' WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11' WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12' WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04' END JOIN pods.series s ON s.route_id = r.route_id JOIN pods.station_point sp ON s.series_id = sp.series_id  WHERE /*sp.station locked BETWEEN {START_KM} AND {FINISH_KM} AND*/ l.line_id = {LINE_ID}  AND EXISTS (SELECT 1 FROM pods.location l WHERE l.location_id = sp.location_id AND l.srv_district_gcl in ({LPU_ACCESS_FILTER}))) select * from (SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID,( sp.station_begin + sp.measure / 1000 - {START_KM})  X,0  Y FROM PODS.ACTIVITY_ZONE v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_begin = sp.station_id UNION SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID, ( sp.station_begin + sp.measure / 1000 - {START_KM})  X ,0  Y   FROM PODS.ACTIVITY_ZONE v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_end = sp.station_id) mainQuery ORDER BY ID,X</query>
+      </geoQuery>
+    </select>
+  </data>
+  <data table="SRV_DISTRICT_BOUNDARY" schema="PODS" id="CAS_PODS_SRV_DISTRICT_BOUNDARY" descr="Зоны ответственности линейных управлений" comment="PODS_SRV_DISTRICT_BOUNDARY">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="START_KM" />
+        <var name="FINISH_KM" />
+        <var name="LINE_ID" />
+        <var name="LABEL" default="Зоны ответственности линейных управлений" />
+        <var name="LABEL_UNIT" default="" />
+        <var name="HEIGHT" default="5" />
+        <var name="TYPE" default="1D" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL" />
+        <var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10" />
+        <var name="FILTERED_CLASS" default="PODS_SRV_DISTRICT_BOUNDARY_LIST"/>
+        <query>WITH spline AS (SELECT sp.station_id, s.station_begin, s.station_end, sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id) measure FROM pods.line l JOIN pods.route r ON r.line_id = l.line_id AND r.type_cl = CASE l.type_cl WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10' WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11' WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12' WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04' END JOIN pods.series s ON s.route_id = r.route_id JOIN pods.station_point sp ON s.series_id = sp.series_id  WHERE /*sp.station locked BETWEEN {START_KM} AND {FINISH_KM} AND*/ l.line_id = {LINE_ID}  AND EXISTS (SELECT 1 FROM pods.location l WHERE l.location_id = sp.location_id AND l.srv_district_gcl in ({LPU_ACCESS_FILTER}))) select * from (SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID,( sp.station_begin + sp.measure / 1000 - {START_KM})  X,0  Y FROM PODS.SRV_DISTRICT_BOUNDARY v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_begin = sp.station_id UNION SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID, ( sp.station_begin + sp.measure / 1000 - {START_KM})  X ,0  Y   FROM PODS.SRV_DISTRICT_BOUNDARY v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_end = sp.station_id) mainQuery ORDER BY ID,X</query>
+      </geoQuery>
+    </select>
+  </data>
+  <data table="OWNER_OPERATOR_RANGE" schema="PODS" id="CAS_PODS_OWNER_OPERATOR_RANGE" descr="Компании-операторы трубопроводов" comment="PODS_OWNER_OPERATOR_RANGE">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="START_KM" />
+        <var name="FINISH_KM" />
+        <var name="LINE_ID" />
+        <var name="LABEL" default="Компании-операторы трубопроводов" />
+        <var name="LABEL_UNIT" default="" />
+        <var name="HEIGHT" default="5" />
+        <var name="TYPE" default="1D" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL" />
+        <var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10" />
+        <var name="FILTERED_CLASS" default="PODS_OWNER_OPERATOR_RANGE_LIST"/>
+        <query>WITH spline AS (SELECT sp.station_id, s.station_begin, s.station_end, sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id) measure FROM pods.line l JOIN pods.route r ON r.line_id = l.line_id AND r.type_cl = CASE l.type_cl WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10' WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11' WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12' WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04' END JOIN pods.series s ON s.route_id = r.route_id JOIN pods.station_point sp ON s.series_id = sp.series_id  WHERE /*sp.station locked BETWEEN {START_KM} AND {FINISH_KM} AND*/ l.line_id = {LINE_ID}  AND EXISTS (SELECT 1 FROM pods.location l WHERE l.location_id = sp.location_id AND l.srv_district_gcl in ({LPU_ACCESS_FILTER}))) select * from (SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID,( sp.station_begin + sp.measure / 1000 - {START_KM})  X,0  Y FROM PODS.OWNER_OPERATOR_RANGE v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_begin = sp.station_id UNION SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID, ( sp.station_begin + sp.measure / 1000 - {START_KM})  X ,0  Y   FROM PODS.OWNER_OPERATOR_RANGE v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_end = sp.station_id) mainQuery ORDER BY ID,X</query>
+      </geoQuery>
+    </select>
+  </data>
+  <data table="TAX_DISTRICT_BOUNDARY" schema="PODS" id="CAS_PODS_TAX_DISTRICT_BOUNDARY" descr="Налоговые ставки по трубопроводам" comment="PODS_TAX_DISTRICT_BOUNDARY">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="START_KM" />
+        <var name="FINISH_KM" />
+        <var name="LINE_ID" />
+        <var name="LABEL" default="Налоговые ставки по трубопроводам" />
+        <var name="LABEL_UNIT" default="" />
+        <var name="HEIGHT" default="5" />
+        <var name="TYPE" default="1D" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL" />
+        <var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10" />
+        <var name="FILTERED_CLASS" default="PODS_TAX_DISTRICT_BOUNDARY_LIST"/>
+        <query>WITH spline AS (SELECT sp.station_id, s.station_begin, s.station_end, sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id) measure FROM pods.line l JOIN pods.route r ON r.line_id = l.line_id AND r.type_cl = CASE l.type_cl WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10' WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11' WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12' WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04' END JOIN pods.series s ON s.route_id = r.route_id JOIN pods.station_point sp ON s.series_id = sp.series_id  WHERE /*sp.station locked BETWEEN {START_KM} AND {FINISH_KM} AND*/ l.line_id = {LINE_ID}  AND EXISTS (SELECT 1 FROM pods.location l WHERE l.location_id = sp.location_id AND l.srv_district_gcl in ({LPU_ACCESS_FILTER}))) select * from (SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID,( sp.station_begin + sp.measure / 1000 - {START_KM})  X,0  Y FROM PODS.TAX_DISTRICT_BOUNDARY v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_begin = sp.station_id UNION SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID, ( sp.station_begin + sp.measure / 1000 - {START_KM})  X ,0  Y   FROM PODS.TAX_DISTRICT_BOUNDARY v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_end = sp.station_id) mainQuery ORDER BY ID,X</query>
+      </geoQuery>
+    </select>
+  </data>
+  <data table="STATUS_RANGE" schema="PODS" id="CAS_PODS_STATUS_RANGE" descr="Операционный статус трубопровода" comment="PODS_STATUS_RANGE">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="START_KM" />
+        <var name="FINISH_KM" />
+        <var name="LINE_ID" />
+        <var name="LABEL" default="Операционный статус трубопровода" />
+        <var name="LABEL_UNIT" default="" />
+        <var name="HEIGHT" default="5" />
+        <var name="TYPE" default="1D" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL" />
+        <var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10" />
+        <var name="FILTERED_CLASS" default="PODS_STATUS_RANGE_LIST"/>
+        <query>WITH spline AS (SELECT sp.station_id, s.station_begin, s.station_end, sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id) measure FROM pods.line l JOIN pods.route r ON r.line_id = l.line_id AND r.type_cl = CASE l.type_cl WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10' WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11' WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12' WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04' END JOIN pods.series s ON s.route_id = r.route_id JOIN pods.station_point sp ON s.series_id = sp.series_id  WHERE /*sp.station locked BETWEEN {START_KM} AND {FINISH_KM} AND*/ l.line_id = {LINE_ID}  AND EXISTS (SELECT 1 FROM pods.location l WHERE l.location_id = sp.location_id AND l.srv_district_gcl in ({LPU_ACCESS_FILTER}))) select * from (SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID,( sp.station_begin + sp.measure / 1000 - {START_KM})  X,0  Y FROM PODS.STATUS_RANGE v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_begin = sp.station_id UNION SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID, ( sp.station_begin + sp.measure / 1000 - {START_KM})  X ,0  Y   FROM PODS.STATUS_RANGE v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_end = sp.station_id) mainQuery ORDER BY ID,X</query>
+      </geoQuery>
+    </select>
+  </data>
+  <data table="DEPTH_OF_COVER" schema="PODS" id="CAS_PODS_DEPTH_OF_COVER" descr="Глубины заложения участков трубопроводов" comment="PODS_DEPTH_OF_COVER">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="START_KM" />
+        <var name="FINISH_KM" />
+        <var name="LINE_ID" />
+        <var name="LABEL" default="Глубины заложения участков трубопроводов" />
+        <var name="LABEL_UNIT" default="" />
+        <var name="HEIGHT" default="5" />
+        <var name="TYPE" default="1D" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL" />
+        <var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10" />
+        <var name="FILTERED_CLASS" default="PODS_DEPTH_OF_COVER_LIST"/>
+        <query>WITH spline AS (SELECT sp.station_id, s.station_begin, s.station_end, sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id) measure FROM pods.line l JOIN pods.route r ON r.line_id = l.line_id AND r.type_cl = CASE l.type_cl WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10' WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11' WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12' WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04' END JOIN pods.series s ON s.route_id = r.route_id JOIN pods.station_point sp ON s.series_id = sp.series_id  WHERE /*sp.station locked BETWEEN {START_KM} AND {FINISH_KM} AND*/ l.line_id = {LINE_ID}  AND EXISTS (SELECT 1 FROM pods.location l WHERE l.location_id = sp.location_id AND l.srv_district_gcl in ({LPU_ACCESS_FILTER}))) select * from (SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL", v.event_id ID,( sp.station_begin + sp.measure / 1000 - {START_KM})  X,0  Y FROM PODS.DEPTH_OF_COVER v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_begin = sp.station_id UNION SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL", v.event_id ID, ( sp.station_begin + sp.measure / 1000 - {START_KM})  X ,0  Y   FROM PODS.DEPTH_OF_COVER v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_end = sp.station_id) mainQuery ORDER BY ID,X</query>
+      </geoQuery>
+    </select>
+  </data>
+  <data table="FLOW_DIRECTION_RANGE" schema="PODS" id="CAS_PODS_FLOW_DIRECTION_RANGE" descr="Направление потока по участкам трубопроводов" comment="PODS_FLOW_DIRECTION_RANGE">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="START_KM" />
+        <var name="FINISH_KM" />
+        <var name="LINE_ID" />
+        <var name="LABEL" default="Направление потока\n по участкам трубопроводов" />
+        <var name="LABEL_UNIT" default="" />
+        <var name="HEIGHT" default="5" />
+        <var name="TYPE" default="1D" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL" />
+        <var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10" />
+        <var name="FILTERED_CLASS" default="PODS_FLOW_DIRECTION_RANGE_LIST"/>
+        <query>WITH spline AS (SELECT sp.station_id, s.station_begin, s.station_end, sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id) measure FROM pods.line l JOIN pods.route r ON r.line_id = l.line_id AND r.type_cl = CASE l.type_cl WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10' WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11' WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12' WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04' END JOIN pods.series s ON s.route_id = r.route_id JOIN pods.station_point sp ON s.series_id = sp.series_id  WHERE /*sp.station locked BETWEEN {START_KM} AND {FINISH_KM} AND*/ l.line_id = {LINE_ID}  AND EXISTS (SELECT 1 FROM pods.location l WHERE l.location_id = sp.location_id AND l.srv_district_gcl in ({LPU_ACCESS_FILTER}))) select * from (SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL", v.TYPE_CL "TYPE",  v.event_id ID,( sp.station_begin + sp.measure / 1000 - {START_KM})  X,0  Y FROM PODS.FLOW_DIRECTION_RANGE v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_begin = sp.station_id UNION SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL", v.TYPE_CL "TYPE",  v.event_id ID, ( sp.station_begin + sp.measure / 1000 - {START_KM})  X ,0  Y   FROM PODS.FLOW_DIRECTION_RANGE v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_end = sp.station_id) mainQuery ORDER BY ID,X</query>
+      </geoQuery>
+    </select>
+  </data>
+  <data table="PRODUCT_RANGE" schema="PODS" id="CAS_PODS_PRODUCT_RANGE" descr="Участки транспортировки однотипных продуктов" comment="PODS_PRODUCT_RANGE">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="START_KM" />
+        <var name="FINISH_KM" />
+        <var name="LINE_ID" />
+        <var name="LABEL" default="Участки транспортировки\n однотипных продуктов" />
+        <var name="LABEL_UNIT" default="" />
+        <var name="HEIGHT" default="5" />
+        <var name="TYPE" default="1D" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL" />
+        <var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10" />
+        <var name="FILTERED_CLASS" default="PODS_PRODUCT_RANGE_LIST"/>
+        <query>WITH spline AS (SELECT sp.station_id, s.station_begin, s.station_end, sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id) measure FROM pods.line l JOIN pods.route r ON r.line_id = l.line_id AND r.type_cl = CASE l.type_cl WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10' WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11' WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12' WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04' END JOIN pods.series s ON s.route_id = r.route_id JOIN pods.station_point sp ON s.series_id = sp.series_id  WHERE /*sp.station locked BETWEEN {START_KM} AND {FINISH_KM} AND*/ l.line_id = {LINE_ID}  AND EXISTS (SELECT 1 FROM pods.location l WHERE l.location_id = sp.location_id AND l.srv_district_gcl in ({LPU_ACCESS_FILTER}))) select * from (SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID,( sp.station_begin + sp.measure / 1000 - {START_KM})  X,0  Y FROM PODS.PRODUCT_RANGE v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_begin = sp.station_id UNION SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID, ( sp.station_begin + sp.measure / 1000 - {START_KM})  X ,0  Y   FROM PODS.PRODUCT_RANGE v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_end = sp.station_id) mainQuery ORDER BY ID,X</query>
+      </geoQuery>
+    </select>
+  </data>
+  <data table="HCA_BOUNDARY" schema="PODS" id="CAS_PODS_HCA_BOUNDARY" descr="Участки трубопроводов в зонах опасных последствий" comment="PODS_HCA_BOUNDARY">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="START_KM" />
+        <var name="FINISH_KM" />
+        <var name="LINE_ID" />
+        <var name="LABEL" default="Участки трубопроводов\n в зонах опасных последствий" />
+        <var name="LABEL_UNIT" default="" />
+        <var name="HEIGHT" default="5" />
+        <var name="TYPE" default="1D" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL" />
+        <var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10" />
+        <var name="FILTERED_CLASS" default="PODS_HCA_BOUNDARY_LIST"/>
+        <query>WITH spline AS (SELECT sp.station_id, s.station_begin, s.station_end, sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id) measure FROM pods.line l JOIN pods.route r ON r.line_id = l.line_id AND r.type_cl = CASE l.type_cl WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10' WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11' WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12' WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04' END JOIN pods.series s ON s.route_id = r.route_id JOIN pods.station_point sp ON s.series_id = sp.series_id  WHERE /*sp.station locked BETWEEN {START_KM} AND {FINISH_KM} AND*/ l.line_id = {LINE_ID}  AND EXISTS (SELECT 1 FROM pods.location l WHERE l.location_id = sp.location_id AND l.srv_district_gcl in ({LPU_ACCESS_FILTER}))) select * from (SELECT v.event_id ID,( sp.station_begin + sp.measure / 1000 - {START_KM})  X,0  Y FROM PODS.HCA_BOUNDARY v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_begin = sp.station_id UNION SELECT v.event_id ID, ( sp.station_begin + sp.measure / 1000 - {START_KM})  X ,0  Y   FROM PODS.HCA_BOUNDARY v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_end = sp.station_id) mainQuery ORDER BY ID,X</query>
+      </geoQuery>
+    </select>
+  </data>
+  <data table="PIPE_SYSTEM_BOUNDARY" schema="PODS" id="CAS_PODS_PIPE_SYSTEM_BOUNDARY" descr="Участки трубопроводов по газотранспортным коридорам" comment="PODS_PIPE_SYSTEM_BOUNDARY">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="START_KM" />
+        <var name="FINISH_KM" />
+        <var name="LINE_ID" />
+        <var name="LABEL" default="Участки трубопроводов\n по газотранспортным коридорам" />
+        <var name="LABEL_UNIT" default="" />
+        <var name="HEIGHT" default="5" />
+        <var name="TYPE" default="1D" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL" />
+        <var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10" />
+        <var name="FILTERED_CLASS" default="PODS_PIPE_SYSTEM_BOUNDARY_LIST"/>
+        <query>WITH spline AS (SELECT sp.station_id, s.station_begin, s.station_end, sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id) measure FROM pods.line l JOIN pods.route r ON r.line_id = l.line_id AND r.type_cl = CASE l.type_cl WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10' WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11' WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12' WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04' END JOIN pods.series s ON s.route_id = r.route_id JOIN pods.station_point sp ON s.series_id = sp.series_id  WHERE /*sp.station locked BETWEEN {START_KM} AND {FINISH_KM} AND*/ l.line_id = {LINE_ID}  AND EXISTS (SELECT 1 FROM pods.location l WHERE l.location_id = sp.location_id AND l.srv_district_gcl in ({LPU_ACCESS_FILTER}))) select * from (SELECT v.event_id ID,( sp.station_begin + sp.measure / 1000 - {START_KM})  X,0  Y FROM PODS.PIPE_SYSTEM_BOUNDARY v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_begin = sp.station_id UNION SELECT v.event_id ID, ( sp.station_begin + sp.measure / 1000 - {START_KM})  X ,0  Y   FROM PODS.PIPE_SYSTEM_BOUNDARY v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_end = sp.station_id) mainQuery ORDER BY ID,X</query>
+      </geoQuery>
+    </select>
+  </data>
+  <data table="ODORANT_RANGE" schema="PODS" id="CAS_PODS_ODORANT_RANGE" descr="Участки трубопроводов по типам одоризации" comment="PODS_ODORANT_RANGE">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="START_KM" />
+        <var name="FINISH_KM" />
+        <var name="LINE_ID" />
+        <var name="LABEL" default="Участки трубопроводов по типам одоризации" />
+        <var name="LABEL_UNIT" default="" />
+        <var name="HEIGHT" default="5" />
+        <var name="TYPE" default="1D" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL" />
+        <var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10" />
+        <var name="FILTERED_CLASS" default="PODS_ODORANT_RANGE_LIST"/>
+        <query>WITH spline AS (SELECT sp.station_id, s.station_begin, s.station_end, sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id) measure FROM pods.line l JOIN pods.route r ON r.line_id = l.line_id AND r.type_cl = CASE l.type_cl WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10' WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11' WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12' WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04' END JOIN pods.series s ON s.route_id = r.route_id JOIN pods.station_point sp ON s.series_id = sp.series_id  WHERE /*sp.station locked BETWEEN {START_KM} AND {FINISH_KM} AND*/ l.line_id = {LINE_ID}  AND EXISTS (SELECT 1 FROM pods.location l WHERE l.location_id = sp.location_id AND l.srv_district_gcl in ({LPU_ACCESS_FILTER}))) select * from (SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID,( sp.station_begin + sp.measure / 1000 - {START_KM})  X,0  Y FROM PODS.ODORANT_RANGE v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_begin = sp.station_id UNION SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL",  v.event_id ID, ( sp.station_begin + sp.measure / 1000 - {START_KM})  X ,0  Y   FROM PODS.ODORANT_RANGE v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_end = sp.station_id) mainQuery ORDER BY ID,X</query>
+      </geoQuery>
+    </select>
+  </data>
+  <data table="CATHODIC_PROTECTION_RANGE" schema="PODS" id="CAS_PODS_CATHODIC_PROTECTION_RANGE" descr="Участки трубопроводов, оснащённые системой ЭХЗ" comment="PODS_CATHODIC_PROTECTION_RANGE">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="START_KM" />
+        <var name="FINISH_KM" />
+        <var name="LINE_ID" />
+        <var name="LABEL" default="Участки трубопроводов,\n оснащённые системой ЭХЗ" />
+        <var name="LABEL_UNIT" default="" />
+        <var name="HEIGHT" default="5" />
+        <var name="TYPE" default="1D" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL" />
+        <var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10" />
+        <var name="FILTERED_CLASS" default="PODS_CATHODIC_PROTECTION_RANGE_LIST"/>
+        <query>WITH spline AS (SELECT sp.station_id, s.station_begin, s.station_end, sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id) measure FROM pods.line l JOIN pods.route r ON r.line_id = l.line_id AND r.type_cl = CASE l.type_cl WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10' WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11' WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12' WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04' END JOIN pods.series s ON s.route_id = r.route_id JOIN pods.station_point sp ON s.series_id = sp.series_id  WHERE /*sp.station locked BETWEEN {START_KM} AND {FINISH_KM} AND*/ l.line_id = {LINE_ID}  AND EXISTS (SELECT 1 FROM pods.location l WHERE l.location_id = sp.location_id AND l.srv_district_gcl in ({LPU_ACCESS_FILTER}))) select * from (SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL", v.TYPE_CL "TYPE",  v.event_id ID,( sp.station_begin + sp.measure / 1000 - {START_KM})  X,0  Y FROM PODS.CATHODIC_PROTECTION_RANGE v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_begin = sp.station_id UNION SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL", v.TYPE_CL "TYPE",  v.event_id ID, ( sp.station_begin + sp.measure / 1000 - {START_KM})  X ,0  Y   FROM PODS.CATHODIC_PROTECTION_RANGE v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_end = sp.station_id) mainQuery ORDER BY ID,X</query>
+      </geoQuery>
+    </select>
+  </data>
+  <data table="ILI_RANGE" schema="PODS" id="CAS_PODS_ILI_RANGE" descr="Участки трубопроводов, подготовленные для ВТД" comment="PODS_ILI_RANGE">
+    <select>
+      <geoQuery idField="ID" geoField="X, Y">
+        <var name="START_KM" />
+        <var name="FINISH_KM" />
+        <var name="LINE_ID" />
+        <var name="LABEL" default="Участки трубопроводов,\n подготовленные для ВТД" />
+        <var name="LABEL_UNIT" default="" />
+        <var name="HEIGHT" default="5" />
+        <var name="TYPE" default="1D" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL" />
+        <var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10" />
+        <var name="FILTERED_CLASS" default="PODS_ILI_RANGE_LIST"/>
+        <query>WITH spline AS (SELECT sp.station_id, s.station_begin, s.station_end, sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id) measure FROM pods.line l JOIN pods.route r ON r.line_id = l.line_id AND r.type_cl = CASE l.type_cl WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10' WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11' WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12' WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04' END JOIN pods.series s ON s.route_id = r.route_id JOIN pods.station_point sp ON s.series_id = sp.series_id  WHERE /*sp.station locked BETWEEN {START_KM} AND {FINISH_KM} AND*/ l.line_id = {LINE_ID}  AND EXISTS (SELECT 1 FROM pods.location l WHERE l.location_id = sp.location_id AND l.srv_district_gcl in ({LPU_ACCESS_FILTER}))) select * from (SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL", v.event_id ID,( sp.station_begin + sp.measure / 1000 - {START_KM})  X,0  Y FROM PODS.ILI_RANGE v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_begin = sp.station_id UNION SELECT CAST(FLOOR(sp.station_begin) as VARCHAR(50)) || '-' || CAST(FLOOR(sp.station_end) as VARCHAR(50)) || ' ' || v.description "LABEL", v.event_id ID, ( sp.station_begin + sp.measure / 1000 - {START_KM})  X ,0  Y   FROM PODS.ILI_RANGE v JOIN pods.event_range er ON v.event_id = er.event_id JOIN spline sp ON er.station_id_end = sp.station_id) mainQuery ORDER BY ID,X</query>
+      </geoQuery>
+    </select>
+  </data>
+</root>

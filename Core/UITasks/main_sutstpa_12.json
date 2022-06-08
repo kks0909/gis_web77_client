@@ -1,0 +1,179 @@
+{
+  "code":200,
+  "version":"7.7.7.4",
+  "id":"MAPSERVICE",
+  "canvas":{
+    "width": "100%",
+    "height": 3000
+  },
+  "_comment":"Флаг показа однократного сообщения об ошибке, что для этого значения не найдено значение справочника. Если выставлен флаг, то не показываем сообения. По умолчанию true",
+  "showErrorInGridDictionary":false,
+  "map":{
+    "_comment": "Тип карты, если widget, то карта открывается в iframe",
+    "type":"widget",
+    "position":{
+      "width":"25%",
+      "height":"50%"
+    }
+  },
+  "chart":{
+    "position":{
+      "width":"25%",
+      "height":"50%"
+    }
+  },
+  "grid":{
+    "_comment": "Нужно ли показывать кнопки закрытия, сворачивания в гридах",
+    "titlebar":true,
+    "_comment": "Нужно ли показывать открывать гриды в одной вкладке с перезапрашиванием данных, либо в отдельных вкладках",
+    "duplicate": true,
+    "_comment": "Нужно ли открывать гриды с одной вкладкой с закрытием",
+    "singleTab": true,
+    "_comment": "Перечень кнопок быстрого доступа к гридам, которые расположены вверху карты",
+    "fast_buttons":[],
+    "_comment": "Возможность расширять размеры грида",
+    "resizable": true,
+    "_comment": "Возможность двигать грид",
+    "draggable": true,
+    "_comment": "Настройки панели свойств грида",
+    "ppanel":{
+      "_comment": "Расположение панели свойств внутри таба с гридами либо общий, как в карте local|global",
+      "position": "global"
+    },
+    "_comment": "Начальное положение грида",
+    "position":{
+      "width":"25%",
+      "height":"100%",
+      "left": "75%",
+      "top": "0%"
+    } 
+  },
+  "_comment":"Настройки рубрикатор",
+  "tree":{
+    "isMaximized":true,
+    "treePercentWidth":20,
+    "visible": false,
+    "trees":[{
+        "id":"SUTSTPA_LIST",
+        "title":"СУ ТС ТПА",
+        "templateUrl":"Public/Modules/Tree/sutstpa_tree.xml",
+        "topFilterId":"lpuFilter",
+        "default":true        
+      }
+    ]
+  },
+  "startupScenario":{
+    "openLayers":[],
+    "openTables":[
+      {
+        "title":"СВЕЧА",
+        "gridId":"SUTSTPA_КРАН_LIST",
+        "levelParams":"layerId=SUTSTPA_Layers.xml#SUTSTPA_КРАН;",
+        "showDashboard": true,
+        "query":
+        {
+          "source":"COMMON_TREE.xml#LAYER_STYLE_BASE",
+          "LAYER_ID":"SUTSTPA_КРАН",
+          "FILE_NAME":"SUTSTPA_STYLE.xml"
+        }
+      }
+    ]
+  },
+  "_comment":"Настройки панели свойств",
+  "ppanel":{
+    "showSystemInfo":false
+  },
+  "vectorlayers":["SUTSTPA_Layers.xml"],
+  "charts": [   
+    {
+      "title": "Несоответствие между полевыми данными и исполнительной документацией",
+      "type": "bar_stack_wo_y",
+      "sql": "ANALYTIC_SEM.xml#EXEC_DOC_2",
+      "params":{
+        "FILTER": "8=8",
+        "SCHEMA": "sutstpa",
+        "TABLE_NAME": "valve"
+      },
+      "dataset":[
+        {
+          "title": "Соответствует",
+          "color": "rgb(34,139,34)",
+          "column": "EQUAL_CNT"
+        },
+        {
+          "title": "Не соответствует",
+          "color": "rgb(255,165,0)",
+          "column": "MISMATCH_CNT"
+        }
+      ],      
+      "layerName": "SUTSTPA_КРАН",
+      "position": {
+        "left": "1%",
+        "top": "1%",
+        "width": "74%",
+        "height": "14.7%"
+      }
+    },
+    {
+      "title": "Отсутствие информации",
+      "type": "bar_stack_wo_y",
+      "sql": "ANALYTIC_SEM.xml#EXEC_DOC_1",
+      "params":{
+        "FILTER": "8=8",
+        "SCHEMA": "sutstpa",
+        "TABLE_NAME": "valve"
+      },
+      "dataset":[
+        {
+          "title": "Отсутствует информация во всех источниках",
+          "color": "rgb(17,141,255)",
+          "column": "ALL_CNT"
+        },
+        {
+          "title": "Отсутствует информация по результату полевого обследования",
+          "color": "rgb(18,35,158)",
+          "column": "SUTSTPA_CNT"
+        },
+        {
+          "title": "Отсутствует информация в исполнительной документации",
+          "color": "rgb(153,50,204)",
+          "column": "MISMATCH_CNT"
+        }
+      ],      
+      "layerName": "SUTSTPA_КРАН",
+      "position": {
+        "left": "1%",
+        "top": "16.3%",
+        "width": "74%",
+        "height": "14.7%"
+      }
+    },
+    {
+      "title": "Сведения об исп. документаци",
+      "type": "pie",
+      "sql": "ANALYTIC_SEM.xml#EXEC_DOC_3",
+      "params":{
+        "COLUMN_GOAL_1":"NULL",
+        "FILTER": "8=8"
+      },
+      "layerName": "SUTSTPA_КРАНОВЫЙ_УЗЕЛ",
+      "position": {
+        "left": "76%",
+        "top": "16.3%",
+        "width": "23%",
+        "height": "14.7%"
+      }
+    }
+  ],
+  "_comment":"Настройки формы фильтра у дашборда",
+  "dashboard":{
+    "position": {
+      "width":"23%",
+        "height":"14.7%",
+        "left": "76%",
+        "top": "1%"
+    },
+        "resizable": false,
+    "draggable": false
+  }
+}

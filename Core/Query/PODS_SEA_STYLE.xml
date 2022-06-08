@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<kml version="7.7.3.0">
+	  <Document>
+				
+					
+					
+	
+	
+    
+				
+		<!-- Конец ВТД-->
+		<Style table="COLLAR" schema="PODS" id="PODS_COLLAR" comment="PODS.COLLAR"
+             descr="Переходные муфты подводных скважин">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/COLLAR.png</href>
+					          <form>bitmap</form>
+					          <size>17</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="COLLET_CONNECTOR" schema="PODS" id="PODS_COLLET_CONNECTOR"
+             comment="PODS.COLLET_CONNECTOR"
+             descr="Цанговые муфты (соединители)">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/COLLET_CONNECTOR.png</href>
+					          <form>bitmap</form>
+					          <size>17</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="FAIRING" schema="PODS" id="PODS_FAIRING" comment="PODS.FAIRING"
+             descr="Обтекатели">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/FAIRING.png</href>
+					          <form>bitmap</form>
+					          <size>32</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="OFFSHORE_RISER" schema="PODS" id="PODS_OFFSHORE_RISER"
+             comment="PODS.OFFSHORE_RISER"
+             descr="Подъёмные трубопроводы - райзеры">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/OFFSHORE_RISER.png</href>
+					          <form>bitmap</form>
+					          <size>24</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="STABILIZATION" schema="PODS" id="PODS_STABILIZATION"
+             comment="PODS.STABILIZATION"
+             descr="Стабилизирующие устройства подводных трубопроводов">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/STABILIZATION.png</href>
+					          <form>bitmap</form>
+					          <size>16</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="STRAKE" schema="PODS" id="PODS_STRAKE" comment="PODS.STRAKE"
+             descr="Обшивки райзеров">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/STRAKE.png</href>
+					          <form>bitmap</form>
+					          <size>22</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="SUBSEA_SLED_ASSEMBLY" schema="PODS" id="PODS_SUBSEA_SLED_ASSEMBLY"
+             comment="PODS.SUBSEA_SLED_ASSEMBLY"
+             descr="Подводные переходные устройства между трубопроводами">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/SUBSEA_SLED_ASSEMBLY.png</href>
+					          <form>bitmap</form>
+					          <size>22</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="TAPERED_STRESS_JOINT" schema="PODS" id="PODS_TAPERED_STRESS_JOINT"
+             comment="PODS.TAPERED_STRESS_JOINT"
+             descr="Трапецевидные стыки райзеров">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/TAPERED_STRESS_JOINT.png</href>
+					          <form>bitmap</form>
+					          <size>23</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="UMBILICAL" schema="PODS" id="PODS_UMBILICAL" comment="PODS.UMBILICAL"
+             descr="Подводные кабели-шланги">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/UMBILICAL.png</href>
+					          <form>bitmap</form>
+					          <size>22</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		</Document>
+</kml>

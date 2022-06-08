@@ -1,0 +1,26 @@
+﻿{
+  "code":200,
+  "version":"7.7.7.3",
+  "id":"MAPSERVICE",
+  "_comment":"Настройки рубрикатор",
+  "tree":{
+    "isMaximized":true,
+    "treePercentWidth":20,
+    "trees":[{
+        "id":"SUTSTPA_EDIT_LIST",
+        "title":"Редактирование справочников",
+        "templateUrl":"Public/Modules/Tree/sutstpa_edit_tree.xml",
+        "topFilterId":"lpuFilter",
+        "default":true,
+        "startupScenario":{
+          "openLayers":[]
+        }
+      }
+    ]
+  },
+  "_comment":"Настройки панели свойств",
+  "ppanel":{
+    "showSystemInfo":false
+  },
+  "vectorlayers":["SUTSTPA_Layers.xml"]
+}

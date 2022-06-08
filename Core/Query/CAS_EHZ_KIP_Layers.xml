@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.7.4" descr="Обследования ЭХЗ, замеры на КИПах">
+<dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml" />
+<dataProvider type="style" source="PODS_INSP_STYLE.xml" />
+  <layer id="ILI_PIPE_LENGTH" synonym="PODS_ILI_PIPE_LENGTH"   visible="false" type="common" topology="line" table="ILI_PIPE_LENGTH" spacing="none" schema="CAS" projection="EPSG:5807" order="10" labelField="LABEL" fitMap="false" descr="Трубный журнал ВТД" dataType="vector" cover="false" comment="CAS_ILI_PIPE_LENGTH" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#ILI_PIPE_LENGTH" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_ILI_PIPE_LENGTH" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#ILI_PIPE_LENGTH" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_ILI_PIPE_LENGTH" />
+  </layer>
+<layer id="CAS_PODS_STO_REPAIR_METHOD" visible="false" type="common" topology="point" table="STO_ILI_DATA_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="40" labelField="LABEL" fitMap="false" descr="Р Газпром 595.  Методы ремонта" dataType="vector" cover="false" comment="PODS_STO_REPAIR_METHOD" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_REPAIR_METHOD" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_REPAIR_METHOD" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_REPAIR_METHOD" />
+    <dataProvider type="spatial" source="CAS_EHZ_GEO.xml#CAS_PODS_STO_REPAIR_METHOD" />
+  </layer>
+<layer id="CAS_PODS_STO_100_DANGER_DEG" visible="false" type="common" topology="line" table="STO_EHZ_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="50" labelField="LABEL" fitMap="false" descr="ВНИИГАЗ 2004. 100 м. Категория коррозийной опасности" dataType="vector" cover="false" comment="CAS_PODS_STO_100_DANGER_DEG" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#CAS_PODS_STO_100_DANGER_DEG" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_100_DANGER_DEG" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#CAS_PODS_STO_100_DANGER_DEG" />
+    <dataProvider type="spatial" source="CAS_EHZ_GEO.xml#CAS_PODS_STO_100_DANGER_DEG" />
+  </layer>
+  <layer id="PI_PS_ON_TO_CURRENT_READING" visible="true" type="system" topology="polygon" table="PI_PS_ON_TO_CURRENT_READING" spacing="none" schema="CAS" projection="EPSG:5807" order="60" labelField="LABEL" fitMap="false" descr="Измерения КИП. Оценка состояния изоляции по критерию delta U/delta I" dataType="vector" cover="false" comment="PI_PS_ON_TO_CURRENT_READING (PTG)" classField="TYPE">
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PI_PS_ON_TO_CURRENT_READING" />
+    <dataProvider type="semantic" source="CAS_PODS_CAS_CP_SEM.xml#PI_PS_ON_TO_CURRENT_READING" />
+    <dataProvider type="spatial" source="CAS_EHZ_GEO.xml#PI_PS_ON_TO_CURRENT_READING" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_PS_ON_TO_CURRENT_READING" />
+  </layer>
+  <layer id="CAS_PI_CP_UKO_VKO" visible="true" type="common" topology="line" table="CAS_PI_CP_UKO_VKO" spacing="none" schema="CAS" projection="EPSG:5807" order="85" labelField="LABEL" fitMap="false" descr="Измерения КИП. Зоны УКО (0) и ВКО (1)" dataType="vector" cover="false" comment="CAS_PI_CP_UKO_VKO" classField="TYPE">
+    <dataProvider type="spatial" source="CAS_EHZ_GEO.xml#CAS_PI_CP_UKO_VKO" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION" />
+  </layer>
+  <layer id="PI_CP_PS_ON" visible="true" type="common" topology="line" table="PI_CP_PS_ON" spacing="none" schema="CAS" projection="EPSG:5807" order="90" labelField="LABEL" fitMap="false" descr="Измерения КИП. Потенциал СОС, В" dataType="vector" cover="false" comment="CAS_PI_CP_PS_ON" classField="TYPE">
+    <dataProvider type="spatial" source="CAS_EHZ_GEO.xml#CAS_PI_CP_PS_ON" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION" />
+  </layer>
+    <layer id="PI_CP_POTENTIAL_BOS" visible="true" type="common" topology="line" table="PI_CP_POTENTIAL_BOS" spacing="none" schema="CAS" projection="EPSG:5807" order="100" labelField="LABEL" fitMap="false" descr="Измерения КИП. Потенциал БОС, В" dataType="vector" cover="false" comment="CAS_PI_CP_POTENTIAL_BOS" classField="TYPE">
+    <dataProvider type="spatial" source="CAS_EHZ_GEO.xml#POTENTIAL_BOS" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION" />
+  </layer>  
+  <layer id="PI_CP_TOK_BLUJ" visible="true" type="common" topology="line" table="PI_CP_TOK_BLUJ" spacing="none" schema="CAS" projection="EPSG:5807" order="110" labelField="LABEL" fitMap="false" descr="Измерения КИП. Блуждающий ток" dataType="vector" cover="false" comment="CAS_PI_CP_TOK_BLUJ" classField="TYPE">
+    <dataProvider type="semantic" source="CAS_PODS_CAS_CP_SEM.xml#TOK_BLUJ" />
+    <dataProvider type="spatial" source="CAS_EHZ_GEO.xml#TOK_BLUJ" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION" />
+  </layer>  
+  <layer id="PI_CP_R_PER" visible="true" type="common" topology="line" table="PI_CP_R_PER" spacing="none" schema="CAS" projection="EPSG:5807" order="120" labelField="LABEL" fitMap="false" descr="Измерения КИП. Переходное сопротивление газопровода" dataType="vector" cover="false" comment="CAS_PI_CP_R_PER" classField="TYPE">
+    <dataProvider type="spatial" source="CAS_EHZ_GEO.xml#R_PER" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION" />
+  </layer>
+  <layer id="PI_CP_RESISTANCE_READING" visible="false" type="common" topology="point" table="PI_CP_RESISTANCE_READING" spacing="none" schema="CAS" projection="EPSG:5807" order="130" labelField="LABEL" fitMap="false" descr="Измерения КИП. Переходное сопротивление" dataType="vector" cover="false" comment="CAS_PI_CP_RESISTANCE_READING" classField="TYPE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PI_CP_RESISTANCE_READING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PI_CP_READING" />
+    <dataProvider type="spatial" source="CAS_EHZ_GEO.xml#CAS_PI_CP_RESISTANCE_READING" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_PI_CP_READING" />
+  </layer>
+   <layer id="PODS_TEST_LEAD" visible="true" type="common" topology="point" table="TEST_LEAD_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="240" labelField="LABEL" fitMap="false" descr="Контрольно-измерительные пункты" dataType="vector" cover="false" comment="PODS_TEST_LEAD" classField="TYPE">  
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_TEST_LEAD" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_TEST_LEAD" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_TEST_LEAD" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_TEST_LEAD" />
+  </layer>
+  <layer id="CAS_PROFILE" comment="CAS.PROFILE" schema="PODS" table="ROUTE" descr="Профиль трубопровода" projection="EPSG:5807" dataType="vector" type="system" spacing="common" cover="false" fitMap="false" order="250" visible="true" topology="polygon" labelField="LABEL" classField="TYPE_CL">  
+        <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#CAS_PROFILE" />
+    <dataProvider type="semantic" source="CAS_PODS_PROFILE_SEM.xml#CAS_PROFILE" />
+    <dataProvider type="spatial" source="CAS_PODS_PROFILE_GEO.xml#CAS_PROFILE" />
+  </layer>
+  <layer id="CAS_DEPTH_OF_COVER" comment="CAS.DEPTH_OF_COVER" schema="CAS" table="DEPTH_OF_COVER" descr="Глубины заложения трубопровода" projection="EPSG:5807" dataType="vector" type="system" spacing="common" cover="false" fitMap="false" order="260" visible="true" topology="line" labelField="LABEL" classField="TYPE_CL">  
+    <dataProvider type="spatial" source="CAS_PODS_PROFILE_GEO.xml#CAS_DEPTH_OF_COVER" />
+  </layer>
+</root>

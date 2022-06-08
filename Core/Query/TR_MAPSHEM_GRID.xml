@@ -1,0 +1,245 @@
+﻿<root version="postgres 7.7.4.9">
+   <data id="KAP_REMONT_PLAN" comment="FLOW_CHART.KAP_REMONT_PLAN" schema="FLOW_CHART" table="KAP_REMONT_PLAN">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="ORDER_COLUMNS" default="date_begin"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<query>
+					 select {COLUMNS_FILTER} from (
+     SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN,
+					id, 
+					line_description, 
+					object_name, 
+					station_begin, 
+					station_end, 
+					object_plan_description, 
+					type_id, 
+					category_id, 
+					method_id, 
+					effect_id, 
+					invent_number, 
+					object_code_xyz, 
+					plan_string_id, 
+					object_ozp, 
+					route_condition_id, 
+					period_mtr, 
+					work_description, 
+					"comments", 
+					date_begin, 
+					date_end, 
+					work_period_hour, 
+					pit_gas, 
+					store_gas, 
+					discharge_gas, 
+					allow_paper_number, 
+					transport_gas_val_winter, 
+					transport_gas_val_summer, 
+					transport_gas_val_oth_season, 
+					calc_gas_val_winter, 
+					calc_gas_val_summer, 
+					calc_gas_val_oth_season, 
+					calc_gas_val_work,
+					srv_district_list, 
+					order_id
+FROM FLOW_CHART.KAP_REMONT_PLAN all_in_one WHERE {FILTER}) sorted
+     WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}   
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	
+	<data id="KAP_REMONT_PLAN_CNT" comment="FLOW_CHART.KAP_REMONT_PLAN_CNT" schema="FLOW_CHART" table="KAP_REMONT_PLAN">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>				
+				<query>
+				select * from (
+     SELECT count(*) CNT
+FROM FLOW_CHART.KAP_REMONT_PLAN all_in_one WHERE {FILTER}) sorted
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	
+	   <data id="WKB_TR_MAPSHEM_ROUTE_PART" comment="FLOW_CHART.WKB_TR_MAPSHEM_ROUTE_PART" schema="FLOW_CHART" table="WKB_TR_MAPSHEM_ROUTE_PART">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="ORDER_COLUMNS" default="ID"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<query>
+	WITH route_part_info as (
+select * from (
+select sb.station station_begin,se.station station_end,sb.route_id,c.*,
+rank() over (partition by sb.route_id,sb.station,se.station order by ii.begin_date desc) n
+ from pods.event_range e,pods.station_point sb,pods.station_point se,pods.sto_ili_inspection_calc c,
+ pods.ili_inspection ii
+where e.event_id=c.event_id
+and c.type_cl like 'Оценка состояния по межконструкционным участкам'
+and e.station_id_begin=sb.station_id
+and e.station_id_end=se.station_id
+and ii.ili_inspection_id=c.ili_inspection_id) d where  n=1),
+route_part_info_otv as (
+select * from (
+select sb.station station_begin,se.station station_end,sb.route_id,c.*,
+rank() over (partition by sb.route_id,sb.station,se.station order by ii.begin_date desc) n
+ from pods.event_range e,pods.station_point sb,pods.station_point se,pods.sto_ili_inspection_calc c,
+ pods.ili_inspection ii,pods.route r
+where e.event_id=c.event_id
+and c.type_cl like 'Оценка состояния по линейному event-объекту'
+and e.station_id_begin=sb.station_id
+and e.station_id_end=se.station_id
+and ii.ili_inspection_id=c.ili_inspection_id and r.route_id=sb.route_id and r.type_cl not like '%10' ) d where  n=1)
+select {COLUMNS_FILTER} from (
+     SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN,
+	 id,
+	 sto_292_2007_condition,
+	 sto_292_2007_value,
+	  station_begin,
+  station_end,
+  line_id,
+  code,
+  route_id,
+  ili_inspection_id,
+  description,
+  description route_type_description,
+  begin_date
+  from 
+(select 
+  r.id,
+   CASE WHEN coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.03 THEN 'Хорошее'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.06 AND coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.03 THEN 'Удовлетворительно'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.3 AND coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.06 THEN 'Критическое'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.3 THEN 'Требует немедленного ремонта'
+     ELSE    'Неизвестно' END sto_292_2007_condition,
+  round(coalesce(i.STO_292_2007_VALUE_CONDITION,0),3) sto_292_2007_value,
+  r.station_begin,
+  r.station_end,
+  l.line_id,
+  t.code,
+  r.route_id,
+  ii.ili_inspection_id,
+  l.description,
+  t.description route_type_description,
+  ii.begin_date
+ from flow_chart.wkb_tr_mapshem_route_part r
+ join route_part_info i on i.route_id=r.route_id and abs(i.station_begin-r.station_begin)&lt;1 and abs(i.station_end-r.station_end)&lt;1 and r.station_begin&gt;-1
+join pods.route rt on rt.route_id=r.route_id
+join pods.line l on l.line_id=rt.line_id
+join pods.route_type_cl t on rt.type_cl=t.code
+join pods.ili_inspection ii on ii.ili_inspection_id=i.ili_inspection_id
+union ALL
+select 
+  r.id,
+   CASE WHEN coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.03 THEN 'Хорошее'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.06 AND coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.03 THEN 'Удовлетворительно'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.3 AND coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.06 THEN 'Критическое'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.3 THEN 'Требует немедленного ремонта'
+     ELSE    'Неизвестно' END sto_292_2007_condition,
+  round(coalesce(i.STO_292_2007_VALUE_CONDITION,0),3) sto_292_2007_value,
+  r.station_begin,
+  r.station_end,
+  l.line_id,
+  t.code,
+  r.route_id,
+  ii.ili_inspection_id,
+  l.description,
+  t.description route_type_description,
+  ii.begin_date
+ from flow_chart.wkb_tr_mapshem_route_part r
+  join route_part_info_otv i on i.route_id=r.route_id and r.station_begin=-1
+  join pods.route rt on rt.route_id=r.route_id
+join pods.line l on l.line_id=rt.line_id
+join pods.route_type_cl t on rt.type_cl=t.code
+join pods.ili_inspection ii on ii.ili_inspection_id=i.ili_inspection_id) all_in_one WHERE {FILTER}) sorted
+     WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}  
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	
+	<data id="WKB_TR_MAPSHEM_ROUTE_PART_CNT" comment="FLOW_CHART.WKB_TR_MAPSHEM_ROUTE_PART_CNT" schema="FLOW_CHART" table="WKB_TR_MAPSHEM_ROUTE_PART">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>				
+				<query>
+				WITH route_part_info as (
+select * from (
+select sb.station station_begin,se.station station_end,sb.route_id,c.*,
+rank() over (partition by sb.route_id,sb.station,se.station order by ii.begin_date desc) n
+ from pods.event_range e,pods.station_point sb,pods.station_point se,pods.sto_ili_inspection_calc c,
+ pods.ili_inspection ii
+where e.event_id=c.event_id
+and c.type_cl like 'Оценка состояния по межконструкционным участкам'
+and e.station_id_begin=sb.station_id
+and e.station_id_end=se.station_id
+and ii.ili_inspection_id=c.ili_inspection_id) d where  n=1),
+route_part_info_otv as (
+select * from (
+select sb.station station_begin,se.station station_end,sb.route_id,c.*,
+rank() over (partition by sb.route_id,sb.station,se.station order by ii.begin_date desc) n
+ from pods.event_range e,pods.station_point sb,pods.station_point se,pods.sto_ili_inspection_calc c,
+ pods.ili_inspection ii,pods.route r
+where e.event_id=c.event_id
+and c.type_cl like 'Оценка состояния по линейному event-объекту'
+and e.station_id_begin=sb.station_id
+and e.station_id_end=se.station_id
+and ii.ili_inspection_id=c.ili_inspection_id and r.route_id=sb.route_id and r.type_cl not like '%10' ) d where  n=1)
+select count(*) CNT from (
+     SELECT 
+	      r.id,
+	   CASE WHEN coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.03 THEN 'Хорошее'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.06 AND coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.03 THEN 'Удовлетворительно'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.3 AND coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.06 THEN 'Критическое'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.3 THEN 'Требует немедленного ремонта'
+     ELSE    'Неизвестно' END sto_292_2007_condition,
+  round(coalesce(i.STO_292_2007_VALUE_CONDITION,0),3) sto_292_2007_value,
+  r.station_begin,
+  r.station_end,
+  l.line_id,
+  t.code,
+  r.route_id,
+  ii.ili_inspection_id,
+  l.description,
+  t.description route_type_description,
+  ii.begin_date
+ from flow_chart.wkb_tr_mapshem_route_part r
+ join route_part_info i on i.route_id=r.route_id and abs(i.station_begin-r.station_begin)&lt;1 and abs(i.station_end-r.station_end)&lt;1 and r.station_begin&gt;-1
+join pods.route rt on rt.route_id=r.route_id
+join pods.line l on l.line_id=rt.line_id
+join pods.route_type_cl t on rt.type_cl=t.code
+join pods.ili_inspection ii on ii.ili_inspection_id=i.ili_inspection_id
+union ALL
+select 
+  r.id,
+   CASE WHEN coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.03 THEN 'Хорошее'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.06 AND coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.03 THEN 'Удовлетворительно'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.3 AND coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.06 THEN 'Критическое'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.3 THEN 'Требует немедленного ремонта'
+     ELSE    'Неизвестно' END sto_292_2007_condition,
+  round(coalesce(i.STO_292_2007_VALUE_CONDITION,0),3) sto_292_2007_value,
+  r.station_begin,
+  r.station_end,
+  l.line_id,
+  t.code,
+  r.route_id,
+  ii.ili_inspection_id,
+  l.description,
+  t.description route_type_description,
+  ii.begin_date
+ from flow_chart.wkb_tr_mapshem_route_part r
+  join route_part_info_otv i on i.route_id=r.route_id and r.station_begin=-1
+  join pods.route rt on rt.route_id=r.route_id
+join pods.line l on l.line_id=rt.line_id
+join pods.route_type_cl t on rt.type_cl=t.code
+join pods.ili_inspection ii on ii.ili_inspection_id=i.ili_inspection_id) all_in_one WHERE {FILTER}  
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+</root>

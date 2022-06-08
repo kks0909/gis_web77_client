@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_GRID_FORM xmlns="view.data.*" readOnly="true" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml">
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	<mx:VBox width="740" height="650">
+		<mx:HBox percentWidth="100">
+			<mx:VBox percentWidth="100">
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="OBJECTID" width="280" />
+					<mx:Text id="ID" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Ключ СФ" width="280" />
+					<mx:Text id="KlyuchSF" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Идентификатор района" width="280" />
+					<mx:Text id="Identifikatorraiona" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Идентификатор округа" width="280" />
+					<mx:Text id="Identifikatorokruga" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Кадастровый номер" width="280" />
+					<mx:Text id="Kadastroviinomer" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Наименование" width="280" />
+					<mx:Text id="Naimenovanie" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Число КК" width="280" />
+					<mx:Text id="CHisloKK" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Число ЗУ" width="280" />
+					<mx:Text id="CHisloZU" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Число ОКС" width="280" />
+					<mx:Text id="CHisloOKS" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Дата актуальности" width="280" />
+					<mx:Text id="Dataaktualnosti" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Актуальность" width="280"/>
+					<mx:Text id="aktualnost" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Количество ЗУ с геометрией и без" width="280"/>
+					<mx:Text id="KolichestvoZUsgeometrieiibez" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Количество ОКС с геометрией и без" width="280"/>
+					<mx:Text id="KolichestvoOKSsgeometrieiibez" width="380"/>
+				</mx:HBox>				
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Число ОКС" width="280"/>
+					<mx:Text id="CHisloOKS" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Количество ТЗ" width="280"/>
+					<mx:Text id="KolichestvoTZ" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Количество ЗОУИТ" width="280"/>
+					<mx:Text id="KolichestvoZOUIT" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Количество границ МО и НП" width="280"/>
+					<mx:Text id="KolichestvogranitsMOiNP" width="380"/>
+				</mx:HBox>
+				
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Количество пунктов ОМ и ГГС" width="280"/>
+					<mx:Text id="KolichestvopunktovOMSiGGS" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Дата постановки на учет ЗУОКС в районе" width="280"/>
+					<mx:Text id="DatapostanovkinauchetZUOKSvraione" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Дата выгрузки ГКН ЗУОКС в районе" width="280"/>
+					<mx:Text id="DatavigruzkiizGKNZUOKSvraione" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Дата изменения сведений и ГКН по ЗУОКС в районе" width="280"/>
+					<mx:Text id="DataizmeneniyasvedeniivGKNpoZUOKSvraione" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Идентификатор СК" width="280"/>
+					<mx:Text id="IdentifikatorSK" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Аннотация" width="280" />
+					<mx:Text id="Annotaciya" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Shape" width="280" />
+					<mx:Text id="SHAPE" width="380"/>
+				</mx:HBox>				
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Shape Length" width="280" />
+					<mx:Text id="SHAPE_Length" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Shape Area" width="280" />
+					<mx:Text id="SHAPE_Area" width="380"/>
+				</mx:HBox>
+			</mx:VBox>
+		</mx:HBox>
+	</mx:VBox>
+</DATA_GRID_FORM>

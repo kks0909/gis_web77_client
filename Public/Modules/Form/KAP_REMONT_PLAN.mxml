@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns="view.data.*" xmlns:data="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns:mx="http://www.adobe.com/2006/mxml"
+                title="План капитальных ремонтов"
+                width="760"
+                ext_data_id="PODS_EXPORT.xml#KAP_REMONT_PLAN"
+                excelTemplate="KAP_REMONT_PLAN">
+  <dataProvider>TR_MAPSHEM_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent"
+           syncMap="true" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"
+           syncMap="true" />
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+
+  <mx:HBox percentWidth="100">
+      <mx:VBox percentWidth="50">
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Наименование газопровода" width="140"/>
+            <mx:TextInput id="LINE_DESCRIPTION" width="225" maxChars="57" height="40"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Начало/конец участка,км" width="140"/>
+            <controls:NumberInput id="STATION_BEGIN" width="40" maxChars="22" height="20"/>
+            <controls:NumberInput id="STATION_END" width="40" maxChars="22" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Наименование в соотв. с НСИ" width="140"/>
+            <mx:TextInput id="OBJECT_NAME" width="225" maxChars="68" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Наименование в соотв. пообъектным планом" width="140"/>
+            <mx:TextInput id="OBJECT_PLAN_DESCRIPTION" width="225" maxChars="230" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="План работ вид" width="140"/>
+            <mx:TextInput id="TYPE_ID" width="225" maxChars="91" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Наименование работ" width="140"/>
+            <mx:TextInput id="CATEGORY_ID" width="225" maxChars="24" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Способ выполнения" width="140"/>
+            <mx:TextInput id="METHOD_ID" width="225" maxChars="13" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Вид работ" width="140"/>
+            <mx:TextInput id="EFFECT_ID" width="225" maxChars="90" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Инвентарный номер" width="140"/>
+            <mx:TextInput id="INVENT_NUMBER" width="225" maxChars="22" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Сводный (код) объекта ремонта (x/y/z)" width="140"/>
+            <mx:TextInput id="OBJECT_CODE_XYZ" width="225" maxChars="16" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="№ строки пообъектного плана" width="140"/>
+            <mx:TextInput id="PLAN_STRING_ID" width="225" maxChars="15" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Объект ОЗП" width="140"/>
+            <mx:TextInput id="OBJECT_OZP" width="225" maxChars="3" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Состояние участка" width="140"/>
+            <mx:TextInput id="ROUTE_CONDITION_ID" width="225" maxChars="53" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Срок предоставления МТР согласно плану Газпром комплектация" width="140"/>
+            <mx:TextInput id="PERIOD_MTR" width="225" maxChars="41" height="20"/>
+         </mx:HBox>
+      </mx:VBox>
+
+      <mx:VBox percentWidth="50">
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Описание плана работ" width="140"/>
+            <mx:TextInput id="WORK_DESCRIPTION" width="160" maxChars="1000" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Дата начала/окончания работ" width="140"/>
+            <mx:DateField id="DATE_BEGIN" width="96" height="20" formatString="DD.MM.YYYY"/>
+            <mx:DateField id="DATE_END" width="96" height="20" formatString="DD.MM.YYYY"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Примечания от ГТП" width="140"/>
+            <mx:TextInput id="COMMENTS" width="225" maxChars="1000" height="40"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="План. продолжительность, час." width="140"/>
+            <mx:TextInput id="WORK_PERIOD_HOUR" width="225" maxChars="22" height="40"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Объем стравливаемого газа, млн м3" width="140"/>
+            <controls:NumberInput id="PIT_GAS" width="40" maxChars="22" height="20"/>
+         </mx:HBox>
+          <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Планир. к сохранению объем газа, млн м3" width="140"/>
+            <controls:NumberInput id="STORE_GAS" width="40" maxChars="22" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Разрешенный выброс вр.вещ. в пределах утв.норм ПДВ, т/год (млн. м3)" width="140"/>
+            <controls:NumberInput id="DISCHARGE_GAS" width="40" maxChars="22" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Номер и период действия разрешения на выброс вр.вещ. в атмосферный воздух" width="140"/>
+            <mx:TextInput id="ALLOW_PAPER_NUMBER" width="225" maxChars="90" height="40"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Достигнутый объем транспорта газа на участке (млн.м3/сут) зима/лето/межсезонье" width="140"/>
+            <controls:NumberInput id="TRANSPORT_GAS_VAL_WINTER" width="40" maxChars="22" height="20"/>
+            <controls:NumberInput id="TRANSPORT_GAS_VAL_SUMMER" width="40" maxChars="22" height="20"/>
+            <controls:NumberInput id="TRANSPORT_GAS_VAL_OTH_SEASON" width="40" maxChars="22" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Расчет. проп. способность участка (млн м3/сутки) зима/лето/межсезонье" width="140"/>
+            <controls:NumberInput id="CALC_GAS_VAL_WINTER" width="40" maxChars="22" height="20"/>
+            <controls:NumberInput id="CALC_GAS_VAL_SUMMER" width="40" maxChars="22" height="20"/>
+            <controls:NumberInput id="CALC_GAS_VAL_OTH_SEASON" width="40" maxChars="22" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Расч. объем транспорта газа на период работ (млн м3/сутки)" width="140"/>
+            <controls:NumberInput id="CALC_GAS_VAL_WORK" width="40" maxChars="22" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Филиал" width="140"/>
+            <mx:TextInput id="SRV_DISTRICT_LIST" width="225" maxChars="59" height="40"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="№ п/п" width="140"/>
+            <controls:NumberInput id="ORDER_ID" width="40" maxChars="22" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+            <mx:Text textAlign="right" text="ID" width="140"/>
+            <controls:NumberInput id="ID" editable="false" width="85" maxChars="22" height="20"/>
+         </mx:HBox>
+      </mx:VBox>
+  </mx:HBox>
+  <validatorsArray>
+     
+  </validatorsArray>
+</DATA_EDIT_FORM>

@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.7.6" descr="Загрузчик-валидатор">
+  <data id="SUTSTPAVALIDATE_VALVE" comment="VALVE" schema="SUTSTPA" table="VALVE">
+    <select>
+            <dbQuery idField="ID">
+       <var name="FILTER" default="1=1"/>
+       <var name="ORDER_COLUMNS" default="ID"/>
+       <var name="LOW_LIMIT" default="1"/>
+       <var name="HIGH_LIMIT" default="65536"/>
+       <var name="COLUMNS_FILTER" default="*"/>
+                <query>
+with sum_koef as (select n.check_table,sum(n.koeff) max_sum from sutstpa.sprav_ntd_gcl n where n.check_table is not null group by n.check_table),
+koef as (select (select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_4_IS') k_BARRIER_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_1_IS') k_ORDER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_4_IS') k_TERRITORY_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_1_IS') k_BARRIER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_5_IS') k_ORDER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_6_IS') k_ORDER_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PLATE_IS') k_PLATE_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_7_IS') k_CONT_MEAS_7_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_2_IS') k_INF_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_3_IS') k_INF_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_5_IS') k_BARRIER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_2_IS') k_SIGN_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_3_IS') k_SIGN_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_4_IS') k_SIGN_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_2_IS') k_ORDER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_5_IS') k_SIGN_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_6_IS') k_SIGN_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_1_IS') k_TERRITORY_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_2_IS') k_TERRITORY_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_3_IS') k_TERRITORY_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_2_IS') k_BARRIER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_3_IS') k_BARRIER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_3_IS') k_ORDER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_4_IS') k_order_4_is,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ROOF_IS') k_ROOF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='HEIGHT_IS') k_HEIGHT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_IS') k_COLOR_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_2_IS') k_CONT_MEAS_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_3_IS') k_CONT_MEAS_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_4_IS') k_CONT_MEAS_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_6_IS') k_CONT_MEAS_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_5_IS') k_CONT_MEAS_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_1_IS') k_EXT_CORR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_2_IS') k_EXT_CORR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_3_IS') k_EXT_CORR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_1_IS') k_GROUND_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_2_IS') k_GROUND_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_3_IS') k_GROUND_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_4_IS') k_GROUND_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_5_IS') k_GROUND_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_3_IS') k_COLOR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_1_IS') k_COLOR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_2_IS') k_COLOR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_4_IS') k_COLOR_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_5_IS') k_COLOR_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_6_IS') k_COLOR_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_1_IS') k_INF_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_4_IS') k_INF_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_5_IS') k_INF_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_6_IS') k_INF_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_NOM_DIAM_IS') k_INF_NOM_DIAM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_PRES_IS') k_INF_PRES_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_DATE_MANUF_IS') k_INF_DATE_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_MANUF_IS') k_INF_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TECH_NUM_IS') k_TECH_NUM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='VERT_IS') k_VERT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_1') k_ADD_IS_1,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_2') k_ADD_IS_2,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_3') k_ADD_IS_3,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_4') k_ADD_IS_4,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PEDESTAL_IS') k_PEDESTAL_IS),
+valve as (select 
+lpu||', '||les||', '||pipe||', '||round(station,1)||' км.' "LABEL", 
+id,struct_id,lpu,les,pipe,station,tech_num_is,plate_is,ext_corr_1_is,ext_corr_2_is,ext_corr_3_is,ground_1_is,ground_2_is,ground_3_is,ground_4_is,ground_5_is,color_1_is,color_2_is,color_3_is,color_4_is,color_5_is,color_6_is,inf_1_is,inf_2_is,inf_3_is,inf_4_is,
+inf_5_is,inf_6_is,order_6_is,cont_meas_2_is,cont_meas_3_is,cont_meas_4_is,cont_meas_5_is,cont_meas_6_is,cont_meas_7_is,add_is_1,add_is_2,add_is_3,add_is_4,operator1,operator2,operator3,operator4,operator5,operator6,type_id,name_id,tech_num,
+joint_id,nom_diam_id,nom_press_id,descr,serial_num,manuf_id,date_manuf,material_id,install_type_id,func_type_id,execution_type_id,oper_type_id,oper_manuf_id,oper_date_manuf,oper_label_type_id,oper_serial_number,oper_date_work_begin,electric_drive_descr,
+tpa_figure_type_id,tpa_constr_type_id,date_install,date_work_begin,lifetime,date_exp,climatic_type_id,invent_number,work_pressure_fact,work_temp_project,work_temp_fact,lubricant_value,hydrofluid_value,infoteh_is,
+exec_doc_is,electric_drive_ready_is,validate_is,date_insp,lg_attach,
+coalesce(ext_corr_1_is,0)*k_ext_corr_1_is+coalesce(ext_corr_2_is,0)*k_ext_corr_2_is+coalesce(ext_corr_3_is,0)*k_ext_corr_3_is+coalesce(ground_1_is,0)*k_ground_1_is+coalesce(ground_2_is,0)*k_ground_2_is+coalesce(ground_3_is,0)*k_ground_3_is
++coalesce(ground_4_is,0)*k_ground_4_is+coalesce(ground_5_is,0)*k_ground_5_is+abs(1-coalesce(color_1_is,1))*k_color_1_is+abs(1-coalesce(color_2_is,1))*k_color_2_is+abs(1-coalesce(color_3_is,1))*k_color_3_is
++abs(1-coalesce(color_4_is,1))*k_color_4_is+abs(1-coalesce(color_5_is,1))*k_color_5_is+abs(1-coalesce(color_6_is,1))*k_color_6_is+abs(1-coalesce(inf_1_is,1))*k_inf_1_is+abs(1-coalesce(inf_2_is,1))*k_inf_2_is
++abs(1-coalesce(inf_3_is,1))*k_inf_3_is+abs(1-coalesce(inf_4_is,1))*k_inf_4_is+abs(1-coalesce(inf_5_is,1))*k_inf_5_is+(cASE WHEN v.date_manuf is null THEN 1 else 0 end)*k_INF_DATE_MANUF_IS
++(cASE WHEN v.manuf_id is null THEN 1 else 0 end)*k_INF_MANUF_IS +coalesce(order_6_is,0)*k_order_6_is+abs(1-coalesce(cont_meas_2_is,1))*k_cont_meas_2_is+abs(1-coalesce(cont_meas_3_is,1))*k_cont_meas_3_is
++abs(1-coalesce(cont_meas_4_is,1))*k_cont_meas_4_is+abs(1-coalesce(cont_meas_5_is,1))*k_cont_meas_5_is+abs(1-coalesce(cont_meas_6_is,1))*k_cont_meas_6_is+abs(1-coalesce(cont_meas_7_is,1))*k_cont_meas_7_is
++coalesce(add_is_1,0)*k_add_is_1+coalesce(add_is_2,0)*k_add_is_2+coalesce(add_is_3,0)*k_add_is_3+coalesce(add_is_4,0)*k_add_is_4 rank
+FROM sutstpa.valve_validate v,koef k)
+                   	   SELECT {COLUMNS_FILTER} FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS})  RWN,"LABEL", 
+		   id,id valve_id, struct_id,lpu,les,pipe,station,tech_num_is,plate_is,ext_corr_1_is,ext_corr_2_is,ext_corr_3_is,ground_1_is,ground_2_is,ground_3_is,ground_4_is,ground_5_is,color_1_is,color_2_is,color_3_is,color_4_is,color_5_is,color_6_is,inf_1_is,inf_2_is,inf_3_is,inf_4_is,
+inf_5_is,inf_6_is,order_6_is,cont_meas_2_is,cont_meas_3_is,cont_meas_4_is,cont_meas_5_is,cont_meas_6_is,cont_meas_7_is,add_is_1,add_is_2,add_is_3,add_is_4,operator1,operator2,operator3,operator4,operator5,operator6,type_id,name_id,tech_num,
+joint_id,nom_diam_id,nom_press_id,descr,serial_num,manuf_id,date_manuf,material_id,install_type_id,func_type_id,execution_type_id,oper_type_id,oper_manuf_id,oper_date_manuf,oper_label_type_id,oper_serial_number,oper_date_work_begin,electric_drive_descr,
+tpa_figure_type_id,tpa_constr_type_id,date_install,date_work_begin,lifetime,date_exp,climatic_type_id,invent_number,work_pressure_fact,work_temp_project,work_temp_fact,lubricant_value,hydrofluid_value,infoteh_is,
+exec_doc_is,electric_drive_ready_is,validate_is,date_insp,lg_attach, rank,
+		   CASE when rank&lt;=sum_k.max_sum*0.15 then 'GREEN' 
+           		when rank&gt;sum_k.max_sum*0.15 and rank&lt;=sum_k.max_sum*0.5 then 'YELLOW'
+		 	when rank&gt;sum_k.max_sum*0.5 then 'RED' 
+		   end "TYPE" 					
+					FROM valve, sum_koef sum_k where sum_k.check_table='sutstpa.valve' and {FILTER}) dd
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+                </query>
+            </dbQuery>
+        </select>
+  </data>
+  <data id="SUTSTPAVALIDATE_VENT_PIPE" comment="VENT_PIPE" schema="SUTSTPA" table="VENT_PIPE">
+    <select>
+     <dbQuery>
+       <var name="FILTER" default="1=1"/>
+       <var name="ORDER_COLUMNS" default="ID"/>
+       <var name="LOW_LIMIT" default="1"/>
+       <var name="HIGH_LIMIT" default="65536"/>
+       <var name="COLUMNS_FILTER" default="*"/>
+       <query>
+with sum_koef as (select n.check_table,sum(n.koeff) max_sum from sutstpa.sprav_ntd_gcl n where n.check_table is not null group by n.check_table),
+koef as (select (select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_4_IS') k_BARRIER_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_1_IS') k_ORDER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_4_IS') k_TERRITORY_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_1_IS') k_BARRIER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_5_IS') k_ORDER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_6_IS') k_ORDER_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PLATE_IS') k_PLATE_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_7_IS') k_CONT_MEAS_7_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_2_IS') k_INF_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_3_IS') k_INF_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_5_IS') k_BARRIER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_2_IS') k_SIGN_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_3_IS') k_SIGN_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_4_IS') k_SIGN_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_2_IS') k_ORDER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_5_IS') k_SIGN_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_6_IS') k_SIGN_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_1_IS') k_TERRITORY_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_2_IS') k_TERRITORY_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_3_IS') k_TERRITORY_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_2_IS') k_BARRIER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_3_IS') k_BARRIER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_3_IS') k_ORDER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_4_IS') k_order_4_is,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ROOF_IS') k_ROOF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='HEIGHT_IS') k_HEIGHT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_IS') k_COLOR_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_2_IS') k_CONT_MEAS_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_3_IS') k_CONT_MEAS_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_4_IS') k_CONT_MEAS_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_6_IS') k_CONT_MEAS_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_5_IS') k_CONT_MEAS_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_1_IS') k_EXT_CORR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_2_IS') k_EXT_CORR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_3_IS') k_EXT_CORR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_1_IS') k_GROUND_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_2_IS') k_GROUND_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_3_IS') k_GROUND_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_4_IS') k_GROUND_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_5_IS') k_GROUND_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_3_IS') k_COLOR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_1_IS') k_COLOR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_2_IS') k_COLOR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_4_IS') k_COLOR_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_5_IS') k_COLOR_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_6_IS') k_COLOR_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_1_IS') k_INF_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_4_IS') k_INF_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_5_IS') k_INF_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_6_IS') k_INF_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_NOM_DIAM_IS') k_INF_NOM_DIAM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_PRES_IS') k_INF_PRES_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_DATE_MANUF_IS') k_INF_DATE_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_MANUF_IS') k_INF_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TECH_NUM_IS') k_TECH_NUM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='VERT_IS') k_VERT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_1') k_ADD_IS_1,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_2') k_ADD_IS_2,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_3') k_ADD_IS_3,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_4') k_ADD_IS_4,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PEDESTAL_IS') k_PEDESTAL_IS),
+vent_pipe as (SELECT 
+lpu||', '||les||', '||pipe||', '||round(station,1)||' км.' "LABEL", 
+id, lpu, les, pipe, station,to_char(date_insp,'DD.MM.YYYY') date_insp, height_is, color_is, roof_is, pedestal_is, vert_is, lg_attach, operator1, operator2, operator3,operator4,operator5,operator6,struct_id,validate_is,
+abs(1-coalesce(height_is,1))*k_height_is+abs(1-coalesce(color_is,1))*k_color_is+abs(1-coalesce(roof_is,1))*k_roof_is+abs(1-coalesce(pedestal_is,1))*k_pedestal_is+abs(1-coalesce(vert_is,1))*k_vert_is rank
+FROM sutstpa.vent_pipe_validate,koef k)
+	   SELECT {COLUMNS_FILTER} FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN,id,"LABEL",lpu,les,pipe,station,date_insp,height_is,color_is,roof_is,pedestal_is, vert_is, operator1,operator2,operator3,operator4,operator5,operator6, rank,struct_id, lg_attach,
+		   CASE when rank&lt;=sum_k.max_sum*0.15 then 'GREEN' 
+           		when rank&gt;sum_k.max_sum*0.15 and rank&lt;=sum_k.max_sum*0.5 then 'YELLOW'
+		 	when rank&gt;sum_k.max_sum*0.5 then 'RED'  
+					end "TYPE"   
+FROM vent_pipe, sum_koef sum_k where sum_k.check_table='sutstpa.vent_pipe' and {FILTER}) dd
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+      </query>
+     </dbQuery>
+    </select>
+  </data>
+  <data id="SUTSTPAVALIDATE_STRUCTURE" comment="STRUCTURE" schema="SUTSTPA" table="STRUCTURE">
+    <select>
+            <dbQuery idField="ID">
+       <var name="FILTER" default="1=1"/>
+       <var name="ORDER_COLUMNS" default="ID"/>
+       <var name="LOW_LIMIT" default="1"/>
+       <var name="HIGH_LIMIT" default="65536"/>
+       <var name="COLUMNS_FILTER" default="*"/> 
+                <query>
+with sum_koef as (select n.check_table,sum(n.koeff) max_sum from sutstpa.sprav_ntd_gcl n where n.check_table is not null group by n.check_table),
+koef as (select (select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_4_IS') k_BARRIER_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_1_IS') k_ORDER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_4_IS') k_TERRITORY_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_1_IS') k_BARRIER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_5_IS') k_ORDER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_6_IS') k_ORDER_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PLATE_IS') k_PLATE_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_7_IS') k_CONT_MEAS_7_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_2_IS') k_INF_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_3_IS') k_INF_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_5_IS') k_BARRIER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_2_IS') k_SIGN_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_3_IS') k_SIGN_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_4_IS') k_SIGN_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_2_IS') k_ORDER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_5_IS') k_SIGN_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_6_IS') k_SIGN_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_1_IS') k_TERRITORY_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_2_IS') k_TERRITORY_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_3_IS') k_TERRITORY_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_2_IS') k_BARRIER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_3_IS') k_BARRIER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_3_IS') k_ORDER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_4_IS') k_order_4_is,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ROOF_IS') k_ROOF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='HEIGHT_IS') k_HEIGHT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_IS') k_COLOR_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_2_IS') k_CONT_MEAS_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_3_IS') k_CONT_MEAS_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_4_IS') k_CONT_MEAS_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_6_IS') k_CONT_MEAS_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_5_IS') k_CONT_MEAS_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_1_IS') k_EXT_CORR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_2_IS') k_EXT_CORR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_3_IS') k_EXT_CORR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_1_IS') k_GROUND_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_2_IS') k_GROUND_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_3_IS') k_GROUND_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_4_IS') k_GROUND_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_5_IS') k_GROUND_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_3_IS') k_COLOR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_1_IS') k_COLOR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_2_IS') k_COLOR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_4_IS') k_COLOR_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_5_IS') k_COLOR_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_6_IS') k_COLOR_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_1_IS') k_INF_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_4_IS') k_INF_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_5_IS') k_INF_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_6_IS') k_INF_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_NOM_DIAM_IS') k_INF_NOM_DIAM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_PRES_IS') k_INF_PRES_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_DATE_MANUF_IS') k_INF_DATE_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_MANUF_IS') k_INF_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TECH_NUM_IS') k_TECH_NUM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='VERT_IS') k_VERT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_1') k_ADD_IS_1,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_2') k_ADD_IS_2,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_3') k_ADD_IS_3,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_4') k_ADD_IS_4,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PEDESTAL_IS') k_PEDESTAL_IS),
+structure as (select lpu||', '||les||', '||pipe||', '||round(station,1)||' км.' "LABEL", 
+id, lpu, les, pipe, station,to_char(date_insp,'DD.MM.YYYY') date_insp, sign_2_is, sign_3_is, sign_4_is, sign_5_is, sign_6_is, territory_1_is, territory_2_is, territory_3_is, territory_4_is, 
+barrier_1_is, barrier_2_is, barrier_3_is, barrier_4_is, barrier_5_is, order_1_is, order_2_is, order_3_is, order_4_is, order_5_is, cont_meas_8_is, lg_attach, operator1, operator2, operator3, operator4, operator5, operator6, validate_is,
+add_pet_is_1, add_pet_is_2, add_pet_is_3, add_pet_is_4, corr_id,
+abs(1-coalesce(sign_2_is,1))*k_sign_2_is+abs(1-coalesce(sign_3_is,1))*k_sign_3_is+abs(1-coalesce(sign_4_is,1))*k_sign_4_is+abs(1-coalesce(sign_5_is,1))*k_sign_5_is+abs(1-coalesce(sign_6_is,1))*k_sign_6_is
++coalesce(territory_1_is,0)*k_territory_1_is+coalesce(territory_2_is,0)*k_territory_2_is+coalesce(territory_3_is,0)*k_territory_3_is+coalesce(territory_4_is,0)*k_territory_4_is+abs(1-coalesce(barrier_1_is,1))*k_barrier_1_is
++abs(1-coalesce(barrier_2_is,1))*k_barrier_2_is+abs(1-coalesce(barrier_3_is,1))*k_barrier_3_is+abs(1-coalesce(barrier_4_is,1))*k_barrier_4_is+abs(1-coalesce(barrier_5_is,1))*k_barrier_5_is+coalesce(order_1_is,0)*k_order_1_is
++coalesce(order_2_is,0)*k_order_2_is+coalesce(order_3_is,0)*k_order_3_is+coalesce(order_5_is,0)*k_order_5_is+coalesce(order_4_is,0)*k_order_4_is rank
+from sutstpa.structure_validate s,koef k)
+         SELECT {COLUMNS_FILTER} FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS})  RWN,id,"LABEL",lpu,les,pipe,station,date_insp,sign_2_is,sign_3_is,sign_4_is,sign_5_is,sign_6_is,territory_1_is,territory_2_is,territory_3_is,
+territory_4_is,barrier_1_is,barrier_2_is,barrier_3_is, barrier_4_is,barrier_5_is,order_1_is,order_2_is,order_3_is,order_4_is,order_5_is,cont_meas_8_is,operator1,operator2,operator3,operator4,operator5,operator6, lg_attach,
+add_pet_is_1, add_pet_is_2, add_pet_is_3, add_pet_is_4, corr_id,
+		   CASE when rank&lt;=sum_k.max_sum*0.15 then 'GREEN' 
+           		when rank&gt;sum_k.max_sum*0.15 and rank&lt;=sum_k.max_sum*0.5 then 'YELLOW'
+		 	when rank&gt;sum_k.max_sum*0.5 then 'RED'  
+					end "TYPE" 
+		   FROM structure, sum_koef sum_k where sum_k.check_table='sutstpa.structure' and {FILTER}) dd
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+		  </query>
+            </dbQuery>
+        </select>
+  </data>
+    <data id="SUTSTPAVALIDATE_VALVE_BAD" comment="VALVE" schema="SUTSTPA" table="VALVE">
+    <select>
+            <dbQuery idField="ID">
+       <var name="FILTER" default="1=1"/>
+       <var name="ORDER_COLUMNS" default="LABEL"/>
+       <var name="LOW_LIMIT" default="1"/>
+       <var name="HIGH_LIMIT" default="65536"/>
+       <var name="COLUMNS_FILTER" default="*"/> 
+                <query>
+with valve as (select 
+lpu||', '||les||', '||pipe||', '||round(station,1)||' км.' "LABEL", 
+id,struct_id,
+lpu,
+les,
+pipe,
+station,
+tech_num_is,
+plate_is,
+ext_corr_1_is,
+ext_corr_2_is,
+ext_corr_3_is,
+ground_1_is,
+ground_2_is,
+ground_3_is,
+ground_4_is,
+ground_5_is,
+color_1_is,
+color_2_is,
+color_3_is,
+color_4_is,
+color_5_is,
+color_6_is,
+inf_1_is,
+inf_2_is,
+inf_3_is,
+inf_4_is,
+inf_5_is,
+inf_6_is,
+order_6_is,
+cont_meas_2_is,
+cont_meas_3_is,
+cont_meas_4_is,
+cont_meas_5_is,
+cont_meas_6_is,
+cont_meas_7_is,
+add_is_1,
+add_is_2,
+add_is_3,
+add_is_4,
+operator1,operator2,operator3,operator4,operator5,operator6,
+type_id,
+name_id,
+tech_num,
+joint_id,
+nom_diam_id,
+nom_press_id,
+descr,
+serial_num,
+manuf_id,
+date_manuf,
+material_id,
+install_type_id,
+func_type_id,
+execution_type_id,
+oper_type_id,
+oper_manuf_id,
+oper_date_manuf,
+oper_label_type_id,
+oper_serial_number,
+oper_date_work_begin,
+electric_drive_descr,
+tpa_figure_type_id,
+tpa_constr_type_id,
+date_install,
+date_work_begin,
+lifetime,date_exp,
+climatic_type_id,
+invent_number,
+work_pressure_fact,
+work_temp_project,
+work_temp_fact,
+lubricant_value,
+hydrofluid_value,
+electric_drive_ready_is,
+ to_char(date_insp,'DD.MM.YYYY') date_insp,
+lg_attach 
+FROM sutstpa.valve_validate v where {FILTER})
+                   	   SELECT {COLUMNS_FILTER} FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS})  RWN,"LABEL", 
+		   id,struct_id,lpu,les,pipe,station, bad_val, message FROM 
+(select  id,struct_id,lpu,les,pipe,station,"LABEL", lpu bad_val, 'Нет в справочнике lpu' message FROM valve v  where v.lpu not in (select code from sutstpa.sprav_lpu_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", les bad_val, 'Нет в справочнике les' message FROM valve v  where v.les not in (select code from sutstpa.sprav_les_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", pipe bad_val, 'Нет в справочнике pipe(Наименование газопровода)' message FROM valve v  where v.pipe not in (select code from sutstpa.sprav_pipe_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения station(КМ)' message FROM valve v  where v.station is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения tech_num_is(Технологический номер)' message FROM valve v  where v.tech_num_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения plate_is(Табличка изготовителя ТПА)' message FROM valve v  where v.plate_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения ext_corr_1_is(Коррозия на ТПА)' message FROM valve v  where v.ext_corr_1_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения ext_corr_2_is(Отслоение на ТПА)' message FROM valve v  where v.ext_corr_2_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения ext_corr_3_is(Трещины на ТПА)' message FROM valve v  where v.ext_corr_3_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения ground_1_is(Земля-воздух.Колонны больше 15 см)' message FROM valve v  where v.ground_1_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения ground_2_is(Земля-воздух. СОГ 15 см)' message FROM valve v  where v.ground_2_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения ground_3_is(Земля-воздух.Отслоение)' message FROM valve v  where v.ground_3_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения ground_4_is(Земля-воздух. Трещины)' message FROM valve v  where v.ground_4_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения ground_5_is(Земля-воздух. Сквозные дефекты)' message FROM valve v  where v.ground_5_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения color_1_is(Трубопровод-жёлтый)' message FROM valve v  where v.color_1_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения color_2_is(СОГ-жёлтый)' message FROM valve v  where v.color_2_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения color_3_is(Привод арматуры-жёлтый)' message FROM valve v  where v.color_3_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения color_4_is(Корпус арматуры и колонны-синий)' message FROM valve v  where v.color_4_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения color_5_is(Штурвалы, рукоятки-красный)' message FROM valve v  where v.color_5_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения color_6_is(Фланцы-красный)' message FROM valve v  where v.color_6_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения inf_1_is(Наличие информации о марке заправленной гидр. жидкости на гидр. цилиндре привода)' message FROM valve v  where v.inf_1_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения inf_2_is(Стрелка на маховике О и З' message FROM valve v  where v.inf_2_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения inf_3_is(Ручной насос)' message FROM valve v  where v.inf_3_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения inf_4_is(Положения затвора букв на корпусе привода)' message FROM valve v  where v.inf_4_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения inf_5_is(Хар-ка ТПА. Наличие систем резервирования ТПА)' message FROM valve v  where v.inf_5_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения inf_6_is(Налич.техн.нум-ции на корп/приводе арм-ры )' message FROM valve v  where v.inf_6_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения order_6_is(Стальные заглушки на СОГ)' message FROM valve v  where v.order_6_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения cont_meas_2_is(Испр. сост. манометров на ТПА, СОГ)' message FROM valve v  where v.cont_meas_2_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения cont_meas_3_is(Дата поверки манометров)' message FROM valve v  where v.cont_meas_3_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения cont_meas_4_is(Наличие на манометре красной черты, соотв. Pразр)' message FROM valve v  where v.cont_meas_4_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения cont_meas_5_is(Утечка. на ЭПУУ, штуцерных соединений)' message FROM valve v  where v.cont_meas_5_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения cont_meas_6_is(Утечка. На импульсной обвязке крана)' message FROM valve v  where v.cont_meas_6_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения cont_meas_7_is(Наличие диэлектрических вставок на трубках отбора импульсного газа)' message FROM valve v  where v.cont_meas_7_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения add_is_1(Расст. от фланца пр-да до земли не в интервале 800 - 1100 мм)' message FROM valve v  where v.add_is_1 is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения add_is_2(Вверху колонны нет отверстия D больше 10мм для проверки грунт. вод)' message FROM valve v  where v.add_is_2 is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения add_is_3(Есть на корпусе, приводе, свар. швах вмятины, задиры, мех. повр., корр.)' message FROM valve v  where v.add_is_3 is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения add_is_4(Есть утечеки газа через уплот. шпинделя крана)' message FROM valve v  where v.add_is_4 is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", type_id bad_val, 'Нет в справочнике type_id (Тип крана)' message FROM valve v  where v.type_id not in (select code from sutstpa.sprav_valve_type_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", name_id bad_val, 'Нет в справочнике name_id(Наименование ТПА)' message FROM valve v  where v.name_id not in (select code from sutstpa.sprav_valve_tpa_name_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", joint_id bad_val, 'Нет в справочнике joint_id(Тип присоединения)' message FROM valve v  where v.joint_id not in (select code from sutstpa.sprav_valve_join_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", nom_diam_id::text bad_val, 'Нет в справочнике nom_diam_id(Номинальный диаметр DN)' message FROM valve v  where v.nom_diam_id not in (select code from sutstpa.sprav_diameter_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", nom_press_id::text bad_val, 'Нет в справочнике nom_press_id(Номинальное давление PN)' message FROM valve v  where v.nom_press_id not in (select code from sutstpa.sprav_nom_pressure_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", serial_num bad_val, 'Пустые значения serial_num(Заводской номер)' message FROM valve v  where v.serial_num is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", manuf_id bad_val, 'Нет в справочнике manuf_id(Изготовитель ТПА)' message FROM valve v  where v.manuf_id not in (select code from sutstpa.sprav_valve_manuf_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", material_id bad_val, 'Нет в справочнике material_id(Материал изг. корпуса)' message FROM valve v  where v.material_id not in (select code from sutstpa.sprav_material_id_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", install_type_id bad_val, 'Нет в справочнике install_type_id(Тип установки)' message FROM valve v  where v.install_type_id not in (select code from sutstpa.sprav_install_type_id_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", func_type_id bad_val, 'Нет в справочнике func_type_id(Функц.крана)' message FROM valve v  where v.func_type_id not in (select code from sutstpa.sprav_func_type_id_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", execution_type_id bad_val, 'Нет в справочнике execution_type_id(Исполнение)' message FROM valve v  where v.execution_type_id not in (select code from sutstpa.sprav_execution_type_id_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", oper_type_id bad_val, 'Нет в справочнике oper_type_id(Тип привода)' message FROM valve v  where v.oper_type_id not in (select code from sutstpa.sprav_valve_op_type_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", oper_manuf_id bad_val, 'Нет в справочнике oper_manuf_id(Изготовитель привода)' message FROM valve v  where v.oper_manuf_id not in (select code from sutstpa.sprav_oper_manuf_id_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", oper_label_type_id bad_val, 'Нет в справочнике oper_label_type_id(Маркировка привода)' message FROM valve v  where v.oper_label_type_id not in (select code from sutstpa.sprav_oper_label_type_id_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", oper_serial_number bad_val, 'Пустые значения oper_serial_number(Заводской номер привода)' message FROM valve v  where v.oper_serial_number is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", tpa_figure_type_id bad_val, 'Нет в справочнике tpa_figure_type_id(Марк-ка ТПА по табл.фигур)' message FROM valve v  where v.tpa_figure_type_id not in (select code from sutstpa.sprav_tpa_figure_type_id_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", tpa_constr_type_id bad_val, 'Нет в справочнике tpa_constr_type_id(Марк-ка ТПА(по констр.док.))' message FROM valve v  where v.tpa_constr_type_id not in (select code from sutstpa.sprav_tpa_constr_type_id_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", climatic_type_id bad_val, 'Нет в справочнике climatic_type_id(Климат. исполн. крана)' message FROM valve v  where v.climatic_type_id not in (select code from sutstpa.sprav_climatic_type_id_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", invent_number bad_val, 'Пустые значения invent_number(Инвентарный номер ТПА)' message FROM valve v  where v.invent_number is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения electric_drive_ready_is(Имеется возможность телемеханизации)' message FROM valve v  where v.electric_drive_ready_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения date_insp(Дата осмотра)' message FROM valve v  where v.date_insp is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения lg_attach(Перечень фото, видеодокументов) ' message FROM valve v  where v.lg_attach  is null union all 
+select  id,struct_id,lpu,les,pipe,station,"LABEL", struct_id::text bad_val, 'Нет площадки с таким ИД' message FROM valve v  where v.struct_id not in (select id from sutstpa.structure union all select id from sutstpa.structure_validate)) d ) dd
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+		  </query>
+            </dbQuery>
+        </select>
+  </data>
+  <data id="SUTSTPAVALIDATE_STRUCTURE_BAD" comment="STRUCTURE" schema="SUTSTPA" table="STRUCTURE">
+    <select>
+            <dbQuery idField="ID">
+       <var name="FILTER" default="1=1"/>
+       <var name="ORDER_COLUMNS" default="LABEL"/>
+       <var name="LOW_LIMIT" default="1"/>
+       <var name="HIGH_LIMIT" default="65536"/>
+       <var name="COLUMNS_FILTER" default="*"/> 
+                <query>
+with structure as (
+select lpu||', '||les||', '||pipe||', '||round(station,1)||' км.' "LABEL", 
+id, 
+id struct_id,
+lpu, 
+les,
+ pipe, 
+ station,
+ to_char(date_insp,'DD.MM.YYYY') date_insp, 
+ sign_2_is, 
+ sign_3_is, 
+ sign_4_is, 
+ sign_5_is, 
+ sign_6_is, 
+ territory_1_is, 
+ territory_2_is, 
+ territory_3_is, 
+ territory_4_is, 
+barrier_1_is, 
+barrier_2_is, 
+barrier_3_is, 
+barrier_4_is, 
+barrier_5_is, 
+order_1_is, 
+order_2_is, 
+order_3_is, 
+order_4_is, 
+order_5_is, 
+cont_meas_8_is, 
+lg_attach, operator1, operator2, operator3, operator4, operator5, operator6
+from sutstpa.structure_validate s where {FILTER})
+                   	   SELECT {COLUMNS_FILTER} FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS})  RWN,"LABEL", 
+		   id,lpu,les,pipe,station, bad_val, message FROM 
+(
+select  id,struct_id,lpu,les,pipe,station,"LABEL", lpu bad_val, 'Нет в справочнике lpu' message FROM structure v  where v.lpu not in (select code from sutstpa.sprav_lpu_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", les bad_val, 'Нет в справочнике les' message FROM  structure v  where v.les not in (select code from sutstpa.sprav_les_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", pipe bad_val, 'Нет в справочнике pipe(Наименование газопровода)' message FROM  structure v  where v.pipe not in (select code from sutstpa.sprav_pipe_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения station(КМ)' message FROM  structure v  where v.station is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения sign_2_is(ГАЗ! Вход запрещен)' message FROM  structure v  where v.sign_2_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения sign_3_is(Запрещается пользоваться откр. огнем и курить)' message FROM  structure v  where v.sign_3_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения sign_4_is(Знак.с указанием ЭО и телефона филиала)' message FROM  structure v  where v.sign_4_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения sign_5_is(Категорий по взрывопожарной опасности)' message FROM  structure v  where v.sign_5_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения sign_6_is(Наличие техсхемы)' message FROM  structure v  where v.sign_6_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения territory_1_is(Обводнения, заболоченности)' message FROM  structure v  where v.territory_1_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения territory_2_is(Планировка территории)' message FROM  structure v  where v.territory_2_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения territory_3_is(Кол-ва калиток больше 2х)' message FROM  structure v  where v.territory_4_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения territory_4_is(Замки на калитках)' message FROM  structure v  where v.territory_4_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения barrier_1_is(Ограждения больше 2,1 м)' message FROM  structure v  where v.barrier_1_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения barrier_2_is(Высота егозы 0,5 мм)' message FROM  structure v  where v.barrier_2_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения barrier_3_is(Размер ячеек  ограждения 50х150 мм)' message FROM  structure v  where v.barrier_3_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения barrier_4_is(Твердое покрытия на КП)' message FROM  structure v  where v.barrier_4_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения barrier_5_is(Соотв-вие ЛКП корпор. стилю)' message FROM  structure v  where v.barrier_5_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения order_1_is(След гидрожидкости и смазывающих веществ)' message FROM  structure v  where v.order_1_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения order_2_is(Посторонние предметы)' message FROM  structure v  where v.order_2_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения order_3_is(Незадействованное оборудование на ТПА, КП)' message FROM  structure v  where v.order_3_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения order_4_is' message FROM  structure v  where v.order_4_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения order_5_is(Соотв-вие ЛКП корпор. стилю)' message FROM  structure v  where v.order_5_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения cont_meas_8_is(Проведение РСО)' message FROM  structure v  where v.cont_meas_8_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения date_insp(Дата осмотра)' message FROM  structure v  where v.date_insp is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения lg_attach(Перечень фото, видеодокументов) ' message FROM  structure v  where v.lg_attach  is null) d ) dd
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+		  </query>
+            </dbQuery>
+        </select>
+  </data>
+  <data id="SUTSTPAVALIDATE_VENT_PIPE_BAD" comment="VENT_PIPE" schema="SUTSTPA" table="VENT_PIPE">
+    <select>
+            <dbQuery idField="ID">
+       <var name="FILTER" default="1=1"/>
+       <var name="ORDER_COLUMNS" default="LABEL"/>
+       <var name="LOW_LIMIT" default="1"/>
+       <var name="HIGH_LIMIT" default="65536"/>
+       <var name="COLUMNS_FILTER" default="*"/> 
+                <query>
+with vent_pipe as (SELECT 
+lpu||', '||les||', '||pipe||', '||round(station,1)||' км.' "LABEL", 
+id, 
+lpu, 
+les, 
+pipe, 
+station,
+to_char(date_insp,'DD.MM.YYYY') date_insp, 
+height_is, 
+color_is, 
+roof_is, 
+pedestal_is, 
+vert_is, 
+lg_attach, operator1, operator2, operator3,operator4,operator5,operator6,
+struct_id
+FROM sutstpa.vent_pipe_validate s where {FILTER})
+                   	   SELECT {COLUMNS_FILTER} FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS})  RWN,"LABEL", 
+		   id,lpu,les,pipe,station, bad_val, message FROM 
+(
+select  id,struct_id,lpu,les,pipe,station,"LABEL", lpu bad_val, 'Нет в справочнике lpu' message FROM vent_pipe v  where v.lpu not in (select code from sutstpa.sprav_lpu_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", les bad_val, 'Нет в справочнике les' message FROM  vent_pipe v  where v.les not in (select code from sutstpa.sprav_les_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", pipe bad_val, 'Нет в справочнике pipe(Наименование газопровода)' message FROM  vent_pipe v  where v.pipe not in (select code from sutstpa.sprav_pipe_gcl) union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения station(КМ)' message FROM  vent_pipe v  where v.station is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения height_is(Высота свечи больше 3 м)' message FROM  vent_pipe v  where v.height_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения color_is(Окраска свечи - жёлтый)' message FROM  vent_pipe v  where v.color_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения roof_is(Наличие оголовков с самоотк. крышкой)' message FROM  vent_pipe v  where v.roof_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения pedestal_is(Наличие тумбы)' message FROM  vent_pipe v  where v.pedestal_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения vert_is(Отсутствие отклон. от вертикали)' message FROM  vent_pipe v  where v.vert_is is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения date_insp(Дата осмотра)' message FROM  vent_pipe v  where v.date_insp is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", null bad_val, 'Пустые значения lg_attach(Перечень фото, видеодокументов) ' message FROM  vent_pipe v  where v.lg_attach  is null union all
+select  id,struct_id,lpu,les,pipe,station,"LABEL", struct_id::text bad_val, 'Нет площадки с таким ИД' message FROM vent_pipe v  where v.struct_id not in (select id from sutstpa.structure union all select id from sutstpa.structure_validate)) d ) dd
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+		  </query>
+            </dbQuery>
+        </select>
+  </data>
+</root>

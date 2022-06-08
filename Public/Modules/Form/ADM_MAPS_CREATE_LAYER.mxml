@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="800" xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml" title="Выберите файл для импорта">
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:HBox width="99%">
+    <mx:VBox width="50%">
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="* Порядок следования слоя" width="50"/>
+        <controls:NumberInput id="lay_order" width="65" height="23" tabIndex="1"/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="Название" width="100"/>
+        <mx:TextInput id="lay_descr" width="255" height="23" tabIndex="2"/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="Видимость" width="100"/>
+        <mx:CheckBox id="lay_visible" width="20" height="20" tabIndex="3"/>
+        <mx:Text textAlign="right" text="Перекрытие слоев" width="200"/>
+        <mx:CheckBox id="lay_cover" tabIndex="4"/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="Типы топологии:" width="100"/>
+        <mx:Text textAlign="right" text="точка" width="20"/>
+        <mx:CheckBox id="topologyPoint" tabIndex="5"/>
+        <mx:Text textAlign="right" text="линия" width="20"/>
+        <mx:CheckBox id="topologyLine" tabIndex="6" />
+        <mx:Text textAlign="right" text="полигон" width="20"/>
+        <mx:CheckBox id="topologyPolygon" tabIndex="7" />
+        <mx:TextInput id="lay_topology" width="5" height="23" visible="false"/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="Не показывать информацию по объектам слоя" width="250"/>
+        <mx:CheckBox id="lay_type" tabIndex="8"/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="Выполнять разрядку объектов внутри слоя" width="250"/>
+        <mx:CheckBox id="lay_spacing" tabIndex="9"/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="Тип данных слоя" width="100"/>
+        <mx:ComboBox id="lay_dataType" width="255" height="23" tabIndex="10" disabled="true">
+          <mx:dataProvider>
+            <mx:Object DESCR="Векторный" CODE="vector"/>
+            <mx:Object DESCR="Растровый" CODE="raster"/>
+          </mx:dataProvider>
+        </mx:ComboBox>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="Проекция данных в слое" width="100"/>
+        <mx:ComboBox id="lay_projection" width="255" height="23" tabIndex="11">
+          <mx:dataProvider>
+            <mx:Object DESCR="EPSG:4284 (Пулково 42)" CODE="EPSG:4284"/>
+            <mx:Object DESCR="EPSG:900913 (Меркатор GOOGLE)" CODE="EPSG:900913"/>
+            <mx:Object DESCR="EPSG:5807 (План)" CODE="EPSG:5807"/>
+            <mx:Object DESCR="WGS84 (Применяется в GPS-приемниках)" CODE="WGS84"/>
+            <mx:Object DESCR="EPSG:2154 (Проекция Ламберта)" CODE="EPSG:2154"/>
+          </mx:dataProvider>
+        </mx:ComboBox>
+      </mx:HBox>
+    </mx:VBox>
+    <mx:VBox width="50%">
+      <mx:HBox width="100%">
+        <mx:Text textAlign="left" text="Рекомендуется заполнять данное поле в следующем формате:" width="255"/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="left" text="'ИМЯ СХЕМЫ БД'_'ИМЯ ТАБЛИЦЫ БД'" width="255"/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="* Идентификатор слоя" width="100"/>
+        <mx:TextInput id="lay_id" width="255" height="23" tabIndex="17" enabled="true" text=""/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="* Схема базы данных" width="100"/>
+        <mx:TextInput id="lay_schema" width="255" height="23" tabIndex="18" restrict="a-zA-Z0-9-_"/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="* Таблица базы данных" width="100"/>
+        <mx:TextInput id="lay_table" width="255" height="23" tabIndex="19" restrict="a-zA-Z0-9-_"/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="* Имя колонки для подписи" width="100"/>
+        <mx:TextInput id="lay_labelField" width="255" height="23" tabIndex="20" restrict="a-zA-Z0-9-_"/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="* Имя колонки с типом объекта" width="100"/>
+        <mx:TextInput id="lay_classField" width="255" height="23" tabIndex="21" restrict="a-zA-Z0-9-_"/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="* Имя колонки с ID объекта" width="100"/>
+        <mx:TextInput id="lay_idField" width="255" height="23" tabIndex="22" restrict="a-zA-Z0-9-_"/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="* Имя колонки с геообъектом" width="100"/>
+        <mx:TextInput id="lay_geoField" width="255" height="23" tabIndex="24" restrict="a-zA-Z0-9-_"/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="Комментарий" width="100"/>
+        <mx:TextInput id="lay_comment" width="255" height="23" tabIndex="25"/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="ID панели свойств" width="100"/>
+        <mx:TextInput id="properties_panel" width="255" height="23" tabIndex="26"/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="Источник данных стиля" width="100"/>
+        <mx:ComboBox id="source_style_file" width="150" height="23" labelField="DESCR" dataProvider="ADM_SEM.xml#GET_STYLE_FILES" tabIndex="27"/>
+        <mx:TextInput id="source_style" width="100" height="23" tabIndex="28"/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="Источник данных семантики" width="100"/>
+        <mx:ComboBox id="source_sem_file" width="150" height="23" labelField="DESCR" dataProvider="ADM_SEM.xml#GET_SEM_FILES" tabIndex="29"/>
+        <mx:TextInput id="source_sem" width="100" height="23" tabIndex="30"/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="Источник данных геометрии" width="100"/>
+        <mx:ComboBox id="source_geo_file" width="150" height="23" labelField="DESCR" dataProvider="ADM_SEM.xml#GET_GEO_FILES" tabIndex="31"/>
+        <mx:TextInput id="source_geo" width="100" height="23" tabIndex="32"/>
+      </mx:HBox>
+      <mx:HBox width="100%">
+        <mx:Text textAlign="right" text="Источник данных геометрии 3D" width="100"/>
+        <mx:ComboBox id="source_geo_3d_file" width="150" height="23" labelField="DESCR" dataProvider="ADM_SEM.xml#GET_GEO3D_FILES" tabIndex="33"/>
+        <mx:TextInput id="source_geo_3d" width="100" height="23" tabIndex="34"/>
+      </mx:HBox>
+    </mx:VBox>
+  </mx:HBox>
+  <validatorsArray>
+    <controls:DefaultNumberValidator source="{lay_order}" property="text" enabled="false" required="true" allowNegative="false" requiredFieldError="Поле 'Порядок следования слоя' обязательно для заполнения." maxValue="99999" exceedsMaxError="Значение в поле 'Порядок следования слоя' может иметь 5 цифр" lowerThanMinError="Значение в поле 'Порядок следования слоя' не может быть меньше 0" negativeError="Значение в поле 'Порядок следования слоя' не может быть меньше 0"/>
+    <controls:DefaultStringValidator source="{lay_schema}" property="text" enabled="false" requiredFieldError="Поле 'Схема базы данных' обязательно для заполнения."/>
+    <controls:DefaultStringValidator source="{lay_table}" property="text" enabled="false" requiredFieldError="Поле 'Таблица базы данных' обязательно для заполнения."/>
+    <controls:DefaultStringValidator source="{lay_id}" property="text" enabled="false" requiredFieldError="Поле 'Идентификатор слоя' обязательно для заполнения."/>
+    <controls:DefaultStringValidator source="{lay_labelField}" property="text" enabled="false" requiredFieldError="Поле 'Имя колонки для подписи' обязательно для заполнения."/>
+    <controls:DefaultStringValidator source="{lay_classField}" property="text" enabled="false" requiredFieldError="Поле 'Имя колонки с типом объекта' обязательно для заполнения."/>
+    <controls:DefaultStringValidator source="{lay_idField}" property="text" enabled="false" requiredFieldError="Поле 'Имя колонки с ID объекта' обязательно для заполнения."/>
+    <controls:DefaultStringValidator source="{lay_geoField}" property="text" enabled="false" requiredFieldError="Поле 'Имя колонки с геообъектом' обязательно для заполнения."/>
+    <controls:DefaultComboBoxValidator source="{source_sem_file}" property="CODE" enabled="false" requiredcombo="Поле 'Источник данных семантики' обязательно для заполнения." />
+    <controls:DefaultStringValidator source="{source_sem}" property="text" enabled="false" requiredFieldError="Поле 'Источник данных семантики' обязательно для заполнения."/>
+    <controls:DefaultComboBoxValidator source="{source_geo_file}" property="CODE" enabled="false" requiredcombo="Поле 'Источник данных геометрии' обязательно для заполнения." />
+    <controls:DefaultStringValidator source="{source_geo}" property="text" enabled="false" requiredFieldError="Поле 'Источник данных геометрии' обязательно для заполнения."/>
+  </validatorsArray>
+</DATA_EDIT_FORM>

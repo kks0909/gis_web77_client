@@ -1,0 +1,3031 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root version="7.7.3.0">
+	<table id="GTS_BORDERS">
+		<edittypes>
+			<edittype widgetv2type="Hidden" name="id">
+				<widgetv2config fieldEditable="0" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+			</edittype>
+			<edittype widgetv2type="ValueMap" name="type">
+				<widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+					<data DESCR="Граница между ДО" CODE="3530"/>
+					<data DESCR="Граница между филиалами" CODE="3531"/>
+					<data DESCR="Конец трубопровода" CODE="3533"/>
+					<data DESCR="Начало трубопровода" CODE="3532"/>
+				</widgetv2config>
+			</edittype>
+			<edittype widgetv2type="ValueMap" name="next_do">
+				<widgetv2config fieldEditable="1" constraint="type = 3533 or  next_do is not None" labelOnTop="0" constraintDescription="" notNull="0">
+					<data DESCR="ГТ Беларусь" CODE="5524822"/>
+					<data DESCR="ГТ Волгоград" CODE="5524824"/>
+					<data DESCR="ГТ Екатеринбург" CODE="4841654"/>
+					<data DESCR="ГТ Казань" CODE="5524825"/>
+					<data DESCR="ГТ Краснодар" CODE="5524826"/>
+					<data DESCR="ГТ Махачкала" CODE="5524827"/>
+					<data DESCR="ГТ Москва" CODE="5524828"/>
+					<data DESCR="ГТ Нижний Новгород" CODE="5524829"/>
+					<data DESCR="ГТ Самара" CODE="5524830"/>
+					<data DESCR="ГТ Санкт-Петербург" CODE="5524831"/>
+					<data DESCR="ГТ Саратов" CODE="5524837"/>
+					<data DESCR="ГТ Ставрополь" CODE="5524836"/>
+					<data DESCR="ГТ Сургут" CODE="35000066&#xa;"/>
+					<data DESCR="ГТ Томск" CODE="5524832"/>
+					<data DESCR="ГТ Уфа" CODE="5524833"/>
+					<data DESCR="ГТ Ухта" CODE="5524834"/>
+					<data DESCR="ГТ Чайковский" CODE="5524835"/>
+					<data DESCR="ГТ Югорск" CODE="4"/>
+					<data DESCR="Газпром ПХГ" CODE="5433932"/>
+					<data DESCR="Чеченгазпром" CODE="5524823"/>
+				</widgetv2config>
+			</edittype>
+			<edittype widgetv2type="TextEdit" name="next_lpu">
+				<widgetv2config IsMultiline="0" fieldEditable="1" constraint="type = 3533 or next_lpu is not None" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+			</edittype>
+			<edittype widgetv2type="Hidden" name="next_lpu_id">
+				<widgetv2config fieldEditable="0" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+			</edittype>
+			<edittype widgetv2type="TextEdit" name="km_oprt">
+				<widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="1"/>
+			</edittype>
+			<edittype widgetv2type="TextEdit" name="description">
+				<widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+			</edittype>
+			<edittype widgetv2type="TextEdit" name="base_distinctn">
+				<widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+			</edittype>
+			<edittype widgetv2type="ValueMap" name="previous_do">
+				<widgetv2config fieldEditable="1" constraint="type = 3532 or previous_do is not None" labelOnTop="0" constraintDescription="" notNull="0">
+					<data DESCR="ГТ Беларусь" CODE="5524822"/>
+					<data DESCR="ГТ Волгоград" CODE="5524824"/>
+					<data DESCR="ГТ Екатеринбург" CODE="4841654"/>
+					<data DESCR="ГТ Казань" CODE="5524825"/>
+					<data DESCR="ГТ Краснодар" CODE="5524826"/>
+					<data DESCR="ГТ Махачкала" CODE="5524827"/>
+					<data DESCR="ГТ Москва" CODE="5524828"/>
+					<data DESCR="ГТ Нижний Новгород" CODE="5524829"/>
+					<data DESCR="ГТ Самара" CODE="5524830"/>
+					<data DESCR="ГТ Санкт-Петербург" CODE="5524831"/>
+					<data DESCR="ГТ Саратов" CODE="5524837"/>
+					<data DESCR="ГТ Ставрополь" CODE="5524836"/>
+					<data DESCR="ГТ Сургут" CODE="35000066&#xa;"/>
+					<data DESCR="ГТ Томск" CODE="5524832"/>
+					<data DESCR="ГТ Уфа" CODE="5524833"/>
+					<data DESCR="ГТ Ухта" CODE="5524834"/>
+					<data DESCR="ГТ Чайковский" CODE="5524835"/>
+					<data DESCR="ГТ Югорск" CODE="4"/>
+					<data DESCR="Газпром ПХГ" CODE="5433932"/>
+					<data DESCR="Чеченгазпром" CODE="5524823"/>
+				</widgetv2config>
+			</edittype>
+			<edittype widgetv2type="TextEdit" name="previous_lpu">
+				<widgetv2config IsMultiline="0" fieldEditable="1" constraint="type = 3532 or previous_lpu is not None" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+			</edittype>
+			<edittype widgetv2type="Hidden" name="previous_lpu_id">
+				<widgetv2config fieldEditable="0" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+			</edittype>
+		</edittypes>
+	</table>
+	<table id="GTS_PIPELINE_L">
+		<edittypes>
+			<edittype widgetv2type="Hidden" name="id">
+				<widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+			</edittype>
+			<edittype widgetv2type="Hidden" name="name">
+				<widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+			</edittype>
+			<edittype widgetv2type="TextEdit" name="idinfotech">
+				<widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="1"/>
+			</edittype>
+			<edittype widgetv2type="TextEdit" name="pipelinename">
+				<widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="1"/>
+			</edittype>
+			<edittype widgetv2type="TextEdit" name="km_begin">
+				<widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="1"/>
+			</edittype>
+			<edittype widgetv2type="ValueMap" name="topocode">
+				<widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+					<data DESCR="лупинг" CODE="93120000"/>
+					<data DESCR="нить магистрального трубопровода" CODE="93110000"/>
+					<data DESCR="резервная нить" CODE="93130000"/>
+					<data DESCR="трубопровод-отвод к технологическим объектам" CODE="93150000"/>
+					<data DESCR="трубопровод-перемычка" CODE="93140000"/>
+				</widgetv2config>
+			</edittype>
+			<edittype widgetv2type="TextEdit" name="cost">
+				<widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+			</edittype>
+			<edittype widgetv2type="TextEdit" name="km_end">
+				<widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="1"/>
+			</edittype>
+		</edittypes>
+	</table>
+	<table id="AMBIT_BUILDINGS_A">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="manufacture">
+          <widgetv2config fieldEditable="1" constraint="(buildingpurpose = 10 and manufacture is not null) or (buildingpurpose &lt;> 10)" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Гараж (автопарк), ангар" CODE="10"/>
+            <data DESCR="Железнодорожный объект (депо)" CODE="9"/>
+            <data DESCR="Животноводческая ферма " CODE="5"/>
+            <data DESCR="Легкая промышленность, деревообработка (цех), горнодобывающая промышленность" CODE="3"/>
+            <data DESCR="Машиностроение (цех)" CODE="2"/>
+            <data DESCR="Нефтегазовая и химическая промышленность " CODE="1"/>
+            <data DESCR="Пищевая промышленность (цех)" CODE="4"/>
+            <data DESCR="Плодоовощная база" CODE="8"/>
+            <data DESCR="Птицеферма, звероферма" CODE="6"/>
+            <data DESCR="Склад c/х инвентаря,  сарай" CODE="12"/>
+            <data DESCR="Теплицы" CODE="11"/>
+            <data DESCR="Элеватор, склад растительного сырья" CODE="7"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="строение" CODE="43200000"/>
+            <data DESCR="строение разрушенное или полуразрушенное, имеющее значение ориентира" CODE="43300000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="cost">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="material">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="Антисейсмическая конструкция" CODE="7"/>
+            <data DESCR="Дерево" CODE="1"/>
+            <data DESCR="Железобетон" CODE="3"/>
+            <data DESCR="Кирпич (пенобетон, газобетон)" CODE="2"/>
+            <data DESCR="Листовой металл" CODE="5"/>
+            <data DESCR="Стекло (пластик) на металлическом или деревянном каркасе" CODE="6"/>
+            <data DESCR="Сэндвич-панели на металлокаркасе" CODE="4"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="yearcommiss">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="height">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="area_">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="floors">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="1"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="buildingpurpose">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="Административное" CODE="2"/>
+            <data DESCR="Для массовых зрелищных мероприятий" CODE="9"/>
+            <data DESCR="Жилое" CODE="1"/>
+            <data DESCR="Культурно-просветительное" CODE="8"/>
+            <data DESCR="Медицинское (больница, поликлиника, дом престарелых)" CODE="6"/>
+            <data DESCR="Образовательное (школа, ВУЗ и т.п.) " CODE="5"/>
+            <data DESCR="Офисное" CODE="4"/>
+            <data DESCR="Промышленное" CODE="10"/>
+            <data DESCR="Рекреационное (дом отдыха, санаторий, детлагерь, гостиница)" CODE="7"/>
+            <data DESCR="Торговое" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="label">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="materialgroup">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="B1" CODE="1"/>
+            <data DESCR="B2" CODE="2"/>
+            <data DESCR="B3" CODE="3"/>
+            <data DESCR="B4" CODE="4"/>
+            <data DESCR="без категории" CODE="5"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="population">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="AMBIT_INDUSTRY_PIPE_UNITS_A">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="pressurenominal">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="valvetype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Задвижка" CODE="3"/>
+            <data DESCR="Клапан" CODE="4"/>
+            <data DESCR="Конусный" CODE="2"/>
+            <data DESCR="Обратный клапан" CODE="5"/>
+            <data DESCR="Шаровый" CODE="1"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="instplace">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="АГРС" CODE="9"/>
+            <data DESCR="Аммиакопровод" CODE="4"/>
+            <data DESCR="Водопровод" CODE="5"/>
+            <data DESCR="ГРП" CODE="8"/>
+            <data DESCR="ГРС" CODE="7"/>
+            <data DESCR="Илопровод" CODE="6"/>
+            <data DESCR="ЛЧ МТ" CODE="1"/>
+            <data DESCR="НС" CODE="10"/>
+            <data DESCR="Перемычка между МТ или газопровод-отвод" CODE="2"/>
+            <data DESCR="Трубопровод, транспортирующий жидкие углеводороды" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="technum">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="yearcommiss">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="label">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="cost">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="pipediameter">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="100" CODE="12"/>
+            <data DESCR="1000" CODE="3"/>
+            <data DESCR="1200" CODE="2"/>
+            <data DESCR="1400" CODE="1"/>
+            <data DESCR="150" CODE="11"/>
+            <data DESCR="200" CODE="10"/>
+            <data DESCR="250" CODE="9"/>
+            <data DESCR="300" CODE="8"/>
+            <data DESCR="400" CODE="7"/>
+            <data DESCR="500" CODE="6"/>
+            <data DESCR="700" CODE="5"/>
+            <data DESCR="800" CODE="4"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="drivetype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Гидравлический" CODE="2"/>
+            <data DESCR="Пневматический" CODE="1"/>
+            <data DESCR="Ручной" CODE="6"/>
+            <data DESCR="Электрический" CODE="3"/>
+            <data DESCR="Электромагнитный" CODE="4"/>
+            <data DESCR="Электромоторный" CODE="5"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="газоизмерительная станция" CODE="53230000"/>
+            <data DESCR="узел подключения к магистральному трубопроводу" CODE="53520000"/>
+            <data DESCR="узел приема и запуска очистных устройств и диагностики (ПЗОУиД)" CODE="53220000"/>
+            <data DESCR="узел редуцирования" CODE="53240000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="AMBIT_VEGETATION_FOREST_A">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="cost">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="forestsection">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="treeheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="label">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="treethickness">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="(topocode in (71111100,71112100) and  treethickness is not null) or (topocode not in (71111100,71112100))" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="unitcost">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="вырубка" CODE="71133000"/>
+            <data DESCR="заповедник, заказник, природный национальный парк" CODE="51700000"/>
+            <data DESCR="лес густой, высокий (обычный)" CODE="71111100"/>
+            <data DESCR="лес редкий, высокий (обычный)" CODE="71112100"/>
+            <data DESCR="питомник" CODE="71136500"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="treedistance">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="vegtype">
+          <widgetv2config fieldEditable="1" constraint="(topocode in (71111100,71112100) and  vegtype is not null) or (topocode not in (71111100,71112100))" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Лиственный" CODE="1"/>
+            <data DESCR="Смешанный" CODE="3"/>
+            <data DESCR="Хвойный" CODE="2"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="AMBIT_ROADS_L">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="lanes">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="1"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="electricity">
+          <widgetv2config fieldEditable="1" constraint="(topocode = 61120000 and  electricity is not null) or (topocode &lt;> 61120000)" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Неэлектрифицированная" CODE="2"/>
+            <data DESCR="Электрифицированная" CODE="1"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="roadstatus">
+          <widgetv2config fieldEditable="1" constraint="(topocode in (62111000,62121000,62122000,62131000,62132000) and  roadstatus is not null) or (topocode not in (62111000,62121000,62122000,62131000,62132000))" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="I" CODE="1"/>
+            <data DESCR="II" CODE="2"/>
+            <data DESCR="III" CODE="3"/>
+            <data DESCR="IV" CODE="4"/>
+            <data DESCR="V" CODE="5"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="moveperiod">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="label">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="cost">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="roadnum">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="автодорога с покрытием (шоссе)" CODE="62122000"/>
+            <data DESCR="автодорога с усовершенствованным покрытием (усовершенствованное шоссе)" CODE="62121000"/>
+            <data DESCR="автомагистраль (автострада)" CODE="62111000"/>
+            <data DESCR="грунтовая дорога без покрытия (улучшенная)" CODE="62131000"/>
+            <data DESCR="грунтовая дорога проселочная" CODE="62132000"/>
+            <data DESCR="железная дорога узкоколейная" CODE="61120000"/>
+            <data DESCR="железная дорога ширококолейная, неэлектрифицированная" CODE="61111000"/>
+            <data DESCR="железная дорога ширококолейная, электрифицированная" CODE="61112000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="AMBIT_INDUSTRY_COMM_L">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="lines">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="label">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="cost">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="voltage">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="0,096" CODE="10"/>
+            <data DESCR="0,4" CODE="9"/>
+            <data DESCR="10" CODE="8"/>
+            <data DESCR="110" CODE="5"/>
+            <data DESCR="20" CODE="7"/>
+            <data DESCR="220" CODE="4"/>
+            <data DESCR="330" CODE="3"/>
+            <data DESCR="35" CODE="6"/>
+            <data DESCR="500" CODE="2"/>
+            <data DESCR="750" CODE="1"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="линия связи" CODE="52100000"/>
+            <data DESCR="линия электропередачи воздушная" CODE="52410000"/>
+            <data DESCR="линия электропередачи кабельная подводная" CODE="52430000"/>
+            <data DESCR="линия электропередачи кабельная подземная" CODE="52420000"/>
+            <data DESCR="подводный и подземный кабель связи" CODE="52200000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="AMBIT_INDUSTRY_PIPELINE_L">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="diameter">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="1"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="трубопровод надземный" CODE="53120000"/>
+            <data DESCR="трубопровод наземный" CODE="53110000"/>
+            <data DESCR="трубопровод подземный" CODE="53130000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="yearcommiss">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="pressuredesign">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="cost">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="number_">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="pipelining">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Надземный" CODE="2"/>
+            <data DESCR="Наземный" CODE="3"/>
+            <data DESCR="Подземный" CODE="1"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="label">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="producttrans">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="Аммиак" CODE="4"/>
+            <data DESCR="Вода" CODE="5"/>
+            <data DESCR="Газ" CODE="1"/>
+            <data DESCR="Ил" CODE="6"/>
+            <data DESCR="Нестабильный конденсат (пропан, бутан, широкая фракция углеводородов)" CODE="3"/>
+            <data DESCR="Нефть, стабильный конденсат" CODE="2"/>
+            <data DESCR="Прочее" CODE="7"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="AMBIT_INDUSTRY_PIPELINE_P">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="diameter">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="1"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="пересечение трубопровода с инженерной коммуникацией" CODE="53720000"/>
+            <data DESCR="переход через естественное или искусственное препятствие" CODE="53710000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="Hidden" name="angle">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="yearcommiss">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="pressuredesign">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="cost">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="number_">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="pipelining">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="Надземный" CODE="2"/>
+            <data DESCR="Наземный" CODE="3"/>
+            <data DESCR="Подземный" CODE="1"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="label">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="producttrans">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="Аммиак" CODE="4"/>
+            <data DESCR="Вода" CODE="5"/>
+            <data DESCR="Газ" CODE="1"/>
+            <data DESCR="Ил" CODE="6"/>
+            <data DESCR="Нестабильный конденсат (пропан, бутан, широкая фракция углеводородов)" CODE="3"/>
+            <data DESCR="Нефть, стабильный конденсат" CODE="2"/>
+            <data DESCR="Прочее" CODE="7"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GTS_OBJECTS_P">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="kmonpipe">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="idinfotech">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="1"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="pipelinename">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="cost">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="pipeidinfotech">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="анодное заземление (АЗ)" CODE="95111000"/>
+            <data DESCR="блок-бокс" CODE="95140000"/>
+            <data DESCR="вертолетная площадка" CODE="93450000"/>
+            <data DESCR="газоизмерительная станция (ГИС)" CODE="93230000"/>
+            <data DESCR="граница подразделения" CODE="93160000"/>
+            <data DESCR="дом обходчика (оператора)" CODE="93460000"/>
+            <data DESCR="информационный и предупреждающий знак" CODE="93430000"/>
+            <data DESCR="километровый знак" CODE="93410000"/>
+            <data DESCR="контрольно-измерительный пункт (КИП)" CODE="95150000"/>
+            <data DESCR="маркер" CODE="93420000"/>
+            <data DESCR="надземный переход" CODE="93350000"/>
+            <data DESCR="переезд" CODE="93370000"/>
+            <data DESCR="пересечение трубопровода" CODE="93320000"/>
+            <data DESCR="пересечение электролинии" CODE="93330000"/>
+            <data DESCR="переход через дорогу" CODE="93310000"/>
+            <data DESCR="площадка аварийного запаса" CODE="93470000"/>
+            <data DESCR="подводный переход через водную преграду" CODE="93340000"/>
+            <data DESCR="репер" CODE="93440000"/>
+            <data DESCR="тоннельный переход" CODE="93360000"/>
+            <data DESCR="трансформаторная подстанция (ТП)" CODE="95240000"/>
+            <data DESCR="трубопровод сброса газа (свеча)" CODE="93270000"/>
+            <data DESCR="узел запуска-приема очистных устройств и дефектоскопов (ПЗОУиД)" CODE="93220000"/>
+            <data DESCR="узел подключения к магистральному трубопроводу" CODE="94230000"/>
+            <data DESCR="узел редуцирования газа" CODE="93240000"/>
+            <data DESCR="узел установки трубопроводной арматуры" CODE="93210000"/>
+            <data DESCR="установка дренажной защиты (УДЗ)" CODE="95120000"/>
+            <data DESCR="установка катодной защиты (УКЗ)" CODE="95110000"/>
+            <data DESCR="установка протекторной защиты (УПЗ)" CODE="95130000"/>
+            <data DESCR="устройство для ввода метанола (метанольница)" CODE="93250000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_BOUNDARIES_A">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="граница буферной зоны" CODE="86000000"/>
+            <data DESCR="территория административной единицы второго порядка (района)" CODE="84000000"/>
+            <data DESCR="территория административной единицы первого порядка (автономной республики, края, области)" CODE="83000000"/>
+            <data DESCR="территория государства" CODE="82000000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="boundtype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="АО в составе республики" CODE="7"/>
+            <data DESCR="Автономных округов" CODE="9"/>
+            <data DESCR="Административных единиц 1 порядка на иностранной территории" CODE="10"/>
+            <data DESCR="Городских земель" CODE="13"/>
+            <data DESCR="Государственные" CODE="1"/>
+            <data DESCR="Государственных заповедников, заказников, парков" CODE="16"/>
+            <data DESCR="Демаркационные линии" CODE="18"/>
+            <data DESCR="Землепользований и отводов" CODE="15"/>
+            <data DESCR="Краев" CODE="5"/>
+            <data DESCR="Областей" CODE="6"/>
+            <data DESCR="Полярных владений" CODE="2"/>
+            <data DESCR="Прочие" CODE="19"/>
+            <data DESCR="Районов" CODE="12"/>
+            <data DESCR="Резерваций" CODE="11"/>
+            <data DESCR="Республик в составе РФ" CODE="4"/>
+            <data DESCR="Субъектов Федерации" CODE="3"/>
+            <data DESCR="Территориальных вод" CODE="17"/>
+            <data DESCR="Территории местного самоуправления" CODE="8"/>
+            <data DESCR="Территорий поселковых и сельских советов" CODE="14"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_BOUNDARIES_L">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="граница административных единиц второго порядка (района)" CODE="81600000"/>
+            <data DESCR="граница административных единиц первого порядка (автономной республики, края, области)" CODE="81500000"/>
+            <data DESCR="граница городских земель" CODE="81700000"/>
+            <data DESCR="граница государственная" CODE="81100000"/>
+            <data DESCR="граница землепользований и отводов" CODE="81900000"/>
+            <data DESCR="граница континентального шельфа" CODE="81400000"/>
+            <data DESCR="граница полярных владений" CODE="81200000"/>
+            <data DESCR="граница территориальных вод" CODE="81300000"/>
+            <data DESCR="граница территорий поселковых и сельских советов" CODE="81800000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="boundtype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="АО в составе республики" CODE="7"/>
+            <data DESCR="Автономных округов" CODE="9"/>
+            <data DESCR="Административных единиц 1 порядка на иностранной территории" CODE="10"/>
+            <data DESCR="Городских земель" CODE="13"/>
+            <data DESCR="Государственные" CODE="1"/>
+            <data DESCR="Государственных заповедников, заказников, парков" CODE="16"/>
+            <data DESCR="Демаркационные линии" CODE="18"/>
+            <data DESCR="Землепользований и отводов" CODE="15"/>
+            <data DESCR="Краев" CODE="5"/>
+            <data DESCR="Областей" CODE="6"/>
+            <data DESCR="Полярных владений" CODE="2"/>
+            <data DESCR="Прочие" CODE="19"/>
+            <data DESCR="Районов" CODE="12"/>
+            <data DESCR="Резерваций" CODE="11"/>
+            <data DESCR="Республик в составе РФ" CODE="4"/>
+            <data DESCR="Субъектов Федерации" CODE="3"/>
+            <data DESCR="Территориальных вод" CODE="17"/>
+            <data DESCR="Территории местного самоуправления" CODE="8"/>
+            <data DESCR="Территорий поселковых и сельских советов" CODE="14"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_BOUNDARIES_P">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="пограничный знак" CODE="85000000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="boundtype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="АО в составе республики" CODE="7"/>
+            <data DESCR="Автономных округов" CODE="9"/>
+            <data DESCR="Административных единиц 1 порядка на иностранной территории" CODE="10"/>
+            <data DESCR="Городских земель" CODE="13"/>
+            <data DESCR="Государственные" CODE="1"/>
+            <data DESCR="Государственных заповедников, заказников, парков" CODE="16"/>
+            <data DESCR="Демаркационные линии" CODE="18"/>
+            <data DESCR="Землепользований и отводов" CODE="15"/>
+            <data DESCR="Краев" CODE="5"/>
+            <data DESCR="Областей" CODE="6"/>
+            <data DESCR="Полярных владений" CODE="2"/>
+            <data DESCR="Прочие" CODE="19"/>
+            <data DESCR="Районов" CODE="12"/>
+            <data DESCR="Резерваций" CODE="11"/>
+            <data DESCR="Республик в составе РФ" CODE="4"/>
+            <data DESCR="Субъектов Федерации" CODE="3"/>
+            <data DESCR="Территориальных вод" CODE="17"/>
+            <data DESCR="Территории местного самоуправления" CODE="8"/>
+            <data DESCR="Территорий поселковых и сельских советов" CODE="14"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_HYDRAULICSTRUCT_A">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="lowwatermark">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="highwatermark">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objstate">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Временный" CODE="5"/>
+            <data DESCR="Действующий" CODE="8"/>
+            <data DESCR="Жилой" CODE="1"/>
+            <data DESCR="Закрытый" CODE="7"/>
+            <data DESCR="Недействующий" CODE="9"/>
+            <data DESCR="Нежилой" CODE="2"/>
+            <data DESCR="Проектируемый" CODE="4"/>
+            <data DESCR="Сезонный" CODE="6"/>
+            <data DESCR="Строящийся" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objmaterial">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Бетонный" CODE="1"/>
+            <data DESCR="Деревянный" CODE="5"/>
+            <data DESCR="Железобетонный" CODE="2"/>
+            <data DESCR="Земляной" CODE="6"/>
+            <data DESCR="Каменный" CODE="4"/>
+            <data DESCR="Металлический" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="absheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="depth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="док сухой" CODE="32174000"/>
+            <data DESCR="камера шлюза" CODE="32163200"/>
+            <data DESCR="слип и стапель" CODE="32175000"/>
+            <data DESCR="станция насосная" CODE="32126300"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_HYDRAULICSTRUCT_L">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="lowwatermark">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="highwatermark">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objstate">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Временный" CODE="5"/>
+            <data DESCR="Действующий" CODE="8"/>
+            <data DESCR="Жилой" CODE="1"/>
+            <data DESCR="Закрытый" CODE="7"/>
+            <data DESCR="Недействующий" CODE="9"/>
+            <data DESCR="Нежилой" CODE="2"/>
+            <data DESCR="Проектируемый" CODE="4"/>
+            <data DESCR="Сезонный" CODE="6"/>
+            <data DESCR="Строящийся" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objmaterial">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Бетонный" CODE="1"/>
+            <data DESCR="Деревянный" CODE="5"/>
+            <data DESCR="Железобетонный" CODE="2"/>
+            <data DESCR="Земляной" CODE="6"/>
+            <data DESCR="Каменный" CODE="4"/>
+            <data DESCR="Металлический" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="absheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="depth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="акведук" CODE="32113000"/>
+            <data DESCR="волнолом, траверс, бун или др. оградительное и регуляционное устройство" CODE="32176000"/>
+            <data DESCR="ворота (затвор) шлюзов" CODE="32163100"/>
+            <data DESCR="ворота шлюза под мостом" CODE="32163110"/>
+            <data DESCR="дамба двухсторонняя в две линии" CODE="32162320"/>
+            <data DESCR="дамба двухсторонняя в одну линию" CODE="32162310"/>
+            <data DESCR="дамба односторонняя в одну линию" CODE="32162210"/>
+            <data DESCR="дамба подводная" CODE="32162100"/>
+            <data DESCR="дюкер на каналах" CODE="32114000"/>
+            <data DESCR="кяриз действующий" CODE="32112100"/>
+            <data DESCR="кяриз недействующий" CODE="32112200"/>
+            <data DESCR="мол, причал, пирс" CODE="32171000"/>
+            <data DESCR="набережная деревянная" CODE="32182120"/>
+            <data DESCR="набережная каменная, бетонная, железобетонная" CODE="32182110"/>
+            <data DESCR="откос на каналах и реках" CODE="32181000"/>
+            <data DESCR="паромная переправа речная" CODE="32211130"/>
+            <data DESCR="паромная переправа, морская автомобильная линейная" CODE="32211140"/>
+            <data DESCR="паромная переправа, морская, железнодорожная, линейная" CODE="32211120"/>
+            <data DESCR="плотина" CODE="32161000"/>
+            <data DESCR="плотина непроезжая" CODE="32161200"/>
+            <data DESCR="плотина подводная" CODE="32161300"/>
+            <data DESCR="плотина проезжая" CODE="32161100"/>
+            <data DESCR="шахтный ствол на подземных каналах" CODE="32115000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_HYDRAULICSTRUCT_P">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="lowwatermark">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="highwatermark">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objstate">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Временный" CODE="5"/>
+            <data DESCR="Действующий" CODE="8"/>
+            <data DESCR="Жилой" CODE="1"/>
+            <data DESCR="Закрытый" CODE="7"/>
+            <data DESCR="Недействующий" CODE="9"/>
+            <data DESCR="Нежилой" CODE="2"/>
+            <data DESCR="Проектируемый" CODE="4"/>
+            <data DESCR="Сезонный" CODE="6"/>
+            <data DESCR="Строящийся" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objmaterial">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Бетонный" CODE="1"/>
+            <data DESCR="Деревянный" CODE="5"/>
+            <data DESCR="Железобетонный" CODE="2"/>
+            <data DESCR="Земляной" CODE="6"/>
+            <data DESCR="Каменный" CODE="4"/>
+            <data DESCR="Металлический" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="absheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="depth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="Hidden" name="angle">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="буй светящий" CODE="32540000"/>
+            <data DESCR="водозабор" CODE="32126200"/>
+            <data DESCR="водораспределительное устройство, отвод воды в обе стороны" CODE="32121000"/>
+            <data DESCR="водораспределительное устройство, отвод воды в одну сторону" CODE="32122000"/>
+            <data DESCR="знак береговой сигнализации" CODE="32530000"/>
+            <data DESCR="колодец артезианский" CODE="32132000"/>
+            <data DESCR="колодец буровой с насосом" CODE="32137400"/>
+            <data DESCR="колодец главный" CODE="32131000"/>
+            <data DESCR="колодец прочий" CODE="32137000"/>
+            <data DESCR="колодец с ветряным двигателем" CODE="32133000"/>
+            <data DESCR="колодец с механическим подъемом воды, бетонированный" CODE="32134000"/>
+            <data DESCR="колодец, скважина, совмещенная с водонапорными башнями, водокачка" CODE="32137600"/>
+            <data DESCR="маяк" CODE="32510000"/>
+            <data DESCR="огни" CODE="32520000"/>
+            <data DESCR="огни плавучие" CODE="32521000"/>
+            <data DESCR="паромная переправа, речная" CODE="32212000"/>
+            <data DESCR="перевоз" CODE="32220000"/>
+            <data DESCR="пост водомерный и футшток" CODE="32600000"/>
+            <data DESCR="пристань без оборудованных причалов, якорные стоянки" CODE="32172200"/>
+            <data DESCR="пристань с оборудованными причалами" CODE="32172100"/>
+            <data DESCR="скважина артезианская" CODE="32136000"/>
+            <data DESCR="фонтан" CODE="32150000"/>
+            <data DESCR="чигирь" CODE="32135000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_HYDROGRAPHY_L">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="navigable">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Несудоходный" CODE="2"/>
+            <data DESCR="Судоходный" CODE="1"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="moveperiod">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="absheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="depth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="канава сухая в две линии" CODE="31152110"/>
+            <data DESCR="канава сухая в одну линию" CODE="31152100"/>
+            <data DESCR="канал наземный, действующий в две линии" CODE="31151120"/>
+            <data DESCR="канал наземный, действующий в одну линию" CODE="31151110"/>
+            <data DESCR="канал оросительный в ж/б лотках на опорах (арык)" CODE="31151400"/>
+            <data DESCR="канал подземный, подземная дренажная сеть" CODE="31151300"/>
+            <data DESCR="канал строящийся в две линии" CODE="31151220"/>
+            <data DESCR="канал строящийся в одну линию" CODE="31151210"/>
+            <data DESCR="подземный или пропадающий участок реки в две линии" CODE="31143200"/>
+            <data DESCR="подземный или пропадающий участок реки в одну линию" CODE="31143100"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="speed">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_HYDROGRAPHY_P">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="Hidden" name="angle">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="navigable">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Несудоходный" CODE="2"/>
+            <data DESCR="Судоходный" CODE="1"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="moveperiod">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="absheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="depth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="гейзер" CODE="31220000"/>
+            <data DESCR="ключ, родник" CODE="31210000"/>
+            <data DESCR="ключ, родник оборудованный" CODE="31212000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="speed">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_HYDROGRAPHYREL_A">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="groundtype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Буреломный" CODE="9"/>
+            <data DESCR="Валунно-каменистый" CODE="20"/>
+            <data DESCR="Валунный" CODE="14"/>
+            <data DESCR="Вязкий" CODE="1"/>
+            <data DESCR="Галечниково-песчаный" CODE="19"/>
+            <data DESCR="Галечниковый" CODE="16"/>
+            <data DESCR="Галечно-гравийный" CODE="8"/>
+            <data DESCR="Глинисто-ракушечный" CODE="17"/>
+            <data DESCR="Глинистый" CODE="11"/>
+            <data DESCR="Илистый" CODE="5"/>
+            <data DESCR="Каменисто-щебеночный" CODE="15"/>
+            <data DESCR="Каменистый" CODE="2"/>
+            <data DESCR="Ледяной" CODE="12"/>
+            <data DESCR="Песчано-илистый" CODE="18"/>
+            <data DESCR="Песчано-каменистый" CODE="7"/>
+            <data DESCR="Песчаный" CODE="3"/>
+            <data DESCR="Ракушечный" CODE="13"/>
+            <data DESCR="Скалистый" CODE="4"/>
+            <data DESCR="Твердый" CODE="6"/>
+            <data DESCR="Торфяной" CODE="10"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="lowwatermark">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="highwatermark">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="absheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="width">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="depth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="shorelinetype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Неопределенная" CODE="3"/>
+            <data DESCR="Непостоянная" CODE="2"/>
+            <data DESCR="Непостоянная и неопределенная" CODE="5"/>
+            <data DESCR="Подземные и пропадающие участки" CODE="4"/>
+            <data DESCR="Постоянная" CODE="1"/>
+            <data DESCR="Проектируемая" CODE="6"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="банка площадная" CODE="34242000"/>
+            <data DESCR="берег осыхающий, галечно-гравийный" CODE="34112600"/>
+            <data DESCR="берег осыхающий, глинистый" CODE="34112500"/>
+            <data DESCR="берег осыхающий, илистый" CODE="34112300"/>
+            <data DESCR="берег осыхающий, песчано-каменистый" CODE="34112110"/>
+            <data DESCR="берег осыхающий, песчаный" CODE="34112100"/>
+            <data DESCR="берег осыхающий, скалистый" CODE="34112400"/>
+            <data DESCR="водоросли" CODE="34810000"/>
+            <data DESCR="мель русловая" CODE="34114200"/>
+            <data DESCR="место скопления плавника" CODE="34700000"/>
+            <data DESCR="остров" CODE="31300000"/>
+            <data DESCR="отмель береговая" CODE="34114100"/>
+            <data DESCR="риф осыхающий" CODE="34212000"/>
+            <data DESCR="риф подводный" CODE="34211000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_HYDROGRAPHYREL_L">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="groundtype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Буреломный" CODE="9"/>
+            <data DESCR="Валунно-каменистый" CODE="20"/>
+            <data DESCR="Валунный" CODE="14"/>
+            <data DESCR="Вязкий" CODE="1"/>
+            <data DESCR="Галечниково-песчаный" CODE="19"/>
+            <data DESCR="Галечниковый" CODE="16"/>
+            <data DESCR="Галечно-гравийный" CODE="8"/>
+            <data DESCR="Глинисто-ракушечный" CODE="17"/>
+            <data DESCR="Глинистый" CODE="11"/>
+            <data DESCR="Илистый" CODE="5"/>
+            <data DESCR="Каменисто-щебеночный" CODE="15"/>
+            <data DESCR="Каменистый" CODE="2"/>
+            <data DESCR="Ледяной" CODE="12"/>
+            <data DESCR="Песчано-илистый" CODE="18"/>
+            <data DESCR="Песчано-каменистый" CODE="7"/>
+            <data DESCR="Песчаный" CODE="3"/>
+            <data DESCR="Ракушечный" CODE="13"/>
+            <data DESCR="Скалистый" CODE="4"/>
+            <data DESCR="Твердый" CODE="6"/>
+            <data DESCR="Торфяной" CODE="10"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="lowwatermark">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="highwatermark">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="absheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="width">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="depth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="shorelinetype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Неопределенная" CODE="3"/>
+            <data DESCR="Непостоянная" CODE="2"/>
+            <data DESCR="Непостоянная и неопределенная" CODE="5"/>
+            <data DESCR="Подземные и пропадающие участки" CODE="4"/>
+            <data DESCR="Постоянная" CODE="1"/>
+            <data DESCR="Проектируемая" CODE="6"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="бергштрихи к изобате" CODE="33230000"/>
+            <data DESCR="берег обрывистый без пляжа" CODE="34113100"/>
+            <data DESCR="берег обрывистый с пляжем" CODE="34113200"/>
+            <data DESCR="изобата основная" CODE="33220000"/>
+            <data DESCR="изобата основная, утолщенная" CODE="33210000"/>
+            <data DESCR="линия береговая, неопределенная" CODE="31430000"/>
+            <data DESCR="линия береговая, непостоянная (пересыхающая)" CODE="31440000"/>
+            <data DESCR="линия береговая, непостоянная и неопределенная" CODE="31420000"/>
+            <data DESCR="линия береговая, постоянная и определенная" CODE="31410000"/>
+            <data DESCR="место замера характеристик для водотоков шириной 1 см и более" CODE="34522100"/>
+            <data DESCR="указатель начала регулярного судоходства" CODE="34600000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_HYDROGRAPHYREL_P">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="groundtype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Буреломный" CODE="9"/>
+            <data DESCR="Валунно-каменистый" CODE="20"/>
+            <data DESCR="Валунный" CODE="14"/>
+            <data DESCR="Вязкий" CODE="1"/>
+            <data DESCR="Галечниково-песчаный" CODE="19"/>
+            <data DESCR="Галечниковый" CODE="16"/>
+            <data DESCR="Галечно-гравийный" CODE="8"/>
+            <data DESCR="Глинисто-ракушечный" CODE="17"/>
+            <data DESCR="Глинистый" CODE="11"/>
+            <data DESCR="Илистый" CODE="5"/>
+            <data DESCR="Каменисто-щебеночный" CODE="15"/>
+            <data DESCR="Каменистый" CODE="2"/>
+            <data DESCR="Ледяной" CODE="12"/>
+            <data DESCR="Песчано-илистый" CODE="18"/>
+            <data DESCR="Песчано-каменистый" CODE="7"/>
+            <data DESCR="Песчаный" CODE="3"/>
+            <data DESCR="Ракушечный" CODE="13"/>
+            <data DESCR="Скалистый" CODE="4"/>
+            <data DESCR="Твердый" CODE="6"/>
+            <data DESCR="Торфяной" CODE="10"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="lowwatermark">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="highwatermark">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="absheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="width">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="depth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="shorelinetype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Неопределенная" CODE="3"/>
+            <data DESCR="Непостоянная" CODE="2"/>
+            <data DESCR="Непостоянная и неопределенная" CODE="5"/>
+            <data DESCR="Подземные и пропадающие участки" CODE="4"/>
+            <data DESCR="Постоянная" CODE="1"/>
+            <data DESCR="Проектируемая" CODE="6"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="Hidden" name="angle">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="банка точечная" CODE="34241000"/>
+            <data DESCR="водопад" CODE="34310000"/>
+            <data DESCR="камень надводный" CODE="34232000"/>
+            <data DESCR="камень осыхающий" CODE="34233000"/>
+            <data DESCR="камень подводный" CODE="34231000"/>
+            <data DESCR="направление отлива" CODE="34420000"/>
+            <data DESCR="направление прилива" CODE="34410000"/>
+            <data DESCR="направление течения для рек" CODE="34511000"/>
+            <data DESCR="отметка глубины" CODE="33100000"/>
+            <data DESCR="пороги" CODE="34320000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_INDUCTRIALOBJ_A">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objstate">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Временный" CODE="5"/>
+            <data DESCR="Действующий" CODE="8"/>
+            <data DESCR="Жилой" CODE="1"/>
+            <data DESCR="Закрытый" CODE="7"/>
+            <data DESCR="Недействующий" CODE="9"/>
+            <data DESCR="Нежилой" CODE="2"/>
+            <data DESCR="Проектируемый" CODE="4"/>
+            <data DESCR="Сезонный" CODE="6"/>
+            <data DESCR="Строящийся" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objmaterial">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Бетонный" CODE="1"/>
+            <data DESCR="Деревянный" CODE="5"/>
+            <data DESCR="Железобетонный" CODE="2"/>
+            <data DESCR="Земляной" CODE="6"/>
+            <data DESCR="Каменный" CODE="4"/>
+            <data DESCR="Металлический" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="length">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="width">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="depth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="funcpurpose">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="атомная электростанция (АЭС)" CODE="51122300"/>
+            <data DESCR="взлетно-посадочная полоса" CODE="51321000"/>
+            <data DESCR="газокомпрессорная станция (ГКС)" CODE="53322000"/>
+            <data DESCR="газораспределительная станция (ГРС)" CODE="53333000"/>
+            <data DESCR="гидроэлектростанция (ГЭС)" CODE="51122100"/>
+            <data DESCR="государственная районная электростанция (ГРЭС)" CODE="51122200"/>
+            <data DESCR="градирня" CODE="51135000"/>
+            <data DESCR="дожимная насосная станция (ДНС)" CODE="53313000"/>
+            <data DESCR="дом лесника, лесничество, лесозащитная станция" CODE="51220000"/>
+            <data DESCR="завод стабилизации конденсата (ЗСК)" CODE="53334000"/>
+            <data DESCR="завод, фабрика" CODE="51121000"/>
+            <data DESCR="кладбище" CODE="51531000"/>
+            <data DESCR="кладбище с густой древесной растительностью" CODE="51531100"/>
+            <data DESCR="компрессорная станция (внешняя)" CODE="53321000"/>
+            <data DESCR="крепость, форт, укрепление" CODE="51410000"/>
+            <data DESCR="лесопильня" CODE="51124000"/>
+            <data DESCR="морской порт" CODE="51421000"/>
+            <data DESCR="нефтехранилище" CODE="51126300"/>
+            <data DESCR="открытая разработка, карьер" CODE="51111000"/>
+            <data DESCR="подземное хранилище газа (ПХГ)" CODE="53335000"/>
+            <data DESCR="порт, гавань" CODE="51420000"/>
+            <data DESCR="посадочная площадка на суше и воде" CODE="51324000"/>
+            <data DESCR="рулежная дорожка для самолетов" CODE="51323000"/>
+            <data DESCR="сельскохозяйственное предприятие" CODE="51210000"/>
+            <data DESCR="соляная разработка" CODE="51112000"/>
+            <data DESCR="сооружение торговли" CODE="51513000"/>
+            <data DESCR="спортивная площадка" CODE="51514100"/>
+            <data DESCR="стадион" CODE="51514200"/>
+            <data DESCR="станция перекачки нефти" CODE="53311000"/>
+            <data DESCR="станция перекачки продуктопроводов" CODE="53331000"/>
+            <data DESCR="теплоэлектроцентраль (ТЭЦ)" CODE="51122400"/>
+            <data DESCR="террикон, отвал породы" CODE="51116100"/>
+            <data DESCR="торфоразработка" CODE="51113000"/>
+            <data DESCR="участок дороги для взлета и посадки" CODE="51325000"/>
+            <data DESCR="учреждение культуры и отдыха" CODE="51512000"/>
+            <data DESCR="учреждение науки, образования, здравоохранения" CODE="51511000"/>
+            <data DESCR="электростанция" CODE="51122000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_INDUCTRIALOBJ_L">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objstate">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Временный" CODE="5"/>
+            <data DESCR="Действующий" CODE="8"/>
+            <data DESCR="Жилой" CODE="1"/>
+            <data DESCR="Закрытый" CODE="7"/>
+            <data DESCR="Недействующий" CODE="9"/>
+            <data DESCR="Нежилой" CODE="2"/>
+            <data DESCR="Проектируемый" CODE="4"/>
+            <data DESCR="Сезонный" CODE="6"/>
+            <data DESCR="Строящийся" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objmaterial">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Бетонный" CODE="1"/>
+            <data DESCR="Деревянный" CODE="5"/>
+            <data DESCR="Железобетонный" CODE="2"/>
+            <data DESCR="Земляной" CODE="6"/>
+            <data DESCR="Каменный" CODE="4"/>
+            <data DESCR="Металлический" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="length">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="width">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="depth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="funcpurpose">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="водопровод наземный" CODE="54310000"/>
+            <data DESCR="водопровод подземный" CODE="54320000"/>
+            <data DESCR="легкое ограждение" CODE="51630000"/>
+            <data DESCR="ограда каменная, кирпичная, металлическая и пр." CODE="51620000"/>
+            <data DESCR="сеть канализационная" CODE="54100000"/>
+            <data DESCR="сеть тепловая (теплотрасса)" CODE="54200000"/>
+            <data DESCR="технологический объект линейной части линейный" CODE="53253000"/>
+            <data DESCR="технологический объект на компрессорной станции линейный" CODE="53533000"/>
+            <data DESCR="технологический трубопровод на компрессорной станции" CODE="53400000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_INDUCTRIALOBJ_P">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="Hidden" name="angle">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objstate">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Временный" CODE="5"/>
+            <data DESCR="Действующий" CODE="8"/>
+            <data DESCR="Жилой" CODE="1"/>
+            <data DESCR="Закрытый" CODE="7"/>
+            <data DESCR="Недействующий" CODE="9"/>
+            <data DESCR="Нежилой" CODE="2"/>
+            <data DESCR="Проектируемый" CODE="4"/>
+            <data DESCR="Сезонный" CODE="6"/>
+            <data DESCR="Строящийся" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objmaterial">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Бетонный" CODE="1"/>
+            <data DESCR="Деревянный" CODE="5"/>
+            <data DESCR="Железобетонный" CODE="2"/>
+            <data DESCR="Земляной" CODE="6"/>
+            <data DESCR="Каменный" CODE="4"/>
+            <data DESCR="Металлический" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="length">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="width">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="depth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="funcpurpose">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="аэродром, гидроаэродром" CODE="51310000"/>
+            <data DESCR="бензоколонка, колонка дизельного топлива, заправочная станция" CODE="51127000"/>
+            <data DESCR="буддийский храм, пагода" CODE="51525000"/>
+            <data DESCR="вершина культового сооружения" CODE="51528000"/>
+            <data DESCR="вышка легкого типа" CODE="51133100"/>
+            <data DESCR="газгольдер" CODE="51126200"/>
+            <data DESCR="двигатель ветряной" CODE="51134000"/>
+            <data DESCR="завод, фабрика без труб" CODE="51121200"/>
+            <data DESCR="завод, фабрика с трубами" CODE="51121100"/>
+            <data DESCR="загон для скота, кошара, скотный двор" CODE="51230000"/>
+            <data DESCR="капитальное сооружение башенного типа" CODE="51131000"/>
+            <data DESCR="лесопильня водяные" CODE="51124100"/>
+            <data DESCR="мазар, субурган и т. п." CODE="51527000"/>
+            <data DESCR="мельница ветряная" CODE="51123200"/>
+            <data DESCR="мельница водяная" CODE="51123100"/>
+            <data DESCR="мельница с электроприводом без труб" CODE="51123320"/>
+            <data DESCR="мельница с электроприводом с трубами" CODE="51123310"/>
+            <data DESCR="мечеть" CODE="51524000"/>
+            <data DESCR="оранжерея, теплица, парник" CODE="51240000"/>
+            <data DESCR="памятник, монумент" CODE="51521110"/>
+            <data DESCR="пасека" CODE="51241000"/>
+            <data DESCR="печь для обжига" CODE="51125000"/>
+            <data DESCR="прииск" CODE="51115200"/>
+            <data DESCR="радиостанция, телевизионный центр" CODE="52310000"/>
+            <data DESCR="рудник" CODE="51115100"/>
+            <data DESCR="скважина нефтяная, газовая и прочее без вышки" CODE="51117200"/>
+            <data DESCR="скважина нефтяная, газовая и прочее с вышкой" CODE="51117100"/>
+            <data DESCR="склад горючего, цистерна, бак" CODE="51126100"/>
+            <data DESCR="скотомогильник" CODE="51533000"/>
+            <data DESCR="станция метеорологическая" CODE="52340000"/>
+            <data DESCR="телевизионная башня" CODE="52320000"/>
+            <data DESCR="телеграфная, радиотелеграфная, телефонная станция" CODE="52350000"/>
+            <data DESCR="террикон, отвал" CODE="51116000"/>
+            <data DESCR="технологический объект линейной части точечный" CODE="53251000"/>
+            <data DESCR="трансформаторная подстанция, будка" CODE="51136200"/>
+            <data DESCR="трубы (заводские, фабричные и др.)" CODE="51132000"/>
+            <data DESCR="устье недействующего шахтного ствола, эксплуатационного шурфа" CODE="51114130"/>
+            <data DESCR="устье штольни действующее" CODE="51114210"/>
+            <data DESCR="устье штольни недействующее" CODE="51114220"/>
+            <data DESCR="церковь каменная, деревянная" CODE="51523100"/>
+            <data DESCR="часовня" CODE="51526000"/>
+            <data DESCR="шахта, штольня" CODE="51114000"/>
+            <data DESCR="электрическая подстанция" CODE="51136100"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_RELIEF_A">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="origin">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Естественное" CODE="1"/>
+            <data DESCR="Искусственное" CODE="2"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="maxwidth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="absheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="depth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="котловина высохших озер" CODE="22220000"/>
+            <data DESCR="курган площадной" CODE="22711200"/>
+            <data DESCR="лавовый поток" CODE="22620000"/>
+            <data DESCR="ледник" CODE="22110000"/>
+            <data DESCR="оползень" CODE="22410000"/>
+            <data DESCR="осыпь рыхлых пород" CODE="22421000"/>
+            <data DESCR="осыпь твердых пород" CODE="22422000"/>
+            <data DESCR="язык ледниковый" CODE="22111000"/>
+            <data DESCR="яма площадная" CODE="22312000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_RELIEF_L">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="origin">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Естественное" CODE="1"/>
+            <data DESCR="Искусственное" CODE="2"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="maxwidth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="absheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="depth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="бергштрихи" CODE="21260000"/>
+            <data DESCR="вал" CODE="22730000"/>
+            <data DESCR="горизонталь вспомогательная" CODE="21240000"/>
+            <data DESCR="горизонталь дополнительная" CODE="21230000"/>
+            <data DESCR="горизонталь основная" CODE="21220000"/>
+            <data DESCR="горизонталь основная утолщенная" CODE="21210000"/>
+            <data DESCR="дайка, крутостенная гряда" CODE="22530000"/>
+            <data DESCR="обрыв земляной" CODE="22541000"/>
+            <data DESCR="обрыв скалистый" CODE="22542000"/>
+            <data DESCR="овраг" CODE="22231000"/>
+            <data DESCR="промоина" CODE="22232000"/>
+            <data DESCR="река каменная" CODE="22433000"/>
+            <data DESCR="скалистый хребет, скалы" CODE="22520000"/>
+            <data DESCR="сухое русло в две линии" CODE="22212000"/>
+            <data DESCR="сухое русло в одну линию" CODE="22211000"/>
+            <data DESCR="трещина ледниковая" CODE="22112000"/>
+            <data DESCR="уступ, откос" CODE="22550000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_RELIEF_P">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="origin">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Естественное" CODE="1"/>
+            <data DESCR="Искусственное" CODE="2"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="Hidden" name="angle">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="maxwidth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="absheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="depth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="воронка, просадка карстовая или псевдокарстовая" CODE="22320000"/>
+            <data DESCR="камень-ориентир отдельный" CODE="22431000"/>
+            <data DESCR="кратер вулкана" CODE="22611000"/>
+            <data DESCR="кратер грязевого вулкана" CODE="22612000"/>
+            <data DESCR="курган точечный" CODE="22711100"/>
+            <data DESCR="отметка высоты" CODE="21100000"/>
+            <data DESCR="пещера, грот" CODE="22720000"/>
+            <data DESCR="скала-останец более 10 м высотой" CODE="22511000"/>
+            <data DESCR="скопление камней" CODE="22432000"/>
+            <data DESCR="яма точечная" CODE="22311000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_ROADS_L">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="автодорога с деревянным покрытием" CODE="62123000"/>
+            <data DESCR="граница проезжей части строящейся автомагистрали" CODE="62141100"/>
+            <data DESCR="граница смены материала покрытия" CODE="62133200"/>
+            <data DESCR="дорога полевая, лесная" CODE="62133000"/>
+            <data DESCR="железная дорога монорельсовая" CODE="61130000"/>
+            <data DESCR="железная дорога строящаяся узкоколейная" CODE="61152000"/>
+            <data DESCR="железная дорога строящаяся ширококолейная" CODE="61151000"/>
+            <data DESCR="железнодорожное полотно разобранное" CODE="61140000"/>
+            <data DESCR="зимняя дорога" CODE="62160000"/>
+            <data DESCR="караванный путь, вьючная тропа" CODE="62151000"/>
+            <data DESCR="линия метрополитена" CODE="61220000"/>
+            <data DESCR="пешеходная тропа, дорожка" CODE="62152000"/>
+            <data DESCR="подвесная дорога на опорных фермах" CODE="62171000"/>
+            <data DESCR="пути железнодорожные" CODE="61210000"/>
+            <data DESCR="пути транспортные прочие" CODE="61230000"/>
+            <data DESCR="строящаяся автомагистраль" CODE="62141000"/>
+            <data DESCR="строящаяся грунтовая дорога, улучшенная" CODE="62144000"/>
+            <data DESCR="строящаяся дорога с деревянным покрытием" CODE="62145000"/>
+            <data DESCR="строящееся усовершенствованное шоссе" CODE="62142000"/>
+            <data DESCR="строящееся шоссе" CODE="62143000"/>
+            <data DESCR="труднопроезжий участок дороги без покрытия" CODE="62332000"/>
+            <data DESCR="труднопроезжий участок дороги с покрытием" CODE="62331000"/>
+            <data DESCR="фуникулер" CODE="62172000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="lanes">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objstate">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Временный" CODE="5"/>
+            <data DESCR="Действующий" CODE="8"/>
+            <data DESCR="Жилой" CODE="1"/>
+            <data DESCR="Закрытый" CODE="7"/>
+            <data DESCR="Недействующий" CODE="9"/>
+            <data DESCR="Нежилой" CODE="2"/>
+            <data DESCR="Проектируемый" CODE="4"/>
+            <data DESCR="Сезонный" CODE="6"/>
+            <data DESCR="Строящийся" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="moveperiod">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="roadnum">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="coatingmaterial">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Асфальт (асфальтобетон)" CODE="1"/>
+            <data DESCR="Без покрытия" CODE="15"/>
+            <data DESCR="Битумоминеральная смесь" CODE="10"/>
+            <data DESCR="Брусчатка" CODE="4"/>
+            <data DESCR="Булыжник" CODE="3"/>
+            <data DESCR="Гравий" CODE="5"/>
+            <data DESCR="Грунт" CODE="13"/>
+            <data DESCR="Камень колотый" CODE="6"/>
+            <data DESCR="Клинкер" CODE="7"/>
+            <data DESCR="Лед" CODE="14"/>
+            <data DESCR="Металл" CODE="11"/>
+            <data DESCR="Твердое покрытие" CODE="12"/>
+            <data DESCR="Цементобетон" CODE="2"/>
+            <data DESCR="Шлак" CODE="8"/>
+            <data DESCR="Щебень" CODE="9"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_ROADS_P">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="перевал главный" CODE="62361000"/>
+            <data DESCR="перевал прочий" CODE="62362000"/>
+            <data DESCR="съезд с автодороги" CODE="62370000"/>
+            <data DESCR="съезд с автодороги необорудованный" CODE="62372000"/>
+            <data DESCR="съезд с автодороги оборудованный" CODE="62371000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="lanes">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objstate">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Временный" CODE="5"/>
+            <data DESCR="Действующий" CODE="8"/>
+            <data DESCR="Жилой" CODE="1"/>
+            <data DESCR="Закрытый" CODE="7"/>
+            <data DESCR="Недействующий" CODE="9"/>
+            <data DESCR="Нежилой" CODE="2"/>
+            <data DESCR="Проектируемый" CODE="4"/>
+            <data DESCR="Сезонный" CODE="6"/>
+            <data DESCR="Строящийся" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="moveperiod">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="roadnum">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="Hidden" name="angle">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="coatingmaterial">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Асфальт (асфальтобетон)" CODE="1"/>
+            <data DESCR="Без покрытия" CODE="15"/>
+            <data DESCR="Битумоминеральная смесь" CODE="10"/>
+            <data DESCR="Брусчатка" CODE="4"/>
+            <data DESCR="Булыжник" CODE="3"/>
+            <data DESCR="Гравий" CODE="5"/>
+            <data DESCR="Грунт" CODE="13"/>
+            <data DESCR="Камень колотый" CODE="6"/>
+            <data DESCR="Клинкер" CODE="7"/>
+            <data DESCR="Лед" CODE="14"/>
+            <data DESCR="Металл" CODE="11"/>
+            <data DESCR="Твердое покрытие" CODE="12"/>
+            <data DESCR="Цементобетон" CODE="2"/>
+            <data DESCR="Шлак" CODE="8"/>
+            <data DESCR="Щебень" CODE="9"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_ROADSTRUCTURES_A">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="clearance">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objstate">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Временный" CODE="5"/>
+            <data DESCR="Действующий" CODE="8"/>
+            <data DESCR="Жилой" CODE="1"/>
+            <data DESCR="Закрытый" CODE="7"/>
+            <data DESCR="Недействующий" CODE="9"/>
+            <data DESCR="Нежилой" CODE="2"/>
+            <data DESCR="Проектируемый" CODE="4"/>
+            <data DESCR="Сезонный" CODE="6"/>
+            <data DESCR="Строящийся" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objmaterial">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Бетонный" CODE="1"/>
+            <data DESCR="Деревянный" CODE="5"/>
+            <data DESCR="Железобетонный" CODE="2"/>
+            <data DESCR="Земляной" CODE="6"/>
+            <data DESCR="Каменный" CODE="4"/>
+            <data DESCR="Металлический" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="absheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="length">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="блокпост, путевой пост, пост при охраняемом железнодорожном переезде" CODE="61322000"/>
+            <data DESCR="остановочный или обгонный пункт" CODE="61313200"/>
+            <data DESCR="платформа крытая" CODE="61313120"/>
+            <data DESCR="платформа открытая" CODE="61313110"/>
+            <data DESCR="платформа, погрузочно-разгрузочная площадка" CODE="61313100"/>
+            <data DESCR="разъезд" CODE="61313300"/>
+            <data DESCR="станция железнодорожная" CODE="61311000"/>
+            <data DESCR="стоянка автотранспорта" CODE="62410000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_ROADSTRUCTURES_L">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="clearance">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objstate">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Временный" CODE="5"/>
+            <data DESCR="Действующий" CODE="8"/>
+            <data DESCR="Жилой" CODE="1"/>
+            <data DESCR="Закрытый" CODE="7"/>
+            <data DESCR="Недействующий" CODE="9"/>
+            <data DESCR="Нежилой" CODE="2"/>
+            <data DESCR="Проектируемый" CODE="4"/>
+            <data DESCR="Сезонный" CODE="6"/>
+            <data DESCR="Строящийся" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objmaterial">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Бетонный" CODE="1"/>
+            <data DESCR="Деревянный" CODE="5"/>
+            <data DESCR="Железобетонный" CODE="2"/>
+            <data DESCR="Земляной" CODE="6"/>
+            <data DESCR="Каменный" CODE="4"/>
+            <data DESCR="Металлический" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="absheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="length">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="мост двухъярусный" CODE="63113000"/>
+            <data DESCR="мост двухъярусный, верхний ярус – автодорога" CODE="63113100"/>
+            <data DESCR="мост двухъярусный, верхний ярус – железная дорога" CODE="63113200"/>
+            <data DESCR="мост пешеходный" CODE="63118200"/>
+            <data DESCR="мост подъемный, разводной" CODE="63114000"/>
+            <data DESCR="мост прочий" CODE="63118000"/>
+            <data DESCR="мост, путепровод" CODE="63100000"/>
+            <data DESCR="мост, путепровод многопролетный" CODE="63112000"/>
+            <data DESCR="мост, путепровод однопролетный" CODE="63111000"/>
+            <data DESCR="насыпи двухсторонние" CODE="63420000"/>
+            <data DESCR="откосы грунтовых дорог" CODE="63413400"/>
+            <data DESCR="разводной участок моста" CODE="63123000"/>
+            <data DESCR="туннель для автодорог" CODE="63200000"/>
+            <data DESCR="туннель для жд" CODE="63200010"/>
+            <data DESCR="эстакада" CODE="63300000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_ROADSTRUCTURES_P">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="clearance">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="Hidden" name="angle">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objstate">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Временный" CODE="5"/>
+            <data DESCR="Действующий" CODE="8"/>
+            <data DESCR="Жилой" CODE="1"/>
+            <data DESCR="Закрытый" CODE="7"/>
+            <data DESCR="Недействующий" CODE="9"/>
+            <data DESCR="Нежилой" CODE="2"/>
+            <data DESCR="Проектируемый" CODE="4"/>
+            <data DESCR="Сезонный" CODE="6"/>
+            <data DESCR="Строящийся" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objmaterial">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Бетонный" CODE="1"/>
+            <data DESCR="Деревянный" CODE="5"/>
+            <data DESCR="Железобетонный" CODE="2"/>
+            <data DESCR="Земляной" CODE="6"/>
+            <data DESCR="Каменный" CODE="4"/>
+            <data DESCR="Металлический" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="absheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="length">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="вход в станцию метрополитена" CODE="61312000"/>
+            <data DESCR="круг поворотный" CODE="61321000"/>
+            <data DESCR="пост при охраняемом железнодорожном переезде" CODE="61322200"/>
+            <data DESCR="путевой пост" CODE="61322100"/>
+            <data DESCR="светофоры и семафоры" CODE="61323110"/>
+            <data DESCR="станция, остановочный пункт" CODE="61310000"/>
+            <data DESCR="шахтный ствол, штольня на тоннеле" CODE="63210000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_SETTLEMENTS_A">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="belongterritory">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Государственные" CODE="1"/>
+            <data DESCR="Республиканские" CODE="4"/>
+            <data DESCR="Федеральные" CODE="2"/>
+            <data DESCR="Штатов" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="administratunit">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Город федерального значения" CODE="16"/>
+            <data DESCR="Не имеет политико-административного значения" CODE="1"/>
+            <data DESCR="Поселковый совет" CODE="10"/>
+            <data DESCR="Районный совет" CODE="15"/>
+            <data DESCR="Сельский совет" CODE="11"/>
+            <data DESCR="Столица РФ" CODE="2"/>
+            <data DESCR="Столица иностранного государства" CODE="12"/>
+            <data DESCR="Столица республики в составе РФ" CODE="3"/>
+            <data DESCR="Центр АО в составе края" CODE="7"/>
+            <data DESCR="Центр АО в составе республики" CODE="6"/>
+            <data DESCR="Центр автономного округа" CODE="8"/>
+            <data DESCR="Центр административной единицы 1 порядка на иностранной территории" CODE="13"/>
+            <data DESCR="Центр владения иностранного государства" CODE="14"/>
+            <data DESCR="Центр края" CODE="4"/>
+            <data DESCR="Центр муниципального района" CODE="9"/>
+            <data DESCR="Центр области" CODE="5"/>
+            <data DESCR="Центр территории с особым статусом" CODE="17"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objstate">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Временный" CODE="5"/>
+            <data DESCR="Действующий" CODE="8"/>
+            <data DESCR="Жилой" CODE="1"/>
+            <data DESCR="Закрытый" CODE="7"/>
+            <data DESCR="Недействующий" CODE="9"/>
+            <data DESCR="Нежилой" CODE="2"/>
+            <data DESCR="Проектируемый" CODE="4"/>
+            <data DESCR="Сезонный" CODE="6"/>
+            <data DESCR="Строящийся" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objmaterial">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Бетонный" CODE="1"/>
+            <data DESCR="Деревянный" CODE="5"/>
+            <data DESCR="Железобетонный" CODE="2"/>
+            <data DESCR="Земляной" CODE="6"/>
+            <data DESCR="Каменный" CODE="4"/>
+            <data DESCR="Металлический" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="settlementunit">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Крупному городу" CODE="1"/>
+            <data DESCR="Малому городу" CODE="2"/>
+            <data DESCR="Малому городу и ПГТ" CODE="8"/>
+            <data DESCR="Населенному пункту" CODE="9"/>
+            <data DESCR="Поселку городского типа" CODE="3"/>
+            <data DESCR="Поселку дачного типа" CODE="5"/>
+            <data DESCR="Поселку сельского типа" CODE="4"/>
+            <data DESCR="Поселку, не отнесенному к ПГТ" CODE="6"/>
+            <data DESCR="Прочим населенным пунктам" CODE="7"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="settlementtype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Бригада" CODE="12"/>
+            <data DESCR="Курортный поселок" CODE="2"/>
+            <data DESCR="Лесничество" CODE="13"/>
+            <data DESCR="Населенный пункт, входящий в черту города" CODE="14"/>
+            <data DESCR="Поселок коттеджного типа" CODE="17"/>
+            <data DESCR="Поселок опытного хозяйства" CODE="10"/>
+            <data DESCR="Поселок отделения совхоза" CODE="7"/>
+            <data DESCR="Поселок подсобного хозяйства" CODE="9"/>
+            <data DESCR="Поселок при железнодорожной станции" CODE="4"/>
+            <data DESCR="Поселок при пристани" CODE="5"/>
+            <data DESCR="Поселок при промышленном предприятии" CODE="3"/>
+            <data DESCR="Поселок рыбацкий" CODE="8"/>
+            <data DESCR="Поселок совхоза" CODE="6"/>
+            <data DESCR="Поселок учебного хозяйства" CODE="11"/>
+            <data DESCR="Провинция" CODE="15"/>
+            <data DESCR="Рабочий поселок" CODE="1"/>
+            <data DESCR="Фактория" CODE="16"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="город с населением 50 000 жителей и более" CODE="41110000"/>
+            <data DESCR="город с населением менее 50 000 жителей" CODE="41120000"/>
+            <data DESCR="отдельно расположенная часть населенного пункта" CODE="41530000"/>
+            <data DESCR="отдельно расположенный двор (вне населенных пунктов)" CODE="41600000"/>
+            <data DESCR="поселок городского типа (ПГТ)" CODE="41200000"/>
+            <data DESCR="поселок дачного типа" CODE="41400000"/>
+            <data DESCR="поселок при промышленном предприятии" CODE="41510000"/>
+            <data DESCR="поселок сельского типа с населением более 1000 жителей" CODE="41310000"/>
+            <data DESCR="поселок сельского типа с населением менее 1000 жителей" CODE="41320000"/>
+            <data DESCR="поселок, входящий в черту города" CODE="41520000"/>
+            <data DESCR="поселок, не отнесенный к категории ПГТ" CODE="41540000"/>
+            <data DESCR="разрушенный и полуразрушенный населенный пункт" CODE="41800000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="population">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_SETTLEMENTS_P">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="belongterritory">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Государственные" CODE="1"/>
+            <data DESCR="Республиканские" CODE="4"/>
+            <data DESCR="Федеральные" CODE="2"/>
+            <data DESCR="Штатов" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="administratunit">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Город федерального значения" CODE="16"/>
+            <data DESCR="Не имеет политико-административного значения" CODE="1"/>
+            <data DESCR="Поселковый совет" CODE="10"/>
+            <data DESCR="Районный совет" CODE="15"/>
+            <data DESCR="Сельский совет" CODE="11"/>
+            <data DESCR="Столица РФ" CODE="2"/>
+            <data DESCR="Столица иностранного государства" CODE="12"/>
+            <data DESCR="Столица республики в составе РФ" CODE="3"/>
+            <data DESCR="Центр АО в составе края" CODE="7"/>
+            <data DESCR="Центр АО в составе республики" CODE="6"/>
+            <data DESCR="Центр автономного округа" CODE="8"/>
+            <data DESCR="Центр административной единицы 1 порядка на иностранной территории" CODE="13"/>
+            <data DESCR="Центр владения иностранного государства" CODE="14"/>
+            <data DESCR="Центр края" CODE="4"/>
+            <data DESCR="Центр муниципального района" CODE="9"/>
+            <data DESCR="Центр области" CODE="5"/>
+            <data DESCR="Центр территории с особым статусом" CODE="17"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objstate">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Временный" CODE="5"/>
+            <data DESCR="Действующий" CODE="8"/>
+            <data DESCR="Жилой" CODE="1"/>
+            <data DESCR="Закрытый" CODE="7"/>
+            <data DESCR="Недействующий" CODE="9"/>
+            <data DESCR="Нежилой" CODE="2"/>
+            <data DESCR="Проектируемый" CODE="4"/>
+            <data DESCR="Сезонный" CODE="6"/>
+            <data DESCR="Строящийся" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objmaterial">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Бетонный" CODE="1"/>
+            <data DESCR="Деревянный" CODE="5"/>
+            <data DESCR="Железобетонный" CODE="2"/>
+            <data DESCR="Земляной" CODE="6"/>
+            <data DESCR="Каменный" CODE="4"/>
+            <data DESCR="Металлический" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="settlementunit">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Крупному городу" CODE="1"/>
+            <data DESCR="Малому городу" CODE="2"/>
+            <data DESCR="Малому городу и ПГТ" CODE="8"/>
+            <data DESCR="Населенному пункту" CODE="9"/>
+            <data DESCR="Поселку городского типа" CODE="3"/>
+            <data DESCR="Поселку дачного типа" CODE="5"/>
+            <data DESCR="Поселку сельского типа" CODE="4"/>
+            <data DESCR="Поселку, не отнесенному к ПГТ" CODE="6"/>
+            <data DESCR="Прочим населенным пунктам" CODE="7"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="settlementtype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Бригада" CODE="12"/>
+            <data DESCR="Курортный поселок" CODE="2"/>
+            <data DESCR="Лесничество" CODE="13"/>
+            <data DESCR="Населенный пункт, входящий в черту города" CODE="14"/>
+            <data DESCR="Поселок коттеджного типа" CODE="17"/>
+            <data DESCR="Поселок опытного хозяйства" CODE="10"/>
+            <data DESCR="Поселок отделения совхоза" CODE="7"/>
+            <data DESCR="Поселок подсобного хозяйства" CODE="9"/>
+            <data DESCR="Поселок при железнодорожной станции" CODE="4"/>
+            <data DESCR="Поселок при пристани" CODE="5"/>
+            <data DESCR="Поселок при промышленном предприятии" CODE="3"/>
+            <data DESCR="Поселок рыбацкий" CODE="8"/>
+            <data DESCR="Поселок совхоза" CODE="6"/>
+            <data DESCR="Поселок учебного хозяйства" CODE="11"/>
+            <data DESCR="Провинция" CODE="15"/>
+            <data DESCR="Рабочий поселок" CODE="1"/>
+            <data DESCR="Фактория" CODE="16"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="стоянка юрт и чумов постоянная" CODE="41700000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="population">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_SOIL_A">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="depth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="заболоченность" CODE="72312100"/>
+            <data DESCR="каменистые россыпи и щебеночные поверхности" CODE="72120000"/>
+            <data DESCR="морены" CODE="72230000"/>
+            <data DESCR="мочажинка с камышом и тростником" CODE="72332000"/>
+            <data DESCR="мочажинка с кустарником" CODE="72334000"/>
+            <data DESCR="мочажинка с травянистой растительностью" CODE="72331000"/>
+            <data DESCR="пески" CODE="72250000"/>
+            <data DESCR="пески барханные" CODE="72256100"/>
+            <data DESCR="пески бугристые" CODE="72256300"/>
+            <data DESCR="пески грядовые, дюнные" CODE="72256200"/>
+            <data DESCR="пески лунковые, ячеистые" CODE="72256400"/>
+            <data DESCR="пески ровные" CODE="72255000"/>
+            <data DESCR="поверхности бугристые" CODE="72212000"/>
+            <data DESCR="поверхности галечниковые и гравийные" CODE="72220000"/>
+            <data DESCR="поверхности каменные (выходы монолитных пород)" CODE="72110000"/>
+            <data DESCR="поверхности кочковатые" CODE="72213000"/>
+            <data DESCR="поверхности полигональные" CODE="72211000"/>
+            <data DESCR="поверхности с валунами" CODE="72260000"/>
+            <data DESCR="солончак непроходимый" CODE="72321000"/>
+            <data DESCR="солончак проходимый" CODE="72322000"/>
+            <data DESCR="такыры" CODE="72240000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="passability">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Непроходимые (труднопроходимые)" CODE="2"/>
+            <data DESCR="Проходимые" CODE="1"/>
+            <data DESCR="Проходимые в сухое время года" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_VEGETATION_A">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="vegetationtype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Вечнозеленая" CODE="13"/>
+            <data DESCR="Декоративная" CODE="14"/>
+            <data DESCR="Лиственная" CODE="2"/>
+            <data DESCR="Лишайниковая" CODE="5"/>
+            <data DESCR="Моховая" CODE="15"/>
+            <data DESCR="Пальма" CODE="3"/>
+            <data DESCR="Растительность на плантациях технических культур" CODE="4"/>
+            <data DESCR="С преобладанием лиственных пород" CODE="7"/>
+            <data DESCR="С преобладанием хвойных пород" CODE="8"/>
+            <data DESCR="Смешанная" CODE="6"/>
+            <data DESCR="Травянистая" CODE="12"/>
+            <data DESCR="Фруктовые культуры" CODE="10"/>
+            <data DESCR="Хвойная" CODE="1"/>
+            <data DESCR="Цитрусовые культуры" CODE="9"/>
+            <data DESCR="Ягоды" CODE="11"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="treethickness">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="passability">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Непроходимые (труднопроходимые)" CODE="2"/>
+            <data DESCR="Проходимые" CODE="1"/>
+            <data DESCR="Проходимые в сухое время года" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="бамбуковые заросли" CODE="71220000"/>
+            <data DESCR="бурелом" CODE="71131000"/>
+            <data DESCR="бурелом (повалено более половины деревьев)" CODE="71131100"/>
+            <data DESCR="бурелом (повалено менее половины деревьев)" CODE="71131200"/>
+            <data DESCR="горелый или сухостойный лес" CODE="71132300"/>
+            <data DESCR="залежи" CODE="71733000"/>
+            <data DESCR="заросли кустарников" CODE="71210000"/>
+            <data DESCR="заросли кустарников колючих" CODE="71211000"/>
+            <data DESCR="камышовая и тростниковая растительность" CODE="71310000"/>
+            <data DESCR="кустарнички" CODE="71400000"/>
+            <data DESCR="кусты отдельные и группы кустов" CODE="71260000"/>
+            <data DESCR="кусты отдельные и группы кустов колючих" CODE="71261000"/>
+            <data DESCR="лес густой, низкорослый" CODE="71111200"/>
+            <data DESCR="лес редкий, низкорослый" CODE="71112200"/>
+            <data DESCR="лес саженый, высокоствольный" CODE="71111400"/>
+            <data DESCR="лес угнетенный, низкорослый, карликовый" CODE="71111300"/>
+            <data DESCR="лесной квартал" CODE="71920000"/>
+            <data DESCR="мангровые заросли" CODE="71230000"/>
+            <data DESCR="моховая растительность" CODE="71600000"/>
+            <data DESCR="плантация технических культур, древесных" CODE="71711000"/>
+            <data DESCR="плантация технических культур, кустарниковых" CODE="71712000"/>
+            <data DESCR="плантация технических культур, травянистых" CODE="71713000"/>
+            <data DESCR="поле рисовое" CODE="71731000"/>
+            <data DESCR="полукустарниковая растительность" CODE="71500000"/>
+            <data DESCR="поросль леса" CODE="71136100"/>
+            <data DESCR="рисовые поля затопляемые" CODE="71731100"/>
+            <data DESCR="сад фруктовый, цитрусовый" CODE="71721000"/>
+            <data DESCR="саксаул (отдельные группы)" CODE="71241000"/>
+            <data DESCR="саксаул (сплошные заросли)" CODE="71242000"/>
+            <data DESCR="травянистая растительность, высокотравная" CODE="71320000"/>
+            <data DESCR="травянистая растительность, луговая" CODE="71340000"/>
+            <data DESCR="травянистая растительность, низкотравная (влаголюбивая)" CODE="71330000"/>
+            <data DESCR="травянистая растительность, степная" CODE="71350000"/>
+            <data DESCR="ягодный сад" CODE="71724000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="treedistance">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_VEGETATION_L">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="vegetationtype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Вечнозеленая" CODE="13"/>
+            <data DESCR="Декоративная" CODE="14"/>
+            <data DESCR="Лиственная" CODE="2"/>
+            <data DESCR="Лишайниковая" CODE="5"/>
+            <data DESCR="Моховая" CODE="15"/>
+            <data DESCR="Пальма" CODE="3"/>
+            <data DESCR="Растительность на плантациях технических культур" CODE="4"/>
+            <data DESCR="С преобладанием лиственных пород" CODE="7"/>
+            <data DESCR="С преобладанием хвойных пород" CODE="8"/>
+            <data DESCR="Смешанная" CODE="6"/>
+            <data DESCR="Травянистая" CODE="12"/>
+            <data DESCR="Фруктовые культуры" CODE="10"/>
+            <data DESCR="Хвойная" CODE="1"/>
+            <data DESCR="Цитрусовые культуры" CODE="9"/>
+            <data DESCR="Ягоды" CODE="11"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="treethickness">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="passability">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Непроходимые (труднопроходимые)" CODE="2"/>
+            <data DESCR="Проходимые" CODE="1"/>
+            <data DESCR="Проходимые в сухое время года" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="контуры растительности, сельхозугодий, грунтов" CODE="71800000"/>
+            <data DESCR="лесополоса, полоса древесных насаждений" CODE="71160000"/>
+            <data DESCR="насаждения и обсадки вдоль дорог, каналов, рек древесные" CODE="71741000"/>
+            <data DESCR="насаждения и обсадки вдоль дорог, каналов, рек, кустарниковые односторонние" CODE="71742300"/>
+            <data DESCR="полосы кустарников, живые изгороди" CODE="71250000"/>
+            <data DESCR="просека в две линии" CODE="71912000"/>
+            <data DESCR="просека в одну линию" CODE="71911000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="treedistance">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_VEGETATION_P">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="relheight">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="vegetationtype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Вечнозеленая" CODE="13"/>
+            <data DESCR="Декоративная" CODE="14"/>
+            <data DESCR="Лиственная" CODE="2"/>
+            <data DESCR="Лишайниковая" CODE="5"/>
+            <data DESCR="Моховая" CODE="15"/>
+            <data DESCR="Пальма" CODE="3"/>
+            <data DESCR="Растительность на плантациях технических культур" CODE="4"/>
+            <data DESCR="С преобладанием лиственных пород" CODE="7"/>
+            <data DESCR="С преобладанием хвойных пород" CODE="8"/>
+            <data DESCR="Смешанная" CODE="6"/>
+            <data DESCR="Травянистая" CODE="12"/>
+            <data DESCR="Фруктовые культуры" CODE="10"/>
+            <data DESCR="Хвойная" CODE="1"/>
+            <data DESCR="Цитрусовые культуры" CODE="9"/>
+            <data DESCR="Ягоды" CODE="11"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="treethickness">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="passability">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Непроходимые (труднопроходимые)" CODE="2"/>
+            <data DESCR="Проходимые" CODE="1"/>
+            <data DESCR="Проходимые в сухое время года" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="высокотравье" CODE="71321000"/>
+            <data DESCR="дерево-ориентир лиственное" CODE="71152000"/>
+            <data DESCR="дерево-ориентир хвойное" CODE="71151000"/>
+            <data DESCR="камышовые заросли" CODE="71311000"/>
+            <data DESCR="пальма" CODE="71154000"/>
+            <data DESCR="роща отдельная, лиственная" CODE="71142000"/>
+            <data DESCR="роща отдельная, смешанная" CODE="71143000"/>
+            <data DESCR="роща отдельная, хвойная" CODE="71141000"/>
+            <data DESCR="роща пальмовая" CODE="71144000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="treedistance">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="AMBIT_HYDRO_L">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="width_area">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="1"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="река пересыхающая в две линии" CODE="31142200"/>
+            <data DESCR="река с постоянным водотоком в две линии" CODE="31141220"/>
+            <data DESCR="река, ручей пересыхающий в одну линию" CODE="31142100"/>
+            <data DESCR="река, ручей с постоянным водотоком в две линии" CODE="31141200"/>
+            <data DESCR="река, ручей с постоянным водотоком в одну линию" CODE="31141100"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="depth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="label">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="watercoursetype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="Река" CODE="1"/>
+            <data DESCR="Ручей" CODE="2"/>
+            <data DESCR="Старица" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="AMBIT_VEGETATION_FIELDS_A">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="виноградник" CODE="71722000"/>
+            <data DESCR="огород" CODE="71736000"/>
+            <data DESCR="пастбище" CODE="71735000"/>
+            <data DESCR="пашня" CODE="71732000"/>
+            <data DESCR="поверхности прочие" CODE="72270000"/>
+            <data DESCR="сад фруктово-ягодный" CODE="71725000"/>
+            <data DESCR="сенокос" CODE="71734000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="cost">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="crop">
+          <widgetv2config fieldEditable="1" constraint="(topocode in (71725000,71732000) and  crop is not null) or (topocode not in (71725000,71732000))" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Виноград" CODE="3"/>
+            <data DESCR="Зерновые культуры (пшеница, ячмень, рожь, овёс, рис, кукуруза и др.)" CODE="1"/>
+            <data DESCR="Овощные (свекла, картофель и др.) и бахчевые культуры (арбуз, дыня, тыква и др.)" CODE="2"/>
+            <data DESCR="Фруктовые культуры (яблоня, груша, вишня, слива и др.)" CODE="4"/>
+            <data DESCR="Ягодные культуры (земляника, смородина, малина, крыжовник и др.)" CODE="5"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="AMBIT_HYDRO_A">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="width_area">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="болото непроходимое, труднопроходимое" CODE="72311000"/>
+            <data DESCR="болото проходимое" CODE="72312000"/>
+            <data DESCR="водохранилище действующее, открытое" CODE="31131000"/>
+            <data DESCR="водохранилище подземное" CODE="31133000"/>
+            <data DESCR="водохранилище строящееся" CODE="31132000"/>
+            <data DESCR="временный, пересыхающий водоёмы" CODE="31134000"/>
+            <data DESCR="море, океан" CODE="31110000"/>
+            <data DESCR="озеро" CODE="31120000"/>
+            <data DESCR="пруд" CODE="31122000"/>
+            <data DESCR="реки, выражающиеся в масштабе" CODE="31141300"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="depth">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="label">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="watercoursetype">
+          <widgetv2config fieldEditable="1" constraint="(topocode = 31141300  and  watercoursetype is not null) or (topocode &lt;> 31141300 )" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Река" CODE="1"/>
+            <data DESCR="Ручей" CODE="2"/>
+            <data DESCR="Старица" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="AMBIT_INDUSTRY_ICS_P">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="мачта (телевизионная, сотовая, радио- и радиорелейная)" CODE="52330000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="Hidden" name="angle">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="stpower">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="yearcommiss">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="height">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="cost">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="label">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="AMBIT_INDUSTRY_CAPACITIES_P">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="diameter">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="100" CODE="12"/>
+            <data DESCR="1000" CODE="3"/>
+            <data DESCR="1200" CODE="2"/>
+            <data DESCR="1400" CODE="1"/>
+            <data DESCR="150" CODE="11"/>
+            <data DESCR="200" CODE="10"/>
+            <data DESCR="250" CODE="9"/>
+            <data DESCR="300" CODE="8"/>
+            <data DESCR="400" CODE="7"/>
+            <data DESCR="500" CODE="6"/>
+            <data DESCR="700" CODE="5"/>
+            <data DESCR="800" CODE="4"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="резервуар, ёмкость" CODE="53800000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="Hidden" name="angle">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="capacitieform">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="Буллит" CODE="3"/>
+            <data DESCR="Сферический" CODE="2"/>
+            <data DESCR="Цилиндрический вертикальный" CODE="1"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="label">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="length">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="yearcommiss">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="productstorage">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="Вода" CODE="4"/>
+            <data DESCR="Масло" CODE="6"/>
+            <data DESCR="Метанол" CODE="5"/>
+            <data DESCR="Нефть, нефтепродукты, конденсат" CODE="1"/>
+            <data DESCR="Сжиженный природный газ (СПГ)" CODE="3"/>
+            <data DESCR="Сжиженный углеводородный газ (СУГ)" CODE="2"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="cost">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="height">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="AMBIT_INDUSTRY_FILTERS_P">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="diameter">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="100" CODE="12"/>
+            <data DESCR="1000" CODE="3"/>
+            <data DESCR="1200" CODE="2"/>
+            <data DESCR="1400" CODE="1"/>
+            <data DESCR="150" CODE="11"/>
+            <data DESCR="200" CODE="10"/>
+            <data DESCR="250" CODE="9"/>
+            <data DESCR="300" CODE="8"/>
+            <data DESCR="400" CODE="7"/>
+            <data DESCR="500" CODE="6"/>
+            <data DESCR="700" CODE="5"/>
+            <data DESCR="800" CODE="4"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="технологический объект на компрессорной станции точечный" CODE="53531000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="Hidden" name="angle">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="yearcommiss">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="label">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="length">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="cost">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="devicetype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="АВО газа" CODE="2"/>
+            <data DESCR="АВО масла" CODE="3"/>
+            <data DESCR="Аб(д)сорбер" CODE="1"/>
+            <data DESCR="ГПА с газовым ДВС" CODE="4"/>
+            <data DESCR="ГПА с газотурбинным приводом" CODE="5"/>
+            <data DESCR="ГПА с электроприводом" CODE="6"/>
+            <data DESCR="Колонна ректификационная" CODE="7"/>
+            <data DESCR="Пылеуловитель " CODE="8"/>
+            <data DESCR="Реактор" CODE="9"/>
+            <data DESCR="Ресивер" CODE="10"/>
+            <data DESCR="Сепаратор" CODE="11"/>
+            <data DESCR="Скруббер" CODE="12"/>
+            <data DESCR="Теплообменник" CODE="13"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="height">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="AMBIT_INDUSTRY_PROTECT_P">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="cost">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="блок-бокс контрольного пункта телемеханики (КПТМ)" CODE="53614000"/>
+            <data DESCR="контрольно-измерительный пункт (КИП)" CODE="53615000"/>
+            <data DESCR="установка дренажной защиты (УДЗ)" CODE="53612000"/>
+            <data DESCR="установка катодной защиты (УКЗ)" CODE="53611000"/>
+            <data DESCR="установка протекторной защиты (УПЗ)" CODE="53613000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="yearcommiss">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="label">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="AMBIT_INDUSTRY_PIPE_UNITS_P">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="pressurenominal">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="valvetype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="Задвижка" CODE="3"/>
+            <data DESCR="Клапан" CODE="4"/>
+            <data DESCR="Конусный" CODE="2"/>
+            <data DESCR="Обратный клапан" CODE="5"/>
+            <data DESCR="Шаровый" CODE="1"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="instplace">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="АГРС" CODE="9"/>
+            <data DESCR="Аммиакопровод" CODE="4"/>
+            <data DESCR="Водопровод" CODE="5"/>
+            <data DESCR="ГРП" CODE="8"/>
+            <data DESCR="ГРС" CODE="7"/>
+            <data DESCR="Илопровод" CODE="6"/>
+            <data DESCR="ЛЧ МТ" CODE="1"/>
+            <data DESCR="НС" CODE="10"/>
+            <data DESCR="Перемычка между МТ или газопровод-отвод" CODE="2"/>
+            <data DESCR="Трубопровод, транспортирующий жидкие углеводороды" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="technum">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="yearcommiss">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="label">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="cost">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="pipediameter">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="100" CODE="12"/>
+            <data DESCR="1000" CODE="3"/>
+            <data DESCR="1200" CODE="2"/>
+            <data DESCR="1400" CODE="1"/>
+            <data DESCR="150" CODE="11"/>
+            <data DESCR="200" CODE="10"/>
+            <data DESCR="250" CODE="9"/>
+            <data DESCR="300" CODE="8"/>
+            <data DESCR="400" CODE="7"/>
+            <data DESCR="500" CODE="6"/>
+            <data DESCR="700" CODE="5"/>
+            <data DESCR="800" CODE="4"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="drivetype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Гидравлический" CODE="2"/>
+            <data DESCR="Пневматический" CODE="1"/>
+            <data DESCR="Ручной" CODE="6"/>
+            <data DESCR="Электрический" CODE="3"/>
+            <data DESCR="Электромагнитный" CODE="4"/>
+            <data DESCR="Электромоторный" CODE="5"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="Hidden" name="angle">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="трубопроводная арматура компрессорной станции" CODE="53510000"/>
+            <data DESCR="трубопроводная арматура на трубопроводах" CODE="53210000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="AMBIT_INDUSTRY_COMM_P">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="Hidden" name="angle">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="lines">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="label">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="cost">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="voltage">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="0,096" CODE="10"/>
+            <data DESCR="0,4" CODE="9"/>
+            <data DESCR="10" CODE="8"/>
+            <data DESCR="110" CODE="5"/>
+            <data DESCR="20" CODE="7"/>
+            <data DESCR="220" CODE="4"/>
+            <data DESCR="330" CODE="3"/>
+            <data DESCR="35" CODE="6"/>
+            <data DESCR="500" CODE="2"/>
+            <data DESCR="750" CODE="1"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="опора ЛЭП" CODE="52440000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="AMBIT_INDUSTRY_OILSTATIONS_A">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="yearcommiss">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="label">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="cost">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="sttype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Блочная" CODE="7"/>
+            <data DESCR="Быстродействующая" CODE="3"/>
+            <data DESCR="Ведущая" CODE="1"/>
+            <data DESCR="Дочерняя" CODE="2"/>
+            <data DESCR="Контейнерная" CODE="8"/>
+            <data DESCR="Медленнодействующая" CODE="4"/>
+            <data DESCR="Модульная" CODE="9"/>
+            <data DESCR="Передвижная" CODE="10"/>
+            <data DESCR="Последовательная" CODE="5"/>
+            <data DESCR="Стационарная (Традиционная)" CODE="6"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="numofstations">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="автозаправочная станция (АЗС)" CODE="53336000"/>
+            <data DESCR="автомобильная газонаполнительная компрессорная станция (АГНКС)" CODE="53332000"/>
+          </widgetv2config>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="AMBIT_PLATFORMS_A">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="area_">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="площадка для стоянки авиационных объектов" CODE="51322000"/>
+            <data DESCR="стоянка автотранспорта" CODE="62410000"/>
+            <data DESCR="технологический объект линейной части, выражающийся в масштабе" CODE="53252000"/>
+            <data DESCR="технологический объект на компрессорной станции, выражающийся в масштабе" CODE="53532000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="platformtype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="Автомобильная" CODE="2"/>
+            <data DESCR="Вертолетная" CODE="3"/>
+            <data DESCR="Открытая" CODE="1"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="cost">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+		</edittypes>
+	</table>
+	<table id="GEO_SETTLEMENTS_A">
+		<edittypes>
+        <edittype widgetv2type="Hidden" name="id">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="belongterritory">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Государственные" CODE="1"/>
+            <data DESCR="Республиканские" CODE="4"/>
+            <data DESCR="Федеральные" CODE="2"/>
+            <data DESCR="Штатов" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="administratunit">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Город федерального значения" CODE="16"/>
+            <data DESCR="Не имеет политико-административного значения" CODE="1"/>
+            <data DESCR="Поселковый совет" CODE="10"/>
+            <data DESCR="Районный совет" CODE="15"/>
+            <data DESCR="Сельский совет" CODE="11"/>
+            <data DESCR="Столица РФ" CODE="2"/>
+            <data DESCR="Столица иностранного государства" CODE="12"/>
+            <data DESCR="Столица республики в составе РФ" CODE="3"/>
+            <data DESCR="Центр АО в составе края" CODE="7"/>
+            <data DESCR="Центр АО в составе республики" CODE="6"/>
+            <data DESCR="Центр автономного округа" CODE="8"/>
+            <data DESCR="Центр административной единицы 1 порядка на иностранной территории" CODE="13"/>
+            <data DESCR="Центр владения иностранного государства" CODE="14"/>
+            <data DESCR="Центр края" CODE="4"/>
+            <data DESCR="Центр муниципального района" CODE="9"/>
+            <data DESCR="Центр области" CODE="5"/>
+            <data DESCR="Центр территории с особым статусом" CODE="17"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objstate">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Временный" CODE="5"/>
+            <data DESCR="Действующий" CODE="8"/>
+            <data DESCR="Жилой" CODE="1"/>
+            <data DESCR="Закрытый" CODE="7"/>
+            <data DESCR="Недействующий" CODE="9"/>
+            <data DESCR="Нежилой" CODE="2"/>
+            <data DESCR="Проектируемый" CODE="4"/>
+            <data DESCR="Сезонный" CODE="6"/>
+            <data DESCR="Строящийся" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="objmaterial">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Бетонный" CODE="1"/>
+            <data DESCR="Деревянный" CODE="5"/>
+            <data DESCR="Железобетонный" CODE="2"/>
+            <data DESCR="Земляной" CODE="6"/>
+            <data DESCR="Каменный" CODE="4"/>
+            <data DESCR="Металлический" CODE="3"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="settlementunit">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Крупному городу" CODE="1"/>
+            <data DESCR="Малому городу" CODE="2"/>
+            <data DESCR="Малому городу и ПГТ" CODE="8"/>
+            <data DESCR="Населенному пункту" CODE="9"/>
+            <data DESCR="Поселку городского типа" CODE="3"/>
+            <data DESCR="Поселку дачного типа" CODE="5"/>
+            <data DESCR="Поселку сельского типа" CODE="4"/>
+            <data DESCR="Поселку, не отнесенному к ПГТ" CODE="6"/>
+            <data DESCR="Прочим населенным пунктам" CODE="7"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="settlementtype">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="0">
+            <data DESCR="Бригада" CODE="12"/>
+            <data DESCR="Курортный поселок" CODE="2"/>
+            <data DESCR="Лесничество" CODE="13"/>
+            <data DESCR="Населенный пункт, входящий в черту города" CODE="14"/>
+            <data DESCR="Поселок коттеджного типа" CODE="17"/>
+            <data DESCR="Поселок опытного хозяйства" CODE="10"/>
+            <data DESCR="Поселок отделения совхоза" CODE="7"/>
+            <data DESCR="Поселок подсобного хозяйства" CODE="9"/>
+            <data DESCR="Поселок при железнодорожной станции" CODE="4"/>
+            <data DESCR="Поселок при пристани" CODE="5"/>
+            <data DESCR="Поселок при промышленном предприятии" CODE="3"/>
+            <data DESCR="Поселок рыбацкий" CODE="8"/>
+            <data DESCR="Поселок совхоза" CODE="6"/>
+            <data DESCR="Поселок учебного хозяйства" CODE="11"/>
+            <data DESCR="Провинция" CODE="15"/>
+            <data DESCR="Рабочий поселок" CODE="1"/>
+            <data DESCR="Фактория" CODE="16"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="ValueMap" name="topocode">
+          <widgetv2config fieldEditable="1" constraint="" labelOnTop="0" constraintDescription="" notNull="1">
+            <data DESCR="город с населением 50 000 жителей и более" CODE="41110000"/>
+            <data DESCR="город с населением менее 50 000 жителей" CODE="41120000"/>
+            <data DESCR="отдельно расположенная часть населенного пункта" CODE="41530000"/>
+            <data DESCR="отдельно расположенный двор (вне населенных пунктов)" CODE="41600000"/>
+            <data DESCR="поселок городского типа (ПГТ)" CODE="41200000"/>
+            <data DESCR="поселок дачного типа" CODE="41400000"/>
+            <data DESCR="поселок при промышленном предприятии" CODE="41510000"/>
+            <data DESCR="поселок сельского типа с населением более 1000 жителей" CODE="41310000"/>
+            <data DESCR="поселок сельского типа с населением менее 1000 жителей" CODE="41320000"/>
+            <data DESCR="поселок, входящий в черту города" CODE="41520000"/>
+            <data DESCR="поселок, не отнесенный к категории ПГТ" CODE="41540000"/>
+            <data DESCR="разрушенный и полуразрушенный населенный пункт" CODE="41800000"/>
+          </widgetv2config>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="population">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="name">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+		</edittypes>
+	</table>
+</root>

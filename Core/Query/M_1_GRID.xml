@@ -1,0 +1,1078 @@
+<root version="postgres 7.7.3.0">
+  <data id="WEB50_M_1_GIDR_LP" comment="WEB50.M_1_GIDR_LP" schema="WEB50" table="M_1_GIDR_LP">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C1,all_in_one.C3,all_in_one.C4,all_in_one.C7
+          ,all_in_one.C9,all_in_one.C10,all_in_one.C11,all_in_one.C32,all_in_one.C33
+          ,all_in_one.C34,all_in_one.C36,all_in_one.C47,all_in_one.C55,all_in_one.C62
+          ,all_in_one.C77,all_in_one.C78,all_in_one.C83,all_in_one.C109,all_in_one.C120
+          ,all_in_one.C150,all_in_one.C151,all_in_one.C154,all_in_one.C156,all_in_one.C157
+          ,all_in_one.C166,all_in_one.C171,all_in_one.C173,all_in_one.C188,all_in_one.C190
+          ,all_in_one.C195,all_in_one.C199,all_in_one.C208,all_in_one.C210,all_in_one.C211
+          ,all_in_one.C232,all_in_one.C233,all_in_one.C301,all_in_one.C302,all_in_one.C303
+          ,all_in_one.C307
+          FROM (SELECT m.*
+          FROM WEB50.M_1_GIDR_LP m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_GIDR_LP_CNT" comment="WEB50.M_1_GIDR_LP" schema="WEB50" table="M_1_GIDR_LP">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_1_GIDR_LP m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_GIDR_S" comment="WEB50.M_1_GIDR_S" schema="WEB50" table="M_1_GIDR_S">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C1,all_in_one.C3,all_in_one.C4,all_in_one.C7
+          ,all_in_one.C9,all_in_one.C10,all_in_one.C11,all_in_one.C32,all_in_one.C33
+          ,all_in_one.C34,all_in_one.C36,all_in_one.C47,all_in_one.C55,all_in_one.C62
+          ,all_in_one.C77,all_in_one.C78,all_in_one.C83,all_in_one.C109,all_in_one.C120
+          ,all_in_one.C150,all_in_one.C151,all_in_one.C154,all_in_one.C156,all_in_one.C157
+          ,all_in_one.C166,all_in_one.C171,all_in_one.C173,all_in_one.C188,all_in_one.C190
+          ,all_in_one.C195,all_in_one.C199,all_in_one.C208,all_in_one.C210,all_in_one.C211
+          ,all_in_one.C232,all_in_one.C233,all_in_one.C301,all_in_one.C302,all_in_one.C303
+          ,all_in_one.C307
+          FROM (SELECT m.*
+          FROM WEB50.M_1_GIDR_S m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_GIDR_S_CNT" comment="WEB50.M_1_GIDR_S" schema="WEB50" table="M_1_GIDR_S">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_1_GIDR_S m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_GRUNT" comment="WEB50.M_1_GRUNT" schema="WEB50" table="M_1_GRUNT">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C1,all_in_one.C9,all_in_one.C307
+
+          FROM (SELECT m.*
+          FROM WEB50.M_1_GRUNT m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_GRUNT_CNT" comment="WEB50.M_1_GRUNT" schema="WEB50" table="M_1_GRUNT">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_1_GRUNT m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_LIMITS" comment="WEB50.M_1_LIMITS" schema="WEB50" table="M_1_LIMITS">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C3,all_in_one.C4,all_in_one.C119,all_in_one.C307
+          ,all_in_one.C9,all_in_one.C10
+          FROM (SELECT m.*
+          FROM WEB50.M_1_LIMITS m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_LIMITS_CNT" comment="WEB50.M_1_LIMITS" schema="WEB50" table="M_1_LIMITS">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_1_LIMITS m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_PROM_GAS" comment="WEB50.M_1_PROM_GAS" schema="WEB50" table="M_1_PROM_GAS">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C1,all_in_one.C2,all_in_one.C3,all_in_one.C4
+          ,all_in_one.C7,all_in_one.C10,all_in_one.C11,all_in_one.C41,all_in_one.C47
+          ,all_in_one.C49,all_in_one.C102,all_in_one.C108,all_in_one.C110,all_in_one.C118
+          ,all_in_one.C119,all_in_one.C150,all_in_one.C151,all_in_one.C152,all_in_one.C153
+          ,all_in_one.C165,all_in_one.C166,all_in_one.C171,all_in_one.C172,all_in_one.C177
+          ,all_in_one.C214,all_in_one.C224,all_in_one.C231,all_in_one.C233,all_in_one.C235
+          ,all_in_one.C236,all_in_one.C237,all_in_one.C238,all_in_one.C239,all_in_one.C241
+          ,all_in_one.C242,all_in_one.C303,all_in_one.C307,all_in_one.C313,all_in_one.C901
+          ,all_in_one.C902,all_in_one.C9,all_in_one.C55,all_in_one.C120,all_in_one.C178
+          ,all_in_one.C179,all_in_one.C185,all_in_one.C192,all_in_one.C210,all_in_one.C219
+          ,all_in_one.C232,all_in_one.C111
+          FROM (SELECT m.*
+          FROM WEB50.M_1_PROM_GAS m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_PROM_GAS_CNT" comment="WEB50.M_1_PROM_GAS" schema="WEB50" table="M_1_PROM_GAS">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_1_PROM_GAS m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_PROM_LP" comment="WEB50.M_1_PROM_LP" schema="WEB50" table="M_1_PROM_LP">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C1,all_in_one.C2,all_in_one.C3,all_in_one.C4
+          ,all_in_one.C7,all_in_one.C10,all_in_one.C11,all_in_one.C41,all_in_one.C47
+          ,all_in_one.C49,all_in_one.C102,all_in_one.C108,all_in_one.C110,all_in_one.C118
+          ,all_in_one.C119,all_in_one.C150,all_in_one.C151,all_in_one.C152,all_in_one.C153
+          ,all_in_one.C165,all_in_one.C166,all_in_one.C171,all_in_one.C172,all_in_one.C177
+          ,all_in_one.C214,all_in_one.C224,all_in_one.C231,all_in_one.C233,all_in_one.C235
+          ,all_in_one.C236,all_in_one.C237,all_in_one.C238,all_in_one.C239,all_in_one.C241
+          ,all_in_one.C242,all_in_one.C303,all_in_one.C307,all_in_one.C313,all_in_one.C901
+          ,all_in_one.C902,all_in_one.C9,all_in_one.C55,all_in_one.C120,all_in_one.C178
+          ,all_in_one.C179,all_in_one.C185,all_in_one.C192,all_in_one.C210,all_in_one.C219
+          ,all_in_one.C232,all_in_one.C111
+          FROM (SELECT m.*
+          FROM WEB50.M_1_PROM_LP m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_PROM_LP_CNT" comment="WEB50.M_1_PROM_LP" schema="WEB50" table="M_1_PROM_LP">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_1_PROM_LP m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_PROM_S" comment="WEB50.M_1_PROM_S" schema="WEB50" table="M_1_PROM_S">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C1,all_in_one.C2,all_in_one.C3,all_in_one.C4
+          ,all_in_one.C7,all_in_one.C10,all_in_one.C11,all_in_one.C41,all_in_one.C47
+          ,all_in_one.C49,all_in_one.C102,all_in_one.C108,all_in_one.C110,all_in_one.C118
+          ,all_in_one.C119,all_in_one.C150,all_in_one.C151,all_in_one.C152,all_in_one.C153
+          ,all_in_one.C165,all_in_one.C166,all_in_one.C171,all_in_one.C172,all_in_one.C177
+          ,all_in_one.C214,all_in_one.C224,all_in_one.C231,all_in_one.C233,all_in_one.C235
+          ,all_in_one.C236,all_in_one.C237,all_in_one.C238,all_in_one.C239,all_in_one.C241
+          ,all_in_one.C242,all_in_one.C303,all_in_one.C307,all_in_one.C313,all_in_one.C901
+          ,all_in_one.C902,all_in_one.C9,all_in_one.C55,all_in_one.C120,all_in_one.C178
+          ,all_in_one.C179,all_in_one.C185,all_in_one.C192,all_in_one.C210,all_in_one.C219
+          ,all_in_one.C232,all_in_one.C111
+          FROM (SELECT m.*
+          FROM WEB50.M_1_PROM_S m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_PROM_S_CNT" comment="WEB50.M_1_PROM_S" schema="WEB50" table="M_1_PROM_S">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_1_PROM_S m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_RAST_LP" comment="WEB50.M_1_RAST_LP" schema="WEB50" table="M_1_RAST_LP">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C1,all_in_one.C3,all_in_one.C9,all_in_one.C11
+          ,all_in_one.C13,all_in_one.C34,all_in_one.C47,all_in_one.C62,all_in_one.C104
+          ,all_in_one.C113,all_in_one.C116,all_in_one.C119,all_in_one.C183,all_in_one.C233
+          ,all_in_one.C303,all_in_one.C306,all_in_one.C307
+
+          FROM (SELECT m.*
+          FROM WEB50.M_1_RAST_LP m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_RAST_LP_CNT" comment="WEB50.M_1_RAST_LP" schema="WEB50" table="M_1_RAST_LP">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_1_RAST_LP m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_RAST_S" comment="WEB50.M_1_RAST_S" schema="WEB50" table="M_1_RAST_S">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C1,all_in_one.C3,all_in_one.C9,all_in_one.C11
+          ,all_in_one.C13,all_in_one.C34,all_in_one.C47,all_in_one.C62,all_in_one.C104
+          ,all_in_one.C113,all_in_one.C116,all_in_one.C119,all_in_one.C183,all_in_one.C233
+          ,all_in_one.C303,all_in_one.C306,all_in_one.C307
+
+          FROM (SELECT m.*
+          FROM WEB50.M_1_RAST_S m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_RAST_S_CNT" comment="WEB50.M_1_RAST_S" schema="WEB50" table="M_1_RAST_S">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_1_RAST_S m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_RELIEF" comment="WEB50.M_1_RELIEF" schema="WEB50" table="M_1_RELIEF">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C1,all_in_one.C3,all_in_one.C4,all_in_one.C7
+          ,all_in_one.C9,all_in_one.C11,all_in_one.C31,all_in_one.C34,all_in_one.C47
+          ,all_in_one.C55,all_in_one.C78,all_in_one.C109,all_in_one.C114,all_in_one.C115
+          ,all_in_one.C184,all_in_one.C189,all_in_one.C196,all_in_one.C197,all_in_one.C203
+          ,all_in_one.C208,all_in_one.C233,all_in_one.C234,all_in_one.C301,all_in_one.C302
+          ,all_in_one.C303,all_in_one.C304,all_in_one.C307
+
+          FROM (SELECT m.*
+          FROM WEB50.M_1_RELIEF m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_RELIEF_CNT" comment="WEB50.M_1_RELIEF" schema="WEB50" table="M_1_RELIEF">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_1_RELIEF m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_ROADS_LP" comment="WEB50.M_1_ROADS_LP" schema="WEB50" table="M_1_ROADS_LP">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C1,all_in_one.C2,all_in_one.C3,all_in_one.C9
+          ,all_in_one.C10,all_in_one.C11,all_in_one.C12,all_in_one.C34,all_in_one.C47
+          ,all_in_one.C52,all_in_one.C54,all_in_one.C55,all_in_one.C108,all_in_one.C111
+          ,all_in_one.C119,all_in_one.C168,all_in_one.C169,all_in_one.C171,all_in_one.C193
+          ,all_in_one.C200,all_in_one.C209,all_in_one.C212,all_in_one.C216,all_in_one.C225
+          ,all_in_one.C233,all_in_one.C238,all_in_one.C303,all_in_one.C307
+          FROM (SELECT m.*
+          FROM WEB50.M_1_ROADS_LP m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_ROADS_LP_CNT" comment="WEB50.M_1_ROADS_LP" schema="WEB50" table="M_1_ROADS_LP">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_1_ROADS_LP m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_ROADS_S" comment="WEB50.M_1_ROADS_S" schema="WEB50" table="M_1_ROADS_S">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C1,all_in_one.C2,all_in_one.C3,all_in_one.C9
+          ,all_in_one.C10,all_in_one.C11,all_in_one.C12,all_in_one.C34,all_in_one.C47
+          ,all_in_one.C52,all_in_one.C54,all_in_one.C55,all_in_one.C108,all_in_one.C111
+          ,all_in_one.C119,all_in_one.C168,all_in_one.C169,all_in_one.C171,all_in_one.C193
+          ,all_in_one.C200,all_in_one.C209,all_in_one.C212,all_in_one.C216,all_in_one.C225
+          ,all_in_one.C233,all_in_one.C238,all_in_one.C303,all_in_one.C307
+          FROM (SELECT m.*
+          FROM WEB50.M_1_ROADS_S m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_ROADS_S_CNT" comment="WEB50.M_1_ROADS_S" schema="WEB50" table="M_1_ROADS_S">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_1_ROADS_S m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_SURVEY" comment="WEB50.M_1_SURVEY" schema="WEB50" table="M_1_SURVEY">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C4,all_in_one.C9,all_in_one.C107,all_in_one.C114
+          ,all_in_one.C115,all_in_one.C119,all_in_one.C120,all_in_one.C191,all_in_one.C222
+          ,all_in_one.C223,all_in_one.C233,all_in_one.C303,all_in_one.C307
+          FROM (SELECT m.*
+          FROM WEB50.M_1_SURVEY m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_SURVEY_CNT" comment="WEB50.M_1_SURVEY" schema="WEB50" table="M_1_SURVEY">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_1_SURVEY m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_SWAMP" comment="WEB50.M_1_SWAMP" schema="WEB50" table="M_1_SWAMP">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C207,all_in_one.C62,all_in_one.C306,all_in_one.C171
+          ,all_in_one.C9,all_in_one.C307
+          FROM (SELECT m.*
+          FROM WEB50.M_1_SWAMP m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_SWAMP_CNT" comment="WEB50.M_1_SWAMP" schema="WEB50" table="M_1_SWAMP">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_1_SWAMP m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_TEXT" comment="WEB50.M_1_TEXT" schema="WEB50" table="M_1_TEXT">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C9,all_in_one.MIF_TEXT
+
+          FROM (SELECT m.*
+          FROM WEB50.M_1_TEXT m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_TEXT_CNT" comment="WEB50.M_1_TEXT" schema="WEB50" table="M_1_TEXT">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_1_TEXT m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_TOWN_LP" comment="WEB50.M_1_TOWN_LP" schema="WEB50" table="M_1_TOWN_LP">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C1,all_in_one.C2,all_in_one.C3,all_in_one.C4
+          ,all_in_one.C9,all_in_one.C10,all_in_one.C11,all_in_one.C16,all_in_one.C47
+          ,all_in_one.C55,all_in_one.C89,all_in_one.C100,all_in_one.C106,all_in_one.C119
+          ,all_in_one.C122,all_in_one.C123,all_in_one.C229,all_in_one.C233,all_in_one.C235
+          ,all_in_one.C236,all_in_one.C237,all_in_one.C238,all_in_one.C240,all_in_one.C241
+          ,all_in_one.C242,all_in_one.C243,all_in_one.C303,all_in_one.C307,all_in_one.C1010
+          ,all_in_one.C1011,all_in_one.C7,all_in_one.C34,all_in_one.C49,all_in_one.C101
+          ,all_in_one.C154,all_in_one.C155,all_in_one.C166,all_in_one.C226
+          FROM (SELECT m.*
+          FROM WEB50.M_1_TOWN_LP m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_TOWN_LP_CNT" comment="WEB50.M_1_TOWN_LP" schema="WEB50" table="M_1_TOWN_LP">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_1_TOWN_LP m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_TOWN_S" comment="WEB50.M_1_TOWN_S" schema="WEB50" table="M_1_TOWN_S">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C1,all_in_one.C2,all_in_one.C3,all_in_one.C4
+          ,all_in_one.C9,all_in_one.C10,all_in_one.C11,all_in_one.C16,all_in_one.C47
+          ,all_in_one.C55,all_in_one.C89,all_in_one.C100,all_in_one.C106,all_in_one.C119
+          ,all_in_one.C122,all_in_one.C123,all_in_one.C229,all_in_one.C233,all_in_one.C235
+          ,all_in_one.C236,all_in_one.C237,all_in_one.C238,all_in_one.C240,all_in_one.C241
+          ,all_in_one.C242,all_in_one.C243,all_in_one.C303,all_in_one.C307,all_in_one.C1010
+          ,all_in_one.C1011,all_in_one.C7,all_in_one.C34,all_in_one.C49,all_in_one.C101
+          ,all_in_one.C154,all_in_one.C155,all_in_one.C166,all_in_one.C226
+          FROM (SELECT m.*
+          FROM WEB50.M_1_TOWN_S m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_1_TOWN_S_CNT" comment="WEB50.M_1_TOWN_S" schema="WEB50" table="M_1_TOWN_S">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LPU_ACCESS_FILTER" default="NULL"/>
+
+
+
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+
+          WITH zones
+          AS (SELECT zone_id
+          FROM web50.m_25_zone_to_srv_district
+          WHERE SRV_DISTRICT_ID IN ({LPU_ACCESS_FILTER}) )
+
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_1_TOWN_S m
+          WHERE  m.zone_id IN (SELECT zone_id FROM zones)) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+</root>

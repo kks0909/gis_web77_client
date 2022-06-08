@@ -1,0 +1,58 @@
+﻿<root version="postgres 7.7.2.3">
+
+  <data id="STO_FORECAST_SCHEMA_DECORATE" comment="Зарамочное оформление" schema="PODS" table="STO_FORECAST_SCHEMA_DECORATE">
+    <select>
+<geoQuery idField="ID" geoField="X,Y">
+<query>
+SELECT 
+  id,
+  type,
+ label,
+  x,
+  y,
+  sequence
+FROM 
+  pods.STO_FORECAST_SCHEMA_DECORATE order by id, sequence
+    </query>
+</geoQuery>
+</select>
+  </data>
+
+   <data id="STO_FORECAST_ROUTE_PART" comment="Линии между объектами" schema="PODS" table="ILI_DATA">
+    <select>
+<geoQuery idField="ID" geoField="X,Y">
+   <var name="ROUTE_ID" default="null"/>
+<query>
+        WITH route_part_info as (
+select * from (
+select sb.station station_begin,se.station station_end,sb.route_id,c.*,
+rank() over (partition by ii.ili_inspection_id order by ii.begin_date desc) n
+ from pods.event_range e,pods.station_point sb,pods.station_point se,pods.sto_ili_inspection_calc c,
+ pods.ili_inspection ii
+where e.event_id=c.event_id
+and c.type_cl like 'Оценка состояния по межконструкционным участкам'
+and e.station_id_begin=sb.station_id
+and e.station_id_end=se.station_id
+and ii.ili_inspection_id=c.ili_inspection_id) d where  n=1)
+select 
+  r.id,
+   CASE WHEN i.STO_292_2007_VALUE_CONDITION &lt;= 0.03 THEN 'vas5_line'
+     WHEN i.STO_292_2007_VALUE_CONDITION &lt;= 0.06 AND i.STO_292_2007_VALUE_CONDITION &gt; 0.03 THEN 'vas6_line'
+     WHEN i.STO_292_2007_VALUE_CONDITION &lt;= 0.3 AND i.STO_292_2007_VALUE_CONDITION &gt; 0.06 THEN 'vas7_line'
+     WHEN i.STO_292_2007_VALUE_CONDITION &gt; 0.3 THEN 'vas8_line'
+     ELSE 'vas8_line' END "TYPE",
+  i.STO_292_2007_VALUE_CONDITION "label",
+  r.x,
+  r.y,
+  r.sequence
+ from pods.sto_forecast_route_part r
+left join 
+route_part_info i on i.route_id=r.route_id
+and abs(i.station_begin-r.km_start)&lt;1 and abs(i.station_end-r.km_end)&lt;1
+order by id,sequence
+    </query>
+</geoQuery>
+</select>
+  </data>
+   
+</root>

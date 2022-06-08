@@ -1,0 +1,104 @@
+﻿<!--7.7.6.9-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="0"
+            id="ADM_LIB_DOC_LIST"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelTemplateName="ADM_LIB_DOC_LIST"
+            layerId="WEB50_LIB_DOC" propertyPanelName="WEB50_LIB_DOC"
+            dataRequest="ADM_SEM.xml#FIRST_DOCS"
+            dataRequestChildren="ADM_SEM.xml#DOCS_BY_PARENT"
+            totalRecordsRequest="ADM_SEM.xml#FIRST_DOCS_CNT"
+            initialSortField="DOC_TYPE_ID,DESCR,DOC_ID"
+            >
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/catalog.png"
+        tooltip="Показать список в ленте"
+        clickEvent="gridAdmLibDocShowAllDocs"
+        isEnabled="true" />
+<picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить папку/файл"
+        clickEvent="gridAdmLibDocDeleteFolder"
+        selectedObjects="this"/>
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+      <columns:GridColumn headerText="" width="110" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="Название" dataField="NAME"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="300"/>
+      <columns:GridColumn headerText="Описание" dataField="DESCR"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="200"/>
+      <columns:GridColumn headerText="Дата создания" dataField="TIME_STAMP"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer"
+                          editable="true"
+                          filterComparisionType="date"
+                          width="140"/>
+      <columns:GridColumn headerText="Статус" dataField="STATUS_DESCR"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="100"/>
+      <columns:GridColumn headerText="DOC_ID" dataField="DOC_ID"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="40"/>
+      <!--<columns:GridColumn headerText="ID" dataField="ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          hidden="true"
+                          width="50"/>-->
+      <columns:GridColumn headerText="DOC_TYPE_ID" dataField="DOC_TYPE_ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          hidden="true"
+                          width="50"/>
+      <columns:GridColumn headerText="PARENT_DOC_ID" dataField="PARENT_DOC_ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          hidden="true"
+                          width="50"/>
+      <columns:GridColumn headerText="DOC_VERSION_ID" dataField="DOC_VERSION_ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          hidden="true"
+                          width="50"/>
+      <columns:GridColumn headerText="FILE_NAME" dataField="FILE_NAME"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          hidden="true"
+                          width="50"/>
+      <columns:GridColumn headerText="STATUS_ID" dataField="STATUS_ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          hidden="true"
+                          width="50"/>
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                            columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

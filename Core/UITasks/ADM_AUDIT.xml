@@ -1,0 +1,10 @@
+﻿<ROOT prevTask="close" version="6.0.2.0">
+  <hbox percentWidth="100" percentHeight="100">
+	<panel id="ADM_AUDIT" percentWidth="100" percentHeight="100" reload="true">
+		<settings>
+			<requestFilterByCategory>ADM_SEM.xml#WEB50_B_AUDIT_EVENT_CATEGORY</requestFilterByCategory>
+			<requestEvents>ADM_SEM.xml#WEB50_B_AUDIT_EVENT</requestEvents>
+		</settings>
+	</panel>
+  </hbox>
+</ROOT>

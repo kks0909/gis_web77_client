@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<kml version="7.7.1.2">
+  <Document>
+    <Style id="COSMETIC_OBJECT" schema="COSMETIC" table="OBJECT" comment="COSMETIC.OBJECT">
+		<zoomMin>NAN</zoomMin>
+		<zoomMax>NAN</zoomMax>
+		<IconStyle>
+			<Icon>
+				<form>circle</form>
+				<size>4</size>
+			</Icon>
+			<color>FF000000</color>
+			<outline>1</outline>
+		</IconStyle>
+		<LineStyle>
+			<color>FF000000</color>
+			<width>1</width>
+		</LineStyle>
+		<LabelStyle>
+			<zoomMin>NaN</zoomMin>
+			<zoomMax>NaN</zoomMax>
+			<color>FF000000</color>
+			<fontSize>10</fontSize>
+			<bold>0</bold>
+			<italic>0</italic>
+			<underline>0</underline>
+			<duplicate>1</duplicate>
+			<overlap>1</overlap>
+		</LabelStyle>
+    </Style>
+    <Style id="BUFFER_OBJECT" schema="BUFFER" table="OBJECT" comment="BUFFER.OBJECT"><!-- стиль такой же как для слоя WEB50_KADASTR_PODS_MDR -->
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <MIStyle>
+        <data />
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+ 	   <LineStyle>
+		<color>FF0000FF</color>
+		<width>2</width>
+	  </LineStyle>
+	  <LineStyle>
+		<color>FFFFFFFF</color>
+		<width>6</width>
+	  </LineStyle>
+	  <PolyStyle>
+		<color>1AFFFFFF</color>
+		<fill>1</fill>
+		<outline>1</outline>
+		<fillPattern>solid</fillPattern>
+	  </PolyStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>0</overlap>
+      </LabelStyle>
+    </Style>
+  </Document>
+</kml>

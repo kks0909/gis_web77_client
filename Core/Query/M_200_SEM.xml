@@ -1,0 +1,1190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="postgres 7.7.3.0" >
+	<data table="M_200_GIDR_LP" schema="WEB50" id="WEB50_M_200_GIDR_LP" comment="WEB50.M_200_GIDR_LP">
+		<select>
+			<dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<var name="USER_ID" default="-1" type="Decimal"/>
+				<query> SELECT ID, OBJ_CLS_ID CODE,TOPOLOGY_ID TOPO,NOMENCLATURE,DESCR,C7,C8,C20,C21,C23,C24,C25,C26,C29,C30,C32,C36,C38,C141,C142,C144,C145,C146,C147,C149,C150,C157,C158,C162,C163,C165,C168,C175,C180,C182,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER,MTIME,MUSER_ID,MUSER FROM WEB50.M_200_GIDR_LP d WHERE {FILTER}</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C7" default="" type="String"/>
+				<param name="C8" default="" type="String"/>
+				<param name="C20" default="" type="Decimal"/>
+				<param name="C21" default="" type="Decimal"/>
+				<param name="C23" default="" type="Decimal"/>
+				<param name="C24" default="" type="Decimal"/>
+				<param name="C25" default="" type="Decimal"/>
+				<param name="C26" default="" type="Decimal"/>
+				<param name="C29" default="" type="String"/>
+				<param name="C30" default="" type="Decimal"/>
+				<param name="C32" default="" type="Decimal"/>
+				<param name="C36" default="" type="Decimal"/>
+				<param name="C38" default="" type="String"/>
+				<param name="C141" default="" type="Decimal"/>
+				<param name="C142" default="" type="Decimal"/>
+				<param name="C144" default="" type="Decimal"/>
+				<param name="C145" default="" type="Decimal"/>
+				<param name="C146" default="" type="Decimal"/>
+				<param name="C147" default="" type="Decimal"/>
+				<param name="C149" default="" type="Decimal"/>
+				<param name="C150" default="" type="Decimal"/>
+				<param name="C157" default="" type="Decimal"/>
+				<param name="C158" default="" type="Decimal"/>
+				<param name="C162" default="" type="String"/>
+				<param name="C163" default="" type="String"/>
+				<param name="C165" default="" type="String"/>
+				<param name="C168" default="" type="String"/>
+				<param name="C175" default="" type="Decimal"/>
+				<param name="C180" default="" type="String"/>
+				<param name="C182" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.M_200_GIDR_LP"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_SEM"  />				
+				<query>           
+              INSERT INTO WEB50.M_200_GIDR_LP(OBJ_CLS_ID,TOPOLOGY_ID,NOMENCLATURE,DESCR,C7,C8,C20,C21,C23,C24,C25,C26,C29,C30,C32,C36,C38,C141,C142,C144,C145,C146,C147,C149,C150,C157,C158,C162,C163,C165,C168,C175,C180,C182,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER)
+              VALUES(:CODE,:TOPO,:NOMENCLATURE,:DESCR,:C7,:C8,:C20,:C21,:C23,:C24,:C25,:C26,:C29,:C30,:C32,:C36,:C38,:C141,:C142,:C144,:C145,:C146,:C147,:C149,:C150,:C157,:C158,:C162,:C163,:C165,:C168,:C175,:C180,:C182,:CLASSIFIER_ID,current_timestamp,:USER_ID,:USER_LOGIN)
+                          
+            </query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C7" default="" type="String"/>
+				<param name="C8" default="" type="String"/>
+				<param name="C20" default="" type="Decimal"/>
+				<param name="C21" default="" type="Decimal"/>
+				<param name="C23" default="" type="Decimal"/>
+				<param name="C24" default="" type="Decimal"/>
+				<param name="C25" default="" type="Decimal"/>
+				<param name="C26" default="" type="Decimal"/>
+				<param name="C29" default="" type="String"/>
+				<param name="C30" default="" type="Decimal"/>
+				<param name="C32" default="" type="Decimal"/>
+				<param name="C36" default="" type="Decimal"/>
+				<param name="C38" default="" type="String"/>
+				<param name="C141" default="" type="Decimal"/>
+				<param name="C142" default="" type="Decimal"/>
+				<param name="C144" default="" type="Decimal"/>
+				<param name="C145" default="" type="Decimal"/>
+				<param name="C146" default="" type="Decimal"/>
+				<param name="C147" default="" type="Decimal"/>
+				<param name="C149" default="" type="Decimal"/>
+				<param name="C150" default="" type="Decimal"/>
+				<param name="C157" default="" type="Decimal"/>
+				<param name="C158" default="" type="Decimal"/>
+				<param name="C162" default="" type="String"/>
+				<param name="C163" default="" type="String"/>
+				<param name="C165" default="" type="String"/>
+				<param name="C168" default="" type="String"/>
+				<param name="C175" default="" type="Decimal"/>
+				<param name="C180" default="" type="String"/>
+				<param name="C182" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<param name="ID" type="Int64"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_SEM"  />					
+				<query>            
+              UPDATE WEB50.M_200_GIDR_LP
+              SET OBJ_CLS_ID=:CODE,TOPOLOGY_ID=:TOPO,NOMENCLATURE=:NOMENCLATURE,DESCR=:DESCR,C7=:C7,C8=:C8,C20=:C20,C21=:C21,C23=:C23,C24=:C24,C25=:C25,C26=:C26,C29=:C29,C30=:C30,C32=:C32,C36=:C36,C38=:C38,C141=:C141,C142=:C142,C144=:C144,C145=:C145,C146=:C146,C147=:C147,C149=:C149,C150=:C150,C157=:C157,C158=:C158,C162=:C162,C163=:C163,C165=:C165,C168=:C168,C175=:C175,C180=:C180,C182=:C182,CLASSIFIER_ID=:CLASSIFIER_ID,MTIME=current_timestamp,MUSER_ID=:USER_ID,MUSER=:USER_LOGIN 
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_SEM"  />					
+				<query>            
+              DELETE FROM WEB50.M_200_GIDR_LP
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_200_GIDR_S" schema="WEB50" id="WEB50_M_200_GIDR_S" comment="WEB50.M_200_GIDR_S">
+		<select>
+			<dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<query> SELECT ID, OBJ_CLS_ID CODE,TOPOLOGY_ID TOPO,NOMENCLATURE,DESCR,C7,C8,C11,C20,C21,C23,C24,C25,C26,C29,C30,C32,C36,C38,C141,C142,C145,C146,C147,C149,C150,C157,C158,C175,C180,C182,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER,MTIME,MUSER_ID,MUSER FROM WEB50.M_200_GIDR_S d WHERE {FILTER}</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C7" default="" type="String"/>
+				<param name="C8" default="" type="String"/>
+				<param name="C11" default="" type="String"/>
+				<param name="C20" default="" type="Decimal"/>
+				<param name="C21" default="" type="Decimal"/>
+				<param name="C23" default="" type="Decimal"/>
+				<param name="C24" default="" type="Decimal"/>
+				<param name="C25" default="" type="Decimal"/>
+				<param name="C26" default="" type="Decimal"/>
+				<param name="C29" default="" type="String"/>
+				<param name="C30" default="" type="Decimal"/>
+				<param name="C32" default="" type="Decimal"/>
+				<param name="C36" default="" type="Decimal"/>
+				<param name="C38" default="" type="String"/>
+				<param name="C141" default="" type="Decimal"/>
+				<param name="C142" default="" type="Decimal"/>
+				<param name="C145" default="" type="Decimal"/>
+				<param name="C146" default="" type="Decimal"/>
+				<param name="C147" default="" type="Decimal"/>
+				<param name="C149" default="" type="Decimal"/>
+				<param name="C150" default="" type="Decimal"/>
+				<param name="C157" default="" type="Decimal"/>
+				<param name="C158" default="" type="Decimal"/>
+				<param name="C175" default="" type="Decimal"/>
+				<param name="C180" default="" type="String"/>
+				<param name="C182" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.M_200_GIDR_S"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_SEM"  />					
+				<query>            
+              INSERT INTO WEB50.M_200_GIDR_S(OBJ_CLS_ID,TOPOLOGY_ID,NOMENCLATURE,DESCR,C7,C8,C11,C20,C21,C23,C24,C25,C26,C29,C30,C32,C36,C38,C141,C142,C145,C146,C147,C149,C150,C157,C158,C175,C180,C182,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER)
+              VALUES(:CODE,:TOPO,:NOMENCLATURE,:DESCR,:C7,:C8,:C11,:C20,:C21,:C23,:C24,:C25,:C26,:C29,:C30,:C32,:C36,:C38,:C141,:C142,:C145,:C146,:C147,:C149,:C150,:C157,:C158,:C175,:C180,:C182,:CLASSIFIER_ID,current_timestamp,:USER_ID,:USER_LOGIN)
+                          
+            </query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C7" default="" type="String"/>
+				<param name="C8" default="" type="String"/>
+				<param name="C11" default="" type="String"/>
+				<param name="C20" default="" type="Decimal"/>
+				<param name="C21" default="" type="Decimal"/>
+				<param name="C23" default="" type="Decimal"/>
+				<param name="C24" default="" type="Decimal"/>
+				<param name="C25" default="" type="Decimal"/>
+				<param name="C26" default="" type="Decimal"/>
+				<param name="C29" default="" type="String"/>
+				<param name="C30" default="" type="Decimal"/>
+				<param name="C32" default="" type="Decimal"/>
+				<param name="C36" default="" type="Decimal"/>
+				<param name="C38" default="" type="String"/>
+				<param name="C141" default="" type="Decimal"/>
+				<param name="C142" default="" type="Decimal"/>
+				<param name="C145" default="" type="Decimal"/>
+				<param name="C146" default="" type="Decimal"/>
+				<param name="C147" default="" type="Decimal"/>
+				<param name="C149" default="" type="Decimal"/>
+				<param name="C150" default="" type="Decimal"/>
+				<param name="C157" default="" type="Decimal"/>
+				<param name="C158" default="" type="Decimal"/>
+				<param name="C175" default="" type="Decimal"/>
+				<param name="C180" default="" type="String"/>
+				<param name="C182" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<param name="ID" type="Int64"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_SEM"  />				
+				<query>            
+              UPDATE WEB50.M_200_GIDR_S
+              SET OBJ_CLS_ID=:CODE,TOPOLOGY_ID=:TOPO,NOMENCLATURE=:NOMENCLATURE,DESCR=:DESCR,C7=:C7,C8=:C8,C11=:C11,C20=:C20,C21=:C21,C23=:C23,C24=:C24,C25=:C25,C26=:C26,C29=:C29,C30=:C30,C32=:C32,C36=:C36,C38=:C38,C141=:C141,C142=:C142,C145=:C145,C146=:C146,C147=:C147,C149=:C149,C150=:C150,C157=:C157,C158=:C158,C175=:C175,C180=:C180,C182=:C182,CLASSIFIER_ID=:CLASSIFIER_ID,MTIME=current_timestamp,MUSER_ID=:USER_ID,MUSER=:USER_LOGIN 
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_SEM"  />				
+				<query>           
+              DELETE FROM WEB50.M_200_GIDR_S
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_200_LIMITS" schema="WEB50" id="WEB50_M_200_LIMITS" comment="WEB50.M_200_LIMITS">
+		<select>
+			<dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<query> SELECT ID, OBJ_CLS_ID CODE,TOPOLOGY_ID TOPO,NOMENCLATURE,DESCR,C4,C5,C111,C112,C180,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER,MTIME,MUSER_ID,MUSER FROM WEB50.M_200_LIMITS d WHERE {FILTER}</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C4" default="" type="Decimal"/>
+				<param name="C5" default="" type="Decimal"/>
+				<param name="C111" default="" type="String"/>
+				<param name="C112" default="" type="String"/>
+				<param name="C180" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.M_200_LIMITS"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_SEM"  />					
+				<query>           
+              INSERT INTO WEB50.M_200_LIMITS(OBJ_CLS_ID,TOPOLOGY_ID,NOMENCLATURE,DESCR,C4,C5,C111,C112,C180,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER)
+              VALUES(:CODE,:TOPO,:NOMENCLATURE,:DESCR,:C4,:C5,:C111,:C112,:C180,:CLASSIFIER_ID,current_timestamp,:USER_ID,:USER_LOGIN)
+                          
+            </query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C4" default="" type="Decimal"/>
+				<param name="C5" default="" type="Decimal"/>
+				<param name="C111" default="" type="String"/>
+				<param name="C112" default="" type="String"/>
+				<param name="C180" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<param name="ID" type="Int64"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_SEM"  />				
+				<query>           
+              UPDATE WEB50.M_200_LIMITS
+              SET OBJ_CLS_ID=:CODE,TOPOLOGY_ID=:TOPO,NOMENCLATURE=:NOMENCLATURE,DESCR=:DESCR,C4=:C4,C5=:C5,C111=:C111,C112=:C112,C180=:C180,CLASSIFIER_ID=:CLASSIFIER_ID,MTIME=current_timestamp,MUSER_ID=:USER_ID,MUSER=:USER_LOGIN 
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_SEM"  />				
+				<query>            
+              DELETE FROM WEB50.M_200_LIMITS
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_200_PROM" schema="WEB50" id="WEB50_M_200_PROM" comment="WEB50.M_200_PROM">
+		<select>
+			<dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<query> SELECT ID, OBJ_CLS_ID CODE,TOPOLOGY_ID TOPO,NOMENCLATURE,DESCR,C51,C52,C53,C54,C55,C56,C57,C58,C59,C65,C66,C99,C142,C146,C160,C163,C164,C172,C180,C183,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER,MTIME,MUSER_ID,MUSER FROM WEB50.M_200_PROM d WHERE {FILTER}</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C51" default="" type="String"/>
+				<param name="C52" default="" type="String"/>
+				<param name="C53" default="" type="String"/>
+				<param name="C54" default="" type="String"/>
+				<param name="C55" default="" type="String"/>
+				<param name="C56" default="" type="String"/>
+				<param name="C57" default="" type="Decimal"/>
+				<param name="C58" default="" type="Decimal"/>
+				<param name="C59" default="" type="String"/>
+				<param name="C65" default="" type="String"/>
+				<param name="C66" default="" type="String"/>
+				<param name="C99" default="" type="String"/>
+				<param name="C142" default="" type="Decimal"/>
+				<param name="C146" default="" type="Decimal"/>
+				<param name="C160" default="" type="Decimal"/>
+				<param name="C163" default="" type="String"/>
+				<param name="C164" default="" type="String"/>
+				<param name="C172" default="" type="String"/>
+				<param name="C180" default="" type="String"/>
+				<param name="C183" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.M_200_PROM"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_SEM"  />					
+				<query>           
+              INSERT INTO WEB50.M_200_PROM(OBJ_CLS_ID,TOPOLOGY_ID,NOMENCLATURE,DESCR,C51,C52,C53,C54,C55,C56,C57,C58,C59,C65,C66,C99,C142,C146,C160,C163,C164,C172,C180,C183,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER)
+              VALUES(:CODE,:TOPO,:NOMENCLATURE,:DESCR,:C51,:C52,:C53,:C54,:C55,:C56,:C57,:C58,:C59,:C65,:C66,:C99,:C142,:C146,:C160,:C163,:C164,:C172,:C180,:C183,:CLASSIFIER_ID,current_timestamp,:USER_ID,:USER_LOGIN)
+                          
+            </query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C51" default="" type="String"/>
+				<param name="C52" default="" type="String"/>
+				<param name="C53" default="" type="String"/>
+				<param name="C54" default="" type="String"/>
+				<param name="C55" default="" type="String"/>
+				<param name="C56" default="" type="String"/>
+				<param name="C57" default="" type="Decimal"/>
+				<param name="C58" default="" type="Decimal"/>
+				<param name="C59" default="" type="String"/>
+				<param name="C65" default="" type="String"/>
+				<param name="C66" default="" type="String"/>
+				<param name="C99" default="" type="String"/>
+				<param name="C142" default="" type="Decimal"/>
+				<param name="C146" default="" type="Decimal"/>
+				<param name="C160" default="" type="Decimal"/>
+				<param name="C163" default="" type="String"/>
+				<param name="C164" default="" type="String"/>
+				<param name="C172" default="" type="String"/>
+				<param name="C180" default="" type="String"/>
+				<param name="C183" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<param name="ID" type="Int64"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_SEM"  />				
+				<query>            
+              UPDATE WEB50.M_200_PROM
+              SET OBJ_CLS_ID=:CODE,TOPOLOGY_ID=:TOPO,NOMENCLATURE=:NOMENCLATURE,DESCR=:DESCR,C51=:C51,C52=:C52,C53=:C53,C54=:C54,C55=:C55,C56=:C56,C57=:C57,C58=:C58,C59=:C59,C65=:C65,C66=:C66,C99=:C99,C142=:C142,C146=:C146,C160=:C160,C163=:C163,C164=:C164,C172=:C172,C180=:C180,C183=:C183,CLASSIFIER_ID=:CLASSIFIER_ID,MTIME=current_timestamp,MUSER_ID=:USER_ID,MUSER=:USER_LOGIN 
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_SEM"  />				
+				<query>           
+              DELETE FROM WEB50.M_200_PROM
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_200_PROM_GAS" schema="WEB50" id="WEB50_M_200_PROM_GAS" comment="WEB50.M_200_PROM_GAS">
+		<select>
+			<dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<query> SELECT ID, OBJ_CLS_ID CODE,TOPOLOGY_ID TOPO,NOMENCLATURE,DESCR,C51,C52,C53,C54,C55,C56,C57,C58,C59,C65,C66,C99,C142,C146,C160,C163,C164,C172,C180,C183,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER,MTIME,MUSER_ID,MUSER FROM WEB50.M_200_PROM_GAS d WHERE {FILTER}</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C51" default="" type="String"/>
+				<param name="C52" default="" type="String"/>
+				<param name="C53" default="" type="String"/>
+				<param name="C54" default="" type="String"/>
+				<param name="C55" default="" type="String"/>
+				<param name="C56" default="" type="String"/>
+				<param name="C57" default="" type="Decimal"/>
+				<param name="C58" default="" type="Decimal"/>
+				<param name="C59" default="" type="String"/>
+				<param name="C65" default="" type="String"/>
+				<param name="C66" default="" type="String"/>
+				<param name="C99" default="" type="String"/>
+				<param name="C142" default="" type="Decimal"/>
+				<param name="C146" default="" type="Decimal"/>
+				<param name="C160" default="" type="Decimal"/>
+				<param name="C163" default="" type="String"/>
+				<param name="C164" default="" type="String"/>
+				<param name="C172" default="" type="String"/>
+				<param name="C180" default="" type="String"/>
+				<param name="C183" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.M_200_PROM_GAS"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_SEM"  />					
+				<query>            
+              INSERT INTO WEB50.M_200_PROM_GAS(OBJ_CLS_ID,TOPOLOGY_ID,NOMENCLATURE,DESCR,C51,C52,C53,C54,C55,C56,C57,C58,C59,C65,C66,C99,C142,C146,C160,C163,C164,C172,C180,C183,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER)
+              VALUES(:CODE,:TOPO,:NOMENCLATURE,:DESCR,:C51,:C52,:C53,:C54,:C55,:C56,:C57,:C58,:C59,:C65,:C66,:C99,:C142,:C146,:C160,:C163,:C164,:C172,:C180,:C183,:CLASSIFIER_ID,current_timestamp,:USER_ID,:USER_LOGIN)
+                          
+            </query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C51" default="" type="String"/>
+				<param name="C52" default="" type="String"/>
+				<param name="C53" default="" type="String"/>
+				<param name="C54" default="" type="String"/>
+				<param name="C55" default="" type="String"/>
+				<param name="C56" default="" type="String"/>
+				<param name="C57" default="" type="Decimal"/>
+				<param name="C58" default="" type="Decimal"/>
+				<param name="C59" default="" type="String"/>
+				<param name="C65" default="" type="String"/>
+				<param name="C66" default="" type="String"/>
+				<param name="C99" default="" type="String"/>
+				<param name="C142" default="" type="Decimal"/>
+				<param name="C146" default="" type="Decimal"/>
+				<param name="C160" default="" type="Decimal"/>
+				<param name="C163" default="" type="String"/>
+				<param name="C164" default="" type="String"/>
+				<param name="C172" default="" type="String"/>
+				<param name="C180" default="" type="String"/>
+				<param name="C183" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<param name="ID" type="Int64"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_SEM"  />				
+				<query>            
+              UPDATE WEB50.M_200_PROM_GAS
+              SET OBJ_CLS_ID=:CODE,TOPOLOGY_ID=:TOPO,NOMENCLATURE=:NOMENCLATURE,DESCR=:DESCR,C51=:C51,C52=:C52,C53=:C53,C54=:C54,C55=:C55,C56=:C56,C57=:C57,C58=:C58,C59=:C59,C65=:C65,C66=:C66,C99=:C99,C142=:C142,C146=:C146,C160=:C160,C163=:C163,C164=:C164,C172=:C172,C180=:C180,C183=:C183,CLASSIFIER_ID=:CLASSIFIER_ID,MTIME=current_timestamp,MUSER_ID=:USER_ID,MUSER=:USER_LOGIN 
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_SEM"  />				
+				<query>           
+              DELETE FROM WEB50.M_200_PROM_GAS
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_200_RAST_LP" schema="WEB50" id="WEB50_M_200_RAST_LP" comment="WEB50.M_200_RAST_LP">
+		<select>
+			<dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<query> SELECT ID, OBJ_CLS_ID CODE,TOPOLOGY_ID TOPO,NOMENCLATURE,DESCR,C91,C92,C95,C96,C97,C102,C143,C149,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER,MTIME,MUSER_ID,MUSER FROM WEB50.M_200_RAST_LP d WHERE {FILTER}</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C91" default="" type="String"/>
+				<param name="C92" default="" type="String"/>
+				<param name="C95" default="" type="Decimal"/>
+				<param name="C96" default="" type="Decimal"/>
+				<param name="C97" default="" type="Decimal"/>
+				<param name="C102" default="" type="String"/>
+				<param name="C143" default="" type="Decimal"/>
+				<param name="C149" default="" type="Decimal"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.M_200_RAST_LP"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_SEM"  />					
+				<query>            
+              INSERT INTO WEB50.M_200_RAST_LP(OBJ_CLS_ID,TOPOLOGY_ID,NOMENCLATURE,DESCR,C91,C92,C95,C96,C97,C102,C143,C149,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER)
+              VALUES(:CODE,:TOPO,:NOMENCLATURE,:DESCR,:C91,:C92,:C95,:C96,:C97,:C102,:C143,:C149,:CLASSIFIER_ID,current_timestamp,:USER_ID,:USER_LOGIN)
+                          
+            </query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C91" default="" type="String"/>
+				<param name="C92" default="" type="String"/>
+				<param name="C95" default="" type="Decimal"/>
+				<param name="C96" default="" type="Decimal"/>
+				<param name="C97" default="" type="Decimal"/>
+				<param name="C102" default="" type="String"/>
+				<param name="C143" default="" type="Decimal"/>
+				<param name="C149" default="" type="Decimal"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<param name="ID" type="Int64"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_SEM"  />				
+				<query>            
+              UPDATE WEB50.M_200_RAST_LP
+              SET OBJ_CLS_ID=:CODE,TOPOLOGY_ID=:TOPO,NOMENCLATURE=:NOMENCLATURE,DESCR=:DESCR,C91=:C91,C92=:C92,C95=:C95,C96=:C96,C97=:C97,C102=:C102,C143=:C143,C149=:C149,CLASSIFIER_ID=:CLASSIFIER_ID,MTIME=current_timestamp,MUSER_ID=:USER_ID,MUSER=:USER_LOGIN 
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_SEM"  />				
+				<query>            
+              DELETE FROM WEB50.M_200_RAST_LP
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_200_RAST_S" schema="WEB50" id="WEB50_M_200_RAST_S" comment="WEB50.M_200_RAST_S">
+		<select>
+			<dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<query> SELECT ID, OBJ_CLS_ID CODE,TOPOLOGY_ID TOPO,NOMENCLATURE,DESCR,C91,C92,C94,C95,C96,C102,C103,C104,C107,C143,C149,C180,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER,MTIME,MUSER_ID,MUSER FROM WEB50.M_200_RAST_S d WHERE {FILTER}</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C91" default="" type="String"/>
+				<param name="C92" default="" type="String"/>
+				<param name="C94" default="" type="String"/>
+				<param name="C95" default="" type="Decimal"/>
+				<param name="C96" default="" type="Decimal"/>
+				<param name="C102" default="" type="String"/>
+				<param name="C103" default="" type="String"/>
+				<param name="C104" default="" type="String"/>
+				<param name="C107" default="" type="String"/>
+				<param name="C143" default="" type="Decimal"/>
+				<param name="C149" default="" type="Decimal"/>
+				<param name="C180" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.M_200_RAST_S"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_SEM"  />					
+				<query>            
+              INSERT INTO WEB50.M_200_RAST_S(OBJ_CLS_ID,TOPOLOGY_ID,NOMENCLATURE,DESCR,C91,C92,C94,C95,C96,C102,C103,C104,C107,C143,C149,C180,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER)
+              VALUES(:CODE,:TOPO,:NOMENCLATURE,:DESCR,:C91,:C92,:C94,:C95,:C96,:C102,:C103,:C104,:C107,:C143,:C149,:C180,:CLASSIFIER_ID,current_timestamp,:USER_ID,:USER_LOGIN)
+                          
+            </query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C91" default="" type="String"/>
+				<param name="C92" default="" type="String"/>
+				<param name="C94" default="" type="String"/>
+				<param name="C95" default="" type="Decimal"/>
+				<param name="C96" default="" type="Decimal"/>
+				<param name="C102" default="" type="String"/>
+				<param name="C103" default="" type="String"/>
+				<param name="C104" default="" type="String"/>
+				<param name="C107" default="" type="String"/>
+				<param name="C143" default="" type="Decimal"/>
+				<param name="C149" default="" type="Decimal"/>
+				<param name="C180" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<param name="ID" type="Int64"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_SEM"  />				
+				<query>            
+              UPDATE WEB50.M_200_RAST_S
+              SET OBJ_CLS_ID=:CODE,TOPOLOGY_ID=:TOPO,NOMENCLATURE=:NOMENCLATURE,DESCR=:DESCR,C91=:C91,C92=:C92,C94=:C94,C95=:C95,C96=:C96,C102=:C102,C103=:C103,C104=:C104,C107=:C107,C143=:C143,C149=:C149,C180=:C180,CLASSIFIER_ID=:CLASSIFIER_ID,MTIME=current_timestamp,MUSER_ID=:USER_ID,MUSER=:USER_LOGIN 
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_SEM"  />				
+				<query>            
+              DELETE FROM WEB50.M_200_RAST_S
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_200_RELIEF" schema="WEB50" id="WEB50_M_200_RELIEF" comment="WEB50.M_200_RELIEF">
+		<select>
+			<dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<query> SELECT ID, OBJ_CLS_ID CODE,TOPOLOGY_ID TOPO,NOMENCLATURE,DESCR,C66,C89,C90,C141,C142,C146,C149,C150,C180,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER,MTIME,MUSER_ID,MUSER FROM WEB50.M_200_RELIEF d WHERE {FILTER}</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C66" default="" type="String"/>
+				<param name="C89" default="" type="String"/>
+				<param name="C90" default="" type="String"/>
+				<param name="C141" default="" type="Decimal"/>
+				<param name="C142" default="" type="Decimal"/>
+				<param name="C146" default="" type="Decimal"/>
+				<param name="C149" default="" type="Decimal"/>
+				<param name="C150" default="" type="Decimal"/>
+				<param name="C180" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.M_200_RELIEF"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_SEM"  />					
+				<query>           
+              INSERT INTO WEB50.M_200_RELIEF(OBJ_CLS_ID,TOPOLOGY_ID,NOMENCLATURE,DESCR,C66,C89,C90,C141,C142,C146,C149,C150,C180,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER)
+              VALUES(:CODE,:TOPO,:NOMENCLATURE,:DESCR,:C66,:C89,:C90,:C141,:C142,:C146,:C149,:C150,:C180,:CLASSIFIER_ID,current_timestamp,:USER_ID,:USER_LOGIN)
+                          
+            </query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C66" default="" type="String"/>
+				<param name="C89" default="" type="String"/>
+				<param name="C90" default="" type="String"/>
+				<param name="C141" default="" type="Decimal"/>
+				<param name="C142" default="" type="Decimal"/>
+				<param name="C146" default="" type="Decimal"/>
+				<param name="C149" default="" type="Decimal"/>
+				<param name="C150" default="" type="Decimal"/>
+				<param name="C180" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<param name="ID" type="Int64"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_SEM"  />				
+				<query>            
+              UPDATE WEB50.M_200_RELIEF
+              SET OBJ_CLS_ID=:CODE,TOPOLOGY_ID=:TOPO,NOMENCLATURE=:NOMENCLATURE,DESCR=:DESCR,C66=:C66,C89=:C89,C90=:C90,C141=:C141,C142=:C142,C146=:C146,C149=:C149,C150=:C150,C180=:C180,CLASSIFIER_ID=:CLASSIFIER_ID,MTIME=current_timestamp,MUSER_ID=:USER_ID,MUSER=:USER_LOGIN 
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_SEM"  />				
+				<query>           
+              DELETE FROM WEB50.M_200_RELIEF
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_200_ROADS" schema="WEB50" id="WEB50_M_200_ROADS" comment="WEB50.M_200_ROADS">
+		<select>
+			<dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<query> SELECT ID, OBJ_CLS_ID CODE,TOPOLOGY_ID TOPO,NOMENCLATURE,DESCR,C67,C68,C70,C71,C72,C75,C76,C77,C80,C87,C142,C146,C147,C149,C158,C161,C162,C163,C165,C180,C182,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER,MTIME,MUSER_ID,MUSER FROM WEB50.M_200_ROADS d WHERE {FILTER}</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C67" default="" type="String"/>
+				<param name="C68" default="" type="String"/>
+				<param name="C70" default="" type="Decimal"/>
+				<param name="C71" default="" type="Decimal"/>
+				<param name="C72" default="" type="String"/>
+				<param name="C75" default="" type="String"/>
+				<param name="C76" default="" type="String"/>
+				<param name="C77" default="" type="Decimal"/>
+				<param name="C80" default="" type="Decimal"/>
+				<param name="C87" default="" type="String"/>
+				<param name="C142" default="" type="Decimal"/>
+				<param name="C146" default="" type="Decimal"/>
+				<param name="C147" default="" type="Decimal"/>
+				<param name="C149" default="" type="Decimal"/>
+				<param name="C158" default="" type="Decimal"/>
+				<param name="C161" default="" type="String"/>
+				<param name="C162" default="" type="String"/>
+				<param name="C163" default="" type="String"/>
+				<param name="C165" default="" type="String"/>
+				<param name="C180" default="" type="String"/>
+				<param name="C182" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.M_200_ROADS"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_SEM"  />					
+				<query>           
+              INSERT INTO WEB50.M_200_ROADS(OBJ_CLS_ID,TOPOLOGY_ID,NOMENCLATURE,DESCR,C67,C68,C70,C71,C72,C75,C76,C77,C80,C87,C142,C146,C147,C149,C158,C161,C162,C163,C165,C180,C182,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER)
+              VALUES(:CODE,:TOPO,:NOMENCLATURE,:DESCR,:C67,:C68,:C70,:C71,:C72,:C75,:C76,:C77,:C80,:C87,:C142,:C146,:C147,:C149,:C158,:C161,:C162,:C163,:C165,:C180,:C182,:CLASSIFIER_ID,current_timestamp,:USER_ID,:USER_LOGIN)
+                          
+            </query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C67" default="" type="String"/>
+				<param name="C68" default="" type="String"/>
+				<param name="C70" default="" type="Decimal"/>
+				<param name="C71" default="" type="Decimal"/>
+				<param name="C72" default="" type="String"/>
+				<param name="C75" default="" type="String"/>
+				<param name="C76" default="" type="String"/>
+				<param name="C77" default="" type="Decimal"/>
+				<param name="C80" default="" type="Decimal"/>
+				<param name="C87" default="" type="String"/>
+				<param name="C142" default="" type="Decimal"/>
+				<param name="C146" default="" type="Decimal"/>
+				<param name="C147" default="" type="Decimal"/>
+				<param name="C149" default="" type="Decimal"/>
+				<param name="C158" default="" type="Decimal"/>
+				<param name="C161" default="" type="String"/>
+				<param name="C162" default="" type="String"/>
+				<param name="C163" default="" type="String"/>
+				<param name="C165" default="" type="String"/>
+				<param name="C180" default="" type="String"/>
+				<param name="C182" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<param name="ID" type="Int64"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_SEM"  />				
+				<query>            
+              UPDATE WEB50.M_200_ROADS
+              SET OBJ_CLS_ID=:CODE,TOPOLOGY_ID=:TOPO,NOMENCLATURE=:NOMENCLATURE,DESCR=:DESCR,C67=:C67,C68=:C68,C70=:C70,C71=:C71,C72=:C72,C75=:C75,C76=:C76,C77=:C77,C80=:C80,C87=:C87,C142=:C142,C146=:C146,C147=:C147,C149=:C149,C158=:C158,C161=:C161,C162=:C162,C163=:C163,C165=:C165,C180=:C180,C182=:C182,CLASSIFIER_ID=:CLASSIFIER_ID,MTIME=current_timestamp,MUSER_ID=:USER_ID,MUSER=:USER_LOGIN 
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_SEM"  />				
+				<query>            
+              DELETE FROM WEB50.M_200_ROADS
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_200_SURVEY" schema="WEB50" id="WEB50_M_200_SURVEY" comment="WEB50.M_200_SURVEY">
+		<select>
+			<dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<query> SELECT ID, OBJ_CLS_ID CODE,TOPOLOGY_ID TOPO,NOMENCLATURE,DESCR,C1,C141,C168,C180,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER,MTIME,MUSER_ID,MUSER FROM WEB50.M_200_SURVEY d WHERE {FILTER}</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C1" default="" type="String"/>
+				<param name="C141" default="" type="Decimal"/>
+				<param name="C168" default="" type="String"/>
+				<param name="C180" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.M_200_SURVEY"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_SEM"  />					
+				<query>           
+              INSERT INTO WEB50.M_200_SURVEY(OBJ_CLS_ID,TOPOLOGY_ID,NOMENCLATURE,DESCR,C1,C141,C168,C180,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER)
+              VALUES(:CODE,:TOPO,:NOMENCLATURE,:DESCR,:C1,:C141,:C168,:C180,:CLASSIFIER_ID,current_timestamp,:USER_ID,:USER_LOGIN)
+                          
+            </query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C1" default="" type="String"/>
+				<param name="C141" default="" type="Decimal"/>
+				<param name="C168" default="" type="String"/>
+				<param name="C180" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<param name="ID" type="Int64"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_SEM"  />				
+				<query>            
+              UPDATE WEB50.M_200_SURVEY
+              SET OBJ_CLS_ID=:CODE,TOPOLOGY_ID=:TOPO,NOMENCLATURE=:NOMENCLATURE,DESCR=:DESCR,C1=:C1,C141=:C141,C168=:C168,C180=:C180,CLASSIFIER_ID=:CLASSIFIER_ID,MTIME=current_timestamp,MUSER_ID=:USER_ID,MUSER=:USER_LOGIN 
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_SEM"  />				
+				<query>            
+              DELETE FROM WEB50.M_200_SURVEY
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_200_SWAMP" schema="WEB50" id="WEB50_M_200_SWAMP" comment="WEB50.M_200_SWAMP">
+		<select>
+			<dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<query> SELECT ID, OBJ_CLS_ID CODE,TOPOLOGY_ID TOPO,NOMENCLATURE,DESCR,C105,C180,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER,MTIME,MUSER_ID,MUSER FROM WEB50.M_200_SWAMP d WHERE {FILTER}</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C105" default="" type="Decimal"/>
+				<param name="C180" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.M_200_SWAMP"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_SEM"  />					
+				<query>           
+              INSERT INTO WEB50.M_200_SWAMP(OBJ_CLS_ID,TOPOLOGY_ID,NOMENCLATURE,DESCR,C105,C180,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER)
+              VALUES(:CODE,:TOPO,:NOMENCLATURE,:DESCR,:C105,:C180,:CLASSIFIER_ID,current_timestamp,:USER_ID,:USER_LOGIN)
+                          
+            </query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C105" default="" type="Decimal"/>
+				<param name="C180" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<param name="ID" type="Int64"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_SEM"  />				
+				<query>            
+              UPDATE WEB50.M_200_SWAMP
+              SET OBJ_CLS_ID=:CODE,TOPOLOGY_ID=:TOPO,NOMENCLATURE=:NOMENCLATURE,DESCR=:DESCR,C105=:C105,C180=:C180,CLASSIFIER_ID=:CLASSIFIER_ID,MTIME=current_timestamp,MUSER_ID=:USER_ID,MUSER=:USER_LOGIN 
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_SEM"  />				
+				<query>            
+              DELETE FROM WEB50.M_200_SWAMP
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_200_TEXT" schema="WEB50" id="WEB50_M_200_TEXT" comment="WEB50.M_200_TEXT">
+		<select>
+			<dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<query> SELECT ID, OBJ_CLS_ID CODE,TOPOLOGY_ID TOPO,NOMENCLATURE,DESCR,MIF_TEXT,C9,C171,C172,C183,C192,C193,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER,MTIME,MUSER_ID,MUSER FROM WEB50.M_200_TEXT d WHERE {FILTER}</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="TEXT" default="" type="String"/>
+				<param name="C9" default="" type="String"/>
+				<param name="C171" default="" type="String"/>
+				<param name="C172" default="" type="String"/>
+				<param name="C183" default="" type="String"/>
+				<param name="C192" default="" type="String"/>
+				<param name="C193" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.M_200_TEXT"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_SEM"  />					
+				<query>           
+              INSERT INTO WEB50.M_200_TEXT(OBJ_CLS_ID,TOPOLOGY_ID,NOMENCLATURE,DESCR,MIF_TEXT,C9,C171,C172,C183,C192,C193,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER)
+              VALUES(:CODE,:TOPO,:NOMENCLATURE,:DESCR,:TEXT,:C9,:C171,:C172,:C183,:C192,:C193,:CLASSIFIER_ID,current_timestamp,:USER_ID,:USER_LOGIN)
+                          
+            </query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="TEXT" default="" type="String"/>
+				<param name="C9" default="" type="String"/>
+				<param name="C171" default="" type="String"/>
+				<param name="C172" default="" type="String"/>
+				<param name="C183" default="" type="String"/>
+				<param name="C192" default="" type="String"/>
+				<param name="C193" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<param name="ID" type="Int64"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_SEM"  />				
+				<query>           
+              UPDATE WEB50.M_200_TEXT
+              SET OBJ_CLS_ID=:CODE,TOPOLOGY_ID=:TOPO,NOMENCLATURE=:NOMENCLATURE,DESCR=:DESCR,MIF_TEXT=:TEXT,C9=:C9,C171=:C171,C172=:C172,C183=:C183,C192=:C192,C193=:C193,CLASSIFIER_ID=:CLASSIFIER_ID,MTIME=current_timestamp,MUSER_ID=:USER_ID,MUSER=:USER_LOGIN 
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_SEM"  />				
+				<query>          
+              DELETE FROM WEB50.M_200_TEXT
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_200_TOWN" schema="WEB50" id="WEB50_M_200_TOWN" comment="WEB50.M_200_TOWN">
+		<select>
+			<dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<query> SELECT ID, OBJ_CLS_ID CODE,TOPOLOGY_ID TOPO,NOMENCLATURE,DESCR,C39,C40,C41,C42,C44,C45,C51,C52,C65,C66,C87,C99,C142,C163,C180,C182,C192,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER,MTIME,MUSER_ID,MUSER FROM WEB50.M_200_TOWN d WHERE {FILTER}</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C39" default="" type="String"/>
+				<param name="C40" default="" type="String"/>
+				<param name="C41" default="" type="String"/>
+				<param name="C42" default="" type="Decimal"/>
+				<param name="C44" default="" type="String"/>
+				<param name="C45" default="" type="String"/>
+				<param name="C51" default="" type="String"/>
+				<param name="C52" default="" type="String"/>
+				<param name="C65" default="" type="String"/>
+				<param name="C66" default="" type="String"/>
+				<param name="C87" default="" type="String"/>
+				<param name="C99" default="" type="String"/>
+				<param name="C142" default="" type="Decimal"/>
+				<param name="C163" default="" type="String"/>
+				<param name="C180" default="" type="String"/>
+				<param name="C182" default="" type="String"/>
+				<param name="C192" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.M_200_TOWN"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_SEM"  />					
+				<query>           
+              INSERT INTO WEB50.M_200_TOWN(OBJ_CLS_ID,TOPOLOGY_ID,NOMENCLATURE,DESCR,C39,C40,C41,C42,C44,C45,C51,C52,C65,C66,C87,C99,C142,C163,C180,C182,C192,CLASSIFIER_ID,CTIME,CUSER_ID,CUSER)
+              VALUES(:CODE,:TOPO,:NOMENCLATURE,:DESCR,:C39,:C40,:C41,:C42,:C44,:C45,:C51,:C52,:C65,:C66,:C87,:C99,:C142,:C163,:C180,:C182,:C192,:CLASSIFIER_ID,current_timestamp,:USER_ID,:USER_LOGIN)
+                          
+            </query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="CODE" default="" type="String"/>
+				<param name="TOPO" default="" type="Decimal"/>
+				<param name="NOMENCLATURE" default="UNKNOWN" type="String"/>
+				<param name="DESCR" default="" type="String"/>
+				<param name="C39" default="" type="String"/>
+				<param name="C40" default="" type="String"/>
+				<param name="C41" default="" type="String"/>
+				<param name="C42" default="" type="Decimal"/>
+				<param name="C44" default="" type="String"/>
+				<param name="C45" default="" type="String"/>
+				<param name="C51" default="" type="String"/>
+				<param name="C52" default="" type="String"/>
+				<param name="C65" default="" type="String"/>
+				<param name="C66" default="" type="String"/>
+				<param name="C87" default="" type="String"/>
+				<param name="C99" default="" type="String"/>
+				<param name="C142" default="" type="Decimal"/>
+				<param name="C163" default="" type="String"/>
+				<param name="C180" default="" type="String"/>
+				<param name="C182" default="" type="String"/>
+				<param name="C192" default="" type="String"/>
+				<param name="CLASSIFIER_ID" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<param name="ID" type="Int64"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_SEM"  />				
+				<query>           
+              UPDATE WEB50.M_200_TOWN
+              SET OBJ_CLS_ID=:CODE,TOPOLOGY_ID=:TOPO,NOMENCLATURE=:NOMENCLATURE,DESCR=:DESCR,C39=:C39,C40=:C40,C41=:C41,C42=:C42,C44=:C44,C45=:C45,C51=:C51,C52=:C52,C65=:C65,C66=:C66,C87=:C87,C99=:C99,C142=:C142,C163=:C163,C180=:C180,C182=:C182,C192=:C192,CLASSIFIER_ID=:CLASSIFIER_ID,MTIME=current_timestamp,MUSER_ID=:USER_ID,MUSER=:USER_LOGIN 
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_SEM"  />				
+				<query>          
+              DELETE FROM WEB50.M_200_TOWN
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_200_NOMENCLATURE_REF" schema="WEB50" id="WEB50_M_200_NOMENCLATURE_REF" comment="WEB50.M_200_NOMENCLATURE_REF">
+		<select>
+			<dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<query>
+               SELECT * FROM (SELECT ID, CTIME, CUSER, CUSER_ID, MTIME, MUSER, MUSER_ID, NOMENCLATURE, NOMENCLATURE_ROMAN 
+                FROM WEB50.M_200_NOMENCLATURE_REF) d 
+               WHERE {FILTER}
+            </query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<var name="NOMENCLATURE" default="" type="String"/>
+				<param name="NOMENCLATURE_ROMAN" default="" type="String"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="ID" type="String" direction="Output" default="SELECT {NOMENCLATURE} id"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_SEM"  />					
+				<query>                 
+                    INSERT INTO WEB50.M_200_NOMENCLATURE_REF(NOMENCLATURE,NOMENCLATURE_ROMAN,CUSER_ID)
+                    VALUES('{NOMENCLATURE}',:NOMENCLATURE_ROMAN,:USER_ID)                
+                  </query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="NOMENCLATURE_ROMAN" default="" type="String"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="ID" type="String"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_SEM"  />				
+				<query>                 
+                    UPDATE WEB50.M_200_NOMENCLATURE_REF
+                    SET NOMENCLATURE_ROMAN=:NOMENCLATURE_ROMAN,MUSER_ID=:USER_ID 
+                    WHERE NOMENCLATURE = :ID                  
+                  </query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<var name="ID" type="String"/>
+				<var name="USER_ID" default="-1" type="Decimal"/>
+				<var name="CLASS_ID" type="String" direction="Input" default="WEB50_M200_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_SEM"  />				
+				<query>     
+					DO $$
+					BEGIN                     
+				    DELETE FROM WEB50.M_200_NOM_TO_SRV_DISTRICT
+                    WHERE NOMENCLATURE = '{ID}';
+                    DELETE FROM WEB50.M_200_NOMENCLATURE_REF
+                    WHERE NOMENCLATURE = '{ID}';
+					END $$                            
+                  </query>
+			</dbCommand>
+		</delete>
+	</data>
+</root>

@@ -1,0 +1,399 @@
+﻿<kml version="7.7.3.0">
+	  <Document>
+      
+      <Style table="COUNTY_BOUNDARY" schema="PODS" id="PODS_COUNTY_BOUNDARY"
+               comment="PODS.COUNTY_BOUNDARY"
+               descr="Административные территории вблизи трубопроводов">
+        <zoomMin>NAN</zoomMin>
+        <zoomMax>NAN</zoomMax>
+        <LineStyle>
+          <color>FF000000</color>
+          <width>4</width>
+        </LineStyle>
+      </Style>
+		<Style table="TOWNSHIP_BOUNDARY" schema="PODS" id="PODS_TOWNSHIP_BOUNDARY"
+             comment="TOWNSHIP_BOUNDARY"
+             descr="Номенклатурные листы карт вблизи трубопроводов">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+				        <color>FF000000</color>
+				        <width>4</width>
+			      </LineStyle>
+			      <LineStyle>
+				        <color>FFFFFFFF</color>
+				        <width>8</width>
+				    </LineStyle>
+			      <LabelStyle>
+				        <zoomMin>NaN</zoomMin>
+				        <zoomMax>NaN</zoomMax>
+				        <color>FF000000</color>
+				        <fontSize>10</fontSize>
+				        <bold>0</bold>
+				        <italic>0</italic>
+				        <underline>0</underline>
+                                        <auto>1</auto>
+				        <duplicate>0</duplicate>
+				        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    
+		    
+		    
+		    
+		    <Style table="OWNER_OPERATOR_RANGE" schema="PODS" id="PODS_OWNER_OPERATOR_RANGE"
+             comment="OWNER_OPERATOR_RANGE"
+             descr="Компании-операторы трубопроводов">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+				        <color>FF000000</color>
+				        <width>6</width>
+			      </LineStyle>
+			      <LineStyle>
+				        <color>FFFFFFFF</color>
+				        <width>9</width>
+				    </LineStyle>
+			      <LabelStyle>
+				        <zoomMin>NaN</zoomMin>
+				        <zoomMax>NaN</zoomMax>
+				        <color>FF000000</color>
+				        <fontSize>10</fontSize>
+				        <bold>0</bold>
+				        <italic>0</italic>
+				        <underline>0</underline>
+                                        <auto>1</auto>
+				        <duplicate>0</duplicate>
+				        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="TAX_DISTRICT_BOUNDARY" schema="PODS" id="PODS_TAX_DISTRICT_BOUNDARY"
+             comment="TAX_DISTRICT_BOUNDARY"
+             descr="Налоговые ставки по трубопроводам">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+				        <color>FF000000</color>
+				        <width>5</width>
+			      </LineStyle>
+			      <LineStyle>
+				        <color>FFFFDEFF</color>
+				        <width>8</width>
+				    </LineStyle>
+			      <LabelStyle>
+				        <zoomMin>NaN</zoomMin>
+				        <zoomMax>NaN</zoomMax>
+				        <color>FF000000</color>
+				        <fontSize>10</fontSize>
+				        <bold>0</bold>
+				        <italic>0</italic>
+				        <underline>0</underline>
+                                        <auto>1</auto>
+				        <duplicate>0</duplicate>
+				        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		   
+		    
+		    
+		    
+		    <Style table="FLOW_DIRECTION_RANGE" schema="PODS" id="PODS_FLOW_DIRECTION_RANGE"
+             comment="PODS.FLOW_DIRECTION_RANGE"
+             descr="Направление потока по участкам трубопроводов">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+				        <color>FF000000</color>
+				        <width>3</width>
+			      </LineStyle>
+			      <LabelStyle>
+				        <zoomMin>NaN</zoomMin>
+				        <zoomMax>NaN</zoomMax>
+				        <color>FF000000</color>
+				        <fontSize>10</fontSize>
+				        <bold>0</bold>
+				        <italic>0</italic>
+				        <underline>0</underline>
+                                        <auto>1</auto>
+				        <duplicate>0</duplicate>
+				        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="FLOW_DIRECTION_RANGE" schema="PODS" id="PODS_FLOW_DIRECTION_RANGE"
+             comment="PODS.FLOW_DIRECTION_RANGE"
+             descr="Направление потока по участку трубопровода неизвестно">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <value>UNKNOWN</value>
+			      <LineStyle>
+				        <color>FF000000</color>
+				        <width>3</width>
+			      </LineStyle>
+			      <LabelStyle>
+				        <zoomMin>NaN</zoomMin>
+				        <zoomMax>NaN</zoomMax>
+				        <color>FF000000</color>
+				        <fontSize>10</fontSize>
+				        <bold>0</bold>
+				        <italic>0</italic>
+				        <underline>0</underline>
+                                        <auto>1</auto>
+				        <duplicate>0</duplicate>
+				        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="FLOW_DIRECTION_RANGE" schema="PODS" id="PODS_FLOW_DIRECTION_RANGE"
+             comment="PODS.FLOW_DIRECTION_RANGE"
+             descr="Направление потока по участку трубопровода вправо">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <value>FLOW_DIR_TYPE_01</value>
+			      <LineStyle>
+				        <color>FF146C00</color>
+				        <!-- зеленый -->
+				<width>3</width>
+			      </LineStyle>
+			      <LabelStyle>
+				        <zoomMin>NaN</zoomMin>
+				        <zoomMax>NaN</zoomMax>
+				        <color>FF000000</color>
+				        <fontSize>10</fontSize>
+				        <bold>0</bold>
+				        <italic>0</italic>
+				        <underline>0</underline>
+                                        <auto>1</auto>
+				        <duplicate>0</duplicate>
+				        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="FLOW_DIRECTION_RANGE" schema="PODS" id="PODS_FLOW_DIRECTION_RANGE"
+             comment="PODS.FLOW_DIRECTION_RANGE"
+             descr="Направление потока по участку трубопровода влево">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <value>FLOW_DIR_TYPE_03</value>
+			      <LineStyle>
+				        <color>FFFF0000</color>
+				        <!-- красный -->
+				<width>3</width>
+			      </LineStyle>
+			      <LabelStyle>
+				        <zoomMin>NaN</zoomMin>
+				        <zoomMax>NaN</zoomMax>
+				        <color>FF000000</color>
+				        <fontSize>10</fontSize>
+				        <bold>0</bold>
+				        <italic>0</italic>
+				        <underline>0</underline>
+                                        <auto>1</auto>
+				        <duplicate>0</duplicate>
+				        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="PRODUCT_RANGE" schema="PODS" id="PODS_PRODUCT_RANGE"
+             comment="PODS.PRODUCT_RANGE"
+             descr="Участки транспортировки однотипных продуктов">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+				        <color>FFFF0000</color>
+				        <!-- красный -->
+				<width>6</width>
+			      </LineStyle>
+			      <LabelStyle>
+				        <zoomMin>NaN</zoomMin>
+				        <zoomMax>NaN</zoomMax>
+				        <color>FF000000</color>
+				        <fontSize>10</fontSize>
+				        <bold>0</bold>
+				        <italic>0</italic>
+				        <underline>0</underline>
+                                        <auto>1</auto>
+				        <duplicate>0</duplicate>
+				        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="HCA_BOUNDARY" schema="PODS" id="PODS_HCA_BOUNDARY"
+             comment="PODS.HCA_BOUNDARY"
+             descr="Зоны опасных последствий">
+			      <zoomMin>0</zoomMin>
+			      <zoomMax>25000</zoomMax>
+			      <LineStyle>
+				        <color>FFB08400</color>
+				        <width>5</width>
+			      </LineStyle>
+		    </Style>
+		    <Style table="HCA_BOUNDARY" schema="PODS" id="PODS_HCA_BOUNDARY"
+             comment="PODS.HCA_BOUNDARY"
+             descr="Зоны опасных последствий">
+			      <zoomMin>0</zoomMin>
+			      <zoomMax>25000</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <form>circle</form>
+					          <size>10</size>
+				        </Icon>
+				        <color>FFB08400</color>
+				        <outline>1</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="ODORANT_RANGE" schema="PODS" id="PODS_ODORANT_RANGE"
+             comment="ODORANT_RANGE"
+             descr="Участки трубопроводов по типам одоризации">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+				        <color>FF30A800</color>
+				        <width>3</width>
+			      </LineStyle>
+			      <LabelStyle>
+				        <zoomMin>NaN</zoomMin>
+				        <zoomMax>NaN</zoomMax>
+				        <color>FF000000</color>
+				        <fontSize>10</fontSize>
+				        <bold>0</bold>
+				        <italic>0</italic>
+				        <underline>0</underline>
+                                        <auto>1</auto>
+				        <duplicate>0</duplicate>
+				        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="CATHODIC_PROTECTION_RANGE" schema="PODS"
+             id="PODS_CATHODIC_PROTECTION_RANGE"
+             comment="PODS.CATHODIC_PROTECTION_RANGE"
+             descr="Участки трубопроводов, оснащённые системой ЭХЗ">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+				        <color>FF30A800</color>
+				        <width>5</width>
+			      </LineStyle>
+			      <LabelStyle>
+				        <zoomMin>NaN</zoomMin>
+				        <zoomMax>NaN</zoomMax>
+				        <color>FF000000</color>
+				        <fontSize>10</fontSize>
+				        <bold>0</bold>
+				        <italic>0</italic>
+				        <underline>0</underline>
+                                        <auto>1</auto>
+				        <duplicate>0</duplicate>
+				        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="CATHODIC_PROTECTION_RANGE" schema="PODS"
+             id="PODS_CATHODIC_PROTECTION_RANGE"
+             comment="PODS.CATHODIC_PROTECTION_RANGE"
+             descr="Обеспечено катодной защитой">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <value>Y</value>
+			      <LineStyle>
+				        <color>FF30A800</color>
+				        <width>5</width>
+			      </LineStyle>
+			      <LabelStyle>
+				        <zoomMin>NaN</zoomMin>
+				        <zoomMax>NaN</zoomMax>
+				        <color>FF000000</color>
+				        <fontSize>10</fontSize>
+				        <bold>0</bold>
+				        <italic>0</italic>
+				        <underline>0</underline>
+                                        <auto>1</auto>
+				        <duplicate>0</duplicate>
+				        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="CATHODIC_PROTECTION_RANGE" schema="PODS"
+             id="PODS_CATHODIC_PROTECTION_RANGE"
+             comment="PODS.CATHODIC_PROTECTION_RANGE"
+             descr="Необеспечено катодной защитой">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <value>N</value>
+			      <LineStyle>
+				        <color>FFFF0000</color>
+				        <width>5</width>
+			      </LineStyle>
+			      <LabelStyle>
+				        <zoomMin>NaN</zoomMin>
+				        <zoomMax>NaN</zoomMax>
+				        <color>FF000000</color>
+				        <fontSize>10</fontSize>
+				        <bold>0</bold>
+				        <italic>0</italic>
+				        <underline>0</underline>
+                                        <auto>1</auto>
+				        <duplicate>0</duplicate>
+				        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="ILI_RANGE" schema="PODS" id="PODS_ILI_RANGE" comment="ILI_RANGE"
+             descr="Участки трубопроводов, подготовленные для ВТД">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+				        <color>FFFF0000</color>
+				        <width>3</width>
+			      </LineStyle>
+			      <LabelStyle>
+				        <zoomMin>NaN</zoomMin>
+				        <zoomMax>NaN</zoomMax>
+				        <color>FF000000</color>
+				        <fontSize>10</fontSize>
+				        <bold>0</bold>
+				        <italic>0</italic>
+				        <underline>0</underline>
+                                        <auto>1</auto>
+				        <duplicate>0</duplicate>
+				        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="ILI_RANGE" schema="PODS" id="PODS_ILI_RANGE" comment="ILI_RANGE"
+             descr="Пригодно для проведения ВТД">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <value>Y</value>
+			      <LineStyle>
+				        <color>FF30A800</color>
+				        <width>3</width>
+			      </LineStyle>
+			      <LabelStyle>
+				        <zoomMin>NaN</zoomMin>
+				        <zoomMax>NaN</zoomMax>
+				        <color>FF000000</color>
+				        <fontSize>10</fontSize>
+				        <bold>0</bold>
+				        <italic>0</italic>
+				        <underline>0</underline>
+                                        <auto>1</auto>
+				        <duplicate>0</duplicate>
+				        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="ILI_RANGE" schema="PODS" id="PODS_ILI_RANGE" comment="ILI_RANGE"
+             descr="Непригодно для проведения ВТД">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <value>N</value>
+			      <LineStyle>
+				        <color>FFFF0000</color>
+				        <width>3</width>
+			      </LineStyle>
+			      <LabelStyle>
+				        <zoomMin>NaN</zoomMin>
+				        <zoomMax>NaN</zoomMax>
+				        <color>FF000000</color>
+				        <fontSize>10</fontSize>
+				        <bold>0</bold>
+				        <italic>0</italic>
+				        <underline>0</underline>
+                                        <auto>1</auto>
+				        <duplicate>0</duplicate>
+				        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		</Document>
+</kml>

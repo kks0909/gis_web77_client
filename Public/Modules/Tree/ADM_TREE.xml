@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataset name="Административные задачи" version="7.7.7.6">
+  <group comment="Административные задачи">
+ <invoke id="gridToolModule" type="global" event_name="FULL_GRID_EVENT_ID_MODULE"
+				  tooltip="Показать списком"
+				  icon="Public/assets/GRID.png">
+	<!-- Общие параметры-->
+	<!-- имя функции открытия, если пустое, то всегда в новом окне -->
+	<var name="functionName" value=""/>
+	<!-- доп параметры открытия окна из windowsTemplates.xml -->
+	<var name="windowTemplateId" value="gridWindow"/>
+	<!-- Задача -->
+	<var name="task" value="GRID"/>
+<var name="mdl" value="Public/SWF/Grid_55.swf"/>
+	<!-- Необходимо ли в команды передавать фильтр верхнего уровня -->
+	<var name="needTopFilter" value="true"/>
+	<!-- Флаг указывает, всегда ли открывать в новом окне или можно использовать команды синхронизации -->
+	<var name="useSynchCommands" value="false"/>
+	<!-- шаблон грида -->
+	<var name="gridId" value=""/>
+	<!-- заголовок грида -->
+	<var name="title" value=""/>
+	<!-- полный идентификатор слоя -->
+	<var name="layerId" value=""/>
+   <!-- тип шаблона грида для открытия разных гридов разными классами js -->
+   <var name="gridType" value="GridAdmWidget"/>
+</invoke>
+    <invoke id="showGrid" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="exportToExcel" type="global" event_name="exportToExcelFromTree" tooltip="Экспорт в Excel" icon="Public/assets/excel.png">
+      <var name="dataRequestId" value="" />
+</invoke>
+<invoke id="createNewObject" type="global" event_name="createObjectFromTree" tooltip="Добавить запись" icon="Public/assets/addObject.png">
+      <var name="classId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="checkBoxTool" type="global" event_name="checkBoxEvent" tooltip="Вкл/Выкл видимость слоя">
+      <var layerParams="" />
+    </invoke>
+  </group>
+    <tree  max_items="5">
+       <level format="Управление данными" icon="Public/assets/catalog.png" max_items="9" checkbox_type="none">
+	<level format="Трубопроводы" icon="Public/assets/empty.png" max_items="5" checkbox_type="none" layerId="PODS_ROUTE" levelParams="layerId=ADM_Layers.xml#ADM_ROUTE;"> 
+                <context_menu run_invoke="gridToolModule" title="Трубопроводы" gridId="ADM_ROUTES_LIST" />     
+        </level>
+	<level format="Отчёты ВТД" icon="Public/assets/empty.png" max_items="5" checkbox_type="none" layerId="ADM_ILI" levelParams="layerId=ADM_Layers.xml#ADM_ILI;">
+                <context_menu run_invoke="gridToolModule" title="Отчёты ВТД" gridId="ADM_ILI_LIST" />     
+        </level>
+	<level format="Отчёты ЭХЗ" icon="Public/assets/empty.png" max_items="5" checkbox_type="none" layerId="ADM_PI_CP" levelParams="layerId=ADM_Layers.xml#ADM_PI_CP;">
+                <context_menu run_invoke="gridToolModule" title="Отчёты ЭХЗ" gridId="ADM_PI_CP_LIST" />     
+	</level>
+          <level format="Зоны и Номенклатуры" icon="Public/assets/empty.png" max_items="5" checkbox_type="none" layerId="ADM_LPU" levelParams="layerId=ADM_Layers.xml#ADM_LPU;">
+                <context_menu run_invoke="gridToolModule" title="Установка Зон и Номенклатур для ЛПУ" gridId="ADM_LPU_LIST" />
+          </level>
+	<level format="Данные видеомониторинга" icon="Public/assets/empty.png" max_items="5" checkbox_type="none" layerId="ADM_VIDEOMONITOR" levelParams="layerId=ADM_Layers.xml#ADM_VIDEOMONITOR;">
+                <context_menu run_invoke="gridToolModule" title="Данные видеомониторинга" gridId="ADM_VIDEOMONITOR_LIST" />     
+          </level>
+    </level>
+       <level format="Управление доступом" icon="Public/assets/catalog.png" max_items="5" checkbox_type="none">
+		      <level format="Учётные записи" icon="Public/assets/empty.png" max_items="5" checkbox_type="none" layerId="ADM_B_USER_PRIVATE" levelParams="layerId=ADM_Layers.xml#ADM_B_USER_PRIVATE;">
+                <context_menu run_invoke="gridToolModule" title="Учётные записи" gridId="ADM_USERS_LIST" />     
+           </level>
+          <level format="Роли" icon="Public/assets/empty.png" max_items="5" checkbox_type="none" layerId="ADM_ROLES" levelParams="layerId=ADM_Layers.xml#ADM_ROLES;">
+                <context_menu run_invoke="gridToolModule" title="Роли" gridId="ADM_ROLES_LIST" />
+          </level>
+          <level format="Политики безопасности" icon="Public/assets/empty.png" max_items="5" checkbox_type="none" layerId="ADM_POLICIES" levelParams="layerId=ADM_Layers.xml#ADM_POLICIES;">
+                <context_menu run_invoke="gridToolModule" title="Политики безопасности" gridId="ADM_POLICIES_LIST" />     
+          </level>
+       </level>
+       <level format="Управление картами" icon="Public/assets/catalog.png" max_items="1" checkbox_type="none">
+		      <level format="Карты" icon="Public/assets/empty.png" max_items="5" checkbox_type="none" layerId="ADM_MAPS" levelParams="layerId=ADM_Layers.xml#ADM_MAPS;gridType=GridAdmMapsWidget;">
+                <context_menu run_invoke="gridToolModule" title="Карты" gridId="ADM_MAPS_LIST" gridType="GridAdmMapsWidget" />     
+          </level>
+       </level>
+	     <level format="Управление журналами" icon="Public/assets/catalog.png" max_items="2" checkbox_type="none">
+	   <level format="Редактирование параметров конфигурации" icon="Public/assets/empty.png" max_items="5" checkbox_type="none" layerId="ADM_CONFIG" levelParams="layerId=ADM_Layers.xml#ADM_CONFIG;">
+                <context_menu run_invoke="gridToolModule" title="Редактирование параметров конфигурации" gridId="ADM_CONFIG_LIST" />     
+           </level>
+       </level>
+    </tree>  
+</dataset>

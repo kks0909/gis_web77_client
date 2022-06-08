@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.7.4" descr="ВТД, коррекция геопривязки" name="ILICORR">
+  <dataProvider type="style" source="ilicorr_STYLE.xml" />
+  <layer id="PODS_ILI_REPER" comment="PODS.ILI_DATA" descr="Данные ВТД. РЕПЕРЫ" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="ILI_REPER" cover="false" order="410" visible="true" topology="point" fitMap="true" labelField="FEATURE_DESCRIPTION" classField="ANOMALY_TYPE_CL" events="" schema="PODS" table="ILI_DATA">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ILI_REPER" />
+    <dataProvider type="semantic" source="ILICORR_SEM.xml#PODS_ILI_REPER" />
+    <dataProvider type="spatial" source="ILICORR_GEO.xml#PODS_ILI_REPER" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="ILICORR_STYLE.xml#PODS_ILI_REPER" />
+  </layer>
+ </root>

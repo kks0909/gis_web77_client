@@ -1,0 +1,121 @@
+﻿<root version="postgres 7.7.3.0" xsi:noNamespaceSchemaLocation="sem.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <data id="SELECT_ROUTE">
+    <select>
+      <geoQuery idField="ID" geoField="X,Y">
+        <param name="GROUP_ID" default="NULL" />
+        <query>
+        WITH SELECTION
+        AS (SELECT SELECTION_ID,ls.OBJ_ID,TYPE,BEGIN_KM,END_KM,g.KEY_VALUES
+        FROM WEB50.LNK_SELECTION ls
+        JOIN GIS_INTEGRATION50.GATE g
+        ON g.OBJ_ID = ls.OBJ_ID
+        WHERE SELECTION_GROUP_ID = :GROUP_ID
+        AND g.KEY_FIELDS = 'ROUTE_ID'),
+        geo_data
+        AS ( SELECT s.SELECTION_ID ID
+        ,s.TYPE
+        ,c.X_COORD X
+        ,c.Y_COORD Y
+        ,r.SEQUENCE
+        ,sp.MEASURE
+        FROM selection s
+        JOIN PODS.ROUTE r
+        ON TO_CHAR(r.ROUTE_ID) = s.KEY_VALUES
+        JOIN PODS.STATION_POINT sp
+        ON sp.ROUTE_ID = r.ROUTE_ID
+        JOIN PODS.COORDINATE c
+        ON c.LOCATION_ID = sp.LOCATION_ID
+        WHERE (s.BEGIN_KM IS NOT NULL
+        AND sp.STATION BETWEEN s.BEGIN_KM AND s.END_KM)
+        OR  s.BEGIN_KM IS NULL)
+        SELECT ID, X, Y, TYPE
+        FROM geo_data
+        ORDER BY  ID, SEQUENCE, MEASURE
+      </query>
+      </geoQuery>
+    </select>
+  </data>
+  <data id="SELECT_SITE">
+    <select>
+      <geoQuery idField="ID" geoField="X,Y" partField="P_ID">
+        <param name="GROUP_ID" default="NULL" />
+        <query>
+        WITH selection
+        AS (SELECT DISTINCT FIRST_VALUE(SELECTION_ID)
+        OVER (PARTITION BY g.TABLE_NAME,g.KEY_FIELDS,g.OBJ_ID ORDER BY g.KEY_VALUES ) SELECTION_ID
+        ,FIRST_VALUE(ls.OBJ_ID)
+        OVER (PARTITION BY g.TABLE_NAME,g.KEY_FIELDS,g.OBJ_ID ORDER BY g.KEY_VALUES ) OBJ_ID
+        ,FIRST_VALUE(TYPE)
+        OVER (PARTITION BY g.TABLE_NAME,g.KEY_FIELDS,g.OBJ_ID ORDER BY g.KEY_VALUES ) "type"
+        ,FIRST_VALUE(BEGIN_KM)
+        OVER (PARTITION BY g.TABLE_NAME,g.KEY_FIELDS,g.OBJ_ID ORDER BY g.KEY_VALUES ) BEGIN_KM
+        ,FIRST_VALUE(END_KM)
+        OVER (PARTITION BY g.TABLE_NAME,g.KEY_FIELDS,g.OBJ_ID ORDER BY g.KEY_VALUES ) END_KM
+        ,FIRST_VALUE(g.KEY_VALUES)
+        OVER (PARTITION BY g.TABLE_NAME,g.KEY_FIELDS,g.OBJ_ID ORDER BY g.KEY_VALUES ) KEY_VALUES
+        FROM WEB50.LNK_SELECTION ls
+        JOIN GIS_INTEGRATION50.GATE g
+        ON g.OBJ_ID = ls.OBJ_ID
+        WHERE SELECTION_GROUP_ID = :GROUP_ID
+        AND g.KEY_FIELDS = 'SITE_ID'),
+        geo_data
+        AS (SELECT s.SELECTION_ID ID
+        ,s.TYPE
+        ,p.PART_ID P_ID
+        ,c.X_COORD X
+        ,c.Y_COORD Y
+        ,p.HOLE_FL
+        ,v.SEQUENCE_NO
+        FROM selection s
+        JOIN PODS.SITE oe
+        ON s.KEY_VALUES = TO_CHAR(oe.SITE_ID)
+        JOIN PODS.PART p
+        ON p.SHAPE_ID = oe.SHAPE_ID
+        JOIN PODS.VERTEX v
+        ON p.PART_ID = v.PART_ID
+        JOIN pods.COORDINATE c
+        ON c.LOCATION_ID = v.LOCATION_ID)
+        SELECT ID,TYPE, P_ID, X, Y
+        FROM geo_data
+        ORDER BY ID, HOLE_FL, P_ID, SEQUENCE_NO
+      </query>
+      </geoQuery>
+    </select>
+  </data>
+  <data id="SELECT_OFFLINE">
+    <select>
+      <geoQuery idField="ID" geoField="X,Y" partField="P_ID">
+        <param name="GROUP_ID" default="NULL" />
+        <query>
+        WITH selection
+        AS (SELECT SELECTION_ID,ls.OBJ_ID,TYPE,BEGIN_KM,END_KM,g.KEY_VALUES
+        FROM WEB50.LNK_SELECTION ls
+        JOIN GIS_INTEGRATION50.GATE g
+        ON g.OBJ_ID = ls.OBJ_ID
+        WHERE SELECTION_GROUP_ID = :GROUP_ID
+        AND g.KEY_FIELDS = 'OFFLINE_ID'),
+        geo_data
+        AS (SELECT s.SELECTION_ID ID
+        ,s.TYPE
+        ,p.PART_ID P_ID
+        ,c.X_COORD X
+        ,c.Y_COORD Y
+        ,p.HOLE_FL
+        ,v.SEQUENCE_NO
+        FROM selection s
+        JOIN PODS.OFFLINE_EVENT oe
+        ON s.KEY_VALUES = TO_CHAR(oe.OFFLINE_ID)
+        JOIN PODS.PART p
+        ON p.SHAPE_ID = oe.SHAPE_ID
+        JOIN PODS.VERTEX v
+        ON p.PART_ID = v.PART_ID
+        JOIN pods.COORDINATE c
+        ON c.LOCATION_ID = v.LOCATION_ID)
+        SELECT ID,TYPE, P_ID, X, Y
+        FROM geo_data
+        ORDER BY ID, HOLE_FL, P_ID, SEQUENCE_NO
+      </query>
+      </geoQuery>
+    </select>
+  </data>
+</root>

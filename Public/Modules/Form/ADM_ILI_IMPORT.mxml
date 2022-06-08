@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="363" xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml" title="Выберите файл для импорта">
+  <mx:VBox width="363">
+		<mx:HBox percentWidth="100">
+      <mx:Text textAlign="right" text="Выберите файл" width="100" />
+      <controls:FileInput id="zip_file_name" width="250" height="20" fileFilterDescription="ZIP-файлы" fileFilterExtension="*.zip" uploadPath="UploadedFiles/" tabIndex="1"/>
+    </mx:HBox>
+    <mx:HBox percentWidth="100">
+      <mx:Text textAlign="left" text="" width="2" />
+      <mx:Text textAlign="left" text="Внимание! В диалоге выбора файла необходимо выбрать файл с расширением .ZIP" width="100%" />
+    </mx:HBox>
+  </mx:VBox>
+  <validatorsArray>
+    <controls:DefaultStringValidator source="{zip_file_name}" property="text" enabled="false" requiredFieldError="Поле 'Выберите файл' обязательно для заполнения."/>
+  </validatorsArray>
+</DATA_EDIT_FORM>

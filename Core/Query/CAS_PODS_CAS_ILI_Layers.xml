@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.7.4" descr="ВТД">
+  <dataProvider type="style" source="PODS_INSP_STYLE.xml" />
+  <layer id="ILI_PIPE_LENGTH" synonym="PODS_ILI_PIPE_LENGTH"   visible="false" type="common" topology="line" table="ILI_PIPE_LENGTH" spacing="none" schema="CAS" projection="EPSG:5807" order="10" labelField="LABEL" fitMap="false" descr="Трубный журнал ВТД" dataType="vector" cover="false" comment="CAS_ILI_PIPE_LENGTH" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#ILI_PIPE_LENGTH" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_ILI_PIPE_LENGTH" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#ILI_PIPE_LENGTH" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_ILI_PIPE_LENGTH" />
+  </layer>
+  <layer id="ILI_KBD" synonym="PODS_ILI_DATA,PODS_STO_ILI_DATA_SHEET_RELOAD,PODS_STO_REPAIR_METHOD,PODS_STO_PERFORMANCE_EVAL,PODS_STO_DANGER_DEGREE,PODS_STO_DANGER_RANK,PODS_STO_FAIL_PROBABILITY,PODS_STO_DATE_TEST,PODS_LTG_KOCHETKOVA,PODS_STO_DATE_REPAIR,ILI_KBD,ILI_DEPTH,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_PERFORMANCE_EVAL,CAS_PODS_STO_DANGER_DEGREE,CAS_PODS_STO_DANGER_RANK,CAS_PODS_STO_FAIL_PROBABILITY,CAS_PODS_STO_DATE_TEST,CAS_PODS_LTG_KOCHETKOVA, CAS_PODS_STO_DATE_REPAIR,CAS_ILI_KBD,CAS_ILI_DEPTH"   visible="false" type="common" topology="point" table="ILI_KBD" spacing="none" schema="CAS" projection="EPSG:5807" order="10" labelField="LABEL" fitMap="false" descr="Коэффициент безопасного давления" dataType="vector" cover="false" comment="CAS_ILI_KBD" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#ILI_KBD" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_ILI_DATA" />
+    <dataProvider type="semantic" source="CAS_PODS_CAS_ILI_SEM.xml#ILI_KBD" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_ILI_KBD" />
+  </layer>
+  <layer id="ILI_DEPTH" synonym="PODS_ILI_DATA,PODS_STO_ILI_DATA_SHEET_RELOAD,PODS_STO_REPAIR_METHOD,PODS_STO_PERFORMANCE_EVAL,PODS_STO_DANGER_DEGREE,PODS_STO_DANGER_RANK,PODS_STO_FAIL_PROBABILITY,PODS_STO_DATE_TEST,PODS_LTG_KOCHETKOVA,PODS_STO_DATE_REPAIR,ILI_KBD,ILI_DEPTH,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_PERFORMANCE_EVAL,CAS_PODS_STO_DANGER_DEGREE,CAS_PODS_STO_DANGER_RANK,CAS_PODS_STO_FAIL_PROBABILITY,CAS_PODS_STO_DATE_TEST,CAS_PODS_LTG_KOCHETKOVA, CAS_PODS_STO_DATE_REPAIR,CAS_ILI_KBD,CAS_ILI_DEPTH"   visible="true" type="common" topology="point" table="ILI_DEPTH" spacing="none" schema="CAS" projection="EPSG:5807" order="20" labelField="LABEL" fitMap="false" descr="Глубина поражения дефектов" dataType="vector" cover="false" comment="CAS_ILI_DEPTH" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#ILI_DEPTH" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_ILI_DATA" />
+    <dataProvider type="semantic" source="CAS_PODS_CAS_ILI_SEM.xml#ILI_DEPTH" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_ILI_DEPTH" />
+  </layer>
+<layer id="CAS_PODS_ILI_CLUSTER" visible="false" type="common" topology="point,line" table="ILI_CLUSTER" spacing="none" schema="CAS" projection="EPSG:5807" order="30" labelField="LABEL" fitMap="false" descr="Группы взаимодействующих дефектов" dataType="vector" cover="false" comment="PODS_ILI_CLUSTER" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ILI_CLUSTER" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_ILI_CLUSTER" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#ILI_CLUSTER" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_ILI_CLUSTER" />
+  </layer>
+<layer id="CAS_PODS_STO_REPAIR_METHOD" synonym="PODS_ILI_DATA,PODS_STO_ILI_DATA_SHEET_RELOAD,PODS_STO_REPAIR_METHOD,PODS_STO_PERFORMANCE_EVAL,PODS_STO_DANGER_DEGREE,PODS_STO_DANGER_RANK,PODS_STO_FAIL_PROBABILITY,PODS_STO_DATE_TEST,PODS_LTG_KOCHETKOVA,PODS_STO_DATE_REPAIR,ILI_KBD,ILI_DEPTH,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_PERFORMANCE_EVAL,CAS_PODS_STO_DANGER_DEGREE,CAS_PODS_STO_DANGER_RANK,CAS_PODS_STO_FAIL_PROBABILITY,CAS_PODS_STO_DATE_TEST,CAS_PODS_LTG_KOCHETKOVA, CAS_PODS_STO_DATE_REPAIR,CAS_ILI_KBD,CAS_ILI_DEPTH"   visible="false" type="common" topology="point" table="STO_ILI_DATA_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="40" labelField="LABEL" fitMap="false" descr="Р Газпром 595.  Методы ремонта" dataType="vector" cover="false" comment="PODS_STO_REPAIR_METHOD" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_REPAIR_METHOD" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_REPAIR_METHOD" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_REPAIR_METHOD" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_REPAIR_METHOD" />
+  </layer>
+<layer id="CAS_PODS_STO_PERFORMANCE_EVAL" synonym="PODS_ILI_DATA,PODS_STO_ILI_DATA_SHEET_RELOAD,PODS_STO_REPAIR_METHOD,PODS_STO_PERFORMANCE_EVAL,PODS_STO_DANGER_DEGREE,PODS_STO_DANGER_RANK,PODS_STO_FAIL_PROBABILITY,PODS_STO_DATE_TEST,PODS_LTG_KOCHETKOVA,PODS_STO_DATE_REPAIR,ILI_KBD,ILI_DEPTH,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_PERFORMANCE_EVAL,CAS_PODS_STO_DANGER_DEGREE,CAS_PODS_STO_DANGER_RANK,CAS_PODS_STO_FAIL_PROBABILITY,CAS_PODS_STO_DATE_TEST,CAS_PODS_LTG_KOCHETKOVA, CAS_PODS_STO_DATE_REPAIR,CAS_ILI_KBD,CAS_ILI_DEPTH"   visible="false" type="common" topology="point" table="STO_ILI_DATA_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="50" labelField="LABEL" fitMap="false" descr="СТО 112. Оценка работоспособности" dataType="vector" cover="false" comment="PODS_STO_PERFORMANCE_EVAL" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_PERFORMANCE_EVAL" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_PERFORMANCE_EVAL" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_PERFORMANCE_EVAL" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_PERFORMANCE_EVAL" />
+  </layer>
+<layer id="CAS_PODS_STO_DANGER_DEGREE" synonym="PODS_ILI_DATA,PODS_STO_ILI_DATA_SHEET_RELOAD,PODS_STO_REPAIR_METHOD,PODS_STO_PERFORMANCE_EVAL,PODS_STO_DANGER_DEGREE,PODS_STO_DANGER_RANK,PODS_STO_FAIL_PROBABILITY,PODS_STO_DATE_TEST,PODS_LTG_KOCHETKOVA,PODS_STO_DATE_REPAIR,ILI_KBD,ILI_DEPTH,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_PERFORMANCE_EVAL,CAS_PODS_STO_DANGER_DEGREE,CAS_PODS_STO_DANGER_RANK,CAS_PODS_STO_FAIL_PROBABILITY,CAS_PODS_STO_DATE_TEST,CAS_PODS_LTG_KOCHETKOVA, CAS_PODS_STO_DATE_REPAIR,CAS_ILI_KBD,CAS_ILI_DEPTH"   visible="false" type="common" topology="point" table="STO_ILI_DATA_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="60" labelField="LABEL" fitMap="false" descr="СТО 173. Степень опасности дефекта" dataType="vector" cover="false" comment="PODS_STO_DANGER_DEGREE" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_DANGER_DEGREE" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_DANGER_DEGREE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_DANGER_DEGREE" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_DANGER_DEGREE" />
+  </layer>
+<layer id="CAS_PODS_STO_DANGER_RANK" synonym="PODS_ILI_DATA,PODS_STO_ILI_DATA_SHEET_RELOAD,PODS_STO_REPAIR_METHOD,PODS_STO_PERFORMANCE_EVAL,PODS_STO_DANGER_DEGREE,PODS_STO_DANGER_RANK,PODS_STO_FAIL_PROBABILITY,PODS_STO_DATE_TEST,PODS_LTG_KOCHETKOVA,PODS_STO_DATE_REPAIR,ILI_KBD,ILI_DEPTH,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_PERFORMANCE_EVAL,CAS_PODS_STO_DANGER_DEGREE,CAS_PODS_STO_DANGER_RANK,CAS_PODS_STO_FAIL_PROBABILITY,CAS_PODS_STO_DATE_TEST,CAS_PODS_LTG_KOCHETKOVA, CAS_PODS_STO_DATE_REPAIR,CAS_ILI_KBD,CAS_ILI_DEPTH"   visible="false" type="common" topology="point" table="STO_ILI_DATA_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="70" labelField="LABEL" fitMap="false" descr="СТО 292. Ранги опасности дефектов" dataType="vector" cover="false" comment="PODS_STO_DANGER_RANK" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_DANGER_RANK" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_DANGER_RANK" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_DANGER_RANK" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_DANGER_RANK" />
+  </layer>
+<layer id="CAS_PODS_STO_FAIL_PROBABILITY" synonym="PODS_ILI_DATA,PODS_STO_ILI_DATA_SHEET_RELOAD,PODS_STO_REPAIR_METHOD,PODS_STO_PERFORMANCE_EVAL,PODS_STO_DANGER_DEGREE,PODS_STO_DANGER_RANK,PODS_STO_FAIL_PROBABILITY,PODS_STO_DATE_TEST,PODS_LTG_KOCHETKOVA,PODS_STO_DATE_REPAIR,ILI_KBD,ILI_DEPTH,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_PERFORMANCE_EVAL,CAS_PODS_STO_DANGER_DEGREE,CAS_PODS_STO_DANGER_RANK,CAS_PODS_STO_FAIL_PROBABILITY,CAS_PODS_STO_DATE_TEST,CAS_PODS_LTG_KOCHETKOVA, CAS_PODS_STO_DATE_REPAIR,CAS_ILI_KBD,CAS_ILI_DEPTH"   visible="false" type="common" topology="point" table="STO_ILI_DATA_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="80" labelField="LABEL" fitMap="false" descr="СТО 401. Вероятности отказов" dataType="vector" cover="false" comment="PODS_STO_FAIL_PROBABILITY" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_FAIL_PROBABILITY" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_FAIL_PROBABILITY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_FAIL_PROBABILITY" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_FAIL_PROBABILITY" />
+  </layer>
+<layer id="CAS_PODS_STO_100_VALUE_CONDITION" visible="false" type="common" topology="line" table="STO_ILI_INSPECTION_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="150" labelField="LABEL" fitMap="false" descr="СТО 292. 100 м. Показатель технического состояния труб" dataType="vector" cover="false" comment="PODS_STO_100_VALUE_CONDITION" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_100_VALUE_CONDITION" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_100_VALUE_CONDITION" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_100_VALUE_CONDITION" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_100_VALUE_CONDITION" />
+  </layer>
+<layer id="CAS_PODS_STO_100_DANGER_DEG" visible="false" type="common" topology="line" table="STO_EHZ_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="180" labelField="LABEL" fitMap="false" descr="ВНИИГАЗ 2004. 100 м. Противокоррозийная защита. Степень коррозионной опасности" dataType="vector" cover="false" comment="PODS_STO_100_DANGER_DEG" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_100_DANGER_DEG" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_100_DANGER_DEG" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_100_DANGER_DEG" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_100_DANGER_DEG" />
+  </layer>
+<layer id="CAS_PODS_STO_100_SEGMENT_CATEGORY" visible="false" type="common" topology="line" table="STO_EHZ_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="190" labelField="LABEL" fitMap="false" descr="ВНИИГАЗ 2004. 100 м. Категория коррозийной опасности" dataType="vector" cover="false" comment="PODS_STO_100_SEGMENT_CATEGORY" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_100_SEGMENT_CATEGORY" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_100_SEGMENT_CATEGORY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_100_SEGMENT_CATEGORY" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_100_SEGMENT_CATEGORY" />
+  </layer>
+<layer id="CAS_PODS_STO_100_TIME_TO_CRIT_DEPTH" visible="false" type="common" topology="point" table="STO_EHZ_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="195" labelField="LABEL" fitMap="false" descr="ВНИИГАЗ 2004. 100 м. Время до образования усредненного критического дефекта" dataType="vector" cover="false" comment="PODS_STO_100_TIME_TO_CRIT_DEPTH" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_100_TIME_TO_CRIT_DEPTH" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_100_TIME_TO_CRIT_DEPTH" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_100_TIME_TO_CRIT_DEPTH" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_100_TIME_TO_CRIT_DEPTH" />
+  </layer>
+<layer id="CAS_PODS_STO_VALVE_VALUE_CONDITION" visible="false" type="common" topology="line" table="STO_ILI_INSPECTION_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="260" labelField="LABEL" fitMap="false" descr="СТО 292. Межкрановые участки. Показатель технического состояния труб" dataType="vector" cover="false" comment="PODS_STO_VALVE_VALUE_CONDITION" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_VALVE_VALUE_CONDITION" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_VALVE_VALUE_CONDITION" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_VALVE_VALUE_CONDITION" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_VALVE_VALUE_CONDITION" />
+  </layer>
+<layer id="CAS_PODS_STO_VALVE_DANGER_DEG" visible="false" type="common" topology="line" table="STO_EHZ_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="300" labelField="LABEL" fitMap="false" descr="ВНИИГАЗ 2004. Участки между УКЗ. Противокоррозийная защита. Степень коррозионной опасности" dataType="vector" cover="false" comment="PODS_STO_VALVE_DANGER_DEG" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_VALVE_DANGER_DEG" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_VALVE_DANGER_DEG" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_VALVE_DANGER_DEG" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_VALVE_DANGER_DEG" />
+  </layer>
+<layer id="CAS_PODS_STO_VALVE_SEGMENT_CATEGORY" visible="false" type="common" topology="line" table="STO_EHZ_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="305" labelField="LABEL" fitMap="false" descr="ВНИИГАЗ 2004. Участки между УКЗ. Категория коррозийной опасности" dataType="vector" cover="false" comment="PODS_STO_VALVE_SEGMENT_CATEGORY" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_VALVE_SEGMENT_CATEGORY" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_VALVE_SEGMENT_CATEGORY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_VALVE_SEGMENT_CATEGORY" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_VALVE_SEGMENT_CATEGORY" />
+  </layer>
+<layer id="CAS_PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" visible="false" type="common" topology="line" table="STO_EHZ_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="310" labelField="LABEL" fitMap="false" descr="ВНИИГАЗ 2004. Участки между УКЗ. Время до образования усредненного критического дефекта" dataType="vector" cover="false" comment="PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" />
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_VALUE_CONDITION" visible="false" type="common" topology="line" table="STO_ILI_INSPECTION_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="380" labelField="LABEL" fitMap="false" descr="СТО 292. От камеры до камеры. Показатель технического состояния труб" dataType="vector" cover="false" comment="PODS_STO_RANGE_VALUE_CONDITION" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_VALUE_CONDITION" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_VALUE_CONDITION" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_VALUE_CONDITION" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_RANGE_VALUE_CONDITION" />
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_TIME_LIMIT_EXPL" visible="false" type="common" topology="point" table="STO_ILI_INSPECTION_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="400" labelField="LABEL" fitMap="false" descr="СТО 401. От камеры до камеры. Предельный срок эксплуатации ЛЧ МН до вывода в капитальный ремонт" dataType="vector" cover="false" comment="PODS_STO_RANGE_TIME_LIMIT_EXPL" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_TIME_LIMIT_EXPL" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_TIME_LIMIT_EXPL" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_TIME_LIMIT_EXPL" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_RANGE_TIME_LIMIT_EXPL" />
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_OPTIM_TIM_BFR_ILI" visible="false" type="common" topology="line" table="STO_ILI_INSPECTION_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="410" labelField="LABEL" fitMap="false" descr="СТО 401. От камеры до камеры. Оптимальное время до проведения ВТД, год" dataType="vector" cover="false" comment="PODS_STO_RANGE_OPTIM_TIM_BFR_ILI" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_OPTIM_TIM_BFR_ILI" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_OPTIM_TIM_BFR_ILI" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_OPTIM_TIM_BFR_ILI" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_RANGE_OPTIM_TIM_BFR_ILI" />
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_MIN_UNIT_COST_YKM" visible="false" type="common" topology="line" table="STO_ILI_INSPECTION_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="420" labelField="LABEL" fitMap="false" descr="СТО 401. От камеры до камеры. Минимум удельных затрат, млн. руб в год на 1 км" dataType="vector" cover="false" comment="PODS_STO_RANGE_MIN_UNIT_COST_YKM" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_MIN_UNIT_COST_YKM" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_MIN_UNIT_COST_YKM" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_MIN_UNIT_COST_YKM" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_RANGE_MIN_UNIT_COST_YKM" />
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_FAILURE_PROBABLY" visible="false" type="common" topology="line" table="STO_ILI_INSPECTION_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="430" labelField="LABEL" fitMap="false" descr="СТО 401. От камеры до камеры. Вероятность отказа линейного участка МГ  после ремонта" dataType="vector" cover="false" comment="PODS_STO_RANGE_FAILURE_PROBABLY" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_FAILURE_PROBABLY" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_FAILURE_PROBABLY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_FAILURE_PROBABLY" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_RANGE_FAILURE_PROBABLY" />
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_OP_REP_PIPE_COUNT" visible="false" type="common" topology="point" table="STO_ILI_INSPECTION_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="440" labelField="LABEL" fitMap="false" descr="СТО 401. От камеры до камеры. Оптимальное количество заменяемых труб, шт" dataType="vector" cover="false" comment="PODS_STO_RANGE_OP_REP_PIPE_COUNT" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_OP_REP_PIPE_COUNT" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_OP_REP_PIPE_COUNT" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_OP_REP_PIPE_COUNT" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_RANGE_OP_REP_PIPE_COUNT" />
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_MEAN_TIME_FAIL" visible="false" type="common" topology="line" table="STO_ILI_INSPECTION_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="450" labelField="LABEL" fitMap="false" descr="СТО 401. От камеры до камеры. Время наработки на отказ после капитального ремонта, год" dataType="vector" cover="false" comment="PODS_STO_RANGE_MEAN_TIME_FAIL" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_MEAN_TIME_FAIL" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_MEAN_TIME_FAIL" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_MEAN_TIME_FAIL" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_RANGE_MEAN_TIME_FAIL" />
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_PROJECTED_SCC" visible="false" type="common" topology="line" table="STO_ILI_INSPECTION_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="460" labelField="LABEL" fitMap="false" descr="СТО 095. От камеры до камеры. Прогнозируемое число дефектов КРН" dataType="vector" cover="false" comment="PODS_STO_RANGE_PROJECTED_SCC" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_PROJECTED_SCC" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_PROJECTED_SCC" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_PROJECTED_SCC" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_RANGE_PROJECTED_SCC" />
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_NEXT_INSP_SCC" visible="false" type="common" topology="line" table="STO_ILI_INSPECTION_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="470" labelField="LABEL" fitMap="false" descr="СТО 095. От камеры до камеры. Срок  до проведения повторной ВТД для обнаружения КРН" dataType="vector" cover="false" comment="PODS_STO_RANGE_NEXT_INSP_SCC" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_NEXT_INSP_SCC" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_NEXT_INSP_SCC" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_NEXT_INSP_SCC" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_RANGE_NEXT_INSP_SCC" />
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_PROJECTED_COR" visible="false" type="common" topology="line" table="STO_ILI_INSPECTION_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="480" labelField="LABEL" fitMap="false" descr="СТО 095. От камеры до камеры. Прогнозируемое число коррозионных дефектов" dataType="vector" cover="false" comment="PODS_STO_RANGE_PROJECTED_COR" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_PROJECTED_COR" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_PROJECTED_COR" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_PROJECTED_COR" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_RANGE_PROJECTED_COR" />
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_NEXT_INSP" visible="false" type="common" topology="line" table="STO_ILI_INSPECTION_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="490" labelField="LABEL" fitMap="false" descr="СТО 095. От камеры до камеры. Срок  до проведения повторной ВТД для обнаружения коррозионных дефектов" dataType="vector" cover="false" comment="PODS_STO_RANGE_NEXT_INSP" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_NEXT_INSP" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_NEXT_INSP" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_NEXT_INSP" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_RANGE_NEXT_INSP" />
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_DANGER_DEG" visible="false" type="common" topology="line" table="STO_EHZ_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="500" labelField="LABEL" fitMap="false" descr="ВНИИГАЗ 2004. От камеры до камеры. Противокоррозийная защита. Степень коррозионной опасности" dataType="vector" cover="false" comment="PODS_STO_RANGE_DANGER_DEG" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_DANGER_DEG" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_DANGER_DEG" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_DANGER_DEG" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_RANGE_DANGER_DEG" />
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_SEGMENT_CATEGORY" visible="false" type="common" topology="line" table="STO_EHZ_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="510" labelField="LABEL" fitMap="false" descr="ВНИИГАЗ 2004. От камеры до камеры. Категория коррозийной опасности" dataType="vector" cover="false" comment="PODS_STO_RANGE_SEGMENT_CATEGORY" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_SEGMENT_CATEGORY" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_SEGMENT_CATEGORY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_SEGMENT_CATEGORY" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_RANGE_SEGMENT_CATEGORY" />
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_TIME_TO_CRIT_DEPTH" visible="false" type="common" topology="line" table="STO_EHZ_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="520" labelField="LABEL" fitMap="false" descr="ВНИИГАЗ 2004. От камеры до камеры. Время до образования усредненного критического дефекта" dataType="vector" cover="false" comment="PODS_STO_RANGE_TIME_TO_CRIT_DEPTH" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_TIME_TO_CRIT_DEPTH" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_TIME_TO_CRIT_DEPTH" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_TIME_TO_CRIT_DEPTH" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_PODS_STO_RANGE_TIME_TO_CRIT_DEPTH" />
+  </layer>
+</root>

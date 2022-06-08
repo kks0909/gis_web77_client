@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns="view.data.*" xmlns:data="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" 
+						xmlns:controls="view.controls.*" 
+						xmlns:mx="http://www.adobe.com/2006/mxml" 
+						title="Исполнитель" 
+						width="760" 
+						ext_data_id="" 
+						excelTemplate="">
+	<dataProvider>SUTSTPA_SEM.xml</dataProvider>
+	<panel:buttons>
+		<picPutton:PanelButton source="../images/catalog.png" 
+			tooltip="Прикрепленные документы / комментарии" 
+			clickEvent="DocsEvent" />
+		<picPutton:PanelButton source="../images/save.png" 
+			tooltip="Сохранить" 
+			clickEvent="SaveEvent" />
+		<picPutton:PanelButton source="../images/undo.png" 
+			tooltip="Отменить изменения" 
+			clickEvent="UndoEvent" />
+		<picPutton:PanelButton source="../images/delete.png" 
+			tooltip="Удалить" 
+			clickEvent="DeleteEvent" />
+		<picPutton:PanelButton source="../images/excel.png" 
+			tooltip="Экспорт в Excel" 
+			clickEvent="ExportToExcelEvent" />
+		<picPutton:PanelButton source="../images/back.png" 
+			tooltip="Вернуться к предыдущему объекту" 
+			clickEvent="BackEvent" />
+		<picPutton:PanelButton source="../images/forward.png" 
+			tooltip="Отменить возврат к предыдущему объекту" 
+			clickEvent="ForwardEvent" />
+	</panel:buttons>
+	 <mx:VBox width="760">
+	 	<!--левая колонка полей-->
+    <mx:HBox percentWidth="100">
+      <mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Имя для входа в систему" width="140" />
+          <mx:TextInput id="LOGIN" editable="false" width="225" maxChars="80" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Статус" width="140" />
+          <mx:ComboBox id="STATUS" width="140">
+            <mx:dataProvider>
+              <mx:Object CODE="B" DESCR="Заблокирован" label="Заблокирован" />
+              <mx:Object CODE="A" DESCR="Разблокирован" label="Разблокирован" />
+            </mx:dataProvider>
+          </mx:ComboBox>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Имя" width="140"/>
+                <mx:TextInput id="NAME" width="200" maxChars="255" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Фамилия" width="140"/>
+                <mx:TextInput id="LAST_NAME" width="200" maxChars="255" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Должность" width="140"/>
+                <mx:TextInput id="POSITION" width="200" maxChars="255" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+				<mx:Text textAlign="right" text="Уч.запись СГИО" width="140" />
+				<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+					<mx:ComboBox id="USER_ID" width="200" maxChars="100" height="20" dataProvider="SUTSTPA_SEM_DICT.xml#SUTSTPA_USER_GCL"/>
+						     <mx:Button id="BTN_LIST_USER_ID" selectedField="SUTSTPA_USER_GCL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>						   
+				</mx:HBox>
+		</mx:HBox>				
+                
+      </mx:VBox>
+      <!---Правая колонка полей-->
+	    <mx:VBox percentWidth="50">
+		<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Фамилия_сист" width="140" />
+          <mx:TextInput id="LASTNAME" width="200" maxChars="80" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Имя_сист" width="140" />
+          <mx:TextInput id="FIRSTNAME" width="200" maxChars="80" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Отчество_сист" width="140" />
+          <mx:TextInput id="SECONDNAME" width="200" maxChars="80" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Электронная почта" width="140" />
+          <mx:TextInput id="MAIL" width="200" maxChars="2000" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Дата создания/ авторизации в системе" width="140" />
+          <mx:DateField id="CREATED" editable="false" width="90" height="20" formatString="DD.MM.YYYY" />
+          <mx:DateField id="LOGONTIME" width="90" editable="false" height="20" formatString="DD.MM.YYYY" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+				<mx:Text textAlign="right" text="Имя сист.уч. записи СГИО" width="140" />
+				<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+					<mx:ComboBox id="PERSON_ID" width="200" maxChars="100" height="20" dataProvider="SUTSTPA_SEM_DICT.xml#SUTSTPA_PERSON_GCL"/>
+						     <mx:Button id="BTN_LIST_PERSON_ID" selectedField="SUTSTPA_PERSON_GCL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>						   
+				</mx:HBox>
+		</mx:HBox>
+		<mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="ACCESSTIME" width="140" />
+          <mx:DateField id="ACCESSTIME" editable="false" width="90" height="20" formatString="DD.MM.YYYY" />
+        </mx:HBox>	
+		</mx:VBox>
+    </mx:HBox>
+   	
+  </mx:VBox>
+   	
+</DATA_EDIT_FORM>

@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root version="7.7.7.5" >	
+	<data id="CAS_MAIN" comment="CAS.MAIN" schema="WEB50" table="WATERWAY">
+		<select>
+			<geoQuery idField="ID" geoField="X,Y" partField="P_ID">
+				<var name="START_KM" />
+				<var name="FINISH_KM" />
+				<var name="LINE_ID" />
+				<var name="LABEL" default="Профиль" />
+				<var name="LABEL_UNIT" default="Высота, [м]" />
+				<var name="HEIGHT" default="150" />
+				<var name="TYPE" default="2D" />
+				<var name="Y_STEPS" default="8" />
+				<var name="ROUTE_ID" />
+				<var name="BEGIN_DATE" />
+				<query>
+					WITH l AS  (SELECT sp.line_id ID
+,waterway_cross_id P_ID
+,CASE WHEN sp.z_coord IS NULL THEN 0  ELSE sp.z_coord  END Y
+,(sp.measure+sp.measure_offset) / 1000 + s.station_begin - {START_KM}   X
+,' '::TEXT "LABEL"
+,row_number() over (PARTITION BY waterway_cross_id ORDER BY (sp.measure+sp.measure_offset) / 1000 + s.station_begin) rwn
+from pods.series s
+JOIN web50.waterway_cross_station_point sp
+ ON s.route_id = sp.route_id_offset and sp.waterway_cross_id in (select cc.waterway_cross_id from web50.waterway_cross cc where cc.zone_id={ZONE_ID})
+join pods.line l 
+ on l.line_id=sp.line_id
+                    WHERE sp.route_id = {ROUTE_ID} 
+					  AND to_char(sp.begin_date,'YYYY')=substring('{BEGIN_DATE}',1,4)
+                      AND sp.z_coord IS NOT null),
+                  min_x as (select min(rwn) rwn,P_ID from l group by P_ID),
+                  max_x as (select max(rwn) rwn,P_ID from l group by P_ID),
+				  min_measure as (select min(x) measure from l)
+             select ID, P_ID ,X ,Y, "LABEL",rwn, style from (       
+                 select l.ID, l.P_ID, l.X -m.measure X,0 Y, l."LABEL",l.rwn-1 rwn,'PROFILE' style from l l,min_x mx, min_measure m where l.P_ID=mx.P_ID and l.rwn=mx.rwn
+                    union all
+                    select l.ID, l.P_ID, l.X  -m.measure  X,l.Y, l."LABEL",l.rwn,'PROFILE' style from l, min_measure m
+                    union all
+                    select l.ID, l.P_ID, l.X  -m.measure  X,0 Y, l."LABEL",l.rwn+1,'PROFILE' style from l l,max_x mx, min_measure m where  l.P_ID=mx.P_ID and l.rwn=mx.rwn
+                    union all
+                    select  l.ID, l.P_ID, l.X  -m.measure  X,0 Y, l."LABEL",(select mx.rwn+2 from max_x mx where mx.P_ID=l.P_ID) rwn,'PROFILE' style from l l,min_x mx, min_measure m where l.P_ID=mx.P_ID and l.rwn=mx.rwn 
+					union all
+					select P_ID ID, P_ID*(-1) P_ID ,X  -m.measure  X,Y, "LABEL",rwn,'PIPE' style from l, min_measure m) 
+				dd order by ID,rwn				
+				</query>
+			</geoQuery>
+		</select>
+	</data>
+ <data id="NEW_CAS_MG_PROFILE" comment="CAS.MAIN" schema="WEB50" table="WATERWAY">
+		<select>
+			<geoQuery idField="ID" geoField="X,Y" partField="P_ID">
+				<var name="START_KM" />
+				<var name="FINISH_KM" />
+				<var name="LINE_ID" />
+				<var name="LABEL" default="Профиль" />
+				<var name="LABEL_UNIT" default="Высота, [м]" />
+				<var name="HEIGHT" default="50" />
+				<var name="TYPE" default="2D" />
+				<var name="Y_STEPS" default="8" />
+				<var name="ROUTE_ID" />
+				<var name="BEGIN_DATE" />
+				<query>
+					WITH l AS  (SELECT sp.line_id ID
+,waterway_cross_id P_ID
+,CASE WHEN sp.z_coord IS NULL THEN 0  ELSE sp.z_coord  END Y
+,(sp.measure+sp.measure_offset) / 1000 + s.station_begin - {START_KM}   X
+,' '::TEXT "LABEL"
+,row_number() over (PARTITION BY waterway_cross_id ORDER BY (sp.measure+sp.measure_offset) / 1000 + s.station_begin) rwn
+from pods.series s
+JOIN web50.waterway_cross_station_point sp
+ ON s.route_id = sp.route_id_offset and sp.waterway_cross_id in (select cc.waterway_cross_id from web50.waterway_cross cc where cc.zone_id={ZONE_ID})
+join pods.line l 
+ on l.line_id=sp.line_id
+                    WHERE sp.route_id = {ROUTE_ID} 
+					  AND to_char(sp.begin_date,'YYYY')=substring('{BEGIN_DATE}',1,4)
+                      AND sp.z_coord IS NOT null),
+                  min_x as (select min(rwn) rwn,P_ID from l group by P_ID),
+                  max_x as (select max(rwn) rwn,P_ID from l group by P_ID),
+				  min_measure as (select min(x) measure from l)
+             select ID, P_ID ,X ,Y, "LABEL",rwn, style from (       
+                 select l.ID, l.P_ID, l.X -m.measure X,0 Y, l."LABEL",l.rwn-1 rwn,'PROFILE' style from l l,min_x mx, min_measure m where l.P_ID=mx.P_ID and l.rwn=mx.rwn
+                    union all
+                    select l.ID, l.P_ID, l.X  -m.measure  X,l.Y, l."LABEL",l.rwn,'PROFILE' style from l, min_measure m
+                    union all
+                    select l.ID, l.P_ID, l.X  -m.measure  X,0 Y, l."LABEL",l.rwn+1,'PROFILE' style from l l,max_x mx, min_measure m where  l.P_ID=mx.P_ID and l.rwn=mx.rwn
+                    union all
+                    select  l.ID, l.P_ID, l.X  -m.measure  X,0 Y, l."LABEL",(select mx.rwn+2 from max_x mx where mx.P_ID=l.P_ID) rwn,'PROFILE' style from l l,min_x mx, min_measure m where l.P_ID=mx.P_ID and l.rwn=mx.rwn 
+					union all
+					select P_ID ID, P_ID*(-1) P_ID ,X  -m.measure  X,Y, "LABEL",rwn,'PIPE' style from l, min_measure m) 
+				dd order by ID,rwn				
+				</query>
+			</geoQuery>
+		</select>
+	</data>
+
+</root>

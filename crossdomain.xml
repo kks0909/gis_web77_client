@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<cross-domain-policy version="5.2.0.0">
+<site-control permitted-cross-domain-policies="all"/>
+<allow-access-from domain="*" secure="false"/>
+<allow-access-from domain="*" secure="true"/>
+<allow-access-from domain="*.openscales.org" secure="false"/>
+</cross-domain-policy> 

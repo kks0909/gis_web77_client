@@ -1,0 +1,240 @@
+﻿<!--7.7.6.7-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="5"  headerVertSize="50"
+            id="KAP_REMONT_PLAN_LIST"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelTemplateName="KAP_REMONT_PLAN_LIST"
+excelDataRequest="PODS_EXPORT.xml#KAP_REMONT_PLAN"
+            layerId="KAP_REMONT_PLAN" propertyPanelName="KAP_REMONT_PLAN"
+            dataRequest="TR_MAPSHEM_GRID.xml#KAP_REMONT_PLAN"
+            totalRecordsRequest="TR_MAPSHEM_GRID.xml#KAP_REMONT_PLAN_CNT"
+            initialSortField="ID">
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/createObject.png"
+        tooltip="Создать объект"
+        clickEvent="ru.corelight.business.events.CreateObjectEvent"
+        isEnabled="null" 
+        syncMap="true"/>
+  <picPutton:GridButton source="../../Public/assets/showOnMap.png"
+        tooltip="Показать на карте"
+        clickEvent="ru.corelight.business.events.ShowOnMapEvent"
+        isEnabled="length" />
+  <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        syncMap="true"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/paste.png"
+        tooltip="Вставить данные из excel"
+        clickEvent="PasteFromExcelEvent"
+        syncMap="true"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+<picPutton:GridButton source="../../ui/images/save.png"
+       tooltip="Сохранить изменения"
+       clickEvent="ApplyUpdatedCellEvent"
+       syncMap="true"
+       isEnabled="null" />
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=showInfoEvent;toolTip=Показать информацию по объекту"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/photo.png;eventName=ShowCarouselEvent;toolTip=Показать документы по объекту;columns=LG_ATTACH"
+                          editable="true"/>                    
+     <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/map.png;eventName=ru.corelight.business.events.ShowOnMapEvent;toolTip=Показать на карте;layerId=KAP_REMONT_PLAN"
+                          editable="true"/>
+     <columns:GridColumn headerText="ID" dataField="ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          hidden="true"
+                          filterComparisionType="number"
+                          width="40"/>
+      <columns:GridColumn headerText="Наименование\nгазопровода" dataField="LINE_DESCRIPTION"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="60"/>
+      <columns:GridColumn headerText="Наименование\nв соотв. с НСИ)" dataField="OBJECT_NAME"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="60"/>  
+      <columns:GridColumn headerText="Начало\nучастка,\nкм" dataField="STATION_BEGIN"
+                        itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                        editable="true"
+                        filterComparisionType="number"
+                        width="40"/>
+      <columns:GridColumn headerText="Конец\nучастка,\nкм" dataField="STATION_END"
+                        itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                        editable="true"
+                        filterComparisionType="number"
+                        width="40"/>                                      
+      <columns:GridColumn headerText="Наименование\nв соотв.\nс пообъектным планом" dataField="OBJECT_PLAN_DESCRIPTION"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="100"/>
+      <columns:GridColumn headerText="Вид\nпл.работ" dataField="TYPE_ID"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="60"/> 
+      <columns:GridColumn headerText="Наименование\nработ" dataField="CATEGORY_ID"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="40"/> 
+      <columns:GridColumn headerText="Способ\nвыполнения" dataField="METHOD_ID"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="40"/> 
+      <columns:GridColumn headerText="Вид\nработ" dataField="EFFECT_ID"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="string"
+                          width="60"/> 
+      <columns:GridColumn headerText="Инвентарный\nномер" dataField="INVENT_NUMBER"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="string"
+                          width="40"/> 
+      <columns:GridColumn headerText="Сводный (код) объекта ремонта (x/y/z)" dataField="OBJECT_CODE_XYZ"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="string"
+                          width="40"/>   
+      <columns:GridColumn headerText="№ строки пообъектного плана" dataField="PLAN_STRING_ID"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="string"
+                          width="40"/> 
+      <columns:GridColumn headerText="Объект\nОЗП" dataField="OBJECT_OZP"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="string"
+                          width="40"/> 
+      <columns:GridColumn headerText="Участок\nсостояние" dataField="ROUTE_CONDITION_ID"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="string"
+                          width="40"/> 
+      <columns:GridColumn headerText="Срок предоставления МТР согласно плану Газпром комплектация" dataField="PERIOD_MTR"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="string"
+                          width="40"/> 
+      <columns:GridColumn headerText="План работ описание" dataField="WORK_DESCRIPTION"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="string"
+                          width="100"/> 
+      <columns:GridColumn headerText="Примечания от ГТП" dataField="COMMENTS"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="100"/>    
+      <columns:GridColumn headerText="Дата\nначала\nработ" width="60" dataField="DATE_BEGIN" 
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer" filterComparisionType="date"
+                          editable="true"
+                          filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+      <columns:GridColumn headerText="Дата\nокончания\nработ" width="60" dataField="DATE_END" 
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer" filterComparisionType="date"
+                          editable="true"
+                          filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>    
+      <columns:GridColumn headerText="План работ продолжительность, часов" dataField="WORK_PERIOD_HOUR"
+                        itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                        editable="true"
+                        filterComparisionType="number"
+                        width="40"/>
+      <columns:GridColumn headerText="Объем стравливаемого газа, млн м3" dataField="PIT_GAS"
+                        itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                        hidden="true" editable="true"
+                        filterComparisionType="number"
+                        width="40"/>
+      <columns:GridColumn headerText="Планируемый к сохранению объем газа, млн м3" dataField="STORE_GAS"
+                        itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                        hidden="true" editable="true"
+                        filterComparisionType="number"
+                        width="40"/>
+      <columns:GridColumn headerText="Разрешенный выброс вредного вещества в пределах утвержденных нормативов ПДВ, т/год (млн. м3)" dataField="DISCHARGE_GAS"
+                        itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                        hidden="true" editable="true"
+                        filterComparisionType="number"
+                        width="40"/>  
+      <columns:GridColumn headerText="Номер и период действия разрешения на выброс вредных веществ в атмосферный воздух" dataField="ALLOW_PAPER_NUMBER"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="string"
+                          width="100"/>
+       <columns:GridColumn headerText="Достигнутый объем транспорта газа на участке (млн.м3/сут) зима" dataField="TRANSPORT_GAS_VAL_WINTER"
+                        itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                        hidden="true" editable="true"
+                        filterComparisionType="number"
+                        width="40"/>
+        <columns:GridColumn headerText="Достигнутый объем транспорта газа на участке (млн.м3/сут) лето" dataField="TRANSPORT_GAS_VAL_SUMMER"
+                        itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                        hidden="true" editable="true"
+                        filterComparisionType="number"
+                        width="40"/>
+        <columns:GridColumn headerText="Достигнутый объем транспорта газа на участке (млн.м3/сут) межсезонье" dataField="TRANSPORT_GAS_VAL_OTH_SEASON"
+                        itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                        hidden="true" editable="true"
+                        filterComparisionType="number"
+                        width="40"/>
+        <columns:GridColumn headerText="Расчетная пропускная способность участка (млн м3/сутки) зима" dataField="CALC_GAS_VAL_WINTER"
+                        itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                        hidden="true" editable="true"
+                        filterComparisionType="number"
+                        width="40"/>
+        <columns:GridColumn headerText="Расчетная пропускная способность участка (млн м3/сутки) лето" dataField="CALC_GAS_VAL_SUMMER"
+                        itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                        hidden="true" editable="true"
+                        filterComparisionType="number"
+                        width="40"/>
+        <columns:GridColumn headerText="Расчетная пропускная способность участка (млн м3/сутки) межсезонье" dataField="CALC_GAS_VAL_OTH_SEASON"
+                        itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                        hidden="true" editable="true"
+                        filterComparisionType="number"
+                        width="40"/>
+        <columns:GridColumn headerText="Расчетный объем транспорта газа на период проведения работ (млн м3/сутки)" dataField="CALC_GAS_VAL_WORK"
+                        itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                        hidden="true" editable="true"
+                        filterComparisionType="number"
+                        width="40"/>  
+        <columns:GridColumn headerText="Филиал" dataField="SRV_DISTRICT_LIST"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="60"/> 
+        <columns:GridColumn headerText="№ п/п" dataField="ORDER_ID"
+                        itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                        editable="true"
+                        filterComparisionType="number"
+                        width="40"/>                                                                                                                                                            
+        <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

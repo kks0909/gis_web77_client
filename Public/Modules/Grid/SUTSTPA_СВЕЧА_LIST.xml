@@ -1,0 +1,177 @@
+﻿<!--7.7.7.3-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="9"  pageSize="10000"  headerVertSize="50"
+            id="SUTSTPA_СВЕЧА"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            labelColumn="LABEL"
+            layerId="SUTSTPA_СВЕЧА" propertyPanelName="SUTSTPA_СВЕЧА"
+            dataRequest="SUTSTPA_GRID.xml#SUTSTPA_СВЕЧА"
+            initialSortField="ID">
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/createObject.png"
+        tooltip="Создать объект"
+        clickEvent="ru.corelight.business.events.CreateObjectEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../Public/assets/showOnMap.png"
+        tooltip="Показать на карте"
+        clickEvent="ShowMapEvent"
+        task="sutstpa_map"
+        openNewWnd="true"
+        isEnabled="length" />
+  <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/paste.png"
+        tooltip="Вставить данные из excel"
+        clickEvent="PasteFromExcelEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/save.png"
+       tooltip="Сохранить изменения"
+       clickEvent="ApplyUpdatedCellEvent"
+       isEnabled="null" />
+  <picPutton:GridButton source="../../Public/assets/dashboard.png"
+       tooltip="Показать дашборд"
+       clickEvent="ShowDashboardEvent"
+       isEnabled="null" />
+  <picPutton:GridButton source="../../Public/assets/traffic-lights.png"
+       tooltip="Показать легенду"
+       clickEvent="ShowLegendEvent"
+       isEnabled="null" />     
+  <picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="Показать всё"
+        text="ПОКАЗАТЬ ВСЁ"
+        clickEvent="showAllDataEvent"
+        className="gridTextButton"
+        position="top"
+        isEnabled="true" width="100" />     
+  <picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="Перейти на уровень выше"
+        text="ПЕРЕЙТИ НА УРОВЕНЬ ВВЕРХ"
+        clickEvent="showParentGridEvent"
+        className="gridTextButton"
+        position="top"
+        isEnabled="true" width="185" />
+  <picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" width="120" />     
+  </grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=showInfoEvent;toolTip=Показать информацию по объекту"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/photo.png;eventName=ShowCarouselEvent;toolTip=Показать документы по объекту;columns=LG_ATTACH"
+                          editable="true"/>
+      <columns:GridColumn headerText="ID" dataField="ID"
+						              itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false" 
+            						  filterComparisionType="number" 
+            						  width="50" /> 
+       <columns:GridColumn headerText="ID кран.\nплощадки" dataField="STRUCT_ID" 
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false" 
+                          filterComparisionType="number" 
+                          width="50" />                                       
+      <columns:GridColumn headerText="ЛПУ" dataField="LPU"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_LPU_GCL" filterComparisionType="array" 
+						              filterRequestId="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_LPU_GCL"
+                          editable="true"
+                          filterRenderer="ru.corelight.view.controls.dynamicFilter.InListControl"
+                          width="110"/>
+      <columns:GridColumn headerText="ЛЭС" dataField="LES"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_LES_GCL" filterComparisionType="array" 
+						              filterRequestId="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_LES_GCL" 
+                          hidden="true"
+                          editable="true"
+                          filterRenderer="ru.corelight.view.controls.dynamicFilter.InListControl"
+                          width="95"/>	
+      <columns:GridColumn headerText="Наименование газопровода" dataField="PIPE"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_PIPE_GCL" filterComparisionType="array" 
+						              filterRequestId="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_PIPE_GCL" 
+                          editable="true"
+                          filterRenderer="ru.corelight.view.controls.dynamicFilter.InListControl"
+                          width="280"/>					  
+      <columns:GridColumn headerText="КМ" dataField="STATION"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="40"/>
+      <columns:GridColumn headerText="Дата\nосмотра" dataField="DATE_INSP"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer" 
+                          editable="false"
+                          dateFormat="number"
+                          filterComparisionType="date"
+                          width="51"/>
+      <columns:GridColumn headerText="Высота\nсвечи&gt;3 м" dataField="HEIGHT_IS"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=SUTSTPA_SEM_DICT.xml#YESNO" filterComparisionType="array" 
+						              filterRequestId="SUTSTPA_SEM_DICT.xml#YESNO"
+                          editable="true"
+                          hidden="true"
+                          filterRenderer="ru.corelight.view.controls.dynamicFilter.InListControl"
+                          width="50"/>
+      <columns:GridColumn headerText="Окраска\nсвечи-\nжёлтый" dataField="COLOR_IS"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=SUTSTPA_SEM_DICT.xml#YESNO" filterComparisionType="array" 
+						              filterRequestId="SUTSTPA_SEM_DICT.xml#YESNO"
+                          editable="true"
+                          hidden="true"
+                          filterRenderer="ru.corelight.view.controls.dynamicFilter.InListControl"
+                          width="50"/>
+      <columns:GridColumn headerText="Наличие\nоголовков\nс самоотк.\nкрышкой" dataField="ROOF_IS"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=SUTSTPA_SEM_DICT.xml#YESNO" filterComparisionType="array" 
+						              filterRequestId="SUTSTPA_SEM_DICT.xml#YESNO"
+                          editable="true"
+                          hidden="true"
+                          filterRenderer="ru.corelight.view.controls.dynamicFilter.InListControl"
+                          width="50"/>
+      <columns:GridColumn headerText="Наличие\nтумбы" dataField="PEDESTAL_IS"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=SUTSTPA_SEM_DICT.xml#YESNO" filterComparisionType="array" 
+                          filterRequestId="SUTSTPA_SEM_DICT.xml#YESNO"
+                          editable="true"
+                          hidden="true"
+                          filterRenderer="ru.corelight.view.controls.dynamicFilter.InListControl"
+                          width="50"/> 
+      <columns:GridColumn headerText="Отсутств.\nотклон. \nот верт.\nплоск." dataField="VERT_IS"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=SUTSTPA_SEM_DICT.xml#YESNO" filterComparisionType="array" 
+                          filterRequestId="SUTSTPA_SEM_DICT.xml#YESNO"
+                          editable="true"
+                          hidden="true"
+                          filterRenderer="ru.corelight.view.controls.dynamicFilter.InListControl"
+                          width="50"/>                                        
+      <columns:GridColumn headerText="Ранг опасности" dataField="TYPE"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=SUTSTPA_SEM_DICT.xml#TYPE" filterComparisionType="array" 
+                          filterRequestId="SUTSTPA_SEM_DICT.xml#TYPE"
+                          editable="true"
+                          filterRenderer="ru.corelight.view.controls.dynamicFilter.InListControl"
+                          width="1" >
+                          <colorValidation mode="row" min="RED" max="RED" type="string" color="FF463E" critical="3" preload="true" />
+                          <colorValidation mode="row" min="YELLOW" max="YELLOW" color="FFBC16" type="string" critical="2" preload="true" />
+                          <colorValidation mode="row" min="GREEN" max="GREEN" color="00FF00" type="string" critical="1" preload="true" />
+      </columns:GridColumn>
+      <columns:GridColumn headerText="Ранг" dataField="RANK"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="false"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50">
+      </columns:GridColumn>
+
+   </grids:columns>
+</grids:Grid>

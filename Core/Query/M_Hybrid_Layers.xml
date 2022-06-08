@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.7.4" xsi:noNamespaceSchemaLocation="lay.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" descr="Вспомогательная карта для Рабочей карты: вектор + снимок v5.0" name="M_Hybrid">
+  <dataProvider type="style" source="M_Hybrid_STYLE.xml" />
+  <layer id="WEB50_M_1_ROADS_S" descr="M1_ДОРОГИ_ПЛ" comment="WEB50.M_1_ROADS_S" order="13" visible="true" topology="polygon" projection="EPSG:4326" zoomMin="27" zoomMax="13" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_1_ROADS_S">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_1_ROADS_S" />
+    <dataProvider type="style" source="M_1_STYLE.xml#WEB50_M_1_ROADS_S" />
+    <dataProvider type="semantic" source="M_1_SEM.xml#WEB50_M_1_ROADS_S" />
+    <dataProvider type="spatial" source="M_1_GEO.xml#WEB50_M_1_ROADS_S" />
+  </layer>
+  <layer id="WEB50_M_1_TOWN_LP" descr="M1_НАСЕЛ_ПУНКТЫ_ЛИН_ТОЧ" comment="WEB50.M_1_TOWN_LP" order="1" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="17" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_1_TOWN_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_1_TOWN_LP" />
+    <dataProvider type="style" source="M_1_STYLE.xml#WEB50_M_1_TOWN_LP" />
+    <dataProvider type="semantic" source="M_1_SEM.xml#WEB50_M_1_TOWN_LP" />
+    <dataProvider type="spatial" source="M_1_GEO.xml#WEB50_M_1_TOWN_LP" />
+  </layer>
+  <layer id="WEB50_M_1_TOWN_S" descr="M1_НАСЕЛ_ПУНКТЫ_ПЛ" comment="WEB50.M_1_TOWN_S" order="11" visible="true" topology="polygon" projection="EPSG:4326" zoomMin="27" zoomMax="13" dataType="vector" type="common" labelField="C9" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_1_TOWN_S">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_1_TOWN_S" />
+    <dataProvider type="style" source="M_1_STYLE.xml#WEB50_M_1_TOWN_S" />
+    <dataProvider type="semantic" source="M_1_SEM.xml#WEB50_M_1_TOWN_S" />
+    <dataProvider type="spatial" source="M_1_GEO.xml#WEB50_M_1_TOWN_S" />
+  </layer>
+  <layer id="WEB50_M_1_PROM_LP" descr="M1_ПРОМ_ОБЪЕКТЫ_ЛИН_ТОЧ" comment="WEB50.M_1_PROM_LP" order="6" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="18" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_1_PROM_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_1_PROM_LP" />
+    <dataProvider type="style" source="M_1_STYLE.xml#WEB50_M_1_PROM_LP" />
+    <dataProvider type="semantic" source="M_1_SEM.xml#WEB50_M_1_PROM_LP" />
+    <dataProvider type="spatial" source="M_1_GEO.xml#WEB50_M_1_PROM_LP" />
+  </layer>
+  <layer id="WEB50_M_1_PROM_S" descr="M1_ПРОМ_ОБЪЕКТЫ_ПЛ" comment="WEB50.M_1_PROM_S" order="15" visible="true" topology="polygon" projection="EPSG:4326" zoomMin="27" zoomMax="13" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_1_PROM_S">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_1_PROM_S" />
+    <dataProvider type="style" source="M_1_STYLE.xml#WEB50_M_1_PROM_S" />
+    <dataProvider type="semantic" source="M_1_SEM.xml#WEB50_M_1_PROM_S" />
+    <dataProvider type="spatial" source="M_1_GEO.xml#WEB50_M_1_PROM_S" />
+  </layer>
+  <layer id="WEB50_M_1_RAST_LP" descr="M1_РАСТИТЕЛЬНОСТЬ_ЛИН_ТОЧ" comment="WEB50.M_1_RAST_LP" order="4" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="17" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_1_RAST_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_1_RAST_LP" />
+    <dataProvider type="style" source="M_1_STYLE.xml#WEB50_M_1_RAST_LP" />
+    <dataProvider type="semantic" source="M_1_SEM.xml#WEB50_M_1_RAST_LP" />
+    <dataProvider type="spatial" source="M_1_GEO.xml#WEB50_M_1_RAST_LP" />
+  </layer>
+  <layer id="WEB50_M_1_TEXT" descr="M1_ТЕКСТ_ПОДПИСИ" comment="WEB50.M_1_TEXT" order="2" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="27" zoomMax="16" dataType="vector" type="common" labelField="C9" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_1_TEXT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_1_TEXT" />
+    <dataProvider type="style" source="M_1_STYLE.xml#WEB50_M_1_TEXT" />
+    <dataProvider type="semantic" source="M_1_SEM.xml#WEB50_M_1_TEXT" />
+    <dataProvider type="spatial" source="M_1_GEO.xml#WEB50_M_1_TEXT" />
+  </layer>
+  <layer id="WEB50_M_10_ROADS_S" descr="M10_ДОРОГИ_ПЛ" comment="WEB50.M_10_ROADS_S" order="13" visible="true" topology="polygon" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_10_ROADS_S">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_10_ROADS_S" />
+    <dataProvider type="style" source="M_10_STYLE.xml#WEB50_M_10_ROADS_S" />
+    <dataProvider type="semantic" source="M_10_SEM.xml#WEB50_M_10_ROADS_S" />
+    <dataProvider type="spatial" source="M_10_GEO.xml#WEB50_M_10_ROADS_S" />
+  </layer>
+  <layer id="WEB50_M_10_TOWN_LP" descr="M10_НАСЕЛ_ПУНКТЫ_ЛИН_ТОЧ" comment="WEB50.M_10_TOWN_LP" order="1" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_10_TOWN_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_10_TOWN_LP" />
+    <dataProvider type="style" source="M_10_STYLE.xml#WEB50_M_10_TOWN_LP" />
+    <dataProvider type="semantic" source="M_10_SEM.xml#WEB50_M_10_TOWN_LP" />
+    <dataProvider type="spatial" source="M_10_GEO.xml#WEB50_M_10_TOWN_LP" />
+  </layer>
+  <layer id="WEB50_M_10_TOWN_S" descr="M10_НАСЕЛ_ПУНКТЫ_ПЛ" comment="WEB50.M_10_TOWN_S" order="11" visible="true" topology="polygon" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="C9" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_10_TOWN_S">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_10_TOWN_S" />
+    <dataProvider type="style" source="M_10_STYLE.xml#WEB50_M_10_TOWN_S" />
+    <dataProvider type="semantic" source="M_10_SEM.xml#WEB50_M_10_TOWN_S" />
+    <dataProvider type="spatial" source="M_10_GEO.xml#WEB50_M_10_TOWN_S" />
+  </layer>
+  <layer id="WEB50_M_10_PROM_LP" descr="M10_ПРОМ_ОБЪЕКТЫ_ЛИН_ТОЧ" comment="WEB50.M_10_PROM_LP" order="6" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="16" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_10_PROM_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_10_PROM_LP" />
+    <dataProvider type="style" source="M_10_STYLE.xml#WEB50_M_10_PROM_LP" />
+    <dataProvider type="semantic" source="M_10_SEM.xml#WEB50_M_10_PROM_LP" />
+    <dataProvider type="spatial" source="M_10_GEO.xml#WEB50_M_10_PROM_LP" />
+  </layer>
+  <layer id="WEB50_M_10_PROM_S" descr="M10_ПРОМ_ОБЪЕКТЫ_ПЛ" comment="WEB50.M_10_PROM_S" order="15" visible="true" topology="polygon" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_10_PROM_S">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_10_PROM_S" />
+    <dataProvider type="style" source="M_10_STYLE.xml#WEB50_M_10_PROM_S" />
+    <dataProvider type="semantic" source="M_10_SEM.xml#WEB50_M_10_PROM_S" />
+    <dataProvider type="spatial" source="M_10_GEO.xml#WEB50_M_10_PROM_S" />
+  </layer>
+  <layer id="WEB50_M_10_RAST_LP" descr="M10_РАСТИТЕЛЬНОСТЬ_ЛИН_ТОЧ" comment="WEB50.M_10_RAST_LP" order="4" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="13" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_10_RAST_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_10_RAST_LP" />
+    <dataProvider type="style" source="M_10_STYLE.xml#WEB50_M_10_RAST_LP" />
+    <dataProvider type="semantic" source="M_10_SEM.xml#WEB50_M_10_RAST_LP" />
+    <dataProvider type="spatial" source="M_10_GEO.xml#WEB50_M_10_RAST_LP" />
+  </layer>
+  <layer id="WEB50_M_10_TEXT" descr="M10_ТЕКСТ_ПОДПИСИ" comment="WEB50.M_10_TEXT" order="2" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="MIF_TEXT" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_10_TEXT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_10_TEXT" />
+    <dataProvider type="style" source="M_10_STYLE.xml#WEB50_M_10_TEXT" />
+    <dataProvider type="semantic" source="M_10_SEM.xml#WEB50_M_10_TEXT" />
+    <dataProvider type="spatial" source="M_10_GEO.xml#WEB50_M_10_TEXT" />
+  </layer>
+  <layer id="WEB50_M_25_ROADS_S" descr="M25_ДОРОГИ_ПЛ" comment="WEB50.M_25_ROADS_S" order="13" visible="true" topology="polygon" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_25_ROADS_S">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_25_ROADS_S" />
+    <dataProvider type="style" source="M_25_STYLE.xml#WEB50_M_25_ROADS_S" />
+    <dataProvider type="semantic" source="M_25_SEM.xml#WEB50_M_25_ROADS_S" />
+    <dataProvider type="spatial" source="M_25_GEO.xml#WEB50_M_25_ROADS_S" />
+  </layer>
+  <layer id="WEB50_M_25_TOWN_LP" descr="M25_НАСЕЛ_ПУНКТЫ_ЛИН_ТОЧ" comment="WEB50.M_25_TOWN_LP" order="1" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_25_TOWN_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_25_TOWN_LP" />
+    <dataProvider type="style" source="M_25_STYLE.xml#WEB50_M_25_TOWN_LP" />
+    <dataProvider type="semantic" source="M_25_SEM.xml#WEB50_M_25_TOWN_LP" />
+    <dataProvider type="spatial" source="M_25_GEO.xml#WEB50_M_25_TOWN_LP" />
+  </layer>
+  <layer id="WEB50_M_25_TOWN_S" descr="M25_НАСЕЛ_ПУНКТЫ_ПЛ" comment="WEB50.M_25_TOWN_S" order="11" visible="true" topology="polygon" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="C9" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_25_TOWN_S">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_25_TOWN_S" />
+    <dataProvider type="style" source="M_25_STYLE.xml#WEB50_M_25_TOWN_S" />
+    <dataProvider type="semantic" source="M_25_SEM.xml#WEB50_M_25_TOWN_S" />
+    <dataProvider type="spatial" source="M_25_GEO.xml#WEB50_M_25_TOWN_S" />
+  </layer>
+  <layer id="WEB50_M_25_PROM_LP" descr="M25_ПРОМ_ОБЪЕКТЫ_ЛИН_ТОЧ" comment="WEB50.M_25_PROM_LP" order="6" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="13" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_25_PROM_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_25_PROM_LP" />
+    <dataProvider type="style" source="M_25_STYLE.xml#WEB50_M_25_PROM_LP" />
+    <dataProvider type="semantic" source="M_25_SEM.xml#WEB50_M_25_PROM_LP" />
+    <dataProvider type="spatial" source="M_25_GEO.xml#WEB50_M_25_PROM_LP" />
+  </layer>
+  <layer id="WEB50_M_25_PROM_S" descr="M25_ПРОМ_ОБЪЕКТЫ_ПЛ" comment="WEB50.M_25_PROM_S" order="15" visible="true" topology="polygon" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_25_PROM_S">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_25_PROM_S" />
+    <dataProvider type="style" source="M_25_STYLE.xml#WEB50_M_25_PROM_S" />
+    <dataProvider type="semantic" source="M_25_SEM.xml#WEB50_M_25_PROM_S" />
+    <dataProvider type="spatial" source="M_25_GEO.xml#WEB50_M_25_PROM_S" />
+  </layer>
+  <layer id="WEB50_M_25_RAST_LP" descr="M25_РАСТИТЕЛЬНОСТЬ_ЛИН_ТОЧ" comment="WEB50.M_25_RAST_LP" order="4" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="13" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_25_RAST_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_25_RAST_LP" />
+    <dataProvider type="style" source="M_25_STYLE.xml#WEB50_M_25_RAST_LP" />
+    <dataProvider type="semantic" source="M_25_SEM.xml#WEB50_M_25_RAST_LP" />
+    <dataProvider type="spatial" source="M_25_GEO.xml#WEB50_M_25_RAST_LP" />
+  </layer>
+  <layer id="WEB50_M_25_TEXT" descr="M25_ТЕКСТ_ПОДПИСИ" comment="WEB50.M_25_TEXT" order="2" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="MIF_TEXT" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_25_TEXT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_25_TEXT" />
+    <dataProvider type="style" source="M_25_STYLE.xml#WEB50_M_25_TEXT" />
+    <dataProvider type="semantic" source="M_25_SEM.xml#WEB50_M_25_TEXT" />
+    <dataProvider type="spatial" source="M_25_GEO.xml#WEB50_M_25_TEXT" />
+  </layer>
+  <layer id="WEB50_M_R_GAZPROM_OBSESTVA_DOCERNI" descr="ГАЗПРОМ_ОБЩЕСТВА_ДОЧЕРНИЕ" comment="WEB50.M_R_GAZPROM_OBSESTVA_DOCERNI" order="1002" visible="false" topology="point,line,polygon" projection="EPSG:4326" zoomMin="6" zoomMax="0" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_GAZPROM_OBSESTVA_DOCERNI">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_GAZPROM_OBSESTVA_DOCERNI" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_GAZPROM_OBSESTVA_DOCERNI" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_GAZPROM_OBSESTVA_DOCERNI" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_GAZPROM_OBSESTVA_DOCERNI" />
+  </layer>
+  <layer id="WEB50_M_R_GAZPROM_OBSESTVA_POEMG" descr="ГАЗПРОМ_ОБЩЕСТВА_ПОЭМГ" comment="WEB50.M_R_GAZPROM_OBSESTVA_POEMG" order="1" visible="false" topology="point" projection="EPSG:4326" zoomMin="27" zoomMax="0" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_GAZPROM_OBSESTVA_POEMG">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_GAZPROM_OBSESTVA_POEMG" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_GAZPROM_OBSESTVA_POEMG" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_GAZPROM_OBSESTVA_POEMG" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_GAZPROM_OBSESTVA_POEMG" />
+  </layer>
+  <layer id="WEB50_M_R_GIDROGRAFIA_RF_1_OZERA_M" descr="ГИДРОГРАФИЯ_РФ_1_ОЗЕРА_МОРЯ" comment="WEB50.M_R_GIDROGRAFIA_RF_1_OZERA_M" order="14" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="0" dataType="vector" type="common" labelField="" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_GIDROGRAFIA_RF_1_OZERA_M">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_GIDROGRAFIA_RF_1_OZERA_M" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_GIDROGRAFIA_RF_1_OZERA_M" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_GIDROGRAFIA_RF_1_OZERA_M" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_GIDROGRAFIA_RF_1_OZERA_M" />
+  </layer>
+  <layer id="WEB50_M_R_GIDROGRAFIA_RF_1_REKI_LI" descr="ГИДРОГРАФИЯ_РФ_1_РЕКИ_ЛИН" comment="WEB50.M_R_GIDROGRAFIA_RF_1_REKI_LI" order="10" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="8" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_GIDROGRAFIA_RF_1_REKI_LI">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_GIDROGRAFIA_RF_1_REKI_LI" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_GIDROGRAFIA_RF_1_REKI_LI" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_GIDROGRAFIA_RF_1_REKI_LI" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_GIDROGRAFIA_RF_1_REKI_LI" />
+  </layer>
+  <layer id="WEB50_M_R_GIDROGRAFIA_RF_2_OZERA_M" descr="ГИДРОГРАФИЯ_РФ_2_ОЗЕРА_МОРЯ" comment="WEB50.M_R_GIDROGRAFIA_RF_2_OZERA_M" order="13" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="8" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_GIDROGRAFIA_RF_2_OZERA_M">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_GIDROGRAFIA_RF_2_OZERA_M" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_GIDROGRAFIA_RF_2_OZERA_M" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_GIDROGRAFIA_RF_2_OZERA_M" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_GIDROGRAFIA_RF_2_OZERA_M" />
+  </layer>
+  <layer id="WEB50_M_R_GIDROGRAFIA_RF_2_REKI_LI" descr="ГИДРОГРАФИЯ_РФ_2_РЕКИ_ЛИН" comment="WEB50.M_R_GIDROGRAFIA_RF_2_REKI_LI" order="9" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="9" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_GIDROGRAFIA_RF_2_REKI_LI">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_GIDROGRAFIA_RF_2_REKI_LI" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_GIDROGRAFIA_RF_2_REKI_LI" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_GIDROGRAFIA_RF_2_REKI_LI" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_GIDROGRAFIA_RF_2_REKI_LI" />
+  </layer>
+  <layer id="WEB50_M_R_DOROGI_AVTOMOBIL_NYE" descr="ДОРОГИ_АВТОМОБИЛЬНЫЕ" comment="WEB50.M_R_DOROGI_AVTOMOBIL_NYE" order="8" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="9" dataType="vector" type="common" labelField="ДОРОГА_ИД" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_DOROGI_AVTOMOBIL_NYE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_DOROGI_AVTOMOBIL_NYE" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_DOROGI_AVTOMOBIL_NYE" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_DOROGI_AVTOMOBIL_NYE" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_DOROGI_AVTOMOBIL_NYE" />
+  </layer>
+  <layer id="WEB50_M_R_DOROGI_JELEZNYE" descr="ДОРОГИ_ЖЕЛЕЗНЫЕ" comment="WEB50.M_R_DOROGI_JELEZNYE" order="7" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="8" dataType="vector" type="common" labelField="" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_DOROGI_JELEZNYE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_DOROGI_JELEZNYE" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_DOROGI_JELEZNYE" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_DOROGI_JELEZNYE" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_DOROGI_JELEZNYE" />
+  </layer>
+  <layer id="WEB50_M_R_DOROGI_JELEZNYE_STANCII" descr="ДОРОГИ_ЖЕЛЕЗНЫЕ_СТАНЦИИ" comment="WEB50.M_R_DOROGI_JELEZNYE_STANCII" order="6" visible="true" topology="point" projection="EPSG:4326" zoomMin="11" zoomMax="9" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_DOROGI_JELEZNYE_STANCII">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_DOROGI_JELEZNYE_STANCII" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_DOROGI_JELEZNYE_STANCII" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_DOROGI_JELEZNYE_STANCII" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_DOROGI_JELEZNYE_STANCII" />
+  </layer>
+  <layer id="WEB50_M_200_SWAMP" descr="M200_БОЛОТА" comment="WEB50.M_200_SWAMP" order="11" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="27" zoomMax="11" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_200_SWAMP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_200_SWAMP" />
+    <dataProvider type="style" source="M_200_STYLE.xml#WEB50_M_200_SWAMP" />
+    <dataProvider type="semantic" source="M_200_SEM.xml#WEB50_M_200_SWAMP" />
+    <dataProvider type="spatial" source="M_200_GEO.xml#WEB50_M_200_SWAMP" />
+  </layer>
+  <layer id="WEB50_M_200_GIDR_LP" descr="M200_ГИДРОГРАФИЯ_ЛИН_ТОЧ" comment="WEB50.M_200_GIDR_LP" order="10" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="11" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_200_GIDR_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_200_GIDR_LP" />
+    <dataProvider type="style" source="M_200_STYLE.xml#WEB50_M_200_GIDR_LP" />
+    <dataProvider type="semantic" source="M_200_SEM.xml#WEB50_M_200_GIDR_LP" />
+    <dataProvider type="spatial" source="M_200_GEO.xml#WEB50_M_200_GIDR_LP" />
+  </layer>
+  <layer id="WEB50_M_200_GIDR_S" descr="M200_ГИДРОГРАФИЯ_ПЛ" comment="WEB50.M_200_GIDR_S" order="13" visible="true" topology="polygon" projection="EPSG:4326" zoomMin="27" zoomMax="11" dataType="vector" type="common" labelField="C180" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_200_GIDR_S">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_200_GIDR_S" />
+    <dataProvider type="style" source="M_200_STYLE.xml#WEB50_M_200_GIDR_S" />
+    <dataProvider type="semantic" source="M_200_SEM.xml#WEB50_M_200_GIDR_S" />
+    <dataProvider type="spatial" source="M_200_GEO.xml#WEB50_M_200_GIDR_S" />
+  </layer>
+  <layer id="WEB50_M_200_LIMITS" descr="M200_ГРАНИЦЫ" comment="WEB50.M_200_LIMITS" order="9" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_200_LIMITS">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_200_LIMITS" />
+    <dataProvider type="style" source="M_200_STYLE.xml#WEB50_M_200_LIMITS" />
+    <dataProvider type="semantic" source="M_200_SEM.xml#WEB50_M_200_LIMITS" />
+    <dataProvider type="spatial" source="M_200_GEO.xml#WEB50_M_200_LIMITS" />
+  </layer>
+  <layer id="WEB50_M_200_ROADS" descr="M200_ДОРОГИ" comment="WEB50.M_200_ROADS" order="6" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="27" zoomMax="11" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_200_ROADS">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_200_ROADS" />
+    <dataProvider type="style" source="M_200_STYLE.xml#WEB50_M_200_ROADS" />
+    <dataProvider type="semantic" source="M_200_SEM.xml#WEB50_M_200_ROADS" />
+    <dataProvider type="spatial" source="M_200_GEO.xml#WEB50_M_200_ROADS" />
+  </layer>
+  <layer id="WEB50_M_200_TOWN" descr="M200_НАСЕЛ_ПУНКТЫ" comment="WEB50.M_200_TOWN" order="7" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="27" zoomMax="11" dataType="vector" type="common" labelField="C180" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_200_TOWN">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_200_TOWN" />
+    <dataProvider type="style" source="M_200_STYLE.xml#WEB50_M_200_TOWN" />
+    <dataProvider type="semantic" source="M_200_SEM.xml#WEB50_M_200_TOWN" />
+    <dataProvider type="spatial" source="M_200_GEO.xml#WEB50_M_200_TOWN" />
+  </layer>
+  <layer id="WEB50_M_200_PROM" descr="M200_ПРОМ_ОБЪЕКТЫ" comment="WEB50.M_200_PROM" order="5" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="27" zoomMax="11" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_200_PROM">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_200_PROM" />
+    <dataProvider type="style" source="M_200_STYLE.xml#WEB50_M_200_PROM" />
+    <dataProvider type="semantic" source="M_200_SEM.xml#WEB50_M_200_PROM" />
+    <dataProvider type="spatial" source="M_200_GEO.xml#WEB50_M_200_PROM" />
+  </layer>
+  <layer id="WEB50_M_200_RAST_LP" descr="M200_РАСТИТЕЛЬНОСТЬ_ЛИН_ТОЧ" comment="WEB50.M_200_RAST_LP" order="3" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_200_RAST_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_200_RAST_LP" />
+    <dataProvider type="style" source="M_200_STYLE.xml#WEB50_M_200_RAST_LP" />
+    <dataProvider type="semantic" source="M_200_SEM.xml#WEB50_M_200_RAST_LP" />
+    <dataProvider type="spatial" source="M_200_GEO.xml#WEB50_M_200_RAST_LP" />
+  </layer>
+  <layer id="WEB50_M_200_TEXT" descr="M200_ТЕКСТ_ПОДПИСИ" comment="WEB50.M_200_TEXT" order="1" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="15" zoomMax="11" dataType="vector" type="common" labelField="MIF_TEXT" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_200_TEXT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_200_TEXT" />
+    <dataProvider type="style" source="M_200_STYLE.xml#WEB50_M_200_TEXT" />
+    <dataProvider type="semantic" source="M_200_SEM.xml#WEB50_M_200_TEXT" />
+    <dataProvider type="spatial" source="M_200_GEO.xml#WEB50_M_200_TEXT" />
+  </layer>
+  <layer id="WEB50_M_R_NASEL_PUNKTY_GORODA_PROC" descr="НАСЕЛ_ПУНКТЫ_ГОРОДА_ПРОЧИЕ" comment="WEB50.M_R_NASEL_PUNKTY_GORODA_PROC" order="4" visible="true" topology="point" projection="EPSG:4326" zoomMin="11" zoomMax="7" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_NASEL_PUNKTY_GORODA_PROC">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_NASEL_PUNKTY_GORODA_PROC" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_NASEL_PUNKTY_GORODA_PROC" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_NASEL_PUNKTY_GORODA_PROC" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_NASEL_PUNKTY_GORODA_PROC" />
+  </layer>
+  <layer id="WEB50_M_R_NASEL_PUNKTY_PROCIE" descr="НАСЕЛ_ПУНКТЫ_ПРОЧИЕ" comment="WEB50.M_R_NASEL_PUNKTY_PROCIE" order="5" visible="true" topology="point" projection="EPSG:4326" zoomMin="11" zoomMax="9" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_NASEL_PUNKTY_PROCIE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_NASEL_PUNKTY_PROCIE" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_NASEL_PUNKTY_PROCIE" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_NASEL_PUNKTY_PROCIE" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_NASEL_PUNKTY_PROCIE" />
+  </layer>
+  <layer id="WEB50_M_R_NASEL_PUNKTY_STOLICY" descr="НАСЕЛ_ПУНКТЫ_СТОЛИЦЫ" comment="WEB50.M_R_NASEL_PUNKTY_STOLICY" order="11" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="0" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_NASEL_PUNKTY_STOLICY">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_NASEL_PUNKTY_STOLICY" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_NASEL_PUNKTY_STOLICY" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_NASEL_PUNKTY_STOLICY" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_NASEL_PUNKTY_STOLICY" />
+  </layer>
+  <layer id="WEB50_M_R_SOPRED_GOSUDARSTVA" descr="СОПРЕД_ГОСУДАРСТВА" comment="WEB50.M_R_SOPRED_GOSUDARSTVA" order="17" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="0" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_SOPRED_GOSUDARSTVA">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_SOPRED_GOSUDARSTVA" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_SOPRED_GOSUDARSTVA" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_SOPRED_GOSUDARSTVA" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_SOPRED_GOSUDARSTVA" />
+  </layer>
+  <layer id="WEB50_M_R_SUB_EKTY_RF_ADM_CENTRY" descr="СУБЪЕКТЫ_РФ_АДМ_ЦЕНТРЫ" comment="WEB50.M_R_SUB_EKTY_RF_ADM_CENTRY" order="12" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="3" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_SUB_EKTY_RF_ADM_CENTRY">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_SUB_EKTY_RF_ADM_CENTRY" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_SUB_EKTY_RF_ADM_CENTRY" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_SUB_EKTY_RF_ADM_CENTRY" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_SUB_EKTY_RF_ADM_CENTRY" />
+  </layer>
+  <layer id="WEB50_M_R_SUB_EKTY_RF_RAYONY_ADM_C" descr="СУБЪЕКТЫ_РФ_РАЙОНЫ_АДМ_ЦЕНТРЫ" comment="WEB50.M_R_SUB_EKTY_RF_RAYONY_ADM_C" order="3" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="7" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_SUB_EKTY_RF_RAYONY_ADM_C">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_SUB_EKTY_RF_RAYONY_ADM_C" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_SUB_EKTY_RF_RAYONY_ADM_C" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_SUB_EKTY_RF_RAYONY_ADM_C" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_SUB_EKTY_RF_RAYONY_ADM_C" />
+  </layer>
+  <layer id="WEB50_M_1_ROADS_LP" descr="M1_ДОРОГИ_ЛИН_ТОЧ" comment="WEB50.M_1_ROADS_LP" order="7" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="16" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_1_ROADS_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_1_ROADS_LP" />
+    <dataProvider type="style" source="M_1_STYLE.xml#WEB50_M_1_ROADS_LP" />
+    <dataProvider type="semantic" source="M_1_SEM.xml#WEB50_M_1_ROADS_LP" />
+    <dataProvider type="spatial" source="M_1_GEO.xml#WEB50_M_1_ROADS_LP" />
+  </layer>
+  <layer id="WEB50_M_10_ROADS_LP" descr="M10_ДОРОГИ_ЛИН_ТОЧ" comment="WEB50.M_10_ROADS_LP" order="7" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_10_ROADS_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_10_ROADS_LP" />
+    <dataProvider type="style" source="M_10_STYLE.xml#WEB50_M_10_ROADS_LP" />
+    <dataProvider type="semantic" source="M_10_SEM.xml#WEB50_M_10_ROADS_LP" />
+    <dataProvider type="spatial" source="M_10_GEO.xml#WEB50_M_10_ROADS_LP" />
+  </layer>
+  <layer id="WEB50_M_25_ROADS_LP" descr="M25_ДОРОГИ_ЛИН_ТОЧ" comment="WEB50.M_25_ROADS_LP" order="7" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_25_ROADS_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_25_ROADS_LP" />
+    <dataProvider type="style" source="M_25_STYLE.xml#WEB50_M_25_ROADS_LP" />
+    <dataProvider type="semantic" source="M_25_SEM.xml#WEB50_M_25_ROADS_LP" />
+    <dataProvider type="spatial" source="M_25_GEO.xml#WEB50_M_25_ROADS_LP" />
+  </layer>
+  <layer id="WEB50_M_5_ROADS_LP" descr="M5_ДОРОГИ_ЛИН_ТОЧ" comment="WEB50.M_5_ROADS_LP" order="7" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_5_ROADS_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_5_ROADS_LP" />
+    <dataProvider type="style" source="M_5_STYLE.xml#WEB50_M_5_ROADS_LP" />
+    <dataProvider type="semantic" source="M_5_SEM.xml#WEB50_M_5_ROADS_LP" />
+    <dataProvider type="spatial" source="M_5_GEO.xml#WEB50_M_5_ROADS_LP" />
+  </layer>
+  <layer id="WEB50_M_5_TEXT" descr="M5_ТЕКСТ_ПОДПИСИ" comment="WEB50.M_5_TEXT" order="2" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="C9" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_5_TEXT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_5_TEXT" />
+    <dataProvider type="style" source="M_5_STYLE.xml#WEB50_M_5_TEXT" />
+    <dataProvider type="semantic" source="M_5_SEM.xml#WEB50_M_5_TEXT" />
+    <dataProvider type="spatial" source="M_5_GEO.xml#WEB50_M_5_TEXT" />
+  </layer>
+  <layer id="WEB50_M_1_GIDR_LP" descr="M1_ГИДРОГРАФИЯ_ЛИН_ТОЧ" comment="WEB50.M_1_GIDR_LP" order="10" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="16" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_1_GIDR_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_1_GIDR_LP" />
+    <dataProvider type="style" source="M_1_STYLE.xml#WEB50_M_1_GIDR_LP" />
+    <dataProvider type="semantic" source="M_1_SEM.xml#WEB50_M_1_GIDR_LP" />
+    <dataProvider type="spatial" source="M_1_GEO.xml#WEB50_M_1_GIDR_LP" />
+  </layer>
+  <layer id="WEB50_M_1_GIDR_S" descr="M1_ГИДРОГРАФИЯ_ПЛ" comment="WEB50.M_1_GIDR_S" order="16" visible="true" topology="polygon" projection="EPSG:4326" zoomMin="27" zoomMax="15" dataType="vector" type="common" labelField="C9" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_1_GIDR_S">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_1_GIDR_S" />
+    <dataProvider type="style" source="M_1_STYLE.xml#WEB50_M_1_GIDR_S" />
+    <dataProvider type="semantic" source="M_1_SEM.xml#WEB50_M_1_GIDR_S" />
+    <dataProvider type="spatial" source="M_1_GEO.xml#WEB50_M_1_GIDR_S" />
+  </layer>
+  <layer id="WEB50_M_10_GIDR_LP" descr="M10_ГИДРОГРАФИЯ_ЛИН_ТОЧ" comment="WEB50.M_10_GIDR_LP" order="10" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_10_GIDR_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_10_GIDR_LP" />
+    <dataProvider type="style" source="M_10_STYLE.xml#WEB50_M_10_GIDR_LP" />
+    <dataProvider type="semantic" source="M_10_SEM.xml#WEB50_M_10_GIDR_LP" />
+    <dataProvider type="spatial" source="M_10_GEO.xml#WEB50_M_10_GIDR_LP" />
+  </layer>
+  <layer id="WEB50_M_10_GIDR_S" descr="M10_ГИДРОГРАФИЯ_ПЛ" comment="WEB50.M_10_GIDR_S" order="16" visible="true" topology="polygon" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="C9" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_10_GIDR_S">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_10_GIDR_S" />
+    <dataProvider type="style" source="M_10_STYLE.xml#WEB50_M_10_GIDR_S" />
+    <dataProvider type="semantic" source="M_10_SEM.xml#WEB50_M_10_GIDR_S" />
+    <dataProvider type="spatial" source="M_10_GEO.xml#WEB50_M_10_GIDR_S" />
+  </layer>
+  <layer id="WEB50_M_25_GIDR_LP" descr="M25_ГИДРОГРАФИЯ_ЛИН_ТОЧ" comment="WEB50.M_25_GIDR_LP" order="10" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_25_GIDR_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_25_GIDR_LP" />
+    <dataProvider type="style" source="M_25_STYLE.xml#WEB50_M_25_GIDR_LP" />
+    <dataProvider type="semantic" source="M_25_SEM.xml#WEB50_M_25_GIDR_LP" />
+    <dataProvider type="spatial" source="M_25_GEO.xml#WEB50_M_25_GIDR_LP" />
+  </layer>
+  <layer id="WEB50_M_25_GIDR_S" descr="M25_ГИДРОГРАФИЯ_ПЛ" comment="WEB50.M_25_GIDR_S" order="16" visible="true" topology="polygon" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="C9" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_25_GIDR_S">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_W_MIR_GORODA" />
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_25_GIDR_S" />
+    <dataProvider type="style" source="M_25_STYLE.xml#WEB50_M_25_GIDR_S" />
+    <dataProvider type="semantic" source="M_25_SEM.xml#WEB50_M_25_GIDR_S" />
+    <dataProvider type="spatial" source="M_25_GEO.xml#WEB50_M_25_GIDR_S" />
+  </layer>
+  <layer id="WEB50_M_5_GIDR_LP" descr="M5_ГИДРОГРАФИЯ_ЛИН_ТОЧ" comment="WEB50.M_5_GIDR_LP" order="10" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_5_GIDR_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_5_GIDR_LP" />
+    <dataProvider type="style" source="M_5_STYLE.xml#WEB50_M_5_GIDR_LP" />
+    <dataProvider type="semantic" source="M_5_SEM.xml#WEB50_M_5_GIDR_LP" />
+    <dataProvider type="spatial" source="M_5_GEO.xml#WEB50_M_5_GIDR_LP" />
+  </layer>
+  <layer id="WEB50_M_5_GIDR_S" descr="M5_ГИДРОГРАФИЯ_ПЛ" comment="WEB50.M_5_GIDR_S" order="16" visible="true" topology="polygon" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="C9" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_5_GIDR_S">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_5_GIDR_S" />
+    <dataProvider type="style" source="M_5_STYLE.xml#WEB50_M_5_GIDR_S" />
+    <dataProvider type="semantic" source="M_5_SEM.xml#WEB50_M_5_GIDR_S" />
+    <dataProvider type="spatial" source="M_5_GEO.xml#WEB50_M_5_GIDR_S" />
+  </layer>
+  <layer id="WEB50_M_5_PROM_LP" descr="M5_ПРОМ_ОБЪЕКТЫ_ЛИН_ТОЧ" comment="WEB50.M_5_PROM_LP" order="6" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="13" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_5_PROM_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_5_PROM_LP" />
+    <dataProvider type="style" source="M_5_STYLE.xml#WEB50_M_5_PROM_LP" />
+    <dataProvider type="semantic" source="M_5_SEM.xml#WEB50_M_5_PROM_LP" />
+    <dataProvider type="spatial" source="M_5_GEO.xml#WEB50_M_5_PROM_LP" />
+  </layer>
+  <layer id="WEB50_M_5_PROM_S" descr="M5_ПРОМ_ОБЪЕКТЫ_ПЛ" comment="WEB50.M_5_PROM_S" order="15" visible="true" topology="polygon" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_5_PROM_S">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_5_PROM_S" />
+    <dataProvider type="style" source="M_5_STYLE.xml#WEB50_M_5_PROM_S" />
+    <dataProvider type="semantic" source="M_5_SEM.xml#WEB50_M_5_PROM_S" />
+    <dataProvider type="spatial" source="M_5_GEO.xml#WEB50_M_5_PROM_S" />
+  </layer>
+  <layer id="WEB50_M_5_RAST_LP" descr="M5_РАСТИТЕЛЬНОСТЬ_ЛИН_ТОЧ" comment="WEB50.M_5_RAST_LP" order="4" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="13" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_5_RAST_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_5_RAST_LP" />
+    <dataProvider type="style" source="M_5_STYLE.xml#WEB50_M_5_RAST_LP" />
+    <dataProvider type="semantic" source="M_5_SEM.xml#WEB50_M_5_RAST_LP" />
+    <dataProvider type="spatial" source="M_5_GEO.xml#WEB50_M_5_RAST_LP" />
+  </layer>
+  <layer id="WEB50_M_5_ROADS_S" descr="M5_ДОРОГИ_ПЛ" comment="WEB50.M_5_ROADS_S" order="13" visible="true" topology="polygon" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_5_ROADS_S">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_5_ROADS_S" />
+    <dataProvider type="style" source="M_5_STYLE.xml#WEB50_M_5_ROADS_S" />
+    <dataProvider type="semantic" source="M_5_SEM.xml#WEB50_M_5_ROADS_S" />
+    <dataProvider type="spatial" source="M_5_GEO.xml#WEB50_M_5_ROADS_S" />
+  </layer>
+  <layer id="WEB50_M_5_TOWN_LP" descr="M5_НАСЕЛ_ПУНКТЫ_ЛИН_ТОЧ" comment="WEB50.M_5_TOWN_LP" order="1" visible="true" topology="point,line" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="vector" type="common" labelField="DESCR" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_5_TOWN_LP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_5_TOWN_LP" />
+    <dataProvider type="style" source="M_5_STYLE.xml#WEB50_M_5_TOWN_LP" />
+    <dataProvider type="semantic" source="M_5_SEM.xml#WEB50_M_5_TOWN_LP" />
+    <dataProvider type="spatial" source="M_5_GEO.xml#WEB50_M_5_TOWN_LP" />
+  </layer>
+  <layer id="WEB50_M_5_TOWN_S" descr="M5_НАСЕЛ_ПУНКТЫ_ПЛ" comment="WEB50.M_5_TOWN_S" order="11" visible="true" topology="polygon" projection="EPSG:4326" zoomMin="16" zoomMax="12" dataType="vector" type="common" labelField="C9" classField="OBJ_CLS_ID" spacing="common" cover="false" schema="WEB50" table="M_5_TOWN_Sv">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_5_TOWN_S" />
+    <dataProvider type="style" source="M_5_STYLE.xml#WEB50_M_5_TOWN_S" />
+    <dataProvider type="semantic" source="M_5_SEM.xml#WEB50_M_5_TOWN_S" />
+    <dataProvider type="spatial" source="M_5_GEO.xml#WEB50_M_5_TOWN_S" />
+  </layer>
+</root>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.1.2" descr="Косметический слой" name="COSMETIC">
+  <dataProvider type='style' source="COSMETIC_STYLE.xml" />
+  <layer id="COSMETIC_OBJECT" comment="COSMETIC.OBJECT" descr="Объект косметического слоя" projection="EPSG:4326" 
+         dataType="vector" type="common" labelField="NAME" classField="TYPE_CL" spacing="common" cover="false" 
+         zoomMin="NaN" zoomMax="NaN" fitMap="false" order="1" visible="true" topology="point,line,polygon">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#COSMETIC_OBJECT" />
+    <dataProvider type="style" source="COSMETIC_STYLE.xml#COSMETIC_OBJECT" />
+    <dataProvider type="semantic" source="COSMETIC_SEM.xml#COSMETIC_OBJECT" />
+    <dataProvider type="spatial" source="COSMETIC_GEO.xml#COSMETIC_OBJECT" />
+  </layer>
+  <layer id="FIND_PATH_OBJECT" comment="COSMETIC.PATH" descr="Слой поиска пути" projection="EPSG:4326" 
+         dataType="vector" type="system" labelField="" classField="" spacing="common" cover="false" 
+         zoomMin="NaN" zoomMax="NaN" fitMap="false" order="200001" visible="true" topology="point,line">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#FIND_PATH_OBJECT" />
+    <dataProvider type="style" source="COSMETIC_STYLE.xml#COSMETIC_OBJECT" />
+    <dataProvider type="semantic" source="COSMETIC_SEM.xml#COSMETIC_OBJECT" />
+    <dataProvider type="spatial" source="COSMETIC_GEO.xml#COSMETIC_OBJECT" />
+  </layer>
+  <layer id="LIB_DOC_GEO_VIDEO_OBJECT" comment="COSMETIC.GEO_VIDEO" descr="Слой текущего маршрута видеомониторинга" projection="EPSG:4326"
+        dataType="vector" type="system" labelField="" classField="" spacing="common" cover="false"
+        zoomMin="NaN" zoomMax="NaN" fitMap="false" order="1" visible="true" topology="line">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#LIB_DOC_GEO_VIDEO_OBJECT" />
+    <dataProvider type="style" source="COSMETIC_STYLE.xml#COSMETIC_OBJECT" />
+    <dataProvider type="semantic" source="COSMETIC_SEM.xml#COSMETIC_OBJECT" />
+    <dataProvider type="spatial" source="COSMETIC_GEO.xml#COSMETIC_OBJECT" />
+  </layer>
+  <layer id="BUFFER_OBJECT" comment="BUFFER.OBJECT" descr="Буферный слой" projection="EPSG:4326" 
+         dataType="vector" type="common" labelField="NAME" classField="TYPE_CL" spacing="common" cover="false" 
+         zoomMin="NaN" zoomMax="NaN" fitMap="false" order="1" visible="true" topology="point,line,polygon">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#COSMETIC_OBJECT" />
+    <dataProvider type="style" source="COSMETIC_STYLE.xml#COSMETIC_OBJECT" />
+    <dataProvider type="semantic" source="COSMETIC_SEM.xml#COSMETIC_OBJECT" />
+    <dataProvider type="spatial" source="COSMETIC_GEO.xml#COSMETIC_OBJECT" />
+  </layer>
+
+</root>

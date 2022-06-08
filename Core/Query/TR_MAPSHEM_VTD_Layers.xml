@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.4.7">
+  <layer id="TR_MAPSHEM_TEXT" comment="FLOW_CHART.TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT" descr="Текстовые подписи" projection="EPSG:5807" dataType="vector" type="system" labelField="LABEL" classField="TYPE" spacing="common" cover="false" fitMap="false" order="300" visible="true" topology="line">
+    <dataProvider type="semantic" source="TR_MAPSHEM_SEM.xml#TR_MAPSHEM_TEXT" />
+    <dataProvider type="spatial" source="TR_MAPSHEM_GEO.xml#TR_MAPSHEM_TEXT_NO_WATER_ROAD" />
+  </layer>
+
+ <layer id="TR_MAPSHEM_TEXT_WATER_ROAD" comment="FLOW_CHART.TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT" descr="Текстовые подписи переходов и границ" projection="EPSG:5807" dataType="vector" type="system" labelField="LABEL" classField="TYPE" spacing="common" cover="false" fitMap="false" order="650" visible="false" topology="line">
+    <dataProvider type="semantic" source="TR_MAPSHEM_SEM.xml#TR_MAPSHEM_TEXT" />
+    <dataProvider type="spatial" source="TR_MAPSHEM_GEO.xml#TR_MAPSHEM_TEXT_WATER_ROAD" />
+  </layer>
+
+  <layer id="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS" descr="Газораспределительные станции" projection="EPSG:5807" dataType="vector" type="system" labelField="" classField="TYPE" spacing="common" cover="false" fitMap="false" order="400" visible="true" topology="point,line,polygon">
+    <dataProvider type="semantic" source="TR_MAPSHEM_SEM.xml#TR_MAPSHEM_GRS" />
+    <dataProvider type="spatial" source="TR_MAPSHEM_GEO.xml#TR_MAPSHEM_GRS" />
+  </layer>
+
+  <layer id="TR_MAPSHEM_GIS" comment="FLOW_CHART.TR_MAPSHEM_GIS" schema="FLOW_CHART" table="TR_MAPSHEM_GIS" descr="Газоизмерительные станции" projection="EPSG:5807" dataType="vector" type="system" labelField="" classField="MI_STYLE" spacing="common" cover="false" fitMap="false" order="500" visible="true" topology="line,polygon">
+    <dataProvider type="semantic" source="TR_MAPSHEM_SEM.xml#TR_MAPSHEM_GIS" />
+    <dataProvider type="spatial" source="TR_MAPSHEM_GEO.xml#TR_MAPSHEM_GIS" />
+  </layer>
+
+  <layer id="TR_MAPSHEM_ROAD" comment="FLOW_CHART.TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD" descr="Переходы через дороги" projection="EPSG:5807" dataType="vector" type="system" labelField="" classField="MI_STYLE" spacing="common" cover="false" fitMap="false" order="600" visible="false" topology="line">
+    <dataProvider type="semantic" source="TR_MAPSHEM_SEM.xml#TR_MAPSHEM_ROAD" />
+    <dataProvider type="spatial" source="TR_MAPSHEM_GEO.xml#TR_MAPSHEM_ROAD" />
+  </layer>
+
+  <layer id="TR_MAPSHEM_WATERWAY" comment="FLOW_CHART.TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY" descr="Водные переходы" projection="EPSG:5807" dataType="vector" type="system" labelField="" classField="MI_STYLE" spacing="common" cover="false" fitMap="false" order="700" visible="false" topology="line">
+    <dataProvider type="semantic" source="TR_MAPSHEM_SEM.xml#TR_MAPSHEM_WATERWAY" />
+    <dataProvider type="spatial" source="TR_MAPSHEM_GEO.xml#TR_MAPSHEM_WATERWAY" />
+  </layer>
+
+  <layer id="TR_MAPSHEM_PTG" comment="FLOW_CHART.TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG" descr="Линейная часть МГ" projection="EPSG:5807" dataType="vector" type="system" labelField="" classField="TYPE" spacing="common" cover="false" fitMap="true" order="250" visible="true" topology="line,polygon">
+    <dataProvider type="semantic" source="TR_MAPSHEM_SEM.xml#TR_MAPSHEM_PTG" />
+    <dataProvider type="spatial" source="TR_MAPSHEM_GEO.xml#TR_MAPSHEM_PTG" />
+  </layer>
+
+  <layer id="TR_MAPSHEM_COUNTY" comment="FLOW_CHART.TR_MAPSHEM_COUNTY" schema="FLOW_CHART" table="TR_MAPSHEM_COUNTY" descr="Границы районов" projection="EPSG:5807" dataType="vector" type="system" labelField="" classField="TYPE" spacing="common" cover="false" fitMap="true" order="800" visible="false" topology="line,polygon">
+    <dataProvider type="semantic" source="TR_MAPSHEM_SEM.xml#TR_MAPSHEM_COUNTY" />
+    <dataProvider type="spatial" source="TR_MAPSHEM_GEO.xml#TR_MAPSHEM_COUNTY" />
+  </layer>
+
+   <layer id="WKB_TR_MAPSHEM_ROUTE_PART" synonym="WKB_TR_MAPSHEM_ROUTE_PART,KAP_REMONT_PLAN,PODS_STO_VALVE_VALUE_CONDITION,PODS_STO_VALVE_DANGER_DEG,PODS_STO_VALVE_SEGMENT_CATEGORY,PODS_STO_VALVE_TIME_TO_CRIT_DEPTH,PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" comment="FLOW_CHART.WKB_TR_MAPSHEM_ROUTE_PART" schema="FLOW_CHART" table="WKB_TR_MAPSHEM_ROUTE_PART" descr="Состояние межкрановых участков в соответствии с СТО 292-2007" 
+ projection="EPSG:5807" dataType="vector" type="common" labelField="LABEL" classField="TYPE" spacing="WKB_TR_MAPSHEM_ROUTE_PART" cover="true" fitMap="false" order="200" visible="true" topology="line">
+    <dataProvider type="spatial" source="TR_MAPSHEM_GEO.xml#WKB_TR_MAPSHEM_ROUTE_PART" />
+  </layer>
+
+ <layer id="KAP_REMONT_PLAN" synonym="WKB_TR_MAPSHEM_ROUTE_PART,KAP_REMONT_PLAN,PODS_STO_VALVE_VALUE_CONDITION,PODS_STO_VALVE_DANGER_DEG,PODS_STO_VALVE_SEGMENT_CATEGORY,PODS_STO_VALVE_TIME_TO_CRIT_DEPTH,PODS_STO_VALVE_TIME_TO_CRIT_DEPTH"  comment="FLOW_CHART.KAP_REMONT_PLAN" schema="FLOW_CHART" table="KAP_REMONT_PLAN" descr="План капитальных ремонтов" projection="EPSG:5807" dataType="vector" type="common" labelField="" classField="TYPE" spacing="common" cover="false" fitMap="false" order="100" visible="false" topology="point,line">
+    <dataProvider type="semantic" source="TR_MAPSHEM_SEM.xml#KAP_REMONT_PLAN" />
+    <dataProvider type="spatial" source="TR_MAPSHEM_GEO.xml#KAP_REMONT_PLAN" />
+  </layer>
+ 
+</root>

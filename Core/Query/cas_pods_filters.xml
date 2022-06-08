@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.7.4">
+<!--CAS_EHZ_INTENS_Layers.xml-->
+<layer id="CAS_PODS_ILI_CLUSTER">
+
+</layer>
+<layer id="CAS_PODS_STO_REPAIR_METHOD" >
+	
+</layer>
+<layer id="CAS_PODS_STO_DANGER_RANK">
+</layer>
+
+<layer id="CAS_PODS_STO_100_DANGER_DEG">
+	</layer>
+<layer id="CAS_PODS_STO_VALVE_DANGER_DEG">
+</layer>
+
+<layer id="PI_PS_ON">
+</layer>
+
+<layer id="PI_PS_OFF">
+</layer>
+
+<layer id="PI_DC_POTENTIAL_VOLTS">
+	</layer>
+
+	<layer id="PI_STATIC">
+	</layer>
+<!--CAS_EHZ_KIP_Layers.xml-->
+<layer id="CAS_PODS_ILI_CLUSTER">
+</layer>
+
+<layer id="CAS_PODS_STO_REPAIR_METHOD">
+	</layer>
+
+	<layer id="CAS_PODS_STO_DANGER_RANK">
+	</layer>
+
+<layer id="CAS_PODS_STO_100_DANGER_DEG">
+</layer>
+
+<layer id="CAS_PODS_STO_VALVE_DANGER_DEG">
+	</layer>
+
+<layer id="PI_PS_ON_TO_CURRENT_READING">
+</layer>
+
+<layer id="PI_CP_PS_ON">
+</layer>
+
+<layer id="PI_CP_PS_OFF">
+</layer>
+
+<layer id="PI_DC_POTENTIAL_READING" >
+</layer>
+
+<layer id="PI_CP_CURRENT_READING">
+</layer>
+<layer id="PI_CP_RESISTANCE_READING">
+	</layer>
+
+
+<!--CAS_PODS_CAS_CP_Layers.xml-->
+	<layer id="PI_PS_ON_TO_CURRENT_READING">
+		<filters dataProvider="PODS_GRID.xml#PODS_PI_CP_INSPECTION">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_PI_CP_INSPECTION" dataField="ID" limit="10" />
+  <property name="Описание" dataField="DESCRIPTION" type="string" />
+</filters>
+	</layer>
+	<layer id="PI_PS_ON">
+		<filters dataProvider="PODS_GRID.xml#PODS_PI_CP_INSPECTION">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_PI_CP_INSPECTION" dataField="ID" limit="10" />
+  <property name="Описание" dataField="DESCRIPTION" type="string" />
+</filters>
+	</layer>
+	<layer id="PI_PS_OFF">
+		<filters dataProvider="PODS_GRID.xml#PODS_PI_CP_INSPECTION">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_PI_CP_INSPECTION" dataField="ID" limit="10" />
+  <property name="Описание" dataField="DESCRIPTION" type="string" />
+</filters>
+	</layer>
+	<layer id="PI_DC_POTENTIAL_VOLTS">
+		<filters dataProvider="PODS_GRID.xml#PODS_PI_CP_INSPECTION">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_PI_CP_INSPECTION" dataField="ID" limit="10" />
+  <property name="Описание" dataField="DESCRIPTION" type="string" />
+</filters>
+	</layer>
+	<layer id="PI_STATIC">
+		<filters dataProvider="PODS_GRID.xml#PODS_PI_CP_INSPECTION">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_PI_CP_INSPECTION" dataField="ID" limit="10" />
+  <property name="Описание" dataField="DESCRIPTION" type="string" />
+</filters>
+	</layer>
+	<layer id="PI_CP_PS_ON">
+		<filters dataProvider="PODS_GRID.xml#PODS_PI_CP_INSPECTION">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_PI_CP_INSPECTION" dataField="ID" limit="10" />
+  <property name="Описание" dataField="DESCRIPTION" type="string" />
+</filters>
+	</layer>
+	<layer id="PI_CP_PS_OFF">
+		<filters dataProvider="PODS_GRID.xml#PODS_PI_CP_INSPECTION">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_PI_CP_INSPECTION" dataField="ID" limit="10" />
+  <property name="Описание" dataField="DESCRIPTION" type="string" />
+</filters>
+	</layer>
+	<layer id="PI_DC_POTENTIAL_READING">
+		<filters dataProvider="PODS_GRID.xml#PODS_PI_CP_INSPECTION">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_PI_CP_INSPECTION" dataField="ID" limit="10" />
+  <property name="Описание" dataField="DESCRIPTION" type="string" />
+</filters>
+	</layer>
+	<layer id="PI_CP_CURRENT_READING">
+		<filters dataProvider="PODS_GRID.xml#PODS_PI_CP_INSPECTION">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_PI_CP_INSPECTION" dataField="ID" limit="10" />
+  <property name="Описание" dataField="DESCRIPTION" type="string" />
+</filters>
+	</layer>
+	<layer id="PI_CP_RESISTANCE_READING">
+		<filters dataProvider="PODS_GRID.xml#PODS_PI_CP_INSPECTION">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_PI_CP_INSPECTION" dataField="ID" limit="10" />
+  <property name="Описание" dataField="DESCRIPTION" type="string" />
+</filters>
+	</layer>
+<!--CAS_PODS_CAS_ILI_Layers.xml-->
+<layer id="ILI_KBD">
+	<filters dataProvider="PODS_GRID.xml#PODS_ILI_DATA">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+  <layer id="ILI_PIPE_LENGTH">
+	<filters dataProvider="PODS_GRID.xml#PODS_ILI_DATA">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+  <layer id="ILI_DEPTH">
+  	<filters dataProvider="PODS_GRID.xml#PODS_ILI_DATA">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_ILI_CLUSTER">
+		<filters dataProvider="PODS_GRID.xml#PODS_ILI_CLUSTER">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_REPAIR_METHOD">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_REPAIR_METHOD">
+   <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_PERFORMANCE_EVAL">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_PERFORMANCE_EVAL">
+   <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_DANGER_DEGREE">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_DANGER_DEGREE">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_DANGER_RANK">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_DANGER_RANK">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_FAIL_PROBABILITY">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_FAIL_PROBABILITY">
+   <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_100_VALUE_CONDITION">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_100_VALUE_CONDITION">
+   <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_100_DANGER_DEG">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_100_DANGER_DEG">
+   <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_100_SEGMENT_CATEGORY">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_100_SEGMENT_CATEGORY">
+   <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_100_TIME_TO_CRIT_DEPTH">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_100_TIME_TO_CRIT_DEPTH">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_VALVE_VALUE_CONDITION">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_VALVE_VALUE_CONDITION">
+   <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_VALVE_DANGER_DEG">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_VALVE_DANGER_DEG">
+   <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_VALVE_SEGMENT_CATEGORY">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_VALVE_SEGMENT_CATEGORY">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_VALVE_TIME_TO_CRIT_DEPTH">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_VALVE_TIME_TO_CRIT_DEPTH">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_VALUE_CONDITION">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_RANGE_VALUE_CONDITION">
+   <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_TIME_LIMIT_EXPL">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_RANGE_TIME_LIMIT_EXPL">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_OPTIM_TIM_BFR_ILI">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_RANGE_OPTIM_TIM_BFR_ILI">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_MIN_UNIT_COST_YKM">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_RANGE_MIN_UNIT_COST_YKM">
+   <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_FAILURE_PROBABLY">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_RANGE_FAILURE_PROBABLY">
+   <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_OP_REP_PIPE_COUNT">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_RANGE_OP_REP_PIPE_COUNT">
+   <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_MEAN_TIME_FAIL">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_RANGE_MEAN_TIME_FAIL">
+   <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_PROJECTED_SCC">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_RANGE_PROJECTED_SCC">
+   <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_NEXT_INSP_SCC">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_RANGE_NEXT_INSP_SCC">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_PROJECTED_COR">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_RANGE_PROJECTED_COR">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_NEXT_INSP">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_RANGE_NEXT_INSP">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_DANGER_DEG">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_RANGE_DANGER_DEG">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_SEGMENT_CATEGORY">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_RANGE_SEGMENT_CATEGORY">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+<layer id="CAS_PODS_STO_RANGE_TIME_TO_CRIT_DEPTH">
+	<filters dataProvider="PODS_GRID.xml#PODS_STO_RANGE_TIME_TO_CRIT_DEPTH">
+  <link name="Обследование" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION_CAS" dataField="ILI_INSPECTION_ID" limit="10" />
+</filters>
+  </layer>
+
+<!--CAS_PODS_PROFILE_Layers.xml-->
+	<layer id="CAS_PROFILE">
+	</layer>
+  <layer id="CAS_DEPTH_OF_COVER">
+  </layer>
+<!--CAS_PODS_SEA_Layers.xml-->
+<layer id="PODS_FAIRING">
+  </layer>
+  <layer id="PODS_STRAKE">
+  </layer>
+  <layer id="PODS_COLLAR">
+  </layer>
+  <layer id="PODS_SUBSEA_SLED_ASSEMBLY">
+  </layer>
+  <layer id="PODS_OFFSHORE_RISER">
+  </layer>
+  <layer id="PODS_STABILIZATION">
+  </layer>
+  <layer id="PODS_TAPERED_STRESS_JOINT">
+  </layer>
+  <layer id="PODS_COLLET_CONNECTOR">
+  </layer>
+</root>

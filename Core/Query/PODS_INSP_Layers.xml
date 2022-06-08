@@ -1,0 +1,713 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Файл описания слоёв "Обследования диагностические" -->
+<!-- Слои PODS_PIPE_LENGHT, PODS_EXTERNAL_COATING, PODS_INTERNAL_COATING, PODS_PIPE_SEGMENT, PODS_EXPOSURE, PODS_LEGACY_LINE_BOUNDARY, PODS_LAND_USE, PODS_ACTIVITY_ZONE, 
+PODS_SRV_DISTRICT_BOUNDARY, PODS_DEPTH_OF_COVER перенесены из файла PODS_EQUIP_Layers.xml в связи с переводом этих слоев из растрового режима в векторный для корректного отображения на карте -->
+<root version="postgres 7.7.4.4" descr="МГ: Обследования диагностические" name="PODS_INSP">
+  <dataProvider type="style" source="PODS_INSP_STYLE.xml" />
+ <dataProvider type="style" source="PODS_EQUIP_STYLE.xml" />
+  <layer id="PODS_ILI_DATA" synonym="PODS_ILI_DATA,PODS_STO_ILI_DATA_SHEET_RELOAD,PODS_STO_REPAIR_METHOD,PODS_STO_PERFORMANCE_EVAL,PODS_STO_DANGER_DEGREE,PODS_STO_DANGER_RANK,PODS_STO_FAIL_PROBABILITY,PODS_STO_DATE_TEST,PODS_LTG_KOCHETKOVA,PODS_STO_DATE_REPAIR,ILI_KBD,ILI_DEPTH,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_PERFORMANCE_EVAL,CAS_PODS_STO_DANGER_DEGREE,CAS_PODS_STO_DANGER_RANK,CAS_PODS_STO_FAIL_PROBABILITY,CAS_PODS_STO_DATE_TEST,CAS_PODS_LTG_KOCHETKOVA, CAS_PODS_STO_DATE_REPAIR,CAS_ILI_KBD,CAS_ILI_DEPTH"  comment="PODS.ILI_DATA" descr="Данные ВТД. Дефекты" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="ILI_DATA" cover="false" order="400" visible="true" topology="point" fitMap="true" labelField="FEATURE_DESCRIPTION" classField="ANOMALY_TYPE_CL" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ILI_DATA" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ILI_DATA" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_ILI_DATA" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_ILI_DATA" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_ILI_DATA" />
+  </layer>
+  <layer id="PODS_ILI_CLUSTER" comment="PODS.ILI_CLUSTER" descr="Данные ВТД. Группы дефектов" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="ILI_CLUSTER" cover="false" order="430" visible="true" topology="point,line" fitMap="true" labelField="DESCRIPTION" classField="DESCRIPTION" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ILI_CLUSTER" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ILI_CLUSTER" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_ILI_CLUSTER" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_ILI_CLUSTER" />
+  </layer>
+  <layer id="PODS_ILI_DATA_FEATURE" comment="PODS.ILI_DATA" descr="Данные ВТД. Особенности трассы" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="ILI_DATA_FEATURE" cover="false" order="410" visible="true" topology="point" fitMap="true" labelField="FEATURE_DESCRIPTION" classField="ANOMALY_TYPE_CL" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ILI_DATA_FEATURE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ILI_DATA_FEATURE" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_ILI_DATA_FEATURE" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_ILI_DATA_FEATURE" />
+  </layer>
+<layer id="INFOTEH_REPAIR" comment="GIS_INTEGRATION50.INFOTEH_REPAIR" descr="Данные ВТД. ИНФОТЕХ, выполненные ремонты " projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="INFOTEH_REPAIR" cover="false" order="410" visible="true" topology="point" fitMap="true" labelField="INFOTEH_REPAIR" classField="ANOMALY_TYPE_CL" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#INFOTEH_REPAIR" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#INFOTEH_REPAIR" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#INFOTEH_REPAIR" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#INFOTEH_REPAIR" />
+  </layer>
+<layer id="INFOTEH_EXCAVATE" comment="GIS_INTEGRATION50.INFOTEH_EXCAVATE" descr="Данные ВТД. ИНФОТЕХ, выполненные обследования в шурфах" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="INFOTEH_EXCAVATE" cover="false" order="410" visible="true" topology="point" fitMap="true" labelField="INFOTEH_EXCAVATE" classField="ANOMALY_TYPE_CL" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#INFOTEH_EXCAVATE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#INFOTEH_EXCAVATE" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#INFOTEH_EXCAVATE" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#INFOTEH_EXCAVATE" />
+  </layer>
+  <layer id="PODS_ILI_DATA_JUNCTION" comment="PODS.ILI_DATA" descr="Данные ВТД. Стыки труб" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="common" cover="false" order="420" visible="true" topology="point" fitMap="true" labelField="FEATURE_DESCRIPTION" classField="ANOMALY_TYPE_CL" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ILI_DATA_JUNCTION" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ILI_DATA_JUNCTION" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_ILI_DATA_JUNCTION" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_ILI_DATA_JUNCTION" />
+  </layer>
+  <layer id="PODS_ILI_PIPE_LENGTH" comment="PODS.ILI_PIPE_LENGTH" descr="Раскладка труб по данным ВТД" topology="line" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="common" cover="false" order="440" visible="true" fitMap="true" labelField="WELD_NUMBER" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ILI_PIPE_LENGTH" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ILI_PIPE_LENGTH" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_ILI_PIPE_LENGTH" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_ILI_PIPE_LENGTH" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_ILI_PIPE_LENGTH" />
+  </layer>
+  <layer id="PODS_PI_CIS_READING"  synonym="PODS_PI_CIS_READING,PI_PS_ON_TO_CURRENT_READING,PI_PS_ON,PI_PS_OFF,PI_DC_POTENTIAL_VOLTS,PI_STATIC,PI_CP_PS_ON,PI_CP_PS_OFF,PI_DC_POTENTIAL_READING,PI_CP_CURRENT_READING,PI_CP_RESISTANCE_READING" comment="PODS.PI_CIS_READING" descr="Данные ЭХЗ. Интенсивные измерения" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="READING" cover="false" order="670" visible="true" topology="point" fitMap="true" labelField="DESCRIPTION" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.pi_cp_event_id IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_PI_CP_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_CIS_READING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_CIS_READING" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_CIS_READING" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_CIS_READING" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_PI_CIS_READING" />
+  </layer>
+  <layer id="PODS_PI_CP_READING" synonym="PODS_PI_CP_READING,PI_PS_ON_TO_CURRENT_READING,PI_PS_ON,PI_PS_OFF,PI_DC_POTENTIAL_VOLTS,PI_STATIC,PI_CP_PS_ON,PI_CP_PS_OFF,PI_DC_POTENTIAL_READING,PI_CP_CURRENT_READING,PI_CP_RESISTANCE_READING" comment="PODS.PI_CP_READING" descr="Данные ЭХЗ. КИПы" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="READING" cover="false" order="650" visible="true" topology="point" fitMap="true" labelField="DESCRIPTION" classField="TYPE_CL" events="" schema="" table="">
+    <filter>
+      <pattern>d.pi_cp_event_id IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_PI_CP_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_CP_READING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_CP_READING" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_CP_READING" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_CP_READING" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_PI_CP_READING" />
+  </layer>
+  <layer id="PODS_PI_RECTIFIER_READING" comment="PODS.PI_RECTIFIER_READING" descr="Данные ЭХЗ. Установки катодной/дренажной защиты" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="READING" cover="false" order="660" visible="false" topology="point" fitMap="true" labelField="DESCRIPTION" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.pi_cp_event_id IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_PI_CP_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_RECTIFIER_READING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_RECTIFIER_READING" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_RECTIFIER_READING" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_RECTIFIER_READING" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_PI_RECTIFIER_READING" />
+  </layer>
+  <layer id="PODS_STO_REPAIR_METHOD"  synonym="PODS_ILI_DATA,PODS_STO_ILI_DATA_SHEET_RELOAD,PODS_STO_REPAIR_METHOD,PODS_STO_PERFORMANCE_EVAL,PODS_STO_DANGER_DEGREE,PODS_STO_DANGER_RANK,PODS_STO_FAIL_PROBABILITY,PODS_STO_DATE_TEST,PODS_LTG_KOCHETKOVA,PODS_STO_DATE_REPAIR,ILI_KBD,ILI_DEPTH,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_PERFORMANCE_EVAL,CAS_PODS_STO_DANGER_DEGREE,CAS_PODS_STO_DANGER_RANK,CAS_PODS_STO_FAIL_PROBABILITY,CAS_PODS_STO_DATE_TEST,CAS_PODS_LTG_KOCHETKOVA, CAS_PODS_STO_DATE_REPAIR,CAS_ILI_KBD,CAS_ILI_DEPTH"  comment="PODS.PODS_STO_REPAIR_METHOD" descr="Р Газпром 2-2.3-595-2011.  Методы ремонта" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_REPAIR_METHOD" cover="false" order="401" visible="true" topology="point" fitMap="true" labelField="R_595_2011_REPAIR_METHOD" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_REPAIR_METHOD" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#ILI_CLUSTER" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_REPAIR_METHOD" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_REPAIR_METHOD" />
+  </layer>
+  <layer id="PODS_STO_PERFORMANCE_EVAL"  synonym="PODS_ILI_DATA,PODS_STO_ILI_DATA_SHEET_RELOAD,PODS_STO_REPAIR_METHOD,PODS_STO_PERFORMANCE_EVAL,PODS_STO_DANGER_DEGREE,PODS_STO_DANGER_RANK,PODS_STO_FAIL_PROBABILITY,PODS_STO_DATE_TEST,PODS_LTG_KOCHETKOVA,PODS_STO_DATE_REPAIR,ILI_KBD,ILI_DEPTH,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_PERFORMANCE_EVAL,CAS_PODS_STO_DANGER_DEGREE,CAS_PODS_STO_DANGER_RANK,CAS_PODS_STO_FAIL_PROBABILITY,CAS_PODS_STO_DATE_TEST,CAS_PODS_LTG_KOCHETKOVA, CAS_PODS_STO_DATE_REPAIR,CAS_ILI_KBD,CAS_ILI_DEPTH"  comment="PODS.PODS_STO_PERFORMANCE_EVAL" descr="СТО Газпром 2-2.3-112-2007. Оценка работоспособности" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_PERFORMANCE_EVAL" cover="false" order="402" visible="true" topology="point" fitMap="true" labelField="STO_112_2007_PERFORMANCE_EVAL" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_PERFORMANCE_EVAL" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#STO_ILI_DATA_CALC" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_PERFORMANCE_EVAL" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_PERFORMANCE_EVAL" />
+  </layer>
+  <layer id="PODS_STO_DANGER_DEGREE"  synonym="PODS_ILI_DATA,PODS_STO_ILI_DATA_SHEET_RELOAD,PODS_STO_REPAIR_METHOD,PODS_STO_PERFORMANCE_EVAL,PODS_STO_DANGER_DEGREE,PODS_STO_DANGER_RANK,PODS_STO_FAIL_PROBABILITY,PODS_STO_DATE_TEST,PODS_LTG_KOCHETKOVA,PODS_STO_DATE_REPAIR,ILI_KBD,ILI_DEPTH,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_PERFORMANCE_EVAL,CAS_PODS_STO_DANGER_DEGREE,CAS_PODS_STO_DANGER_RANK,CAS_PODS_STO_FAIL_PROBABILITY,CAS_PODS_STO_DATE_TEST,CAS_PODS_LTG_KOCHETKOVA, CAS_PODS_STO_DATE_REPAIR,CAS_ILI_KBD,CAS_ILI_DEPTH"   comment="PODS.PODS_STO_DANGER_DEGREE" descr="СТО Газпром 2-2.3-173-2007. Степень опасности дефекта" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_DANGER_DEGREE" cover="false" order="403" visible="true" topology="point" fitMap="true" labelField="STO_173_2007_DANGER_DEGREE" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_DANGER_DEGREE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_DANGER_DEGREE" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_DANGER_DEGREE" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_DANGER_DEGREE" />
+  </layer>
+  <layer id="PODS_STO_DANGER_RANK"  synonym="PODS_ILI_DATA,PODS_STO_ILI_DATA_SHEET_RELOAD,PODS_STO_REPAIR_METHOD,PODS_STO_PERFORMANCE_EVAL,PODS_STO_DANGER_DEGREE,PODS_STO_DANGER_RANK,PODS_STO_FAIL_PROBABILITY,PODS_STO_DATE_TEST,PODS_LTG_KOCHETKOVA,PODS_STO_DATE_REPAIR,ILI_KBD,ILI_DEPTH,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_PERFORMANCE_EVAL,CAS_PODS_STO_DANGER_DEGREE,CAS_PODS_STO_DANGER_RANK,CAS_PODS_STO_FAIL_PROBABILITY,CAS_PODS_STO_DATE_TEST,CAS_PODS_LTG_KOCHETKOVA, CAS_PODS_STO_DATE_REPAIR,CAS_ILI_KBD,CAS_ILI_DEPTH"  comment="PODS.PODS_STO_DANGER_RANK" descr="СТО Газпром 2-2.3-292-2009. Ранги опасности дефектов" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_DANGER_RANK" cover="false" order="404" visible="true" topology="point" fitMap="true" labelField="STO_292_2007_DANGER_RANK" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_DANGER_RANK" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_DANGER_RANK" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_DANGER_RANK" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_DANGER_RANK" />
+  </layer>
+  <layer id="PODS_STO_FAIL_PROBABILITY"  synonym="PODS_ILI_DATA,PODS_STO_ILI_DATA_SHEET_RELOAD,PODS_STO_REPAIR_METHOD,PODS_STO_PERFORMANCE_EVAL,PODS_STO_DANGER_DEGREE,PODS_STO_DANGER_RANK,PODS_STO_FAIL_PROBABILITY,PODS_STO_DATE_TEST,PODS_LTG_KOCHETKOVA,PODS_STO_DATE_REPAIR,ILI_KBD,ILI_DEPTH,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_PERFORMANCE_EVAL,CAS_PODS_STO_DANGER_DEGREE,CAS_PODS_STO_DANGER_RANK,CAS_PODS_STO_FAIL_PROBABILITY,CAS_PODS_STO_DATE_TEST,CAS_PODS_LTG_KOCHETKOVA, CAS_PODS_STO_DATE_REPAIR,CAS_ILI_KBD,CAS_ILI_DEPTH"  comment="PODS.PODS_STO_FAIL_PROBABILITY" descr="Р Газпром 2-2.3-401-2009. Вероятности отказов" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_FAIL_PROBABILITY" cover="false" order="405" visible="true" topology="point" fitMap="true" labelField="STO_401_2009_FAIL_PROBABILITY" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_FAIL_PROBABILITY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_FAIL_PROBABILITY" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_FAIL_PROBABILITY" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_FAIL_PROBABILITY" />
+  </layer>
+<layer id="PODS_STO_DATE_TEST"  synonym="PODS_ILI_DATA,PODS_STO_ILI_DATA_SHEET_RELOAD,PODS_STO_REPAIR_METHOD,PODS_STO_PERFORMANCE_EVAL,PODS_STO_DANGER_DEGREE,PODS_STO_DANGER_RANK,PODS_STO_FAIL_PROBABILITY,PODS_STO_DATE_TEST,PODS_LTG_KOCHETKOVA,PODS_STO_DATE_REPAIR,ILI_KBD,ILI_DEPTH,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_PERFORMANCE_EVAL,CAS_PODS_STO_DANGER_DEGREE,CAS_PODS_STO_DANGER_RANK,CAS_PODS_STO_FAIL_PROBABILITY,CAS_PODS_STO_DATE_TEST,CAS_PODS_LTG_KOCHETKOVA, CAS_PODS_STO_DATE_REPAIR,CAS_ILI_KBD,CAS_ILI_DEPTH"  comment="PODS.PODS_STO_DATE_TEST" descr="Р 620. Дата повторного обследования" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_DATE_TEST" cover="false" order="405" visible="true" topology="point" fitMap="true" labelField="R_620_2011_DATE_TEST" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_DATE_TEST" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_DATE_TEST" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_DATE_TEST" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_DATE_TEST" />
+  </layer>
+<layer id="PODS_STO_DATE_REPAIR"  synonym="PODS_ILI_DATA,PODS_STO_ILI_DATA_SHEET_RELOAD,PODS_STO_REPAIR_METHOD,PODS_STO_PERFORMANCE_EVAL,PODS_STO_DANGER_DEGREE,PODS_STO_DANGER_RANK,PODS_STO_FAIL_PROBABILITY,PODS_STO_DATE_TEST,PODS_LTG_KOCHETKOVA,PODS_STO_DATE_REPAIR,ILI_KBD,ILI_DEPTH,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_PERFORMANCE_EVAL,CAS_PODS_STO_DANGER_DEGREE,CAS_PODS_STO_DANGER_RANK,CAS_PODS_STO_FAIL_PROBABILITY,CAS_PODS_STO_DATE_TEST,CAS_PODS_LTG_KOCHETKOVA, CAS_PODS_STO_DATE_REPAIR,CAS_ILI_KBD,CAS_ILI_DEPTH"  comment="PODS.PODS_STO_DATE_REPAIR" descr="Р 620. Дата ремонта" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_DATE_REPAIR" cover="false" order="405" visible="true" topology="point" fitMap="true" labelField="R_620_2011_DATE_REPAIR" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_DATE_REPAIR" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_DATE_REPAIR" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_DATE_REPAIR" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_DATE_REPAIR" />
+  </layer>
+<layer id="PODS_LTG_KOCHETKOVA"  synonym="PODS_ILI_DATA,PODS_STO_ILI_DATA_SHEET_RELOAD,PODS_STO_REPAIR_METHOD,PODS_STO_PERFORMANCE_EVAL,PODS_STO_DANGER_DEGREE,PODS_STO_DANGER_RANK,PODS_STO_FAIL_PROBABILITY,PODS_STO_DATE_TEST,PODS_LTG_KOCHETKOVA,PODS_STO_DATE_REPAIR,ILI_KBD,ILI_DEPTH,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_PERFORMANCE_EVAL,CAS_PODS_STO_DANGER_DEGREE,CAS_PODS_STO_DANGER_RANK,CAS_PODS_STO_FAIL_PROBABILITY,CAS_PODS_STO_DATE_TEST,CAS_PODS_LTG_KOCHETKOVA, CAS_PODS_STO_DATE_REPAIR,CAS_ILI_KBD,CAS_ILI_DEPTH"  comment="PODS.PODS_LTG_KOCHETKOVA" descr="ЛТГ. Методика Кочетковой" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_LTG_KOCHETKOVA" cover="false" order="405" visible="true" topology="point" fitMap="true" labelField="PODS_LTG_KOCHETKOVA" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_LTG_KOCHETKOVA" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_LTG_KOCHETKOVA" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_LTG_KOCHETKOVA" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_LTG_KOCHETKOVA" />
+  </layer>
+  <layer id="PODS_STO_100_VALUE_CONDITION" comment="PODS.PODS_STO_100_VALUE_CONDITION" descr="СТО Газпром 2-2.3-292-2009. 100 м. участки. Показатель технического состояния труб" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_100_VALUE_CONDITION" cover="false" order="456" visible="true" topology="line" fitMap="true" labelField="STO_292_2007_VALUE_CONDITION" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_100_VALUE_CONDITION" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_100_VALUE_CONDITION" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_100_VALUE_CONDITION" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_100_VALUE_CONDITION" />
+  </layer>
+  <layer id="PODS_STO_100_DANGER_DEG" comment="PODS.PODS_STO_100_DANGER_DEG" descr="ВНИИГАЗ 2004. Инструкция. 100 м. участки. Противокоррозийная защита. Степень коррозионной опасности" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_100_DANGER_DEG" cover="false" order="452" visible="true" topology="line" fitMap="true" labelField="DANGER_DEG" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_100_DANGER_DEG" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_100_DANGER_DEG" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_100_DANGER_DEG" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_100_DANGER_DEG" />
+  </layer>
+  <layer id="PODS_STO_100_SEGMENT_CATEGORY" comment="PODS.PODS_STO_100_SEGMENT_CATEGORY" descr="ВНИИГАЗ 2004. Инструкция. 100 м. участки. Категория коррозийной опасности" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_100_SEGMENT_CATEGORY" cover="false" order="451" visible="true" topology="line" fitMap="true" labelField="SEGMENT_CATEGORY" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_100_SEGMENT_CATEGORY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_100_SEGMENT_CATEGORY" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_100_SEGMENT_CATEGORY" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_100_SEGMENT_CATEGORY" />
+  </layer>
+  <layer id="PODS_STO_100_TIME_TO_CRIT_DEPTH" comment="PODS.PODS_STO_100_TIME_TO_CRIT_DEPTH" descr="ВНИИГАЗ 2004. Инструкция. 100 м. участки. Время до образования усредненного критического дефекта" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_100_TIME_TO_CRIT_DEPTH" cover="false" order="450" visible="true" topology="line" fitMap="true" labelField="CORR_TIME_TO_CRITICAL_DEPTH" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_100_TIME_TO_CRIT_DEPTH" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_100_TIME_TO_CRIT_DEPTH" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_100_TIME_TO_CRIT_DEPTH" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_100_TIME_TO_CRIT_DEPTH" />
+  </layer>
+  <layer id="PODS_STO_VALVE_VALUE_CONDITION" synonym="WKB_TR_MAPSHEM_ROUTE_PART,KAP_REMONT_PLAN,PODS_STO_VALVE_VALUE_CONDITION,PODS_STO_VALVE_DANGER_DEG,PODS_STO_VALVE_SEGMENT_CATEGORY,PODS_STO_VALVE_TIME_TO_CRIT_DEPTH,PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" comment="PODS.PODS_STO_VALVE_VALUE_CONDITION" descr="СТО Газпром 2-2.3-292-2009. Межккрановые участки. Показатель технического состояния труб" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="PODS_STO_VALVE_VALUE_CONDITION" cover="false" order="467" visible="true" topology="line" fitMap="true" labelField="STO_292_2007_VALUE_CONDITION" classField="">
+    <filter>
+      <pattern> d.ILI_INSPECTION_ID IN ({FILTER}) </pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_VALVE_VALUE_CONDITION" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_VALVE_VALUE_CONDITION" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_VALVE_VALUE_CONDITION" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_VALVE_VALUE_CONDITION" />
+  </layer>
+  <layer id="PODS_STO_VALVE_DANGER_DEG" synonym="WKB_TR_MAPSHEM_ROUTE_PART,KAP_REMONT_PLAN,PODS_STO_VALVE_VALUE_CONDITION,PODS_STO_VALVE_DANGER_DEG,PODS_STO_VALVE_SEGMENT_CATEGORY,PODS_STO_VALVE_TIME_TO_CRIT_DEPTH,PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" comment="PODS.PODS_STO_VALVE_DANGER_DEG" descr="ВНИИГАЗ 2004. Инструкция. Межккрановые участки. Противокоррозийная защита. Степень коррозионной опасности" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_VALVE_DANGER_DEG" cover="false" order="475" visible="true" topology="line" fitMap="true" labelField="DANGER_DEG" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_VALVE_DANGER_DEG" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_VALVE_DANGER_DEG" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_VALVE_DANGER_DEG" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_VALVE_DANGER_DEG" />
+  </layer>
+  <layer id="PODS_STO_VALVE_SEGMENT_CATEGORY" synonym="WKB_TR_MAPSHEM_ROUTE_PART,KAP_REMONT_PLAN,PODS_STO_VALVE_VALUE_CONDITION,PODS_STO_VALVE_DANGER_DEG,PODS_STO_VALVE_SEGMENT_CATEGORY,PODS_STO_VALVE_TIME_TO_CRIT_DEPTH,PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" comment="PODS.PODS_STO_VALVE_SEGMENT_CATEGORY" descr="ВНИИГАЗ 2004. Инструкция. Межккрановые участки. Категория коррозийной опасности" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_VALVE_SEGMENT_CATEGORY" cover="false" order="476" visible="true" topology="line" fitMap="true" labelField="SEGMENT_CATEGORY" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_VALVE_SEGMENT_CATEGORY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_VALVE_SEGMENT_CATEGORY" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_VALVE_SEGMENT_CATEGORY" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_VALVE_SEGMENT_CATEGORY" />
+  </layer>
+  <layer id="PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" synonym="WKB_TR_MAPSHEM_ROUTE_PART,KAP_REMONT_PLAN,PODS_STO_VALVE_VALUE_CONDITION,PODS_STO_VALVE_DANGER_DEG,PODS_STO_VALVE_SEGMENT_CATEGORY,PODS_STO_VALVE_TIME_TO_CRIT_DEPTH,PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" comment="PODS.PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" descr="ВНИИГАЗ 2004. Инструкция.Межккрановые участки. Время до образования усредненного критического дефекта" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" cover="false" order="477" visible="true" topology="line" fitMap="true" labelField="CORR_TIME_TO_CRITICAL_DEPTH" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" />
+  </layer>
+  <layer id="PODS_STO_RANGE_VALUE_CONDITION" synonym="WKB_TR_MAPSHEM_ROUTE_PART,KAP_REMONT_PLAN,PODS_STO_VALVE_VALUE_CONDITION,PODS_STO_VALVE_DANGER_DEG,PODS_STO_VALVE_SEGMENT_CATEGORY,PODS_STO_VALVE_TIME_TO_CRIT_DEPTH,PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" comment="PODS.PODS_STO_RANGE_VALUE_CONDITION" descr="СТО Газпром 2-2.3-292-2009. Межкамерные участки. Показатель технического состояния труб" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_RANGE_VALUE_CONDITION" cover="false" order="504" visible="true" topology="line" fitMap="true" labelField="STO_292_2007_VALUE_CONDITION" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_VALUE_CONDITION" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_VALUE_CONDITION" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_RANGE_VALUE_CONDITION" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_VALUE_CONDITION" />
+  </layer>
+  <layer id="PODS_STO_RANGE_TIME_LIMIT_EXPL" comment="PODS.PODS_STO_RANGE_TIME_LIMIT_EXPL" descr="Р Газпром 2-2.3-401-2009. Межкамерные участки. Предельный срок эксплуатации ЛЧ МН до вывода в капитальный ремонт" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_RANGE_TIME_LIMIT_EXPL" cover="false" order="502" visible="true" topology="line" fitMap="true" labelField="STO_401_2003_TIME_LIMIT_EXPL" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_TIME_LIMIT_EXPL" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_TIME_LIMIT_EXPL" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_RANGE_TIME_LIMIT_EXPL" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_TIME_LIMIT_EXPL" />
+  </layer>
+  <layer id="PODS_STO_RANGE_OPTIM_TIM_BFR_ILI" comment="PODS.PODS_STO_RANGE_OPTIM_TIM_BFR_ILI" descr="Р Газпром 2-2.3-401-2009. Межкамерные участки. Оптимальное время до проведения ВТД, год" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_RANGE_OPTIM_TIM_BFR_ILI" cover="false" order="501" visible="true" topology="line" fitMap="true" labelField="STO_401_2003_OPTIM_TIM_BFR_ILI" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_OPTIM_TIM_BFR_ILI" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_OPTIM_TIM_BFR_ILI" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_RANGE_OPTIM_TIM_BFR_ILI" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_OPTIM_TIM_BFR_ILI" />
+  </layer>
+  <layer id="PODS_STO_RANGE_MIN_UNIT_COST_YKM" comment="PODS.PODS_STO_RANGE_MIN_UNIT_COST_YKM" descr="Р Газпром 2-2.3-401-2009. Межкамерные участки. Минимум удельных затрат, млн. руб в год на 1 км" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_RANGE_MIN_UNIT_COST_YKM" cover="false" order="500" visible="true" topology="line" fitMap="true" labelField="STO_401_2003_MIN_UNIT_COST_YKM" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_MIN_UNIT_COST_YKM" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_MIN_UNIT_COST_YKM" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_RANGE_MIN_UNIT_COST_YKM" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_MIN_UNIT_COST_YKM" />
+  </layer>
+  <layer id="PODS_STO_RANGE_FAILURE_PROBABLY" comment="PODS.PODS_STO_RANGE_FAILURE_PROBABLY" descr="Р Газпром 2-2.3-401-2009. Межкамерные участки. Вероятность отказа линейного участка МГ  после ремонта" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_RANGE_FAILURE_PROBABLY" cover="false" order="499" visible="true" topology="line" fitMap="true" labelField="STO_401_2003_FAILURE_PROBABLY" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_FAILURE_PROBABLY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_FAILURE_PROBABLY" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_RANGE_FAILURE_PROBABLY" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_FAILURE_PROBABLY" />
+  </layer>
+  <layer id="PODS_STO_RANGE_OP_REP_PIPE_COUNT" comment="PODS.PODS_STO_RANGE_OP_REP_PIPE_COUNT" descr="Р Газпром 2-2.3-401-2009. Межкамерные участки. Оптимальное количество заменяемых труб, шт" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_RANGE_OP_REP_PIPE_COUNT" cover="false" order="498" visible="true" topology="line" fitMap="true" labelField="STO_401_2003_OP_REP_PIPE_COUNT" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_OP_REP_PIPE_COUNT" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_OP_REP_PIPE_COUNT" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_RANGE_OP_REP_PIPE_COUNT" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_OP_REP_PIPE_COUNT" />
+  </layer>
+  <layer id="PODS_STO_RANGE_MEAN_TIME_FAIL" comment="PODS.PODS_STO_RANGE_MEAN_TIME_FAIL" descr="Р Газпром 2-2.3-401-2009. Межкамерные участки. Время наработки на отказ после капитального ремонта, год" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_RANGE_MEAN_TIME_FAIL" cover="false" order="497" visible="true" topology="line" fitMap="true" labelField="STO_401_2003_MEAN_TIME_FAIL" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_MEAN_TIME_FAIL" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_MEAN_TIME_FAIL" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_RANGE_MEAN_TIME_FAIL" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_MEAN_TIME_FAIL" />
+  </layer>
+  <layer id="PODS_STO_RANGE_PROJECTED_SCC" comment="PODS.PODS_STO_RANGE_PROJECTED_SCC" descr="СТО Газпром 2-2.3-095-2007. Межкамерные участки. Прогнозируемое число дефектов КРН" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_RANGE_PROJECTED_SCC" cover="false" order="496" visible="true" topology="line" fitMap="true" labelField="STO_095_2007_PROJECTED_SCC" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_PROJECTED_SCC" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_PROJECTED_SCC" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_RANGE_PROJECTED_SCC" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_PROJECTED_SCC" />
+  </layer>
+  <layer id="PODS_STO_RANGE_NEXT_INSP_SCC" comment="PODS.PODS_STO_RANGE_NEXT_INSP_SCC" descr="СТО Газпром 2-2.3-095-2007.Межкамерные участки. Срок  до проведения повторной ВТД для обнаружения КРН" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_RANGE_NEXT_INSP_SCC" cover="false" order="495" visible="true" topology="line" fitMap="true" labelField="STO_095_2007_NEXT_INSP_SCC" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_NEXT_INSP_SCC" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_NEXT_INSP_SCC" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_RANGE_NEXT_INSP_SCC" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_NEXT_INSP_SCC" />
+  </layer>
+  <layer id="PODS_STO_RANGE_PROJECTED_COR" comment="PODS.PODS_STO_RANGE_PROJECTED_COR" descr="СТО Газпром 2-2.3-095-2007. Межкамерные участки. Прогнозируемое число коррозионных дефектов" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_RANGE_PROJECTED_COR" cover="false" order="494" visible="true" topology="line" fitMap="true" labelField="STO_095_2007_PROJECTED_COR" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_PROJECTED_COR" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_PROJECTED_COR" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_RANGE_PROJECTED_COR" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_PROJECTED_COR" />
+  </layer>
+  <layer id="PODS_STO_RANGE_NEXT_INSP" comment="PODS.PODS_STO_RANGE_NEXT_INSP" descr="СТО Газпром 2-2.3-095-2007. Межкамерные участки. Срок  до проведения повторной ВТД для обнаружения коррозионных дефектов" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_RANGE_NEXT_INSP" cover="false" order="493" visible="true" topology="line" fitMap="true" labelField="STO_095_2007_NEXT_INSP" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_NEXT_INSP" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_NEXT_INSP" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_RANGE_NEXT_INSP" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_NEXT_INSP" />
+  </layer>
+  <layer id="PODS_STO_RANGE_DANGER_DEG" comment="PODS.PODS_STO_RANGE_DANGER_DEG" descr="ВНИИГАЗ 2004. Инструкция. Межкамерные участки. Противокоррозийная защита. Степень коррозионной опасности" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_RANGE_DANGER_DEG" cover="false" order="492" visible="true" topology="line" fitMap="true" labelField="DANGER_DEG" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_DANGER_DEG" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_DANGER_DEG" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_RANGE_DANGER_DEG" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_DANGER_DEG" />
+  </layer>
+  <layer id="PODS_STO_RANGE_SEGMENT_CATEGORY" comment="PODS.PODS_STO_RANGE_SEGMENT_CATEGORY" descr="ВНИИГАЗ 2004. Инструкция. Межкамерные участки. Категория коррозийной опасности" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_RANGE_SEGMENT_CATEGORY" cover="false" order="491" visible="true" topology="line" fitMap="true" labelField="SEGMENT_CATEGORY" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_SEGMENT_CATEGORY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_SEGMENT_CATEGORY" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_RANGE_SEGMENT_CATEGORY" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_SEGMENT_CATEGORY" />
+  </layer>
+  <layer id="PODS_STO_RANGE_TIME_TO_CRIT_DEPTH" comment="PODS.PODS_STO_RANGE_TIME_TO_CRIT_DEPTH" descr="ВНИИГАЗ 2004. Инструкция. Межкамерные участки. Время до образования усредненного критического дефекта" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_RANGE_TIME_TO_CRIT_DEPTH" cover="false" order="490" visible="true" topology="line" fitMap="true" labelField="CORR_TIME_TO_CRITICAL_DEPTH" classField="" events="" schema="" table="">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_RANGE_TIME_TO_CRIT_DEPTH" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_RANGE_TIME_TO_CRIT_DEPTH" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_RANGE_TIME_TO_CRIT_DEPTH" />
+    <dataProvider type="spatial_3D" source="" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_RANGE_TIME_TO_CRIT_DEPTH" />
+  </layer>
+  <layer id="PODS_PIPE_LENGTH" comment="PODS.PIPE_LENGTH" descr="Трубный журнал" topology="line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" order="970" visible="false" fitMap="true" labelField="LENGTH_IDENTIFIER" classField="">
+    <filter>
+      <pattern> d.line_id IN (select substr('{FILTER}',1,strpos('{FILTER}'||',',','::text)-1)::integer) </pattern>
+      <join>,</join>
+      <field>PODS_LINE</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PIPE_LENGTH" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_PIPE_LENGTH" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PIPE_LENGTH" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PIPE_LENGTH" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PIPE_LENGTH" />
+  </layer>
+  <layer id="PODS_EXTERNAL_COATING" comment="PODS.EXTERNAL_COATING" descr="Внешнее покрытие секции трубы" topology="line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1000" visible="false" labelField="DESCRIPTION" classField="" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_EXTERNAL_COATING" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_EXTERNAL_COATING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_EXTERNAL_COATING" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_EXTERNAL_COATING" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_EXTERNAL_COATING" />
+  </layer>
+  <layer id="PODS_INTERNAL_COATING" comment="PODS.INTERNAL_COATING" descr="Внутреннее покрытие секции трубы" topology="line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="990" visible="false" labelField="DESCRIPTION" classField="" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_INTERNAL_COATING" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_INTERNAL_COATING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_INTERNAL_COATING" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_INTERNAL_COATING" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_INTERNAL_COATING" />
+  </layer>
+  <layer id="PODS_PIPE_SEGMENT" comment="PODS.PIPE_SEGMENT" descr="Секции труб" topology="line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="980" visible="false" labelField="DESCRIPTION" classField="NOMINAL_DIAMETER_GCL" >
+    <filter>
+      <pattern> d.line_id IN (select substr('{FILTER}',1,strpos('{FILTER}'||',',','::text)-1)::integer) </pattern>
+      <join>,</join>
+      <field>PODS_LINE</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PIPE_SEGMENT" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_PIPE_SEGMENT" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PIPE_SEGMENT" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PIPE_SEGMENT" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PIPE_SEGMENT" />
+  </layer>
+  <layer id="PODS_EXPOSURE" comment="PODS.EXPOSURE" descr="Воздушные переходы" topology="line" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="976" visible="false" labelField="DESCRIPTION" classField="" events="" schema="" table="" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_EXPOSURE" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_EXPOSURE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_EXPOSURE" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_EXPOSURE" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_EXPOSURE" />
+  </layer>
+  <layer id="PODS_LEGACY_LINE_BOUNDARY" comment="PODS.LEGACY_LINE_BOUNDARY" descr="Изменения наименований участков трубопроводов" topology="line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1210" visible="false" labelField="DESCRIPTION" classField="">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_LEGACY_LINE_BOUNDARY" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_LEGACY_LINE_BOUNDARY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_LEGACY_LINE_BOUNDARY" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_LEGACY_LINE_BOUNDARY" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_LEGACY_LINE_BOUNDARY" />
+  </layer>
+  <layer id="PODS_LAND_USE" comment="PODS.LAND_USE" descr="Типы землепользования вблизи трубопроводов" topology="line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1170" visible="false" labelField="DESCRIPTION" classField="">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_LAND_USE" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_LAND_USE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_LAND_USE" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_LAND_USE" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_LAND_USE" />
+  </layer>
+  <layer id="PODS_ACTIVITY_ZONE" comment="PODS.ACTIVITY_ZONE" descr="Зоны активной деятельности вблизи трубопроводов" topology="line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1180" visible="false" labelField="DESCRIPTION" classField="">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ACTIVITY_ZONE" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_ACTIVITY_ZONE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ACTIVITY_ZONE" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_ACTIVITY_ZONE" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_ACTIVITY_ZONE" />
+  </layer>
+  <layer id="PODS_SRV_DISTRICT_BOUNDARY" comment="PODS.SRV_DISTRICT_BOUNDARY" descr="Зоны ответственности линейных управлений" topology="line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1220" visible="false" labelField="DESCRIPTION" classField="">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_SRV_DISTRICT_BOUNDARY" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_SRV_DISTRICT_BOUNDARY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_SRV_DISTRICT_BOUNDARY" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_SRV_DISTRICT_BOUNDARY" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_SRV_DISTRICT_BOUNDARY" />
+  </layer>
+  <layer id="PODS_DEPTH_OF_COVER" comment="PODS.DEPTH_OF_COVER" descr="Глубины заложения участков трубопроводов" topology="line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1030" visible="false" labelField="DESCRIPTION" classField="">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_DEPTH_OF_COVER" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_DEPTH_OF_COVER" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_DEPTH_OF_COVER" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_DEPTH_OF_COVER" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_DEPTH_OF_COVER" />
+  </layer>
+  <layer id="PODS_CASING" comment="PODS.CASING" descr="Защитные кожухи (футляры)" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="210" visible="false" topology="point,line" classField="" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_CASING" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_CASING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_CASING"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_CASING"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_CASING"/>
+  </layer>
+<layer id="PODS_TEE" comment="PODS.TEE" descr="Тройники" projection="EPSG:4326" zoomMin="0" zoomMax="1000" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="10" visible="false" topology="point" classField="TYPE_CL" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_TEE" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_TEE"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_TEE"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_TEE"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_TEE"/>
+  </layer>
+  <layer id="PODS_PIPE_BEND" comment="PODS.PIPE_BEND" descr="Отводы гнутые" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="977" visible="false" topology="point,line" classField="TYPE_CL" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PIPE_BEND" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_PIPE_BEND"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PIPE_BEND"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PIPE_BEND"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PIPE_BEND"/>
+  </layer>
+  <layer id="PODS_ELBOW" comment="PODS.ELBOW" descr="Отводы крутоизогнутые" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="978" visible="false" topology="point,line" classField="" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ELBOW" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_ELBOW"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ELBOW"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_ELBOW"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_ELBOW"/>
+  </layer>
+  <layer id="PODS_PIPE_JOIN" comment="PODS.PIPE_JOIN" descr="Соединения неразъёмные" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="6" visible="false" topology="point" classField="TYPE_CL" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PIPE_JOIN" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_PIPE_JOIN"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PIPE_JOIN"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PIPE_JOIN"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PIPE_JOIN"/>
+  </layer>
+  <layer id="PODS_FLANGE" comment="PODS.FLANGE" descr="Соединения разъёмные (фланцы)" projection="EPSG:4326" zoomMin="0" zoomMax="1500" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="50" visible="false" topology="point" classField="TYPE_CL" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_FLANGE" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_FLANGE"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_FLANGE"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_FLANGE"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_FLANGE"/>
+  </layer>
+  <layer id="PODS_HORIZONTAL_DIRECTIONAL_DRILL" comment="PODS.HORIZONTAL_DIRECTIONAL_DRILL" descr="Участки горизонтально/наклонно направленного бурения" topology="line" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="975" visible="false" labelField="DESCRIPTION" classField="" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_HORIZONTAL_DIRECTIONAL_DRILL" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_HORIZONTAL_DIRECTIONAL_DRILL" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_HORIZONTAL_DIRECTIONAL_DRILL"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_HORIZONTAL_DIRECTIONAL_DRILL"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_HORIZONTAL_DIRECTIONAL_DRILL"/>
+  </layer>
+  <layer id="PODS_PROFILE" comment="PODS.PROFILE" descr="Участки труб относительно уровня моря" topology="line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="860" visible="false" labelField="DESCRIPTION" classField="">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PROFILE" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_PROFILE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PROFILE"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PROFILE"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PROFILE"/>
+  </layer>
+<layer id="PODS_SITE" comment="PODS.SITE" descr="Газораспределительные пункты" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="7" visible="false" topology="point,polygon" labelField="NAME" classField="TYPE_CL">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_SITE" />  
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_SITE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_SITE"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_SITE"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_SITE"/>
+  </layer>
+  <layer id="PODS_RIGHT_OF_WAY" comment="PODS.RIGHT_OF_WAY" descr="Земельные участки" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1380" visible="false" topology="polygon" classField="TYPE_CL" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_RIGHT_OF_WAY" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_RIGHT_OF_WAY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_RIGHT_OF_WAY" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_RIGHT_OF_WAY" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_RIGHT_OF_WAY" />
+  </layer>
+<layer id="PODS_ROUTING_NOTE" comment="PODS.ROUTING_NOTE" descr="Точки пересечений со сторонними объектами" projection="EPSG:4326" zoomMin="0" zoomMax="6000" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="330" visible="false" topology="point" labelField="DESCRIPTION" classField="TYPE_CL" useServerCache="true">
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ROUTING_NOTE" />
+  <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_ROUTING_NOTE" /> 
+  <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ROUTING_NOTE" /> 
+  <dataProvider type="spatial" source="PODS_GEO.xml#PODS_ROUTING_NOTE" /> 
+  <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_ROUTING_NOTE" />
+  </layer>
+  <layer id="PODS_REDUCER" comment="PODS.REDUCER" descr="Переходы (фитинги)" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="310" visible="false" topology="point" classField="TYPE_CL" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_REDUCER" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_REDUCER"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_REDUCER"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_REDUCER"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_REDUCER"/>
+  </layer>
+  <layer id="PODS_RIVER_WEIGHT" comment="PODS.RIVER_WEIGHT" descr="Грузы-утяжелители" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="150" visible="false" topology="point" classField="TYPE_CL" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_RIVER_WEIGHT" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_RIVER_WEIGHT"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_RIVER_WEIGHT"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_RIVER_WEIGHT"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_RIVER_WEIGHT"/>
+  </layer>
+  <layer id="PODS_STO_PIPE_SEGMENT_PARAMS" comment="PODS.STO_PIPE_SEGMENT_PARAMS" descr="Опросный лист" topology="line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="true" order="980" visible="false" labelField="COMMENTS" classField="NOMINAL_DIAMETER_GCL">
+    <filter>
+      <pattern> d.line_id IN (select substr('{FILTER}',1,strpos('{FILTER}'||',',','::text)-1)::integer) </pattern>
+      <join>,</join>
+      <field>PODS_LINE</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_PIPE_SEGMENT_PARAMS" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_PIPE_SEGMENT_PARAMS" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_PIPE_SEGMENT_PARAMS" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STO_PIPE_SEGMENT_PARAMS" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_STO_PIPE_SEGMENT_PARAMS" />
+  </layer>
+</root>

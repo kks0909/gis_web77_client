@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<kml version="7.7.3.0">
+  <Document>
+    <!-- Конец ВТД-->
+    
+    <Style table="ROUTING_NOTE" schema="PODS" id="PODS_ROUTING_NOTE" comment="PODS.ROUTING_NOTE" descr="Точка пересечения с ЛЭП, линией связи">
+      <zoomMin>0</zoomMin>
+      <zoomMax>6000</zoomMax>
+      <value>ROUTNOTE_TYPE_05</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/ROUTING_NOTE_ROUTNOTE_TYPE_05.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (77,16576,4,"NEVA Cartographic",0,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+    </Style>
+    <Style table="ROUTING_NOTE" schema="PODS" id="PODS_ROUTING_NOTE" comment="PODS.ROUTING_NOTE" descr="Точка пересечения с дорогами">
+      <zoomMin>0</zoomMin>
+      <zoomMax>6000</zoomMax>
+      <value>ROUTNOTE_TYPE_06</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/ROUTING_NOTE_ROUTNOTE_TYPE_06.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (57,16776960,9,"Sevzapgeoinform",0,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+    </Style>
+    <Style table="ROUTING_NOTE" schema="PODS" id="PODS_ROUTING_NOTE" comment="PODS.ROUTING_NOTE" descr="Точка пересечения с коммуникациями">
+      <zoomMin>0</zoomMin>
+      <zoomMax>6000</zoomMax>
+      <value>ROUTNOTE_TYPE_07</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/ROUTING_NOTE_ROUTNOTE_TYPE_07.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (57,8388608,9,"Sevzapgeoinform",0,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+    </Style>
+    <Style table="ROUTING_NOTE" schema="PODS" id="PODS_ROUTING_NOTE" comment="PODS.ROUTING_NOTE" descr="Точка пересечения с железной дорогой">
+      <zoomMin>0</zoomMin>
+      <zoomMax>6000</zoomMax>
+      <value>ROUTNOTE_TYPE_08</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/ROUTING_NOTE_ROUTNOTE_TYPE_08.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (57,65535,9,"Sevzapgeoinform",0,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+    </Style>
+    <Style table="ROUTING_NOTE" schema="PODS" id="PODS_ROUTING_NOTE" comment="PODS.ROUTING_NOTE" descr="Газовый колодец">
+      <zoomMin>0</zoomMin>
+      <zoomMax>6000</zoomMax>
+      <value>ROUTNOTE_TYPE_09</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/ROUTING_NOTE_ROUTNOTE_TYPE_09.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (57,32768,9,"Sevzapgeoinform",0,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+    </Style>
+    <Style table="SHEET_NOTE" schema="PODS" id="PODS_SHEET_NOTE" comment="PODS.SHEET_NOTE" descr="Прочие точечные объекты">
+      <zoomMin>0</zoomMin>
+      <zoomMax>1500</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/SHEET_NOTE.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data />
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+    </Style>
+    <Style table="SHEET_NOTE" schema="PODS" id="PODS_SHEET_NOTE" comment="PODS.SHEET_NOTE" descr="Молниеотвод">
+      <zoomMin>0</zoomMin>
+      <zoomMax>1500</zoomMax>
+      <value>C1400057</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/SHEET_NOTE_C1400057.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (61,0,18,"UZprom_obiekt",0,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+    </Style>
+    <Style table="SHEET_NOTE" schema="PODS" id="PODS_SHEET_NOTE" comment="PODS.SHEET_NOTE" descr="Прожектор(фонарь)">
+      <zoomMin>0</zoomMin>
+      <zoomMax>1500</zoomMax>
+      <value>C1400058</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/SHEET_NOTE_C1400058.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (73,0,16,"UZprom_obiekt",0,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+    </Style>
+    <Style table="SHEET_NOTE" schema="PODS" id="PODS_SHEET_NOTE" comment="PODS.SHEET_NOTE" descr="Мачта">
+      <zoomMin>0</zoomMin>
+      <zoomMax>1500</zoomMax>
+      <value>C1400059</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/SHEET_NOTE_C1400059.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (95,0,14,"UZprom_obiekt",0,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+    </Style>
+    <Style table="SHEET_NOTE" schema="PODS" id="PODS_SHEET_NOTE" comment="PODS.SHEET_NOTE" descr="Свеча защитного патрона">
+      <zoomMin>0</zoomMin>
+      <zoomMax>1500</zoomMax>
+      <value>C1400061</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/SHEET_NOTE_C1400061.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (47,8388608,14,"UZprom_obiekt",0,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pikets_make.xml" viewpoint="0">
+          Shape { appearance Appearance { material Material { diffuseColor 1 1 0  } }
+          geometry Sphere {  radius  $RADIUS_1_15$ }}
+          Transform {	 translation 0 $RADIUS_3$ 0 children [
+          Shape {  appearance Appearance { material Material { diffuseColor 1 1 0  } }
+          geometry Cylinder { bottom  FALSE  height  $RADIUS_6$ radius  $RADIUS_0_8$ top     FALSE}}]}
+        </data>
+      </VRMLStyle>
+    </Style>
+    <Style table="SHEET_NOTE" schema="PODS" id="PODS_SHEET_NOTE" comment="PODS.SHEET_NOTE" descr="Столбик-сторожок кабельный">
+      <zoomMin>0</zoomMin>
+      <zoomMax>1500</zoomMax>
+      <value>C1400063</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/SHEET_NOTE_C1400063.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (197,0,14,"NewSZGI",0,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pikets_make.xml" viewpoint="0">
+          Transform {  translation 0 1 0   children   [
+          Shape    {  appearance Appearance  {  material Material  {  diffuseColor 1 1 0  transparency 0.0 } }
+          geometry Cylinder { height 2 radius   .03 }}]}
+          Transform {	 translation 0 2 0  children [
+          Shape   { appearance Appearance  {    material Material      {  diffuseColor 1 1 0 emissiveColor 1 1 0 transparency 0.0  } }
+          geometry Box { size .1 .5 1 }}]}
+        </data>
+      </VRMLStyle>
+    </Style>
+    <Style table="SHEET_NOTE" schema="PODS" id="PODS_SHEET_NOTE" comment="PODS.SHEET_NOTE" descr="Указатель границы ЛПУ">
+      <zoomMin>0</zoomMin>
+      <zoomMax>1500</zoomMax>
+      <value>C1400068</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/SHEET_NOTE_C1400068.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (43,16711680,16,"UZdorogi",0,0)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+    </Style>
+    <Style table="SHEET_NOTE" schema="PODS" id="PODS_SHEET_NOTE" comment="PODS.SHEET_NOTE" descr="Шкаф(будка)распределительный">
+      <zoomMin>0</zoomMin>
+      <zoomMax>2500</zoomMax>
+      <value>C1400069</value>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/SHEET_NOTE_C1400069.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      <MIStyle>
+        <data>Symbol (97,0,16,"UZprom_obiekt",0,*)</data>
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="vrml_pikets_make.xml" viewpoint="1">
+          Transform {	 translation 0 1 0  children [
+          Shape   { appearance Appearance  {    material Material      { diffuseColor 0.69 .69 .69 emissiveColor 0.69 0.69 0.69 diffuseColor 0.69 0.69 0.69    transparency 0.0  } }
+          geometry Box { size 1 2 1 }}]}
+        </data>
+      </VRMLStyle>
+    </Style>
+    <Style table="RIGHT_OF_WAY" schema="PODS" id="PODS_RIGHT_OF_WAY" comment="PODS.RIGHT_OF_WAY" descr="Участок в собственности">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <value>RIGHTWAY_TYPE_01</value>
+      <MIStyle>
+        <data />
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+      <LineStyle>
+        <color>66FF1E92</color>
+        <width>1</width>
+      </LineStyle>
+      <LineStyle>
+        <color>66FFFFFF</color>
+        <width>3</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>00000000</color>
+        <fill>0</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="RIGHT_OF_WAY" schema="PODS" id="PODS_RIGHT_OF_WAY" comment="PODS.RIGHT_OF_WAY" descr="Участок в собственности">
+      <value>RIGHTWAY_TYPE_01</value>
+      <zoomMin>0</zoomMin>
+      <zoomMax>25000</zoomMax>
+      <LineStyle>
+        <color>FFFF1E92</color>
+        <width>3</width>
+      </LineStyle>
+    </Style>
+    <Style table="RIGHT_OF_WAY" schema="PODS" id="PODS_RIGHT_OF_WAY" comment="PODS.RIGHT_OF_WAY" descr="Участок в собственности">
+      <value>RIGHTWAY_TYPE_01</value>
+      <zoomMin>0</zoomMin>
+      <zoomMax>25000</zoomMax>
+      <IconStyle>
+        <Icon>
+          <form>circle</form>
+          <size>10</size>
+        </Icon>
+        <color>FFFF1E92</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>   
+    <Style table="POPULATED_AREA" schema="PODS" id="PODS_POPULATED_AREA" comment="PODS.POPULATED_AREA" descr="Населённые пункты (территории)">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF336456</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>54FFEDBF</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="POPULATED_AREA" schema="PODS" id="PODS_POPULATED_AREA" comment="PODS.POPULATED_AREA" descr="Населённые пункты (территории)">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/POPULATED_AREA.png</href>
+          <form>bitmap</form>
+          <size>31</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+    </Style>
+    <Style table="HCA_IDENTIFIED_SITE" schema="PODS" id="PODS_HCA_IDENTIFIED_SITE" comment="PODS.HCA_IDENTIFIED_SITE" descr="Зоны опасных последствий">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF8B0002</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>54FFEDBF</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="HCA_CA_SEGMENT" schema="PODS" id="PODS_HCA_CA_SEGMENT" comment="PODS.HCA_CA_SEGMENT" descr="Участки трубопроводов, находящиеся в зонах опасных последствий " topology="2" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFFFCC00</color>
+        <width>3</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+        <auto>1</auto>
+        <parallel>0</parallel>
+        <rotation>0</rotation>
+      </LabelStyle>
+    </Style>
+   
+  </Document>
+</kml>

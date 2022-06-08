@@ -1,0 +1,975 @@
+﻿<root version="postgres 7.7.7.6">   
+  <data id="ANALYTIC_1" comment="Запрос для выборки данных по скалярным полям для построения диаграммы">
+    <select>
+      <dbQuery idField="ID">
+        <var name="SCHEMA" default="sutstpa"/>
+        <var name="TABLE_NAME" default="valve"/>
+        <var name="GROUP_1" default=""/>
+        <var name="GROUP_2" default=""/>
+        <var name="FILTER" default="1=1" />        
+        <var name="ORDER" default=""/>        
+        <query>
+          select {GROUP_1}, count(*) from {SCHEMA}.{TABLE_NAME} v where {FILTER} group by {GROUP_2} order by {ORDER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="ANALYTIC_2" comment="Запрос для выборки данных по перечислимым полям для построения диаграммы">
+    <select>
+      <dbQuery idField="ID">        
+        <var name="SCHEMA" default="sutstpa"/>
+        <var name="TABLE_NAME" default="valve"/>
+        <var name="SPRAV_SEM_QUERY" default=""/>
+        <var name="SPRAV_LIST" default=""/>
+        <var name="SPRAV_PREDICATE_LIST" default=""/>
+        <var name="GROUP_1" default=""/>        
+        <var name="GROUP_2" default=""/>      
+        <var name="FILTER" default="1=1" />          
+        <var name="ORDER" default=""/>        
+        <query>
+           {SPRAV_SEM_QUERY}
+           select {GROUP_1}, count(*) from {SCHEMA}.{TABLE_NAME} v, {SPRAV_LIST}
+           where  {SPRAV_PREDICATE_LIST} and {FILTER}
+           group by {GROUP_2} order by {ORDER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+
+  <!-- Блок с запросами аналитики для персональных диаграмм -->
+  <data id="ANALYTIC_EBP_1" comment="Контроль сроков ЭБП">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <var name="ORDER_COLUMNS" default="1"/>
+        <var name="GROUP_1" default=""/>
+        <var name="GROUP_2" default=""/>
+        <var name="ORDER" default=""/>
+        <var name="SCHEMA" default="sutstpa"/>
+        <var name="TABLE_NAME" default="valve"/>
+        <query>
+               select * from (
+select 2010 m_order, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_fact,'YYYY')='2010') date_fact, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_plan,'YYYY')='2010') date_plan union all
+select 2011 m_order, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_fact,'YYYY')='2011') date_fact, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_plan,'YYYY')='2011') date_plan union all
+select 2012 m_order, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_fact,'YYYY')='2012') date_fact, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_plan,'YYYY')='2012') date_plan union all
+select 2013 m_order, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_fact,'YYYY')='2013') date_fact, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_plan,'YYYY')='2013') date_plan union all
+select 2014 m_order, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_fact,'YYYY')='2014') date_fact, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_plan,'YYYY')='2014') date_plan union all
+select 2015 m_order, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_fact,'YYYY')='2015') date_fact, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_plan,'YYYY')='2015') date_plan union all
+select 2016 m_order, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_fact,'YYYY')='2016') date_fact, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_plan,'YYYY')='2016') date_plan union all
+select 2017 m_order, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_fact,'YYYY')='2017') date_fact, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_plan,'YYYY')='2017') date_plan union all
+select 2018 m_order, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_fact,'YYYY')='2018') date_fact, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_plan,'YYYY')='2018') date_plan union all
+select 2019 m_order, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_fact,'YYYY')='2019') date_fact, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_plan,'YYYY')='2019') date_plan union all
+select 2020 m_order, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_fact,'YYYY')='2020') date_fact, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_plan,'YYYY')='2020') date_plan union all
+select 2021 m_order, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_fact,'YYYY')='2021') date_fact, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_plan,'YYYY')='2021') date_plan union all
+select 2022 m_order, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_fact,'YYYY')='2022') date_fact, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_plan,'YYYY')='2022') date_plan union all
+select 2023 m_order, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_fact,'YYYY')='2023') date_fact, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_plan,'YYYY')='2023') date_plan union all
+select 2024 m_order, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_fact,'YYYY')='2024') date_fact, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_plan,'YYYY')='2024') date_plan union all
+select 2025 m_order, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_fact,'YYYY')='2025') date_fact, (select count(*) from sutstpa.valve v, sutstpa.service_epb e where e.valve_id=v.id and {FILTER} and to_char(date_plan,'YYYY')='2025')
+) dd order by m_order
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="ANALYTIC_SEAL_1" comment="Расход жидкости">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+		select * from (select 1 m_order, (select sum(seal_past_cons_fact) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_fact,'MM')='01') date_to_lubricant_fact,  (select sum(seal_past_cons_plan) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_plan,'MM')='01') date_to_lubricant_plan union all
+					   select 2 m_order, (select sum(seal_past_cons_fact) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_fact,'MM')='02') date_to_lubricant_fact,  (select sum(seal_past_cons_plan) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_plan,'MM')='02') date_to_lubricant_plan union all
+					   select 3 m_order, (select sum(seal_past_cons_fact) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_fact,'MM')='03') date_to_lubricant_fact,  (select sum(seal_past_cons_plan) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_plan,'MM')='03') date_to_lubricant_plan union all
+					   select 4 m_order, (select sum(seal_past_cons_fact) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_fact,'MM')='04') date_to_lubricant_fact,  (select sum(seal_past_cons_plan) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_plan,'MM')='04') date_to_lubricant_plan union all
+					   select 5 m_order, (select sum(seal_past_cons_fact) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_fact,'MM')='05') date_to_lubricant_fact,  (select sum(seal_past_cons_plan) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_plan,'MM')='05') date_to_lubricant_plan union all
+					   select 6 m_order, (select sum(seal_past_cons_fact) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_fact,'MM')='06') date_to_lubricant_fact,  (select sum(seal_past_cons_plan) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_plan,'MM')='06') date_to_lubricant_plan union all
+					   select 7 m_order, (select sum(seal_past_cons_fact) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_fact,'MM')='07') date_to_lubricant_fact,  (select sum(seal_past_cons_plan) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_plan,'MM')='07') date_to_lubricant_plan union all
+					   select 8 m_order, (select sum(seal_past_cons_fact) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_fact,'MM')='08') date_to_lubricant_fact,  (select sum(seal_past_cons_plan) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_plan,'MM')='08') date_to_lubricant_plan union all
+					   select 9 m_order, (select sum(seal_past_cons_fact) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_fact,'MM')='09') date_to_lubricant_fact,  (select sum(seal_past_cons_plan) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_plan,'MM')='09') date_to_lubricant_plan union all
+					   select 10 m_order, (select sum(seal_past_cons_fact) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_fact,'MM')='10') date_to_lubricant_fact, (select sum(seal_past_cons_plan) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_plan,'MM')='10') date_to_lubricant_plan union all
+					   select 11 m_order, (select sum(seal_past_cons_fact) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_fact,'MM')='11') date_to_lubricant_fact,  (select sum(seal_past_cons_plan) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_plan,'MM')='11') date_to_lubricant_plan union all
+					   select 12 m_order, (select sum(seal_past_cons_fact) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_fact,'MM')='12') date_to_lubricant_fact,  (select sum(seal_past_cons_plan) from sutstpa.valve v where {FILTER} and to_char(date_to_lubricant_plan,'MM')='12') date_to_lubricant_plan
+) dd order by m_order
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+   <data id="ANALYTIC_RSO_1" comment="Контроль сроков РСО">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+                select * from (
+                select 2020 m_order, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_fact,'YYYY')='2020') date_rso_fact, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_plan,'YYYY')='2020') date_rso_plan union all
+                select 2021 m_order, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_fact,'YYYY')='2021') date_rso_fact, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_plan,'YYYY')='2021') date_rso_plan union all
+                select 2022 m_order, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_fact,'YYYY')='2022') date_rso_fact, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_plan,'YYYY')='2022') date_rso_plan union all
+                select 2023 m_order, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_fact,'YYYY')='2023') date_rso_fact, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_plan,'YYYY')='2023') date_rso_plan union all
+                select 2024 m_order, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_fact,'YYYY')='2024') date_rso_fact, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_plan,'YYYY')='2024') date_rso_plan union all
+                select 2025 m_order, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_fact,'YYYY')='2025') date_rso_fact, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_plan,'YYYY')='2025') ) dd order by m_order
+        </query>
+      </dbQuery>
+    </select>
+  </data> 
+   <data id="ANALYTIC_RSO_1" comment="Контроль сроков РСО">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+                select * from (
+                select 2020 m_order, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_fact,'YYYY')='2020') date_rso_fact, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_plan,'YYYY')='2020') date_rso_plan union all
+                select 2021 m_order, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_fact,'YYYY')='2021') date_rso_fact, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_plan,'YYYY')='2021') date_rso_plan union all
+                select 2022 m_order, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_fact,'YYYY')='2022') date_rso_fact, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_plan,'YYYY')='2022') date_rso_plan union all
+                select 2023 m_order, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_fact,'YYYY')='2023') date_rso_fact, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_plan,'YYYY')='2023') date_rso_plan union all
+                select 2024 m_order, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_fact,'YYYY')='2024') date_rso_fact, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_plan,'YYYY')='2024') date_rso_plan union all
+                select 2025 m_order, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_fact,'YYYY')='2025') date_rso_fact, (select count(*) from sutstpa.structure v where {FILTER} and to_char(date_rso_plan,'YYYY')='2025') ) dd order by m_order
+        </query>
+      </dbQuery>
+    </select>
+  </data> 
+  
+  <data id="ANALYTIC_CHECK_VALVE_LIST" comment="Перечень параметров чек-листа на краны">
+    <select>
+      <dbQuery idField="ID">
+        <var name="IGNORE_COLUMNS" default="'INF_DATE_MANUF_IS','INF_MANUF_IS','INF_NOM_DIAM_IS','INF_PRES_IS','ADD_IS_1','ADD_IS_2','ADD_IS_3'" />
+        <query>
+              select s.requirment description,s.check_column,s.koeff,s.invert_is,s.unknown_message  from  sutstpa.sprav_ntd_gcl s where s.check_table like 'sutstpa.valve' and s.check_column is not null and upper(s.check_column) not in ({IGNORE_COLUMNS}) order by s.requirment
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="ANALYTIC_CHECK_VENT_PIPE_LIST" comment="Перечень параметров чек-листа на свечи">
+    <select>
+      <dbQuery idField="ID">
+        <var name="IGNORE_COLUMNS" default="'ADD_IS_1','ADD_IS_2','ADD_IS_3','ADD_IS_4'" />
+        <query>
+              select s.requirment description,s.check_column,s.koeff,s.invert_is,s.unknown_message from  sutstpa.sprav_ntd_gcl s where s.check_table like 'sutstpa.vent_pipe' and s.check_column is not null and upper(s.check_column) not in ({IGNORE_COLUMNS}) order by s.requirment
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="ANALYTIC_CHECK_STRUCTURE_LIST" comment="Перечень параметров чек-листа на кранузлы">
+    <select>
+      <dbQuery idField="ID">
+        <var name="IGNORE_COLUMNS" default="'ADD_IS_1','ADD_IS_2','ADD_IS_3','ADD_IS_4'" />
+        <query>
+              select s.requirment description,s.check_column,s.koeff,s.invert_is,s.unknown_message  from  sutstpa.sprav_ntd_gcl s where s.check_table like 'sutstpa.structure' and s.check_column is not null and upper(s.check_column) not in ({IGNORE_COLUMNS}) order by s.requirment
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="ANALYTIC_CHECK_1" comment="Запрос 1 для дашборда общий">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <var name="ORDER_COLUMNS" default="1"/>
+        <var name="COLUMN_GOAL_1" default="lpu"/>
+        <var name="COLUMN_GOAL_2" default="lpu"/>
+        <var name="COLUMN_GOAL_ORDER" default="lpu"/>
+        <var name="SCHEMA" default="sutstpa"/>
+        <var name="TABLE_NAME" default="valve"/>
+        <query>
+         with tabdata as (select * from {SCHEMA}.{TABLE_NAME} v where {FILTER}),
+         all_cnt as (select count(*) cnt  from tabdata)
+         select   {COLUMN_GOAL_1}, (count(*)::float8/(select cnt from all_cnt))*100 COUNT
+         from tabdata d 
+         group by {COLUMN_GOAL_2}
+         order by {COLUMN_GOAL_ORDER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="ANALYTIC_CHECK_2" comment="Запрос 2 по производителю крана для дашборда !!! только для дашборда по кранам">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <var name="ORDER_COLUMNS" default="1"/>
+        <var name="COLUMN_GOAL" default="8=8"/>
+        <var name="SCHEMA" default="sutstpa"/>
+        <var name="TABLE_NAME" default="valve"/>
+        <query>
+         with tabdata as (select * from {SCHEMA}.{TABLE_NAME} v where {FILTER}),
+         all_cnt as (select count(*) cnt  from tabdata where {COLUMN_GOAL}),
+		 all_cnt2 as (select count(*) cnt,manuf_id manuf from tabdata  group by manuf_id)
+         select * from (select d.manuf_id, count(*) BAD_COUNT,((select cnt from all_cnt2 where manuf=manuf_id)-count(*)) GOOD_COUNT
+         from tabdata d 
+         where {COLUMN_GOAL}
+         group by d.manuf_id
+         order by d.manuf_id) dd
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="ANALYTIC_CHECK_3" comment="Запрос 3 по ЛПУ для дашборда общий">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <var name="ORDER_COLUMNS" default="1"/>
+        <var name="COLUMN_GOAL" default="8=8"/>
+        <var name="SCHEMA" default="sutstpa"/>
+        <var name="TABLE_NAME" default="valve"/>
+        <query>
+         with tabdata as (select * from {SCHEMA}.{TABLE_NAME} v where {FILTER}),
+         all_cnt as (select count(*) cnt  from tabdata where {COLUMN_GOAL}),
+		 all_cnt2 as (select count(*) cnt,lpu lpu_ from tabdata  group by lpu)
+         select * from (select d.lpu, count(*) BAD_COUNT,((select cnt from all_cnt2 where lpu_=lpu)-count(*)) GOOD_COUNT
+         from tabdata d 
+         where {COLUMN_GOAL}
+         group by d.lpu
+         order by d.lpu) dd
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+
+  <data id="ANALYTIC_CHECK_4" comment="Запрос 4 по ЛЭС для дашборда общий">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <var name="ORDER_COLUMNS" default="1"/>
+        <var name="COLUMN_GOAL" default="8=8"/>
+        <var name="SCHEMA" default="sutstpa"/>
+        <var name="TABLE_NAME" default="valve"/>
+        <query>
+         with tabdata as (select * from {SCHEMA}.{TABLE_NAME} v where {FILTER}),
+         all_cnt as (select count(*) cnt  from tabdata where {COLUMN_GOAL}),
+		 all_cnt2 as (select count(*) cnt,les les_ from tabdata  group by les)
+         select * from (select d.les, count(*) BAD_COUNT,((select cnt from all_cnt2 where les_=les)-count(*)) GOOD_COUNT
+         from tabdata d 
+         where {COLUMN_GOAL}
+         group by d.les
+         order by d.les) dd
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+
+  <data id="ANALYTIC_CHECK_5" comment="Запрос 5 по наименованию крана для дашборда !!! только для дашборда по кранам">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <var name="ORDER_COLUMNS" default="1"/>
+        <var name="COLUMN_GOAL" default="8=8"/>
+        <var name="SCHEMA" default="sutstpa"/>
+        <var name="TABLE_NAME" default="valve"/>
+        <query>
+         with tabdata as (select * from {SCHEMA}.{TABLE_NAME} v where {FILTER}),
+         all_cnt as (select count(*) cnt  from tabdata where {COLUMN_GOAL}),
+		 all_cnt2 as (select count(*) cnt,name_id name_ from tabdata  group by name_id)
+         select * from (select d.name_id, count(*) BAD_COUNT,((select cnt from all_cnt2 where name_=name_id)-count(*)) GOOD_COUNT
+         from tabdata d 
+         where {COLUMN_GOAL}
+         group by d.name_id
+         order by d.name_id) dd
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="ANALYTIC_CHECK_6" comment="Запрос 6 по дате производства крана для дашборда !!! только для дашборда по кранам">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <var name="ORDER_COLUMNS" default="1"/>
+        <var name="COLUMN_GOAL" default="8=8"/>
+        <var name="SCHEMA" default="sutstpa"/>
+        <var name="TABLE_NAME" default="valve"/>
+        <query>
+
+         with tabdata as (select v.*,coalesce(to_char(v.date_manuf,'YYYY'),'Неизвестно') date_manuf_t from {SCHEMA}.{TABLE_NAME} v where {FILTER}),
+		 all_cnt2 as (select count(*) cnt,coalesce(to_char(date_manuf,'YYYY'),'Неизвестно') date_manuf_1 from tabdata  group by coalesce(to_char(date_manuf,'YYYY'),'Неизвестно'))
+         select * from (select coalesce(to_char(d.date_manuf,'YYYY'),'Неизвестно') date_manuf_1, count(*) BAD_COUNT,
+		 (select cnt from all_cnt2 c where c.date_manuf_1=d.date_manuf_t)-count(*) GOOD_COUNT
+         from tabdata d 
+         where {COLUMN_GOAL} and to_char(d.date_manuf,'YYYY')::numeric>1945
+         group by  coalesce(to_char(d.date_manuf,'YYYY'),'Неизвестно'),date_manuf_t
+         order by  coalesce(to_char(d.date_manuf,'YYYY'),'Неизвестно')) dd
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="ANALYTIC_CHECK_7" comment="Запрос 7 по типу подключения крана для дашборда !!! только для дашборда по кранам">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <var name="ORDER_COLUMNS" default="1"/>
+        <var name="COLUMN_GOAL" default="8=8"/>
+        <var name="SCHEMA" default="sutstpa"/>
+        <var name="TABLE_NAME" default="valve"/>
+        <query>
+         with tabdata as (select * from {SCHEMA}.{TABLE_NAME} v where {FILTER}),
+         all_cnt as (select count(*) cnt,joint_id  from tabdata where {COLUMN_GOAL} group by joint_id),
+		 all_cnt2 as (select count(*) cnt,joint_id joint from tabdata  group by joint_id)
+         select * from (select d.joint_id, count(*) BAD_COUNT,((select cnt from all_cnt2 where joint=joint_id)-count(*)) GOOD_COUNT
+         from tabdata d 
+         where {COLUMN_GOAL}
+         group by  d.joint_id
+         order by  d.joint_id) dd
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="ANALYTIC_CHECK_8" comment="Запрос 8 по ном.диаметру крана для дашборда !!! только для дашборда по кранам">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <var name="ORDER_COLUMNS" default="1"/>
+        <var name="COLUMN_GOAL" default="8=8"/>
+        <var name="SCHEMA" default="sutstpa"/>
+        <var name="TABLE_NAME" default="valve"/>
+        <query>
+        with tabdata as (select * from  {SCHEMA}.{TABLE_NAME} v where {FILTER}),
+         all_cnt as (select count(*) cnt,nom_diam_id diam from tabdata where {COLUMN_GOAL} group by nom_diam_id),
+         all_cnt2 as (select count(*) cnt,nom_diam_id diam from tabdata  group by nom_diam_id)
+         select * from (select d.nom_diam_id, count(*) BAD_COUNT,((select cnt from all_cnt2 where diam=nom_diam_id)-count(*)) GOOD_COUNT
+         from tabdata d 
+         where {COLUMN_GOAL}
+         group by  d.nom_diam_id
+         order by  d.nom_diam_id) dd
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="ANALYTIC_CHECK_9" comment="Запрос 9 по газопроводу для дашборда общий">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <var name="ORDER_COLUMNS" default="1"/>
+        <var name="COLUMN_GOAL" default="8=8"/>
+        <var name="SCHEMA" default="sutstpa"/>
+        <var name="TABLE_NAME" default="valve"/>
+        <query>
+        with tabdata as (select * from {SCHEMA}.{TABLE_NAME} v where {FILTER}),
+         all_cnt as (select count(*) cnt  from tabdata where {COLUMN_GOAL}),
+         all_cnt2 as (select count(*) cnt, pipe pipe_id from tabdata  group by pipe)
+         select * from (select d.pipe, count(*) BAD_COUNT,((select cnt from all_cnt2 where pipe=pipe_id)-count(*)) GOOD_COUNT
+         from tabdata d 
+         where {COLUMN_GOAL}
+         group by  d.pipe
+         order by  d.pipe) dd 
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="INFOTEH_1" comment="Запрос 1 для дашборда инфотех">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+          with sutstpa_unk_cnt as (select 'CLIMATIC_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.CLIMATIC_TYPE_ID like 'Неизвестно' and {FILTER} union all
+select 'DATE_INSTALL' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.DATE_INSTALL is null and {FILTER} union all
+select 'DATE_MANUF' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.DATE_MANUF is null and {FILTER} union all
+select 'ELECTRIC_DRIVE_DESCR' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.ELECTRIC_DRIVE_DESCR is null and {FILTER} union all
+select 'DATE_WORK_BEGIN' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.DATE_WORK_BEGIN is null and {FILTER} union all
+select 'INSTALL_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.INSTALL_TYPE_ID like 'Неизвестно' and {FILTER} union all
+select 'INVENT_NUMBER' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.INVENT_NUMBER is null and {FILTER} union all
+select 'JOINT_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.JOINT_ID like 'Неизвестно' and {FILTER} union all
+select 'LIFETIME' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.LIFETIME is null and {FILTER} union all
+select 'MANUF_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.MANUF_ID like 'Неизвестно' and {FILTER} union all
+select 'NAME_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.NAME_ID like 'Неизвестно' and {FILTER} union all
+select 'NOM_DIAM_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.NOM_DIAM_ID=0 and {FILTER} union all
+select 'NOM_PRESS_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.NOM_PRESS_ID=0 and {FILTER} union all
+select 'OPER_DATE_WORK_BEGIN' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.OPER_DATE_WORK_BEGIN is null and {FILTER} union all
+select 'OPER_LABEL_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.OPER_LABEL_TYPE_ID like 'Неизвестно' and {FILTER} union all
+select 'OPER_MANUF_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.OPER_MANUF_ID like 'Неизвестно' and {FILTER} union all
+select 'PASSPORT_DOCUMENT_DESCR' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.PASSPORT_DOCUMENT_DESCR is null and {FILTER} union all
+select 'SERIAL_NUM' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.SERIAL_NUM is null and {FILTER} union all
+select 'TECH_NUM' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.TECH_NUM is null and {FILTER} union all
+select 'WORK_PRESSURE_FACT' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.WORK_PRESSURE_FACT is null and {FILTER} union all
+select 'WORK_TEMP_FACT' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.WORK_TEMP_FACT is null and {FILTER} union all
+select 'WORK_TEMP_PROJECT' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.WORK_TEMP_PROJECT is null and {FILTER} union all
+select 'TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.TYPE_ID like 'Неизвестно' and {FILTER} union all
+select 'OPER_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.OPER_TYPE_ID like 'Неизвестно' and {FILTER} union all
+select 'MATERIAL_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.MATERIAL_ID like 'Неизвестно' and {FILTER} union all
+select 'TPA_FIGURE_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.TPA_FIGURE_TYPE_ID like 'Неизвестно' and {FILTER} union all
+select 'TPA_CONSTR_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.TPA_CONSTR_TYPE_ID like 'Неизвестно' and {FILTER} union all
+select 'OPER_DATE_MANUF' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.OPER_DATE_MANUF is null and {FILTER} union all
+select 'OPER_SERIAL_NUMBER' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.OPER_SERIAL_NUMBER is null and {FILTER} union all
+select 'DESCR' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.DESCR is null and {FILTER} union all
+select 'DATE_EXP' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.DATE_EXP is null and {FILTER}),
+all_unk_cnt as (select 'CLIMATIC_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.CLIMATIC_TYPE_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='CLIMATIC_TYPE_ID') union all
+select 'DATE_INSTALL' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.DATE_INSTALL is null and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='DATE_INSTALL') union all
+select 'DATE_MANUF' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.DATE_MANUF is null and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='DATE_MANUF') union all
+select 'ELECTRIC_DRIVE_DESCR' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.ELECTRIC_DRIVE_DESCR is null and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='ELECTRIC_DRIVE_DESCR') union all
+select 'DATE_WORK_BEGIN' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.DATE_WORK_BEGIN is null and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='DATE_WORK_BEGIN') union all
+select 'INSTALL_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.INSTALL_TYPE_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='INSTALL_TYPE_ID') union all
+select 'INVENT_NUMBER' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.INVENT_NUMBER is null and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='INVENT_NUMBER') union all
+select 'JOINT_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.JOINT_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='JOINT_ID') union all
+select 'LIFETIME' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.LIFETIME is null and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and i.column_name='LIFETIME') union all
+select 'MANUF_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.MANUF_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='MANUF_ID') union all
+select 'NAME_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.NAME_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='NAME_ID') union all
+select 'NOM_DIAM_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.NOM_DIAM_ID=0 and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='NOM_DIAM_ID') union all
+select 'NOM_PRESS_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.NOM_PRESS_ID=0 and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='NOM_PRESS_ID') union all
+select 'OPER_DATE_WORK_BEGIN' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.OPER_DATE_WORK_BEGIN is null and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='OPER_DATE_WORK_BEGIN') union all
+select 'OPER_LABEL_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.OPER_LABEL_TYPE_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='OPER_LABEL_TYPE_ID') union all
+select 'OPER_MANUF_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.OPER_MANUF_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='OPER_MANUF_ID') union all
+select 'PASSPORT_DOCUMENT_DESCR' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.PASSPORT_DOCUMENT_DESCR is null and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='PASSPORT_DOCUMENT_DESCR') union all
+select 'SERIAL_NUM' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.SERIAL_NUM is null and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='SERIAL_NUM') union all
+select 'TECH_NUM' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.TECH_NUM is null and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='TECH_NUM') union all
+select 'WORK_PRESSURE_FACT' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.WORK_PRESSURE_FACT is null and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='WORK_PRESSURE_FACT') union all
+select 'WORK_TEMP_FACT' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.WORK_TEMP_FACT is null and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='WORK_TEMP_FACT') union all
+select 'WORK_TEMP_PROJECT' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.WORK_TEMP_PROJECT is null and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='WORK_TEMP_PROJECT') union all
+select 'TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.TYPE_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='TYPE_ID') union all
+select 'OPER_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.OPER_TYPE_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='OPER_TYPE_ID') union all
+select 'MATERIAL_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.MATERIAL_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='MATERIAL_ID') union all
+select 'TPA_FIGURE_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.TPA_FIGURE_TYPE_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='TPA_FIGURE_TYPE_ID') union all
+select 'TPA_CONSTR_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.TPA_CONSTR_TYPE_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='TPA_CONSTR_TYPE_ID') union all
+select 'OPER_DATE_MANUF' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.OPER_DATE_MANUF is null and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='OPER_DATE_MANUF') union all
+select 'OPER_SERIAL_NUMBER' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.OPER_SERIAL_NUMBER is null and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='OPER_SERIAL_NUMBER') union all
+select 'DESCR' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.DESCR is null and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='DESCR') union all
+select 'DATE_EXP' col_name, count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and v.DATE_EXP is null and {FILTER} and exists (select 1 from sutstpa.mismatch_infoteh i where v.id=i.valve_id and upper(i.column_name)='DATE_EXP')),
+col_cnt as (select upper(i.column_name) col_name,count(*) cnt from sutstpa.valve v,sutstpa.mismatch_infoteh i where v.infoteh_is=1 and v.id=i.valve_id and {FILTER} group by i.column_name),
+     all_cnt as (select count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and {FILTER})
+select case 
+upper(c.col_name) when 'CLIMATIC_TYPE_ID' then 'Климатическое исполнение крана'
+when 'DATE_INSTALL' then 'Дата врезки'
+when 'DATE_MANUF' then 'Дата изготовления'
+when 'ELECTRIC_DRIVE_DESCR' then 'Готовность крана к телемеханизации'
+when 'DATE_WORK_BEGIN' then 'Дата ввода в эксплуатацию ТПА'
+when 'INSTALL_TYPE_ID' then 'Тип  установки'
+when 'INVENT_NUMBER' then 'Инв. номер ТПА'
+when 'JOINT_ID' then 'Тип присоединения'
+when 'LIFETIME' then 'Нормативный срок службы'
+when 'MANUF_ID' then 'Изготовитель ТПА'
+when 'NAME_ID' then 'Наименование ТПА'
+when 'NOM_DIAM_ID' then 'Номинальный диаметр DN'
+when 'NOM_PRESS_ID' then 'Номинальное давление PN'
+when 'OPER_DATE_WORK_BEGIN' then 'Год ввода в эксплуатацию привода'
+when 'OPER_LABEL_TYPE_ID' then 'Маркировка привода'
+when 'OPER_MANUF_ID' then 'Изготовитель привода'
+when 'PASSPORT_DOCUMENT_DESCR' then 'Наличие паспорта крана'
+when 'SERIAL_NUM' then 'Заводской номер'
+when 'TECH_NUM' then 'Технологический номер'
+when 'WORK_PRESSURE_FACT' then 'Фактическое рабочее давление'
+when 'WORK_TEMP_FACT' then 'Фактическая рабочая температура'
+when 'WORK_TEMP_PROJECT' then 'Проектная  рабочая температура'
+when 'TYPE_ID' then 'Тип крана'
+when 'OPER_TYPE_ID' then 'Тип привода'
+when 'MATERIAL_ID' then 'Материал изготовления корпуса'
+when 'TPA_FIGURE_TYPE_ID' then 'Маркировка ТПА по табл. фигур'
+when 'TPA_CONSTR_TYPE_ID' then 'Маркировка ТПА(по конструкт. докум.)'
+when 'OPER_DATE_MANUF' then 'Дата изготовления привода'
+when 'OPER_SERIAL_NUMBER' then 'Заводской номер привода'
+when 'DESCR' then 'Маркировка'
+when 'DATE_EXP' then 'Дата истеч.срока эксплуатации'  
+     else c.col_name end column_name,a.cnt all_cnt,u.cnt sutstpa_cnt,c.cnt mismatch_cnt from col_cnt c, sutstpa_unk_cnt u, all_unk_cnt a where upper(u.col_name)=upper(c.col_name) and upper(a.col_name)=upper(c.col_name) order by column_name
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="INFOTEH_2" comment="Запрос 1 для дашборда инфотех">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+          with col_cnt as (select i.column_name col_name,count(*) cnt from sutstpa.valve v,sutstpa.mismatch_infoteh i where v.infoteh_is=1 and v.id=i.valve_id and {FILTER} group by i.column_name),
+     all_cnt as (select count(*) cnt from sutstpa.valve v where v.infoteh_is=1 and {FILTER})
+     select case 
+upper(c.col_name) when 'CLIMATIC_TYPE_ID' then 'Климатическое исполнение крана'
+when 'DATE_INSTALL' then 'Дата врезки'
+when 'DATE_MANUF' then 'Дата изготовления'
+when 'ELECTRIC_DRIVE_DESCR' then 'Готовность крана к телемеханизации'
+when 'DATE_WORK_BEGIN' then 'Дата ввода в эксплуатацию ТПА'
+when 'INSTALL_TYPE_ID' then 'Тип  установки'
+when 'INVENT_NUMBER' then 'Инв. номер ТПА'
+when 'JOINT_ID' then 'Тип присоединения'
+when 'LIFETIME' then 'Нормативный срок службы'
+when 'MANUF_ID' then 'Изготовитель ТПА'
+when 'NAME_ID' then 'Наименование ТПА'
+when 'NOM_DIAM_ID' then 'Номинальный диаметр DN'
+when 'NOM_PRESS_ID' then 'Номинальное давление PN'
+when 'OPER_DATE_WORK_BEGIN' then 'Год ввода в эксплуатацию привода'
+when 'OPER_LABEL_TYPE_ID' then 'Маркировка привода'
+when 'OPER_MANUF_ID' then 'Изготовитель привода'
+when 'PASSPORT_DOCUMENT_DESCR' then 'Наличие паспорта крана'
+when 'SERIAL_NUM' then 'Заводской номер'
+when 'TECH_NUM' then 'Технологический номер'
+when 'WORK_PRESSURE_FACT' then 'Фактическое рабочее давление'
+when 'WORK_TEMP_FACT' then 'Фактическая рабочая температура'
+when 'WORK_TEMP_PROJECT' then 'Проектная  рабочая температура'
+when 'TYPE_ID' then 'Тип крана'
+when 'OPER_TYPE_ID' then 'Тип привода'
+when 'MATERIAL_ID' then 'Материал изготовления корпуса'
+when 'TPA_FIGURE_TYPE_ID' then 'Маркировка ТПА по табл. фигур'
+when 'TPA_CONSTR_TYPE_ID' then 'Маркировка ТПА(по конструкт. докум.)'
+when 'OPER_DATE_MANUF' then 'Дата изготовления привода'
+when 'OPER_SERIAL_NUMBER' then 'Заводской номер привода'
+when 'DESCR' then 'Маркировка'
+when 'DATE_EXP' then 'Дата истеч.срока эксплуатации'  
+     else c.col_name end column_name,c.cnt mismatch_cnt,a.cnt-c.cnt equal_cnt from col_cnt c,all_cnt a order by column_name
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+    <data id="EXEC_DOC_1" comment="Запрос 1 для дашборда исп документация. отсутвует информция">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+          with sutstpa_unk_cnt as (select 'CLIMATIC_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.CLIMATIC_TYPE_ID like 'Неизвестно' and {FILTER} union all
+select 'DATE_INSTALL' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.DATE_INSTALL is null and {FILTER} union all
+select 'DATE_MANUF' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.DATE_MANUF is null and {FILTER} union all
+select 'ELECTRIC_DRIVE_DESCR' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.ELECTRIC_DRIVE_DESCR is null and {FILTER} union all
+select 'DATE_WORK_BEGIN' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.DATE_WORK_BEGIN is null and {FILTER} union all
+select 'INSTALL_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.INSTALL_TYPE_ID like 'Неизвестно' and {FILTER} union all
+select 'INVENT_NUMBER' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.INVENT_NUMBER is null and {FILTER} union all
+select 'JOINT_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.JOINT_ID like 'Неизвестно' and {FILTER} union all
+select 'LIFETIME' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.LIFETIME is null and {FILTER} union all
+select 'MANUF_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.MANUF_ID like 'Неизвестно' and {FILTER} union all
+select 'NAME_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.NAME_ID like 'Неизвестно' and {FILTER} union all
+select 'NOM_DIAM_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.NOM_DIAM_ID=0 and {FILTER} union all
+select 'NOM_PRESS_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.NOM_PRESS_ID=0 and {FILTER} union all
+select 'OPER_DATE_WORK_BEGIN' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.OPER_DATE_WORK_BEGIN is null and {FILTER} union all
+select 'OPER_LABEL_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.OPER_LABEL_TYPE_ID like 'Неизвестно' and {FILTER} union all
+select 'OPER_MANUF_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.OPER_MANUF_ID like 'Неизвестно' and {FILTER} union all
+select 'PASSPORT_DOCUMENT_DESCR' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.PASSPORT_DOCUMENT_DESCR is null and {FILTER} union all
+select 'SERIAL_NUM' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.SERIAL_NUM is null and {FILTER} union all
+select 'TECH_NUM' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.TECH_NUM is null and {FILTER} union all
+select 'WORK_PRESSURE_FACT' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.WORK_PRESSURE_FACT is null and {FILTER} union all
+select 'WORK_TEMP_FACT' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.WORK_TEMP_FACT is null and {FILTER} union all
+select 'WORK_TEMP_PROJECT' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.WORK_TEMP_PROJECT is null and {FILTER} union all
+select 'TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.TYPE_ID like 'Неизвестно' and {FILTER} union all
+select 'OPER_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.OPER_TYPE_ID like 'Неизвестно' and {FILTER} union all
+select 'MATERIAL_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.MATERIAL_ID like 'Неизвестно' and {FILTER} union all
+select 'TPA_FIGURE_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.TPA_FIGURE_TYPE_ID like 'Неизвестно' and {FILTER} union all
+select 'TPA_CONSTR_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.TPA_CONSTR_TYPE_ID like 'Неизвестно' and {FILTER} union all
+select 'OPER_DATE_MANUF' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.OPER_DATE_MANUF is null and {FILTER} union all
+select 'OPER_SERIAL_NUMBER' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.OPER_SERIAL_NUMBER is null and {FILTER} union all
+select 'DESCR' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.DESCR is null and {FILTER} union all
+select 'DATE_EXP' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.DATE_EXP is null and {FILTER}),
+all_unk_cnt as (select 'CLIMATIC_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.CLIMATIC_TYPE_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='CLIMATIC_TYPE_ID') union all
+select 'DATE_INSTALL' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.DATE_INSTALL is null and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='DATE_INSTALL') union all
+select 'DATE_MANUF' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.DATE_MANUF is null and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='DATE_MANUF') union all
+select 'ELECTRIC_DRIVE_DESCR' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.ELECTRIC_DRIVE_DESCR is null and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='ELECTRIC_DRIVE_DESCR') union all
+select 'DATE_WORK_BEGIN' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.DATE_WORK_BEGIN is null and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='DATE_WORK_BEGIN') union all
+select 'INSTALL_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.INSTALL_TYPE_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='INSTALL_TYPE_ID') union all
+select 'INVENT_NUMBER' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.INVENT_NUMBER is null and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='INVENT_NUMBER') union all
+select 'JOINT_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.JOINT_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='JOINT_ID') union all
+select 'LIFETIME' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.LIFETIME is null and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='LIFETIME') union all
+select 'MANUF_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.MANUF_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='MANUF_ID') union all
+select 'NAME_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.NAME_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='NAME_ID') union all
+select 'NOM_DIAM_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.NOM_DIAM_ID=0 and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='NOM_DIAM_ID') union all
+select 'NOM_PRESS_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.NOM_PRESS_ID=0 and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='NOM_PRESS_ID') union all
+select 'OPER_DATE_WORK_BEGIN' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.OPER_DATE_WORK_BEGIN is null and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='OPER_DATE_WORK_BEGIN') union all
+select 'OPER_LABEL_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.OPER_LABEL_TYPE_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='OPER_LABEL_TYPE_ID') union all
+select 'OPER_MANUF_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.OPER_MANUF_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='OPER_MANUF_ID') union all
+select 'PASSPORT_DOCUMENT_DESCR' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.PASSPORT_DOCUMENT_DESCR is null and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='PASSPORT_DOCUMENT_DESCR') union all
+select 'SERIAL_NUM' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.SERIAL_NUM is null and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='SERIAL_NUM') union all
+select 'TECH_NUM' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.TECH_NUM is null and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='TECH_NUM') union all
+select 'WORK_PRESSURE_FACT' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.WORK_PRESSURE_FACT is null and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='WORK_PRESSURE_FACT') union all
+select 'WORK_TEMP_FACT' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.WORK_TEMP_FACT is null and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='WORK_TEMP_FACT') union all
+select 'WORK_TEMP_PROJECT' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.WORK_TEMP_PROJECT is null and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='WORK_TEMP_PROJECT') union all
+select 'TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.TYPE_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='TYPE_ID') union all
+select 'OPER_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.OPER_TYPE_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='OPER_TYPE_ID') union all
+select 'MATERIAL_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.MATERIAL_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='MATERIAL_ID') union all
+select 'TPA_FIGURE_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.TPA_FIGURE_TYPE_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='TPA_FIGURE_TYPE_ID') union all
+select 'TPA_CONSTR_TYPE_ID' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.TPA_CONSTR_TYPE_ID like 'Неизвестно' and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='TPA_CONSTR_TYPE_ID') union all
+select 'OPER_DATE_MANUF' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.OPER_DATE_MANUF is null and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='OPER_DATE_MANUF') union all
+select 'OPER_SERIAL_NUMBER' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.OPER_SERIAL_NUMBER is null and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='OPER_SERIAL_NUMBER') union all
+select 'DESCR' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.DESCR is null and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='DESCR') union all
+select 'DATE_EXP' col_name, count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and v.DATE_EXP is null and {FILTER} and exists (select 1 from sutstpa.mismatch_exec_doc i where v.id=i.valve_id and upper(i.column_name)='DATE_EXP')),
+col_cnt as (select upper(i.column_name) col_name,count(*) cnt from sutstpa.valve v,sutstpa.mismatch_exec_doc i where v.exec_doc_is=1 and v.id=i.valve_id and {FILTER} group by i.column_name),
+     all_cnt as (select count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and {FILTER})
+select case 
+upper(c.col_name) when 'CLIMATIC_TYPE_ID' then 'Климатическое исполнение крана'
+when 'DATE_INSTALL' then 'Дата врезки'
+when 'DATE_MANUF' then 'Дата изготовления'
+when 'ELECTRIC_DRIVE_DESCR' then 'Готовность крана к телемеханизации'
+when 'DATE_WORK_BEGIN' then 'Дата ввода в эксплуатацию ТПА'
+when 'INSTALL_TYPE_ID' then 'Тип  установки'
+when 'INVENT_NUMBER' then 'Инв. номер ТПА'
+when 'JOINT_ID' then 'Тип присоединения'
+when 'LIFETIME' then 'Нормативный срок службы'
+when 'MANUF_ID' then 'Изготовитель ТПА'
+when 'NAME_ID' then 'Наименование ТПА'
+when 'NOM_DIAM_ID' then 'Номинальный диаметр DN'
+when 'NOM_PRESS_ID' then 'Номинальное давление PN'
+when 'OPER_DATE_WORK_BEGIN' then 'Год ввода в эксплуатацию привода'
+when 'OPER_LABEL_TYPE_ID' then 'Маркировка привода'
+when 'OPER_MANUF_ID' then 'Изготовитель привода'
+when 'PASSPORT_DOCUMENT_DESCR' then 'Наличие паспорта крана'
+when 'SERIAL_NUM' then 'Заводской номер'
+when 'TECH_NUM' then 'Технологический номер'
+when 'WORK_PRESSURE_FACT' then 'Фактическое рабочее давление'
+when 'WORK_TEMP_FACT' then 'Фактическая рабочая температура'
+when 'WORK_TEMP_PROJECT' then 'Проектная  рабочая температура'
+when 'TYPE_ID' then 'Тип крана'
+when 'OPER_TYPE_ID' then 'Тип привода'
+when 'MATERIAL_ID' then 'Материал изготовления корпуса'
+when 'TPA_FIGURE_TYPE_ID' then 'Маркировка ТПА по табл. фигур'
+when 'TPA_CONSTR_TYPE_ID' then 'Маркировка ТПА(по конструкт. докум.)'
+when 'OPER_DATE_MANUF' then 'Дата изготовления привода'
+when 'OPER_SERIAL_NUMBER' then 'Заводской номер привода'
+when 'DESCR' then 'Маркировка'
+when 'DATE_EXP' then 'Дата истеч.срока эксплуатации'  
+     else c.col_name end column_name,a.cnt all_cnt,u.cnt sutstpa_cnt,c.cnt mismatch_cnt from col_cnt c, sutstpa_unk_cnt u, all_unk_cnt a where upper(u.col_name)=upper(c.col_name) and upper(a.col_name)=upper(c.col_name) order by column_name
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="EXEC_DOC_2" comment="Запрос 1 для дашборда исп. докуентации сравнение по несоответствиям">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+          with col_cnt as (select i.column_name col_name,count(*) cnt from sutstpa.valve v,sutstpa.mismatch_exec_doc i where v.exec_doc_is=1 and v.id=i.valve_id and {FILTER} group by i.column_name),
+     all_cnt as (select count(*) cnt from sutstpa.valve v where v.exec_doc_is=1 and {FILTER})
+     select case 
+upper(c.col_name) when 'CLIMATIC_TYPE_ID' then 'Климатическое исполнение крана'
+when 'DATE_INSTALL' then 'Дата врезки'
+when 'DATE_MANUF' then 'Дата изготовления'
+when 'ELECTRIC_DRIVE_DESCR' then 'Готовность крана к телемеханизации'
+when 'DATE_WORK_BEGIN' then 'Дата ввода в эксплуатацию ТПА'
+when 'INSTALL_TYPE_ID' then 'Тип  установки'
+when 'INVENT_NUMBER' then 'Инв. номер ТПА'
+when 'JOINT_ID' then 'Тип присоединения'
+when 'LIFETIME' then 'Нормативный срок службы'
+when 'MANUF_ID' then 'Изготовитель ТПА'
+when 'NAME_ID' then 'Наименование ТПА'
+when 'NOM_DIAM_ID' then 'Номинальный диаметр DN'
+when 'NOM_PRESS_ID' then 'Номинальное давление PN'
+when 'OPER_DATE_WORK_BEGIN' then 'Год ввода в эксплуатацию привода'
+when 'OPER_LABEL_TYPE_ID' then 'Маркировка привода'
+when 'OPER_MANUF_ID' then 'Изготовитель привода'
+when 'PASSPORT_DOCUMENT_DESCR' then 'Наличие паспорта крана'
+when 'SERIAL_NUM' then 'Заводской номер'
+when 'TECH_NUM' then 'Технологический номер'
+when 'WORK_PRESSURE_FACT' then 'Фактическое рабочее давление'
+when 'WORK_TEMP_FACT' then 'Фактическая рабочая температура'
+when 'WORK_TEMP_PROJECT' then 'Проектная  рабочая температура'
+when 'TYPE_ID' then 'Тип крана'
+when 'OPER_TYPE_ID' then 'Тип привода'
+when 'MATERIAL_ID' then 'Материал изготовления корпуса'
+when 'TPA_FIGURE_TYPE_ID' then 'Маркировка ТПА по табл. фигур'
+when 'TPA_CONSTR_TYPE_ID' then 'Маркировка ТПА(по конструкт. докум.)'
+when 'OPER_DATE_MANUF' then 'Дата изготовления привода'
+when 'OPER_SERIAL_NUMBER' then 'Заводской номер привода'
+when 'DESCR' then 'Маркировка'
+when 'DATE_EXP' then 'Дата истеч.срока эксплуатации'  
+     else c.col_name end column_name,c.cnt mismatch_cnt,a.cnt-c.cnt equal_cnt from col_cnt c,all_cnt a order by column_name
+        </query>
+      </dbQuery>
+    </select>
+CLIMATIC_TYPE_ID' colummn_name, s."EXEC_CLIMATIC_TYPE_ID"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and upper(s."EXEC_CLIMATIC_TYPE_ID"::text)=upper(v.CLIMATIC_TYPE_ID::text))  and s."ID" is not null union all
+select s."ID"::numeric,'DATE_INSTALL' colummn_name, s."EXEC_DATE_INSTALL"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and s."EXEC_DATE_INSTALL"::text=to_char(v.DATE_INSTALL,'DD.MM.YYYY'))  and s."ID" is not null union all
+select s."ID"::numeric,'DATE_MANUF' colummn_name, s."EXEC_DATE_MANUF"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and s."EXEC_DATE_MANUF"::text=to_char(v.DATE_MANUF,'DD.MM.YYYY'))  and s."ID" is not null union all
+select s."ID"::numeric,'INSTALL_TYPE_ID' colummn_name, s."EXEC_INSTALL_TYPE_ID"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and upper(s."EXEC_INSTALL_TYPE_ID"::text)=upper(v.INSTALL_TYPE_ID::text))  and s."ID" is not null union all
+select s."ID"::numeric,'JOINT_ID' colummn_name, s."EXEC_JOINT_ID"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and upper(s."EXEC_JOINT_ID"::text)=upper(v.JOINT_ID::text))  and s."ID" is not null union all
+select s."ID"::numeric,'LIFETIME' colummn_name, s."EXEC_LIFETIME"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and upper(s."EXEC_LIFETIME"::text)=upper(v.LIFETIME::text))  and s."ID" is not null union all
+select s."ID"::numeric,'MANUF_ID' colummn_name, s."EXEC_MANUF_ID"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and upper(s."EXEC_MANUF_ID"::text)=upper(v.MANUF_ID::text))  and s."ID" is not null union all
+select s."ID"::numeric,'NOM_DIAM_ID' colummn_name, s."EXEC_NOM_DIAM_ID"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and upper(s."EXEC_NOM_DIAM_ID"::text)=upper(v.NOM_DIAM_ID::text))  and s."ID" is not null union all
+select s."ID"::numeric,'NOM_PRESS_ID' colummn_name, s."EXEC_NOM_PRESS_ID"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and upper(s."EXEC_NOM_PRESS_ID"::text)=upper(v.NOM_PRESS_ID::text))  and s."ID" is not null union all
+select s."ID"::numeric,'OPER_DATE_WORK_BEGIN' colummn_name, s."EXEC_OPER_DATE_WORK_BEGIN"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and s."EXEC_OPER_DATE_WORK_BEGIN"::text=to_char(v.OPER_DATE_WORK_BEGIN,'DD.MM.YYYY'))  and s."ID" is not null union all
+select s."ID"::numeric,'OPER_LABEL_TYPE_ID' colummn_name, s."EXEC_OPER_LABEL_TYPE_ID"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and upper(s."EXEC_OPER_LABEL_TYPE_ID"::text)=upper(v.OPER_LABEL_TYPE_ID::text))  and s."ID" is not null union all
+select s."ID"::numeric,'OPER_MANUF_ID' colummn_name, s."EXEC_OPER_MANUF_ID"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and upper(s."EXEC_OPER_MANUF_ID"::text)=upper(v.OPER_MANUF_ID::text))  and s."ID" is not null union all
+select s."ID"::numeric,'SERIAL_NUM' colummn_name, s."EXEC_SERIAL_NUM"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and upper(s."EXEC_SERIAL_NUM"::text)=upper(v.SERIAL_NUM::text))  and s."ID" is not null union all
+select s."ID"::numeric,'TECH_NUM' colummn_name, s."EXEC_TECH_NUM"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and upper(s."EXEC_TECH_NUM"::text)=upper(v.TECH_NUM::text))  and s."ID" is not null union all
+select s."ID"::numeric,'TYPE_ID' colummn_name, s."EXEC_TYPE_ID"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and upper(s."EXEC_TYPE_ID"::text)=upper(v.TYPE_ID::text))  and s."ID" is not null union all
+select s."ID"::numeric,'OPER_TYPE_ID' colummn_name, s."EXEC_OPER_TYPE_ID"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and upper(s."EXEC_OPER_TYPE_ID"::text)=upper(v.OPER_TYPE_ID::text))  and s."ID" is not null union all
+select s."ID"::numeric,'MATERIAL_ID' colummn_name, s."EXEC_VALVE_MATERIAL_TYPE_CL"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and upper(s."EXEC_VALVE_MATERIAL_TYPE_CL"::text)=upper(v.MATERIAL_ID::text))  and s."ID" is not null union all
+select s."ID"::numeric,'TPA_FIGURE_TYPE_ID' colummn_name, s."EXEC_TPA_FIGURE_TYPE_ID"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and upper(s."EXEC_TPA_FIGURE_TYPE_ID"::text)=upper(v.TPA_FIGURE_TYPE_ID::text))  and s."ID" is not null union all
+select s."ID"::numeric,'TPA_CONSTR_TYPE_ID' colummn_name, s."EXEC_TPA_CONSTR_TYPE_ID"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and upper(s."EXEC_TPA_CONSTR_TYPE_ID"::text)=upper(v.TPA_CONSTR_TYPE_ID::text))  and s."ID" is not null union all
+select s."ID"::numeric,'OPER_DATE_MANUF' colummn_name, s."EXEC_OPER_DATE_MANUF"::text column_value, 'Исправить', null::numeric from public."SUTSTPA_INF_EXEC_DATA_INS_1301" s where not exists (select 1 from sutstpa.valve v where v.id::text=s."ID"::text and s."EXEC_OPER_DATE_MANUF"::text=to_char(v.OPER_DATE_MANUF,'DD.MM.YYYY'))  and s."ID" is not null union all
+select s."ID"::numeric,'OPER_SERIAL_NUMBER'
+  </data>  
+  <data id="EXEC_DOC_3" comment="Запрос 3 для дашборда исп. документации">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <var name="ORDER_COLUMNS" default="1"/>
+        <var name="COLUMN_GOAL_1" default="lpu"/>
+        <var name="COLUMN_GOAL_2" default="lpu"/>
+        <var name="COLUMN_GOAL_ORDER" default="lpu"/>
+        <var name="SCHEMA" default="sutstpa"/>
+        <var name="TABLE_NAME" default="valve"/>
+        <query>
+         with tabdata as (select * from sutstpa.valve v where {FILTER}),
+         all_cnt as (select count(*) cnt  from tabdata)
+         select   lower(upper(f.description)), count(*) COUNT
+         from tabdata d, sutstpa.mismatch_exec_doc_format f 
+         where f.valve_id=d.id
+         group by upper(f.description)
+         order by upper(f.description)
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+
+   <data id="ANALYTIC_RANK_VALVE_1" comment="Запрос для рангов опасности по кранам">
+    <select>
+      <dbQuery idField="ID">
+        <var name="SCHEMA" default="sutstpa"/>
+        <var name="TABLE_NAME" default="valve"/>
+        <var name="GROUP_1" default=""/>
+        <var name="GROUP_2" default=""/>
+        <var name="FILTER" default="1=1" />        
+        <var name="ORDER" default=""/>        
+        <query>
+		with sum_koef as (select n.check_table,sum(n.koeff) max_sum from sutstpa.sprav_ntd_gcl n where n.check_table is not null group by n.check_table),
+koef as (select (select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_4_IS') k_BARRIER_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_1_IS') k_ORDER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_4_IS') k_TERRITORY_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_1_IS') k_BARRIER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_5_IS') k_ORDER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_6_IS') k_ORDER_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PLATE_IS') k_PLATE_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_7_IS') k_CONT_MEAS_7_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_2_IS') k_INF_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_3_IS') k_INF_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_5_IS') k_BARRIER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_2_IS') k_SIGN_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_3_IS') k_SIGN_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_4_IS') k_SIGN_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_2_IS') k_ORDER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_5_IS') k_SIGN_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_6_IS') k_SIGN_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_1_IS') k_TERRITORY_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_2_IS') k_TERRITORY_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_3_IS') k_TERRITORY_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_2_IS') k_BARRIER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_3_IS') k_BARRIER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_3_IS') k_ORDER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_4_IS') k_order_4_is,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ROOF_IS') k_ROOF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='HEIGHT_IS') k_HEIGHT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_IS') k_COLOR_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_2_IS') k_CONT_MEAS_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_3_IS') k_CONT_MEAS_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_4_IS') k_CONT_MEAS_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_6_IS') k_CONT_MEAS_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_5_IS') k_CONT_MEAS_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_1_IS') k_EXT_CORR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_2_IS') k_EXT_CORR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_3_IS') k_EXT_CORR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_1_IS') k_GROUND_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_2_IS') k_GROUND_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_3_IS') k_GROUND_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_4_IS') k_GROUND_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_5_IS') k_GROUND_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_3_IS') k_COLOR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_1_IS') k_COLOR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_2_IS') k_COLOR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_4_IS') k_COLOR_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_5_IS') k_COLOR_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_6_IS') k_COLOR_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_1_IS') k_INF_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_4_IS') k_INF_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_5_IS') k_INF_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_6_IS') k_INF_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_NOM_DIAM_IS') k_INF_NOM_DIAM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_PRES_IS') k_INF_PRES_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_DATE_MANUF_IS') k_INF_DATE_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_MANUF_IS') k_INF_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TECH_NUM_IS') k_TECH_NUM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='VERT_IS') k_VERT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_1') k_ADD_IS_1,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_2') k_ADD_IS_2,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_3') k_ADD_IS_3,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_4') k_ADD_IS_4,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PEDESTAL_IS') k_PEDESTAL_IS),
+valve as (select 
+id, lpu, les, pipe, station, type_id, oper_type_id, name_id, tech_num, tech_num_is, joint_id, plate_is, nom_diam_id, nom_press_id, descr, serial_num, manuf_id, ext_corr_1_is, ext_corr_2_is, ext_corr_3_is, ground_1_is, 
+ground_2_is, ground_3_is, ground_4_is, ground_5_is, color_1_is, color_2_is, color_3_is, color_4_is, color_5_is, color_6_is, inf_1_is, inf_2_is, inf_3_is, inf_4_is, inf_5_is, operator1, operator2, operator3, 
+to_char(date_to1,'DD.MM.YYYY') date_to1, result_to1,to_char(date_to2,'DD.MM.YYYY')  date_to2, result_to2,to_char(date_tr,'DD.MM.YYYY')  date_tr, result_tr,to_char(date_sr,'DD.MM.YYYY')  date_sr, result_sr, operator4, operator5, operator6, 
+to_char(date_insp,'DD.MM.YYYY') date_insp, to_char(date_manuf,'DD.MM.YYYY') date_manuf, struct_id, inf_6_is, material_id, install_type_id, func_type_id, execution_type_id, electric_drive_descr, 
+electric_drive_ready_descr, tpa_figure_type_id, tpa_constr_type_id, to_char(date_install,'DD.MM.YYYY')  date_install, to_char(date_work_begin,'DD.MM.YYYY') date_work_begin, climatic_type_id, invent_number, lifetime, 
+to_char(date_exp,'DD.MM.YYYY') date_exp,to_char(date_epb1_plan,'DD.MM.YYYY')  date_epb1_plan,to_char(date_epb1_fact,'DD.MM.YYYY')  date_epb1_fact, result_epb1,to_char(date_epb2_plan,'DD.MM.YYYY')  date_epb2_plan, 
+to_char(date_epb2_fact,'DD.MM.YYYY') date_epb2_fact, result_epb2, to_char(date_epb_next_plan,'DD.MM.YYYY') date_epb_next_plan,to_char(date_epb_next_fact,'DD.MM.YYYY')  date_epb_next_fact, result_epb_next, lubricant_value, 
+hydrofluid_value, passport_document_descr, work_pressure_fact, work_temp_project, work_temp_fact, to_char(date_repair,'DD.MM.YYYY') date_repair, serial_number_repair, repair_descr, to_char(date_dtoir_plan,'DD.MM.YYYY') date_dtoir_plan, 
+to_char(date_dtoir_fact,'DD.MM.YYYY') date_dtoir_fact, seal_past_cons_plan, seal_past_cons_fact, hydrofluid_cons_plan, hydrofluid_cons_fact, seal_past_cons_plan_year, seal_past_cons_plan_fact, hydrofluid_cons_plan_year, 
+hydrofluid_cons_fact_year, leak_descr, to_char(date_leak_detect,'DD.MM.YYYY') date_leak_detect, to_char(date_leak_fix,'DD.MM.YYYY') date_leak_fix, shutter_tight_descr, to_char(date_untight_detect,'DD.MM.YYYY') date_untight_detect, 
+to_char(date_untight_fix,'DD.MM.YYYY') date_untight_fix, oper_manuf_id, to_char(oper_date_manuf,'DD.MM.YYYY') oper_date_manuf, oper_label_type_id, oper_serial_number, to_char(oper_date_work_begin,'DD.MM.YYYY') oper_date_work_begin, 
+order_6_is,   cont_meas_2_is, cont_meas_3_is, cont_meas_4_is, cont_meas_5_is, cont_meas_6_is, cont_meas_7_is, infoteh_is, infoteh_correction, infoteh_col_cor_list, infoteh_comment, to_char(date_to_lubricant_plan,'DD.MM.YYYY') date_to_lubricant_plan, 
+to_char(date_to_lubricant_fact,'DD.MM.YYYY') date_to_lubricant_fact, to_char(date_rso,'DD.MM.YYYY') date_rso,  add_is_1, add_is_2, add_is_3, add_is_4,
+coalesce(ext_corr_1_is,0)*k_ext_corr_1_is+coalesce(ext_corr_2_is,0)*k_ext_corr_2_is+coalesce(ext_corr_3_is,0)*k_ext_corr_3_is+coalesce(ground_1_is,0)*k_ground_1_is+coalesce(ground_2_is,0)*k_ground_2_is+coalesce(ground_3_is,0)*k_ground_3_is
++coalesce(ground_4_is,0)*k_ground_4_is+coalesce(ground_5_is,0)*k_ground_5_is+abs(1-coalesce(color_1_is,1))*k_color_1_is+abs(1-coalesce(color_2_is,1))*k_color_2_is+abs(1-coalesce(color_3_is,1))*k_color_3_is
++abs(1-coalesce(color_4_is,1))*k_color_4_is+abs(1-coalesce(color_5_is,1))*k_color_5_is+abs(1-coalesce(color_6_is,1))*k_color_6_is+abs(1-coalesce(inf_1_is,1))*k_inf_1_is+abs(1-coalesce(inf_2_is,1))*k_inf_2_is
++abs(1-coalesce(inf_3_is,1))*k_inf_3_is+abs(1-coalesce(inf_4_is,1))*k_inf_4_is+abs(1-coalesce(inf_5_is,1))*k_inf_5_is+(cASE WHEN v.date_manuf is null THEN 1 else 0 end)*k_INF_DATE_MANUF_IS
++(cASE WHEN v.manuf_id is null THEN 1 else 0 end)*k_INF_MANUF_IS +coalesce(order_6_is,0)*k_order_6_is+abs(1-coalesce(cont_meas_2_is,1))*k_cont_meas_2_is+abs(1-coalesce(cont_meas_3_is,1))*k_cont_meas_3_is
++abs(1-coalesce(cont_meas_4_is,1))*k_cont_meas_4_is+abs(1-coalesce(cont_meas_5_is,1))*k_cont_meas_5_is+abs(1-coalesce(cont_meas_6_is,1))*k_cont_meas_6_is+abs(1-coalesce(cont_meas_7_is,1))*k_cont_meas_7_is
++coalesce(add_is_1,0)*k_add_is_1+coalesce(add_is_2,0)*k_add_is_2+coalesce(add_is_3,0)*k_add_is_3+coalesce(add_is_4,0)*k_add_is_4 rank
+FROM sutstpa.valve v,koef k)
+          select v."TYPE" type_range, count(*) from (select vv.*,
+ CASE when vv.rank&lt;=sum_k.max_sum*0.15 then 'GREEN' 
+      when vv.rank&gt;sum_k.max_sum*0.15 and vv.rank&lt;=sum_k.max_sum*0.5 then 'YELLOW'
+	  when vv.rank&gt;sum_k.max_sum*0.5 then 'RED' 
+		   end "TYPE"
+		  from valve vv, sum_koef sum_k where sum_k.check_table='sutstpa.valve' and {FILTER}) v group by v."TYPE" order by v."TYPE"
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="ANALYTIC_RANK_VENT_PIPE_1" comment="Запрос для рангов опасности по свечам">
+    <select>
+      <dbQuery idField="ID">
+        <var name="SCHEMA" default="sutstpa"/>
+        <var name="TABLE_NAME" default="valve"/>
+        <var name="GROUP_1" default=""/>
+        <var name="GROUP_2" default=""/>
+        <var name="FILTER" default="1=1" />        
+        <var name="ORDER" default=""/>        
+        <query>
+		with sum_koef as (select n.check_table,sum(n.koeff) max_sum from sutstpa.sprav_ntd_gcl n where n.check_table is not null group by n.check_table),
+koef as (select (select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_4_IS') k_BARRIER_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_1_IS') k_ORDER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_4_IS') k_TERRITORY_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_1_IS') k_BARRIER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_5_IS') k_ORDER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_6_IS') k_ORDER_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PLATE_IS') k_PLATE_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_7_IS') k_CONT_MEAS_7_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_2_IS') k_INF_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_3_IS') k_INF_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_5_IS') k_BARRIER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_2_IS') k_SIGN_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_3_IS') k_SIGN_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_4_IS') k_SIGN_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_2_IS') k_ORDER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_5_IS') k_SIGN_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_6_IS') k_SIGN_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_1_IS') k_TERRITORY_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_2_IS') k_TERRITORY_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_3_IS') k_TERRITORY_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_2_IS') k_BARRIER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_3_IS') k_BARRIER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_3_IS') k_ORDER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_4_IS') k_order_4_is,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ROOF_IS') k_ROOF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='HEIGHT_IS') k_HEIGHT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_IS') k_COLOR_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_2_IS') k_CONT_MEAS_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_3_IS') k_CONT_MEAS_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_4_IS') k_CONT_MEAS_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_6_IS') k_CONT_MEAS_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_5_IS') k_CONT_MEAS_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_1_IS') k_EXT_CORR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_2_IS') k_EXT_CORR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_3_IS') k_EXT_CORR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_1_IS') k_GROUND_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_2_IS') k_GROUND_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_3_IS') k_GROUND_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_4_IS') k_GROUND_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_5_IS') k_GROUND_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_3_IS') k_COLOR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_1_IS') k_COLOR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_2_IS') k_COLOR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_4_IS') k_COLOR_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_5_IS') k_COLOR_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_6_IS') k_COLOR_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_1_IS') k_INF_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_4_IS') k_INF_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_5_IS') k_INF_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_6_IS') k_INF_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_NOM_DIAM_IS') k_INF_NOM_DIAM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_PRES_IS') k_INF_PRES_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_DATE_MANUF_IS') k_INF_DATE_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_MANUF_IS') k_INF_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TECH_NUM_IS') k_TECH_NUM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='VERT_IS') k_VERT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_1') k_ADD_IS_1,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_2') k_ADD_IS_2,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_3') k_ADD_IS_3,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_4') k_ADD_IS_4,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PEDESTAL_IS') k_PEDESTAL_IS),
+vent_pipe as (SELECT id, lpu, les, pipe, station,to_char(date_insp,'DD.MM.YYYY') date_insp, height_is, color_is, roof_is, pedestal_is, vert_is, lg_attach, operator1, operator2, operator3,operator4,operator5,operator6,struct_id,
+abs(1-coalesce(height_is,1))*k_height_is+abs(1-coalesce(color_is,1))*k_color_is+abs(1-coalesce(roof_is,1))*k_roof_is+abs(1-coalesce(pedestal_is,1))*k_pedestal_is+abs(1-coalesce(vert_is,1))*k_vert_is rank
+					FROM sutstpa.vent_pipe v,koef k)
+          select v."TYPE" type_range, count(*) from (select vv.*,
+ CASE when vv.rank&lt;=sum_k.max_sum*0.15 then 'GREEN' 
+      when vv.rank&gt;sum_k.max_sum*0.15 and vv.rank&lt;=sum_k.max_sum*0.5 then 'YELLOW'
+	  when vv.rank&gt;sum_k.max_sum*0.5 then 'RED' 
+		   end "TYPE"
+		  from vent_pipe vv, sum_koef sum_k where sum_k.check_table='sutstpa.vent_pipe' and {FILTER}) v group by v."TYPE" order by v."TYPE"
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+   <data id="ANALYTIC_RANK_STRUCTURE_1" comment="Запрос для рангов опасности по крановым узлам">
+    <select>
+      <dbQuery idField="ID">
+        <var name="SCHEMA" default="sutstpa"/>
+        <var name="TABLE_NAME" default="valve"/>
+        <var name="GROUP_1" default=""/>
+        <var name="GROUP_2" default=""/>
+        <var name="FILTER" default="1=1" />        
+        <var name="ORDER" default=""/>        
+        <query>
+		with sum_koef as (select n.check_table,sum(n.koeff) max_sum from sutstpa.sprav_ntd_gcl n where n.check_table is not null group by n.check_table),
+koef as (select (select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_4_IS') k_BARRIER_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_1_IS') k_ORDER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_4_IS') k_TERRITORY_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_1_IS') k_BARRIER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_5_IS') k_ORDER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_6_IS') k_ORDER_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PLATE_IS') k_PLATE_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_7_IS') k_CONT_MEAS_7_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_2_IS') k_INF_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_3_IS') k_INF_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_5_IS') k_BARRIER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_2_IS') k_SIGN_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_3_IS') k_SIGN_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_4_IS') k_SIGN_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_2_IS') k_ORDER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_5_IS') k_SIGN_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_6_IS') k_SIGN_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_1_IS') k_TERRITORY_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_2_IS') k_TERRITORY_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_3_IS') k_TERRITORY_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_2_IS') k_BARRIER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_3_IS') k_BARRIER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_3_IS') k_ORDER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_4_IS') k_order_4_is,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ROOF_IS') k_ROOF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='HEIGHT_IS') k_HEIGHT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_IS') k_COLOR_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_2_IS') k_CONT_MEAS_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_3_IS') k_CONT_MEAS_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_4_IS') k_CONT_MEAS_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_6_IS') k_CONT_MEAS_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_5_IS') k_CONT_MEAS_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_1_IS') k_EXT_CORR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_2_IS') k_EXT_CORR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_3_IS') k_EXT_CORR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_1_IS') k_GROUND_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_2_IS') k_GROUND_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_3_IS') k_GROUND_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_4_IS') k_GROUND_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_5_IS') k_GROUND_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_3_IS') k_COLOR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_1_IS') k_COLOR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_2_IS') k_COLOR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_4_IS') k_COLOR_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_5_IS') k_COLOR_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_6_IS') k_COLOR_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_1_IS') k_INF_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_4_IS') k_INF_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_5_IS') k_INF_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_6_IS') k_INF_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_NOM_DIAM_IS') k_INF_NOM_DIAM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_PRES_IS') k_INF_PRES_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_DATE_MANUF_IS') k_INF_DATE_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_MANUF_IS') k_INF_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TECH_NUM_IS') k_TECH_NUM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='VERT_IS') k_VERT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_1') k_ADD_IS_1,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_2') k_ADD_IS_2,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_3') k_ADD_IS_3,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_4') k_ADD_IS_4,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PEDESTAL_IS') k_PEDESTAL_IS),
+structure as (SELECT id, lpu, les, pipe, station,to_char(date_insp,'DD.MM.YYYY') date_insp, sign_2_is, sign_3_is, sign_4_is, sign_5_is, sign_6_is, territory_1_is, territory_2_is, territory_3_is, territory_4_is, 
+barrier_1_is, barrier_2_is, barrier_3_is, barrier_4_is, barrier_5_is, order_1_is, order_2_is, order_3_is, order_4_is, order_5_is, cont_meas_8_is, lg_attach, operator1, operator2, operator3, operator4, operator5, operator6,to_char(date_rso_plan,'DD.MM.YYYY')  date_rso_plan,to_char(date_rso_fact,'DD.MM.YYYY')   date_rso_fact,
+abs(1-coalesce(sign_2_is,1))*k_sign_2_is+abs(1-coalesce(sign_3_is,1))*k_sign_3_is+abs(1-coalesce(sign_4_is,1))*k_sign_4_is+abs(1-coalesce(sign_5_is,1))*k_sign_5_is+abs(1-coalesce(sign_6_is,1))*k_sign_6_is
++coalesce(territory_1_is,0)*k_territory_1_is+coalesce(territory_2_is,0)*k_territory_2_is+coalesce(territory_3_is,0)*k_territory_3_is+coalesce(territory_4_is,0)*k_territory_4_is+abs(1-coalesce(barrier_1_is,1))*k_barrier_1_is
++abs(1-coalesce(barrier_2_is,1))*k_barrier_2_is+abs(1-coalesce(barrier_3_is,1))*k_barrier_3_is+abs(1-coalesce(barrier_4_is,1))*k_barrier_4_is+abs(1-coalesce(barrier_5_is,1))*k_barrier_5_is+coalesce(order_1_is,0)*k_order_1_is
++coalesce(order_2_is,0)*k_order_2_is+coalesce(order_3_is,0)*k_order_3_is+coalesce(order_5_is,0)*k_order_5_is+coalesce(order_4_is,0)*k_order_4_is rank
+FROM sutstpa.structure s,koef k)
+          select v."TYPE" type_range, count(*) from (select vv.*,
+ CASE when vv.rank&lt;=sum_k.max_sum*0.15 then 'GREEN' 
+      when vv.rank&gt;sum_k.max_sum*0.15 and vv.rank&lt;=sum_k.max_sum*0.5 then 'YELLOW'
+	  when vv.rank&gt;sum_k.max_sum*0.5 then 'RED' 
+		   end "TYPE"
+		  from structure vv, sum_koef sum_k where sum_k.check_table='sutstpa.structure' and {FILTER}) v group by v."TYPE" order by v."TYPE"
+        </query>
+      </dbQuery>
+    </select>
+  </data> 
+  
+</root>
+
+

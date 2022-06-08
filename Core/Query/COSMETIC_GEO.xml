@@ -1,0 +1,224 @@
+﻿<root version="postgres 7.7.4.0">
+  <data id="COSMETIC_OBJECT" comment="COSMETIC.OBJECT" schema="COSMETIC" table="OBJECT" descr="Объект косметического слоя">
+    <select>
+      <geoQuery idField="ID" geoField="X,Y" partField="">
+        <query>
+		  SELECT 'COSMETIC_OBJECT/'||'1' AS ID, 0 AS X, 0 AS Y, 'COSMETIC_OBJECT' AS TYPE, ' ' AS LABEL WHERE 1=2
+	  </query>
+      </geoQuery>
+    </select>
+    <insert>
+      <geoCommand>
+        <object />
+        <part />
+        <coord>
+			UPDATE WEB50.POI_COORD SET X=:X, Y=:Y WHERE 1=2;
+		</coord>
+      </geoCommand>
+    </insert>
+    <update>
+      <geoCommand>
+        <object />
+        <part />
+        <coord>
+			UPDATE WEB50.POI_COORD SET X=:X, Y=:Y WHERE 1=2;
+		</coord>
+      </geoCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <query>
+			UPDATE WEB50.POI_COORD SET X=-1, Y=-1 WHERE 1=2;
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="SYS_LIB_DOC" comment="WEB50.LIB_DOC" schema="WEB50" table="LIB_DOC" descr="Документ">
+    <select>
+      <geoQuery idField="ID" geoField="X,Y" partField="">
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <var name="FILTER" default="1=1" />
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                   AND pr.SELECT_PERMITTED = '1')          
+		SELECT * FROM (
+        SELECT ld.DOC_ID ID
+        ,(lc."XMIN" + lc."XMAX") / 2 X
+        ,(lc."YMIN" + lc."YMAX") / 2 Y
+        /*,ld.DESCR LABEL*/
+        FROM WEB50.LIB_DOC ld
+             JOIN WEB50.LIB_COVERAGE lc
+               ON ld.GID = lc.GID 
+               AND ld.DOC_TYPE_ID != 0 
+          WHERE (((ld.status_id = 1
+                      OR (ld.cuser_id = :USER_ID
+                         AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))) d
+		WHERE {FILTER}
+      </query>
+      </geoQuery>
+    </select>
+    <insert>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <object>
+         DECLARE :v_permission_granted   NUMERIC;
+          BEGIN
+             SELECT :v_permission_granted = COUNT(*)
+                FROM WEB50.B_USER_TO_B_ROLE u2r
+                     JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                       ON u2r.ROLE_ID = r2p.ROLE_ID
+                     JOIN WEB50.B_POLICY_RULES pr
+                       ON r2p.POLICY_ID = pr.POLICY_ID 
+               WHERE u2r.USER_ID = :USER_ID 
+                 AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                 AND pr.INSERT_PERMITTED = '1';
+
+              SELECT :v_permission_granted = COUNT(*) + :v_permission_granted
+                FROM WEB50.B_USER_TO_B_ROLE u2r
+                     JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                       ON u2r.ROLE_ID = r2p.ROLE_ID
+                     JOIN WEB50.B_POLICY_RULES pr
+                       ON r2p.POLICY_ID = pr.POLICY_ID 
+               WHERE u2r.USER_ID = :USER_ID 
+                 AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                 AND pr.INSERT_PERMITTED = '1';
+                 
+          IF :v_permission_granted > 0
+            BEGIN
+            INSERT INTO WEB50.LIB_COVERAGE(GID, WKB_GEOMETRY,"XMIN","XMAX","YMIN","YMAX",CTIME,CUSER_ID)
+            VALUES(:ID, :WKB, :XMIN, :XMAX, :YMIN, :YMAX,GETDATE(),:USER_ID);
+
+            UPDATE WEB50.LIB_DOC
+            SET GID = :ID
+            WHERE DOC_ID = :ID;
+            END;
+          ELSE RAISERROR('Нет прав на добавление объектов. Обратитесь к администратору.',16,1);
+          END;                    
+          
+          
+        </object>
+      </geoCommand>
+    </insert>
+    <update>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <object>
+         DECLARE :v_permission_granted   NUMERIC;
+          BEGIN
+             SELECT :v_permission_granted = COUNT(*)
+                FROM WEB50.B_USER_TO_B_ROLE u2r
+                     JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                       ON u2r.ROLE_ID = r2p.ROLE_ID
+                     JOIN WEB50.B_POLICY_RULES pr
+                       ON r2p.POLICY_ID = pr.POLICY_ID 
+               WHERE u2r.USER_ID = :USER_ID 
+                 AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                 AND pr.UPDATE_PERMITTED = '1'
+                 AND EXISTS (SELECT 1
+                               FROM WEB50.LIB_DOC t 
+                              WHERE t.doc_id = :ID
+                                AND (t.status_id = 1
+                                     OR (t.cuser_id = :USER_ID
+                                         AND t.status_id = 0 )));
+
+              SELECT :v_permission_granted = COUNT(*) + :v_permission_granted
+                FROM WEB50.B_USER_TO_B_ROLE u2r
+                     JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                       ON u2r.ROLE_ID = r2p.ROLE_ID
+                     JOIN WEB50.B_POLICY_RULES pr
+                       ON r2p.POLICY_ID = pr.POLICY_ID 
+               WHERE u2r.USER_ID = :USER_ID 
+                 AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                 AND pr.UPDATE_PERMITTED = '1';
+                 
+          IF :v_permission_granted > 0
+          BEGIN
+            UPDATE WEB50.LIB_COVERAGE
+            SET WKB_GEOMETRY=:WKB
+            ,"XMIN"=:XMIN
+            ,"XMAX"=:XMAX
+            ,"YMIN"=:YMIN
+            ,"YMAX"=:YMAX
+            ,MTIME=GETDATE()
+            ,MUSER_ID=:USER_ID
+            WHERE GID = :ID;
+          END;
+          ELSE RAISERROR('Нет прав на редактирование объектов. Обратитесь к администратору.',16,1);
+          END;          
+        </object>
+      </geoCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+         DECLARE :v_permission_granted   NUMERIC;
+          BEGIN
+             SELECT :v_permission_granted = COUNT(*)
+                FROM WEB50.B_USER_TO_B_ROLE u2r
+                     JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                       ON u2r.ROLE_ID = r2p.ROLE_ID
+                     JOIN WEB50.B_POLICY_RULES pr
+                       ON r2p.POLICY_ID = pr.POLICY_ID 
+               WHERE u2r.USER_ID = :USER_ID 
+                 AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                 AND pr.DELETE_PERMITTED = '1'
+                 AND EXISTS (SELECT 1
+                               FROM WEB50.LIB_DOC t 
+                              WHERE t.doc_id = :ID
+                                AND (t.status_id = 1
+                                     OR (t.cuser_id = :USER_ID
+                                         AND t.status_id = 0 )));
+
+              SELECT :v_permission_granted = COUNT(*) + :v_permission_granted
+                FROM WEB50.B_USER_TO_B_ROLE u2r
+                     JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                       ON u2r.ROLE_ID = r2p.ROLE_ID
+                     JOIN WEB50.B_POLICY_RULES pr
+                       ON r2p.POLICY_ID = pr.POLICY_ID 
+               WHERE u2r.USER_ID = :USER_ID 
+                 AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                 AND pr.DELETE_PERMITTED = '1';
+                 
+          IF :v_permission_granted > 0
+			      BEGIN
+			      UPDATE WEB50.LIB_DOC
+			      SET GID = NULL
+			      ,MTIME=GETDATE()
+			      ,MUSER_ID=:USER_ID
+			      WHERE DOC_ID = :ID;
+
+			      DELETE
+			      FROM WEB50.LIB_COVERAGE
+			      WHERE GID = :ID;
+			      END;
+           ELSE RAISERROR('Нет прав на удаление объектов. Обратитесь к администратору.',16,1);
+          END;          
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+</root>

@@ -1,0 +1,93 @@
+﻿{
+  "code":200,
+  "version":"7.7.7.3",
+  "id":"MAPSERVICE",
+  "_comment":"Карта в фоне, картинка карты трансгаза",
+  "background":true,
+  "map":{
+    "_comment": "Тип карты, если widget, то карта открывается в iframe",
+    "type":"widget",
+    "position":{
+      "width":"25%",
+      "height":"50%"
+    }
+  },
+  "chart":{
+    "position":{
+      "width":"25%",
+      "height":"50%"
+    }
+  },
+  "dashboard":{
+    "showDashboard": false,
+    "_comment": "Возможность расширять размеры дашборда",
+    "resizable": true,
+    "_comment": "Возможность двигать дашборд",
+    "draggable": true,
+    "position":{
+      "width":"25%",
+      "height":"100%",
+      "left": "75%",
+      "top": "0%"
+    }
+  },
+  "grid":{
+    "_comment": "Нужно ли показывать кнопки закрытия, сворачивания в гридах",
+    "titlebar":true,
+    "_comment": "Нужно ли показывать открывать гриды в одной вкладке с перезапрашиванием данных, либо в отдельных вкладках",
+    "duplicate": true,
+    "_comment": "Нужно ли открывать гриды с одной вкладкой с закрытием",
+    "singleTab": true,
+    "_comment": "Перечень кнопок быстрого доступа к гридам, которые расположены вверху карты",
+    "fast_buttons":[],
+    "_comment": "Возможность расширять размеры грида",
+    "resizable": true,
+    "_comment": "Возможность двигать грид",
+    "draggable": true,
+    "_comment": "Настройки панели свойств грида",
+    "ppanel":{
+      "_comment": "Расположение панели свойств внутри таба с гридами либо общий, как в карте local|global",
+      "position": "global"
+    },
+    "_comment": "Начальное положение грида",
+    "position":{}    
+  },
+  "_comment":"Настройки рубрикатор",
+  "tree":{
+    "isMaximized":true,
+    "treePercentWidth":20,
+    "trees":[{
+        "id":"SUTSTPAVALIDATE_LIST",
+        "title":"Загрузчик-валидатор",
+        "templateUrl":"Public/Modules/Tree/sutstpavalidate_tree.xml",
+        "topFilterId":"lpuFilter",
+        "default":true,
+        "startupScenario":{
+          "openLayers":[]
+        }
+      }
+    ]
+  },  
+  "startupScenario":{
+    "openLayers":[],
+    "openTables":[
+      {
+        "title":"Крановые площадки, полевые данные",
+        "gridId":"SUTSTPAVALIDATE_STRUCTURE_LIST",
+        "levelParams":"layerId=SUTSTPAVALIDATE_Layers.xml#SUTSTPAVALIDATE_STRUCTURE;",
+        "showDashboard": false,
+        "query":
+        {
+          "source":"COMMON_TREE.xml#LAYER_STYLE_BASE",
+          "LAYER_ID":"SUTSTPAVALIDATE_STRUCTURE",
+          "FILE_NAME":"SUTSTPAVALIDATE_STYLE.xml"
+        }
+      }
+    ]
+  },
+  "_comment":"Настройки панели свойств",
+  "ppanel":{
+    "showSystemInfo":false
+  },
+  "vectorlayers":["SUTSTPAVALIDATE_Layers.xml"]
+}

@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="755" xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml" title="Расчет точечных показателей в соответствии с СТО 112, 173, 292, 401, 595">
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="755">
+    <mx:HBox width="100%" horizontalAlign="right" horizontalGap="3">
+      <mx:VBox width="290" horizontalAlign="right">
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Рабочее давление, МПа" width="230" textAlign="right"/>
+          <controls:NumberInput id="pressure" width="50" height="22" text="7.36"/>
+        </mx:HBox>
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Коэф-т  надежности по  внутреннему рабочему давлению" width="230" textAlign="right"/>
+          <controls:NumberInput id="safety_factor_of_internal_pressure" width="50" height="22" text="1.1"/>
+        </mx:HBox>
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Коэф-т надежности по материалу труб" width="230" textAlign="right"/>
+          <controls:NumberInput id="safety_factor_of_material" width="50" height="22" text="1"/>
+        </mx:HBox>
+      </mx:VBox>
+      <mx:VBox width="210" horizontalAlign="right">
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Толщина стенки, мм" width="155" textAlign="right"/>
+          <controls:NumberInput id="thickness" width="50" height="22" text="16"/>
+        </mx:HBox>
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Предел прочности, МПа" width="155" textAlign="right"/>
+          <controls:NumberInput id="breaking_point" width="50" height="22" text="588"/>
+        </mx:HBox>
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Ударная вязкость, Дж/см2" width="155" textAlign="right"/>
+          <controls:NumberInput id="resilience" width="50" height="22" text="142"/>
+        </mx:HBox>
+      </mx:VBox>
+      <mx:VBox width="255" horizontalAlign="right">
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Коэф-т  условий работы газопровода" width="100%" textAlign="right"/>
+          <controls:NumberInput id="safety_factor_of_working_conditions" width="50" height="22" text="0.9"/>
+        </mx:HBox>
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Коэф-т надежности по назначению" width="100%" textAlign="right"/>
+          <controls:NumberInput id="safety_factor_of_destination" width="50" height="22" text="1.34"/>
+        </mx:HBox>
+        <mx:HBox width="100%" horizontalAlign="right">
+          <mx:Text text="Нормативный предел текучести материала, МПа" width="100%" textAlign="right"/>
+          <controls:NumberInput id="yielding_limit" width="50" height="22" text="490"/>
+        </mx:HBox>
+      </mx:VBox>
+    </mx:HBox>
+
+    <mx:HBox width="100%" horizontalAlign="right">
+      <mx:Text text="Расчет СТО Газпром 2-2.3-112-2007 оценка участков с коррозионным дефектом" width="310" textAlign="right"/>
+      <mx:CheckBox id="CALC_STO_2_2_3_112_2007" selected="true"/>
+      <mx:Text text="Расчет СТО Газпром 2-2.3-173-2007 оценка участков с КРН дефектами" width="100%" textAlign="right"/>
+      <mx:CheckBox id="CALC_STO_2_2_3_173_2007" selected="true"/>
+    </mx:HBox>
+    <mx:HBox width="100%" horizontalAlign="right">
+      <mx:Text text="Расчет СТО Газпром 2-2.3-292-2009  Определение ТС МГ по результатам ВТД" width="310" textAlign="right"/>
+      <mx:CheckBox id="CALC_STO_2_2_3_292_2009" selected="true"/>
+      <mx:Text text="Расчет СТО Газпром 2-2.3-401-2009 - Вероятность отказа для трубы с коррозионным дефектом" width="100%" textAlign="right"/>
+      <mx:CheckBox id="CALC_STO_2_2_3_401_2009" selected="true"/>
+    </mx:HBox>
+    <mx:HBox width="100%" horizontalAlign="right">
+      <mx:Text text="Расчет СТО Газпром 2-2.3-595-2011 Назначение ремонтных рекомендаций" width="750" textAlign="right"/>
+      <mx:CheckBox id="CALC_STO_2_2_3_595_2011" selected="true"/>
+    </mx:HBox>
+  </mx:VBox>
+</DATA_EDIT_FORM>

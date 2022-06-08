@@ -1,0 +1,28 @@
+<div version="7.7.5.0" id="postId_{post_id}" class="postWrapper">
+    <div id="postHeaderId_{post_id}" class="postHeader">
+        <div class="postHeaderLeftColumn">{NAME}<br/>{PARENT_NAME}</div>
+        <div class="postHeaderRightColumn">{DESCR}</div>
+    </div>
+    <div id="postContentId_{post_id}" class="postContentWrapper">
+        <div style="text-align: center;">
+            <a href="#" onclick="if (typeof App.showVideoFromPosts=='function') App.showVideoFromPosts(['{DOC_ID}','{FILE_NAME}','',Auth.getParameterByName('lineId')]); return false;" style="text-align: center;">
+                <img src="{image_file_name}">
+            </a>
+        </div>
+    </div>
+    <div id="postFooterId_{post_id}" class="postFooter">
+        <div class="postsAddPostHBox">
+            <div class="postFooterLeftColumn">{bottom_text}</div>
+            <div class="postFooterRightColumn">
+                <span>{header_text}</span>
+            </div>
+        </div>
+        <div class="postsAddPostHBox">
+            <div class="postFooterBottomRight">
+                <span class="postEditButton"><a href="#" onclick="if (App!=undefined && typeof App.makePostEditable=='function') App.makePostEditable('{post_id}');return false;"><img src="/ui/images/edit.png">Редактировать</a> | </span>
+                <span class="postDeleteButton"><a href="#" onclick="if (App!=undefined && typeof App.deletePost=='function') App.deletePost('{post_id}');return false;"><img src="/ui/images/delete.png">Удалить</a> | </span>
+                <span class="postFileLinkButton"><a href="#" onclick="if (App!=undefined && typeof App.getCurPostDocLink=='function') App.getCurPostDocLink('{file_path}','{post_id}');return false;"><img src="/ui/images/tag.png">Ссылка на файл</a></span>
+            </div>
+        </div>
+    </div>
+</div>

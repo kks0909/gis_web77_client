@@ -1,0 +1,114 @@
+﻿<?xml version="1.0"?>
+<root version="7.7.3.0" >
+  	<task template="CP_INSP_Proc.xml">
+		&lt;input inspection_id=&quot;ИДЕНТИФИКАТОР&quot;/&gt;
+  	</task>
+	<task template="STO_EHZ_INSP_Proc.xml">
+		&lt;input calc_line_events=&quot;true&quot; line_events_query=&quot;select event_id from
+		PODS.ILI_INSPECTION_RANGE where ili_inspection_id = ИДЕНТИФИКАТОР&quot;
+		calc_construction_intervals=&quot;true&quot; construction_element_query=&quot;select event_id from
+		pods.valve&quot; calc_regular_intervals=&quot;true&quot; regular_intervals_distance=&quot;100&quot;
+		install_date=&quot;11.6.2002&quot; calc_sto_xxx=&quot;true&quot; inspection_id=&quot;ИДЕНТИФИКАТОР&quot;/&gt;
+	</task>
+	<task template="STO_ILI_INSP_Proc.xml.xml">
+		&lt;input calc_line_events=&quot;true&quot; line_events_query=&quot;select event_id from
+		PODS.ILI_INSPECTION_RANGE where ili_inspection_id = ИДЕНТИФИКАТОР&quot;
+		calc_construction_intervals=&quot;true&quot; construction_element_query=&quot;select event_id from
+		pods.valve&quot; calc_regular_intervals=&quot;true&quot; regular_intervals_distance=&quot;100&quot;
+		pressure=&quot;7.36&quot; breaking_point=&quot;588&quot; safety_factor_of_internal_pressure=&quot;1.1&quot;
+		safety_factor_of_working_conditions=&quot;0.9&quot; safety_factor_of_material=&quot;1&quot;
+		safety_factor_of_destination=&quot;1.34&quot; thickness=&quot;16&quot; lifetime=&quot;25&quot;
+		average_cost_of_responding=&quot;150&quot; cost_of_replacing_a_pipe=&quot;0.6&quot;
+		cost_of_the_ILI_per_km=&quot;0.1&quot; cost_per_hole=&quot;0.2&quot; cost_of_repair_per_km=&quot;23.8&quot;
+		calc_sto_2_2_3_292_2007=&quot;true&quot; calc_sto_2_2_3_401_2003=&quot;true&quot;
+		calc_sto_2_2_3_095_2007=&quot;true&quot; calc_sto_xxx=&quot;true&quot; inspection_id=&quot;ИДЕНТИФИКАТОР&quot;/&gt;
+	</task>
+	<task template="ILI_Pressure.xml">
+		&lt;input inspection_id=&quot;ИДЕНТИФИКАТОР&quot; pressure=&quot;7.36&quot; breaking_point=&quot;588&quot;
+		yielding_limit=&quot;490&quot; elastic_modulus=&quot;206000&quot; safety_factor_of_internal_pressure=&quot;1.1&quot;
+		safety_factor_of_working_conditions=&quot;0.9&quot; safety_factor_of_material=&quot;1&quot;
+		safety_factor_of_destination=&quot;1.34&quot; route_category=&quot;4&quot; thickness=&quot;16&quot;
+		calc_sto_2_2_3_112_2007=&quot;true&quot; calc_sto_2_2_3_173_2007=&quot;true&quot;
+		calc_sto_2_2_3_292_2009=&quot;true&quot; calc_sto_2_2_3_401_2009=&quot;true&quot;
+		calc_sto_2_2_3_595_2011=&quot;true&quot; calc_sto_2_2_3_620_2011=&quot;true&quot; calc_sto_ltg=&quot;true&quot;
+		resilience=&quot;142&quot; CALC_STO_2_2_3_112_2007=&quot;true&quot; CALC_STO_2_2_3_173_2007=&quot;true&quot;
+		CALC_STO_2_2_3_292_2009=&quot;true&quot; CALC_STO_2_2_3_401_2009=&quot;true&quot;
+		CALC_STO_2_2_3_595_2011=&quot;true&quot; /&gt;
+	</task>
+	<task template="ILI_Cluster.xml">
+		&lt;input pressure=&quot;7.4&quot; thickness=&quot;16&quot; inspection_id=&quot;ИДЕНТИФИКАТОР&quot;/&gt;
+	</task>
+	<task template="ILI_INSP_Proc.xml">
+		&lt;input inspection_id=&quot;ИДЕНТИФИКАТОР&quot;/&gt;
+	</task>
+	<task template="Interval_divining_UTE.xml">
+		&lt;input route_id=&quot;ИДЕНТИФИКАТОР&quot; regular_intervals=&quot;true&quot; regular_intervals_distance=&quot;50&quot;
+		feature_types=&quot;&quot; /&gt;
+	</task>
+	<task template="LINE_ROUTE_Idx.xml">
+		&lt;input buffer_width=&quot;5&quot; feature_id=&quot;TEST_LEAD&quot; route_id=&quot;ИДЕНТИФИКАТОР&quot;/&gt;
+	</task>
+	<task template="OFFLINE_LINE_Idx.xml">
+		&lt;input buffer_width=&quot;5&quot; event_type_LABEL=&quot;Родительский элемент группы&quot;
+		event_type=&quot;OFFLN_EV_TYPE_09&quot; feature_id=&quot;STRUCTURE&quot; line_id=&quot;ИДЕНТИФИКАТОР&quot;/&gt;
+	</task>
+	<task template="GROUP_ROUTE_Idx.xml">
+		&lt;input group_name=&quot;Крановая площадка-&gt;конструктивный элемент&quot;
+		featureTableGroup=&quot;STRUCTURE&quot; feature_id=&quot;VALVE&quot; route_id=&quot;ИДЕНТИФИКАТОР&quot;/&gt;
+	</task>
+	<task template="NET_BAT_Proc.xml">
+		&lt;input/&gt;
+	</task>
+	<task template="DISTR_LINE_Idx.xml">
+		&lt;input line_id=&quot;ИДЕНТИФИКАТОР&quot;/&gt;
+	</task>
+	<task template="LRS_ROUTE_Calc.xml">
+		&lt;input route_id=&quot;ИДЕНТИФИКАТОР&quot;/&gt;
+	</task>
+	<task template="KM_ROUTE_Calc.xml">
+		&lt;input route_id=&quot;ИДЕНТИФИКАТОР&quot;/&gt;
+	</task>
+	<task template="PS_TEMPLATE_Idx.xml">
+		&lt;input template_id=&quot;6,4,2,3,5,1&quot; pipe_system_id=&quot;1089&quot;/&gt;
+	</task>
+	<task template="POI_PNT_Imp.xml">
+		&lt;item user_id=&quot;1045&quot; status_id=&quot;1&quot; folder_name=&quot;Public/Data/UploadedFiles/ec15bfd4-2cc5-4473-b951-554f13933a4c/&quot; /&gt;
+	</task>
+	<task template="POI_TRK_Imp.xml">
+		&lt;item user_id=&quot;1045&quot; status_id=&quot;1&quot; folder_name=&quot;Public/Data/UploadedFiles/ec15bfd4-2cc5-4473-b951-554f13933a4c/&quot; /&gt;
+	</task>
+	<task template="MAP_ZIP_Imp.xml">
+		&lt;input zip_with_mif_input_path=&quot;Public/Data/UploadedFiles/PODS_COMPRESSOR_STATION-63c98a23.zip&quot; class_id=&quot;PODS_EQUIP_Layers.xml#PODS_COMPRESSOR_STATION&quot;
+		stop_on_first_error=&quot;true&quot; output_events_max_count=&quot;2000&quot;
+		connection_reestablishing_tries_count=&quot;32&quot;
+		connection_reestablishing_timeout=&quot;120&quot;&gt;&lt;extended_data USER_ID=&quot;0&quot;/&gt;&lt;/input&gt;
+	</task>
+	<task template="ILI_ZIP_Imp_55.xml">
+		&lt;input root_path=&quot;&quot; zip_file_name=&quot;Public/Data/UploadedFiles/data.zip&quot;
+		do_calc_inspection=&quot;False&quot; do_read_about=&quot;False&quot; data_file_name=&quot;data.xml&quot;
+		pipe=&quot;Уренгой-Центр I&quot; km_start=&quot;1401&quot; km_end=&quot;1480&quot; date=&quot;28.9.2018&quot; format=&quot;xml&quot;
+		company=&quot;UNKNOWN&quot; ps_idx=&quot;False&quot; start_odometr=&quot;&quot; end_odometr=&quot;&quot; tool_type_cl=&quot;&quot;
+		model=&quot;&quot; sensor_gcl=&quot;&quot; sensor_spacing_min=&quot;&quot; sensor_spacing_max=&quot;&quot; min_temp=&quot;&quot;
+		max_temp=&quot;&quot; avg_temp=&quot;&quot; min_velocity=&quot;&quot; max_velocity=&quot;&quot; avg_velocity=&quot;&quot;
+		sampling_frequency=&quot;&quot; resolution=&quot;&quot; rated_max_velocity=&quot;&quot; rated_max_wt=&quot;&quot;
+		cluster_rule_cl=&quot;&quot; source_gcl=&quot;UNKNOWN&quot; weld_increment=&quot;&quot; pipe_LABEL=&quot;Уренгой-
+		Центр I&quot; company_LABEL=&quot;Неизвестно&quot; do_calc_cluster=&quot;false&quot; do_calc_pressure=&quot;false&quot;
+		do_calc_sto=&quot;false&quot; do_calc_sto_for_ehz=&quot;false&quot; /&gt;
+	</task>
+	<task template="DATA_LAY_Exp.xml">
+		&lt;input file_name=&quot;Public/Data/TAB/ad04ba1a-c1b1-41ef-84ab-ae71fdc7babe.xls&quot;
+		template=&quot;export&quot; data=&quot;&amp;lt;root&gt;&amp;lt;data ЛПУ=&amp;quot;13006&amp;quot;
+		Наименование=&amp;quot;Алмазная&amp;quot; Макс__сумм__мощность__КВт=&amp;quot;0&amp;quot;
+		Тип_объекта=&amp;quot;UNKNOWN&amp;quot;
+		Кол_во_перекач__порш__двигателей=&amp;quot;0&amp;quot;
+		Кол_во_перекач__электродвигателей=&amp;quot;0&amp;quot;
+		Кол_во_газовых_турбин=&amp;quot;0&amp;quot; /&gt;&amp;lt;/root&gt;&quot; keep_files=&quot;true&quot;/&gt;
+	</task>  
+  	<task template="MAP_ZIP_Exp.xml">
+	  	&lt;input zip_with_mif_output_path=&quot;Public/Data/UploadedFiles/87b32215-7c2a-4899-a7ec-fc93c55b3fe2/PODS_COMPRESSOR_STATION.zip&quot;
+	  	class_id=&quot;PODS_EQUIP_Layers.xml#PODS_COMPRESSOR_STATION&quot; style_file=&quot;&quot;
+	  	tries_count=&quot;3&quot; output_events_max_count=&quot;2000&quot;
+	  	connection_reestablishing_tries_count=&quot;32&quot;
+	  	connection_reestablishing_timeout=&quot;120&quot;&gt;&lt;extended_data&gt;&lt;USER_ID&gt;0&lt;/USER_ID&gt;&lt;/extended_data&gt;&lt;/input&gt;
+  	</task>
+</root>

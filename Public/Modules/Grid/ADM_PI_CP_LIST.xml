@@ -1,0 +1,165 @@
+﻿<!--7.7.5.0-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="7"  headerVertSize="50"
+            id="PODS_PI_CP_INSPECTION"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelTemplateName="PODS_PI_CP_INSPECTION_LIST"
+            excelMaxExport="1000"
+            layerId="PODS_PI_CP_INSPECTION" propertyPanelName="PODS_PI_CP_INSPECTION"
+            dataRequest="GAZPROM_ADM_SEM.xml#PODS_PI_CP_INSPECTION"
+            totalRecordsRequest="GAZPROM_ADM_SEM.xml#PODS_PI_CP_INSPECTION_CNT"
+            initialSortField="TYPE_CL_DESCR,DESCRIPTION,KM_START,KM_END,REPORT_DATE,ID"
+            >
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/excel.png"
+        tooltip="Экспортировать в Excel"
+        clickEvent="ru.corelight.business.events.ExportToExcelEvent"
+        selectedObjects="this" />
+    <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Импорт отчетов"
+        clickEvent="gridAdmPiCPImport"
+        isEnabled="true"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Привязать отчет к участку трубопровода и рассчитать"
+        clickEvent="gridAdmPiCPBindToLine"
+        selectedObjects="this"
+        position="top"/>
+
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=showInfoEvent;toolTip=Показать информацию по объекту"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/excel.png;eventName=ru.corelight.business.events.ExportToExcelEvent;toolTip=Выгрузить в Excel;templateName=PODS_PI_CP_INSPECTION"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/delete.png;eventName=ru.corelight.business.events.RemoveGridRowEvent;toolTip=Удалить запись"
+                          editable="true"/>
+      <columns:GridColumn headerText="Идентификатор" dataField="ID"  itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          hidden="true" editable="false" filterComparisionType="number" width="40" />                    
+      <columns:GridColumn headerText="Обследование ИД (PI_CP_INSPECTION.EVENT_ID)" dataField="EVENT_ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="60"/>
+      <columns:GridColumn headerText="Тип\nтрубопровода" dataField="TYPE_CL"
+                          filterRequestId="PODS_SEM_DICT.xml#PODS_LINE_TYPE_CL"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_SEM_DICT.xml#PODS_LINE_TYPE_CL"
+                          filterComparisionType="array"
+                          editable="true"
+                          sortField="TYPE_CL_DESCR"
+                          width="100"
+                          hidden="true"/>
+      <columns:GridColumn headerText="Тип" dataField="TYPE_CL_DESCR"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="100"/>
+      <columns:GridColumn headerText="Трубопровод" dataField="LINE_ID"
+                          filterRequestId="GAZPROM_ADM_SEM.xml#PODS_LINE_WITHOUT_DEFAULT"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=GAZPROM_ADM_SEM.xml#PODS_LINE_WITHOUT_DEFAULT"
+                          filterComparisionType="array"
+                          editable="true"
+                          sortField="LINE_ID"
+                          width="150"
+                          hidden="true"/>
+      <columns:GridColumn headerText="Трубопровод\n(LINE.DESCR)" dataField="DESCRIPTION"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="150"/>
+      <columns:GridColumn headerText="Дата\nобсле-\nдования" dataField="REPORT_DATE"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer"
+                          editable="true"
+                          filterComparisionType="date"
+                          width="50"/>
+      <columns:GridColumn headerText="Обсл-\nедование\nнач.\nкм." dataField="KM_START"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="45"/>
+      <columns:GridColumn headerText="Обсл-\nедование\nкон.\nкм." dataField="KM_END"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="45"/>
+      <columns:GridColumn headerText="Количество\nPI_\nANODE_\nREADING" dataField="PI_ANODE_READING_CNT"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="Количество\nPI_\nBOND_\nREADING" dataField="PI_BOND_READING_CNT"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="Количество\nPI_\nCASING_\nREADING" dataField="PI_CASING_READING_CNT"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="Количество\nPI_\nCIS_\nREADING" dataField="PI_CIS_READING_CNT"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="50"/>   
+      <columns:GridColumn headerText="Количество\nPI_CP_\nREADING" dataField="PI_CP_READING_CNT"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="Количество\nсвязанных\nPI_CP_\nREADING" dataField="PI_CP_READING_LNK_CNT"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="Количество\nрассчитанных\nPI_CP_\nREADING" dataField="PI_CP_READING_CALC_CNT"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="60"/>
+      <columns:GridColumn headerText="Количество\nPI_GROUND_\nBED_READING" dataField="PI_GROUND_BED_READING_CNT"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="60"/>
+      <columns:GridColumn headerText="Количество\nPI_\nRECTIFIER\n_READING" dataField="PI_RECTIFIER_READING_CNT"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="50"/>   
+      <columns:GridColumn headerText="Привязка" dataField="LINE_DESCR"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="string"
+                          width="100"/>
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

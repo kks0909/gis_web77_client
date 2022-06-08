@@ -1,0 +1,467 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="Version" content="5.3.1.0"/>
+    <title>Подсистема 3D </title>
+    <script for="SceneIE" event="OnEventOut(value, nodeName, eventOutName, timeStamp)" language="javascript">
+        if (eventOutName == 'open_layerList')
+        {
+           showList(); 
+        }
+        if (eventOutName == 'open_objectInfo')
+        {
+           showInfo(value); 
+        }
+        if (eventOutName == 'on_changePosition')
+        {
+           infoChangePosition(null);
+        }
+        if (eventOutName == 'open_print')
+        {
+            showPrint();
+        }
+        if (eventOutName == 'on_sceneLoad')
+        {
+            infoSceneLoad();
+        }
+    </script>
+    <script for="SceneIE" event="Click()" language="javascript">
+        // click по сцене
+        // сброс выделения
+        resetHighlighting();
+    </script>
+    <script src="utils.js"></script>
+    <script src="navigation.js"></script>
+</head>
+<body scroll="no">
+    <p id="installCortona" style="font-size:16">Для просмотра необходимо установить <a href="../../install/geoVRML.exe">модуль поддержки GeoVRML</a>. После установки <a href="javascript:document.execCommand('Refresh');" >обновить страницу</a>.</p>
+    <p id="useIE" style="display:none; font-size:14">Для просмотра необходимо использовать Microsoft Internet Explorer.</p>
+    <p id="useIEinstallCortona" style="display:none; font-size:14">Для просмотра необходимо использовать Microsoft Internet Explorer и установить <a href="../../install/geoVRML.exe">модуль поддержки GeoVRML</a>.</p>
+    <div id="sceneObj" style="position: absolute; left:0px; right:0px; height:100%; width:100%; top:0px; bottom: 0px;">
+        <object id="SceneIE" type="application/x-oleobject" style="height: 100%; right: 0px; left: 0px; width: 100%; top:0px; bottom: 0px;" 
+            classid="CLSID:86A88967-7A20-11D2-8EDA-00600818EDB1" onclick="onSceneClick(event)">
+            <!-- embed id="SceneM" pluginurl="http://www.parallelgraphics.com/bin/cortvrml.cab" type="model/vrml"
+                skin="{F9EA47F6-39F2-4338-BE9F-B72FE4C7CA80};FlySkin.zip#Version=5,3,1,0" showlogo="0" navigationmode="3" 
+                navigationbar="1" src="" backcolor="0" collider="false" 
+                style="position: absolute; top: 40px; height: 700px; right: 0px; left: 0px; width: 100%; visibility:hidden;"/ -->
+                <!-- Пока в Firefox падает - не будем включать embed -->       
+            <noembed> 
+                <b>Для отображения трехмерной сцены необходимо разрешить выполнение подключаемых модулей.</b> 
+            </noembed> 
+
+            <param name="Skin" value="{F9EA47F6-39F2-4338-BE9F-B72FE4C7CA80};FlySkin.zip#Version=5,3,1,0" />
+            <param name="ShowLogo" value="0" />
+            <param name="NavigationMode" value="3" />
+            <param name="NavigationBar" value="1" />
+            <param name="Scene" value=""/>
+            <param name="BackColor" value="0" />
+            <param name="Collider" value="false" />
+            <param name="ContextMenu" value="true" />
+            <param name="AnimateViewpoints" value="false" />
+            <param name="showprogress" value="true"/>
+        </object>
+    </div>
+    
+    <script language="javascript">
+        <!--
+            var odd = true;
+            // проверка установки Cortona VRML Client
+            function isCortonaInstalled()
+            {
+              f = false; 
+              for (i = 0; i < navigator.plugins.length; i++)
+              {
+                pl = navigator.plugins[i];
+                for (j = 0; j < pl.length; j++)
+                {
+                  mime = pl[j];
+                  if (pl.name.toLowerCase().indexOf('cortona') != -1)
+                  {
+                    cortonaversion = pl.description.substring(pl.description.indexOf("(") + 1, pl.description.indexOf(")"));
+                    if (!cortonaversion.length) {
+                      cortonaversion = "2.2 or lower";
+                      cortonabuild = 40;
+                    } else {
+                      cortonabuild = cortonaversion.substring(cortonaversion.lastIndexOf(" "), cortonaversion.length);
+                    }
+                    f = true; break;
+                  }
+                }
+                if (f) break; 
+              }
+                return f;
+            }
+            var isIE = false;
+            if ((navigator.appName == 'Microsoft Internet Explorer') || (navigator.userAgent.indexOf('MSIE') > 0))
+                isIE = true;
+            
+            var isInstalled = false;
+            try
+            {
+                if (isIE)
+                {
+                    isInstalled = (document.getElementById('SceneIE') != null);
+                }
+                else
+                {
+                    isInstalled = isCortonaInstalled();
+                }
+            }
+            catch(err)
+            {
+            }
+                
+            if (!isInstalled && isIE)
+            {
+                document.getElementById('installCortona').style.display = '';
+                document.getElementById('sceneObj').style.display = 'none';
+            }
+            if (isInstalled && !isIE)
+            {
+                document.getElementById('useIE').style.display = '';
+                document.getElementById('sceneObj').style.display = 'none';
+            }
+            if (!isInstalled && !isIE)
+            {
+                document.getElementById('useIEinstallCortona').style.display = '';
+                document.getElementById('sceneObj').style.display = 'none';
+            }
+            if (isInstalled && isIE)
+            {
+                var framesStr = '<iframe id="infoFrame" src="infoPage.htm" style="visibility: hidden;position: absolute; top: 0px; left: 0; width: 100%; height: 95px; z-index: 5"/>';
+                framesStr += '<iframe id="listFrame" src="listPage.htm" style="visibility: hidden; position: absolute;top: 40%; left: 40%; width: 350px; height: 300px; z-index: 5; vertical-align:middle;"/>';
+                document.writeln(framesStr);
+            }
+            
+            var savedColors = new Array(); // сохранение цветов при выделении
+            var listsList = new Array();
+            var dataNode = null;
+            var clsGrp = new Array();
+            var invisibleNodes = null;
+			 
+            var p = window.location.search;
+            var param = GetParam(p, "wrl");
+            var sc_name = GetParam(p, "title");
+            document.title += " " + sc_name;
+            if (isInstalled)
+            {
+                if (isIE && (param != ''))
+                {
+                    var sc = document.getElementById('SceneIE');
+                    sc.Scene = param;
+                }
+                else
+                { // не IE, пока ничего не делать - Cortona не работает
+                    //var o = document.getElementById('SceneM');
+                    //o.src = param;
+                }
+                window.status = "Открывается сцена " + param;
+            }
+            /*
+                Вызов функции печати страницы
+            */
+            function showPrint()
+            {
+                window.print();
+            }
+            /*
+                Отображение окна "Информация об объектах"
+            */
+            function showInfo(value)
+            {
+                SceneIE.NavigationBar = 0;
+                SceneIE.Refresh();
+                document.all.item("listFrame").style.visibility = "hidden";
+                document.all.item("infoFrame").style.visibility = "hidden";
+                document.all.item("infoFrame").style.visibility = "visible";
+                // собираем информацию из MFNode value
+                var infoStr = '<root>';
+                var i = 0;
+                var j = 0;
+                var metaData = null;
+                var prop;
+                for (i=0; i<value.Count; i++)
+                {
+                    infoStr += '<item ';
+                    metaData = getGroupMetadata(value.value(i));
+                    for (j =0; j<metaData.Count; j+=2)
+                    {
+                        infoStr +=  metaData.value(j) + '="' + metaData.value(j+1) +'" ';
+                    }
+                    infoStr += '/>';
+                }
+                infoStr += '</root>';
+                var dest = document.frames["infoFrame"].document.all.item("dataDiv");
+                dest.innerText = infoStr;
+                document.frames["infoFrame"].setSWFData();
+            }
+            function refreshData(id, layer, data)
+            {
+                document.frames["infoFrame"].refreshSWFData(id, layer, data);
+            }
+            /*
+                Отображение окна "Управления слоями"
+            */
+            function showList()
+            {
+                SceneIE.NavigationBar = 0;
+                SceneIE.Refresh();
+                document.all.item("infoFrame").style.visibility = "hidden";
+                document.all.item("listFrame").style.visibility = "hidden";
+                document.all.item("listFrame").style.visibility = "visible";
+                if (dataNode == null)
+                {
+                    var eng = getEngine();
+                    if (isIE)
+                    {
+                        var rootNodes = eng.RootNodes;
+                    }
+                    invisibleNodes = eng.CreateField('MFNode');
+                    dataNode = rootNodes.Item(rootNodes.Count).Clone(); // делаем копию для сохранения последовательности
+                    var res = generateLayerList();
+                    if (res == null)
+                        return null;
+                    var dest = document.frames["listFrame"].document.all.item("dataDiv");
+                    if (dest != null)
+                    {
+                        dest.innerText = res;
+                    }
+                }
+                else
+                {
+                    
+                }
+            }
+            
+            function generateFullLayerList()
+            {
+                var chNodes;
+                var ch;
+                chNodes = dataNode.Fields;
+                try
+                {
+                    ch = chNodes.Item("children");
+                }
+                catch (err)
+                {
+                    return null;
+                }
+                
+                var o, obj, clsName;
+                var cls;
+                var grArray = new Array();
+                
+                for (var i=0; i<ch.Count; i++)
+                {
+                    o = ch.value(i);
+                    if (o.TypeName == "Group")
+                    {   
+                        cls = o.Fields.Item("children");
+                        for (var j=0; j<cls.Count; j++)
+                        {
+                            obj = cls.value(j);
+                            if (obj.TypeName == "GeoMetadata")
+                            {
+                                clsName = obj.Fields.Item("summary");
+                                grArray.push(clsName.value(1));
+                                j = cls.Count; // end of cycle
+                            }
+                        } 
+                        listsList.push(o);
+                    }
+                }
+                var res = '<root>';
+                var v = true;
+                for (var i=0; i<grArray.length; i++)
+                {
+                    v = isLayerVisible(grArray[i]);
+                    res += '<item visible="'+v.toString()+'" name="' + grArray[i] + '"/>';
+                }
+                res += '</root>';
+                return res;
+            }
+            
+            function generateLayerList()
+            {
+                var chNodes;
+                var ch;
+                chNodes = dataNode.Fields;
+                try
+                {
+                    ch = chNodes.Item("children");
+                }
+                catch (err)
+                {
+                    return null;
+                }
+                
+                var o, obj, clsName;
+                var cls;
+                if (clsGrp == null)
+                    clsGrp = new Array();
+                
+                for (var i=0; i<ch.Count; i++)
+                {
+                    o = ch.value(i);
+                    if (o.TypeName == "Group")
+                    {   
+                        cls = o.Fields.Item("children");
+                        for (var j=0; j<cls.Count; j++)
+                        {
+                            obj = cls.value(j);
+                            if (obj.TypeName == "GeoMetadata")
+                            {
+                                clsName = obj.Fields.Item("summary");
+                                clsGrp.push(clsName.value(1));
+                                j = cls.Count; // end of cycle
+                            }
+                        } 
+                        listsList.push(o);
+                    }
+                }
+                res = '<root>';
+                for (var i=0; i<clsGrp.length; i++)
+                {
+                    res += '<item visible="true" name="' + clsGrp[i] + '"/>';
+                }
+                res += '</root>';
+                return res;
+            }
+            
+            /*
+                устанавливает frame с именем name в невидимое состояние.
+                param - описание видимости слоев 
+            */
+            function hideFrame(name, param)
+            {
+                SceneIE.NavigationBar = 1;
+                SceneIE.Refresh();
+                document.all.item(name).style.visibility = "hidden";
+                if ((param != null) && (param != ''))
+                {
+                    var data = param;
+                    var vData = data.substring(0, data.indexOf('--'));
+                    var invData = data.substring(data.indexOf('--')+2);
+                    var visibleList = vData.split(';'); // массивы имен слоев
+                    var invisibleList = invData.split(';');
+                    var newDescr = '<root>';
+                    // включаем-выключаем слои
+                    var i = 0;
+                    var rootNodes = getEngine().RootNodes;
+                    var rootNode = rootNodes.Item(rootNodes.Count);
+                    var layerList = rootNode.Fields.Item("children"); // список слоев и точек
+                    var originalLayerList = dataNode.Fields.Item("children"); // исходный список слоев и точек
+                    var o, t;
+                    var name, isVisible = null;
+                    var vCnt = 0;
+                    var invCnt = 0;
+                    var deletedCnt = 0;
+                    var cnt = 0;
+                    for (i=0; i<originalLayerList.Count; i++)
+                    {
+                        isVisible = null;
+                        o = originalLayerList.value(i);
+                        if (o.TypeName == "Group")
+                        {
+                            name = getGroupName(o);
+                            if (visibleList[vCnt] == name)
+                            {
+                                isVisible = true;
+                                vCnt++;
+                            }
+                            if (invisibleList[invCnt] == name)
+                            {
+                                isVisible = false;
+                                invCnt++;
+                            }
+                            if (isVisible)
+                            {
+                                newDescr += '<item visible="true" name="' + name + '"/>';
+                                // проследить, чтобы не было в удаленных
+                                if (invisibleNodes.Count > deletedCnt)
+                                {
+                                    try
+                                    {
+                                        t = invisibleNodes.value(deletedCnt);
+                                        if (getGroupName(t) == name)
+                                        {
+                                            // есть в удаленных
+                                            if (layerList.Count > cnt)
+                                            {
+                                                layerList.AddVariant(t, cnt);
+                                            }
+                                            else
+                                            {
+                                                layerList.AddVariant(t);
+                                            }
+                                            invisibleNodes.Remove(deletedCnt);
+                                            if (deletedCnt > 0)
+                                            {
+                                                deletedCnt--;
+                                            }
+                                        }
+                                    }
+                                    catch (err)
+                                    {
+                                        //alert(errr.description);
+                                    }    
+                                }
+                                cnt++;
+                            }
+                            else
+                            {
+                                newDescr += '<item visible="false" name="' + name + '"/>';
+                                // проследить, чтобы не было в видимых
+                                if (layerList.Count > cnt)
+                                {
+                                    try
+                                    {
+                                        t = layerList.value(cnt);
+                                        while (t.TypeName != 'Group')
+                                        {
+                                            cnt++;
+                                            t = layerList.value(cnt);
+                                        }
+                                        if (getGroupName(t) == name)
+                                        {
+                                            // есть в видимых
+                                            if (invisibleNodes.Count > deletedCnt)
+                                            {
+                                                invisibleNodes.AddVariant(t, deletedCnt);
+                                            }
+                                            else
+                                            {
+                                                invisibleNodes.AddVariant(t);
+                                            }
+                                            
+                                            layerList.Remove(cnt);
+                                            if (cnt > 0)
+                                            {
+                                                cnt--;
+                                            }
+                                         }
+                                    }
+                                    catch (err)
+                                    {
+                                        //alert(err.description);
+                                    }
+                                }
+                                deletedCnt++;
+                                cnt++;
+                            }
+                        }
+                        else
+                        {
+                            cnt++;
+                        }
+                    }
+                    rootNode.Validate();
+                    newDescr += '</root>';
+                    var dest = document.frames["listFrame"].document.all.item("dataDiv");
+                    dest.innerText = newDescr;
+                }
+            }
+       //-->
+    </script>
+</body>
+</html>

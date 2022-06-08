@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="363" xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml" title="Генерация VRML-сцен">
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="363">
+    <mx:HBox percentWidth="100">
+      <mx:Text textAlign="right" text="ЛПУ" width="160"/>
+      <mx:ComboBox id="SRV_DISTRICT_ID" width="200" height="20" dataProvider="GAZPROM_ADM_SEM.xml#ADM_ROLES_SRV_DISTRICT" tabIndex="0"/>
+    </mx:HBox>
+    <mx:HBox percentWidth="100">
+      <mx:Text textAlign="right" text="Максимальная площадь треугольника, м?" width="160"/>
+      <controls:NumberInput id="MAX_TRIANGLE_SQUARE" width="85" maxChars="20" height="20" tabIndex="1" text="1500"/>
+    </mx:HBox>
+    <mx:HBox percentWidth="100">
+      <mx:Text textAlign="right" text="Число граней трубы" width="160"/>
+      <controls:NumberInput id="PIPE_FACES_QUANTITY" width="85" maxChars="20" height="20" tabIndex="2" text="8"/>
+    </mx:HBox>
+    <mx:HBox percentWidth="100">
+      <mx:Text textAlign="right" text="Подсветка" width="160"/>
+      <mx:CheckBox id="BACKLIGHT" selected="true" tabIndex="3"/>
+    </mx:HBox>
+    <mx:HBox percentWidth="100">
+      <mx:Text textAlign="right" text="Предел видимости, м?" width="160"/>
+      <controls:NumberInput id="LIMIT_OF_VISIBILITY" width="85" maxChars="20" height="20" tabIndex="4" text="1500"/>
+    </mx:HBox>
+  </mx:VBox>
+  <validatorsArray>
+    <controls:ComboBoxValidator source="{SRV_DISTRICT_ID}" property="selectedItem" enabled="false" required="true" notDefaultError="В списке 'ЛПУ' нужно выбрать значение, отличное от значения-по умолчанию."/>
+    <controls:DefaultNumberValidator source="{MAX_TRIANGLE_SQUARE}" property="text" enabled="false" required="true" allowNegative="false" requiredFieldError="Поле 'Максимальная площадь треугольника' обязательно для заполнения." precision="0" precisionError="Значение в поле 'Максимальная площадь треугольника' должно иметь не более 0 цифр после запятой" maxValue="99999" exceedsMaxError="Значение в поле 'Максимальная площадь треугольника' может иметь 5 цифр до запятой и 0 после" lowerThanMinError="Значение в поле 'Максимальная площадь треугольника' не может быть меньше 0" negativeError="Значение в поле 'Максимальная площадь треугольника' не может быть меньше 0"/>
+    <controls:DefaultNumberValidator source="{PIPE_FACES_QUANTITY}" property="text" enabled="false" required="true" allowNegative="false" requiredFieldError="Поле 'Число граней трубы' обязательно для заполнения." precision="0" precisionError="Значение в поле 'Число граней трубы' должно иметь не более 0 цифр после запятой" maxValue="99999" exceedsMaxError="Значение в поле 'Число граней трубы' может иметь 5 цифр до запятой и 0 после" lowerThanMinError="Значение в поле 'Число граней трубы' не может быть меньше 0" negativeError="Значение в поле 'Число граней трубы' не может быть меньше 0"/>
+    <controls:DefaultNumberValidator source="{LIMIT_OF_VISIBILITY}" property="text" enabled="false" required="true" allowNegative="false" requiredFieldError="Поле 'Предел видимости' обязательно для заполнения." precision="0" precisionError="Значение в поле 'Предел видимости' должно иметь не более 0 цифр после запятой" maxValue="99999" exceedsMaxError="Значение в поле 'Предел видимости' может иметь 5 цифр до запятой и 0 после" lowerThanMinError="Значение в поле 'Предел видимости' не может быть меньше 0" negativeError="Значение в поле 'Предел видимости' не может быть меньше 0"/>
+  </validatorsArray>
+</DATA_EDIT_FORM>

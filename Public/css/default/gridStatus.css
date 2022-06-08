@@ -1,0 +1,27 @@
+﻿/* 5.4.0.0 
+Стили для ячеек грида */
+.exists {
+	color:0xFF0000;
+	backgroundColor:0xFFFF00;
+	textDecoration:underline;
+}
+.equals {
+    color:0x009999;
+	textDecoration:underline;
+}
+.range {
+	backgroundColor:0x00FF00;
+	color:0x000066;
+	fontWeight:bold;
+	textDecoration:underline;
+}
+.nonexists {
+	backgroundColor:0x00FF00;
+}
+.greaterThan {
+	backgroundColor:0x00FF00;
+}
+.lessThan {
+	backgroundColor:0x00FF00;
+}
+

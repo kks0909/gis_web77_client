@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<kml version="7.7.4.9">
+  <Document>
+    	<!-- Стиль линейного объекта для выделения -->
+    <Style id="" schema="" table="" comment="">
+      <value>SELECTED</value>
+      <LineStyle>
+        <color>FFffaf30</color>
+        <width>5</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>7</width>
+      </LineStyle>
+    </Style>
+    <!-- Стиль площадного объекта для выделения -->
+    <Style id="" schema="" table="" comment="">
+      <value>SELECTED</value>
+      <LineStyle>
+        <color>80ffaf30</color>
+        <width>5</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>7</width>
+      </LineStyle>
+      <PolyStyle>
+        <!-- цвет заливки -->
+        <color>80ffaf30</color>
+        <!-- флаг заливки контура -->
+        <fill>1</fill>
+        <!-- флаг отрисовки контура -->
+        <outline>1</outline>
+    <!-- тип заливки объекта solid|bitmap -->
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <!-- Стиль точечного объекта для выделения -->
+    <Style id="" schema="" table="" comment="">
+      <value>SELECTED</value>
+      <IconStyle>
+        <Icon>
+          <!-- Иконка -->
+          <form>circle</form>
+          <size>12</size>
+        </Icon>
+        <color>82ffaf30</color>
+        <!-- цвет заливки, если не картинка. По-умолчанию черная непрозрачная. -->
+        <outline>1</outline>
+      </IconStyle>
+      <LineStyle>
+        <!-- стиль контура, линейный объект  -->
+        <color>FFFFFFFF</color>
+        <width>1</width>
+      </LineStyle>
+    </Style>    
+    <!-- Стиль точки для информации по объектам -->
+    <Style id="" schema="" table="" comment="">
+      <value>INFO</value>
+      <IconStyle>
+        <Icon>
+          <!-- форма объекта, если это не картинка. Допустимые значения: square|circle|triangle|star|cross|x -->
+          <form>circle</form>
+          <size>12</size>
+        </Icon>
+        <color>82ffaf30</color>
+        <outline>1</outline>
+      </IconStyle>
+      <LineStyle>
+        <color>FFFFFFFF</color>
+        <width>1</width>
+      </LineStyle>
+    </Style>    
+  </Document>
+</kml>

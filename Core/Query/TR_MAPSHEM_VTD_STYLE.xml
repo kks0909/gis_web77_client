@@ -1,0 +1,3262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<kml version="7.7.7.3">
+  <Document>
+
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen (1,2,16776960)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FFFFD700</color>
+        <width>2</width>
+        <pattern>
+          <dasharray>19 8</dasharray>
+          <join>bevel</join>
+          <caps>round</caps>
+        </pattern>
+      </LineStyle>
+    </Style>
+  
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen (1,2,255)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF0000FF</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+  
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen (1,2,65535)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF00FFFF</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+  
+    <Style id="TR_MAPSHEM_GIS" schema="FLOW_CHART" table="TR_MAPSHEM_GIS"
+    comment="FLOW_CHART.TR_MAPSHEM_GIS">
+      <value>Pen (1,2,0)  Brush (2,16777215,16777215)</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFFFFFFF</color>
+        <width>0</width>
+      </LineStyle>
+    <PolyStyle>
+        <color>FF000000</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+
+    <Style id="TR_MAPSHEM_COUNTY" schema="FLOW_CHART" table="TR_MAPSHEM_COUNTY" 
+    comment="FLOW_CHART.TR_MAPSHEM_COUNTY" descr="районы">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FFFF6666</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FFCCCCCC</color>
+        <width>2</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(1,2,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(2,1,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <width>2</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(3,2,65280)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF00FF00</color>
+        <width>3</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(3,2,10502399)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FFA040FF</color>
+        <width>3</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(3,2,255)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF0000FF</color>
+        <width>3</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(2,2,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>2</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(0,1,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <width>0</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(3,2,44031)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF00ABFF</color>
+        <width>3</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(3,2,32768)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF008000</color>
+        <width>3</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(2,2,255)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF0000FF</color>
+        <width>2</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(3,2,8388608)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF800000</color>
+        <width>3</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(3,2,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>3</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(1,2,65280)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF00FF00</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(2,2,32768)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF008000</color>
+        <width>2</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(3,2,16720127)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FFFF20FF</color>
+        <width>3</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="!!!!!!!!!!!!!!!!!!!нестандартный стиль!!!!!!!!!!!!!!!!!!FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(2,59,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(2,2,8388608)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF800000</color>
+        <width>2</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(3,2,8388736)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF800080</color>
+        <width>3</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(0,2,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(1,2,32768)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF008000</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(2,2,65280)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF00FF00</color>
+        <width>2</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(2,2,10502399)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FFA040FF</color>
+        <width>2</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(0,2,32768)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF008000</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(3,2,16711935)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FFFF00FF</color>
+        <width>3</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="!!!!!!!!!!!!!!!!!!нестандартный стиль!!!!FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(1,31,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(1,2,0)Brush(2,16777215,16777215)</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+    <PolyStyle>
+        <color>FFFFFFFF</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG"
+    comment="FLOW_CHART.TR_MAPSHEM_PTG">
+      <value>Pen(1,2,0)Brush(2,0,16777215)</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+    <PolyStyle>
+        <color>FF000000</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Pen(1,2,65535)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF0000FF</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Pen(2,2,65535)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF0000FF</color>
+        <width>2</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Pen(3,2,65535)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF0000FF</color>
+        <width>3</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Pen(4,2,65535)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF0000FF</color>
+        <width>4</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Pen(1,2,255)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF0000FF</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Pen(3,2,255)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF0000FF</color>
+        <width>3</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Pen(2,2,255)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF0000FF</color>
+        <width>2</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Pen(4,2,255)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF0000FF</color>
+        <width>4</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Symbol(85,0,12,&quot;UZgidrografia&quot;,0,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/UZgidrografia_85_0.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Symbol(85,0,12,&quot;UZgidrografia&quot;,0,45)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/UZgidrografia_85_45.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Symbol(85,0,12,&quot;UZgidrografia&quot;,0,90)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/UZgidrografia_85_90.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Symbol(85,0,12,&quot;UZgidrografia&quot;,0,135)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/UZgidrografia_85_135.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Symbol(85,0,12,&quot;UZgidrografia&quot;,0,180)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/UZgidrografia_85_180.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Symbol(85,0,12,&quot;UZgidrografia&quot;,0,225)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/UZgidrografia_85_225.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Symbol(85,0,12,&quot;UZgidrografia&quot;,0,270)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/UZgidrografia_85_270.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Symbol(85,0,12,&quot;UZgidrografia&quot;,0,315)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/UZgidrografia_85_315.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Font (&quot;Times New Roman CYR&quot;,2,0,255)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF0000FF</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <align>bottom</align>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Font (&quot;Times New Roman CYR&quot;,2,0,255,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF0000FF</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <align>bottom</align>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,255)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF0000FF</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+        <align>bottom</align>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY"
+    comment="FLOW_CHART.TR_MAPSHEM_WATERWAY">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,255,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF0000FF</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+
+    <Style id="TR_MAPSHEM_GIS" schema="FLOW_CHART" table="TR_MAPSHEM_GIS"
+    comment="FLOW_CHART.TR_MAPSHEM_GIS">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_GIS" schema="FLOW_CHART" table="TR_MAPSHEM_GIS"
+    comment="FLOW_CHART.TR_MAPSHEM_GIS">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>0</width>
+      </LineStyle>
+    <PolyStyle>
+        <color>FF000000</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Pen (1,45,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FFD06800</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Pen (1,2,12619776)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FFD06800</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="!!!!!!!!!!!!!!!нестандартный стиль!!!!!FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Pen (2,118,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>2</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Pen (1,2,13658112)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FFD06800</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Pen (1,2,16744448)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FFFF8000</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Pen (2,2,13658112)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FFD06800</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Pen (1,2,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Pen (1,2,14708736)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FFE07000</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Font (&quot;Times New Roman Cyr&quot;,0,0,14708736)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFE07000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Font (&quot;Times New Roman Cyr&quot;,0,0,14708736,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFE07000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,14708736)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFE07000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,14708736,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFE07000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Font (&quot;Times New Roman Cyr&quot;,0,0,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Font (&quot;Times New Roman Cyr&quot;,0,0,0,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,0,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Font (&quot;Times New Roman Cyr&quot;,0,0,13658112)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFD06800</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,13658112)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFD06800</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,13658112,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFD06800</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Font (&quot;Times New Roman Cyr&quot;,0,0,16744448)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFFF8000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Font (&quot;Times New Roman Cyr&quot;,0,0,16744448,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFFF8000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,16744448,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFFF8000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Font (&quot;Times New Roman Cyr&quot;,0,0,8421504)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF808080</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,8421504)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF808080</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD"
+    comment="FLOW_CHART.TR_MAPSHEM_ROAD">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,8421504,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF808080</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="!!!!!!!!!!!!!!!!!нестандартный стиль!!!!!!!!FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Pen(1,5,16711680)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FFFF0000</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Pen(0,1,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Pen(1,2,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="!!!!!!!!!!!!!!!!!нестандартный стиль!!!!!!!!FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Pen(1,6,16711680)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FFFF0000</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Pen(1,2,255)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF0000FF</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Pen(1,2,65280)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF00FF00</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Pen(1,2,16711680)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FFFF0000</color>
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+    </Style>
+<!-- новые стили -->
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,2,0,255)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>800000FF</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <align>bottom</align>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,2,0,255,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>800000FF</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <align>bottom</align>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,255)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>800000FF</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+        <align>bottom</align>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,255,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>800000FF</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+   comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman Cyr&quot;,0,0,14708736)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFE07000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman Cyr&quot;,0,0,14708736,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFE07000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,14708736)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFE07000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,14708736,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFE07000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman Cyr&quot;,0,0,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>80000000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman Cyr&quot;,0,0,0,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>80000000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,0,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>80000000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman Cyr&quot;,0,0,13658112)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFD06800</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,13658112)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFD06800</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,13658112,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFD06800</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman Cyr&quot;,0,0,16744448)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFFF8000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman Cyr&quot;,0,0,16744448,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFFF8000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,16744448,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFFF8000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman Cyr&quot;,0,0,8421504)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF808080</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,8421504)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF808080</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,8421504,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color>
+        <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF808080</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+    <!-- !новые стили -->
+ <Style id="TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS">
+      <value>Symbol(53,16776960,14,&quot;Webdings&quot;,16,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/Webdings_53_0.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FFFFFF00</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>
+ <Style id="TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS">
+      <value>Symbol(53,16776960,14,&quot;Webdings&quot;,16,45)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/Webdings_53_45.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FFFFFF00</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>
+ <Style id="TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS">
+      <value>Symbol(53,16776960,14,&quot;Webdings&quot;,16,90)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/Webdings_53_90.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FFFFFF00</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>
+ <Style id="TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS">
+      <value>Symbol(53,16776960,14,&quot;Webdings&quot;,16,135)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/Webdings_53_135.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FFFFFF00</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>
+ <Style id="TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS">
+      <value>Symbol(53,16776960,14,&quot;Webdings&quot;,16,180)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/Webdings_53_180.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FFFFFF00</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>
+ <Style id="TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS">
+      <value>Symbol(53,16776960,14,&quot;Webdings&quot;,16,225)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/Webdings_53_225.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FFFFFF00</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>
+ <Style id="TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS">
+      <value>Symbol(53,16776960,14,&quot;Webdings&quot;,16,270)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/Webdings_53_270.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FFFFFF00</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>
+ <Style id="TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS">
+      <value>Symbol(53,16776960,14,&quot;Webdings&quot;,16,315)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/Webdings_53_315.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FFFFFF00</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>
+
+ <Style id="TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS">
+      <value>Symbol(53,0,14,&quot;Webdings&quot;,16,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/Webdings_53_0_BLACK.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FFFFFF00</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style> 
+ <Style id="TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS">
+      <value>Symbol(53,0,14,&quot;Webdings&quot;,16,45)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/Webdings_53_45_BLACK.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FFFFFF00</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>
+ <Style id="TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS">
+      <value>Symbol(53,0,14,&quot;Webdings&quot;,16,90)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/Webdings_53_90_BLACK.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FFFFFF00</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>
+ <Style id="TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS">
+      <value>Symbol(53,0,14,&quot;Webdings&quot;,16,135)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/Webdings_53_135_BLACK.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FFFFFF00</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style> 
+ <Style id="TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS">
+      <value>Symbol(53,0,14,&quot;Webdings&quot;,16,180)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/Webdings_53_180_BLACK.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FFFFFF00</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>
+ <Style id="TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS">
+      <value>Symbol(53,0,14,&quot;Webdings&quot;,16,225)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/Webdings_53_225_BLACK.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FFFFFF00</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>
+ <Style id="TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS">
+      <value>Symbol(53,0,14,&quot;Webdings&quot;,16,270)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/Webdings_53_270_BLACK.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FFFFFF00</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>
+ <Style id="TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS">
+      <value>Symbol(53,0,14,&quot;Webdings&quot;,16,315)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/Webdings_53_315_BLACK.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FFFFFF00</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>
+
+ <Style id="TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS">
+      <value>Symbol(53,16776960,14,&quot;Marlett&quot;,16,180)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/Webdings_53_180.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FFFFFF00</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>
+ <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Symbol&quot;,0,0,0,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle> <!-- стиль подписи  -->
+       <zoomMin>NaN</zoomMin>
+       <zoomMax>NaN</zoomMax>
+       <color>80000000</color> 
+       <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize> 
+       <bold>0</bold> 
+       <italic>0</italic> 
+    <underline>0</underline>
+        <overlap>1</overlap>
+    </LabelStyle>
+ </Style>
+<Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Symbol&quot;,0,0,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle>
+        <!-- стиль подписи  -->
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>80000000</color>
+        <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+
+
+ <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman Cyr&quot;,0,0,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle> <!-- стиль подписи  -->
+       <zoomMin>NaN</zoomMin>
+       <zoomMax>NaN</zoomMax>
+       <color>80000000</color> 
+       <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize> 
+       <bold>0</bold> 
+       <italic>0</italic> 
+    <underline>0</underline>
+        <overlap>1</overlap>
+    </LabelStyle>
+ </Style>
+ <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle> <!-- стиль подписи  -->
+       <zoomMin>NaN</zoomMin>
+       <zoomMax>NaN</zoomMax>
+       <color>80000000</color> 
+       <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize> 
+       <bold>0</bold> 
+       <italic>0</italic> 
+    <underline>0</underline>
+        <overlap>1</overlap>
+    </LabelStyle>
+ </Style>
+ <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,0,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle> <!-- стиль подписи  -->
+       <zoomMin>NaN</zoomMin>
+       <zoomMax>NaN</zoomMax>
+       <color>80000000</color> 
+       <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize> 
+       <bold>0</bold> 
+       <italic>0</italic> 
+    <underline>0</underline>
+        <overlap>1</overlap>
+    </LabelStyle>
+ </Style>
+ <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,14708736)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle> <!-- стиль подписи  -->
+       <zoomMin>NaN</zoomMin>
+       <zoomMax>NaN</zoomMax>
+       <color>FFE07000</color> 
+       <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize> 
+       <bold>0</bold> 
+       <italic>0</italic> 
+    <underline>0</underline>
+        <overlap>1</overlap>
+    </LabelStyle>
+ </Style>
+ <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,14708736,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle> <!-- стиль подписи  -->
+       <zoomMin>NaN</zoomMin>
+       <zoomMax>NaN</zoomMax>
+       <color>FFE07000</color> 
+       <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize> 
+       <bold>0</bold> 
+       <italic>0</italic> 
+    <underline>0</underline>
+        <overlap>1</overlap>
+    </LabelStyle>
+ </Style>
+ <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,16711680)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle> <!-- стиль подписи  -->
+       <zoomMin>NaN</zoomMin>
+       <zoomMax>NaN</zoomMax>
+       <color>FFFF0000</color> 
+       <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize> 
+       <bold>0</bold> 
+       <italic>0</italic> 
+    <underline>0</underline>
+        <overlap>1</overlap>
+    </LabelStyle>
+ </Style>
+ <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,16711680,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle> <!-- стиль подписи  -->
+       <zoomMin>NaN</zoomMin>
+       <zoomMax>NaN</zoomMax>
+       <color>FFFF0000</color> 
+       <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize> 
+       <bold>0</bold> 
+       <italic>0</italic> 
+    <underline>0</underline>
+        <overlap>1</overlap>
+    </LabelStyle>
+ </Style>
+ <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,16744448,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle> <!-- стиль подписи  -->
+       <zoomMin>NaN</zoomMin>
+       <zoomMax>NaN</zoomMax>
+       <color>FFFF8000</color> 
+       <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize> 
+       <bold>0</bold> 
+       <italic>0</italic> 
+    <underline>0</underline>
+        <overlap>1</overlap>
+    </LabelStyle>
+ </Style>
+ <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,255)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle> <!-- стиль подписи  -->
+       <zoomMin>NaN</zoomMin>
+       <zoomMax>NaN</zoomMax>
+       <color>FF0000FF</color> 
+       <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize> 
+       <bold>0</bold> 
+       <italic>0</italic> 
+    <underline>0</underline>
+        <overlap>1</overlap>
+    </LabelStyle>
+ </Style>
+ <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,255,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle> <!-- стиль подписи  -->
+       <zoomMin>NaN</zoomMin>
+       <zoomMax>NaN</zoomMax>
+       <color>FF0000FF</color> 
+       <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize> 
+       <bold>0</bold> 
+       <italic>0</italic> 
+    <underline>0</underline>
+        <overlap>1</overlap>
+    </LabelStyle>
+ </Style>
+ <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,0,0,8421504,16777215)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle> <!-- стиль подписи  -->
+       <zoomMin>NaN</zoomMin>
+       <zoomMax>NaN</zoomMax>
+       <color>FF808080</color> 
+       <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize> 
+       <bold>0</bold> 
+       <italic>0</italic> 
+    <underline>0</underline>
+        <overlap>1</overlap>
+    </LabelStyle>
+ </Style>
+ <Style id="TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT"
+    comment="FLOW_CHART.TR_MAPSHEM_TEXT">
+      <value>Font (&quot;Times New Roman CYR&quot;,7,0,0)</value>
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>00000000</color> <!-- TEXT -->
+        <width>1</width>
+        <pattern>solid</pattern>
+      </LineStyle>
+      <LabelStyle> <!-- стиль подписи 20 -->
+       <zoomMin>NaN</zoomMin>
+       <zoomMax>NaN</zoomMax>
+       <color>80000000</color> 
+       <isTextObject>1</isTextObject>	
+        <fontSize>-1</fontSize> 
+       <bold>1</bold> 
+       <italic>1</italic> 
+    <underline>1</underline> 
+  <overlap>1</overlap>
+    </LabelStyle>
+ </Style>
+
+ <Style id="TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS"
+    comment="FLOW_CHART.TR_MAPSHEM_GRS">
+      <value>Pen(1,2,0)Brush(2,0,16777215)</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>80000000</color>
+        <width>1</width>
+      </LineStyle>
+        <PolyStyle>
+        <color>FF000000</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+        </PolyStyle>
+ </Style>
+
+ <Style table="WKB_TR_MAPSHEM_ROUTE_PART_2"  schema="FLOW_CHART" id="WKB_TR_MAPSHEM_ROUTE_PART_2"  comment="FLOW_CHART.WKB_TR_MAPSHEM_ROUTE_PART" descr="Зарамочное оформление" topology="2" short_name="">
+      <value>vas1_line</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFFFFFFF</color>
+        <width>7</width>
+        <pattern>
+          <join>miter</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FF0094DB</color>
+        <width>11</width>
+        <pattern>
+          <join>miter</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>12</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+    </Style>
+    <Style table="WKB_TR_MAPSHEM_ROUTE_PART_2"  schema="FLOW_CHART" id="WKB_TR_MAPSHEM_ROUTE_PART_2"  comment="FLOW_CHART.WKB_TR_MAPSHEM_ROUTE_PART" descr="Зарамочное оформление" topology="2" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFFFFFFF</color>
+        <width>7</width>
+        <pattern>
+          <join>miter</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FF0094DB</color>
+        <width>11</width>
+        <pattern>
+          <join>miter</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>12</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+    </Style>
+    <Style table="WKB_TR_MAPSHEM_ROUTE_PART_2"  schema="FLOW_CHART" id="WKB_TR_MAPSHEM_ROUTE_PART_2"  comment="FLOW_CHART.WKB_TR_MAPSHEM_ROUTE_PART" descr="Зарамочное оформление" topology="2" short_name="">
+      <value>vas2_line</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFFFFFFF</color>
+        <width>7</width>
+        <pattern>
+          <join>miter</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FF2A166F</color>
+        <width>11</width>
+        <pattern>
+          <join>miter</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>12</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+    </Style>
+    <Style table="WKB_TR_MAPSHEM_ROUTE_PART_2"  schema="FLOW_CHART" id="WKB_TR_MAPSHEM_ROUTE_PART_2"  comment="FLOW_CHART.WKB_TR_MAPSHEM_ROUTE_PART" descr="Зарамочное оформление" topology="2" short_name="">
+      <value>vas3_line</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFFFFFFF</color>
+        <width>7</width>
+        <pattern>
+          <join>miter</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FFE67819</color>
+        <width>11</width>
+        <pattern>
+          <join>miter</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>12</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+    </Style>
+    <Style table="WKB_TR_MAPSHEM_ROUTE_PART_2"  schema="FLOW_CHART" id="WKB_TR_MAPSHEM_ROUTE_PART_2"  comment="FLOW_CHART.WKB_TR_MAPSHEM_ROUTE_PART" descr="Зарамочное оформление" topology="2" short_name="">
+      <value>vas4_line</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF71706E</color>
+        <width>7</width>
+        <pattern>
+          <join>miter</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FF211917</color>
+        <width>11</width>
+        <pattern>
+          <join>miter</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>12</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+    </Style>
+    <Style table="WKB_TR_MAPSHEM_ROUTE_PART"  schema="FLOW_CHART" id="WKB_TR_MAPSHEM_ROUTE_PART"  comment="FLOW_CHART.WKB_TR_MAPSHEM_ROUTE_PART" descr="Состояние межкрановых участков в соответствии с СТО 292-2007" topology="2" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFFFFFFF</color>
+        <width>4</width>
+        <pattern>
+          <join>miter</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FF0094DB</color>
+        <width>6</width>
+        <pattern>
+          <join>miter</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>7</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+    </Style>
+    <Style table="WKB_TR_MAPSHEM_ROUTE_PART"  schema="FLOW_CHART" id="WKB_TR_MAPSHEM_ROUTE_PART"  comment="FLOW_CHART.WKB_TR_MAPSHEM_ROUTE_PART" descr="Пок-тель состояния ЛЧ по 292 СТО менее 0.03" topology="2" short_name="">
+      <value>vas5_line</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF00923F</color>
+        <width>6</width>
+        <pattern>
+          <join>miter</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>7</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+    </Style>
+    <Style table="WKB_TR_MAPSHEM_ROUTE_PART"  schema="FLOW_CHART" id="WKB_TR_MAPSHEM_ROUTE_PART"  comment="FLOW_CHART.WKB_TR_MAPSHEM_ROUTE_PART" descr="Пок-тель состояния ЛЧ по 292 СТО от 0.03 до 0.06" topology="2" short_name="">
+      <value>vas6_line</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFF8C310</color>
+        <width>6</width>
+        <pattern>
+          <join>miter</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>7</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+    </Style>
+    <Style table="WKB_TR_MAPSHEM_ROUTE_PART"  schema="FLOW_CHART" id="WKB_TR_MAPSHEM_ROUTE_PART"  comment="FLOW_CHART.WKB_TR_MAPSHEM_ROUTE_PART" descr="Пок-тель состояния ЛЧ по 292 СТО от 0.06 до 0.3" topology="2" short_name="">
+      <value>vas7_line</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFDA251C</color>
+        <width>5</width>
+        <pattern>
+          <join>miter</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FFF0C96E</color>
+        <width>1</width>
+        <pattern>
+          <join>miter</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>6</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+    </Style>
+    <Style table="WKB_TR_MAPSHEM_ROUTE_PART"  schema="FLOW_CHART" id="WKB_TR_MAPSHEM_ROUTE_PART"  comment="FLOW_CHART.WKB_TR_MAPSHEM_ROUTE_PART" descr="Пок-тель состояния ЛЧ по 292 СТО более 0.6" topology="2" short_name="">
+      <value>vas8_line</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>AAFFFFFF</color>
+        <width>4</width>
+        <pattern>
+          <join>miter</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FFDA251C</color>
+        <width>6</width>
+        <pattern>
+          <join>miter</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>7</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+    </Style>
+
+ <Style table="KAP_REMONT_PLAN"  schema="FLOW_CHART" id="KAP_REMONT_PLAN"  comment="FLOW_CHART.KAP_REMONT_PLAN" descr="План капитальных ремонтов" topology="2" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>AAFFFFFF</color>
+        <width>3</width>
+        <pattern>
+          <join>miter</join>
+          <caps>square</caps>
+        </pattern>
+      </LineStyle>      
+    </Style>
+     <Style table="KAP_REMONT_PLAN"  schema="FLOW_CHART" id="KAP_REMONT_PLAN"  comment="FLOW_CHART.KAP_REMONT_PLAN" descr="Внутритрубная диагностика (ВТД)" topology="2" short_name="">
+      <value>внутритрубная диагностика (ВТД)</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+    <color>FF0000FF</color>
+    <width>3</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+    <zoomMin>NaN</zoomMin>
+    <zoomMax>NaN</zoomMax>
+    <color>FF0000FF</color>
+    <fontSize>10</fontSize>
+    <bold>1</bold>
+    <italic>0</italic>
+    <underline>0</underline>
+    <auto>1</auto>
+    <duplicate>1</duplicate>
+    <overlap>1</overlap>
+    <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN"  schema="FLOW_CHART" id="KAP_REMONT_PLAN"  comment="FLOW_CHART.KAP_REMONT_PLAN" descr="Диагностика оборудования КС" topology="2" short_name="">
+      <value>диагностика оборудования КС</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF0000FF</color>
+        <width>3</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF0000FF</color>
+        <fontSize>10</fontSize>
+        <bold>1</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+    <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN"  schema="FLOW_CHART" id="KAP_REMONT_PLAN"  comment="FLOW_CHART.KAP_REMONT_PLAN" descr="Внутритрубная диагностика(ВТД технологических трубопроводов и/или подключающих шлейфов КЦ)" topology="2" short_name="">
+      <value>внутритрубная диагностика (ВТД технологических трубопроводов и/или подключающих шлейфов КЦ)</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF0000FF</color>
+        <width>3</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF0000FF</color>
+        <fontSize>10</fontSize>
+        <bold>1</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+    <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN"  schema="FLOW_CHART" id="KAP_REMONT_PLAN"  comment="FLOW_CHART.KAP_REMONT_PLAN" descr="Замена участка МГ" topology="2" short_name="">
+      <value>замена участка МГ</value>
+       <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFFF0000</color>
+        <width>3</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFFF0000</color>
+        <fontSize>10</fontSize>
+        <bold>1</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+    <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN"  schema="FLOW_CHART" id="KAP_REMONT_PLAN"  comment="FLOW_CHART.KAP_REMONT_PLAN" descr="Замена катушки" topology="2" short_name="">
+      <value>замена катушки</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFFF0000</color>
+        <width>3</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFFF0000</color>
+        <fontSize>10</fontSize>
+        <bold>1</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+    <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN"  schema="FLOW_CHART" id="KAP_REMONT_PLAN"  comment="FLOW_CHART.KAP_REMONT_PLAN" descr="Ремонт по результатам ВТД" topology="2" short_name="">
+      <value>ремонт по результатам ВТД</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFFF0000</color>
+        <width>3</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFFF0000</color>
+        <fontSize>10</fontSize>
+        <bold>1</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+    <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN"  schema="FLOW_CHART" id="KAP_REMONT_PLAN"  comment="FLOW_CHART.KAP_REMONT_PLAN" descr="Замена запорной арматуры(ЗРА)" topology="2" short_name="">
+      <value>замена запорной арматуры(ЗРА)</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFFF0000</color>
+        <width>3</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFFF0000</color>
+        <fontSize>10</fontSize>
+        <bold>1</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+    <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN"  schema="FLOW_CHART" id="KAP_REMONT_PLAN"  comment="FLOW_CHART.KAP_REMONT_PLAN" descr="Устранение утечки" topology="2" short_name="">
+      <value>устранение утечки</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFFF0000</color>
+        <width>3</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFFF0000</color>
+        <fontSize>10</fontSize>
+        <bold>1</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+    <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN"  schema="FLOW_CHART" id="KAP_REMONT_PLAN"  comment="FLOW_CHART.KAP_REMONT_PLAN" descr="Установка муфт(бандажа)" topology="2" short_name="">
+      <value>установка муфт(бандажа)</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFFF0000</color>
+        <width>3</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFFF0000</color>
+        <fontSize>10</fontSize>
+        <bold>1</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+    <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN"  schema="FLOW_CHART" id="KAP_REMONT_PLAN"  comment="FLOW_CHART.KAP_REMONT_PLAN" descr="Капитальный ремонт и/или переизоляция (КРТТ)" topology="2" short_name="">
+      <value>капитальный ремонт и/или переизоляция (КРТТ)</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFFF0000</color>
+        <width>3</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFFF0000</color>
+        <fontSize>10</fontSize>
+        <bold>1</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+    <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN"  schema="FLOW_CHART" id="KAP_REMONT_PLAN"  comment="FLOW_CHART.KAP_REMONT_PLAN" descr="Капитальный ремонт" topology="2" short_name="">
+      <value>Капитальный ремонт</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFFF0000</color>
+        <width>3</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFFF0000</color>
+        <fontSize>10</fontSize>
+        <bold>1</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+    <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN"  schema="FLOW_CHART" id="KAP_REMONT_PLAN"  comment="FLOW_CHART.KAP_REMONT_PLAN" descr="капитальный ремонт" topology="2" short_name="">
+      <value>капитальный ремонт</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFFF0000</color>
+        <width>3</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFFF0000</color>
+        <fontSize>10</fontSize>
+        <bold>1</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+    <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN"  schema="FLOW_CHART" id="KAP_REMONT_PLAN"  comment="FLOW_CHART.KAP_REMONT_PLAN" descr="Ремонт сварного стыка" topology="2" short_name="">
+      <value>ремонт сварного стыка</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFFF0000</color>
+        <width>3</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FFFF0000</color>
+        <fontSize>10</fontSize>
+        <bold>1</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+    <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN"  schema="FLOW_CHART" id="KAP_REMONT_PLAN"  comment="FLOW_CHART.KAP_REMONT_PLAN" descr="Комплекс ППР ПАО Газпром" topology="2" short_name="">
+      <value>комплекс ППР ПАО Газпром</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF00FF00</color>
+        <width>3</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF00FF00</color>
+        <fontSize>10</fontSize>
+        <bold>1</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+    <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN"  schema="FLOW_CHART" id="KAP_REMONT_PLAN"  comment="FLOW_CHART.KAP_REMONT_PLAN" descr="Прочие" topology="2" short_name="">
+      <value>прочие</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF00FF00</color>
+        <width>3</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF00FF00</color>
+        <fontSize>10</fontSize>
+        <bold>1</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+    <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+  <Style table="KAP_REMONT_PLAN"  schema="FLOW_CHART" id="KAP_REMONT_PLAN"  comment="FLOW_CHART.KAP_REMONT_PLAN" descr="ППР КС ТОиР оборудования" topology="2" short_name="">
+      <value>ППР КС ТОиР оборудования</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF00FF00</color>
+        <width>3</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+        <pattern>
+          <join>butt</join>
+          <caps>butt</caps>
+        </pattern>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF00FF00</color>
+        <fontSize>10</fontSize>
+        <bold>1</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+    <align>center|middle</align>
+      </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN" schema="FLOW_CHART" id="KAP_REMONT_PLAN" comment="FLOW_CHART.KAP_REMONT_PLAN" descr="комплекс ППР ПАО Газпром" topology="1" short_name="">
+          <value>комплекс ППР ПАО Газпром</value>
+          <zoomMin>NAN</zoomMin>
+          <zoomMax>NAN</zoomMax>
+          <IconStyle>
+            <Icon>
+              <href>Public/assets/POI/4869.svg</href>
+              <form>bitmap</form>
+              <size>24</size>
+            </Icon>
+          </IconStyle>
+         <LabelStyle>
+            <zoomMin>NaN</zoomMin>
+            <zoomMax>NaN</zoomMax>
+            <color>FF00FF00</color>
+            <fontSize>10</fontSize>
+            <bold>1</bold>
+            <italic>1</italic>
+            <underline>0</underline>
+            <duplicate>0</duplicate>
+            <overlap>0</overlap>
+            <auto>1</auto>
+            <parallel>0</parallel>
+            <align>center|middle</align>
+            <rotation>0</rotation>
+          </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN" schema="FLOW_CHART" id="KAP_REMONT_PLAN" comment="FLOW_CHART.KAP_REMONT_PLAN" descr="прочие" topology="1" short_name="">
+          <value>прочие</value>
+          <zoomMin>NAN</zoomMin>
+          <zoomMax>NAN</zoomMax>
+          <IconStyle>
+            <Icon>
+              <href>Public/assets/POI/4869.svg</href>
+              <form>bitmap</form>
+              <size>24</size>
+            </Icon>
+          </IconStyle>
+         <LabelStyle>
+            <zoomMin>NaN</zoomMin>
+            <zoomMax>NaN</zoomMax>
+            <color>FF00FF00</color>
+            <fontSize>10</fontSize>
+            <bold>1</bold>
+            <italic>1</italic>
+            <underline>0</underline>
+            <duplicate>0</duplicate>
+            <overlap>0</overlap>
+            <auto>1</auto>
+            <parallel>0</parallel>
+            <align>center|middle</align>
+            <rotation>0</rotation>
+          </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN" schema="FLOW_CHART" id="KAP_REMONT_PLAN" comment="FLOW_CHART.KAP_REMONT_PLAN" descr="ППР КС ТОиР оборудования" topology="1" short_name="">
+          <value>ППР КС ТОиР оборудования</value>
+          <zoomMin>NAN</zoomMin>
+          <zoomMax>NAN</zoomMax>
+          <IconStyle>
+            <Icon>
+              <href>Public/assets/POI/4869.svg</href>
+              <form>bitmap</form>
+              <size>24</size>
+            </Icon>
+          </IconStyle>
+         <LabelStyle>
+            <zoomMin>NaN</zoomMin>
+            <zoomMax>NaN</zoomMax>
+            <color>FF00FF00</color>
+            <fontSize>10</fontSize>
+            <bold>1</bold>
+            <italic>1</italic>
+            <underline>0</underline>
+            <duplicate>0</duplicate>
+            <overlap>0</overlap>
+            <auto>1</auto>
+            <parallel>0</parallel>
+            <align>center|middle</align>
+            <rotation>0</rotation>
+          </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN" schema="FLOW_CHART" id="KAP_REMONT_PLAN" comment="FLOW_CHART.KAP_REMONT_PLAN" descr="диагностика оборудования КС" topology="1" short_name="">
+          <value>диагностика оборудования КС</value>
+          <zoomMin>NAN</zoomMin>
+          <zoomMax>NAN</zoomMax>
+          <IconStyle>
+            <Icon>
+              <href>Public/assets/POI/4870.svg</href>
+              <form>bitmap</form>
+              <size>24</size>
+            </Icon>
+          </IconStyle>
+         <LabelStyle>
+            <zoomMin>NaN</zoomMin>
+            <zoomMax>NaN</zoomMax>
+            <color>FF0000FF</color>
+            <fontSize>10</fontSize>
+            <bold>1</bold>
+            <italic>1</italic>
+            <underline>0</underline>
+            <duplicate>0</duplicate>
+            <overlap>0</overlap>
+            <auto>1</auto>
+            <parallel>0</parallel>
+            <align>center|middle</align>
+            <rotation>0</rotation>
+          </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN" schema="FLOW_CHART" id="KAP_REMONT_PLAN" comment="FLOW_CHART.KAP_REMONT_PLAN" descr="внутритрубная диагностика (ВТД технологических трубопроводов и/или подключающих шлейфов КЦ)" topology="1" short_name="">
+          <value>внутритрубная диагностика (ВТД технологических трубопроводов и/или подключающих шлейфов КЦ)</value>
+          <zoomMin>NAN</zoomMin>
+          <zoomMax>NAN</zoomMax>
+          <IconStyle>
+            <Icon>
+              <href>Public/assets/POI/4870.svg</href>
+              <form>bitmap</form>
+              <size>24</size>
+            </Icon>
+          </IconStyle>
+         <LabelStyle>
+            <zoomMin>NaN</zoomMin>
+            <zoomMax>NaN</zoomMax>
+            <color>FF0000FF</color>
+            <fontSize>10</fontSize>
+            <bold>1</bold>
+            <italic>1</italic>
+            <underline>0</underline>
+            <duplicate>0</duplicate>
+            <overlap>0</overlap>
+            <auto>1</auto>
+            <parallel>0</parallel>
+            <align>center|middle</align>
+            <rotation>0</rotation>
+          </LabelStyle>
+    </Style>
+
+    <Style table="KAP_REMONT_PLAN" schema="FLOW_CHART" id="KAP_REMONT_PLAN" comment="FLOW_CHART.KAP_REMONT_PLAN" descr="капитальный ремонт и/или переизоляция (КРТТ)" topology="1" short_name="">
+          <value>капитальный ремонт и/или переизоляция (КРТТ)</value>
+          <zoomMin>NAN</zoomMin>
+          <zoomMax>NAN</zoomMax>
+          <IconStyle>
+            <Icon>
+              <href>Public/assets/POI/4868.svg</href>
+              <form>bitmap</form>
+              <size>24</size>
+            </Icon>
+          </IconStyle>
+         <LabelStyle>
+            <zoomMin>NaN</zoomMin>
+            <zoomMax>NaN</zoomMax>
+            <color>FFFF0000</color>
+            <fontSize>10</fontSize>
+            <bold>1</bold>
+            <italic>1</italic>
+            <underline>0</underline>
+            <duplicate>0</duplicate>
+            <overlap>0</overlap>
+            <auto>1</auto>
+            <parallel>0</parallel>
+            <align>center|middle</align>
+            <rotation>0</rotation>
+          </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN" schema="FLOW_CHART" id="KAP_REMONT_PLAN" comment="FLOW_CHART.KAP_REMONT_PLAN" descr="Капитальный ремонт" topology="1" short_name="">
+          <value>Капитальный ремонт</value>
+          <zoomMin>NAN</zoomMin>
+          <zoomMax>NAN</zoomMax>
+          <IconStyle>
+            <Icon>
+              <href>Public/assets/POI/4868.svg</href>
+              <form>bitmap</form>
+              <size>24</size>
+            </Icon>
+          </IconStyle>
+         <LabelStyle>
+            <zoomMin>NaN</zoomMin>
+            <zoomMax>NaN</zoomMax>
+            <color>FFFF0000</color>
+            <fontSize>10</fontSize>
+            <bold>1</bold>
+            <italic>1</italic>
+            <underline>0</underline>
+            <duplicate>0</duplicate>
+            <overlap>0</overlap>
+            <auto>1</auto>
+            <parallel>0</parallel>
+            <align>center|middle</align>
+            <rotation>0</rotation>
+          </LabelStyle>
+    </Style>
+    <Style table="KAP_REMONT_PLAN" schema="FLOW_CHART" id="KAP_REMONT_PLAN" comment="FLOW_CHART.KAP_REMONT_PLAN" descr="капитальный ремонт" topology="1" short_name="">
+          <value>капитальный ремонт</value>
+          <zoomMin>NAN</zoomMin>
+          <zoomMax>NAN</zoomMax>
+          <IconStyle>
+            <Icon>
+              <href>Public/assets/POI/4868.svg</href>
+              <form>bitmap</form>
+              <size>24</size>
+            </Icon>
+          </IconStyle>
+         <LabelStyle>
+            <zoomMin>NaN</zoomMin>
+            <zoomMax>NaN</zoomMax>
+            <color>FFFF0000</color>
+            <fontSize>10</fontSize>
+            <bold>1</bold>
+            <italic>1</italic>
+            <underline>0</underline>
+            <duplicate>0</duplicate>
+            <overlap>0</overlap>
+            <auto>1</auto>
+            <parallel>0</parallel>
+            <align>center|middle</align>
+            <rotation>0</rotation>
+          </LabelStyle>
+    </Style>
+  </Document>
+</kml>

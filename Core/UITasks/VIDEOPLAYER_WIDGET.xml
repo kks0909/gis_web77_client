@@ -1,0 +1,11 @@
+﻿<ROOT prevTask="close" version="7.7.3.0">
+  <hbox percentWidth="100" percentHeight="100">
+    <panel id="VIDEOPLAYER" percentWidth="100" percentHeight="100" reload="true">
+      <settings>
+        <requestTrackPoints>LIB_DOC_GEO.xml#LIB_DOC_GEO_VIDEO</requestTrackPoints>
+        <title>Видеорегистратор</title>
+        <displayLayer>COSMETIC_Layers.xml#LIB_DOC_GEO_VIDEO_OBJECT</displayLayer>
+      </settings>
+    </panel>
+  </hbox>
+</ROOT>

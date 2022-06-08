@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<kml version="7.7.6.8">
+<Document>
+	<Style id="CAS_MAIN" schema="WEB50" table="WATERWAY" comment="CAS.MAIN" descr="Продольный профиль газопровода водного перехода">
+		<zoomMin>NAN</zoomMin>
+		<zoomMax>NAN</zoomMax>
+		<LineStyle>
+			<color>FFFF9836</color>
+			<width>1</width>
+		</LineStyle>
+		<LineStyle>
+			<color>FFFF9836</color>
+			<width>1</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>FFFFDB4D</color>
+			<fill>1</fill>
+			<outline>1</outline>
+			<fillPattern>solid</fillPattern>
+		</PolyStyle>
+	</Style>
+	<Style id="CAS_MAIN" schema="WEB50" table="WATERWAY" comment="CAS.MAIN" descr="Продольный профиль газопровода водного перехода">
+		<zoomMin>NAN</zoomMin>
+		<zoomMax>NAN</zoomMax>
+		<value>PROFILE</value>
+		<LineStyle>
+			<color>FFFF9836</color>
+			<width>1</width>
+		</LineStyle>
+		<LineStyle>
+			<color>FFFF9836</color>
+			<width>1</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>FFFFDB4D</color>
+			<fill>1</fill>
+			<outline>1</outline>
+			<fillPattern>solid</fillPattern>
+		</PolyStyle>
+	</Style>
+  </Document>
+</kml>

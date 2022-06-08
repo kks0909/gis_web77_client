@@ -1,0 +1,24 @@
+﻿<ROOT prevTask="close" version="6.0.2.0">
+	<hbox percentWidth="100" percentHeight="100">
+		<panel id="ADM_ROUTE"  percentWidth="100" percentHeight="100" reload="true">
+			<settings>
+				<requestFilterByType>PODS_SEM_DICT.xml#PODS_ROUTE_TYPE_CL</requestFilterByType>
+				<requestFilterByLine>GAZPROM_ADM_SEM.xml#PODS_LINE_WITHOUT_DEFAULT</requestFilterByLine>
+				<requestGetRoutes>GAZPROM_ADM_SEM.xml#PODS_ROUTE</requestGetRoutes>
+				<requestDeleteRoutes>PODS_SEM.xml#PODS_ROUTE</requestDeleteRoutes>
+			</settings>
+		</panel>
+		<hbox percentWidth="0" percentHeight="100">
+			<panel id="PROP" percentWidth="100" percentHeight="100">
+				<settings>
+					<editable>true</editable>
+					<title></title>
+					<width>790</width>
+					<height>250</height>
+					<!-- Флаг отображения системных свойств в формах -->
+					<add key="Show_System_Info" value="true" />
+				</settings>
+			</panel>
+		</hbox>
+	</hbox>
+</ROOT>

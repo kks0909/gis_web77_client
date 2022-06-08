@@ -1,0 +1,572 @@
+﻿<root version="postgres 7.7.3.0">
+  <data id="LIB_DOC" comment="WEB50.LIB_DOC" schema="WEB50" table="LIB_DOC" descr="Геокодированные документы">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <var name="COLUMNS_FILTER" default="*"/>
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                   AND pr.SELECT_PERMITTED = '1')
+SELECT {COLUMNS_FILTER} FROM (                   
+SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN
+          ,all_in_one.ID,all_in_one.NAME,all_in_one.category,all_in_one.descr,all_in_one.doc_type,all_in_one.file_name, all_in_one.CUSER_ID,all_in_one.CTIME
+  FROM (
+SELECT * FROM ( 
+SELECT  ld.DOC_ID ID
+        ,ld.NAME
+	,ld.DESCR
+        ,ld.PROVIDER
+        ,ld.TIME_STAMP
+        ,ld.GID
+        ,(select descr from web50.lib_doc_type_ref where doc_type_id=ld.DOC_TYPE_ID) doc_type
+        ,(select d.name from web50.lib_doc d where d.doc_id= ld.PARENT_DOC_ID) CATEGORY
+        ,ld.CTIME
+        ,ld.CUSER_ID
+        ,ld.MUSER_ID
+        ,ld.MTIME
+        ,ld.DOC_ID
+        ,ldv.STORAGE_ID
+        ,ldv.FILE_NAME
+        ,u.login CUSER_ID_LBL 
+        ,sr.descr STATUS_ID_LBL
+        ,TR.DESCR DOC_TYPE_ID_LBL
+        FROM WEB50.LIB_DOC ld
+             LEFT JOIN WEB50.LIB_DOC_VERSION ldv
+               ON ldv.DOC_ID=ld.DOC_ID
+             JOIN web50.b_status_ref sr
+               ON ld.status_id = sr.status_id
+             LEFT JOIN web50.b_user_private u
+              ON ld.cuser_id = u.user_id       
+             JOIN web50.lib_doc_type_ref tr
+               ON tr.doc_type_id = ld.doc_type_id 
+       WHERE ld.DOC_TYPE_ID NOT IN (37,38,41,0)
+         AND (((ld.status_id = 1
+                      OR (ld.cuser_id = :USER_ID
+                         AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))) d
+WHERE {FILTER}) all_in_one) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="LIB_DOC_CNT" comment="WEB50.LIB_DOC" schema="WEB50" table="LIB_DOC" descr="Геокодированные документы">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                   AND pr.SELECT_PERMITTED = '1')
+SELECT count(*) CNT FROM ( 
+SELECT  ld.DOC_ID ID
+        ,ld.NAME
+        ,ld.DESCR
+        ,ld.PROVIDER
+        ,ld.STATUS_ID
+        ,ld.TIME_STAMP
+        ,ld.GID
+        ,ld.DOC_TYPE_ID
+        ,ld.PARENT_DOC_ID
+        ,ld.CTIME
+        ,ld.CUSER_ID
+        ,ld.MUSER_ID
+        ,ld.MTIME
+        ,ld.DOC_ID
+        ,ldv.STORAGE_ID
+        ,ldv.FILE_NAME
+        ,u.login CUSER_ID_LBL 
+        ,sr.descr STATUS_ID_LBL
+        ,TR.DESCR DOC_TYPE_ID_LBL
+        FROM WEB50.LIB_DOC ld
+             LEFT JOIN WEB50.LIB_DOC_VERSION ldv
+               ON ldv.DOC_ID=ld.DOC_ID
+             JOIN web50.b_status_ref sr
+               ON ld.status_id = sr.status_id
+             LEFT JOIN web50.b_user_private u
+              ON ld.cuser_id = u.user_id       
+             JOIN web50.lib_doc_type_ref tr
+               ON tr.doc_type_id = ld.doc_type_id 
+
+       WHERE ld.DOC_TYPE_ID NOT IN (37,38,41,0)
+         AND (((ld.status_id = 1
+                      OR (ld.cuser_id = :USER_ID
+                         AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))) d
+WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="LIB_DOC_WRL" comment="WEB50.LIB_DOC" schema="WEB50" table="LIB_DOC" descr="Документы 3D-сцен">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <var name="COLUMNS_FILTER" default="*"/>
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                   AND pr.SELECT_PERMITTED = '1')
+SELECT {COLUMNS_FILTER} FROM (                   
+SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN
+          ,all_in_one.ID,all_in_one.CUSER_ID,all_in_one.STATUS_ID,all_in_one.NAME,all_in_one.CTIME,all_in_one.FILE_NAME
+  FROM (
+SELECT * FROM ( 
+SELECT  ld.DOC_ID ID
+        ,ld.NAME
+        ,ld.DESCR
+        ,ld.PROVIDER
+        ,ld.STATUS_ID
+        ,ld.TIME_STAMP
+        ,ld.GID
+        ,ld.DOC_TYPE_ID
+        ,ld.PARENT_DOC_ID
+        ,ld.CTIME
+        ,ld.CUSER_ID
+        ,ld.MUSER_ID
+        ,ld.MTIME
+        ,ld.DOC_ID
+        ,ldv.STORAGE_ID
+        ,ldv.FILE_NAME
+        ,u.login CUSER_ID_LBL 
+        ,sr.descr STATUS_ID_LBL
+        ,TR.DESCR DOC_TYPE_ID_LBL
+        FROM WEB50.LIB_DOC ld
+             LEFT JOIN WEB50.LIB_DOC_VERSION ldv
+               ON ldv.DOC_ID=ld.DOC_ID
+             JOIN web50.b_status_ref sr
+               ON ld.status_id = sr.status_id
+             LEFT JOIN web50.b_user_private u
+              ON ld.cuser_id = u.user_id       
+             JOIN web50.lib_doc_type_ref tr
+               ON tr.doc_type_id = ld.doc_type_id 
+       WHERE ld.DOC_TYPE_ID = 37
+         AND (((ld.status_id = 1
+                      OR (ld.cuser_id = :USER_ID
+                         AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))) d
+WHERE {FILTER}) all_in_one) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="LIB_DOC_WRL_CNT" comment="WEB50.LIB_DOC" schema="WEB50" table="LIB_DOC" descr="Документы 3D-сцен">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                   AND pr.SELECT_PERMITTED = '1')
+SELECT count(*) CNT FROM ( 
+SELECT  ld.DOC_ID ID
+        ,ld.NAME
+        ,ld.DESCR
+        ,ld.PROVIDER
+        ,ld.STATUS_ID
+        ,ld.TIME_STAMP
+        ,ld.GID
+        ,ld.DOC_TYPE_ID
+        ,ld.PARENT_DOC_ID
+        ,ld.CTIME
+        ,ld.CUSER_ID
+        ,ld.MUSER_ID
+        ,ld.MTIME
+        ,ld.DOC_ID
+        ,ldv.STORAGE_ID
+        ,ldv.FILE_NAME
+        ,u.login CUSER_ID_LBL 
+        ,sr.descr STATUS_ID_LBL
+        ,TR.DESCR DOC_TYPE_ID_LBL
+        FROM WEB50.LIB_DOC ld
+             LEFT JOIN WEB50.LIB_DOC_VERSION ldv
+               ON ldv.DOC_ID=ld.DOC_ID
+             JOIN web50.b_status_ref sr
+               ON ld.status_id = sr.status_id
+             LEFT JOIN web50.b_user_private u
+              ON ld.cuser_id = u.user_id       
+             JOIN web50.lib_doc_type_ref tr
+               ON tr.doc_type_id = ld.doc_type_id 
+
+       WHERE ld.DOC_TYPE_ID = 37
+         AND (((ld.status_id = 1
+                      OR (ld.cuser_id = :USER_ID
+                         AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))) d
+WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="LIB_DOC_IMG" comment="WEB50.LIB_DOC" schema="WEB50" table="LIB_DOC" descr="Навигационные карты (IMG)">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <var name="COLUMNS_FILTER" default="*"/>
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                   AND pr.SELECT_PERMITTED = '1')
+SELECT {COLUMNS_FILTER} FROM (                   
+SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN
+          ,all_in_one.ID,all_in_one.CUSER_ID,all_in_one.STATUS_ID,all_in_one.NAME,all_in_one.CTIME,all_in_one.FILE_NAME
+  FROM (
+SELECT * FROM ( 
+SELECT  ld.DOC_ID ID
+        ,ld.NAME
+        ,ld.DESCR
+        ,ld.PROVIDER
+        ,ld.STATUS_ID
+        ,ld.TIME_STAMP
+        ,ld.GID
+        ,ld.DOC_TYPE_ID
+        ,ld.PARENT_DOC_ID
+        ,ld.CTIME
+        ,ld.CUSER_ID
+        ,ld.MUSER_ID
+        ,ld.MTIME
+        ,ld.DOC_ID
+        ,ldv.STORAGE_ID
+        ,ldv.FILE_NAME
+        ,u.login CUSER_ID_LBL 
+        ,sr.descr STATUS_ID_LBL
+        ,TR.DESCR DOC_TYPE_ID_LBL
+        FROM WEB50.LIB_DOC ld
+             LEFT JOIN WEB50.LIB_DOC_VERSION ldv
+               ON ldv.DOC_ID=ld.DOC_ID
+             JOIN web50.b_status_ref sr
+               ON ld.status_id = sr.status_id
+             LEFT JOIN web50.b_user_private u
+              ON ld.cuser_id = u.user_id       
+             JOIN web50.lib_doc_type_ref tr
+               ON tr.doc_type_id = ld.doc_type_id 
+       WHERE ld.DOC_TYPE_ID = 38
+         AND (((ld.status_id = 1
+                      OR (ld.cuser_id = :USER_ID
+                         AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))) d
+WHERE {FILTER}) all_in_one) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="LIB_DOC_IMG_CNT" comment="WEB50.LIB_DOC" schema="WEB50" table="LIB_DOC" descr="Навигационные карты (IMG)">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                   AND pr.SELECT_PERMITTED = '1')
+SELECT count(*) CNT FROM ( 
+SELECT  ld.DOC_ID ID
+        ,ld.NAME
+        ,ld.DESCR
+        ,ld.PROVIDER
+        ,ld.STATUS_ID
+        ,ld.TIME_STAMP
+        ,ld.GID
+        ,ld.DOC_TYPE_ID
+        ,ld.PARENT_DOC_ID
+        ,ld.CTIME
+        ,ld.CUSER_ID
+        ,ld.MUSER_ID
+        ,ld.MTIME
+        ,ld.DOC_ID
+        ,ldv.STORAGE_ID
+        ,ldv.FILE_NAME
+        ,u.login CUSER_ID_LBL 
+        ,sr.descr STATUS_ID_LBL
+        ,TR.DESCR DOC_TYPE_ID_LBL
+        FROM WEB50.LIB_DOC ld
+             LEFT JOIN WEB50.LIB_DOC_VERSION ldv
+               ON ldv.DOC_ID=ld.DOC_ID
+             JOIN web50.b_status_ref sr
+               ON ld.status_id = sr.status_id
+             LEFT JOIN web50.b_user_private u
+              ON ld.cuser_id = u.user_id       
+             JOIN web50.lib_doc_type_ref tr
+               ON tr.doc_type_id = ld.doc_type_id 
+
+       WHERE ld.DOC_TYPE_ID = 38
+         AND (((ld.status_id = 1
+                      OR (ld.cuser_id = :USER_ID
+                         AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))) d
+WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="LIB_DOC_GEO_VIDEO" comment="WEB50.LIB_DOC" schema="WEB50" table="LIB_DOC" descr="Данные видеомониторинга">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <var name="COLUMNS_FILTER" default="*"/>
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                   AND pr.SELECT_PERMITTED = '1')
+SELECT {COLUMNS_FILTER} FROM (                   
+SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN
+          ,all_in_one.ID,all_in_one.CUSER_ID,all_in_one.STATUS_ID,all_in_one.NAME,all_in_one.CTIME,all_in_one.FILE_NAME
+  FROM (
+SELECT * FROM ( 
+SELECT  ld.DOC_ID ID
+        ,ld.NAME
+        ,ld.DESCR
+        ,ld.PROVIDER
+        ,ld.STATUS_ID
+        ,ld.TIME_STAMP
+        ,ld.GID
+        ,ld.DOC_TYPE_ID
+        ,ld.PARENT_DOC_ID
+        ,ld.CTIME
+        ,ld.CUSER_ID
+        ,ld.MUSER_ID
+        ,ld.MTIME
+        ,ld.DOC_ID
+        ,ldv.STORAGE_ID
+        ,ldv.FILE_NAME
+        ,u.login CUSER_ID_LBL 
+        ,sr.descr STATUS_ID_LBL
+        ,TR.DESCR DOC_TYPE_ID_LBL
+        FROM WEB50.LIB_DOC ld
+             LEFT JOIN WEB50.LIB_DOC_VERSION ldv
+               ON ldv.DOC_ID=ld.DOC_ID
+             JOIN web50.b_status_ref sr
+               ON ld.status_id = sr.status_id
+             LEFT JOIN web50.b_user_private u
+              ON ld.cuser_id = u.user_id       
+             JOIN web50.lib_doc_type_ref tr
+               ON tr.doc_type_id = ld.doc_type_id 
+       WHERE ld.DOC_TYPE_ID = 41
+         AND (((ld.status_id = 1
+                      OR (ld.cuser_id = :USER_ID
+                         AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))) d
+WHERE {FILTER}) all_in_one) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="LIB_DOC_GEO_VIDEO_CNT" comment="WEB50.LIB_DOC" schema="WEB50" table="LIB_DOC" descr="Данные видеомониторинга">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                   AND pr.SELECT_PERMITTED = '1')
+SELECT count(*) CNT FROM ( 
+SELECT  ld.DOC_ID ID
+        ,ld.NAME
+        ,ld.DESCR
+        ,ld.PROVIDER
+        ,ld.STATUS_ID
+        ,ld.TIME_STAMP
+        ,ld.GID
+        ,ld.DOC_TYPE_ID
+        ,ld.PARENT_DOC_ID
+        ,ld.CTIME
+        ,ld.CUSER_ID
+        ,ld.MUSER_ID
+        ,ld.MTIME
+        ,ld.DOC_ID
+        ,ldv.STORAGE_ID
+        ,ldv.FILE_NAME
+        ,u.login CUSER_ID_LBL 
+        ,sr.descr STATUS_ID_LBL
+        ,TR.DESCR DOC_TYPE_ID_LBL
+        FROM WEB50.LIB_DOC ld
+             LEFT JOIN WEB50.LIB_DOC_VERSION ldv
+               ON ldv.DOC_ID=ld.DOC_ID
+             JOIN web50.b_status_ref sr
+               ON ld.status_id = sr.status_id
+             LEFT JOIN web50.b_user_private u
+              ON ld.cuser_id = u.user_id       
+             JOIN web50.lib_doc_type_ref tr
+               ON tr.doc_type_id = ld.doc_type_id 
+       WHERE ld.DOC_TYPE_ID = 41
+         AND (((ld.status_id = 1
+                      OR (ld.cuser_id = :USER_ID
+                         AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))) d
+WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>  
+</root>

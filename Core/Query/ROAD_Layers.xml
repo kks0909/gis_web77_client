@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.4.10" descr="Диагностика и ремонт дорожных переходов">
+	<layer id="ROAD" comment="ROAD" descr="Дороги" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="ROAD" cover="false" fitMap="false" order="20" visible="true" topology="line" classField="TYPE_CL" labelField="" useServerCache="false">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#ROAD" />
+    <dataProvider type="style" source="ROAD_STYLE.xml#ROAD" />
+    <dataProvider type="semantic" source="ROAD_SEM.xml#ROAD" />
+    <dataProvider type="spatial" source="ROAD_GEO.xml#ROAD" />
+  </layer>
+  <layer id="ROAD_CROSS" comment="ROAD.СROSS" descr="Переходы дорожные" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="ROAD_CROSS" cover="false" fitMap="true" order="10" visible="true" topology="point" classField="TYPE_CL" labelField="" useServerCache="false">
+    <filter>
+      <pattern>ROAD_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>ROAD_ID</field>
+      <replace>FILTER</replace>
+    </filter>
+    <filter>
+      <pattern>LINE_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>LINE_ID</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#ROAD_CROSS" />
+    <dataProvider type="style" source="ROAD_STYLE.xml#ROAD_CROSS" />
+    <dataProvider type="semantic" source="ROAD_SEM.xml#ROAD_CROSS" />
+    <dataProvider type="spatial" source="ROAD_GEO.xml#ROAD_CROSS" />
+  </layer>
+ </root>

@@ -1,0 +1,182 @@
+<form version="7.7.5.0" class="editStyleForm" style="height:255px;" xmlns="http://www.w3.org/1999/html">
+    <div id='editStyleTabs'>
+        <ul>
+            <li style="margin-left: 30px;">Стиль</li>
+            <li>Подпись</li>
+        </ul>
+        <div>
+            <div id="editStylePointDiv">
+                <div style="margin-top: 10px; margin-left: 30px;">
+                    <label style="float: left;">Форма значка:</label>
+                    <div style="float: left;">
+                        <select id="editStyleForm" style="width: 156px; height: 22px;">
+                            <option value="0">Растровая иконка</option>
+                            <option value="1">Треугольник</option>
+                            <option value="2">Круг</option>
+                            <option value="3">Прямоугольник</option>
+                        </select>
+                    </div>
+                    <div style="float: left;margin-left: 10px">
+                        <input type="text" id="iconStyleHref" style="height: 15px;"/>
+                    </div>
+                    <div>
+                        <input type="button" id="iconStyleSelectIcon" style="width: 99px; margin-left: 10px;" class="map-dialog-button" value="Выбрать иконку"/>
+                    </div>
+                </div>
+                <div style="margin-top: 5px; margin-left: 76px;">
+                    <label style="float: left;margin-top: 5px; ">Цвет:</label>
+                    <div style="margin: 3px; float: left;" id="iconStyleColorDrop">
+                        <div style="padding: 3px;">
+                            <div id="iconStyleColor"></div>
+                        </div>
+                    </div>
+
+                    <label style="margin-top: 5px; margin-left: 13px; float: left;">Прозрачность:</label>
+                    <div id="iconStyleAlpha"></div>
+                </div>
+                <div style="margin-top: 5px; margin-left: 24px;">
+                    <label style="float: left;margin-top: 5px; ">Размер иконки:</label>
+                    <div style="float: left;" id="iconStyleSize"></div>
+                    <label style="margin-left: 31px; float: left;margin-top: 5px; ">Толщина рамки:</label>
+                    <div style="float: left;"  id="iconStyleWidth"></div>
+                 </div>
+            </div>
+            <div id="editStyleLineDiv">
+                <div style="margin-top: 10px;">
+                    <label style="margin-top: 4px; margin-left: 40px; float: left;">Цвет линии:</label>
+                    <div style="float: left;" id="iconStyleLineColorDrop">
+                        <div style="padding: 3px;">
+                            <div id="iconStyleLineColor"></div>
+                        </div>
+                    </div>
+                    <label style="margin-top: 4px; margin-left: 20px;float: left;" >Прозрачность линии:</label>
+                    <div style="float: left;" id="iconStyleLineAlpha"></div>
+                    <label style="margin-top: 4px; margin-left: 20px;float: left;">Толщина линии:</label>
+                    <div  id="iconStyleLineWidth"></div>
+                </div>
+                <div style="margin-top: 10px;">
+                    <div id="iconStyleBorderCheckbox">Включить кайму для линии</div>
+                </div>
+                <div style="margin-top: 10px;">
+                    <label style="margin-top: 4px; margin-left: 40px; float: left;">Цвет каймы:</label>
+                    <div style="float: left;" id="iconStyleLineBorderColorDrop">
+                        <div style="padding: 3px;">
+                            <div id="iconStyleLineBorderColor"></div>
+                        </div>
+                    </div>
+
+                    <label style="margin-top: 4px; margin-left: 17px;float: left;">Прозрачность каймы:</label>
+                    <div style="float: left;" id="iconStyleLineBorderAlpha"></div>
+                    <label style="margin-top: 4px; margin-left: 18px;float: left;">Толщина каймы:</label>
+                    <div  id="iconStyleLineBorderWidth"></div>
+                </div>
+            </div>
+            <div id="editStylePolygonDiv">
+                <div style="margin-top: 10px;">
+                    <label style="margin-top: 4px; margin-left: 40px; float: left;">Цвет линии:</label>
+                    <div style="float: left;" id="iconStylePolyColorDrop">
+                        <div style="padding: 3px;">
+                            <div id="iconStylePolyColor"></div>
+                        </div>
+                    </div>
+                    <label style="margin-top: 4px; margin-left: 20px;float: left;" >Прозрачность линии:</label>
+                    <div style="float: left;" id="iconStylePolyAlpha"></div>
+                    <label style="margin-top: 4px; margin-left: 20px;float: left;">Толщина линии:</label>
+                    <div  id="iconStylePolyWidth"></div>
+                </div>
+                <div style="margin-top: 10px;">
+                    <div id="iconStylePolygonBorderCheckbox">Включить кайму для линии</div>
+                </div>
+                <div style="margin-top: 10px;">
+                    <label style="margin-top: 4px; margin-left: 40px; float: left;">Цвет каймы:</label>
+                    <div style="float: left;" id="iconStylePolyBorderColorDrop">
+                        <div style="padding: 3px;">
+                            <div id="iconStylePolyBorderColor"></div>
+                        </div>
+                    </div>
+
+                    <label style="margin-top: 4px; margin-left: 17px;float: left;">Прозрачность каймы:</label>
+                    <div style="float: left;" id="iconStylePolyBorderAlpha"></div>
+                    <label style="margin-top: 4px; margin-left: 18px;float: left;">Толщина каймы:</label>
+                    <div  id="iconStylePolyBorderWidth"></div>
+                </div>
+                <div style="margin-top: 10px;">
+                    <div id="iconStylePolyFillCheckbox">Использовать заливку</div>
+                </div>
+                <div style="margin-top: 10px;">
+                    <label style="margin-top: 4px; margin-left: 40px;float: left;">Цвет заливки:</label>
+                    <div style="float: left;" id="iconStylePolyFillColorDrop">
+                        <div style="padding: 3px;">
+                            <div id="iconStylePolyFillColor"></div>
+                        </div>
+                    </div>
+
+                    <label style="margin-top: 4px; margin-left: 9px;float: left;">Прозрачность заливки:</label>
+                    <div style="float: left;" id="iconStylePolyFillAlpha"></div>
+                    <label style="margin-top: 4px; margin-left: 1px;float: left;">Отрисовка каймы:</label>
+                    <div id="iconStylePolyNeedBorder"></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div style="margin-top: 10px;" id="iconStyleTextCheckbox">Включить подписывание</div>
+            <div style="margin-top: 10px;">
+                <label style="margin-top: 5px; margin-left: 30px; float: left;">Цвет текста:</label>
+                <div style="margin: 3px; float: left;" id="iconStyleTextColorDrop">
+                    <div style="padding: 3px;">
+                        <div id="iconStyleTextColor"></div>
+                    </div>
+                </div>
+                <label style="margin-top: 5px; margin-left: 51px; float: left;">Прозрачность:</label>
+                <div  id="iconStyleTextAlpha"></div>
+            </div>
+            <div style="margin-top: 10px;">
+                <label style="margin-top: 5px; margin-left: 19px; float: left;">Размер текста:</label>
+                <div style="float: left;" id="iconStyleTextSize"></div>
+                <div style="float: left;margin-left: 71px;font-weight: bold !important;" id="iconStyleTextBold">Жирный</div>
+                <div id="iconStyleTextItalic" style="font-style: italic !important;">Курсив</div>
+            </div>
+            <div style="margin-top: 10px;">
+                <label style="float: left;margin-left: 4px;margin-top: 2px;">Выравнивание по горизонтали:</label>
+                <div id="iconStyleTextAlignLeft" data-align="left" style="background:url(/ui/images/textAlignLeft.png) no-repeat;float: left; width: 17px; height:17px;"/>
+                <div id="iconStyleTextAlignCenter" data-align="center" style="background:url(/ui/images/textAlignCenter.png) no-repeat ;float: left;width: 17px; height:17px;"/>
+                <div id="iconStyleTextAlignRight" data-align="right" style="background:url(/ui/images/textAlignRight.png) no-repeat;float: left;width: 17px; height:17px;"/>
+                <label style="margin-left: 43px; float: left;margin-top: 2px;">Выравнивание по вертикали:</label>
+                <div id="iconStyleTextAlignTop" data-align="top" style="background:url(/ui/images/textAlignTop.png) no-repeat;float: left;width: 17px; height:17px;" />
+                <div id="iconStyleTextAlignMiddle" data-align="middle" style="background:url(/ui/images/textAlignMiddle.png) no-repeat ;float: left;width: 17px; height:17px;"/>
+                <div id="iconStyleTextAlignBottom" data-align="bottom" style="background:url(/ui/images/textAlignBottom.png) no-repeat ;float: left;width: 17px; height:17px;"/>
+                <div/>
+            </div>
+            <div style="margin-top: 41px;">
+                <div style="float: left;margin-top: 4px;" id="iconStyleTextDuplicate" title="При установке текст будет располагается многократно по всей длине объекта.">Повторение</div>
+                <div style="float: left;margin-top: 4px;" id="iconStyleTextOverlap" title="При установке разрядка подписей отключается. Подписи смогут перекрывать друг друга.">Перекрытие</div>
+                <div style="float: left;margin-top: 4px;" id="iconStyleTextAuto" title="Параметр обрабатывается только растровыми слоями.">Авто</div>
+                <div style="float: left;margin-top: 4px;" id="iconStyleTextParallel" title="Параметр обрабатывается только растровыми слоями.">Параллельно</div>
+                <label style="float: left;margin-top: 4px;margin-left: 22px;">Угол поворота:</label>
+                <div id="iconStyleTextRotation" style="margin-top: -4px;"></div>
+            </div>
+            <div style="margin-top: 9px;">
+                <label style="float: left;margin-left: 4px;">Название шрифта:</label>
+                <select id="iconStyleTextFont" style="width: 156px; height: 22px;">
+                    <option value="Arial">Arial</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Helvetica">Helvetica</option>
+                    <option value="sans-serif">sans-serif</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+    <div style="position: absolute; border:solid 1px white;top: 17px;right: 3px;height: 229px;">
+        <div style="background: #4C93C2;color: white;font-weight: bold;font-family: Arial;margin-top: -8px;margin-bottom: 8px;width: 111px;margin-left: 9px;text-align: center;">Просмотр стиля</div>
+        <div id="editStyleMap" class="map" style="width:246px;height:199px; background:white;"/>
+    </div>
+
+
+</form>
+<div class="editStyleButtons" style="margin-left: 295px; margin-top: 5px;">
+    <input type="button" class="map-dialog-button" name="ok" id="editStyleApply" value="OK">
+    <input type="button" class="map-dialog-button" name="cancel" id="editStyleCancel" value="Отмена">
+</div>

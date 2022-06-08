@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns="view.data.*"
+                title="ЛТГ. Методика Кочетковой"
+                width="790"
+                ext_data_id="PODS_EXPORT.xml#PODS_LTG_KOCHETKOVA"
+                excelTemplate="PODS_LTG_KOCHETKOVA">
+  <dataProvider>PODS_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="790">
+    <mx:HBox percentWidth="100">
+      <mx:Text textAlign="right" text="Обследование" width="140"/>
+      <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+        <mx:ComboBox id="ILI_INSPECTION_ID" enabled="false" editable="false" width="585" height="20"
+                 dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION"/>
+        
+      </mx:HBox>
+    </mx:HBox>
+    <mx:HBox percentWidth="100">
+      <mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Описание" width="140"/>
+          <mx:TextInput id="DESCRIPTION" width="225" maxChars="254" height="40"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Начальный км" width="140"/>
+          <mx:TextInput id="STATION_BEG" width="80" maxChars="16" height="20"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Номер трубы" width="140"/>
+          <mx:TextInput id="WELD_NUMBER" width="80" maxChars="16" height="20"/>
+        </mx:HBox>
+        
+
+     <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Измеренная толщина стенки трубы, мм" width="140"/>
+          <mx:TextInput id="LTG_THICKNESS_MEASURED" width="80" maxChars="16" height="20"/>
+        </mx:HBox> 
+<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Скорость коррозии, мм/год" width="140"/>
+          <mx:TextInput id="LTG_CORROSION_SPEED" width="80" maxChars="16" height="20"/>
+        </mx:HBox> 
+<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Кол-во лет, с начала эксплуатации или последнего ремонта трубы,год" width="140"/>
+          <mx:TextInput id="LTG_TIME_FROM_LAST_REPAIR" width="80" maxChars="16" height="20"/>
+        </mx:HBox> 
+<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Мин. толщина стенки трубы до разрушения при рабочем давлении, мм" width="140"/>
+          <mx:TextInput id="LTG_THICKNESS_TO_DESTROY" width="80" maxChars="16" height="20"/>
+        </mx:HBox> 
+<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Остаточный ресурс, год" width="140"/>
+          <mx:TextInput id="LTG_RESIDUAL_LIFE" width="80" maxChars="16" height="20"/>
+        </mx:HBox> 
+<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Минимально допустимая толщика стенки трубы, мм" width="140"/>
+          <mx:TextInput id="LTG_MIN_THICKNESS_ALLOW" width="80" maxChars="16" height="20"/>
+        </mx:HBox> 
+<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Фактический запас толщины до утонения, мм" width="140"/>
+          <mx:TextInput id="LTG_ACTUAL_RES_THICKNESS" width="80" maxChars="16" height="20"/>
+        </mx:HBox> 
+<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Вероятная скорость коррозии, мм/год" width="140"/>
+          <mx:TextInput id="LTG_PROBAB_CORROSION_SPEED" width="80" maxChars="16" height="20"/>
+        </mx:HBox> 
+<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Глубина дефекта разрушения, мм" width="140"/>
+          <mx:TextInput id="LTG_DEPTH_TO_DESTROY" width="80" maxChars="16" height="20"/>
+        </mx:HBox> 
+<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Количество лет до разрушения, год" width="140"/>
+          <mx:TextInput id="LTG_TIME_TO_DESTROY" width="80" maxChars="16" height="20"/>
+        </mx:HBox> 
+<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Вид ремонта (выборочный ремонт, переизоляция, замена участка) " width="140"/>
+          <mx:TextInput id="LTG_REPAIR_METHOD" width="80" maxChars="16" height="20"/>
+        </mx:HBox> 
+
+
+      </mx:VBox>
+      <mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Идентификация" width="140"/>
+          <mx:TextInput id="FEATURE_DESCRIPTION" width="225" maxChars="300" height="20"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Тип дефекта" width="140"/>
+          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+            <mx:ComboBox id="ANOMALY_TYPE_CL" width="200" height="20"
+                         dataProvider="PODS_SEM_DICT.xml#PODS_ILI_ANOMALY_TYPE_CL_ID"/>
+            <mx:Button id="BTN_LIST_ANOMALY_TYPE_CL" selectedField="PODS_ILI_ANOMALY_TYPE_CL"
+                       enabled="false"
+                       styleName="refList"
+                       toolTip="Перейти к редактированию справочника"
+                       width="16"
+                       height="16"/>
+          </mx:HBox>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Длина/ширина дефекта" width="140"/>
+          <controls:NumberInput id="LENGTH" width="40" maxChars="22" height="20"/>
+          <mx:Text textAlign="left" text="мм" width="30"/>
+          <controls:NumberInput id="WIDTH" width="40" maxChars="22" height="20"/>
+          <mx:Text textAlign="left" text="мм" width="30"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Глубина/ориентация" width="140"/>
+          <controls:NumberInput id="AVERAGE_DEPTH" width="40" maxChars="22" height="20"/>
+          <mx:Text textAlign="left" text="%" width="30"/>
+          <controls:NumberInput id="ORIENTATION_DEG" width="40" maxChars="22" height="20"/>
+          <mx:Text textAlign="left" text="град" width="30"/>
+        </mx:HBox>
+	<mx:HBox percentWidth="100">
+	 <mx:Text textAlign="right" text="Параметры трубы" width="140"/>
+	 <mx:TextInput id="PIPE_PARAMS" width="225" maxChars="255" height="40"/>
+	</mx:HBox>
+
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Перейти к реперу" width="140"/>
+          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+            <mx:Button id="BUTTON_REF_EVENT_ID" selectedField="PODS_EVENT_RANGE" enabled="false"
+                 styleName="refObject"
+                 toolTip="Перейти к объекту, который соответствует данному реперу"
+                 width="16"
+                 height="16"/>
+            <controls:NumberInput id="REF_EVENT_ID" editable="false" width="85" maxChars="22" height="20"
+                            visible="{CONFIG.SHOW_SYSTEM_INFO}"/>
+          </mx:HBox>
+        </mx:HBox>
+        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Источник информации" width="140"/>
+          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+            <mx:ComboBox id="SOURCE_GCL" enabled="false" editable="false" width="200" height="20"
+                   dataProvider="PODS_SEM_DICT.xml#PODS_SOURCE_GCL"/>
+            <mx:Button id="BTN_LIST_SOURCE_GCL" selectedField="PODS_SOURCE_GCL" enabled="false"
+                 styleName="refList"
+                 toolTip="Перейти к редактированию справочника"
+                 width="16"
+                 height="16"/>
+          </mx:HBox>
+        </mx:HBox>
+        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Идентификатор координат аномалии" width="140"/>
+          <controls:NumberInput id="COORDINATE_ID" editable="false" width="85" maxChars="22" height="20"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Идентификатор геообъекта (для аномалий с координатами)"
+              width="140"/>
+          <controls:NumberInput id="EVENT_ID" editable="false" width="85" maxChars="22" height="20"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Идентификатор аномалии" width="140"/>
+          <controls:NumberInput id="ILI_DATA_ID" editable="false" width="85" maxChars="22" height="20"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Зарезервированный ключ для ссылки на исходные данные"
+                   width="140"/>
+          <mx:TextInput id="RAW_REFERENCE_KEY" editable="false" width="160" maxChars="32" height="20"/>
+        </mx:HBox>
+
+      </mx:VBox>
+    </mx:HBox>
+  </mx:VBox>
+  
+</DATA_EDIT_FORM>

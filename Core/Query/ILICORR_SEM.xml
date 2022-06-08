@@ -1,0 +1,191 @@
+﻿<root version="postgres 7.7.7.0">
+    <data table="ILI_DATA" schema="PODS" id="PODS_ILI_REPER" comment="PODS.ILI_DATA">
+        <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+                <query>
+            SELECT * FROM (SELECT ILI_DATA_ID ID, t.*,CASE WHEN t.ref_event_id is not null THEN 'ПРИВЯЗАН'
+            ELSE 'НЕ_ПРИВЯЗАН'
+       end lnk_type FROM PODS.ILI_DATA t JOIN pods.ili_anomaly_type_cl ia ON t.anomaly_type_cl = ia.code AND ia.code in (1004,1003)) d where {FILTER}
+                </query>
+            </dbQuery>
+        </select>
+        <insert>
+            <geoCommand proc="GET_LPU">
+			                <var name="X_MIN" type="Decimal"/>
+		<var name="Y_MIN" type="Decimal"/>
+		<var name="MEASURE_MIN" type="Decimal"/>
+		<var name="X_MAX" type="Decimal"/>
+		<var name="Y_MAX" type="Decimal"/>
+		<var name="MEASURE_MAX" type="Decimal"/>
+                <var name="CLASS_ID" type="String" direction="Input" default="PODS_ILI_REPER" /> 
+                <var name="POLICY" default="POLICY.xml#INSERT_PODS_SEM"  />
+                <var name="ROUTE_ID" type="Decimal"/>
+                <var name="STATION" default="0" type="Decimal"/>
+                <var name="MEASURE" default="0" type="Decimal"/>
+				<var name="ID" type="Int64" direction="input"/>
+                <var name="EVENT_GUID" default="" type="String"/>
+                <var name="WELD_NUMBER" default="" type="String"/>
+                <var name="US_WELD_NUMBER" default="" type="String"/>
+                <var name="DATE_COLLECTED" default="" type="DateTime"/>
+                <var name="ABSOLUTE_ODOMETER" default="NULL" type="Decimal"/>
+                <var name="US_WELD_ODOMETER" default="NULL" type="Decimal"/>
+                <var name="US_WELD_DISTANCE" default="NULL" type="Decimal"/>
+                <var name="DS_WELD_ODOMETER" default="NULL" type="Decimal"/>
+                <var name="DS_WELD_DISTANCE" default="NULL" type="Decimal"/>
+                <var name="US_AGM_DISTANCE" default="NULL" type="Decimal"/>
+                <var name="DS_AGM_DISTANCE" default="NULL" type="Decimal"/>
+                <var name="US_AGM_REFERENCE" default="" type="String"/>
+                <var name="DS_AGM_REFERENCE" default="" type="String"/>
+                <var name="RAW_REFERENCE_KEY" default="" type="String"/>
+                <var name="MAX_DEPTH_PCT" default="NULL" type="Decimal"/>
+                <var name="MAX_DEPTH_MEASURED" default="NULL" type="Decimal"/>
+                <var name="AVERAGE_DEPTH" default="NULL" type="Decimal"/>
+                <var name="LENGTH" default="NULL" type="Decimal"/>
+                <var name="WIDTH" default="NULL" type="Decimal"/>
+                <var name="ORIENTATION_DEG" default="NULL" type="Decimal"/>
+                <var name="ANOMALY_TYPE_CL" default="0" type="Decimal"/>
+                <var name="INTERNAL_EXTERNAL_CL" default="UNKNOWN" type="String"/>
+                <var name="ANOMALY_EXTENSION_CL" default="UNKNOWN" type="String"/>
+                <var name="MAX_DIAMETER" default="0" type="Decimal"/>
+                <var name="MIN_DIAMETER" default="0" type="Decimal"/>
+                <var name="OVALITY" default="NULL" type="Decimal"/>
+                <var name="AXIAL_OVALITY" default="NULL" type="Decimal"/>
+                <var name="SEAM_ORIENTATION" default="NULL" type="Decimal"/>
+                <var name="MEASURED_WALL_THICKNESS" default="0" type="Decimal"/>
+                <var name="NOMINAL_WALL_THICKNESS" default="0" type="Decimal"/>
+                <var name="PIPE_SMYS" default="NULL" type="Decimal"/>
+                <var name="B31G_MAOP" default="NULL" type="Decimal"/>
+                <var name="B31G_ERF" default="NULL" type="Decimal"/>
+                <var name="MODB31G_MAOP" default="NULL" type="Decimal"/>
+                <var name="MODB31G_ERF" default="NULL" type="Decimal"/>
+                <var name="BPR_CALCULATED" default="NULL" type="Decimal"/>
+                <var name="BPR_PIG" default="NULL" type="Decimal"/>
+                <var name="BURST_PRESSURE" default="NULL" type="Decimal"/>
+                <var name="BPR_VARIANCE" default="NULL" type="Decimal"/>
+                <var name="RPR_CALCULATED" default="NULL" type="Decimal"/>
+                <var name="RPR_PIG" default="NULL" type="Decimal"/>
+                <var name="RPR_VARIANCE" default="NULL" type="Decimal"/>
+                <var name="MILEPOST" default="" type="String"/>
+                <var name="COORDINATE_ID" default="-1" type="Decimal"/>
+                <var name="COORDINATE_GUID" default="" type="String"/>
+                <var name="CERTAINTY_INTERVAL" default="NULL" type="Decimal"/>
+                <var name="DEPTH_ACCURACY" default="" type="String"/>
+                <var name="LENGTH_ACCURACY" default="" type="String"/>
+                <var name="WIDTH_ACCURACY" default="" type="String"/>
+                <var name="WITHIN_SPECIFICATION_LF" default="" type="String"/>
+                <var name="FEATURE_DESCRIPTION" default="" type="String"/>
+                <var name="CONTROL_POINT_LF" default="" type="String"/>
+                <var name="ILI_CLUSTER_ID" default="NULL" type="Decimal"/>
+                <var name="ILI_CLUSTER_GUID" default="" type="String"/>
+                <var name="REF_EVENT_ID" default="NULL" type="Decimal"/>
+                <var name="REF_EVENT_GUID" default="" type="String"/>
+                <var name="ILI_INSPECTION_ID" default="NULL" type="Decimal"/>
+                <var name="ILI_INSPECTION_GUID" default="" type="String"/>
+                <var name="STATION_REPORTED" default="" type="String"/>
+                <var name="CALIBRATED_MEASURE" default="NULL" type="Decimal"/>
+                <var name="DESCRIPTION" default="" type="String"/>
+                <var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+                <var name="COMMENTS" default="" type="String"/>
+                <var name="ID" type="Int64" direction="Output" default="SELECT max(EVENT_ID) event_id, (select max(ili_data_id) from pods.ili_data) ili_data_id FROM PODS.EVENT_RANGE"/>
+                <var name="PODS_USER" type="String"/>
+                <var name="USER_ID" default="-1" type="Int64"/>
+               
+                <coord>
+                     DO $$
+                    DECLARE
+                    ili_d_id NUMERIC (16, 0);
+                    loc_id   NUMERIC (16, 0);
+                    sp_id    NUMERIC (16, 0);
+                    e_id    NUMERIC (16, 0);
+                    v_line_id    NUMERIC (16, 0);
+                    v_series    NUMERIC (16, 0);
+                    v_series_id    NUMERIC (16, 0);
+					v_measure NUMERIC;
+                    BEGIN
+					
+					 v_measure:={MEASURE_MIN}+({MEASURE_MAX}-{MEASURE_MIN})*sqrt(({X_MIN}-{X})*({X_MIN}-{X})+({Y_MIN}-{Y})*({Y_MIN}-{Y}))/sqrt(({X_MIN}-{X_MAX})*({X_MIN}-{X_MAX})+({Y_MIN}-{Y_MAX})*({Y_MIN}-{Y_MAX}));
+
+                    INSERT INTO PODS.EVENT_RANGE (EVENT_GUID,FEATURE_ID,STATION_ID_BEGIN,STATION_ID_END,PODS_USER,CREATE_DATE,EFFECTIVE_FROM_DATE,CURRENT_INDICATOR_LF,POSITIONING_TYPE_CL)
+                    VALUES('{EVENT_GUID}','ILI_DATA',0,0,NULLIF('{PODS_USER}',''),current_timestamp,current_timestamp,'Y','UNKNOWN')
+                    RETURNING EVENT_ID INTO e_id;
+                    
+                    INSERT INTO PODS.ILI_DATA(EVENT_ID,ILI_DATA_GUID,EVENT_GUID,WELD_NUMBER,US_WELD_NUMBER,DATE_COLLECTED,ABSOLUTE_ODOMETER,US_WELD_ODOMETER,US_WELD_DISTANCE,DS_WELD_ODOMETER,DS_WELD_DISTANCE,US_AGM_DISTANCE,DS_AGM_DISTANCE,US_AGM_REFERENCE,DS_AGM_REFERENCE,RAW_REFERENCE_KEY,MAX_DEPTH_PCT,MAX_DEPTH_MEASURED,AVERAGE_DEPTH,LENGTH,WIDTH,ORIENTATION_DEG,ANOMALY_TYPE_CL,INTERNAL_EXTERNAL_CL,ANOMALY_EXTENSION_CL,MAX_DIAMETER,MIN_DIAMETER,OVALITY,AXIAL_OVALITY,SEAM_ORIENTATION,MEASURED_WALL_THICKNESS,NOMINAL_WALL_THICKNESS,PIPE_SMYS,B31G_MAOP,B31G_ERF,MODB31G_MAOP,MODB31G_ERF,BPR_CALCULATED,BPR_PIG,BURST_PRESSURE,BPR_VARIANCE,RPR_CALCULATED,RPR_PIG,RPR_VARIANCE,MILEPOST,COORDINATE_ID,COORDINATE_GUID,CERTAINTY_INTERVAL,DEPTH_ACCURACY,LENGTH_ACCURACY,WIDTH_ACCURACY,WITHIN_SPECIFICATION_LF,FEATURE_DESCRIPTION,CONTROL_POINT_LF,ILI_CLUSTER_ID,ILI_CLUSTER_GUID,REF_EVENT_ID,REF_EVENT_GUID,ILI_INSPECTION_ID,ILI_INSPECTION_GUID,STATION_REPORTED,CALIBRATED_MEASURE,DESCRIPTION,SOURCE_GCL,COMMENTS)
+                    VALUES(e_id,null,null,NULLIF('{WELD_NUMBER}',''),null,null,{ABSOLUTE_ODOMETER},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1003,NULLIF('{INTERNAL_EXTERNAL_CL}',''),NULLIF('{ANOMALY_EXTENSION_CL}',''),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.01,null,null,null,null,'виртуальный репер','Y',null,null,e_id,null,{ILI_INSPECTION_ID},null,null,v_measure,'{DESCRIPTION}',NULLIF('{SOURCE_GCL}',''),NULLIF('{COMMENTS}',''))
+                    RETURNING ILI_DATA_ID INTO ili_d_id;
+                    
+                    SELECT MAX(sp.station_id) INTO sp_id
+                    FROM pods.coordinate  c
+                    JOIN pods.station_point sp ON sp.location_id = c.location_id
+                    WHERE ROUND(c.X_COORD,6)*1000000000+ROUND(c.Y_COORD,6)=ROUND({X},6)*1000000000+ROUND({Y},6)
+                    AND sp.route_id = {ROUTE_ID};
+                    
+                    select r.line_id,s.series, s.series_id into v_line_id,v_series,v_series_id from pods.route r,pods.series s where r.route_id={ROUTE_ID} and s.route_id=r.route_id;
+                    
+                    IF sp_id IS NULL THEN
+                    INSERT INTO PODS.LOCATION(SRV_DISTRICT_GCL)
+                    VALUES ({LPU_ID})
+                    RETURNING LOCATION_ID INTO loc_id;
+
+                    INSERT INTO PODS.COORDINATE  (COORDINATE_SOURCE_ID, TYPE_CL,
+                    LOCATION_ID, X_COORD, Y_COORD, Z_COORD, HORIZ_INDICATOR_LF,
+                    VERT_INDICATOR_LF, CURRENT_INDICATOR_LF, EFFECTIVE_FROM_DATE, PODS_USER, CREATE_DATE)
+                    VALUES (0, 'USR', loc_id, {X},{Y}, null, 'Y', 'N', 'Y', current_timestamp, '{PODS_USER}',current_timestamp);
+
+                    INSERT INTO PODS.STATION_POINT (TYPE_CL, LOCATION_ID, LINE_ID, SERIES, STATION, SERIES_ID, ROUTE_ID, MEASURE, PODS_USER, CREATE_DATE)
+                    VALUES ('ST_POINT_TYPE_02', loc_id, v_line_id, v_series, {STATION}, v_series_id, {ROUTE_ID}, v_measure,  '{PODS_USER}', current_timestamp)
+                    RETURNING STATION_ID INTO sp_id;
+                    END IF;
+                    
+                    update pods.event_range e set station_id_begin=sp_id, station_id_end=sp_id where e.event_id=e_id;
+                    
+                    UPDATE PODS.ILI_DATA
+                    set
+                    CERTAINTY_INTERVAL=0.01,
+                    CONTROL_POINT_LF='Y',
+                    REF_EVENT_ID=e_id,
+                    COORDINATE_ID=(select l.coordinate_id from pods.coordinate l, pods.station_point s where s.location_id=l.location_id and s.station_id=sp_id)                   
+                    WHERE ILI_DATA_ID = ili_d_id;
+                    END $$;
+                </coord>
+            </geoCommand>
+        </insert>
+        <update>
+            <dbCommand>
+                <param name="CLASS_ID" type="String" direction="Input" default="PODS_ILI_REPER" /> 
+                <var name="POLICY" default="POLICY.xml#UPDATE_PODS_SEM"  />
+                <param name="ILI_DATA_GUID" default="" type="String"/>
+                <param name="EVENT_GUID" default="" type="String"/>
+                <param name="WELD_NUMBER" default="" type="String"/>
+                <param name="REF_EVENT_ID" default="NULL" type="Decimal"/>
+                <param name="ILI_INSPECTION_ID" default="NULL" type="Decimal"/>
+                <param name="ID" type="Int64" direction="Input"/>
+                <param name="USER_ID" default="-1" type="Int64"/>
+				<param name="ABSOLUTE_ODOMETER" default="NULL" type="Decimal"/>
+                <query>
+                    UPDATE PODS.ILI_DATA
+					set
+                    CERTAINTY_INTERVAL=0.01,
+                    CONTROL_POINT_LF='Y',
+                    REF_EVENT_ID=case when :REF_EVENT_ID is null then REF_EVENT_ID else :REF_EVENT_ID end,
+                    CALIBRATED_MEASURE=(select measure from pods.station_point s where s.station_id in (select e.station_id_begin from pods.event_range e where e.event_id=:REF_EVENT_ID)),
+					ABSOLUTE_ODOMETER = :ABSOLUTE_ODOMETER
+                    WHERE ILI_DATA_ID = :ID;
+                </query>
+            </dbCommand>
+        </update>
+        <delete>
+            <dbCommand>
+                <var name="CLASS_ID" type="String" direction="Input" default="PODS_ILI_REPER" /> 
+                <var name="POLICY" default="POLICY.xml#DELETE_PODS_SEM"  />
+                <var name="ID" type="Int64" direction="Input"/>
+                <var name="USER_ID" default="-1" type="Int64"/>
+                <query>
+                    UPDATE pods.ili_data SET ref_event_id=null, ref_event_guid=null, control_point_lf='N', calibrated_measure=null, certainty_interval=null WHERE  ILI_DATA_ID = {ID};
+                </query>
+            </dbCommand>
+        </delete>
+    </data>
+</root> 

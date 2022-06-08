@@ -1,0 +1,90 @@
+<root version="postgres 7.7.3.0">
+  <data id="LIB_DOC" table="LIB_DOC" schema="WEB50" comment="WEB50.LIB_DOC">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+          SELECT *
+            FROM (SELECT DOC_ID AS ID
+                        ,DOC_TYPE_ID
+                        ,PARENT_DOC_ID
+                        ,GID
+                        ,STATUS_ID
+                        ,NAME
+                        ,DESCR
+                        ,PROVIDER
+                        ,TIME_STAMP
+                        ,CTIME
+                    FROM WEB50.LIB_DOC) d
+           WHERE {FILTER}
+          </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="LIB_DOC_WRL" table="LIB_DOC" schema="WEB50" comment="WEB50.LIB_DOC">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+          SELECT *
+            FROM (SELECT DOC_ID AS ID
+                        ,DOC_TYPE_ID
+                        ,PARENT_DOC_ID
+                        ,GID
+                        ,STATUS_ID
+                        ,NAME
+                        ,DESCR
+                        ,PROVIDER
+                        ,TIME_STAMP
+                        ,CTIME
+                    FROM WEB50.LIB_DOC) d
+           WHERE {FILTER}
+          </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="LIB_DOC_IMG" table="LIB_DOC" schema="WEB50" comment="WEB50.LIB_DOC">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+          SELECT *
+            FROM (SELECT DOC_ID AS ID
+                        ,DOC_TYPE_ID
+                        ,PARENT_DOC_ID
+                        ,GID
+                        ,STATUS_ID
+                        ,NAME
+                        ,DESCR
+                        ,PROVIDER
+                        ,TIME_STAMP
+                        ,CTIME
+                    FROM WEB50.LIB_DOC) d
+           WHERE {FILTER}
+          </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="LIB_DOC_GEO_VIDEO" table="LIB_DOC" schema="WEB50" comment="WEB50.LIB_DOC">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+          SELECT *
+            FROM (SELECT DOC_ID AS ID
+                        ,DOC_TYPE_ID
+                        ,PARENT_DOC_ID
+                        ,GID
+                        ,STATUS_ID
+                        ,NAME
+                        ,DESCR
+                        ,PROVIDER
+                        ,TIME_STAMP
+                        ,CTIME
+                    FROM WEB50.LIB_DOC) d
+           WHERE {FILTER}
+          </query>
+      </dbQuery>
+    </select>
+  </data>  
+</root>

@@ -1,0 +1,3572 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<kml version="7.7.3.1">
+  <Document>
+    <Style id="WEB50_POI_POINT" schema="WEB50" table="POI_POINT" comment="WEB50.POI_POINT" descr="Точки интереса">
+      <zoomMin>NAN</zoomMin>
+      <!-- минимальный масштаб отображения -->
+      <zoomMax>NAN</zoomMax>
+      <!-- максимальный масштаб отображения -->
+      <IconStyle>
+        <Icon>
+          <!-- Иконка -->
+          <href>Public/assets/POI_POINT.png</href>
+          <!-- относительный путь к иконке, если картинка -->
+          <form>bitmap</form>
+          <!-- форма объекта, если это не картинка. Допустимые значения: square|circle|triangle|star|cross|x -->
+          <size>16</size>
+          <!-- размер в пикселах. Положительное число. 16 по умолчанию -->
+        </Icon>
+        <color>FF000000</color>
+        <!-- цвет заливки, если не картинка. По-умолчанию черная непрозрачная. -->
+        <outline>0</outline>
+      </IconStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+	<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Anchor</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4703.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Bell</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4704.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Diamond, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4705.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Diamond, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4706.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Diver Down Flag 1</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4707.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Diver Down Flag 2</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4708.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Bank</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4709.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Fishing Area</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4710.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Gas Station</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4711.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Horn</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4712.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Residence</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4713.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Restaurant</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4714.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Light</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4715.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Bar</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4716.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Skull and Crossbones</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4717.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Square, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4718.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Square, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4719.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Buoy, White</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4720.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Waypoint</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4721.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Shipwreck</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4722.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Man Overboard</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4723.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Navaid, Amber</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4724.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Navaid, Black</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4725.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Navaid, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4726.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Navaid, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4727.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Navaid, Green/Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4728.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Navaid, Green/White</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4729.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Navaid, Orange</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4730.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Navaid, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4731.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Navaid, Red/Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4732.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Navaid, Red/White</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4733.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Navaid, Violet</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4734.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Navaid, White</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4735.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Navaid, White/Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4736.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Navaid, White/Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4737.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Dot, White</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4738.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Radio Beacon</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4739.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Boat Ramp</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4740.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Campground</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4741.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Restroom</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4742.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Shower</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4743.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Drinking Water</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4744.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Telephone</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4745.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Medical Facility</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4746.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Information</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4747.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Parking Area</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4748.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Park</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4749.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Picnic Area</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4750.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Scenic Area</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4751.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Skiing Area</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4752.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Swimming Area</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4753.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Dam</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4754.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Controlled Area</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4755.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Danger Area</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4756.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Restricted Area</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4757.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Ball Park</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4758.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Car</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4759.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Hunting Area</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4760.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Shopping Center</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4761.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Lodging</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4762.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Mine</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4763.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Trail Head</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4764.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Truck Stop</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4765.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Exit</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4766.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Flag</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4767.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Circle with X</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4768.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Mile Marker</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4769.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>TracBack Point</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4770.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Golf Course</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4771.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>City (Small)</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4772.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>City (Medium)</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4773.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>City (Large)</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4774.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>City (Capitol)</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4775.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Amusement Park</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4776.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Bowling</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4777.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Car Rental</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4778.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Car Repair</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4779.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Fast Food</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4780.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Fitness Center</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4781.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Movie Theater</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4782.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Museum</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4783.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Pharmacy</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4784.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Pizza</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4785.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Post Office</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4786.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>RV Park</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4787.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>School</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4788.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Stadium</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4789.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Department Store</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4790.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Zoo</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4791.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Convenience Store</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4792.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Live Theater</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4793.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Scales</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4794.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Toll Booth</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4795.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Bridge</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4796.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Building</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4797.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Cemetery</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4798.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Church</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4799.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Civil</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4800.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Crossing</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4801.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Ghost Town</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4802.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Levee</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4803.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Military</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4804.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Oil Field</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4805.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Tunnel</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4806.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Beach</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4807.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Forest</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4808.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Summit</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4809.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Airport</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4810.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Heliport</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4811.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Private Field</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4812.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Soft Field</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4813.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Tall Tower</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4814.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Short Tower</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4815.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Glider Area</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4816.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Ultralight Area</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4817.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Parachute Area</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4818.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Seaplane Base</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4819.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Geocache</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4820.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Geocache Found</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4821.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Afro</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4822.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Alien</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4823.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Ball Cap</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4824.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Big Ears</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4825.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Biker</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4826.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Bug</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4827.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Cat</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4828.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Dog</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4829.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Dreadlocks</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4830.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Female1</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4831.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Female2</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4832.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Female3</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4833.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Goatee</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4834.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Kung-Fu</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4835.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Pig</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4836.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Pirate</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4837.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Ranger</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4838.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Smiley</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4839.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Spike</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4840.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Sumo</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4841.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Water Hydrant</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4842.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Flag, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4843.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Flag, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4844.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Flag, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4845.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Pin, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4846.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Pin, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4847.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Pin, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4848.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Block, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4849.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Block, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4850.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Block, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4851.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Bike Trail</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4852.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Fishing Hot Spot Facility</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4853.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Police Station</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4854.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Ski Resort</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4855.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Ice Skating</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4856.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Wrecker</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4857.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Anchor Prohibited</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4858.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Beacon</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4859.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Coast Guard</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4860.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Reef</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4861.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Weed Bed</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4862.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Dropoff</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4863.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Dock</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4864.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Marina</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4865.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Bait and Tackle</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4866.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Stump</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4867.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Circle, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4868.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Circle, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4869.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Circle, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4870.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Diamond, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4871.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Oval, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4872.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Oval, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4873.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Oval, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4874.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Rectangle, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4875.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Rectangle, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4876.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Rectangle, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4877.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Square, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4878.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Letter A, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4879.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Letter A, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4880.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Letter A, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4881.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Letter B, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4882.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Letter B, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4883.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Letter B, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4884.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Letter C, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4885.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Letter C, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4886.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Letter C, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4887.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Letter D, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4888.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Letter D, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4889.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Letter D, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4890.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 0, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4891.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 0, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4892.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 0, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4893.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 1, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4894.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 1, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4895.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 1, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4896.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 2, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4897.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 2, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4898.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 2, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4899.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 3, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4900.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 3, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4901.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 3, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4902.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 4, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4903.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 4, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4904.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 4, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4905.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 5, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4906.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 5, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4907.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 5, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4908.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 6, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4909.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 6, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4910.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 6, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4911.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 7, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4912.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 7, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4913.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 7, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4914.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 8, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4915.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 8, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4916.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 8, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4917.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 9, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4918.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 9, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4919.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Number 9, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4920.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Triangle, Blue</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4921.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Triangle, Green</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4922.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Triangle, Red</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4923.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Blonde</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4924.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Clown</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4925.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Glasses</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4926.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Contact, Panda</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4927.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Multi-Cache</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4928.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Letterbox Cache</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4929.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Puzzle Cache</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4930.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Library</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4931.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Ground Transportation</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4932.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>City Hall</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4933.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Winery</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4934.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>ATV</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4935.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Big Game</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4936.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Blind</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4937.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Blood Trail</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4938.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Cover</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4939.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Covey</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4940.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Food Source</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4941.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Furbearer</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4942.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Lodge</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4943.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Small Game</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4944.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Animal Tracks</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4945.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Treed Quarry</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4946.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Tree Stand</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4947.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Truck</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4948.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Upland Game</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4949.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+		<Style table="POI_POINT" schema="WEB50" id="WEB50_POI_POINT" descr="Точки интереса" comment="WEB50_POI_POINT">
+			<zoomMin>NAN</zoomMin>
+			<zoomMax>NAN</zoomMax>
+			<value>Waterfowl</value>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/POI/4950.png</href>
+					<form>bitmap</form>
+					<size>24</size>
+				</Icon>
+				<color>FF000000</color>
+				<outline>0</outline>
+			</IconStyle>
+		</Style>
+    <Style id="WEB50_POI_TRACK" schema="WEB50" table="POI_TRACK" comment="WEB50.POI_TRACK" descr="Треки">
+      <!-- value></value -->
+      <zoomMin>NAN</zoomMin>
+      <!-- минимальный масштаб отображения -->
+      <zoomMax>NAN</zoomMax>
+      <!-- максимальный масштаб отображения -->
+      <LineStyle>
+        <color>FF006633</color>
+        <width>3</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>
+	<Style id="WEB50_POI_DEBRIS" table="POI_DEBRIS" schema="PODS" comment="WEB50.POI_DEBRIS" descr="Зоны вырубок">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <MIStyle>
+        <data />
+      </MIStyle>
+      <IMGStyle>
+        <data type0="" type1="" type2="" />
+      </IMGStyle>
+      <VRMLStyle>
+        <data process="" viewpoint="" />
+      </VRMLStyle>
+	<LineStyle>
+		<color>FFBB35FF</color>
+		<width>2</width>
+	  </LineStyle>
+	  <LineStyle>
+		<color>FF000000</color>
+		<width>6</width>
+	  </LineStyle>
+
+	  <PolyStyle>
+		<color>80FFFFFF</color>
+		<fill>1</fill>
+		<outline>1</outline>
+		<fillPattern>solid</fillPattern>
+	  </PolyStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>1</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>0</overlap>
+      </LabelStyle>
+    </Style>
+  </Document>
+</kml>

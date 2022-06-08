@@ -1,0 +1,33 @@
+<div version="7.7.4.0" class="postsEditPost">
+    <div class="postsAddPostButtons">
+        <span class="postsAddPostButtonsTitle">Редактирование записи</span>
+        <span class="fileinput-button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" style="float: right;">
+            <span class="ui-button-icon-primary ui-icon ui-icon-cancel"></span>
+            <span class="ui-button-text"><span>Отменить</span></span>
+            <input class="postsEditPostCancel" type="button" value="Отменить"/>
+        </span>
+        <span class="fileinput-button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" style="float: right;">
+            <span class="ui-button-icon-primary ui-icon ui-icon-disk"></span>
+            <span class="ui-button-text"><span>Сохранить</span></span>
+            <input class="postsEditPostSave" type="button" value="Сохранить"/>
+        </span>
+    </div>
+    <div class="postsAddPostHBox"><span>1. Название:</span>
+        <textarea class="postsAddPostName" maxlength="250"></textarea>
+    </div>
+    <div class="postsAddPostHBox"><span>2. Описание (до 250 символов):</span>
+        <textarea class="postsAddPostDescr" maxlength="250"></textarea>
+    </div>
+    <div class="postsAddPostHBox">
+        <span>3. Ссылка на файл:</span>
+        <span id="divFI_myElement" >
+            <input id="myElement" style="display: none !important;" />
+            <input id="myElementText" class="postsAddPostFileFolder"/>
+            <form method="POST" id="fr_myElement" action="" data-action="./api/files/upload?path=LIB" style="margin-top: -18px;margin-left: 436px;" enctype="multipart/form-data" target="ifr_myElement">
+                <input id="iFI_myElement" type="file"  name="fileinput" style="width:100px;display:none" />
+                <label class="btn">Обзор...</label>
+            </form>
+            <iframe id="ifr_myElement" name="ifr_myElement" style="display: none !important;"></iframe>
+        </span>
+    </div>
+</div>

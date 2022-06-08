@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns="view.data.*" width="790" title="Данные ВТД. ИНФОТЕХ, выполненные обследования в шурфах." ext_data_id="PODS_EXPORT.xml#PODS_ILI_DATA" excelTemplate="PODS_ILI_DATA">
+	<dataProvider>PODS_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	<mx:VBox width="790">
+		<mx:HBox percentWidth="100">
+			<mx:Text textAlign="right" text="Обследование" width="140"/>
+			<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+				<mx:ComboBox id="ILI_INSPECTION_ID" enabled="false" editable="false" width="585" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION"/>
+				
+			</mx:HBox>
+		</mx:HBox>
+		<mx:HBox percentWidth="100">
+			<mx:VBox percentWidth="50">
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Длина шурфа, мм" width="140"/>
+					<controls:NumberInput id="LENGTH" width="80" maxChars="20" height="20"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Ширина шурфа, мм" width="140"/>
+					<controls:NumberInput id="WIDTH" width="80" maxChars="20" height="20"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Тип выявленного дефекта" width="140"/>
+					<mx:TextInput id="DEF_TYPE" width="160" maxChars="32" height="20"/>
+				</mx:HBox>
+				
+				<mx:HBox percentWidth="100">
+          				<mx:Text textAlign="right" text="Дата шурфования" width="140"/>
+          				<mx:DateField id="DATE_EXCAVATE" width="96" height="20" formatString="DD.MM.YYYY"/>
+               			</mx:HBox>
+        
+    			</mx:VBox>
+			
+		<mx:VBox percentWidth="50">
+               			<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Вид внешнего покрытия трубы" width="140"/>
+					<mx:TextInput id="EXTERN_COATING" width="160" maxChars="20" height="20"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Ориентация трубы в шурфе, ч" width="140"/>
+					<mx:TextInput id="ORIENT" width="160" maxChars="20" height="20"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Информация о трубе" width="140"/>
+					<mx:TextInput id="PIPE" width="160" maxChars="255" height="20"/>
+				</mx:HBox>
+				
+				<mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					<mx:Text textAlign="right" text="Идентификатор дефекта по нашей БД" width="140"/>
+					<controls:NumberInput id="ILI_DATA_ID" editable="false" width="85" maxChars="22" height="20"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					<mx:Text textAlign="right" text="Идентификатор шурфа по БД инфотех" width="140"/>
+					<controls:NumberInput id="INFOTEH_EXCAVATE_ID" editable="false" width="85" maxChars="22" height="20"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					<mx:Text textAlign="right" text="Идентификатор дефекта по БД инфотех" width="140"/>
+					<controls:NumberInput id="INFOTEH_DEF_ID" editable="false" width="85" maxChars="22" height="20"/>
+				</mx:HBox>
+        	</mx:VBox>
+		</mx:HBox>
+	</mx:VBox>
+	
+</DATA_EDIT_FORM>

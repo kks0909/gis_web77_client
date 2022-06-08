@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.6.9" descr="СУ ТС ТПА">
+    <data id="SUTSTPA_КРАН" comment="VALVE" schema="SUTSTPA" table="VALVE">
+        <select>
+            <geoQuery idField="ID" geoField="WKB_GEOMETRY">
+                <var name="FILTER" default="1=1"/>
+                <query>
+with sum_koef as (select n.check_table,sum(n.koeff) max_sum from sutstpa.sprav_ntd_gcl n where n.check_table is not null group by n.check_table),
+koef as (select (select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_4_IS') k_BARRIER_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_1_IS') k_ORDER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_4_IS') k_TERRITORY_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_1_IS') k_BARRIER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_5_IS') k_ORDER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_6_IS') k_ORDER_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PLATE_IS') k_PLATE_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_7_IS') k_CONT_MEAS_7_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_2_IS') k_INF_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_3_IS') k_INF_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_5_IS') k_BARRIER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_2_IS') k_SIGN_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_3_IS') k_SIGN_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_4_IS') k_SIGN_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_2_IS') k_ORDER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_5_IS') k_SIGN_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_6_IS') k_SIGN_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_1_IS') k_TERRITORY_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_2_IS') k_TERRITORY_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_3_IS') k_TERRITORY_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_2_IS') k_BARRIER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_3_IS') k_BARRIER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_3_IS') k_ORDER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_4_IS') k_order_4_is,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ROOF_IS') k_ROOF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='HEIGHT_IS') k_HEIGHT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_IS') k_COLOR_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_2_IS') k_CONT_MEAS_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_3_IS') k_CONT_MEAS_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_4_IS') k_CONT_MEAS_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_6_IS') k_CONT_MEAS_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_5_IS') k_CONT_MEAS_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_1_IS') k_EXT_CORR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_2_IS') k_EXT_CORR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_3_IS') k_EXT_CORR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_1_IS') k_GROUND_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_2_IS') k_GROUND_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_3_IS') k_GROUND_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_4_IS') k_GROUND_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_5_IS') k_GROUND_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_3_IS') k_COLOR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_1_IS') k_COLOR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_2_IS') k_COLOR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_4_IS') k_COLOR_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_5_IS') k_COLOR_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_6_IS') k_COLOR_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_1_IS') k_INF_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_4_IS') k_INF_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_5_IS') k_INF_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_6_IS') k_INF_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_NOM_DIAM_IS') k_INF_NOM_DIAM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_PRES_IS') k_INF_PRES_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_DATE_MANUF_IS') k_INF_DATE_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_MANUF_IS') k_INF_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TECH_NUM_IS') k_TECH_NUM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='VERT_IS') k_VERT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_1') k_ADD_IS_1,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_2') k_ADD_IS_2,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_3') k_ADD_IS_3,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_4') k_ADD_IS_4,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PEDESTAL_IS') k_PEDESTAL_IS),
+valve as (select 
+id,pipe,wkb_geometry,station, 
+coalesce(ext_corr_1_is,0)*k_ext_corr_1_is+coalesce(ext_corr_2_is,0)*k_ext_corr_2_is+coalesce(ext_corr_3_is,0)*k_ext_corr_3_is+coalesce(ground_1_is,0)*k_ground_1_is+coalesce(ground_2_is,0)*k_ground_2_is+coalesce(ground_3_is,0)*k_ground_3_is
++coalesce(ground_4_is,0)*k_ground_4_is+coalesce(ground_5_is,0)*k_ground_5_is+abs(1-coalesce(color_1_is,1))*k_color_1_is+abs(1-coalesce(color_2_is,1))*k_color_2_is+abs(1-coalesce(color_3_is,1))*k_color_3_is
++abs(1-coalesce(color_4_is,1))*k_color_4_is+abs(1-coalesce(color_5_is,1))*k_color_5_is+abs(1-coalesce(color_6_is,1))*k_color_6_is+abs(1-coalesce(inf_1_is,1))*k_inf_1_is+abs(1-coalesce(inf_2_is,1))*k_inf_2_is
++abs(1-coalesce(inf_3_is,1))*k_inf_3_is+abs(1-coalesce(inf_4_is,1))*k_inf_4_is+abs(1-coalesce(inf_5_is,1))*k_inf_5_is+(cASE WHEN v.date_manuf is null THEN 1 else 0 end)*k_INF_DATE_MANUF_IS
++(cASE WHEN v.manuf_id is null THEN 1 else 0 end)*k_INF_MANUF_IS +coalesce(order_6_is,0)*k_order_6_is+abs(1-coalesce(cont_meas_2_is,1))*k_cont_meas_2_is+abs(1-coalesce(cont_meas_3_is,1))*k_cont_meas_3_is
++abs(1-coalesce(cont_meas_4_is,1))*k_cont_meas_4_is+abs(1-coalesce(cont_meas_5_is,1))*k_cont_meas_5_is+abs(1-coalesce(cont_meas_6_is,1))*k_cont_meas_6_is+abs(1-coalesce(cont_meas_7_is,1))*k_cont_meas_7_is
++coalesce(add_is_1,0)*k_add_is_1+coalesce(add_is_2,0)*k_add_is_2+coalesce(add_is_3,0)*k_add_is_3+coalesce(add_is_4,0)*k_add_is_4 rank
+FROM sutstpa.valve v,koef k)
+         select id,pipe,wkb_geometry,station,
+		   CASE when rank&lt;=sum_k.max_sum*0.15 then 'GREEN' 
+           		when rank&gt;sum_k.max_sum*0.15 and rank&lt;=sum_k.max_sum*0.5 then 'YELLOW'
+		 	when rank&gt;sum_k.max_sum*0.5 then 'RED' 
+		   else 'UNKNOWN' end "TYPE" 	 
+		FROM valve v, sum_koef sum_k where sum_k.check_table='sutstpa.valve' and {FILTER}
+                </query>
+            </geoQuery>
+        </select>
+        <insert>
+            <geoCommand>
+                <param name="ID" type="Int64" direction="Input"/>                    
+                <object>
+                    UPDATE sutstpa.valve SET WKB_GEOMETRY=:WKB WHERE ID = :ID
+                </object>
+            </geoCommand>
+        </insert>
+        <update>
+            <geoCommand>
+                <param name="ID" type="Int64" direction="Input"/>              
+                <object>
+                    UPDATE sutstpa.valve  SET WKB_GEOMETRY=:WKB WHERE ID = :ID
+                </object>
+            </geoCommand>
+        </update>
+        <delete>
+            <dbCommand>
+                <param name="ID" type="Int64" direction="Input"/>            
+                <query>
+                    UPDATE sutstpa.valve  SET WKB_GEOMETRY=NULL WHERE ID = :ID
+                </query>
+            </dbCommand>
+        </delete>
+    </data>
+    <data id="SUTSTPA_СВЕЧА" comment="VENT_PIPE" schema="SUTSTPA" table="VENT_PIPE">
+        <select>
+            <geoQuery idField="ID" geoField="WKB_GEOMETRY">
+                <var name="FILTER" default="1=1"/>
+                <query>
+with sum_koef as (select n.check_table,sum(n.koeff) max_sum from sutstpa.sprav_ntd_gcl n where n.check_table is not null group by n.check_table),
+koef as (select (select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_4_IS') k_BARRIER_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_1_IS') k_ORDER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_4_IS') k_TERRITORY_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_1_IS') k_BARRIER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_5_IS') k_ORDER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_6_IS') k_ORDER_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PLATE_IS') k_PLATE_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_7_IS') k_CONT_MEAS_7_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_2_IS') k_INF_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_3_IS') k_INF_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_5_IS') k_BARRIER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_2_IS') k_SIGN_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_3_IS') k_SIGN_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_4_IS') k_SIGN_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_2_IS') k_ORDER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_5_IS') k_SIGN_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_6_IS') k_SIGN_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_1_IS') k_TERRITORY_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_2_IS') k_TERRITORY_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_3_IS') k_TERRITORY_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_2_IS') k_BARRIER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_3_IS') k_BARRIER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_3_IS') k_ORDER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_4_IS') k_order_4_is,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ROOF_IS') k_ROOF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='HEIGHT_IS') k_HEIGHT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_IS') k_COLOR_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_2_IS') k_CONT_MEAS_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_3_IS') k_CONT_MEAS_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_4_IS') k_CONT_MEAS_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_6_IS') k_CONT_MEAS_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_5_IS') k_CONT_MEAS_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_1_IS') k_EXT_CORR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_2_IS') k_EXT_CORR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_3_IS') k_EXT_CORR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_1_IS') k_GROUND_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_2_IS') k_GROUND_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_3_IS') k_GROUND_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_4_IS') k_GROUND_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_5_IS') k_GROUND_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_3_IS') k_COLOR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_1_IS') k_COLOR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_2_IS') k_COLOR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_4_IS') k_COLOR_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_5_IS') k_COLOR_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_6_IS') k_COLOR_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_1_IS') k_INF_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_4_IS') k_INF_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_5_IS') k_INF_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_6_IS') k_INF_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_NOM_DIAM_IS') k_INF_NOM_DIAM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_PRES_IS') k_INF_PRES_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_DATE_MANUF_IS') k_INF_DATE_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_MANUF_IS') k_INF_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TECH_NUM_IS') k_TECH_NUM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='VERT_IS') k_VERT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_1') k_ADD_IS_1,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_2') k_ADD_IS_2,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_3') k_ADD_IS_3,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_4') k_ADD_IS_4,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PEDESTAL_IS') k_PEDESTAL_IS),
+vent_pipe as (SELECT id,pipe,station,wkb_geometry,
+abs(1-coalesce(height_is,1))*k_height_is+abs(1-coalesce(color_is,1))*k_color_is+abs(1-coalesce(roof_is,1))*k_roof_is+abs(1-coalesce(pedestal_is,1))*k_pedestal_is+abs(1-coalesce(vert_is,1))*k_vert_is rank
+					FROM sutstpa.vent_pipe v,koef k)
+
+select id,pipe,station,wkb_geometry,
+		   CASE when rank&lt;=sum_k.max_sum*0.15 then 'GREEN' 
+           		when rank&gt;sum_k.max_sum*0.15 and rank&lt;=sum_k.max_sum*0.5 then 'YELLOW'
+		 	when rank&gt;sum_k.max_sum*0.5 then 'RED'  
+		   else 'UNKNOWN' end "TYPE"  
+					FROM vent_pipe v, sum_koef sum_k where sum_k.check_table='sutstpa.vent_pipe' and {FILTER} 
+                </query>
+            </geoQuery>
+        </select>
+        <insert>
+            <geoCommand>
+                <param name="ID" type="Int64" direction="Input"/>                
+                <object>
+                    UPDATE sutstpa.vent_pipe SET WKB_GEOMETRY=:WKB WHERE ID = :ID
+                </object>
+            </geoCommand>
+        </insert>
+        <update>
+            <geoCommand>
+                <param name="ID" type="Int64" direction="Input"/>               
+                <object>
+                    UPDATE sutstpa.vent_pipe  SET WKB_GEOMETRY=:WKB WHERE ID = :ID
+                </object>
+            </geoCommand>
+        </update>
+        <delete>
+            <dbCommand>
+                <param name="ID" type="Int64" direction="Input"/>             
+                <query>
+                    UPDATE sutstpa.vent_pipe  SET WKB_GEOMETRY=NULL WHERE ID = :ID
+                </query>
+            </dbCommand>
+        </delete>
+    </data>
+     <data id="SUTSTPA_КРАНОВЫЙ_УЗЕЛ" comment="STRUCTURE" schema="SUTSTPA" table="STRUCTURE">
+        <select>
+            <geoQuery idField="ID" geoField="WKB_GEOMETRY">
+                <var name="FILTER" default="1=1"/>
+                <query>
+with sum_koef as (select n.check_table,sum(n.koeff) max_sum from sutstpa.sprav_ntd_gcl n where n.check_table is not null group by n.check_table),
+koef as (select (select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_4_IS') k_BARRIER_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_1_IS') k_ORDER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_4_IS') k_TERRITORY_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_1_IS') k_BARRIER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_5_IS') k_ORDER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_6_IS') k_ORDER_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PLATE_IS') k_PLATE_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_7_IS') k_CONT_MEAS_7_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_2_IS') k_INF_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_3_IS') k_INF_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_5_IS') k_BARRIER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_2_IS') k_SIGN_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_3_IS') k_SIGN_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_4_IS') k_SIGN_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_2_IS') k_ORDER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_5_IS') k_SIGN_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_6_IS') k_SIGN_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_1_IS') k_TERRITORY_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_2_IS') k_TERRITORY_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_3_IS') k_TERRITORY_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_2_IS') k_BARRIER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_3_IS') k_BARRIER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_3_IS') k_ORDER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_4_IS') k_order_4_is,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ROOF_IS') k_ROOF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='HEIGHT_IS') k_HEIGHT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_IS') k_COLOR_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_2_IS') k_CONT_MEAS_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_3_IS') k_CONT_MEAS_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_4_IS') k_CONT_MEAS_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_6_IS') k_CONT_MEAS_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_5_IS') k_CONT_MEAS_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_1_IS') k_EXT_CORR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_2_IS') k_EXT_CORR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_3_IS') k_EXT_CORR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_1_IS') k_GROUND_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_2_IS') k_GROUND_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_3_IS') k_GROUND_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_4_IS') k_GROUND_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_5_IS') k_GROUND_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_3_IS') k_COLOR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_1_IS') k_COLOR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_2_IS') k_COLOR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_4_IS') k_COLOR_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_5_IS') k_COLOR_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_6_IS') k_COLOR_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_1_IS') k_INF_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_4_IS') k_INF_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_5_IS') k_INF_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_6_IS') k_INF_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_NOM_DIAM_IS') k_INF_NOM_DIAM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_PRES_IS') k_INF_PRES_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_DATE_MANUF_IS') k_INF_DATE_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_MANUF_IS') k_INF_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TECH_NUM_IS') k_TECH_NUM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='VERT_IS') k_VERT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_1') k_ADD_IS_1,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_2') k_ADD_IS_2,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_3') k_ADD_IS_3,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_4') k_ADD_IS_4,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PEDESTAL_IS') k_PEDESTAL_IS),
+structure as (SELECT id,pipe,wkb_geometry,station,
+abs(1-coalesce(sign_2_is,1))*k_sign_2_is+abs(1-coalesce(sign_3_is,1))*k_sign_3_is+abs(1-coalesce(sign_4_is,1))*k_sign_4_is+abs(1-coalesce(sign_5_is,1))*k_sign_5_is+abs(1-coalesce(sign_6_is,1))*k_sign_6_is
++coalesce(territory_1_is,0)*k_territory_1_is+coalesce(territory_2_is,0)*k_territory_2_is+coalesce(territory_3_is,0)*k_territory_3_is+coalesce(territory_4_is,0)*k_territory_4_is+abs(1-coalesce(barrier_1_is,1))*k_barrier_1_is
++abs(1-coalesce(barrier_2_is,1))*k_barrier_2_is+abs(1-coalesce(barrier_3_is,1))*k_barrier_3_is+abs(1-coalesce(barrier_4_is,1))*k_barrier_4_is+abs(1-coalesce(barrier_5_is,1))*k_barrier_5_is+coalesce(order_1_is,0)*k_order_1_is
++coalesce(order_2_is,0)*k_order_2_is+coalesce(order_3_is,0)*k_order_3_is+coalesce(order_4_is,0)*k_order_4_is+coalesce(order_5_is,0)*k_order_5_is rank
+FROM sutstpa.structure s,koef k)
+                   select id,pipe,wkb_geometry,station,
+		   CASE when rank&lt;=sum_k.max_sum*0.15 then 'GREEN' 
+           		when rank&gt;sum_k.max_sum*0.15 and rank&lt;=sum_k.max_sum*0.5 then 'YELLOW'
+		 	when rank&gt;sum_k.max_sum*0.5 then 'RED'  
+		   else 'UNKNOWN' end "TYPE"  
+					FROM structure, sum_koef sum_k where sum_k.check_table='sutstpa.structure' and {FILTER} 
+                </query>
+            </geoQuery>
+        </select>
+        <insert>
+            <geoCommand>
+                <param name="ID" type="Int64" direction="Input"/>                   
+                <object>
+                    UPDATE sutstpa.structure SET WKB_GEOMETRY=:WKB WHERE ID = :ID
+                </object>
+            </geoCommand>
+        </insert>
+        <update>
+            <geoCommand>
+                <param name="ID" type="Int64" direction="Input"/>               
+                <object>
+                    UPDATE sutstpa.structure  SET WKB_GEOMETRY=:WKB WHERE ID = :ID
+                </object>
+            </geoCommand>
+        </update>
+        <delete>
+            <dbCommand>
+                <param name="ID" type="Int64" direction="Input"/>               
+                <query>
+                    UPDATE sutstpa.structure  SET WKB_GEOMETRY=NULL WHERE ID = :ID
+                </query>
+            </dbCommand>
+        </delete>
+    </data>
+    
+</root>

@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="760" readOnly="true" xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml">
+  <dataProvider>GAZPROM_SYS_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="760">
+    <mx:HBox percentWidth="100">
+      <mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Координата Y/X" width="140" />
+          <mx:CheckBox id="HORIZ_INDICATOR_LF" width="20" height="20" />
+          <controls:NumberInput id="Y_COORD" width="90" maxChars="22" height="20" />
+	  <controls:NumberInput id="X_COORD" width="90" maxChars="22" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Координата Z" width="140" />
+          <mx:CheckBox id="VERT_INDICATOR_LF" width="20" height="20" />
+          <controls:NumberInput id="Z_COORD" width="110" maxChars="22" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Погрешность координат" width="140" />
+          <controls:NumberInput id="VALIDITY_TOLERANCE" width="40" maxChars="22" height="20" />
+          <mx:Text textAlign="right" text="Актуальность" width="145" />
+          <mx:CheckBox id="CURRENT_INDICATOR_LF" width="20" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Тип координат" width="140" />
+          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+            <mx:ComboBox id="TYPE_CL" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_COORDINATE_TYPE_CL" />
+            <mx:Button id="BTN_LIST_TYPE_CL" selectedField="PODS_COORDINATE_TYPE_CL" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16" />
+          </mx:HBox>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Точность координат" width="140" />
+          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+            <mx:ComboBox id="ACCURACY_CL" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_COORDINATE_ACCURACY_CL" />
+            <mx:Button id="BTN_LIST_ACCURACY_CL" selectedField="PODS_COORDINATE_ACCURACY_CL" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16" />
+          </mx:HBox>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Действует с/по дату" width="140" />
+          <mx:DateField id="EFFECTIVE_FROM_DATE" width="97" height="20" formatString="DD.MM.YYYY" />
+          <mx:DateField id="EFFECTIVE_TO_DATE" width="97" height="20" formatString="DD.MM.YYYY" />
+        </mx:HBox>
+      </mx:VBox>
+      <mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Источник координат" width="140" />
+          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+            <mx:ComboBox id="COORDINATE_SOURCE_ID" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_COORDINATE_SOURCE" />
+            <mx:Button id="BTN_LIST_COORDINATE_SOURCE_ID" selectedField="PODS_COORDINATE_SOURCE" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16" />
+          </mx:HBox>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Дата создания" width="140" />
+          <mx:DateField id="CREATE_DATE" editable="false" width="97" height="20" formatString="DD.MM.YYYY" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Кто создал" width="140" />
+          <mx:TextInput id="PODS_USER" editable="false" width="225" maxChars="70" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Идентификатор исходной / предшествующей записи" width="140" />
+          <controls:NumberInput id="ORIGINAL_COORDINATE_ID" editable="false" width="85" maxChars="22" height="20" />
+          <controls:NumberInput id="PREVIOUS_COORDINATE_ID" editable="false" width="85" maxChars="22" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Идентификатор координаты/пикета" width="140" />
+          <controls:NumberInput id="COORDINATE_ID" editable="false" width="85" maxChars="22" height="20" />
+          <controls:NumberInput id="LOCATION_ID" editable="false" width="85" maxChars="22" height="20" />
+        </mx:HBox>
+      </mx:VBox>
+    </mx:HBox>
+    <mx:HRule percentWidth="100" height="2" />
+    <mx:HBox percentWidth="100">
+      <mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Филиал компании-оператора" width="140" />
+          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+            <mx:ComboBox id="SRV_DISTRICT_GCL" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_SRV_DISTRICT_GCL" />
+            <mx:Button id="BUTTON_SRV_DISTRICT_GCL" selectedField="PODS_SRV_DISTRICT_GCL" enabled="false" styleName="refObject" toolTip="Перейти к филиалу" width="16" height="16" />
+          </mx:HBox>
+        </mx:HBox>
+      </mx:VBox>
+      <mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Глубина заложения до верха трубы, м" width="140" />
+          <controls:NumberInput id="DEPTH_OF_COVER" width="40" maxChars="22" height="20" />
+        </mx:HBox>
+      </mx:VBox>
+    </mx:HBox>
+  </mx:VBox>
+  <validatorsArray>
+  </validatorsArray>
+</DATA_EDIT_FORM>

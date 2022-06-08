@@ -1,0 +1,156 @@
+﻿<!--7.7.5.1-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="9" headerVertSize="50"
+id="PODS_STO_SHURF_PLAN_LIST"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelTemplateName="PODS_STO_SHURF_PLAN_LIST"
+            layerId="PODS_STO_SHURF_PLAN" propertyPanelName="PODS_STO_SHURF_PLAN"
+            dataRequest="STO_GRID.xml#PODS_STO_SHURF_PLAN"
+            initialSortField="ID">
+  <grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/excel.png"
+        tooltip="Excel. Сформировать перспективный план наружного обследования"
+        clickEvent="exportToExcelFuturePlanEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/check.png"
+        tooltip="Заполнить опросный лист"
+        clickEvent="editRouteOptionsEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+<grids:columns>
+
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+      <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=/Public/assets/abacus.png;eventName=addStoIliDataAdvEvent;toolTip=Внести дополнительные данные по отчету"
+                          editable="false"/>
+	    <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=/ui/images/allow_act.png;eventName=createActOfILIResultsEvent;toolTip=Excel. Сформировать акт приемки результатов ВТД"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=/ui/images/exc_sheet.png;eventName=selectSheetShurfEvent;layerId=PODS_STO_ILI_DATA_SHEET_RELOAD;toolTip=Сформировать/выбрать ведомость шурфовок на межкрановом участке"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=/ui/images/mtr_sheet.png;eventName=selectSheetMTRShurfEvent;layerId=PODS_STO_MTR_SHEET_RELOAD;toolTip=Сформировать/выбрать ведомость материально-технических ресурсов на межкрановом участке"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=/ui/images/rep_sheet.png;eventName=selectSheetRepairShurfEvent;layerId=PODS_STO_REPAIR_SHEET_RELOAD;toolTip=Сформировать/выбрать ведомость ремонтов на межкрановом участке"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="95" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=shurfDetailEvent;layerId=PODS_STO_SHEET_EXCAVATE;classname=gridTextButton;text=ДЕТАЛИЗАЦИЯ;toolTip=Детализация"
+                          editable="true"/>
+      <columns:GridColumn headerText="Год обследования" dataField="YEAR_INSP"
+                          filterRequestId="STO_SEM.xml#PODS_STO_SHURF_DATE_DICT"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=STO_SEM.xml#PODS_STO_SHURF_DATE_DICT"
+                          filterComparisionType="array"
+                          editable="false" hidden="true"
+                          sortField="YEAR_INSP"
+                          width="80"/>
+      <columns:GridColumn headerText="Наименование обследования" dataField="ILI_LBL"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"
+                          filterComparisionType="string"
+                          width="300"/>
+      <columns:GridColumn headerText="Труб с\nдефектами\nкат. (a)" dataField="CAT_A"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50">
+          <colorValidation mode="row" min="1" max="infinity" type="number" color="FF463E" critical="3" preload="true" />
+      </columns:GridColumn>
+      <columns:GridColumn headerText="Труб с\nдефектами\nкат. (b)" dataField="CAT_B"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50">
+          <colorValidation mode="row" min="1" max="infinity" type="number" color="FFBC16" critical="2" preload="true" />
+      </columns:GridColumn>
+      <columns:GridColumn headerText="Труб с\nдефектами\nкат. (c)" dataField="CAT_C"
+                                itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                                editable="false"
+                                filterComparisionType="number"
+                                width="50">
+          <colorValidation mode="row" min="1" max="infinity" type="number" color="FFF820" critical="1" preload="true" />
+      </columns:GridColumn>
+
+	    <columns:GridColumn headerText="ID" dataField="ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          width="60" hidden="true"/>
+	    <columns:GridColumn headerText="Дата проведения" dataField="BEGIN_DATE"
+                        itemRenderer="ru.corelight.view.renderer.DateRenderer"
+                        editable="false"
+                        filterComparisionType="date"
+                        width="70" hidden="true"/>
+      <columns:GridColumn headerText="Производитель" dataField="TOOL_VENDOR_CL"
+                        filterRequestId="PODS_SEM_DICT.xml#PODS_ILI_TOOL_VENDOR_CL"
+                        itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_SEM_DICT.xml#PODS_ILI_TOOL_VENDOR_CL"
+                        filterComparisionType="array"
+                        editable="false"
+                        sortField="TOOL_VENDOR_LBL"
+                        width="100" hidden="true"/>						
+      <columns:GridColumn headerText="ROUTE_TYPE_LBL" dataField="ROUTE_TYPE_LBL"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"
+                          filterComparisionType="string"
+                          width="60" hidden="true"/>
+      <columns:GridColumn headerText="LINE_ID_LBL" dataField="LINE_ID_LBL"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"
+                          filterComparisionType="string"
+                          width="60" hidden="true"/>
+      <columns:GridColumn headerText="Участок ИД (ROUTE_ID)" dataField="ROUTE_ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          width="70" hidden="true"/>
+      <columns:GridColumn headerText="Тип снаряда" dataField="TOOL_TYPE_CL"
+                        filterRequestId="PODS_SEM_DICT.xml#PODS_ILI_TOOL_TYPE_CL"
+                        itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_SEM_DICT.xml#PODS_ILI_TOOL_TYPE_CL"
+                        filterComparisionType="array"
+                        editable="false"
+                        sortField="TOOL_TYPE_LBL"
+                        width="100" hidden="true"/>
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="false"
+                        columnWidthMode="percent"/>
+      <columns:GridColumn headerText="Трубопровод" dataField="LINE_ID"
+                          filterRequestId="PODS_POLICY.xml#PODS_LINE_GRID"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_POLICY.xml#PODS_LINE_GRID"
+                          hidden="true"
+                          editable="false"
+                          sortField="LINE_ID_LBL"
+                          width="100"/>
+      <columns:GridColumn headerText="Нач. км." dataField="STATION_BEG"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          hidden="true"
+                          width="50"/>
+      <columns:GridColumn headerText="Кон. км." dataField="STATION_END"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          hidden="true"
+                          width="50"/>
+      <columns:GridColumn headerText="IS_ILI_DATA_ADV" dataField="IS_ILI_DATA_ADV"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false" width="50" hidden="true">
+                          <colorValidation mode="row" type="number" min="1" max="1" color="72CE5D" critical="1" preload="true" />
+      </columns:GridColumn> 
+  </grids:columns>
+</grids:Grid>

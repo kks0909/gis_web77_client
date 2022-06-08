@@ -1,0 +1,72 @@
+﻿{
+  "code":200,
+  "version":"7.7.7.6",
+  "id":"CAS",
+  "map":{
+    "_comment":"Подпись, выводимая на карту",
+    "label":{
+      "text":"КОММЕРЧЕСКАЯ ТАЙНА","font":"Times New Roman", "font_size": "12",
+      "left":"","right":"10","top":"","bottom":"10"
+    },    
+    "hideButtons":["SendMail", "CASLayers1", "HScroll"],
+    "_comment":"Радиус поиска векторных объектов на карте, в пикселях",
+    "MAP_Info_Radius":5,
+    "_comment":"Шаг матрицы разрежения объектов на карте по Х",
+    "MAP_Matrix_DX":1,
+    "_comment":"Шаг матрицы разрежения объектов на карте по Y",
+    "MAP_Matrix_DY":1,
+    "_comment":"Максимальное отношение длины подписи (в пикселах) к длине объекта (в пикселах), при котором подпись выводится",
+    "MAP_Label_Len_Ratio":1.5,
+    "_comment":"Минимальное отношение длины видимого линейного объекта к ширине экрана",
+    "MAP_Len_Ratio":0.001,
+    "_comment":"Коэффициент при расчете размера шрифта подписи",
+    "MAP_Label_Font_Ratio":0.7131,
+    "_comment":"Часть высоты карты, через которую повторяется подпись протяженного линейного объекта",
+    "MAP_Label_Repeat_Ratio":1.5,
+   "_comment":"Максимально допустимое расстояние от конца подписи до линии (в пикселах)",
+    "MAP_Label_Cut_Tolerance":15,
+    "_comment":"Процент обрезки подписей в случае режима MAP_Label_Draw_Type='cut'",
+    "MAP_Label_Cut_Ratio":0.1,
+    "_comment":"Тип отрисовки подписей для линий (вдоль линии, обрезать) along, cut. Значение по умолчанию 'cut'",
+    "MAP_Label_Draw_Type":"cut",
+     "_comment":"Смещение по x,y текста относительно подписи (в пикселах)",
+    "MAP_Label_Offset":0,
+    "_comment":"Ширина легенды (в пикселах)",
+    "MAP_Legend_Width":190,
+    "_comment":"Высота отступа верхней границы 1-го сверху графика от границы диаграммы. В у.е(виртуальные пикселы), которые используются в GEO файлах для определения высоты графика",
+    "MAP_First_Diagram_Offset":7,
+    "_comment":"Высота отступа всех графиков, кроме первого, от предыдущего. В у.е(виртуальные пикселы), которые используются в GEO файлах для определения высоты графика",
+    "MAP_Diagram_Offset":3
+  },  
+  "_comment":"Настройки панели свойств",
+  "ppanel":{
+    "showSystemInfo":false
+  },
+  "cas":{
+    "_comment": "Нужно ли масштабировать координаты изначально, когда приходит геометрия",
+    "scale":{
+      "x": 2.5,
+      "y": 1,
+      "_comment": "Нужно ли обрезать данные по нижней границе",
+      "cut_y": true
+    },
+    "_comment": "Перечень запросов для работы с ПКА",
+    "requests":{
+      "_comment": "Запрос для получения границ профиля", 
+      "profileBoundsRequest": "CAS_WATERWAY_SEM.xml#NEW_CAS_MG_PROFILE"
+    }
+  },  
+  "vectorlayers":["CAS_PODS_PROFILE_Layers.xml","CAS_WATERWAY_Layers.xml","CAS_PODS_CAS_ILI_Layers.xml"],
+  "_comment": "Начальный сценарий открытия задачи",
+  "startupScenario":{
+    "_comment": "Перечень необходимых параметров", 
+    "urlParams": ["ZONE_ID"],
+    "openLayers":[],
+    "openTables":[],
+    "filter":{
+        "type":"top",
+        "middleDataSource":"waterway_filter",
+        "hideButtons": ["cancel"]
+     }
+  }
+}

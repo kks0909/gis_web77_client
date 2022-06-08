@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- форма для парсинга -->
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" verticalGap="5"
+		 width="100%" height="100%"
+		  xmlns:components="ru.corelight.view.components.*"
+		 >
+	<components:FilterPopUpButton width="100%" minPopupWidth="610" height="22" title="Год обследования" minCnt="0" selectAllElements="false" id="YEAR_INSP" dataProvider="STO_SEM.xml#PODS_STO_SHURF_DATE_DICT" />
+	
+</mx:VBox>

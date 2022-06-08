@@ -1,0 +1,11 @@
+﻿<ROOT prevTask="close" version="6.0.2.0">
+	<hbox percentWidth="100" percentHeight="100">
+		<panel id="ADM_POLICY_TO_ROLE" percentWidth="100" percentHeight="100" reload="true">
+			<settings>
+				<requestPolicies>ADM_SEM.xml#WEB50_B_POLICY</requestPolicies>
+				<requestPolicyRules>ADM_SEM.xml#WEB50_B_POLICY_RULES</requestPolicyRules>
+				<requestPolicyRuleFilters>ADM_SEM.xml#WEB50_B_POLICY_RULE_FILTERS</requestPolicyRuleFilters>
+			</settings>
+		</panel>
+	</hbox>
+</ROOT>

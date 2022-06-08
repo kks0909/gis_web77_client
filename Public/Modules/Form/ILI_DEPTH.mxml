@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns="view.data.*"
+                title="Глубина поражения дефектов"
+                width="790"
+                ext_data_id="PODS_EXPORT.xml#PODS_ILI_DATA"
+                excelTemplate="PODS_ILI_DATA">
+	  <dataProvider>CAS_PODS_CAS_ILI_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	  <mx:VBox width="790">
+		    <mx:HBox percentWidth="100">
+			      <mx:Text textAlign="right" text="Перейти к обследованию" width="140"/>
+			      <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+				        <mx:ComboBox id="ILI_INSPECTION_ID" enabled="false" editable="false" width="585" height="20"
+                         dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION"/>
+				        <mx:Button id="BUTTON_ILI_INSPECTION_ID" selectedField="PODS_ILI_INSPECTION"
+                       enabled="false"
+                       styleName="refObject"
+                       toolTip="Перейти к внутритрубному обследованию"
+                       width="16"
+                       height="16"/>
+			      </mx:HBox>
+		    </mx:HBox>
+		    <mx:HBox percentWidth="100">
+			      <mx:VBox percentWidth="50">
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Описание" width="140"/>
+					          <mx:TextInput id="DESCRIPTION" width="225" maxChars="254" height="40"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Номер трубы" width="140"/>
+					          <mx:TextInput id="WELD_NUMBER" width="80" maxChars="16" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Линейная дистанция дефекта, м" width="140"/>
+					          <controls:NumberInput id="ABSOLUTE_ODOMETER" width="70" maxChars="22" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Дистанция от/до шва, от/до репера, м" width="140"/>
+					          <controls:NumberInput id="US_WELD_DISTANCE" width="40" maxChars="22" height="20"/>
+					          <controls:NumberInput id="DS_WELD_DISTANCE" width="40" maxChars="22" height="20"/>
+					          <controls:NumberInput id="US_AGM_DISTANCE" width="40" maxChars="22" height="20"/>
+					          <controls:NumberInput id="DS_AGM_DISTANCE" width="40" maxChars="22" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Глубина/ориентация" width="140"/>
+					          <controls:NumberInput id="AVERAGE_DEPTH" width="40" maxChars="22" height="20"/>
+					          <mx:Text textAlign="left" text="%" width="30"/>
+					          <controls:NumberInput id="ORIENTATION_DEG" width="40" maxChars="22" height="20"/>
+					          <mx:Text textAlign="left" text="град" width="30"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Длина/ширина дефекта" width="140"/>
+					          <controls:NumberInput id="LENGTH" width="40" maxChars="22" height="20"/>
+					          <mx:Text textAlign="left" text="мм" width="30"/>
+					          <controls:NumberInput id="WIDTH" width="40" maxChars="22" height="20"/>
+					          <mx:Text textAlign="left" text="мм" width="30"/>
+				        </mx:HBox>
+            <mx:HBox percentWidth="100">
+               <mx:Text textAlign="right" text="Дата обследования/ интервал до следующего" width="140"/>
+               <mx:DateField id="DATE_COLLECTED" width="96" height="20" formatString="DD.MM.YYYY"/>
+               <mx:TextInput id="CERTAINTY_INTERVAL" width="60" maxChars="22" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+               <mx:Text textAlign="right" text="Поверхность трубы" width="140"/>
+               <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+                  <mx:ComboBox id="INTERNAL_EXTERNAL_CL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_INTERNAL_EXTERNAL_CL"/>
+                  <mx:Button id="BTN_LIST_INTERNAL_EXTERNAL_CL" selectedField="PODS_INTERNAL_EXTERNAL_CL"
+                             enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+               </mx:HBox>
+            </mx:HBox>
+        
+        
+			      </mx:VBox>
+			      <mx:VBox percentWidth="50">
+			         <mx:HBox percentWidth="100">
+               <mx:Text textAlign="right" text="Коэффициент безопасного давления(КБД)" width="292"/>
+               <mx:TextInput id="RPR_PIG" width="73" maxChars="300" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+               <mx:Text textAlign="right" text="Идентификация" width="140"/>
+               <mx:TextInput id="FEATURE_DESCRIPTION" width="225" maxChars="300" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+               <mx:Text textAlign="right" text="Тип аномалии" width="140"/>
+               <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+                  <mx:ComboBox id="ANOMALY_TYPE_CL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_ILI_ANOMALY_TYPE_CL"/>
+                  <mx:Button id="BTN_LIST_ANOMALY_TYPE_CL" selectedField="PODS_ILI_ANOMALY_TYPE_CL"
+                             enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+               </mx:HBox>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+               <mx:Text textAlign="right" text="Вид аномалии" width="140"/>
+               <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+                  <mx:ComboBox id="ANOMALY_EXTENSION_CL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_ANOMALY_EXTENSION_CL"/>
+                  <mx:Button id="BTN_LIST_ANOMALY_EXTENSION_CL" selectedField="PODS_ANOMALY_EXTENSION_CL"
+                             enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+               </mx:HBox>
+            </mx:HBox>
+        
+        
+        
+            <mx:HBox percentWidth="100">
+               <mx:Text textAlign="right" text="Безопасное(допустимое) давление" width="303"/>
+               <mx:TextInput id="RPR_CALCULATED" width="36" maxChars="300" height="20"/>
+               <mx:Text textAlign="right" text="МПа" width="30"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+               <mx:Text textAlign="right" text="Критическое(разрушающее) давление" width="303"/>
+               <mx:TextInput id="BPR_VARIANCE" width="37" maxChars="300" height="20"/>
+               <mx:Text textAlign="right" text="МПа" width="30"/>
+            </mx:HBox>
+        
+        
+            <mx:HBox percentWidth="100">
+               <mx:Text textAlign="right" text="Фактический коэфф. запаса(прочности)" width="333"/>
+               <mx:TextInput id="BPR_CALCULATED" width="30" maxChars="300" height="20"/>
+            </mx:HBox>
+        
+        
+            <mx:HBox percentWidth="100">
+               <mx:Text textAlign="right" text="Нормативный коэфф. запаса прочности(только для КРН)"
+                        width="333"/>
+               <mx:TextInput id="RPR_VARIANCE" width="30" maxChars="300" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Комментарии" width="140"/>
+					          <mx:TextInput id="COMMENTS" width="225" maxChars="255" height="40"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Перейти к реперу" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:Button id="BUTTON_REF_EVENT_ID" selectedField="PODS_EVENT_RANGE" enabled="false"
+                             styleName="refObject"
+                             toolTip="Перейти к объекту, который соответствует данному реперу"
+                             width="16"
+                             height="16"/>
+						            <controls:NumberInput id="REF_EVENT_ID" editable="false" width="85" maxChars="22" height="20"
+                                        visible="{CONFIG.SHOW_SYSTEM_INFO}"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Источник информации" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="SOURCE_GCL" enabled="false" editable="false" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_SOURCE_GCL"/>
+						            <mx:Button id="BTN_LIST_SOURCE_GCL" selectedField="PODS_SOURCE_GCL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Идентификатор координат аномалии" width="140"/>
+					          <controls:NumberInput id="COORDINATE_ID" editable="false" width="85" maxChars="22" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Идентификатор геообъекта (для аномалий с координатами)"
+                        width="140"/>
+					          <controls:NumberInput id="EVENT_ID" editable="false" width="85" maxChars="22" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Идентификатор аномалии" width="140"/>
+					          <controls:NumberInput id="ILI_DATA_ID" editable="false" width="85" maxChars="22" height="20"/>
+				        </mx:HBox>
+            <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+               <mx:Text textAlign="right" text="Зарезервированный ключ для ссылки на исходные данные"
+                        width="140"/>
+               <mx:TextInput id="RAW_REFERENCE_KEY" editable="false" width="160" maxChars="32" height="20"/>
+            </mx:HBox>
+			      </mx:VBox>
+		    </mx:HBox>
+	  </mx:VBox>
+	  <validatorsArray>
+		    <controls:DefaultNumberValidator source="{ABSOLUTE_ODOMETER}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="3"
+                                       precisionError="Значение в поле должно иметь не более 3 цифр после запятой"
+                                       maxValue="9999999999999.999"
+                                       exceedsMaxError="Значение в поле может иметь 13 цифр до запятой и 3 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{US_WELD_ODOMETER}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="3"
+                                       precisionError="Значение в поле должно иметь не более 3 цифр после запятой"
+                                       maxValue="9999999999999.999"
+                                       exceedsMaxError="Значение в поле может иметь 13 цифр до запятой и 3 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{US_WELD_DISTANCE}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="3"
+                                       precisionError="Значение в поле должно иметь не более 3 цифр после запятой"
+                                       maxValue="9999999999999.999"
+                                       exceedsMaxError="Значение в поле может иметь 13 цифр до запятой и 3 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{DS_WELD_ODOMETER}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="3"
+                                       precisionError="Значение в поле должно иметь не более 3 цифр после запятой"
+                                       maxValue="9999999999999.999"
+                                       exceedsMaxError="Значение в поле может иметь 13 цифр до запятой и 3 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{DS_WELD_DISTANCE}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="3"
+                                       precisionError="Значение в поле должно иметь не более 3 цифр после запятой"
+                                       maxValue="9999999999999.999"
+                                       exceedsMaxError="Значение в поле может иметь 13 цифр до запятой и 3 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{US_AGM_DISTANCE}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="3"
+                                       precisionError="Значение в поле должно иметь не более 3 цифр после запятой"
+                                       maxValue="9999999999999.999"
+                                       exceedsMaxError="Значение в поле может иметь 13 цифр до запятой и 3 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{DS_AGM_DISTANCE}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="3"
+                                       precisionError="Значение в поле должно иметь не более 3 цифр после запятой"
+                                       maxValue="9999999999999.999"
+                                       exceedsMaxError="Значение в поле может иметь 13 цифр до запятой и 3 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{AVERAGE_DEPTH}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="3"
+                                       precisionError="Значение в поле должно иметь не более 3 цифр после запятой"
+                                       maxValue="9999.999"
+                                       exceedsMaxError="Значение в поле может иметь 4 цифр до запятой и 3 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{LENGTH}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="0"
+                                       precisionError="Значение в поле должно иметь не более 0 цифр после запятой"
+                                       maxValue="999999"
+                                       exceedsMaxError="Значение в поле может иметь 6 цифр до запятой и 0 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{WIDTH}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="3"
+                                       precisionError="Значение в поле должно иметь не более 3 цифр после запятой"
+                                       maxValue="999999.999"
+                                       exceedsMaxError="Значение в поле может иметь 6 цифр до запятой и 3 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{ORIENTATION_DEG}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="0"
+                                       precisionError="Значение в поле должно иметь не более 0 цифр после запятой"
+                                       maxValue="999"
+                                       exceedsMaxError="Значение в поле может иметь 3 цифр до запятой и 0 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+	  </validatorsArray>
+</DATA_EDIT_FORM>

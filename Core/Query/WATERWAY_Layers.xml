@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.7.0" descr="Водные переходы">
+	<layer id="WATERWAY" comment="WATERWAY" descr="Реки" projection="EPSG:4326"  schema="web50" table="WATERWAY" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="WATERWAY" cover="false" fitMap="false" order="20" visible="true" topology="line,polygon" classField="TYPE_CL" labelField="" useServerCache="false">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WATERWAY" />
+    <dataProvider type="style" source="WATERWAY_STYLE.xml#WATERWAY" />
+    <dataProvider type="semantic" source="WATERWAY_SEM.xml#WATERWAY" />
+    <dataProvider type="spatial" source="WATERWAY_GEO.xml#WATERWAY" />
+  </layer>
+  <layer id="WATERWAY_CROSS" comment="WATERWAY.СROSS" descr="Водные переходы" projection="EPSG:4326" schema="web50" table="WATERWAY_CROSS" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="WATERWAY_CROSS" cover="false" fitMap="true" order="10" visible="true" topology="point" classField="TYPE_CL" labelField="" useServerCache="false">
+    <filter>
+      <pattern>WATERWAY_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>WATERWAY_ID</field>
+      <replace>FILTER</replace>
+    </filter>
+    <filter>
+      <pattern>LINE_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>LINE_ID</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WATERWAY_CROSS" />
+    <dataProvider type="style" source="WATERWAY_STYLE.xml#WATERWAY_CROSS" />
+    <dataProvider type="semantic" source="WATERWAY_SEM.xml#WATERWAY_CROSS" />
+    <dataProvider type="spatial" source="WATERWAY_GEO.xml#WATERWAY_CROSS" />
+  </layer>
+ </root>

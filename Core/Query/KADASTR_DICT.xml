@@ -1,0 +1,22 @@
+﻿<root version="postgres 7.7.3.0">
+<data id="WEB50_KADASTR_RAYONS" comment="WEB50_KADASTR_RAYONS" schema="WEB50" table="KADASTR_KVARTAL">
+		<select>
+			<dbQuery>
+				<param name="USER_ID" default="-1" type="Int64" direction="Input"/>
+				<query>
+					SELECT distinct RAYON_NUM AS CODE, RAYON_NUM AS DESCR from WEB50.KADASTR_KVARTAL
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+  <data id="WEB50_KADASTR_ALERT_TYPE" comment="WEB50.KADASTR_ALERT" schema="WEB50"
+         table="KADASTR_ALERT">
+      <select>
+         <dbQuery>
+            <query>
+  			select ID CODE,  obj_type||', '||description||': '||station_begin||' - '||station_end||' км' DESCR from web50.kadastr_alert
+		</query>
+         </dbQuery>
+      </select>
+  </data>
+</root>

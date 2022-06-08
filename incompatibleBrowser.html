@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<!--  version 6.0.3.0 -->
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Ошибка совместимости с браузером</title>
+</head>
+<body>
+<script type="text/javascript">
+    var sec = 6;
+    function getBrowserParamsWOtaskMdl(s){
+        var newStr = '';
+        var i;
+        for(i in s)
+            if(s[i].indexOf('task=')==-1 && s[i].indexOf('mdl=')==-1 && s[i].indexOf('?')==-1)
+                newStr+='&'+s[i];
+        return newStr;
+
+    };
+    function getParameterByName(name){
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    };
+    function goToFlashVersion() {
+        var s = window.location.search.split('&');
+        var newStr = getBrowserParamsWOtaskMdl(s);
+        var currTask = getParameterByName('task');
+        if(currTask == 'CAS'){
+            currTask = 'task='+currTask;
+            window.location.href = "main.html?"+currTask+"&mdl=Public/SWF/Cas_55.swf"+newStr+window.location.hash;
+            return;
+        }
+
+        if(currTask!='')
+            currTask = 'task='+currTask;
+        else
+            currTask = 'task=MULT_MAIN_FLASH';
+        window.location.href = "main.html?"+currTask+"&mdl=Public/SWF/Map_55.swf"+newStr+window.location.hash;
+    }
+
+    function goToHelp() {
+        window.location.href = "Public/Help/help_flash/index.html?2_.htm";
+    }
+
+    function startTimer() {
+        setTimeout(function() {
+            sec--;
+            document.getElementById('count').innerHTML = sec;
+            if(sec == 0)
+                goToFlashVersion();
+            startTimer();
+        }, 1000);
+    }
+    startTimer();
+</script>
+<h2>Текущая версия браузера несовместима с приложением версии 6.0. Обратитесь к Вашему администратору для обновления браузера до версии, поддерживаемой приложением. Список совместимых браузеров для версии 6.0 и выше приведен в <a id="goToHelpLink" href="#" onclick="goToHelp();return false;"> документации</a>.</h2>
+
+<h2>Автоматический переход на старую flash-версию приложения произойдет через:&nbsp;<span id="count">5</span>&nbsp;секунд.</h2>
+<h2>Если автоматический переход не произойдёт, воспользуйтесь <a id="goToFlashVersionLink" href="#" onclick="goToFlashVersion();return false;">flash-версией приложения.</a></h2>
+</body>
+</html>

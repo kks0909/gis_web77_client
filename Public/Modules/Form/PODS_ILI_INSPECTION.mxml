@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:controls="view.controls.*" xmlns="view.data.*" width="760" ext_data_id="PODS_EXPORT.xml#PODS_ILI_INSPECTION" excelTemplate="PODS_ILI_INSPECTION" title="Обследование ВТД">
+	<dataProvider>PODS_SEM.xml</dataProvider>
+	<mx:VBox width="760">
+		<mx:HBox percentWidth="100">
+		<mx:VBox percentWidth="50">
+			<mx:HBox percentWidth="100">
+			<mx:Text textAlign="right" text="Тип снаряда" width="140"/>
+			  <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+			<mx:ComboBox id="TOOL_TYPE_CL" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_TOOL_TYPE_CL"/>
+			<mx:Button id="BTN_LIST_TOOL_TYPE_CL" selectedField="PODS_ILI_TOOL_TYPE_CL" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16"/>
+			  </mx:HBox>
+			</mx:HBox>
+			<mx:HBox percentWidth="100">
+			<mx:Text textAlign="right" text="Компания-производитель" width="140"/>
+			<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+			<mx:ComboBox id="TOOL_VENDOR_CL" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_TOOL_VENDOR_CL"/>
+			<mx:Button id="BTN_LIST_TOOL_VENDOR_CL" selectedField="PODS_ILI_TOOL_VENDOR_CL" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16"/>
+			</mx:HBox>
+		</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Модель снаряда" width="140"/>
+					<mx:TextInput id="MODEL" width="160" maxChars="32" height="20"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Тип датчиков снаряда" width="140"/>
+					<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						<mx:ComboBox id="SENSOR_GCL" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_SENSOR_GCL"/>
+						<mx:Button id="BTN_LIST_SENSOR_GCL" selectedField="PODS_SENSOR_GCL" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16"/>
+					</mx:HBox>
+				</mx:HBox>
+		</mx:VBox>
+			<mx:VBox percentWidth="50">
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Дата начала/окончания обследования" width="140"/>
+					<mx:DateField id="BEGIN_DATE" width="97" height="20" formatString="DD.MM.YYYY"/>
+					<mx:DateField id="END_DATE" width="97" height="20" formatString="DD.MM.YYYY"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Комментарии" width="140"/>
+					<mx:TextInput id="COMMENTS" width="225" maxChars="255" height="40"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					<mx:Text textAlign="right" text="Источник информации" width="140"/>
+					<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						<mx:ComboBox id="SOURCE_GCL" enabled="false" editable="false" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_SOURCE_GCL"/>
+						<mx:Button id="BTN_LIST_SOURCE_GCL" selectedField="PODS_SOURCE_GCL" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16"/>
+					</mx:HBox>
+				</mx:HBox>
+				<mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					<mx:Text textAlign="right" text="Идентификатор обследования ВТД" width="140"/>
+					<controls:NumberInput id="ILI_INSPECTION_ID" editable="false" width="85" maxChars="22" height="20"/>
+				</mx:HBox>
+			</mx:VBox>
+		</mx:HBox>
+	</mx:VBox>
+	<validatorsArray>
+		<controls:DefaultDateValidator source="{BEGIN_DATE}" property="selectedDate" enabled="false" mахValue="new Date()" exceedsMaxError="&apos;Дата начала&apos; должна быть не позднее текущей даты" requiredFieldError="Поле &apos;Дата начала&apos; обязательно для заполнения."/>
+		<controls:DefaultDateValidator source="{END_DATE}" property="selectedDate" enabled="false" mахValue="new Date()" exceedsMaxError="&apos;Дата окончания&apos; должна быть не позднее текущей даты" requiredFieldError="Поле &apos;Дата окончания&apos; обязательно для заполнения."/>		
+	</validatorsArray>
+</DATA_EDIT_FORM>

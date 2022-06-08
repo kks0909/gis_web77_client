@@ -1,0 +1,16 @@
+<form version="7.7.5.0" class="actionOnErrorForm error-report-dialog">
+    <div>
+        <div style="float:left;margin-right: 5px;" class="error-dialog-img"><img src="/ui/images/err.png" width="50" height="50"></div>
+        <div class="labelField" name="descriptionText">Возникла ошибка при выполнении групповой операции.<br>Для продолжения операции нажмите 'Продолжить'.<br>Для отмены оставшихся операций нажмите 'Отмена'.</div>
+    </div>
+    <hr>
+    <textarea id="actionOnErrorForm_detailInfoText" class="textAreaField" style="width:100%; height:100px; margin-bottom: 5px; display:none" readonly></textarea>
+    <div class="button">
+        <input style="padding:3px" type="button" name="detailInfo" value="Подробнее" class="myButton">
+        <div class="button myButton" id="actionOnErrorForm_sendMailButton" style="display:inline"><img width='16' height='16' src="/ui/images/sendMail.png"/></div>
+        <input type="checkbox" name="inputCheck" id="checkChoose" class="myButton"/>
+        <label for="checkChoose">Запомнить выбор</label>
+        <input style="padding:3px" type="button" name="continue" value="Продолжить" class="myButton">
+        <input style="padding:3px" type="button" name="cancel" value="Отмена" class="myButton">
+    </div>
+</form>

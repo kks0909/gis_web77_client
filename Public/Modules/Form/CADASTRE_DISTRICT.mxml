@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_GRID_FORM xmlns="view.data.*" readOnly="true" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml">
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	<mx:VBox width="740" height="430">
+		<mx:HBox percentWidth="100">
+			<mx:VBox percentWidth="100">
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="OBJECTID" width="280" />
+					<mx:Text id="ID" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Ключ СФ" width="280" />
+					<mx:Text id="KlyuchSF" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Идентификатор" width="280" />
+					<mx:Text id="Identifikator" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Кадастровый номер" width="280" />
+					<mx:Text id="Kadastroviinomer" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Наименование" width="280" />
+					<mx:Text id="Naimenovanie" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Аннотация" width="280" />
+					<mx:Text id="annotatsiya" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Число КР" width="280" />
+					<mx:Text id="CHisloKR" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Число КК" width="280" />
+					<mx:Text id="CHisloKK" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Число ЗУ" width="280" />
+					<mx:Text id="CHisloZU" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Дата актуальности сведений" width="280" />
+					<mx:Text id="Dataaktualnostisvedenii" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="X центра" width="280" />
+					<mx:Text id="Xtsentra" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Y центра" width="280" />
+					<mx:Text id="Ytsentra" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Экстент X мин." width="280" />
+					<mx:Text id="EkstentXmin" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Экстент X макс." width="280" />
+					<mx:Text id="EkstentXmaks" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Экстент Y мин." width="280" />
+					<mx:Text id="EkstentYmin" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Экстент Y макс." width="280" />
+					<mx:Text id="EkstentYmaks" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Объект обработан, можно удалять" width="280" />
+					<mx:Text id="Obektobrabotanmozhnoudalyat" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Дата актуальности сведений по БД онлайн" width="280" />
+					<mx:Text id="DataaktualnostisvedeniipoBDonlain" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="OKS_CNT" width="280" />
+					<mx:Text id="OKS_CNT" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="ONLINE_ACT_TIME" width="280" />
+					<mx:Text id="ONLINE_ACT_TIME" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="ACT_TIME" width="280" />
+					<mx:Text id="ACT_TIME" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Shape" width="280" />
+					<mx:Text id="SHAPE" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Shape_Length" width="280" />
+					<mx:Text id="Shape_Length" width="380"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Shape_Area" width="280" />
+					<mx:Text id="Shape_Area" width="380"/>
+				</mx:HBox>
+			</mx:VBox>
+		</mx:HBox>
+	</mx:VBox>
+</DATA_GRID_FORM>

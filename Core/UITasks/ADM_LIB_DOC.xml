@@ -1,0 +1,12 @@
+﻿<ROOT prevTask="close" version="6.0.2.0">
+  <hbox percentWidth="100" percentHeight="100">
+	<panel id="ADM_LIB_DOC" percentWidth="100" percentHeight="100" reload="true">
+		<settings>
+			<requestDocs>ADM_SEM.xml#FIRST_DOCS</requestDocs>
+			<requestDocsByParent>ADM_SEM.xml#DOCS_BY_PARENT</requestDocsByParent>
+			<documentOpenScript>ADM_SEM.xml#DOCUMENT_OPEN</documentOpenScript>
+			<documentDeleteScript>ADM_SEM.xml#DOCUMENT_DELETE</documentDeleteScript>
+		</settings>
+	</panel>
+  </hbox>
+</ROOT>

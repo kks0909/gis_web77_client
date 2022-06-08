@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns:mx="http://www.adobe.com/2006/mxml"
+                title="M200_ПЛАН_ВЫС_ОСНОВА"
+                width="780">
+  <dataProvider>M_200_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="780">
+      <mx:HBox width="100%">
+         <mx:VBox width="50%">
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Описание" width="140"/>
+               <mx:TextInput id="DESCR" width="240" maxChars="100" height="40"/>
+            </mx:HBox>
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Собственное название" width="140"/>
+               <mx:TextInput id="C180" width="180" maxChars="50" height="20"/>
+            </mx:HBox>
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Местоположение геодезического пункта" width="140"/>
+               <mx:TextInput id="C1" width="180" maxChars="50" height="20"/>
+            </mx:HBox>
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Высота абсолютная, м" width="140"/>
+               <controls:NumberInput id="C141" width="50" maxChars="10" height="20"/>
+            </mx:HBox>
+         </mx:VBox>
+         <mx:VBox width="50%">
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Номенклатурный лист" width="140"/>
+               <mx:TextInput id="NOMENCLATURE" editable="false" width="180" maxChars="50" height="20"/>
+            </mx:HBox>
+         <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Классификатор объектов карт" width="140"/>
+               <mx:HBox width="100%" styleName="comboBoxUnit">
+                  <mx:ComboBox id="CLASSIFIER_ID" enabled="false" editable="false" width="225" height="20">
+                   <mx:dataProvider>
+                     <mx:Object CODE="0" DESCR="Масштаб не определен" />
+                     <mx:Object CODE="1" DESCR="1:1000000" />
+                     <mx:Object CODE="2" DESCR="1:200000" />
+                     <mx:Object CODE="3" DESCR="1:25000" />
+                     <mx:Object CODE="4" DESCR="1:500" />
+                     <mx:Object CODE="5" DESCR="1:100000" />
+                     <mx:Object CODE="6" DESCR="1:10000" />
+                     <mx:Object CODE="7" DESCR="1:2000" />
+                     <mx:Object CODE="8" DESCR="1:1000" />
+                     <mx:Object CODE="9" DESCR="Экология" />
+                     <mx:Object CODE="10" DESCR="Составная (корневая) карта" />
+                     <mx:Object CODE="11" DESCR="1:5000" />
+                   </mx:dataProvider>
+                 </mx:ComboBox>
+               </mx:HBox>
+            </mx:HBox>
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Тип топологии" width="140"/>
+               <mx:HBox width="100%" styleName="comboBoxUnit">
+                  <mx:ComboBox id="TOPO" enabled="false" editable="false" width="225" height="20">
+                    <mx:dataProvider>
+                      <mx:Object CODE="0" DESCR="Неизвестно" />
+                      <mx:Object CODE="1" DESCR="Знак" />
+                      <mx:Object CODE="2" DESCR="Линия" />
+                      <mx:Object CODE="3" DESCR="Область" />
+                      <mx:Object CODE="4" DESCR="Подпись" />
+                      <mx:Object CODE="5" DESCR="Неизвестно" />
+                    </mx:dataProvider>
+                  </mx:ComboBox>
+               </mx:HBox>
+            </mx:HBox>
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Класс объекта" width="140"/>
+               <mx:TextInput id="CODE" editable="false" width="85" maxChars="8" height="20"/>
+            </mx:HBox>
+            <mx:HBox width="100%" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+               <mx:Text textAlign="right" text="Идентификатор объекта" width="140"/>
+               <controls:NumberInput id="ID" editable="false" width="85" maxChars="14" height="20"/>
+            </mx:HBox>
+         </mx:VBox>
+      </mx:HBox>
+  </mx:VBox>
+	  <validatorsArray>
+		    <controls:DefaultStringValidator source="{CODE}" property="text" enabled="false" required="true" minLength="8"
+                                       requiredFieldError="Код класса объекта должен быть из 8 символов"
+                                       tooShortError="Код класса объекта должен быть из 8 символов"/>
+	  </validatorsArray>
+</DATA_EDIT_FORM>

@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.3.0" descr="ИУС Т">
+  <dataProvider type="style" source="POI_STYLE.xml" />
+	<layer id="GTS_PIPELINE_L" comment="GTS_PIPELINE_L" schema="IUST" table="GTS_PIPELINE_L" descr="Трубопроводы ГТС" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GTS_PIPELINE_L" cover="false" fitMap="false" order="19" visible="true" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GTS_PIPELINE_L" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GTS_PIPELINE_L" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GTS_PIPELINE_L" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GTS_PIPELINE_L" />
+	</layer>
+	<layer id="AMBIT_BUILDINGS_A" comment="AMBIT_BUILDINGS_A" schema="IUST" table="AMBIT_BUILDINGS_A" descr="ОО_Строения" projection="EPSG:4326" zoomMin="27" zoomMax="12"
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="AMBIT_BUILDINGS_A" cover="false" fitMap="false" order="33" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#AMBIT_BUILDINGS_A" />
+		<dataProvider type="style" source="IUST_STYLE.xml#AMBIT_BUILDINGS_A" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#AMBIT_BUILDINGS_A" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#AMBIT_BUILDINGS_A" />
+	</layer>
+	<layer id="GTS_OBJECTS_P" comment="GTS_OBJECTS_P" schema="IUST" table="GTS_OBJECTS_P" descr="Объекты ГТС, точечные" projection="EPSG:4326" zoomMin="0" zoomMax="15000" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GTS_OBJECTS_P" cover="false" fitMap="false" order="1" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GTS_OBJECTS_P" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GTS_OBJECTS_P" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GTS_OBJECTS_P" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GTS_OBJECTS_P" />
+	</layer>
+	<layer id="AMBIT_INDUSTRY_PIPELINE_P" comment="AMBIT_INDUSTRY_PIPELINE_P" schema="IUST" table="AMBIT_INDUSTRY_PIPELINE_P" descr="ОО_Переходы и пересечения трубопровода" projection="EPSG:4326" oomMin="0" zoomMax="15000" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="AMBIT_INDUSTRY_PIPELINE_P" cover="false" fitMap="false" order="3" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#AMBIT_INDUSTRY_PIPELINE_P" />
+		<dataProvider type="style" source="IUST_STYLE.xml#AMBIT_INDUSTRY_PIPELINE_P" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#AMBIT_INDUSTRY_PIPELINE_P" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#AMBIT_INDUSTRY_PIPELINE_P" />
+	</layer>	
+	<layer id="AMBIT_INDUSTRY_COMM_P" comment="AMBIT_INDUSTRY_COMM_P" schema="IUST" table="AMBIT_INDUSTRY_COMM_P" descr="ОО_Опоры" projection="EPSG:4326" zoomMin="0" zoomMax="1500" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="AMBIT_INDUSTRY_COMM_P" cover="false" fitMap="false" order="4" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#AMBIT_INDUSTRY_COMM_P" />
+		<dataProvider type="style" source="IUST_STYLE.xml#AMBIT_INDUSTRY_COMM_P" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#AMBIT_INDUSTRY_COMM_P" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#AMBIT_INDUSTRY_COMM_P" />
+	</layer>	
+	<layer id="AMBIT_INDUSTRY_PIPE_UNITS_P" comment="AMBIT_INDUSTRY_PIPE_UNITS_P" schema="IUST" table="AMBIT_INDUSTRY_PIPE_UNITS_P" descr="ОО_Трубопроводная арматура" projection="EPSG:4326" zoomMin="25" zoomMax="13" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="AMBIT_INDUSTRY_PIPE_UNITS_P" cover="false" fitMap="false" order="5" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#AMBIT_INDUSTRY_PIPE_UNITS_P" />
+		<dataProvider type="style" source="IUST_STYLE.xml#AMBIT_INDUSTRY_PIPE_UNITS_P" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#AMBIT_INDUSTRY_PIPE_UNITS_P" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#AMBIT_INDUSTRY_PIPE_UNITS_P" />
+	</layer>	
+	<layer id="AMBIT_INDUSTRY_PROTECT_P" comment="AMBIT_INDUSTRY_PROTECT_P" schema="IUST" table="AMBIT_INDUSTRY_PROTECT_P" descr="ОО_СПКЗ" projection="EPSG:4326" zoomMin="0" zoomMax="51800" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="AMBIT_INDUSTRY_PROTECT_P" cover="false" fitMap="false" order="6" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#AMBIT_INDUSTRY_PROTECT_P" />
+		<dataProvider type="style" source="IUST_STYLE.xml#AMBIT_INDUSTRY_PROTECT_P" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#AMBIT_INDUSTRY_PROTECT_P" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#AMBIT_INDUSTRY_PROTECT_P" />
+	</layer>	
+	<layer id="AMBIT_INDUSTRY_FILTERS_P" comment="AMBIT_INDUSTRY_FILTERS_P" schema="IUST" table="AMBIT_INDUSTRY_FILTERS_P" descr="ОО_Технологические объекты, не выражающиеся в масштабе" projection="EPSG:4326" zoomMin="0" zoomMax="1500" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="AMBIT_INDUSTRY_FILTERS_P" cover="false" fitMap="false" order="7" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#AMBIT_INDUSTRY_FILTERS_P" />
+		<dataProvider type="style" source="IUST_STYLE.xml#AMBIT_INDUSTRY_FILTERS_P" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#AMBIT_INDUSTRY_FILTERS_P" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#AMBIT_INDUSTRY_FILTERS_P" />
+	</layer>
+	<layer id="AMBIT_INDUSTRY_CAPACITIES_P" comment="AMBIT_INDUSTRY_CAPACITIES_P" schema="IUST" table="AMBIT_INDUSTRY_CAPACITIES_P" descr="ОО_Резервуары и ёмкости" projection="EPSG:4326" zoomMin="0" zoomMax="15000" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="AMBIT_INDUSTRY_CAPACITIES_P" cover="false" fitMap="false" order="8" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#AMBIT_INDUSTRY_CAPACITIES_P" />
+		<dataProvider type="style" source="IUST_STYLE.xml#AMBIT_INDUSTRY_CAPACITIES_P" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#AMBIT_INDUSTRY_CAPACITIES_P" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#AMBIT_INDUSTRY_CAPACITIES_P" />
+	</layer>	
+	<layer id="AMBIT_INDUSTRY_ICS_P" comment="AMBIT_INDUSTRY_ICS_P" schema="IUST" table="AMBIT_INDUSTRY_ICS_P" descr="ОО_Мачты" projection="EPSG:4326" zoomMin="0" zoomMax="1500" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="AMBIT_INDUSTRY_ICS_P" cover="false" fitMap="false" order="9" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#AMBIT_INDUSTRY_ICS_P" />
+		<dataProvider type="style" source="IUST_STYLE.xml#AMBIT_INDUSTRY_ICS_P" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#AMBIT_INDUSTRY_ICS_P" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#AMBIT_INDUSTRY_ICS_P" />
+	</layer>	
+	<layer id="GEO_BOUNDARIES_P" comment="GEO_BOUNDARIES_P" schema="IUST" table="GEO_BOUNDARIES_P" descr="ОТ_Пограничные знаки" projection="EPSG:4326" zoomMin="0" zoomMax="15000" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_BOUNDARIES_P" cover="false" fitMap="false" order="10" visible="false" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_BOUNDARIES_P" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_BOUNDARIES_P" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_BOUNDARIES_P" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_BOUNDARIES_P" />
+	</layer>	
+	<layer id="GEO_HYDRAULICSTRUCT_P" comment="GEO_HYDRAULICSTRUCT_P" schema="IUST" table="GEO_HYDRAULICSTRUCT_P" descr="ОТ_Гидротехнические сооружения" projection="EPSG:4326" zoomMin="0" zoomMax="15000" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_HYDRAULICSTRUCT_P" cover="false" fitMap="false" order="11" visible="false" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_HYDRAULICSTRUCT_P" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_HYDRAULICSTRUCT_P" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_HYDRAULICSTRUCT_P" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_HYDRAULICSTRUCT_P" />
+	</layer>
+	<layer id="GEO_HYDROGRAPHY_P" comment="GEO_HYDROGRAPHY_P" schema="IUST" table="GEO_HYDROGRAPHY_P" descr="ОТ_Водоёмы, не выражающиеся в масштабе" projection="EPSG:4326" zoomMin="27" zoomMax="12" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_HYDROGRAPHY_P" cover="false" fitMap="false" order="12" visible="false" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_HYDROGRAPHY_P" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_HYDROGRAPHY_P" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_HYDROGRAPHY_P" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_HYDROGRAPHY_P" />
+	</layer>	
+	<layer id="GEO_INDUCTRIALOBJ_P" comment="GEO_INDUCTRIALOBJ_P" schema="IUST" table="GEO_INDUCTRIALOBJ_P" descr="ОТ_Промышленные и вспомогательные объекты, не выражающиеся в масштабе" projection="EPSG:4326" zoomMin="27" zoomMax="12" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_INDUCTRIALOBJ_P" cover="false" fitMap="false" order="13" visible="false" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_INDUCTRIALOBJ_P" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_INDUCTRIALOBJ_P" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_INDUCTRIALOBJ_P" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_INDUCTRIALOBJ_P" />
+	</layer>	
+	<layer id="GEO_ROADSTRUCTURES_P" comment="GEO_ROADSTRUCTURES_P" schema="IUST" table="GEO_ROADSTRUCTURES_P" descr="ОТ_Транспортные объекты, не выражающиеся в масштабе" projection="EPSG:4326" zoomMin="27" zoomMax="12" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_ROADSTRUCTURES_P" cover="false" fitMap="false" order="14" visible="false" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_ROADSTRUCTURES_P" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_ROADSTRUCTURES_P" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_ROADSTRUCTURES_P" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_ROADSTRUCTURES_P" />
+	</layer>	
+	<layer id="GEO_ROADS_P" comment="GEO_ROADS_P" schema="IUST" table="GEO_ROADS_P" descr="ОТ_Перевалы и съезды с автодорог" projection="EPSG:4326" zoomMin="27" zoomMax="12" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_ROADS_P" cover="false" fitMap="false" order="15" visible="false" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_ROADS_P" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_ROADS_P" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_ROADS_P" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_ROADS_P" />
+	</layer>	
+	<layer id="GEO_RELIEF_P" comment="GEO_RELIEF_P" schema="IUST" table="GEO_RELIEF_P" descr="ОТ_Элементарные формы рельефа" projection="EPSG:4326" zoomMin="27" zoomMax="12" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_RELIEF_P" cover="false" fitMap="false" order="16" visible="false" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_RELIEF_P" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_RELIEF_P" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_RELIEF_P" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_RELIEF_P" />
+	</layer>	
+	<layer id="GEO_HYDROGRAPHYREL_P" comment="GEO_HYDROGRAPHYREL_P" schema="IUST" table="GEO_HYDROGRAPHYREL_P" descr="ОТ_Водные преграды и направления течения" projection="EPSG:4326" zoomMin="27" zoomMax="12" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_HYDROGRAPHYREL_P" cover="false" fitMap="false" order="17" visible="false" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_HYDROGRAPHYREL_P" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_HYDROGRAPHYREL_P" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_HYDROGRAPHYREL_P" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_HYDROGRAPHYREL_P" />
+	</layer>
+	<layer id="GEO_SETTLEMENTS_P" comment="GEO_SETTLEMENTS_P" schema="IUST" table="GEO_SETTLEMENTS_P" descr="ОТ_Стоянки юрт и чумов" projection="EPSG:4326" zoomMin="27" zoomMax="12" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_SETTLEMENTS_P" cover="false" fitMap="false" order="18" visible="false" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_SETTLEMENTS_P" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_SETTLEMENTS_P" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_SETTLEMENTS_P" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_SETTLEMENTS_P" />
+	</layer>	
+	<layer id="GEO_VEGETATION_P" comment="GEO_VEGETATION_P" schema="IUST" table="GEO_VEGETATION_P" descr="ОТ_Одиночная растительность" projection="EPSG:4326" zoomMin="27" zoomMax="12" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_VEGETATION_P" cover="false" fitMap="false" order="2" visible="false" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_VEGETATION_P" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_VEGETATION_P" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_VEGETATION_P" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_VEGETATION_P" />
+	</layer>	
+	<layer id="AMBIT_INDUSTRY_PIPELINE_L" comment="AMBIT_INDUSTRY_PIPELINE_L" schema="IUST" table="AMBIT_INDUSTRY_PIPELINE_L" descr="ОО_Трубопроводы внешние" projection="EPSG:4326" zoomMin="27" zoomMax="12" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="AMBIT_INDUSTRY_PIPELINE_L" cover="false" fitMap="false" order="20" visible="true" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#AMBIT_INDUSTRY_PIPELINE_L" />
+		<dataProvider type="style" source="IUST_STYLE.xml#AMBIT_INDUSTRY_PIPELINE_L" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#AMBIT_INDUSTRY_PIPELINE_L" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#AMBIT_INDUSTRY_PIPELINE_L" />
+	</layer>	
+	<layer id="GEO_ROADSTRUCTURES_L" comment="GEO_ROADSTRUCTURES_L" schema="IUST" table="GEO_ROADSTRUCTURES_L" descr="ОТ_Транспортные сооружения" projection="EPSG:4326" zoomMin="27" zoomMax="12" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_ROADSTRUCTURES_L" cover="false" fitMap="false" order="21" visible="false" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_ROADSTRUCTURES_L" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_ROADSTRUCTURES_L" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_ROADSTRUCTURES_L" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_ROADSTRUCTURES_L" />
+	</layer>	
+	<layer id="AMBIT_INDUSTRY_COMM_L" comment="AMBIT_INDUSTRY_COMM_L" schema="IUST" table="AMBIT_INDUSTRY_COMM_L" descr="ОО_Линии электропередач и связи" projection="EPSG:4326" zoomMin="27" zoomMax="12" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="AMBIT_INDUSTRY_COMM_L" cover="false" fitMap="false" order="22" visible="true" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#AMBIT_INDUSTRY_COMM_L" />
+		<dataProvider type="style" source="IUST_STYLE.xml#AMBIT_INDUSTRY_COMM_L" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#AMBIT_INDUSTRY_COMM_L" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#AMBIT_INDUSTRY_COMM_L" />
+	</layer>	
+	<layer id="AMBIT_ROADS_L" comment="AMBIT_ROADS_L" schema="IUST" table="AMBIT_ROADS_L" descr="ОО_Дорожная сеть" projection="EPSG:4326" zoomMin="27" zoomMax="12" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="AMBIT_ROADS_L" cover="false" fitMap="false" order="23" visible="true" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#AMBIT_ROADS_L" />
+		<dataProvider type="style" source="IUST_STYLE.xml#AMBIT_ROADS_L" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#AMBIT_ROADS_L" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#AMBIT_ROADS_L" />
+	</layer>		
+	<layer id="GEO_INDUCTRIALOBJ_L" comment="GEO_INDUCTRIALOBJ_L" schema="IUST" table="GEO_INDUCTRIALOBJ_L" descr="ОТ_Вспомогательные трубопроводы и ограды" projection="EPSG:4326" zoomMin="0" zoomMax="51800" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_INDUCTRIALOBJ_L" cover="false" fitMap="false" order="24" visible="false" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_INDUCTRIALOBJ_L" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_INDUCTRIALOBJ_L" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_INDUCTRIALOBJ_L" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_INDUCTRIALOBJ_L" />
+	</layer>	
+	<layer id="GEO_HYDRAULICSTRUCT_L" comment="GEO_HYDRAULICSTRUCT_L" schema="IUST" table="GEO_HYDRAULICSTRUCT_L" descr="ОТ_Водопроводящие и водоподпорные сооружения" projection="EPSG:4326" zoomMin="0" zoomMax="51800" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_HYDRAULICSTRUCT_L" cover="false" fitMap="false" order="25" visible="false" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_HYDRAULICSTRUCT_L" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_HYDRAULICSTRUCT_L" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_HYDRAULICSTRUCT_L" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_HYDRAULICSTRUCT_L" />
+	</layer>	
+	<layer id="AMBIT_HYDRO_L" comment="AMBIT_HYDRO_L" schema="IUST" table="AMBIT_HYDRO_L" descr="ОО_Реки и ручьи" projection="EPSG:4326" zoomMin="27" zoomMax="12" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="AMBIT_HYDRO_L" cover="false" fitMap="false" order="26" visible="true" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#AMBIT_HYDRO_L" />
+		<dataProvider type="style" source="IUST_STYLE.xml#AMBIT_HYDRO_L" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#AMBIT_HYDRO_L" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#AMBIT_HYDRO_L" />
+	</layer>	
+	<layer id="GEO_HYDROGRAPHY_L" comment="GEO_HYDROGRAPHY_L" schema="IUST" table="GEO_HYDROGRAPHY_L" descr="ОТ_Подземные участки рек, каналы и канавы" projection="EPSG:4326" zoomMin="0" zoomMax="51800" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_HYDROGRAPHY_L" cover="false" fitMap="false" order="27" visible="false" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_HYDROGRAPHY_L" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_HYDROGRAPHY_L" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_HYDROGRAPHY_L" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_HYDROGRAPHY_L" />
+	</layer>	
+	<layer id="GEO_ROADS_L" comment="GEO_ROADS_L" schema="IUST" table="GEO_ROADS_L" descr="ОТ_Вспомогательные дороги" projection="EPSG:4326" zoomMin="27" zoomMax="12" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_ROADS_L" cover="false" fitMap="false" order="28" visible="false" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_ROADS_L" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_ROADS_L" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_ROADS_L" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_ROADS_L" />
+	</layer>		
+	<layer id="GEO_BOUNDARIES_L" comment="GEO_BOUNDARIES_L" schema="IUST" table="GEO_BOUNDARIES_L" descr="ОТ_Границы" projection="EPSG:4326" zoomMin="27" zoomMax="12" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_BOUNDARIES_L" cover="false" fitMap="false" order="29" visible="false" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_BOUNDARIES_L" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_BOUNDARIES_L" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_BOUNDARIES_L" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_BOUNDARIES_L" />
+	</layer>	
+	<layer id="GEO_VEGETATION_L" comment="GEO_VEGETATION_L" schema="IUST" table="GEO_VEGETATION_L" descr="ОТ_Полосы древесных насаждений и просеки" projection="EPSG:4326" zoomMin="27" zoomMax="12" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_VEGETATION_L" cover="false" fitMap="false" order="30" visible="false" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_VEGETATION_L" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_VEGETATION_L" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_VEGETATION_L" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_VEGETATION_L" />
+	</layer>
+	<layer id="GEO_HYDROGRAPHYREL_L" comment="GEO_HYDROGRAPHYREL_L" schema="IUST" table="GEO_HYDROGRAPHYREL_L" descr="ОТ_Гидрографический рельеф" projection="EPSG:4326" zoomMin="27" zoomMax="12" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_HYDROGRAPHYREL_L" cover="false" fitMap="false" order="31" visible="false" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_HYDROGRAPHYREL_L" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_HYDROGRAPHYREL_L" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_HYDROGRAPHYREL_L" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_HYDROGRAPHYREL_L" />
+	</layer>
+	<layer id="GEO_RELIEF_L" comment="GEO_RELIEF_L" schema="IUST" table="GEO_RELIEF_L" descr="ОТ_Рельеф" projection="EPSG:4326" zoomMin="27" zoomMax="12" 
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_RELIEF_L" cover="false" fitMap="false" order="32" visible="false" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_RELIEF_L" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_RELIEF_L" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_RELIEF_L" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_RELIEF_L" />
+	</layer>	
+	<layer id="AMBIT_INDUSTRY_PIPE_UNITS_A" comment="AMBIT_INDUSTRY_PIPE_UNITS_A" schema="IUST" table="AMBIT_INDUSTRY_PIPE_UNITS_A" descr="ОО_Технологические узлы и ГИС" projection="EPSG:4326" zoomMin="27" zoomMax="12"
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="AMBIT_INDUSTRY_PIPE_UNITS_A" cover="false" fitMap="false" order="34" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#AMBIT_INDUSTRY_PIPE_UNITS_A" />
+		<dataProvider type="style" source="IUST_STYLE.xml#AMBIT_INDUSTRY_PIPE_UNITS_A" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#AMBIT_INDUSTRY_PIPE_UNITS_A" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#AMBIT_INDUSTRY_PIPE_UNITS_A" />
+	</layer>	
+	<layer id="AMBIT_INDUSTRY_OILSTATIONS_A" comment="AMBIT_INDUSTRY_OILSTATIONS_A" schema="IUST" table="AMBIT_INDUSTRY_OILSTATIONS_A" descr="ОО_АГНКС и АЗС" projection="EPSG:4326" zoomMin="27" zoomMax="12"
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="AMBIT_INDUSTRY_OILSTATIONS_A" cover="false" fitMap="false" order="35" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#AMBIT_INDUSTRY_OILSTATIONS_A" />
+		<dataProvider type="style" source="IUST_STYLE.xml#AMBIT_INDUSTRY_OILSTATIONS_A" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#AMBIT_INDUSTRY_OILSTATIONS_A" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#AMBIT_INDUSTRY_OILSTATIONS_A" />
+	</layer>		
+	<layer id="AMBIT_PLATFORMS_A" comment="AMBIT_PLATFORMS_A" schema="IUST" table="AMBIT_PLATFORMS_A" descr="ОО_Площадки технологические и стоянки" projection="EPSG:4326" zoomMin="27" zoomMax="12"
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="AMBIT_PLATFORMS_A" cover="false" fitMap="false" order="36" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#AMBIT_PLATFORMS_A" />
+		<dataProvider type="style" source="IUST_STYLE.xml#AMBIT_PLATFORMS_A" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#AMBIT_PLATFORMS_A" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#AMBIT_PLATFORMS_A" />
+	</layer>
+	<layer id="GEO_ROADSTRUCTURES_A" comment="GEO_ROADSTRUCTURES_A" schema="IUST" table="GEO_ROADSTRUCTURES_A" descr="ОТ_Станции, платформы и стоянки" projection="EPSG:4326" zoomMin="27" zoomMax="12"
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_ROADSTRUCTURES_A" cover="false" fitMap="false" order="37" visible="false" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_ROADSTRUCTURES_A" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_ROADSTRUCTURES_A" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_ROADSTRUCTURES_A" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_ROADSTRUCTURES_A" />
+	</layer>
+	<layer id="GEO_HYDRAULICSTRUCT_A" comment="GEO_HYDRAULICSTRUCT_A" schema="IUST" table="GEO_HYDRAULICSTRUCT_A" descr="ОТ_Судоремонтные сооружения и насосные станции" projection="EPSG:4326" zoomMin="27" zoomMax="12"
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_HYDRAULICSTRUCT_A" cover="false" fitMap="false" order="38" visible="false" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_HYDRAULICSTRUCT_A" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_HYDRAULICSTRUCT_A" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_HYDRAULICSTRUCT_A" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_HYDRAULICSTRUCT_A" />
+	</layer>	
+	<layer id="GEO_INDUCTRIALOBJ_A" comment="GEO_INDUCTRIALOBJ_A" schema="IUST" table="GEO_INDUCTRIALOBJ_A" descr="ОТ_Промышленные и вспомогательные сооружения и территории" projection="EPSG:4326" zoomMin="27" zoomMax="12"
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_INDUCTRIALOBJ_A" cover="false" fitMap="false" order="39" visible="false" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_INDUCTRIALOBJ_A" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_INDUCTRIALOBJ_A" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_INDUCTRIALOBJ_A" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_INDUCTRIALOBJ_A" />
+	</layer>	
+	<layer id="GEO_SETTLEMENTS_A" comment="GEO_SETTLEMENTS_A" schema="IUST" table="GEO_SETTLEMENTS_A" descr="ОТ_Кварталы и улицы, ОТ_Населенные пункты" projection="EPSG:4326" zoomMin="27" zoomMax="12"
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_SETTLEMENTS_A" cover="false" fitMap="false" order="40" visible="false" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_SETTLEMENTS_A" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_SETTLEMENTS_A" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_SETTLEMENTS_A" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_SETTLEMENTS_A" />
+	</layer>
+	<layer id="GEO_HYDROGRAPHYREL_A" comment="GEO_HYDROGRAPHYREL_A" schema="IUST" table="GEO_HYDROGRAPHYREL_A" descr="ОТ_Берега и водная растительность" projection="EPSG:4326" zoomMin="27" zoomMax="12"
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_HYDROGRAPHYREL_A" cover="false" fitMap="false" order="41" visible="false" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_HYDROGRAPHYREL_A" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_HYDROGRAPHYREL_A" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_HYDROGRAPHYREL_A" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_HYDROGRAPHYREL_A" />
+	</layer>
+	<layer id="GEO_SOIL_A" comment="GEO_SOIL_A" schema="IUST" table="GEO_SOIL_A" descr="ОТ_Грунты и поверхности" projection="EPSG:4326" zoomMin="27" zoomMax="12"
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_SOIL_A" cover="false" fitMap="false" order="42" visible="false" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_SOIL_A" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_SOIL_A" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_SOIL_A" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_SOIL_A" />
+	</layer>	
+	<layer id="AMBIT_HYDRO_A" comment="AMBIT_HYDRO_A" schema="IUST" table="AMBIT_HYDRO_A" descr="ОО_Водоёмы" projection="EPSG:4326" zoomMin="27" zoomMax="12"
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="AMBIT_HYDRO_A" cover="false" fitMap="false" order="43" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#AMBIT_HYDRO_A" />
+		<dataProvider type="style" source="IUST_STYLE.xml#AMBIT_HYDRO_A" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#AMBIT_HYDRO_A" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#AMBIT_HYDRO_A" />
+	</layer>	
+	<layer id="GEO_RELIEF_A" comment="GEO_RELIEF_A" schema="IUST" table="GEO_RELIEF_A" descr="ОТ_Поверхности рельефа" projection="EPSG:4326" zoomMin="27" zoomMax="12"
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_RELIEF_A" cover="false" fitMap="false" order="44" visible="false" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_RELIEF_A" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_RELIEF_A" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_RELIEF_A" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_RELIEF_A" />
+	</layer>	
+	<layer id="AMBIT_VEGETATION_FOREST_A" comment="AMBIT_VEGETATION_FOREST_A" schema="IUST" table="AMBIT_VEGETATION_FOREST_A" descr="ОО_Растительность лесная" projection="EPSG:4326" zoomMin="27" zoomMax="12"
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="AMBIT_VEGETATION_FOREST_A" cover="false" fitMap="false" order="45" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#AMBIT_VEGETATION_FOREST_A" />
+		<dataProvider type="style" source="IUST_STYLE.xml#AMBIT_VEGETATION_FOREST_A" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#AMBIT_VEGETATION_FOREST_A" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#AMBIT_VEGETATION_FOREST_A" />
+	</layer>	
+	<layer id="AMBIT_VEGETATION_FIELDS_A" comment="AMBIT_VEGETATION_FIELDS_A" schema="IUST" table="AMBIT_VEGETATION_FIELDS_A" descr="ОО_Растительность культурная" projection="EPSG:4326" zoomMin="27" zoomMax="12"
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="AMBIT_VEGETATION_FIELDS_A" cover="false" fitMap="false" order="46" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#AMBIT_VEGETATION_FIELDS_A" />
+		<dataProvider type="style" source="IUST_STYLE.xml#AMBIT_VEGETATION_FIELDS_A" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#AMBIT_VEGETATION_FIELDS_A" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#AMBIT_VEGETATION_FIELDS_A" />
+	</layer>
+	<layer id="GEO_VEGETATION_A" comment="GEO_VEGETATION_A" schema="IUST" table="GEO_VEGETATION_A" descr="ОТ_Растительность вспомогательная" projection="EPSG:4326" zoomMin="27" zoomMax="12"
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_VEGETATION_A" cover="false" fitMap="false" order="47" visible="false" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_VEGETATION_A" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_VEGETATION_A" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_VEGETATION_A" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_VEGETATION_A" />
+	</layer>	
+	<layer id="GEO_BOUNDARIES_A" comment="GEO_BOUNDARIES_A" schema="IUST" table="GEO_BOUNDARIES_A" descr="ОТ_Административные территории" projection="EPSG:4326" zoomMin="27" zoomMax="12"
+		   dataType="vector" type="common" labelField="NAME" classField="TOPOCODE" spacing="GEO_BOUNDARIES_A" cover="false" fitMap="false" order="48" visible="false" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#GEO_BOUNDARIES_A" />
+		<dataProvider type="style" source="IUST_STYLE.xml#GEO_BOUNDARIES_A" />
+		<dataProvider type="semantic" source="IUST_SEM.xml#GEO_BOUNDARIES_A" />
+		<dataProvider type="spatial" source="IUST_GEO.xml#GEO_BOUNDARIES_A" />
+	</layer>		
+</root>

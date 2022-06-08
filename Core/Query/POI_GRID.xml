@@ -1,0 +1,218 @@
+﻿<root version="postgres 7.7.4.6">
+  <data id="WEB50_POI_POINT" comment="WEB50.POI_POINT" schema="PODS"
+         table="POI_POINT">
+      <select>
+         <dbQuery>
+            <var name="FILTER" default="1=1"/>
+            <var name="ORDER_COLUMNS" default="ID"/>
+            <var name="LOW_LIMIT" default="1"/>
+            <var name="HIGH_LIMIT" default="65536"/>
+           <var name="COLUMNS_FILTER" default="*"/>
+           <param name="USER_ID" type="Int64" direction="Input" />
+            <query>
+              WITH admin_grants
+              AS (SELECT 1 dummy
+              FROM WEB50.B_USER_TO_B_ROLE u2r
+              JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+              ON u2r.ROLE_ID = r2p.ROLE_ID
+              JOIN WEB50.B_POLICY_RULES pr
+              ON r2p.POLICY_ID = pr.POLICY_ID
+              WHERE u2r.USER_ID = :USER_ID
+              AND pr.CLASS_ID='WEB50_POI_POINT_ADMIN'
+              AND pr.SELECT_PERMITTED = '1'),
+              user_grants
+              AS (SELECT 1 dummy
+              FROM WEB50.B_USER_TO_B_ROLE u2r
+              JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+              ON u2r.ROLE_ID = r2p.ROLE_ID
+              JOIN WEB50.B_POLICY_RULES pr
+              ON r2p.POLICY_ID = pr.POLICY_ID
+              WHERE u2r.USER_ID = :USER_ID
+              AND pr.CLASS_ID='WEB50_POI_POINT_USER'
+              AND pr.SELECT_PERMITTED = '1')
+              SELECT {COLUMNS_FILTER} FROM (
+              SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN
+              ,all_in_one.ID,all_in_one.NAME,all_in_one.DESCR,all_in_one.TIME_STAMP,all_in_one.CTIME,all_in_one.CUSER_ID,all_in_one.STATUS_ID
+              FROM (
+              SELECT * FROM (SELECT C.POINT_ID ID, C.*, u.login CUSER_ID_LBL, sr.descr STATUS_ID_LBL
+              FROM web50.poi_point C
+              JOIN web50.b_status_ref sr
+              ON c.status_id = sr.status_id
+              LEFT JOIN web50.b_user_private u
+              ON c.cuser_id = u.user_id
+              WHERE ((C.status_id = 1
+              OR (C.cuser_id = :USER_ID
+              AND C.status_id = 0 ))
+              AND EXISTS (SELECT 1 FROM user_grants))
+              OR EXISTS (SELECT 1 FROM admin_grants)) dd
+              WHERE {FILTER}
+              ) all_in_one) sorted
+              WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}</query>
+         </dbQuery>
+      </select>
+  </data>
+  <data id="WEB50_POI_POINT_CNT" comment="WEB50.POI_POINT" schema="WEB50"
+         table="POI_POINT">
+      <select>
+         <dbQuery>
+            <var name="FILTER" default="1=1"/>
+            <var name="ORDER_COLUMNS" default="ID"/>
+           <param name="USER_ID" type="Int64" direction="Input" />
+            <query>
+              WITH admin_grants
+              AS (SELECT 1 dummy
+              FROM WEB50.B_USER_TO_B_ROLE u2r
+              JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+              ON u2r.ROLE_ID = r2p.ROLE_ID
+              JOIN WEB50.B_POLICY_RULES pr
+              ON r2p.POLICY_ID = pr.POLICY_ID
+              WHERE u2r.USER_ID = :USER_ID
+              AND pr.CLASS_ID='WEB50_POI_POINT_ADMIN'
+              AND pr.SELECT_PERMITTED = '1'),
+              user_grants
+              AS (SELECT 1 dummy
+              FROM WEB50.B_USER_TO_B_ROLE u2r
+              JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+              ON u2r.ROLE_ID = r2p.ROLE_ID
+              JOIN WEB50.B_POLICY_RULES pr
+              ON r2p.POLICY_ID = pr.POLICY_ID
+              WHERE u2r.USER_ID = :USER_ID
+              AND pr.CLASS_ID='WEB50_POI_POINT_USER'
+              AND pr.SELECT_PERMITTED = '1')
+              SELECT COUNT(*) CNT FROM (
+              SELECT C.POINT_ID ID
+              ,C.*  FROM web50.poi_point C WHERE ((C.status_id = 1
+              OR (C.cuser_id = :USER_ID
+              AND C.status_id = 0 ))
+              AND EXISTS (SELECT 1 FROM user_grants))
+              OR EXISTS (SELECT 1 FROM admin_grants)) dd
+              WHERE {FILTER}
+            </query>
+         </dbQuery>
+      </select>
+  </data>
+  <data id="WEB50_POI_TRACK" comment="WEB50.POI_POINT" schema="PODS"
+         table="POI_TRACK">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="65536"/>
+        <var name="COLUMNS_FILTER" default="*"/>
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+          WITH admin_grants
+          AS (SELECT 1 dummy
+          FROM WEB50.B_USER_TO_B_ROLE u2r
+          JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+          ON u2r.ROLE_ID = r2p.ROLE_ID
+          JOIN WEB50.B_POLICY_RULES pr
+          ON r2p.POLICY_ID = pr.POLICY_ID
+          WHERE u2r.USER_ID = :USER_ID
+          AND pr.CLASS_ID='WEB50_POI_TRACK_ADMIN'
+          AND pr.SELECT_PERMITTED = '1'),
+          user_grants
+          AS (SELECT 1 dummy
+          FROM WEB50.B_USER_TO_B_ROLE u2r
+          JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+          ON u2r.ROLE_ID = r2p.ROLE_ID
+          JOIN WEB50.B_POLICY_RULES pr
+          ON r2p.POLICY_ID = pr.POLICY_ID
+          WHERE u2r.USER_ID = :USER_ID
+          AND pr.CLASS_ID='WEB50_POI_TRACK_USER'
+          AND pr.SELECT_PERMITTED = '1')
+          SELECT {COLUMNS_FILTER} FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN
+          ,all_in_one.ID,all_in_one.CUSER_ID,all_in_one.STATUS_ID,all_in_one.NAME,all_in_one.DESCR,all_in_one.CTIME
+          FROM (
+          SELECT * FROM (SELECT C.track_ID ID ,C.*, u.login CUSER_ID_LBL , sr.descr STATUS_ID_LBL
+          FROM web50.poi_track C
+          JOIN web50.b_status_ref sr
+          ON c.status_id = sr.status_id
+          LEFT JOIN web50.b_user_private u
+          ON c.cuser_id = u.user_id
+          WHERE ((C.status_id = 1
+          OR (C.cuser_id = :USER_ID
+          AND C.status_id = 0 ))
+          AND EXISTS (SELECT 1 FROM user_grants))
+          OR EXISTS (SELECT 1 FROM admin_grants)) dd
+          WHERE {FILTER}
+          ) all_in_one) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_POI_TRACK_CNT" comment="WEB50.POI_TRACK" schema="WEB50"
+        table="POI_TRACK">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+          WITH admin_grants
+          AS (SELECT 1 dummy
+          FROM WEB50.B_USER_TO_B_ROLE u2r
+          JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+          ON u2r.ROLE_ID = r2p.ROLE_ID
+          JOIN WEB50.B_POLICY_RULES pr
+          ON r2p.POLICY_ID = pr.POLICY_ID
+          WHERE u2r.USER_ID = :USER_ID
+          AND pr.CLASS_ID='WEB50_POI_TRACK_ADMIN'
+          AND pr.SELECT_PERMITTED = '1'),
+          user_grants
+          AS (SELECT 1 dummy
+          FROM WEB50.B_USER_TO_B_ROLE u2r
+          JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+          ON u2r.ROLE_ID = r2p.ROLE_ID
+          JOIN WEB50.B_POLICY_RULES pr
+          ON r2p.POLICY_ID = pr.POLICY_ID
+          WHERE u2r.USER_ID = :USER_ID
+          AND pr.CLASS_ID='WEB50_POI_TRACK_USER'
+          AND pr.SELECT_PERMITTED = '1')
+          SELECT COUNT(*) CNT FROM (
+          SELECT C.TRACK_ID ID
+          ,C.* FROM web50.poi_track C
+          WHERE ((C.status_id = 1
+          OR (C.cuser_id = :USER_ID
+          AND C.status_id = 0 ))
+          AND EXISTS (SELECT 1 FROM user_grants))
+          OR EXISTS (SELECT 1 FROM admin_grants)) dd
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_POI_DEBRIS" comment="WEB50.POI_DEBRIS" schema="WEB50" table="POI_DEBRIS">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="ORDER_COLUMNS" default="ID"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<query>
+					with srv_distr as (select s.SRV_DISTRICT_ID, s.description SRV_DISTRICT_LBL from pods.srv_district_gcl s)
+					SELECT {COLUMNS_FILTER} FROM (
+					SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN, ID, SRV_DISTRICT_ID, SRV_DISTRICT_LBL , DESCRIPTION, STATION_BEGIN, STATION_END, SQUARE, CTIME, CUSER_ID, MTIME, MUSER_ID
+					FROM (select d.ID,  s.SRV_DISTRICT_ID, s.SRV_DISTRICT_LBL, d.DESCRIPTION, d.STATION_BEGIN, d.STATION_END, d.SQUARE, d.CTIME, d.CUSER_ID, d.MTIME, d.MUSER_ID from WEB50.POI_DEBRIS d,srv_distr s WHERE 
+s.srv_district_id=d.srv_district_id  and {FILTER}) dd) ff
+					WHERE RWN BETWEEN {LOW_LIMIT} AND {HIGH_LIMIT}
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="WEB50_POI_DEBRIS_CNT" comment="WEB50.POI_DEBRIS_CNT" schema="WEB50" table="POI_DEBRIS">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>				
+				<var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+				<query>
+					SELECT COUNT(*) CNT FROM WEB50.POI_DEBRIS WHERE {FILTER}
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+</root>

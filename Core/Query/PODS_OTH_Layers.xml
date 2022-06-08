@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Файл описания слоёв "Узлы ввода, соединения, прочее оборудование" -->
+<root version="7.7.7.4" descr="МГ: Узлы ввода, соединения, прочее оборудование" name="PODS_OTH">
+  <dataProvider type="style" source="PODS_OTH_STYLE.xml" />
+  <layer id="PODS_BRANCH_CONNECT" comment="PODS.BRANCH_CONNECT" descr="Накладки усиливающие" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="200" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="BRANCH_CONNECT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_BRANCH_CONNECT" />
+    <dataProvider type="style" source="PODS_OTH_STYLE.xml#PODS_BRANCH_CONNECT"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_BRANCH_CONNECT"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_BRANCH_CONNECT"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_BRANCH_CONNECT"/>
+  </layer>
+  <layer id="PODS_CONCRETE_SLAB" comment="PODS.CONCRETE_SLAB" descr="Фундаменты и основания" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="440" visible="false" topology="point" classField="" schema="PODS" table="CONCRETE_SLAB">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_CONCRETE_SLAB" />
+    <dataProvider type="style" source="PODS_OTH_STYLE.xml#PODS_CONCRETE_SLAB"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_CONCRETE_SLAB"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_CONCRETE_SLAB"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_CONCRETE_SLAB"/>
+  </layer>
+  <layer id="PODS_DRAG_REDUCING_AGENT" comment="PODS.DRAG_REDUCING_AGENT" descr="Узлы ввода антифрикционных присадок" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="460" visible="false" topology="point" classField="" schema="PODS" table="DRAG_REDUCING_AGENT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_DRAG_REDUCING_AGENT" />
+    <dataProvider type="style" source="PODS_OTH_STYLE.xml#PODS_DRAG_REDUCING_AGENT"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_DRAG_REDUCING_AGENT"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_DRAG_REDUCING_AGENT"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_DRAG_REDUCING_AGENT"/>
+  </layer>
+  <layer id="PODS_DRIP" comment="PODS.DRIP" descr="Конденсатосборники" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="240" visible="false" topology="point" classField="" schema="PODS" table="DRIP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_DRIP" />
+    <dataProvider type="style" source="PODS_OTH_STYLE.xml#PODS_DRIP"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_DRIP"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_DRIP"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_DRIP"/>
+  </layer>
+  <layer id="PODS_DRIP_RISER" comment="PODS.DRIP_RISER" descr="Дренажные трубки конденсатосборников" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="250" visible="false" topology="point" classField="" schema="PODS" table="DRIP_RISER">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_DRIP_RISER" />
+    <dataProvider type="style" source="PODS_OTH_STYLE.xml#PODS_DRIP_RISER"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_DRIP_RISER"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_DRIP_RISER"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_DRIP_RISER"/>
+  </layer>
+  <layer id="PODS_FABRICATION" comment="PODS.FABRICATION" descr="Узлы заводского изготовления" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="470" visible="false" topology="point" classField="" schema="PODS" table="FABRICATION">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_FABRICATION" />
+    <dataProvider type="style" source="PODS_OTH_STYLE.xml#PODS_FABRICATION"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_FABRICATION"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_FABRICATION"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_FABRICATION"/>
+  </layer>
+  <layer id="PODS_FLEXIBLE_JOINT" comment="PODS.FLEXIBLE_JOINT" descr="Гибкие вставки/соединения" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="280" visible="false" topology="point" classField="" schema="PODS" table="FLEXIBLE_JOINT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_FLEXIBLE_JOINT" />
+    <dataProvider type="style" source="PODS_OTH_STYLE.xml#PODS_FLEXIBLE_JOINT"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_FLEXIBLE_JOINT"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_FLEXIBLE_JOINT"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_FLEXIBLE_JOINT"/>
+  </layer>
+  <layer id="PODS_INJECTOR" comment="PODS.INJECTOR" descr="Инжекторы" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="290" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="INJECTOR">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_INJECTOR" />
+    <dataProvider type="style" source="PODS_OTH_STYLE.xml#PODS_INJECTOR"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_INJECTOR"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_INJECTOR"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_INJECTOR"/>
+  </layer>
+  <layer id="PODS_STRAIGHTENING_VANES" comment="PODS.STRAIGHTENING_VANES" descr="Струевыпрямители" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="360" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="STRAIGHTENING_VANES">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STRAIGHTENING_VANES" />
+    <dataProvider type="style" source="PODS_OTH_STYLE.xml#PODS_STRAIGHTENING_VANES"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STRAIGHTENING_VANES"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STRAIGHTENING_VANES"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_STRAIGHTENING_VANES"/>
+  </layer>
+  <layer id="PODS_TAP" comment="PODS.TAP" descr="Прямые врезки (ответвления)" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="950" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="TAP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_TAP" />
+    <dataProvider type="style" source="PODS_OTH_STYLE.xml#PODS_TAP"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_TAP"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_TAP"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_TAP"/>
+  </layer>
+  <layer id="PODS_WELLHEAD_ASSEMBLY" comment="PODS.WELLHEAD_ASSEMBLY" descr="Оборудование скважин" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="390" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="WELLHEAD_ASSEMBLY">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_WELLHEAD_ASSEMBLY" />
+    <dataProvider type="style" source="PODS_OTH_STYLE.xml#PODS_WELLHEAD_ASSEMBLY"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_WELLHEAD_ASSEMBLY"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_WELLHEAD_ASSEMBLY"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_WELLHEAD_ASSEMBLY"/>
+  </layer>
+  <layer id="PODS_RAILROAD" comment="PODS.RAILROAD" descr="Железные переходы" projection="EPSG:4326" zoomMin="0" zoomMax="15000" dataType="vector" type="common" spacing="RAILROAD" cover="false" fitMap="false" order="1041" visible="false" topology="point,line" classField="TYPE_CL" labelField="" useServerCache="true" schema="PODS" table="RAILROAD">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_RAILROAD" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_RAILROAD" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_RAILROAD" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_RAILROAD" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_RAILROAD" />
+  </layer>
+  <layer id="PODS_ROAD" comment="PODS.ROAD" descr="Автомобильные переходы" projection="EPSG:4326" zoomMin="0" zoomMax="15000" dataType="vector" type="common" spacing="ROAD" cover="false" fitMap="false" order="1042" visible="false" topology="point,line" classField="TYPE_CL" labelField="" useServerCache="true" schema="PODS" table="ROAD">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ROAD" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_ROAD" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ROAD" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_ROAD" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_ROAD" />
+  </layer>
+   <layer id="PODS_ROAD_ENTITY" comment="PODS.ROAD" descr="Вдольтрассовые проезды" projection="EPSG:4326" zoomMin="0" zoomMax="51800" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1378" visible="false" topology="polygon,line" classField="TYPE_CL" useServerCache="true" schema="PODS" table="ROAD_ENTITY">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ROAD_ENTITY" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_ROAD_ENTITY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ROAD_ENTITY" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_ROAD_ENTITY" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_ROAD_ENTITY" />
+  </layer>
+  <layer id="PODS_WATERWAY_ENTITY" comment="PODS.WATERWAY" descr="Реки, ручьи" projection="EPSG:4326" zoomMin="0" zoomMax="51800" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1379" visible="false" topology="polygon,line" classField="TYPE_CL" useServerCache="true" schema="PODS" table="WATERWAY_ENTITY">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_WATERWAY_ENTITY" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_WATERWAY_ENTITY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_WATERWAY_ENTITY" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_WATERWAY_ENTITY" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_WATERWAY_ENTITY" />
+  </layer>
+  <layer id="PODS_WATERWAY" comment="PODS.WATERWAY" descr="Водные переходы" projection="EPSG:4326" zoomMin="0" zoomMax="15000" dataType="vector" type="common" spacing="WATERWAY" cover="false" fitMap="false" order="1043" visible="false" topology="point,line" classField="TYPE_CL" labelField="" useServerCache="true" schema="PODS" table="WATERWAY">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_WATERWAY" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_WATERWAY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_WATERWAY" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_WATERWAY" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_WATERWAY" />
+  </layer>
+</root>

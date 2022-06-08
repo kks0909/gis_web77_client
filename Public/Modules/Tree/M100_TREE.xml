@@ -1,0 +1,1181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataset name="Карта масштаба 1:100000" info="Карта масштаба 1:100000">
+
+  <group comment="Команды">
+    <invoke id="showGrid_gidr_lp" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком слой ОБЪЕКТЫ ГИДРОГРАФИИ ЛИНЕЙНЫЕ, ТОЧЕЧНЫЕ" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="showGrid_gidr_s" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком слой ОБЪЕКТЫ ГИДРОГРАФИИ ПЛОЩАДНЫЕ" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="showGrid_rast_lp" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком слой ОБЪЕКТЫ РАСТИТЕЛЬНОСТИ ЛИНЕЙНЫЕ, ТОЧЕЧНЫЕ" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="showGrid_rast_s" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком слой ОБЪЕКТЫ РАСТИТЕЛЬНОСТИ ПЛОЩАДНЫЕ" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="showGrid_town" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком слой ОБЪЕКТЫ НАСЕЛ. ПУНКТОВ" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="showGrid_roads" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком слой ОБЪЕКТЫ ДОРОГ" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="showGrid_limits" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком слой ГРАНИЦЫ" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="showGrid_survey" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком слой ПЛАНОВО-ВЫСОТНАЯ ОСНОВА" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="showGrid_prom" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком слой ПРОМЫШЛЕННЫЕ ОБЪЕКТЫ" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="showGrid_prom_gas" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком слой ПРОМЫШЛЕННЫЕ ОБЪЕКТЫ ГАЗОВЫЕ" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="showGrid_relief" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком слой РЕЛЬЕФ" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="showGrid_swamp" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком слой БОЛОТА" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="showGrid_text" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком слой ТЕКСТ" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+    </invoke>
+
+  </group>
+
+	<tree view="classic" max_items="20">
+		  <level OBJ_CLS_ID="00000000" icon="Public/assets/circles.png" format="Служебный слой">
+		   <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="00000001"/></level>
+		   <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="00000031"/></level>
+		   <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="00000032"/></level>
+		   <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="00000033"/></level>
+		   <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="00000061"/></level>
+		   <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="00000062"/></level>
+		   <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="00000063"/></level>
+		   <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="00000071"/></level>
+		   <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="00000072"/></level>
+		   <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="00000073"/></level>
+		   <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="09900000"/></level>
+                  </level>
+		  <level OBJ_CLS_ID="10000000" icon="Public/assets/circles.png" format="ПЛАНОВО-ВЫСОТНАЯ ОСНОВА" checkbox_type="" levelParams="layerId=WEB50_M_100_SURVEY;">
+      <context_menu run_invoke="showGrid_survey" gridId="WEB50_M_100_SURVEY_LIST" />
+		     <level OBJ_CLS_ID="11000000" icon="Public/assets/circles.png" format="Плановая основа">
+		      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="11100000"/></level>
+		      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="11200000"/></level>
+		      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="11310000"/></level>
+		      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="11320000"/></level>
+		      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="11410000"/></level>
+		      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="11420000"/></level>
+                     </level>
+		     <level OBJ_CLS_ID="12000000" icon="Public/assets/circles.png" format="Высотная основа">
+		      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="12100000"/></level>
+		      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="12200000"/></level>
+		      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="12300000"/></level>
+		      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="12400000"/></level>
+                     </level>
+                  </level>
+		  <level OBJ_CLS_ID="20000000" icon="Public/assets/circles.png" format="РЕЛЬЕФ СУШИ" checkbox_type="" levelParams="layerId=WEB50_M_100_RELIEF;">
+      <context_menu run_invoke="showGrid_relief" gridId="WEB50_M_100_RELIEF_LIST" />
+		     <level OBJ_CLS_ID="21000000" icon="Public/assets/circles.png" format="Горизонтали">
+		        <level OBJ_CLS_ID="21100000" icon="Public/assets/circles.png" format="Горизонтали основные утолщенные">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="21110000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="21120000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="21130000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="21140000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="21150000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="21160000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="21170000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="21200000" icon="Public/assets/circles.png" format="Горизонтали основные">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="21210000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="21220000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="21230000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="21240000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="21250000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="21260000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="21300000" icon="Public/assets/circles.png" format="Горизонтали дополнительные">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="21310000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="21320000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="21400000" icon="Public/assets/circles.png" format="Горизонтали вспомогательные">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="21410000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="21420000"/></level>
+                        </level>
+		     </level>
+		     <level OBJ_CLS_ID="22000000" icon="Public/assets/circles.png" format="Ледниковый и мерзлотный рельеф">
+		        <level OBJ_CLS_ID="22100000" icon="Public/assets/circles.png" format="Ледниковый рельеф">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="22110000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="22120000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="22130000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="22140000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="22150000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="22160000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="22180000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="22180000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="22190000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="22200000" icon="Public/assets/circles.png" format="Мерзлотный рельеф">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="22210000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="22220000"/></level>
+		        </level>
+                     </level>
+		     <level OBJ_CLS_ID="23000000" icon="Public/assets/circles.png" format="Естественные формы рельефа">
+		        <level OBJ_CLS_ID="23100000" icon="Public/assets/circles.png" format="Обрывы">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23110000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23120000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23130000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23140000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23150000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="23200000" icon="Public/assets/circles.png" format="Осыпи">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23210000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23211000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23212000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23213000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23214000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23215000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23216000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="23300000" icon="Public/assets/circles.png" format="Оползни">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23310000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23320000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="23400000" icon="Public/assets/circles.png" format="Скалы">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23410000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23420000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23430000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23440000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="23500000" icon="Public/assets/circles.png" format="Вулканы">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23510000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23520000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23530000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23540000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="23600000" icon="Public/assets/circles.png" format="Эрозионный рельеф">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23610000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23620000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23630000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23640000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23650000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23660000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23670000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23680000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23690000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="23700000" icon="Public/assets/circles.png" format="Отрицательные формы рельефа">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23710000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23720000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23730000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23740000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23750000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23760000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23770000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23771000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23772000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="23800000" icon="Public/assets/circles.png" format="Горный рельеф">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23810000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23820000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23830000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23840000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23850000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23860000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23861000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="23870000"/></level>
+                        </level>
+                     </level>
+		     <level OBJ_CLS_ID="24000000" icon="Public/assets/circles.png" format="Искусственные формы рельефа">
+		      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="24100000"/></level>
+		      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="24200000"/></level>
+		      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="24300000"/></level>
+		      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="24300000"/></level>
+		      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="24400000"/></level>
+		      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="24500000"/></level>
+		      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="24600000"/></level>
+		      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="24700000"/></level>
+		     </level>
+		  </level>
+		     <level OBJ_CLS_ID="30000000" icon="Public/assets/circles.png" format="ГИДРОГРАФИЯ И ГИДРОТЕХНИЧЕС. СООРУЖЕНИЯ" checkbox_type="" levelParams="layerId=WEB50_M_100_GIDR_S|WEB50_M_100_GIDR_LP;">
+      <context_menu run_invoke="showGrid_gidr_lp" gridId="WEB50_M_100_GIDR_LP_LIST" />
+      <context_menu run_invoke="showGrid_gidr_s" gridId="WEB50_M_100_GIDR_S_LIST" />
+		        <level OBJ_CLS_ID="31000000" icon="Public/assets/circles.png" format="Водоемы, водотоки естественные">
+		           <level OBJ_CLS_ID="31100000" icon="Public/assets/circles.png" format="Водотоки естественные">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31140000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31190000"/></level>
+		              <level OBJ_CLS_ID="31110000" icon="Public/assets/circles.png" format="Водотоки постоянные">
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31111000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31112000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31113000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31114000"/></level>
+                              </level>
+		              <level OBJ_CLS_ID="31120000" icon="Public/assets/circles.png" format="Водотоки пересыхающие">
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31121000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31122000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31123000"/></level>
+                              </level>
+		              <level OBJ_CLS_ID="31130000" icon="Public/assets/circles.png" format="Водотоки подземные, пропадающие">
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31131000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31132000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31133000"/></level>
+                              </level>
+                           </level>
+		           <level OBJ_CLS_ID="31200000" icon="Public/assets/circles.png" format="Водоемы">
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31210000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31220000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31230000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31240000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31241000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31250000"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="31300000" icon="Public/assets/circles.png" format="Рельеф дна">
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31310000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31320000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31330000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31340000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31350000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="31360000"/></level>
+                           </level>
+                        </level>
+		        <level OBJ_CLS_ID="32000000" icon="Public/assets/circles.png" format="Береговой рельеф">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="32110000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="32120000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="32130000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="32200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="32210000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="32220000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="32230000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="32240000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="32250000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="32310000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="32320000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="32330000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="32340000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="32500000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="33000000" icon="Public/assets/circles.png" format="Гидротехнические сооружения">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33111100"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33111200"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33111300"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33111400"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33111500"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33111600"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33112100"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33112200"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33112300"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33112400"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33121000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33122000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33122300"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33130000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33131100"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33131200"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33131300"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33131400"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33131500"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33131600"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33132100"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33132200"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33132300"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33141000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33142000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33143000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33144000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33211000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33212000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33221000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33222000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33223000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33224000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33230000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33240000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33250000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33261000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33262000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33310000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33311000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33312000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33313000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33314000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33320000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33330000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33331000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33332000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33340000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33400000"/></level>
+		         <level OBJ_CLS_ID="33410000" icon="Public/assets/circles.png" format="Плотины">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33411000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33412000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33413000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33414000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33415000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33420000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33430000"/></level>
+                         </level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33511000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33512000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33513000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33514000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33515000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33520000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33521000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33522000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33531000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33532000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33533000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33534000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33535000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33560000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="33570000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="34000000" icon="Public/assets/circles.png" format="ИСТОЧНИКИ ВОДЫ">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="34100000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="34110000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="34120000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="34200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="34310000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="34311000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="34312000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="34313000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="34320000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="34330000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="34400000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="34510000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="34520000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="35000000" icon="Public/assets/circles.png" format="Переправы">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="35110000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="35120000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="35130000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="35210000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="35220000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="35230000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="35240000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="35310000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="35320000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="35510000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="35520000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="35530000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="36000000" icon="Public/assets/circles.png" format="Навигационные опасности">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36111000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36112000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36113000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36121000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36122000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36123000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36124000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36125000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36131000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36132000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36133000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36141000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36141000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36142000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36151000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36152000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36161000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36162000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36163000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36164000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36165000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36166000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36167000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36170000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36300000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36310000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36410000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36411000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36412000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36420000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36430000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36440000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36510000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36520000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36530000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36531000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36532000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36540000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36550000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36600000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36610000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36620000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36630000"/></level>
+	                 <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36800000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="36200000" icon="Public/assets/circles.png" format="ПРОЧИЕ ОБЪЕКТЫ ГИДРОГРАФИИ">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36210000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36220000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36230000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36240000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36242000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36243000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36244000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36251000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="36252000"/></level>
+                        </level>
+                      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="37100000"/></level>
+                      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="38100000"/></level>
+                      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="38200000"/></level>
+                      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="38300000"/></level>
+                      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="38400000"/></level>
+                      <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="38500000"/></level>
+		     </level>
+		     <level OBJ_CLS_ID="40000000" icon="Public/assets/circles.png" format="НАСЕЛЕННЫЕ ПУНКТЫ" checkbox_type="" levelParams="layerId=WEB50_M_100_TOWN;">
+      <context_menu run_invoke="showGrid_town" gridId="WEB50_M_100_TOWN_LIST" />
+		        <level OBJ_CLS_ID="41000000" icon="Public/assets/circles.png" format="Города">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="41100000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="41200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="41300000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="41400000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="41500000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="41600000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="41700000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="41800000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="41900000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="41910000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="42000000" icon="Public/assets/circles.png" format="Кварталы">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="42100000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="42110000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="42120000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="42130000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="42200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="42300000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="42400000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="42500000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="42600000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="42600000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="42700000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="42700000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="43000000" icon="Public/assets/circles.png" format="Части НП и кварталов">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="43100000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="43200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="43300000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="43310000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="43320000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="43400000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="43500000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="43600000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="43700000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="44000000" icon="Public/assets/circles.png" format="Строения">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="44100000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="44110000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="44120000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="44130000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="44140000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="44150000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="44200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="44210000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="44300000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="44400000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="44500000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="44600000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="45000000" icon="Public/assets/circles.png" format="Улицы">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="45100000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="45200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="45210000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="45220000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="45230000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="45240000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="45250000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="45300000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="45310000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="45320000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="45330000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="45400000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="45500000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="45600000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="45700000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="46000000" icon="Public/assets/circles.png" format="Путепроводы ,въезды">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="46100000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="46200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="46300000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="46400000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="47000000" icon="Public/assets/circles.png" format="Сооружения легкого типа">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="47100000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="47110000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="47120000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="47200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="47300000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="48000000" icon="Public/assets/circles.png" format="Растительность в НП">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="48100000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="48200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="48300000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="48400000"/></level>
+                        </level>
+                     </level>
+		     <level OBJ_CLS_ID="50000000" icon="Public/assets/circles.png" format="ОБЪЕКТЫ ПРОМ-,С/Х-,СОЦКУЛЬТУРНОГО НАЗ-Я" checkbox_type="" levelParams="layerId=WEB50_M_100_PROM|WEB50_M_100_PROM_GAS;">
+      <context_menu run_invoke="showGrid_prom" gridId="WEB50_M_100_PROM_LIST" />
+      <context_menu run_invoke="showGrid_prom_gas" gridId="WEB50_M_100_PROM_GAS_LIST" />
+		        <level OBJ_CLS_ID="51000000" icon="Public/assets/circles.png" format="Сооружения башенного типа">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51110000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51120000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51130000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51140000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51211000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51212000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51213000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51221000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51222000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51223000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51310000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51311000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51312000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51320000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51330000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51331000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51332000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51340000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51350000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="51360000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="52000000" icon="Public/assets/circles.png" format="Объекты передачи и хранения энерг.ресур">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="52110000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="52121000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="52122000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="52123000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="52200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="52210000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="52220000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="52311000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="52312000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="52321000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="52322000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="52331000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="52332000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="52333000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="52334000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="52335000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="52410000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="52420000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="52430000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="53000000" icon="Public/assets/circles.png" format="Электростанции">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="53110000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="53120000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="53130000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="53200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="53310000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="53320000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="53330000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="53410000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="53420000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="53421000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="53422000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="53430000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="53440000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="54000000" icon="Public/assets/circles.png" format="Авиация">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="54110000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="54120000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="54130000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="54140000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="54160000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="54170000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="54210000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="54220000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="54230000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="54310000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="54320000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="54330000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="54340000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="55000000" icon="Public/assets/circles.png" format="Предприятия по добыче полезных ископаем">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="55100000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="55200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="55300000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="55310000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="55320000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="55330000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="55340000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="55350000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="55360000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="56000000" icon="Public/assets/circles.png" format="Добыча полезных ископаемых">
+		           <level OBJ_CLS_ID="56100000" icon="Public/assets/circles.png" format="Добыча пол. ископаемых открытым способом">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56110000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56112000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56113000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56120000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56130000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56140000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56141000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56142000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56143000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56143000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56144000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56150000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56151000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56152000"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="56200000" icon="Public/assets/circles.png" format="Прочие объекты добычи пол. ископаемых">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56210000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56220000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56230000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56240000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56250000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56260000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56270000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56280000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="56290000"/></level>
+                        </level>
+                        </level>
+		        <level OBJ_CLS_ID="57000000" icon="Public/assets/circles.png" format="Социально-культурные объекты">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="57100000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="57110000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="57120000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="57130000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="57140000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="57150000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="57210000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="57220000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="57230000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="57240000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="57250000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="57300000"/></level>
+                        </level>
+                     </level>
+		     <level OBJ_CLS_ID="60000000" icon="Public/assets/circles.png" format="ТРАНСПОРТНАЯ СЕТЬ" checkbox_type="" levelParams="layerId=WEB50_M_100_ROADS;">
+      <context_menu run_invoke="showGrid_roads" gridId="WEB50_M_100_ROADS_LIST" />
+		        <level OBJ_CLS_ID="61000000" icon="Public/assets/circles.png" format="Железнодорожная транспортная сеть">
+		           <level OBJ_CLS_ID="61100000" icon="Public/assets/circles.png" format="Железнодорожные пути">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61110000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61120000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61130000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61131000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61132000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61140000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61150000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61160000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61161000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61162000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61170000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61180000"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="61200000" icon="Public/assets/circles.png" format="Строящиеся железные дороги">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61210000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61220000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61230000"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="61300000" icon="Public/assets/circles.png" format="Сооружения на железных дорогах">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61310000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61311000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61312000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61320000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61321000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61330000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61340000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61350000"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="61400000" icon="Public/assets/circles.png" format="Элементы железнодорожных объектов">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61410000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61420000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61430000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61440000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="61450000"/></level>
+                           </level>
+                        </level>
+		        <level OBJ_CLS_ID="62000000" icon="Public/assets/circles.png" format="Автомобильная транспортная сеть">
+		           <level OBJ_CLS_ID="62100000" icon="Public/assets/circles.png" format="Автодороги с покрытием">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62110000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62120000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62130000"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="62200000" icon="Public/assets/circles.png" format="Автодороги без покрытия">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62210000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62220000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62230000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62240000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62250000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62260000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62261000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62262000"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="62300000" icon="Public/assets/circles.png" format="Строящиеся автодороги">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62310000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62320000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62330000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62340000"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="62400000" icon="Public/assets/circles.png" format="Труднопроезжие участки дорог">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62410000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62420000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62430000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62440000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62450000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62451000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62452000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62460000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62470000"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="62500000" icon="Public/assets/circles.png" format="Тропы, пешеходные дорожки">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62510000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62520000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62530000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62531000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62532000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62540000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62550000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62550000"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="62600000" icon="Public/assets/circles.png" format="Элементы автомобильных дорог">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62610000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62620000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62630000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62640000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62650000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62660000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62670000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62690000"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="62700000" icon="Public/assets/circles.png" format="Дорожные знаки">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62710000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62720000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62730000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="62740000"/></level>
+                           </level>
+                        </level>
+		        <level OBJ_CLS_ID="63000000" icon="Public/assets/circles.png" format="Мосты, путепроводы">
+		           <level OBJ_CLS_ID="63100000" icon="Public/assets/circles.png" format="Путепроводы, мосты капитальные">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="63110000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="63111000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="63112000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="63113000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="63120000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="63130000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="63140000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="63150000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="63160000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="63170000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="63180000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="63190000"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="63200000" icon="Public/assets/circles.png" format="Мосты малые и пешеходные">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="63210000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="63211000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="63220000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="63230000"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="63300000" icon="Public/assets/circles.png" format="Элементы мостов">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="63310000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="63320000"/></level>
+                           </level>
+                        </level>
+		        <level OBJ_CLS_ID="64000000" icon="Public/assets/circles.png" format="Общие элементы транспортной сети">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="64100000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="64110000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="64200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="64300000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="64400000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="64410000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="64420000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="64500000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="64600000"/></level>
+                        </level>
+                     </level>
+		     <level OBJ_CLS_ID="70000000" icon="Public/assets/circles.png" format="РАСТИТЕЛЬНОСТЬ И ГРУНТЫ" checkbox_type="" levelParams="layerId=WEB50_M_100_RAST_S|WEB50_M_100_RAST_LP|WEB50_M_100_SWAMP;">
+      <context_menu run_invoke="showGrid_rast_lp" gridId="WEB50_M_100_RAST_LP_LIST" />
+      <context_menu run_invoke="showGrid_rast_s" gridId="WEB50_M_100_RAST_S_LIST" />
+      <context_menu run_invoke="showGrid_swamp" gridId="WEB50_M_100_SWAMP_LIST" />
+		        <level OBJ_CLS_ID="71000000" icon="Public/assets/circles.png" format="Древесная растительность">
+		           <level OBJ_CLS_ID="71100000" icon="Public/assets/circles.png" format="Древесная растительность естественная">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71110000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71111000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71112000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71120000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71121000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71122000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71123000"/></level>
+		              <level OBJ_CLS_ID="71130000" icon="Public/assets/circles.png" format="Особенные участки леса">
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71131000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71132000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71133000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71134000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71135000"/></level>
+                              </level>
+		              <level OBJ_CLS_ID="71140000" icon="Public/assets/circles.png" format="Полосы древесных насаждений">
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71141000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71142000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71142100"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71142200"/></level>
+                              </level>
+		              <level OBJ_CLS_ID="71150000" icon="Public/assets/circles.png" format="Рощи">
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71151000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71152000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71153000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71154000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71155000"/></level>
+                              </level>
+                           </level>
+		           <level OBJ_CLS_ID="71200000" icon="Public/assets/circles.png" format="Древесная растительность искусственная">
+		              <level OBJ_CLS_ID="71210000" icon="Public/assets/circles.png" format="Посадки,питомники">
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71211000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71212000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71213000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71214000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71215000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71216000"/></level>
+                              </level>
+		              <level OBJ_CLS_ID="71220000" icon="Public/assets/circles.png" format="Культурная растительность">
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71221000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71221100"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71222000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71223000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71224000"/></level>
+                              </level>
+		              <level OBJ_CLS_ID="71230000" icon="Public/assets/circles.png" format="Отдельно стоящие деревья">
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71231000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71232000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71233000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71234000"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="71235000"/></level>
+                              </level>
+                           </level>
+                        </level>
+		        <level OBJ_CLS_ID="72000000" icon="Public/assets/circles.png" format="Кустарниковая растительность">
+		           <level OBJ_CLS_ID="72100000" icon="Public/assets/circles.png" format="Группы и отдельные кустарники">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72100000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72110000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72120000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72130000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72140000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72150000"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="72200000" icon="Public/assets/circles.png" format="Заросли кустарников">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72200000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72210000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72220000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72230000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72240000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72250000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72260000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72270000"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="72300000" icon="Public/assets/circles.png" format="Насаждения кустарниковых культур">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72300000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72310000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72320000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72330000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72340000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72341000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="72350000"/></level>
+                           </level>
+                        </level>
+		        <level OBJ_CLS_ID="73000000" icon="Public/assets/circles.png" format="Травянистая растительность">
+		           <level OBJ_CLS_ID="73100000" icon="Public/assets/circles.png" format="Травянистая растительность естественная">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="73110000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="73120000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="73130000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="73140000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="73150000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="73160000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="73170000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="73180000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="73181000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="73182000"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="73200000" icon="Public/assets/circles.png" format="Травянистая растительность искусственная">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="73210000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="73220000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="73221000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="73230000"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="73300000" icon="Public/assets/circles.png" format="Сельскохозяйственные угодья">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="73310000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="73320000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="73321000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="73330000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="73340000"/></level>
+                           </level>
+                        </level>
+		        <level OBJ_CLS_ID="74000000" icon="Public/assets/circles.png" format="Объекты, связанные с растительным покров">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="74100000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="74200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="74210000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="74220000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="74300000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="75000000" icon="Public/assets/circles.png" format="Грунты и микроформы земной поверхности">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="75100000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="75200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="75300000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="75400000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="75500000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="75600000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="75700000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="75800000"/></level>
+		           <level OBJ_CLS_ID="75900000" icon="Public/assets/circles.png" format="Пески">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="75910000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="75920000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="75930000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="75940000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="75950000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="75960000"/></level>
+                           </level>
+                        </level>
+		        <level OBJ_CLS_ID="76000000" icon="Public/assets/circles.png" format="Болота и солончаки">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="76100000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="76110000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="76120000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="76200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="76210000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="76300000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="76310000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="76320000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="76330000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="76340000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="76350000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="76400000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="76410000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="76420000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="76500000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="76600000"/></level>
+                        </level>
+                     </level>
+		     <level OBJ_CLS_ID="80000000" icon="Public/assets/circles.png" format="ГРАНИЦЫ, ОГРАЖДЕНИЯ, ПОДПИСИ" checkbox_type="" levelParams="layerId=WEB50_M_100_LIMITS|WEB50_M_100_TEXT;">
+      <context_menu run_invoke="showGrid_limits" gridId="WEB50_M_100_LIMITS_LIST" />
+      <context_menu run_invoke="showGrid_text" gridId="WEB50_M_100_TEXT_LIST" />
+		        <level OBJ_CLS_ID="81000000" icon="Public/assets/circles.png" format="Границы">
+		           <level OBJ_CLS_ID="81100000" icon="Public/assets/circles.png" format="Границы политико-административные">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="81110000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="81120000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="81130000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="81140000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="81150000"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="81200000" icon="Public/assets/circles.png" format="Пограничные знаки">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="81210000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="81220000"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="81300000" icon="Public/assets/circles.png" format="Прочие границы">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="81310000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="81320000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="81330000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="81340000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="81350000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="81360000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="81370000"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="81380000"/></level>
+                           </level>
+                        </level>
+		        <level OBJ_CLS_ID="82000000" icon="Public/assets/circles.png" format="Ограждения">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="82100000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="82200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="82210000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="82220000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="82300000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="82310000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="82320000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="82330000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="82400000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="85000000" icon="Public/assets/circles.png" format="Геофизические данные">
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="85100000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="85200000"/></level>
+		         <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="85300000"/></level>
+                        </level>
+		        <level OBJ_CLS_ID="88000000" icon="Public/assets/circles.png" format="ПОДПИСИ">
+		           <level OBJ_CLS_ID="88003000" icon="Public/assets/circles.png" format="Бм-431">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003112"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003113"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003114"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003115"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003116"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003118"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003120"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003121"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003124"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003127"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003128"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003138"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003144"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003151"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003213"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003312"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003313"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003314"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003315"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003316"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003317"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003318"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003320"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003321"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003322"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003324"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003325"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003326"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003328"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003330"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003334"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003336"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003338"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003340"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003345"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003350"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003353"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003360"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003370"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88003513"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="88004000" icon="Public/assets/circles.png" format="Ч-122">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88004122"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88004124"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88004126"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88004130"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88004135"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88004136"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88004140"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88004146"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="88008000" icon="Public/assets/circles.png" format="Р-131">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88008112"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88008113"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88008114"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88008115"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88008116"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88008117"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88008118"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88008119"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88008120"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88008121"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88008122"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88008124"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88008125"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88008127"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88008130"/></level>
+                           </level>
+		           <level OBJ_CLS_ID="88010000" icon="Public/assets/circles.png" format="Р-152">
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88010113"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88010116"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88010118"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88010120"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88010121"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88010123"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88010123"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88010134"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88010420"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88010428"/></level>
+		            <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88010450"/></level>
+		              <level OBJ_CLS_ID="88012000" icon="Public/assets/circles.png" format="Т-132">
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012111"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012112"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012113"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012114"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012115"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012116"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012118"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012119"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012120"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012121"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012122"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012123"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012125"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012126"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012213"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012313"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012315"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012318"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012321"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012413"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012417"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012428"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012512"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012516"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012614"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012616"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012618"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88012713"/></level>
+                              </level>
+		              <level OBJ_CLS_ID="88013000" icon="Public/assets/circles.png" format="Д-231">
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88013112"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88013113"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88013114"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88013115"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88013118"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88013120"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88013121"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88013124"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88013130"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88013138"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88013215"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88013513"/></level>
+                              </level>
+		              <level OBJ_CLS_ID="88014000" icon="Public/assets/circles.png" format="Д-432">
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88014114"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88014115"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88014116"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88014121"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88014122"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88014124"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88014127"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88014130"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88014135"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88014138"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88014150"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88014168"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88014172"/></level>
+                              </level>
+		              <level OBJ_CLS_ID="88015000" icon="Public/assets/circles.png" format="До-431">
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88015112"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88015113"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88015114"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88015115"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88015116"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88015118"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88015120"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88015123"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88015129"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88015135"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88015150"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88015315"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88015318"/></level>
+                              </level>
+		              <level OBJ_CLS_ID="88016000" icon="Public/assets/circles.png" format="Д-431">
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88016112"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88016114"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88016116"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88016117"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88016118"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88016121"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88016124"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88016127"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88016128"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88016130"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88016138"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88016314"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88016316"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88016318"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88016320"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88016321"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88016324"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88016328"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88016338"/></level>
+                              </level>
+		              <level OBJ_CLS_ID="88017000" icon="Public/assets/circles.png" format="Н-331">
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88017115"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88017117"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88017515"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88017517"/></level>
+                              </level>
+		              <level OBJ_CLS_ID="88018000" icon="Public/assets/circles.png" format="Р-342">
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88018113"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88018115"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88018513"/></level>
+		               <level format="{descr}" icon="OPENSCALE" max_items="20"> <query source="COMMON_TREE.xml#LAYER_STYLE_TYPED" FILE_NAME="M_100_STYLE.xml" OBJ_CLS_ID="88018515"/></level>
+                              </level>
+                           </level>
+		        </level>
+		     </level>
+	</tree>
+</dataset>

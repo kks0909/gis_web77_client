@@ -1,0 +1,61 @@
+﻿<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="ui/lib/jquery-1.9.1.js"></script>
+    <script src="test_sql.js"></script>
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body onload="">
+<h1>Проверка группы запросов</h1>
+<div>Файл: <input type="text" style="width: 500px;" id="query" value="POI_GEO.xml">
+    <button onclick="loadFile()">Загрузить файл</button>
+</div>
+<div>Тип запроса:
+    <div id="queryType" style="width: 100px;">
+        <input id="chSelect" type="checkbox" name="select" checked/><label for="chSelect">Select</label><br/>
+        <input id="chUpdate" type="checkbox" name="update"/><label for="chUpdate">Update</label><br/>
+        <input id="chInsert" type="checkbox" name="insert"/><label for="chInsert">Insert</label><br/>
+        <input id="chDelete" type="checkbox" name="delete"/><label for="chDelete">Delete</label>
+    </div>
+</div>
+<div >
+    <div id="dataTypes" style="background: salmon;width: 500px;height: 210px;float:left;">
+        Типы данных:<br/>
+        <input type="text" id="tpSymbol" value="aa"><label for="tpSymbol">Символьный</label><br/>
+        <input type="text" id="tpNumber" value="123"><label for="tpNumber">Числовой</label><br/>
+        <input type="text" id="tpDate" value="21.02.2016"><label for="tpDate">Дата</label><br/>
+        <input type="text" id="tpWKT" value="POINT(41.44,63,053)"><label for="tpSymbol">WKT</label><br/>
+        Произвольная &lt;data><br/>
+        <textarea id="tpDATA" style="width:480px; height: 80px">&lt;data FILTER="2=5" /&gt;</textarea>
+
+    </div>
+    <div id="dataChk" style="overflow:auto;width:500px;height: 210px;background: yellowgreen;display:inline-block;margin-left: 20px">
+        <input id="chWKT" type="checkbox" name="select"/><label for="chWKT">Во все запросы вставлять WKT</label><br/>
+        <input id="chData" type="checkbox" name="select"/><label for="chData">Вставлять произвольную data</label><br/>
+        <input id="chDefault" type="checkbox" name="select" checked/><label for="chDefault">Использовать значения по умолчанию для параметров, если они есть</label><br/>
+    </div>
+</div>
+<div><button onclick="execMultiQuery()">Выполнить</button></div>
+<div id="resultDiv" contenteditable="true" style="overflow:auto;width:700px;height: 20px;background: #ffff00;">
+    Файл не загружен.
+</div>
+<br /><br />
+<div>
+    Руководство:<br/>
+    1) вводим название файла для проверки и нажимаем "Загрузить файл"<br/>
+    2 когда файл подгрузится, в желтом блоке под кнопкой "Выполнить" должен появиться текст "Файл загружен"<br/>
+    3) выбираем в блоке "Тип запроса" необходимые чекбоксы для проверки<br/>
+    4) розовый блок отвечает за значения передачу значений в переменные для каждого запроса:<br/>
+    - в поле "произвольная &lt;data>" можно вписать свои параметры, переменные.<br/>
+    5) выставляем необходимые чекбоксы в зеленом блоке<br/>
+    - чекбокс "во все запросы вставлять WKT" - некоторые запросы неявно требуют передачу WKT геометрии(insert). Если чекбокс включен, то к запросу добавляются данные из розового блока поля WKT<br/>
+    - чекбокс "вставлять произвольную data" -  вместо параметров, описанных в запросе, &lt;data> будет заменяться на то, что указано в розовом блоке в поле "произвольная &lt;data>"<br/>
+    - чекбокс "Использовать значения по умолчанию для параметров, если они есть" - указывает, нужно ли в параметры запроса передавать значения по умолчанию, или брать значения из розового блока<br/>
+    6) нажимаем кнопку "выполнить"<br/>
+    7) лог выполнения будет записываться в файл Log\WebSite\TESTSQL.txt<br/>
+
+</div>
+
+</body>

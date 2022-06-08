@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns="view.data.*" width="760" ext_data_id="PODS_EXPORT.xml#PODS_LINE" excelTemplate="PODS_LINE">
+	<dataProvider>CAS_PODS_PROFILE_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	<mx:VBox width="760">
+		<mx:HBox percentWidth="100">
+			<mx:VBox percentWidth="50">
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Описание" width="140"/>
+					<mx:TextInput id="DESCRIPTION" width="225" maxChars="254" height="40"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Код трубопровода" width="140"/>
+					<mx:TextInput id="DESIGNATOR" width="50" maxChars="10" height="20"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Тип трубопровода" width="140"/>
+					<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						<mx:ComboBox id="TYPE_CL" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_LINE_TYPE_CL"/>
+						<mx:Button id="BTN_LIST_LINE_TYPE_CL" selectedField="PODS_LINE_TYPE_CL" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16"/>
+					</mx:HBox>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Тип продукта" width="140"/>
+					<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						<mx:ComboBox id="PRODUCT_TYPE_SCL" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_PRODUCT_TYPE_SCL"/>
+						<mx:Button id="BTN_LIST_PRODUCT_TYPE_SCL" selectedField="PODS_PRODUCT_TYPE_SCL" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16"/>
+					</mx:HBox>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Подтип продукта" width="140"/>
+					<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						<mx:ComboBox id="PRODUCT_SUBTYPE_SCL" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_PRODUCT_TYPE_SCL"/>
+						<mx:Button id="BTN_LIST_PRODUCT_SUBTYPE_SCL" selectedField="PODS_PRODUCT_TYPE_SCL" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16"/>
+					</mx:HBox>
+				</mx:HBox>
+			</mx:VBox>
+			<mx:VBox percentWidth="50">
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Межгосударственный трубопровод" width="140"/>
+					<mx:CheckBox id="INTERSTATE_LF" width="20" height="20"/>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Тип трубопроводной системы" width="140"/>
+					<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						<mx:ComboBox id="SYSTEM_TYPE_CL" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_LINE_SYSTEM_TYPE_CL"/>
+						<mx:Button id="BTN_LIST_SYSTEM_TYPE_CL" selectedField="PODS_LINE_SYSTEM_TYPE_CL" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16"/>
+					</mx:HBox>
+				</mx:HBox>
+				<mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Операционный статус" width="140"/>
+					<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						<mx:ComboBox id="OPERATING_STATUS_GCL" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_OPERATING_STATUS_GCL"/>
+						<mx:Button id="BTN_LIST_OPERATING_STATUS_GCL" selectedField="PODS_OPERATING_STATUS_GCL" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16"/>
+					</mx:HBox>
+				</mx:HBox>
+				<mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					<mx:Text textAlign="right" text="Идентификатор трубопровода" width="140"/>
+					<controls:NumberInput id="LINE_ID" editable="false" width="85" maxChars="22" height="20"/>
+				</mx:HBox>
+			</mx:VBox>
+		</mx:HBox>
+	</mx:VBox>
+	<validatorsArray>
+		<controls:DefaultStringValidator source="{DESIGNATOR}" property="text" enabled="false" minLength="1" requiredFieldError="Поле &apos;Код трубопровода&apos; обязательно для заполнения." tooShortError="Поле &apos;Код трубопровода&apos; обязательно для заполнения."/>
+	</validatorsArray>
+</DATA_EDIT_FORM>

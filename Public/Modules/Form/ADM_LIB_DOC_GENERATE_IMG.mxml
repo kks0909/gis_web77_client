@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="310" xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml" title="Генерация IMG-карт">
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="305">
+    <mx:HBox percentWidth="100">
+      <mx:Text textAlign="right" text="ЛПУ" width="40"/>
+      <mx:ComboBox id="SRV_DISTRICT_ID" width="250" height="20" dataProvider="GAZPROM_ADM_SEM.xml#ADM_ROLES_SRV_DISTRICT" tabIndex="0"/>
+    </mx:HBox>
+  </mx:VBox>
+
+  <validatorsArray>
+    <controls:ComboBoxValidator source="{SRV_DISTRICT_ID}" property="selectedItem" enabled="false" required="true" notDefaultError="В списке 'ЛПУ' нужно выбрать значение, отличное от значения-по умолчанию."/>
+  </validatorsArray>
+</DATA_EDIT_FORM>

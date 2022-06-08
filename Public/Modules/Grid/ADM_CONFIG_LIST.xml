@@ -1,0 +1,62 @@
+﻿<!--7.7.6.8-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="5"  headerVertSize="50"
+            id="GET_CLIENT_SETTINGS"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelTemplateName="GET_CLIENT_SETTINGS_ADM"
+            layerId="ADM_CONFIG" propertyPanelName="GET_CLIENT_SETTINGS"
+            dataRequest="ADM_SEM.xml#GET_CLIENT_SETTINGS"
+            totalRecordsRequest="ADM_SEM.xml#GET_CLIENT_SETTINGS_CNT"
+            formatDataFunction="getDataFromSettings"
+            >
+<grids:buttons>
+  	<picPutton:GridButton source="../../Public/assets/template.png"
+	   tooltip="Выгрузить лог адм. расчетов"
+	   width="130"
+	   clickEvent="gridAdmExportUTELog"
+	   isEnabled="true"
+	   position="top"/>
+
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=showInfoEvent;toolTip=Показать информацию по объекту"
+                          editable="true"/>
+      <columns:GridColumn headerText="Идентификатор" dataField="ID"  itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          hidden="true" editable="false" filterComparisionType="number" width="40" />                   
+      <columns:GridColumn headerText="Название параметра" dataField="KEY"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="150"/>
+      <columns:GridColumn headerText="Тип" dataField="TYPE"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="80"/>
+      <columns:GridColumn headerText="Описание" dataField="COMMENTS"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="500"/>
+      <columns:GridColumn headerText="Значение параметра" dataField="VALUE"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="200"/>
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns="view.data.*"
+                title="Установки катодной/дренажной защиты"
+                width="760"
+                ext_data_id="PODS_EXPORT.xml#PODS_RECTIFIER"
+                excelTemplate="PODS_RECTIFIER">
+	  <dataProvider>PODS_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	  <mx:VBox width="760">
+		    <mx:HBox percentWidth="100">
+			      <mx:VBox percentWidth="50">
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Описание" width="140"/>
+					          <mx:TextInput id="DESCRIPTION" width="225" maxChars="50" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Модель" width="140"/>
+					          <mx:TextInput id="MODEL_NUMBER" width="160" maxChars="32" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Компания-изготовитель" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="MANUFACTURER_CL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_RECTIFIER_MANUFACTURER_CL"/>
+						            <mx:Button id="BTN_LIST_MANUFACTURER_CL" selectedField="PODS_RECTIFIER_MANUFACTURER_CL"
+                             enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Тип УКЗ/УДЗ" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="TYPE_CL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_RECTIFIER_TYPE_CL"/>
+						            <mx:Button id="BTN_LIST_TYPE_CL" selectedField="PODS_RECTIFIER_TYPE_CL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Тип шунта" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="SHUNT_TYPE_CL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_SHUNT_TYPE_CL"/>
+						            <mx:Button id="BTN_LIST_SHUNT_TYPE_CL" selectedField="PODS_SHUNT_TYPE_CL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Тип молниеотвода" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="LIGHTNING_ARRESTOR_TYPE_CL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_LIGHTNING_ARRESTOR_TYPE_CL"/>
+						            <mx:Button id="BTN_LIST_LIGHTNING_ARRESTOR_TYPE_CL"
+                             selectedField="PODS_LIGHTNING_ARRESTOR_TYPE_CL"
+                             enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Тип системы охлаждения" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="COOLING_SYSTEM_CL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_COOLING_SYSTEM_CL"/>
+						            <mx:Button id="BTN_LIST_COOLING_SYSTEM_CL" selectedField="PODS_COOLING_SYSTEM_CL"
+                             enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Номинальное напряжение, мВ" width="140"/>
+					          <mx:TextInput id="VOLT_RATING" width="80" maxChars="16" height="20"/>
+					          <mx:Text textAlign="right" text="Номинальный ток, А" width="85"/>
+					          <mx:TextInput id="AMP_RATING" width="43" maxChars="16" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Количество диодов" width="140"/>
+					          <mx:TextInput id="DIODE_NUMBER" width="80" maxChars="16" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Серийный номер выпрямителя" width="140"/>
+					          <mx:TextInput id="STACK_SERIAL_NUMBER" width="80" maxChars="16" height="20"/>
+				        </mx:HBox>
+			      </mx:VBox>
+			      <mx:VBox percentWidth="50">
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Серийный номер предохранителя выпрямителя" width="140"/>
+					          <mx:TextInput id="STACK_FUSE_SERIAL_NUMBER" width="80" maxChars="16" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Дата установки/монтажа" width="140"/>
+					          <mx:DateField id="DATE_INSTALLED" width="96" height="20" formatString="DD.MM.YYYY"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Комментарии" width="140"/>
+					          <mx:TextInput id="COMMENTS" width="225" maxChars="255" height="40"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Перейти к корпусу УКЗ/УДЗ" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:Button id="BUTTON_REF_RECT_ENCLOSURE_EVENT_ID"
+                             selectedField="PODS_RECTIFIER_ENCLOSURE"
+                             enabled="false"
+                             styleName="refObject"
+                             toolTip="Перейти к корпусу УКЗ/УДЗ"
+                             width="16"
+                             height="16"/>
+						            <controls:NumberInput id="REF_RECT_ENCLOSURE_EVENT_ID" editable="false" width="85" maxChars="22"
+                                        height="20"
+                                        visible="{CONFIG.SHOW_SYSTEM_INFO}"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Источник информации" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="SOURCE_GCL" enabled="false" editable="false" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_SOURCE_GCL"/>
+						            <mx:Button id="BTN_LIST_SOURCE_GCL" selectedField="PODS_SOURCE_GCL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Идентификатор УКЗ/УДЗ" width="140"/>
+					          <mx:TextInput id="RECTIFIER_ID" editable="false" width="85" maxChars="16" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Идентификатор объекта" width="140"/>
+					          <controls:NumberInput id="EVENT_ID" editable="false" width="85" maxChars="22" height="20"/>
+				        </mx:HBox>
+			      </mx:VBox>
+		    </mx:HBox>
+	  </mx:VBox>
+	  <validatorsArray/>
+</DATA_EDIT_FORM>

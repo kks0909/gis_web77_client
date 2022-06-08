@@ -1,0 +1,214 @@
+﻿<dataset name="Редактирование справочников" version="7.7.7.5">
+	<group comment="Команды" >
+	<invoke id="gridToolModule" type="global" event_name="FULL_GRID_EVENT_ID_MODULE"
+				 tooltip="Показать списком"
+				 icon="Public/assets/GRID.png">   
+			<!-- Общие параметры-->
+			<!-- имя функции открытия, если пустое, то всегда в новом окне -->
+			<var name="functionName" value=""/>
+			<!-- доп параметры открытия окна из windowsTemplates.xml -->
+			<var name="windowTemplateId" value="gridWindow"/>
+			<!-- Задача -->
+			<var name="task" value="GRID"/>
+			<var name="mdl" value="Public/SWF/Grid_55.swf"/>
+			<!-- Необходимо ли в команды передавать фильтр верхнего уровня -->
+			<var name="needTopFilter" value="true"/>
+			<!-- Флаг указывает, всегда ли открывать в новом окне или можно использовать команды синхронизации -->
+			<var name="useSynchCommands" value="false"/>
+			<!-- шаблон грида -->
+			<var name="gridId" value=""/>
+			<!-- заголовок грида -->
+			<var name="title" value=""/>
+			<!-- полный идентификатор слоя -->
+			<var name="layerId" value=""/>
+		</invoke>		
+<invoke id="createNewObject" type="global" event_name="createObjectFromTree" tooltip="Добавить запись" icon="Public/assets/addObject.png">
+			<var name="classId" value="DEFAULT_GRID" />
+		</invoke>
+		<invoke id="checkBoxTool" type="global" event_name="checkBoxEvent" tooltip="Вкл/Выкл видимость слоя">
+			<var layerParams="" />
+		</invoke>
+   </group>
+
+	<tree toolbarStyle="toolbarStyle" toolbarButtonStyle="mapIcon" checkbox_type="none" max_items="20">
+<level format="Привязка к трассе (ЛЭС, ЛПУ, газопроводы)" icon="Public/assets/catalog.png" checkbox_type="childBased">
+<level format="Справочник ЛЭС" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_LES_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_LES_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_LES_GCL_LIST"/>
+  </level>
+<level format="Справочник ЛПУ" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_LPU_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_LPU_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_LPU_GCL_LIST"/>
+  </level>
+<level format="Справочник газопроводов" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_PIPE_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_PIPE_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_PIPE_GCL_LIST"/>
+  </level>
+</level>
+<level format="Сведения о ТПА" icon="Public/assets/catalog.png" checkbox_type="childBased">
+<level format="Тип ТПА" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_VALVE_TYPE_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_VALVE_TYPE_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_VALVE_TYPE_GCL_LIST"/>
+  </level>
+<level format="Климатическое исполнение крана" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_CLIMATIC_TYPE_ID" checkbox_type="none" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_CLIMATIC_TYPE_ID" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_CLIMATIC_TYPE_ID_LIST"/>
+		</level>
+<level format="Номинальный диаметр" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_DIAMETER_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_DIAMETER_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_DIAMETER_GCL_LIST"/>
+  </level>
+<level format="Номинальное давление" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_NOM_PRESSURE_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_NOM_PRESSURE_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_NOM_PRESSURE_GCL_LIST"/>
+  </level>
+<level format="Исполнение ТПА" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_EXECUTION_TYPE_ID_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_EXECUTION_TYPE_ID_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_EXECUTION_TYPE_ID_GCL_LIST"/>
+  </level>
+<level format="Функция ТПА" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_FUNC_TYPE_ID_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_FUNC_TYPE_ID_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_FUNC_TYPE_ID_GCL_LIST"/>
+  </level>
+<level format="Тип установки ТПА" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_INSTALL_TYPE_ID_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_INSTALL_TYPE_ID_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_INSTALL_TYPE_ID_GCL_LIST"/>
+  </level>
+<level format="Маркировка ТПА" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_TPA_CONSTR_TYPE_ID_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_TPA_CONSTR_TYPE_ID_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_TPA_CONSTR_TYPE_ID_GCL_LIST"/>
+  </level>
+<level format="Маркировка ТПА по фигуре" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_TPA_FIGURE_TYPE_ID_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_TPA_FIGURE_TYPE_ID_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_TPA_FIGURE_TYPE_ID_GCL_LIST"/>
+  </level>
+<level format="Тип присоединения" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_VALVE_JOIN_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_VALVE_JOIN_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_VALVE_JOIN_GCL_LIST"/>
+  </level>
+<level format="Производитель ТПА" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_VALVE_MANUF_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_VALVE_MANUF_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_VALVE_MANUF_GCL_LIST"/>
+  </level>
+<level format="Материал ТПА" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_VALVE_MATERIAL_TYPE_CL_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_VALVE_MATERIAL_TYPE_CL_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_VALVE_MATERIAL_TYPE_CL_GCL_LIST"/>
+  </level>
+<level format="Наименование ТПА" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_VALVE_TPA_NAME_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_VALVE_TPA_NAME_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_VALVE_TPA_NAME_GCL_LIST"/>
+  </level>
+</level>
+<level format="Сведения о приводе ТПА" icon="Public/assets/catalog.png" checkbox_type="childBased">
+<level format="Тип маркировки привода ТПА" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_OPER_LABEL_TYPE_ID_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_OPER_LABEL_TYPE_ID_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_OPER_LABEL_TYPE_ID_GCL_LIST"/>
+  </level>
+<level format="Производитель привода ТПА" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_OPER_MANUF_ID_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_OPER_MANUF_ID_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_OPER_MANUF_ID_GCL_LIST"/>
+  </level>
+<level format="Тип привода" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_VALVE_OP_TYPE_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_VALVE_OP_TYPE_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_VALVE_OP_TYPE_GCL_LIST"/>
+  </level>
+</level>
+<level format="Сверка с документацией, ССД Инфотех" icon="Public/assets/catalog.png" checkbox_type="childBased">
+<level format="Данные ССД Инфотех, перечень" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_MISMATCH_INF_DATA" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_MISMATCH_INF_DATA" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_MISMATCH_INF_DATA_LIST"/>
+  </level>
+<level format="Данные исп. документации, перечень" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_MISMATCH_EXEC_DATA" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_MISMATCH_EXEC_DATA" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_MISMATCH_EXEC_DATA_LIST"/>
+  </level>
+<level format="Тип правки в ССД Инфотех" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_INF_COR_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_INF_COR_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_INF_COR_GCL_LIST"/>
+  </level>
+<level format="Типы действий" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_SERVICE_ACTION_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_SERVICE_ACTION_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_SERVICE_ACTION_GCL_LIST"/>
+  </level>
+</level>
+<level format="Обслуживание" icon="Public/assets/catalog.png" checkbox_type="childBased">
+		<level format="Технические обслуживания, перечень" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SERVICE_MAINTENANCE" checkbox_type="none" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SERVICE_MAINTENANCE" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SERVICE_MAINTENANCE_LIST"/>
+			<!--<context_menu run_invoke="createNewObject" classId="SUTSTPA_SERVICE_MAINTENANCE"/>-->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=SUTSTPA_SERVICE_MAINTENANCE;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=SUTSTPA_SERVICE_MAINTENANCE;" />
+		</level>
+<level format="Справочник результатов ТО1" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_SERVICE_MAINT_1_RESULT_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_SERVICE_MAINT_1_RESULT_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_SERVICE_MAINT_1_RESULT_GCL_LIST"/>
+  </level>
+<level format="Справочник результатов ТО2" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_SERVICE_MAINT_2_RESULT_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_SERVICE_MAINT_2_RESULT_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_SERVICE_MAINT_2_RESULT_GCL_LIST"/>
+  </level>
+<level format="Справочник типов обслуживания" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_SERVICE_MAINT_CORRECTION_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_SERVICE_MAINT_CORRECTION_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_SERVICE_MAINT_CORRECTION_GCL_LIST"/>
+  </level>
+<level format="Справочник видов ТО" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_SERVICE_MAINT_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_SERVICE_MAINT_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_SERVICE_MAINT_GCL_LIST"/>
+  </level>
+
+		<level format="Экспертизы промбезопасности, перечень" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SERVICE_EPB" checkbox_type="none" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SERVICE_EPB" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SERVICE_EPB_LIST"/>
+			<!--<context_menu run_invoke="createNewObject" classId="SUTSTPA_SERVICE_EPB"/>-->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=SUTSTPA_SERVICE_EPB;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=SUTSTPA_SERVICE_EPB;" />
+		</level>
+<level format="Справочник, типов ЭПБ" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_SERVICE_EPB_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_SERVICE_EPB_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_SERVICE_EPB_GCL_LIST"/>
+  </level>
+		<level format="Выявленные нарушения, перечень" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SERVICE_COND_VIOL" checkbox_type="none" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SERVICE_COND_VIOL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SERVICE_COND_VIOL_LIST"/>
+			<!--<context_menu run_invoke="createNewObject" classId="SUTSTPA_SERVICE_COND_VIOL"/>-->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=SUTSTPA_SERVICE_COND_VIOL;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=SUTSTPA_SERVICE_COND_VIOL;" />
+		</level>
+<level format="Справочник, типов выявленных нарушений" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_SERVICE_COND_VIOL_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_SERVICE_COND_VIOL_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_SERVICE_COND_VIOL_GCL_LIST"/>
+  </level>
+		<level format="Ремонтные работы, перечень" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SERVICE_REPAIR" checkbox_type="none" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SERVICE_REPAIR" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SERVICE_REPAIR_LIST"/>
+			<!--<context_menu run_invoke="createNewObject" classId="SUTSTPA_SERVICE_REPAIR"/>-->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=SUTSTPA_SERVICE_REPAIR;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=SUTSTPA_SERVICE_REPAIR;" />
+		</level>
+<level format="Справочник видов ремонта" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_SERVICE_REPAIR_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_SERVICE_REPAIR_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_SERVICE_REPAIR_GCL_LIST"/>
+</level>
+  </level>
+<level format="Прочие справочники (служебные данные)" icon="Public/assets/catalog.png" checkbox_type="childBased">
+<level format="Весовые коэффициенты" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_SPRAV_NTD_GCL" checkbox_type="none" max_items="20">
+   <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_SPRAV_NTD_GCL" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+   <context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_SPRAV_NTD_GCL_LIST"/>
+  </level>
+		<level format="Напоминания" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_NOTIF_MESSAGE" checkbox_type="none" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_NOTIF_MESSAGE" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_NOTIF_MESSAGE_LIST"/>
+			<!--<context_menu run_invoke="createNewObject" classId="SUTSTPA_NOTIF_MESSAGE"/>-->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=SUTSTPA_NOTIF_MESSAGE;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=SUTSTPA_NOTIF_MESSAGE;" />
+		</level>
+		<level format="Исполнители" icon="OPENSCALE" levelParams="layerId=SUTSTPA_Layers.xml#SUTSTPA_NOTIF_PERSON" checkbox_type="none" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="SUTSTPA_NOTIF_PERSON" FILE_NAME="SUTSTPA_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="SUTSTPA_NOTIF_PERSON_LIST"/>
+			<!--<context_menu run_invoke="createNewObject" classId="SUTSTPA_NOTIF_PERSON"/>-->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=SUTSTPA_NOTIF_PERSON;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=SUTSTPA_NOTIF_PERSON;" />
+		</level>
+</level>
+    </tree>  
+</dataset>

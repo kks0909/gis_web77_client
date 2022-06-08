@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns="view.data.*" width="760" ext_data_id="PODS_EXPORT.xml#PODS_STO_100_PROJECTED_COR" excelTemplate="PODS_STO_100_PROJECTED_COR"
+                title="СТО Газпром 2-2.3-095-2007. 100 м. участки. Прогнозируемое число коррозионных дефектов">
+	<dataProvider>PODS_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	<mx:VBox width="760">
+<mx:HBox percentWidth="100">
+			      <mx:Text textAlign="right" text="Обследование" width="140"/>
+			      <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+				        <mx:ComboBox id="ILI_INSPECTION_ID" enabled="false" editable="false" width="585" height="20"
+                         dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION"/>
+				        <mx:Button id="BUTTON_ILI_INSPECTION_ID" selectedField="PODS_ILI_INSPECTION"
+                       enabled="false"
+                       styleName="refObject"
+                       toolTip="Перейти к внутритрубному обследованию"
+                       width="16"
+                       height="16"/>
+			      </mx:HBox>
+		    </mx:HBox>
+		<mx:HBox percentWidth="100">
+			<mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Начальный км" width="140"/>
+          <mx:TextInput id="STATION_BEG" width="80" maxChars="16" height="20"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Конечный км" width="140"/>
+          <mx:TextInput id="STATION_END" width="80" maxChars="16" height="20"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Прогнозируемое число стресс-коррозионных дефектов" width="140"/>
+          <controls:NumberInput id="STO_095_2007_PROJECTED_SCC" width="40" maxChars="11" height="20"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Срок  до проведения повторной ВТД КРН" width="140"/>
+          <mx:DateField id="STO_095_2007_NEXT_INSP_SCC" width="97" height="20" formatString="DD.MM.YYYY"/>
+        </mx:HBox>
+
+      </mx:VBox>
+      <mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Прогнозируемое число коррозионных дефектов" width="140"/>
+          <controls:NumberInput id="STO_095_2007_PROJECTED_COR" width="40" maxChars="11" height="20"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Срок  до проведения повторной ВТД корр. дефектов" width="140"/>
+          <mx:DateField id="STO_095_2007_NEXT_INSP" width="97" height="20" formatString="DD.MM.YYYY"/>
+        </mx:HBox>
+        
+				<mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					<mx:Text textAlign="right" text="Источник информации" width="140"/>
+					<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						<mx:ComboBox id="SOURCE_GCL" enabled="false" editable="false" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_SOURCE_GCL"/>
+						<mx:Button id="BTN_LIST_SOURCE_GCL" selectedField="PODS_SOURCE_GCL" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16"/>
+					</mx:HBox>
+				</mx:HBox>
+				</mx:VBox>
+		</mx:HBox>
+	</mx:VBox>
+	
+</DATA_EDIT_FORM>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="315" xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml" title="Навигационные карты">
+  <dataProvider>LIB_DOC_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="315">
+    <mx:HBox percentWidth="100">
+      <mx:VBox percentWidth="100">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Название" width="80" />
+          <mx:TextInput id="NAME" width="225" maxChars="250" height="20" tabIndex="1"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Описание" width="80" />
+          <mx:TextInput id="DESCR" width="225" maxChars="250" height="20" />
+        </mx:HBox>
+		<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Статус документа" width="80" />
+          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+            <mx:ComboBox id="STATUS_ID" width="205" height="22" dataProvider="SYS_SEM.xml#WEB50_B_STATUS_REF" tabIndex="2"/>
+            <mx:Button id="BTN_LIST_STATUS_ID" selectedField="WEB50_B_STATUS_REF" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16" tabIndex="3"/>
+          </mx:HBox>
+        </mx:HBox>
+		<!--mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Папка" width="80" />
+          <mx:ComboBox id="PARENT_DOC_ID" dataProvider="SYS_SEM.xml#WEB50_LIB_DOC_PARENT" width="225" height="20" />
+        </mx:HBox-->
+		<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Выберите файл" width="80" />
+          <controls:FileInput id="FILE_NAME" width="225" height="20" fileFilterDescription="Все файлы" fileFilterExtension="*.*" uploadPath="LIB\" tabIndex="4"/>
+        </mx:HBox>
+		<mx:HBox percentWidth="100">
+		  <mx:Button id="BTN_FILE_FILE_NAME" enabled="false" selectedField="WEB50_LIB_DOC" label="Открыть документ" width="120" height="22" tabIndex="5"/>
+		  <mx:Text textAlign="right" text="Идентификатор объекта" width="100" visible="{CONFIG.SHOW_SYSTEM_INFO}"/>
+		  <controls:NumberInput id="DOC_ID" editable="false" width="75" maxChars="22" height="20" tabIndex="6" visible="{CONFIG.SHOW_SYSTEM_INFO}"/>
+		</mx:HBox>
+      </mx:VBox>
+    </mx:HBox>
+  </mx:VBox>
+</DATA_EDIT_FORM>

@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root version="7.0.4.0">
+<!-- rasterLayers указывает, какие слои необходимо обрабатывать в растровом режиме (используется при получении информации) -->
+<!-- rasterUrl указывает, какие пирамиды будут использоваться в слое в растровом режиме, а в векторном игнорироваться -->
+<!-- useEmail указывает, использовать для тайловой пирамиды механизм получения информации по объектам кадастра через электронную почту. 
+По умолчанию false - не использовать механизм-->        
+<!-- useEmailFullAttach указывает, передавать ли полную информацию(дополнительно скриншот карты+ФИО) в письме. 
+По умолчанию true - передавать, если false - передаются только координаты, где находится объект кадастра и почта пользователя-->
+<!-- useInterimTilesOnError указывает, нужно ли генерировать тайл растеризатором в случае его отсутствия.
+По умолчанию false - если не найден тайл, то не будет попыток его генерации-->
+<!-- notInterimTilesOnErrorLevels список уровней, для которых не будет происходить генерация тайлов в случае их отсутсвия.
+По умолчанию будет происходить генерация тайлов для всех уровней(если атрибута нет или не заполнен) -->
+	<layer id="MixedTiles" type="gis.map.layer.OSMMultiLayer">
+		<name>Карта</name>
+		<isBaseLayer>true</isBaseLayer>
+		<visible>true</visible>
+		<projection>EPSG:900913</projection>
+		<proxy></proxy>
+		<properties>
+			<showInfo>true</showInfo>
+			<layers>M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</layers>
+			<rasterLayers>PODS_EQUIP;M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</rasterLayers>
+			<zoomLevels>22</zoomLevels>
+		</properties>
+		<urls>
+			<url extension=".png" useInterimTilesOnError="true">{SERVER}/tiletrees/Default/</url>
+			<rasterUrl extension=".png" useInterimTilesOnError="true">{SERVER}/tiletrees/PodsRaster/</rasterUrl>
+		</urls>
+	</layer>	
+	<layer id="RosMap" type="gis.map.layer.RosLayer">
+ 		<name>Карта по масштабам</name>
+ 		<url>WmsServicePage.aspx/WmsOperation</url>
+ 		<isBaseLayer>true</isBaseLayer>
+ 		<visible>true</visible>
+ 		<projection>EPSG:900913</projection>
+ 		<properties>
+ 		<showInfo>true</showInfo>
+ 		<layers>M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</layers>
+		<rasterLayers>PODS_EQUIP;M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</rasterLayers>
+ 		</properties>
+ 	</layer>	
+	<layer id="OSMapnikLayer" type="gis.map.layer.OSMMultiLayer">
+		<name>OpenStreetMap</name>
+		<isBaseLayer>true</isBaseLayer>
+		<visible>true</visible>
+		<projection>EPSG:900913</projection>
+		<proxy></proxy>
+		<properties>
+			<showInfo>true</showInfo>
+			<layers>M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</layers>
+			<rasterLayers>PODS_EQUIP;M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</rasterLayers>
+			<zoomLevels>19</zoomLevels>
+		</properties>
+		<urls>
+			<url extension=".png">{SERVER}/tiletrees/OsmWms/</url>			
+			<rasterUrl extension=".png" useInterimTilesOnError="true">{SERVER}/tiletrees/PodsRaster/</rasterUrl>
+		</urls>
+	</layer>	
+	<layer id="KADASTR" type="gis.map.layer.OSMMultiLayer">
+		<name>Росреестр (Кадастр)</name>
+		<isBaseLayer>true</isBaseLayer>
+		<visible>true</visible>
+		<projection>EPSG:900913</projection>
+		<proxy></proxy>
+		<properties>
+			<showInfo>true</showInfo>
+			<layers>M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</layers>
+			<rasterLayers>PODS_EQUIP;M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</rasterLayers>
+			<zoomLevels>19</zoomLevels>
+		</properties>
+		<urls>
+			<url extension=".png" useEmail="true" useEmailFullAttach="true" zouitURL="http://pkk.rosreestr.ru/api/features/" cadastreURL="http://pkk.rosreestr.ru/api/features/">{SERVER}/tiletrees/RosReestrWms/</url>
+			<rasterUrl extension=".png" useInterimTilesOnError="true">{SERVER}/tiletrees/PodsRaster/</rasterUrl>
+		</urls>
+	</layer>
+	<layer id="KADASTR_Map" type="gis.map.layer.OSMMultiLayer">
+		<name>Росреестр (Кадастр) + Карта</name>
+		<isBaseLayer>true</isBaseLayer>
+		<visible>true</visible>
+		<projection>EPSG:900913</projection>
+		<proxy></proxy>
+		<properties>
+			<showInfo>true</showInfo>
+			<layers>M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</layers>
+			<rasterLayers>PODS_EQUIP;M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</rasterLayers>
+			<zoomLevels>19</zoomLevels>
+		</properties>
+		<urls>
+			<url extension=".png" useInterimTilesOnError="true">{SERVER}/tiletrees/Default/</url>
+			<url extension=".png" useEmail="true" useEmailFullAttach="true" zouitURL="http://pkk.rosreestr.ru/api/features/" cadastreURL="http://pkk.rosreestr.ru/api/features/">{SERVER}/tiletrees/RosReestrWms/</url>
+			<rasterUrl extension=".png" useInterimTilesOnError="true">{SERVER}/tiletrees/PodsRaster/</rasterUrl>
+		</urls>
+	</layer>
+	<layer id="KADASTR_OpenStreetI" type="gis.map.layer.OSMMultiLayer">
+		<name>Росреестр (Кадастр) + OpenStreet</name>
+		<isBaseLayer>true</isBaseLayer>
+		<visible>true</visible>
+		<projection>EPSG:900913</projection>
+		<proxy></proxy>
+		<properties>
+			<showInfo>true</showInfo>
+			<layers>M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</layers>
+			<rasterLayers>PODS_EQUIP;M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</rasterLayers>
+			<zoomLevels>19</zoomLevels>
+		</properties>
+		<urls>
+			<url extension=".png">{SERVER}/tiletrees/OsmWms/</url>
+			<url extension=".png" useEmail="true" useEmailFullAttach="true" zouitURL="http://pkk.rosreestr.ru/api/features/" cadastreURL="http://pkk.rosreestr.ru/api/features/">{SERVER}/tiletrees/RosReestrWms/</url>
+			<rasterUrl extension=".png" useInterimTilesOnError="true">{SERVER}/tiletrees/PodsRaster/</rasterUrl>
+		</urls>
+	</layer>	
+	
+
+<extlayer id="KADASTR_AeroPhoto" type="gis.map.layer.ExtMultiLayer">
+		<name>Росреестр (Кадастр) + Аэрофотосъемка</name>
+		<layer id="YANDEX_MAPS_SCHEMA_INTERNAL_AERO" type="gis.map.layer.XYZ">
+			<name>Яндекс Карта</name>
+			<url>{SERVER}/tiletrees/Raster/{z}/{x}/{-y}.jpg</url>
+			<projection>EPSG:3395</projection>
+		</layer>		
+		<layer id="KADASTR_MapI" type="gis.map.layer.OSMMultiLayer">
+			<name>Росреестр (Кадастр)+Карта</name>
+			<isBaseLayer>true</isBaseLayer>
+			<visible>true</visible>
+			<projection>EPSG:900913</projection>
+			<proxy></proxy>
+			<properties>
+			<showInfo>true</showInfo>
+			<layers>M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</layers>
+			<rasterLayers>PODS_EQUIP;M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</rasterLayers>
+			<zoomLevels>19</zoomLevels>
+		</properties>
+		<urls>
+			<url extension=".png" useEmail="true" useEmailFullAttach="true" zouitURL="http://pkk.rosreestr.ru/api/features/" cadastreURL="http://pkk.rosreestr.ru/api/features/">{SERVER}/tiletrees/RosReestrWms/</url>
+			<rasterUrl extension=".png" useInterimTilesOnError="true">{SERVER}/tiletrees/PodsRaster/</rasterUrl>
+		</urls>
+	</layer>
+	</extlayer>
+	<layer id="AeroPhoto" type="gis.map.layer.OSMMultiLayer">
+		<name>Аэрофотосъемка</name>
+		<isBaseLayer>true</isBaseLayer>
+		<visible>true</visible>
+		<projection>EPSG:900913</projection>
+		<proxy></proxy>
+		<properties>
+			<showInfo>true</showInfo>
+			<layers>M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</layers>
+			<rasterLayers>PODS_EQUIP;M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</rasterLayers>
+			<zoomLevels>19</zoomLevels>
+		</properties>
+		<urls>
+			<url extension=".png">{SERVER}/tiletrees/Raster/</url>
+			<rasterUrl extension=".png" useInterimTilesOnError="true">{SERVER}/tiletrees/PodsRaster/</rasterUrl>
+		</urls>
+	</layer>
+	<layer id="AeroPhotoII" type="gis.map.layer.OSMMultiLayer">
+		<name>Аэрофотосъемка-2</name>
+		<isBaseLayer>true</isBaseLayer>
+		<visible>true</visible>
+		<projection>EPSG:900913</projection>
+		<proxy></proxy>
+		<properties>
+			<showInfo>true</showInfo>
+			<layers>M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</layers>
+			<rasterLayers>PODS_EQUIP;M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</rasterLayers>
+			<zoomLevels>19</zoomLevels>
+		</properties>
+		<urls>
+			<url extension=".png">{SERVER}/tiletrees/aero/</url>
+			<rasterUrl extension=".png" useInterimTilesOnError="true">{SERVER}/tiletrees/PodsRaster/</rasterUrl>
+		</urls>
+	</layer>
+	<layer id="emptyLayer" type="gis.map.layer.OSMMultiLayer">
+		<name>Без подложки</name>
+		<isBaseLayer>true</isBaseLayer>
+		<visible>true</visible>
+		<projection>EPSG:900913</projection>
+		<proxy></proxy>
+		<properties>
+			<showInfo>true</showInfo>
+			<layers></layers>
+			<rasterLayers>PODS_EQUIP</rasterLayers>
+			<zoomLevels>22</zoomLevels>
+		</properties>
+		<urls>
+			<rasterUrl extension=".png" useInterimTilesOnError="true">{SERVER}/tiletrees/PodsRaster/</rasterUrl>
+		</urls>
+	</layer>	
+</root>

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="760" xmlns="view.data.*" title="Перечень рассмотренных изменений" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml">
+  <dataProvider>GAZPROM_ADM_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="760">
+    <mx:HBox percentWidth="100">
+      <mx:VBox percentWidth="50">
+	<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Схема/ Таблица/ Поле ключа" width="140" />
+          <mx:TextInput id="OWNER" width="90" maxChars="80" height="20" editable="false"/>
+	  <mx:TextInput id="TABLE_NAME" width="90" maxChars="80" height="20" editable="false"/>
+	  <mx:TextInput id="KEY_FIELD" width="90" maxChars="80" height="20" editable="false"/>
+        </mx:HBox>
+	<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Значение ключа" width="140" />
+          <mx:TextInput id="KEY_VALUE" width="140" maxChars="80" height="20" editable="false"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Принятое решение" width="140" />
+          <mx:ComboBox id="DECISION_ADOPTED" width="140" editable="false">
+            <mx:dataProvider>
+              <mx:Object CODE="R" DESCR="Восстановлено старое значение" label="Восстановлено старое значение" />
+              <mx:Object CODE="A" DESCR="Утвержденно новое значение" label="Утвержденно новое значение" />
+            </mx:dataProvider>
+          </mx:ComboBox>
+        </mx:HBox>
+	<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Результат восстановления" width="140" />
+          <mx:ComboBox id="RESTORE_SUCCESS" width="140" editable="false">
+            <mx:dataProvider>
+              <mx:Object CODE="Y" DESCR="Восстановление прошло успешно" label="Восстановление прошло успешно" />
+              <mx:Object CODE="N" DESCR="Попытка восстановления неудачна" label="Попытка восстановления неудачна" />
+            </mx:dataProvider>
+          </mx:ComboBox>
+        </mx:HBox>
+                
+      </mx:VBox>
+      <mx:VBox percentWidth="50">
+	<mx:HBox percentWidth="100">
+            	<mx:Text textAlign="right" text="Контролер" width="140"/>
+            	<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+               		<mx:ComboBox id="USER_CONTROLLER_ID" width="200" height="20"
+                            dataProvider="POI_DICT.xml#WEB50_B_USER_REF" editable="false"/>
+               		<mx:Button id="USER_CONTROLLER_ID" selectedField="WEB50_B_USER_REF"
+                          enabled="false"
+                          styleName="refList"
+                          toolTip="Перейти к редактированию справочника"
+                          width="16"
+                          height="16"/>
+            	</mx:HBox>
+	</mx:HBox>
+	<mx:HBox percentWidth="100">
+            	<mx:Text textAlign="right" text="Кто внес изменения" width="140"/>
+            	<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+               		<mx:ComboBox id="USER_EDITOR_ID" width="200" height="20"
+                            dataProvider="POI_DICT.xml#WEB50_B_USER_REF" editable="false"/>
+               		<mx:Button id="USER_EDITOR_ID" selectedField="WEB50_B_USER_REF"
+                          enabled="false"
+                          styleName="refList"
+                          toolTip="Перейти к редактированию справочника"
+                          width="16"
+                          height="16"/>
+            	</mx:HBox>
+	</mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Дата создания" width="140" />
+          <mx:DateField id="CTIME" width="90" height="20" formatString="DD.MM.YYYY" editable="false"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Сведение о файле с кортежем новых данных" width="140" />
+          <mx:TextInput id="DATA_TO_CONTROL" editable="false" width="225" height="20" />
+        </mx:HBox>
+	<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Сведение о файле с кортежем старых данных" width="140" />
+          <mx:TextInput id="DATA_TO_RESTORE" editable="false" width="225" height="20" />
+        </mx:HBox>
+	<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Идентификатор изменений" width="140" />
+          <controls:NumberInput id="ID" editable="false" width="225" maxChars="22" height="20" />
+        </mx:HBox>
+      </mx:VBox>
+    </mx:HBox>
+  </mx:VBox>
+  
+</DATA_EDIT_FORM>

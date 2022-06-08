@@ -1,0 +1,76 @@
+﻿<!--7.7.6.8-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="6"  headerVertSize="50"
+            id="PODS_PIPE_SYSTEM_CL"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelTemplateName="PODS_PIPE_SYSTEM_CL_ADM"
+            layerId="PODS_PIPE_SYSTEM_CL" propertyPanelName="PODS_PIPE_SYSTEM_CL"
+            dataRequest="GAZPROM_ADM_SEM.xml#PODS_PIPE_SYSTEM_CL"
+            totalRecordsRequest="GAZPROM_ADM_SEM.xml#PODS_PIPE_SYSTEM_CL_CNT"
+            initialSortField="DESCRIPTION,ID"
+            >
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/createObject.png"
+        tooltip="Создать объект"
+        clickEvent="ru.corelight.business.events.CreateObjectEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../Public/assets/excel.png"
+        tooltip="Экспортировать в Excel"
+        clickEvent="ru.corelight.business.events.ExportToExcelEvent"
+        selectedObjects="this" />
+    <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+
+  <picPutton:GridButton source="../../Public/assets/unknown.png"
+        tooltip="Выполнить индексацию"
+        clickEvent="gridAdmPipeSystemIndexing"
+        selectedObjects="this"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/unknown.png"
+        tooltip="Установка газопроводов"
+        clickEvent="gridAdmPipeSystemSetRoutes"
+        selectedObjects="1"
+        position="top"/>
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=showInfoEvent;toolTip=Показать информацию по объекту"
+                          editable="true"/>
+      <columns:GridColumn headerText="Идентификатор" dataField="ID"  itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          hidden="true" editable="false" filterComparisionType="number" width="40" />                    
+      <columns:GridColumn headerText="Коридор (PIPE_SYSTEM_CL.DESCRIPTION)" dataField="DESCRIPTION"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="500"/>
+      <columns:GridColumn headerText="Коридор ИД (PIPE_SYSTEM_ID)" dataField="PIPE_SYSTEM_ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="160"/>
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

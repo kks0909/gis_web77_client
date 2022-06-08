@@ -1,0 +1,728 @@
+﻿<root version="postgres 7.7.4.7">
+
+  <data id="PODS_STO_SHURF_PLAN" comment="PODS.STO_SHURF_PLAN" schema="PODS" table="STO_SHURF_PLAN">
+    <select>
+ <dbQuery>
+   <var name="FILTER" default="1=1"/>
+   <var name="ORDER_COLUMNS" default="ili_lbl,BEGIN_DATE"/>
+   <var name="YEAR_INSP" default="2020"/>
+   <var name="LOW_LIMIT" default="1"/>
+   <var name="HIGH_LIMIT" default="65536"/>
+<var name="COLUMNS_FILTER" default="*"/>
+   <query>
+     with 
+        ili as (select * from pods.ili_inspection i where to_char(i.BEGIN_DATE,'YYYY') in ({YEAR_INSP})),
+	cnt as (select count(*) cnt,danger,ad.ili_inspection_id  from (select distinct a.ili_inspection_id,danger, weld_id from pods.sto_ili_data_adv a join ili i on i.ili_inspection_id=a.ili_inspection_id) ad group by ad.danger,ad.ili_inspection_id)
+     SELECT ROW_NUMBER() OVER (ORDER BY all_in_one.BEGIN_DATE) RWN,
+     all_in_one.ID,
+     all_in_one.ili_lbl,
+     all_in_one.BEGIN_DATE,
+     all_in_one.TOOL_VENDOR_CL,
+     all_in_one.def_krn_cnt,
+     all_in_one.line_constr_cnt,
+     all_in_one.ROUTE_TYPE_LBL,
+     all_in_one.LINE_ID_LBL,
+     all_in_one.ROUTE_ID,
+     all_in_one.STATION_BEG,
+     all_in_one.line_id,
+     all_in_one.STATION_END,
+     all_in_one.TOOL_TYPE_CL,
+     all_in_one.sto_401_2003_time_limit_expl,
+     all_in_one.sto_401_2003_mean_time_fail,
+     all_in_one.priority_cond,
+     all_in_one.priority_time_exp,
+     all_in_one.priority_probab,
+     all_in_one.priority_time_fai,
+     all_in_one.priority_summary,
+     all_in_one.sto_095_2007_next_insp_scc,
+     all_in_one.sto_095_2007_next_insp,
+     all_in_one.sto_095_2007_next_comp_insp
+     ,all_in_one.cat_a,all_in_one.cat_b,all_in_one.cat_c
+  FROM (
+  SELECT f.ILI_INSPECTION_ID ID
+   ,CASE
+    WHEN rtc.code='ROUTE_TYPE_10' THEN
+      'МГ '
+   WHEN rtc.code='ROUTE_TYPE_04' THEN
+      'О-д '
+ WHEN rtc.code='ROUTE_TYPE_11' THEN
+      'Р-в '
+WHEN rtc.code='ROUTE_TYPE_12' THEN
+      'Л-г '
+   ELSE      ''
+END||' '||ln.description||', '||round(spb.station)||'-'||round(spe.station)||' км,'||to_char(f.BEGIN_DATE,'DD-MM-YYYY') ili_lbl
+   ,rtc.description ROUTE_TYPE_LBL
+   ,rt.route_id ROUTE_ID
+   ,ln.line_id
+   ,ln.description  LINE_ID_LBL
+   ,spb.station  STATION_BEG
+   ,spe.station  STATION_END  
+   ,f.TOOL_VENDOR_CL
+   ,/*(select count(*) from pods.ili_data d
+		 where d.ili_inspection_id=f.ILI_INSPECTION_ID and d.event_id>0 and d.anomaly_type_cl in (5030,5031,5022))*/ null  def_krn_cnt
+   ,/*(select count(*) from pods.sto_ili_inspection_calc d where d.ili_inspection_id=f.ILI_INSPECTION_ID and
+               d.type_cl like 'Оценка состояния по межконструкционным участкам')*/ null  line_constr_cnt
+   ,f.TOOL_TYPE_CL
+   ,f.BEGIN_DATE
+   ,/*calc.*/ null sto_401_2003_time_limit_expl
+   ,/*calc.*/ null sto_401_2003_mean_time_fail
+   ,/*calc.*/ null priority_cond
+   ,/*calc.*/ null priority_time_exp
+   ,/*calc.*/ null priority_probab
+   ,/*calc.*/ null priority_time_fai
+   ,/*calc.*/ null priority_summary
+   ,/*calc.*/ null sto_095_2007_next_insp_scc
+   ,/*calc.*/ null sto_095_2007_next_insp
+   ,/*calc.*/ null sto_095_2007_next_comp_insp
+   ,/*ref1.*/ null TOOL_TYPE_LBL
+   ,/*ref2.*/ null SENSOR_LBL
+   ,/*ref3.*/ null TOOL_VENDOR_LBL
+,coalesce(cnt_a.cnt,0) cat_a
+,coalesce(cnt_b.cnt,0) cat_b
+,coalesce(cnt_c.cnt,0) cat_c
+   FROM ili f
+   join pods.ili_inspection_range r
+     ON r.ili_inspection_id = f.ili_inspection_id
+   join pods.event_Range e
+     on e.event_id=r.event_id
+   join pods.station_point spb
+     on spb.station_id=e.station_id_begin
+   join pods.station_point spe
+     on spe.station_id=e.station_id_end
+   join pods.route rt
+    on rt.route_id=spb.route_id
+   join pods.route_type_cl rtc
+   on rtc.code=rt.type_cl
+   join pods.line ln
+    on ln.line_id=rt.line_id
+   left outer join cnt cnt_a on cnt_a.ili_inspection_id=f.ili_inspection_id and cnt_a.danger like '%(a)%'
+   left outer join cnt cnt_b on cnt_b.ili_inspection_id=f.ili_inspection_id and cnt_b.danger like '%(b)%'
+   left outer join cnt cnt_c on cnt_c.ili_inspection_id=f.ili_inspection_id and cnt_c.danger like '%(c)%'
+      ) all_in_one WHERE {FILTER}
+   </query>
+ </dbQuery>
+    </select>
+  </data>
+
+  <data id="PODS_STO_ILI_DATA_SHEET_RELOAD" comment="Заполнение перечня дефектов ранее сохраненной ведомости" schema="PODS" table="STO_ILI_DATA_SHEET_BASE">
+    <select>
+ <dbQuery>
+   <var name="FILTER" default="1=1"/>
+   <var name="ORDER_COLUMNS" default="absolute_odometer"/>
+   <var name="ROUTE_ID" default="null"/>
+   <var name="BEGIN_MEASURE" default="1000000000"/>
+   <var name="END_MEASURE" default="-1"/>
+   <var name="ILI_LBL" default=""/>
+   <var name="ROUTE_DESCR" default=""/>
+   <var name="ILI_INSPECTION_ID" default="-1"/>
+   <var name="SHEET_ID" default="-1"/>
+   <var name="LOW_LIMIT" default="1"/>
+   <var name="HIGH_LIMIT" default="65536"/><var name="COLUMNS_FILTER" default="*"/>
+   <query>
+          select {COLUMNS_FILTER} from (
+     SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN,
+ id,
+ili_inspection_id,
+description,
+comments,
+station,
+weld_number,
+absolute_odometer,
+anomaly_type_cl,
+feature_description,
+left_shov_to_max, 
+left_shov_to_begin, 
+right_shov_to_max, 
+right_shov_to_begin, 
+psh_to_begin, 
+psh_to_max, 
+psh_to_center, 
+mis_dist_to_psh, 
+min_dist_to_weld_sh, 
+pipe_length, 
+pipe_type_descr, 
+income_psh, 
+outcome_psh, 
+from_reper, 
+to_reper, 
+anomaly_category_descr, 
+anomaly_type_descr, 
+size_class, 
+orientation_begin, 
+orientation_max, 
+orientation_center, 
+thickness, 
+ins_out_location, 
+pipe_comment, 
+time_to_ext_exam, 
+kbd, 
+pressure_d, 
+pressure_maop, 
+pressure_sw, 
+pressure_f, 
+danger,
+exc_comments,
+phys_comments,
+ddk_ds_weld_odometer,
+ddk_weld_description,
+ddk_weld_orientation_deg,
+ddk_weld_length,
+ddk_wall_thickness,
+ddk_anomaly_type_cl,
+ddk_ds_weld_distance,
+ddk_orientation_deg,
+ddk_length,
+ddk_width,
+ddk_depth,
+ili_data_id,
+list_id,
+sheet_id,
+(select '{ROUTE_DESCR}' limit 1) "LABEL",
+x_coord,
+y_coord,
+z_coord
+     from 
+(
+select 
+d.ili_data_id id,
+d.event_id,
+d.ili_inspection_id,
+d.description,
+d.comments,
+null station,
+null measure,
+'ДЕФЕКТ_ОДИНОЧНЫЙ' type_def,
+d.weld_number,
+d.absolute_odometer,
+d.us_weld_distance,
+d.ds_weld_distance,
+d.average_depth,
+d.length,
+d.width,
+d.anomaly_type_cl,
+d.coordinate_id,
+d.feature_description,
+d_adv.ssid, 
+d_adv.left_shov_to_max, 
+d_adv.left_shov_to_begin, 
+d_adv.right_shov_to_max, 
+d_adv.right_shov_to_begin, 
+d_adv.psh_to_begin, 
+d_adv.psh_to_max, 
+d_adv.psh_to_center, 
+d_adv.mis_dist_to_psh, 
+d_adv.min_dist_to_weld_sh, 
+d_adv.weld_id, 
+d_adv.pipe_length, 
+d_adv.pipe_type_descr, 
+d_adv.income_psh, 
+d_adv.outcome_psh, 
+d_adv.from_reper, 
+d_adv.to_reper, 
+d_adv.anomaly_category_descr, 
+d_adv.anomaly_type_descr, 
+d_adv.size_class, 
+d_adv.abbr_category, 
+d_adv.abbr_type, 
+d_adv.abbr_size_class, 
+d_adv.orientation_begin, 
+d_adv.orientation_max, 
+d_adv.orientation_center, 
+d_adv.thickness, 
+d_adv.def_length, 
+d_adv.def_width, 
+d_adv.def_depth, 
+d_adv.ins_out_location, 
+d_adv.def_comment, 
+d_adv.pipe_comment, 
+d_adv.time_to_ext_exam, 
+d_adv.kbd, 
+d_adv.pressure_d, 
+d_adv.pressure_maop, 
+d_adv.pressure_sw, 
+d_adv.pressure_f, 
+d_adv.danger,
+l.comments exc_comments,
+l.phys_comments,
+l.ddk_ds_weld_odometer,
+l.ddk_weld_description,
+l.ddk_weld_orientation_deg,
+l.ddk_weld_length,
+l.ddk_wall_thickness,
+l.ddk_anomaly_type_cl,
+l.ddk_ds_weld_distance,
+l.ddk_orientation_deg,
+l.ddk_length,
+l.ddk_width,
+l.ddk_depth,
+d.ili_data_id,
+null ili_cluster_id,
+l.list_id,
+l.sheet_id,
+null x_coord,
+null y_coord,
+null z_coord
+ from pods.sto_sheet_excavate_list l
+ join pods.ili_data d on l.ili_data_id=d.ili_data_id
+ left join pods.sto_ili_data_adv d_adv on d_adv.ili_data_id=d.ili_data_id
+  where  l.sheet_id={SHEET_ID}) all_in_one WHERE {FILTER}) sorted
+   </query>
+ </dbQuery>
+    </select>
+  </data>
+
+  <data id="PODS_STO_SHEET_EXCAVATE" comment="PODS.STO_SHEET_EXCAVATE" schema="PODS" table="STO_SHEET_EXCAVATE">
+    <select>
+ <dbQuery>
+   <var name="FILTER" default="1=1"/>
+   <var name="ORDER_COLUMNS" default="STATION_BEG,ctime"/>
+   <var name="ILI_INSP_FILTER" default="SELECT ILI_INSPECTION_ID FROM PODS.ILI_INSPECTION"/>
+   <var name="ILI_LBL" default=""/>
+   <var name="LOW_LIMIT" default="1"/>
+   <var name="HIGH_LIMIT" default="65536"/><var name="COLUMNS_FILTER" default="*"/>
+   <query>
+ with cnt as (select distinct d.weld_number,ss.measure,ad.danger,d.ili_inspection_id from pods.ili_data d,pods.event_range er,pods.station_point ss,pods.sto_ili_data_adv ad
+		 where  d.event_id>0 and d.event_id=er.event_id and er.station_id_begin=ss.station_id and ad.ili_data_id=d.ili_data_id and d.ili_inspection_id in ({ILI_INSP_FILTER}))
+     SELECT * FROM (
+SELECT ROW_NUMBER() OVER (ORDER BY ID) RWN,
+  id, 
+  sto_ili_insp_event_id, /*ссылка на участок непрерывного пикетажа*/
+   route_descr, /*название участка газопровода*/
+  ili_inspection_id, /*идентификатор обследования*/
+  description, /*описание*/
+  phys_date_begin,
+  phys_date_end,
+  phys_organization_exec,
+  phys_date_release,
+  phys_sheet_number,
+  phys_control_reason,
+  phys_comments,
+  (select '{ILI_LBL}' limit 1) "LABEL",
+  "TYPE",
+  phys_resolution,
+  ctime, /*дата создания*/
+  cuser,   /*кто создал*/
+  mtime, /*дата изменения*/
+  muser, /*кто изменил*/
+  begin_measure,
+  end_measure,
+  route_id,
+  line_id,
+  STATION_BEG,
+  STATION_END,
+  LINE_ID_LBL,
+  cat_a, cat_b, cat_c
+  from  (select 
+    sheet_id id, 
+  sto_ili_insp_event_id,
+  l.description||', '||round(spb.station)||' - '||round(spe.station)||' км. '||to_Char(i.begin_date,'DD.MM.YYYY') route_descr,
+  e.ili_inspection_id,
+  e.description,
+  phys_date_begin,
+  phys_date_end,
+  phys_organization_exec,
+  phys_date_release,
+  phys_sheet_number,
+  phys_control_reason,
+  phys_comments,
+  phys_resolution,
+  e.type_cl,
+  ctime,
+  null CUSER,
+  mtime,
+  null MUSER,
+  spb.measure begin_measure, 
+  spe.measure end_measure, 
+  spb.route_id route_id,
+  spb.line_id,
+  spb.station STATION_BEG,
+  spe.station  STATION_END,
+  null LINE_ID_LBL,
+  coalesce((select count(*) from cnt c where c.ili_inspection_id=e.ILI_INSPECTION_ID and c.measure&gt;=spb.measure and c.measure&lt;spe.measure and c.danger like '%(a)%'),0) cat_a,
+  coalesce((select count(*) from cnt c where c.ili_inspection_id=e.ILI_INSPECTION_ID and c.measure&gt;=spb.measure and c.measure&lt;spe.measure and c.danger like '%(b)%'),0) cat_b,
+  coalesce((select count(*) from cnt c where c.ili_inspection_id=e.ILI_INSPECTION_ID and c.measure&gt;=spb.measure and c.measure&lt;spe.measure and c.danger like '%(c)%'),0) cat_c,
+   st.description "TYPE" /*тип ведомости (предварительная, окончательная, утвержденная, выполненная*/
+ from pods.sto_sheet_excavate e, pods.event_Range er,pods.station_point spb,pods.station_point spe,pods.sto_sheet_type_cl st,pods.line l,pods.ili_inspection i
+where l.line_id=spb.line_id and i.ili_inspection_id=e.ili_inspection_id and st.code=e.type_cl and e.ili_inspection_id in ({ILI_INSP_FILTER}) and er.event_id=e.sto_ili_insp_event_id and er.station_id_begin=spb.station_id and er.station_id_end=spe.station_id) all_in_one WHERE {FILTER}) sorted 
+      </query>
+ </dbQuery>
+    </select>
+  </data>
+
+   <data id="PODS_STO_SHEET_MTR" comment="PODS.STO_SHEET_MTR" schema="PODS" table="STO_SHEET_MTR">
+    <select>
+ <dbQuery>
+   <var name="FILTER" default="1=1"/>
+   <var name="ORDER_COLUMNS" default="ID"/>
+   <var name="ILI_INSP_FILTER" default="SELECT ILI_INSPECTION_ID FROM PODS.ILI_INSPECTION"/>
+   <var name="ILI_LBL" default=""/>
+   <var name="LOW_LIMIT" default="1"/>
+   <var name="HIGH_LIMIT" default="65536"/><var name="COLUMNS_FILTER" default="*"/>
+   <query>
+      SELECT {COLUMNS_FILTER} FROM (
+SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN,
+  id, 
+  sto_ili_insp_event_id, /*ссылка на участок непрерывного пикетажа*/
+   route_descr, /*название участка газопровода*/
+  ili_inspection_id, /*идентификатор обследования*/
+  description, /*описание*/
+  (select description from pods.sto_sheet_type_cl where code=type_cl) "TYPE", /*тип ведомости (предварительная, окончательная, утвержденная, выполненная*/
+  comments, /*комментарии*/
+  ctime, /*дата создания*/
+  cuser,   /*кто создал*/
+  mtime, /*дата изменения*/
+  muser, /*кто изменил*/
+  begin_measure,
+  end_measure,
+  route_id,
+  line_id,
+  STATION_BEG,
+  STATION_END,
+  LINE_ID_LBL
+  from  (select 
+    sheet_id id, 
+  sto_ili_insp_event_id,
+  (select l.description from pods.line l where l.line_id=spb.line_id)||', '||round(spb.station)||' - '||round(spe.station)||' км.'||(select v.description||' '||to_Char(i.begin_date,'DD.MM.YYYY') from pods.ili_inspection i,pods.ili_tool_vendor_cl v 
+  where v.code=i.tool_vendor_cl and i.ili_inspection_id=e.ili_inspection_id) route_descr,
+  ili_inspection_id,
+  description,
+  e.type_cl,
+  comments,
+  ctime,
+    (SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = e.CUSER_ID) AS CUSER,
+  mtime,
+    (SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = e.MUSER_ID) AS MUSER,
+  spb.measure begin_measure, 
+  spe.measure end_measure, 
+  spb.route_id route_id,
+  spb.line_id,
+  spb.station STATION_BEG,
+  spe.station STATION_END,
+  (select description from pods.line l where l.line_id=spb.line_id) LINE_ID_LBL
+ from pods.sto_sheet_mtd e, pods.event_Range er,pods.station_point spb,pods.station_point spe
+where e.ili_inspection_id in ({ILI_INSP_FILTER}) and e.sto_ili_insp_event_id=er.event_id 
+and er.station_id_begin=spb.station_id
+ and er.station_id_end=spe.station_id) all_in_one WHERE {FILTER}) sorted
+     WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT} 
+   </query>
+ </dbQuery>
+    </select>
+  </data>
+
+  <data id="PODS_STO_SHEET_MTR_CNT" comment="PODS.STO_SHEET_MTR" schema="PODS" table="STO_SHEET_MTR">
+    <select>
+ <dbQuery>
+   <var name="FILTER" default="1=1"/>
+   <var name="ILI_INSP_FILTER" default="SELECT ILI_INSPECTION_ID FROM PODS.ILI_INSPECTION"/>
+   <query>
+SELECT count(*) CNT
+  from  (select 
+    sheet_id id, 
+  sto_ili_insp_event_id,
+  'участок '||spb.station||' - '||spe.station||' км, '||(select l.description from pods.line l where l.line_id=spb.line_id) route_descr,
+  ili_inspection_id,
+  description,
+  (select description from pods.sto_sheet_type_cl where code=e.type_cl) "TYPE",
+  comments,
+  ctime,
+  cuser_id,
+  mtime,
+  muser_id 
+ from pods.sto_sheet_mtd e, pods.event_Range er,pods.station_point spb,pods.station_point spe
+where e.ili_inspection_id in ({ILI_INSP_FILTER}) and e.sto_ili_insp_event_id=er.event_id 
+and er.station_id_begin=spb.station_id
+ and er.station_id_end=spe.station_id) all_in_one WHERE {FILTER}
+   </query>
+ </dbQuery>
+    </select>
+  </data>
+
+<data id="PODS_STO_SHEET_REPAIR" comment="PODS.STO_SHEET_REPAIR" schema="PODS" table="STO_SHEET_REPAIR">
+    <select>
+ <dbQuery>
+   <var name="FILTER" default="1=1"/>
+   <var name="ORDER_COLUMNS" default="ID"/>
+   <var name="ILI_INSP_FILTER" default="SELECT ILI_INSPECTION_ID FROM PODS.ILI_INSPECTION"/>
+   <var name="ILI_LBL" default=""/>
+   <var name="LOW_LIMIT" default="1"/>
+   <var name="HIGH_LIMIT" default="65536"/><var name="COLUMNS_FILTER" default="*"/>
+   <query>
+      SELECT {COLUMNS_FILTER} FROM (
+SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN,
+  id, 
+  sto_ili_insp_event_id, /*ссылка на участок непрерывного пикетажа*/
+   route_descr, /*название участка газопровода*/
+  ili_inspection_id, /*идентификатор обследования*/
+   sheet_number,
+  description,
+  comments,
+  organization_exec,
+  ctime, /*дата создания*/
+  cuser,   /*кто создал*/
+  mtime, /*дата изменения*/
+  muser, /*кто изменил*/
+  begin_measure,
+  end_measure,
+  route_id,
+  line_id,
+  date_begin,
+date_End,
+gas_value,
+  STATION_BEG,
+  STATION_END,
+  LINE_ID_LBL
+  from  (select 
+    sheet_id id, 
+  sto_ili_insp_event_id,
+  (select l.description from pods.line l where l.line_id=spb.line_id)||', '||round(spb.station)||' - '||round(spe.station)||' км.'||(select v.description||' '||to_Char(i.begin_date,'DD.MM.YYYY') from pods.ili_inspection i,pods.ili_tool_vendor_cl v 
+  where v.code=i.tool_vendor_cl and i.ili_inspection_id=e.ili_inspection_id) route_descr,
+  ili_inspection_id,
+  sheet_number,
+  description,
+  comments,
+  organization_exec,
+  date_begin,
+date_End,
+gas_value,
+  ctime,
+  (SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = e.CUSER_ID) AS CUSER,
+  mtime,
+  (SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = e.MUSER_ID) AS MUSER,
+  spb.measure begin_measure, 
+  spe.measure end_measure, 
+  spb.route_id route_id,
+  spb.line_id,
+  spb.station STATION_BEG,
+  spe.station STATION_END,
+  (select description from pods.line l where l.line_id=spb.line_id) LINE_ID_LBL
+ from pods.sto_sheet_repair e, pods.event_Range er,pods.station_point spb,pods.station_point spe
+where e.ili_inspection_id in ({ILI_INSP_FILTER}) and e.sto_ili_insp_event_id=er.event_id 
+and er.station_id_begin=spb.station_id
+ and er.station_id_end=spe.station_id) all_in_one WHERE {FILTER}) sorted
+     WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT} 
+   </query>
+ </dbQuery>
+    </select>
+  </data>
+
+  <data id="PODS_STO_SHEET_REPAIR_CNT" comment="PODS.STO_SHEET_REPAIR" schema="PODS" table="STO_SHEET_REPAIR">
+    <select>
+ <dbQuery>
+   <var name="FILTER" default="1=1"/>
+   <var name="ILI_INSP_FILTER" default="SELECT ILI_INSPECTION_ID FROM PODS.ILI_INSPECTION"/>
+   <query>
+SELECT count(*) CNT
+  from  (select 
+    sheet_id id, 
+  sto_ili_insp_event_id,
+  'участок '||spb.station||' - '||spe.station||' км, '||(select l.description from pods.line l where l.line_id=spb.line_id) route_descr,
+  ili_inspection_id,
+  sheet_number,
+  description,
+  comments,
+  organization_exec,
+  date_begin,
+date_End,
+gas_value,
+  ctime,
+  cuser_id,
+  mtime,
+  muser_id 
+ from pods.sto_sheet_repair e, pods.event_Range er,pods.station_point spb,pods.station_point spe
+where e.ili_inspection_id in ({ILI_INSP_FILTER}) and e.sto_ili_insp_event_id=er.event_id 
+and er.station_id_begin=spb.station_id
+ and er.station_id_end=spe.station_id) all_in_one WHERE {FILTER}
+   </query>
+ </dbQuery>
+    </select>
+  </data>
+
+  <data id="PODS_STO_REPAIR_SHEET_RELOAD" comment="Заполнение перечня ремонтов указанной ведомости ремонтов" schema="PODS" table="STO_SHEET_REPAIR_LIST">
+    <select>
+ <dbQuery>
+   <var name="FILTER" default="1=1"/>
+   <var name="ORDER_COLUMNS" default="absolute_odometer"/>
+   <var name="ROUTE_ID" default="null"/>
+   <var name="BEGIN_MEASURE" default="1000000000"/>
+   <var name="END_MEASURE" default="-1"/>
+   <var name="ILI_LBL" default=""/>
+   <var name="ROUTE_DESCR" default=""/>
+   <var name="ILI_INSPECTION_ID" default="-1"/>
+   <var name="SHEET_ID" default="-1"/>
+   <var name="LOW_LIMIT" default="1"/>
+   <var name="HIGH_LIMIT" default="65536"/><var name="COLUMNS_FILTER" default="*"/>
+   <query>
+          select {COLUMNS_FILTER} from (
+     SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN,
+ id,
+event_id,
+ili_inspection_id,
+description,
+comments,
+station,
+measure,
+type_def,
+weld_number,
+absolute_odometer,
+us_weld_distance,
+ds_weld_distance,
+average_depth,
+length,
+width,
+orientation_deg::char orientation_deg,
+anomaly_type_cl,
+internal_external_cl,
+anomaly_extension_cl,
+ovality,
+seam_orientation,
+measured_wall_thickness,
+nominal_wall_thickness,
+coordinate_id,
+feature_description,
+rep_description,
+rep_pipe_category,
+rep_pipe_construction_type_cl,
+rep_pipe_value,
+rep_person_executive,
+rep_comments,
+rep_repair_type_cl,
+rep_repair_diameter,
+rep_repair_thickness,
+rep_length,
+rep_width,
+rep_repair_method_cl,
+ili_data_id,
+ili_cluster_id,
+list_id,
+sheet_id,
+(select '{ROUTE_DESCR}' limit 1) "LABEL",
+ctime,
+CUSER,
+ mtime,
+MUSER
+     from 
+(select * from 
+(
+select 
+d.ili_data_id id,
+d.event_id,
+d.ili_inspection_id,
+d.description,
+d.comments,
+s.station,
+s.measure,
+'ДЕФЕКТ_ОДИНОЧНЫЙ' type_def,
+d.weld_number,
+d.absolute_odometer,
+d.us_weld_distance,
+d.ds_weld_distance,
+d.average_depth,
+d.length,
+d.width,
+d.orientation_deg::char orientation_deg,
+d.anomaly_type_cl,
+d.internal_external_cl,
+d.anomaly_extension_cl,
+d.ovality,
+d.seam_orientation,
+d.measured_wall_thickness,
+d.nominal_wall_thickness,
+d.coordinate_id,
+d.feature_description,
+l.description rep_description,
+l.pipe_category rep_pipe_category,
+l.pipe_construction_type_cl rep_pipe_construction_type_cl,
+l.pipe_value rep_pipe_value,
+l.person_executive rep_person_executive,
+l.comments rep_comments,
+l.repair_type_cl rep_repair_type_cl,
+l.repair_diameter rep_repair_diameter,
+l.repair_thickness rep_repair_thickness,
+l.length rep_length,
+l.width rep_width,
+l.repair_method_cl rep_repair_method_cl,
+d.ili_data_id,
+null ili_cluster_id,
+l.list_id,
+l.sheet_id,
+l.ctime,
+ (SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = l.CUSER_ID) AS CUSER,
+ l.mtime,
+  (SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = l.MUSER_ID) AS MUSER
+ from pods.sto_sheet_repair_list l,pods.ili_data d,pods.event_range e,pods.station_point s 
+where 
+s.route_id={ROUTE_ID} and s.measure&gt;={BEGIN_MEASURE} and s.measure&lt;={END_MEASURE} and
+d.ili_inspection_id={ILI_INSPECTION_ID} and d.event_id=e.event_id and e.station_id_begin=s.station_id
+and l.sheet_id={SHEET_ID} and l.ili_data_id=d.ili_data_id ) dd order by dd.measure
+      ) all_in_one WHERE {FILTER}) sorted
+     WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}  
+   </query>
+ </dbQuery>
+    </select>
+  </data>
+
+  <data id="PODS_STO_REPAIR_SHEET_RELOAD_CNT" comment="Заполнение перечня ремонтов указанной ведомости ремонтов" schema="PODS" table="STO_SHEET_REPAIR_LIST">
+    <select>
+ <dbQuery>
+   <var name="FILTER" default="1=1"/>
+   <var name="ORDER_COLUMNS" default="absolute_odometer"/>
+   <var name="ROUTE_ID" default="null"/>
+   <var name="BEGIN_MEASURE" default="1000000000"/>
+   <var name="SHEET_ID" default="null"/>
+   <var name="END_MEASURE" default="-1"/>
+   <var name="ILI_INSPECTION_ID" default="null"/>
+   <query>
+     SELECT count(*) CNT from 
+(select * from 
+(
+select 
+d.ili_data_id id,
+d.event_id,
+d.ili_inspection_id,
+d.description,
+d.comments,
+s.station,
+s.measure,
+'ДЕФЕКТ_ОДИНОЧНЫЙ' type_def,
+d.weld_number,
+d.absolute_odometer,
+d.us_weld_distance,
+d.ds_weld_distance,
+d.average_depth,
+d.length,
+d.width,
+d.orientation_deg::char orientation_deg,
+d.anomaly_type_cl,
+d.internal_external_cl,
+d.anomaly_extension_cl,
+d.ovality,
+d.seam_orientation,
+d.measured_wall_thickness,
+d.nominal_wall_thickness,
+d.coordinate_id,
+d.feature_description,
+l.description rep_description,
+l.pipe_category rep_pipe_category,
+l.pipe_construction_type_cl rep_pipe_construction_type_cl,
+l.pipe_value rep_pipe_value,
+l.person_executive rep_person_executive,
+l.comments rep_comments,
+l.repair_type_cl rep_repair_type_cl,
+l.repair_diameter rep_repair_diameter,
+l.repair_thickness rep_repair_thickness,
+l.length rep_length,
+l.width rep_width,
+l.repair_method_cl rep_repair_method_cl,
+d.ili_data_id,
+null ili_cluster_id,
+l.list_id
+ from pods.sto_sheet_repair_list l,pods.ili_data d,pods.event_range e,pods.station_point s 
+where 
+s.route_id={ROUTE_ID} and s.measure&gt;={BEGIN_MEASURE} and s.measure&lt;={END_MEASURE} and
+d.ili_inspection_id={ILI_INSPECTION_ID} and d.event_id=e.event_id and e.station_id_begin=s.station_id and l.sheet_id={SHEET_ID} and l.ili_data_id=d.ili_data_id ) dd order by dd.measure
+      ) all_in_one WHERE {FILTER}
+   </query>
+ </dbQuery>
+    </select>
+  </data>
+</root>

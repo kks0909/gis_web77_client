@@ -1,0 +1,352 @@
+﻿<root version="postgres 7.7.1.3">
+
+  <data id="STO_SHURF_SCHEMA_DECORATE" comment="Зарамочное оформление" schema="PODS" table="STO_SHURF_SCHEMA_DECORATE">
+    <select>
+<geoQuery idField="ID" geoField="X,Y">
+   <var name="ROUTE_ID" default="null"/>
+   <var name="ILI_INSPECTION_ID" default="-1"/>
+   <var name="SHEET_ID" default="-1"/>
+<query>
+with report as (
+  select
+	'Г-д '||l.description||', участок '||rt.description||', '||round(s.station_begin,1)||'-'||round(s.station_end,1)||' км' INSP_LBL,
+	case when l.line_id = 0 then r.description else l.description end line_name,
+    c.description company_name,
+    i.begin_date,
+    (select g.description from pods.srv_district_gcl g,pods.location loc where g.srv_district_id=loc.srv_district_gcl and loc.location_id=sp.location_id) srv_district_lbl,
+    i.ili_inspection_id,
+    (select coalesce(nullif(min(ps.nominal_diameter_gcl), 0), '1420') nominal_diameter_gcl from
+  	 pods.station_point spe
+	  join pods.event_range eps on
+	 spe.station_id = eps.station_id_begin and eps.FEATURE_ID = 'PIPE_SEGMENT'
+	  join pods.pipe_segment ps on
+	 eps.event_id = ps.event_id and sp.route_id = spe.route_id) diameter
+from	pods.ili_inspection i
+join pods.ili_inspection_range r on
+	r.ili_inspection_id = i.ili_inspection_id and i.ili_inspection_id={ILI_INSPECTION_ID}
+join pods.event_range e on
+	e.event_id = r.event_id
+join pods.station_point sp on
+	sp.station_id = e.station_id_begin
+join pods.series s on
+	s.series_id = sp.series_id
+join pods.route rt on
+	sp.route_id = rt.route_id
+join pods.line l on
+	sp.line_id = l.line_id
+join pods.route_type_cl rtc on
+	rt.type_cl = rtc.code
+join pods.ili_tool_vendor_cl c on
+	c.code = i.tool_vendor_cl)
+SELECT 
+  id,
+  type,
+  CASE 
+  WHEN label='#EXT_DATA.insp_lbl' then (select INSP_LBL from report limit 1)
+  WHEN label='#EXT_DATA.SRV_district_lbl' then (select srv_district_lbl||' ЛПУМГ' from report limit 1)
+  WHEN label='#EXT_DATA.номер отчета ВТД' then (select phys_sheet_number from pods.sto_sheet_excavate where sheet_id={SHEET_ID} limit 1)
+ ELSE
+   label
+   END AS label,
+  x,
+  y,
+  sequence
+FROM 
+  pods.sto_shurf_schema_decorate order by id, sequence
+    </query>
+</geoQuery>
+</select>
+  </data>
+
+  <data id="STO_SHURF_SCHEMA_OBJ" comment="Объекты схемы" schema="PODS" table="ILI_DATA">
+    <select>
+<geoQuery idField="ID" geoField="X,Y">
+   <var name="ROUTE_ID" default="null"/>
+   <var name="BEGIN_MEASURE" default="1000000000"/>
+   <var name="END_MEASURE" default="-1"/>
+   <var name="ILI_INSPECTION_ID" default="-1"/>
+   <var name="SHEET_ID" default="-1"/>
+<query>
+      WITH route as (select route_id from pods.station_point sp,
+ pods.event_Range er, 
+ pods.ili_inspection_range ir where ir.ili_inspection_id={ILI_INSPECTION_ID}
+
+and ir.event_id=er.event_id and er.station_id_begin=sp.station_id),
+stat as (select station_id
+                              from pods.station_point sp,route r where sp.route_id=r.route_id
+                               and sp.measure&gt;={BEGIN_MEASURE} and sp.measure&lt;={END_MEASURE}
+                               )
+SELECT ID, X, Y, "TYPE", "LABEL" FROM  (
+select 
+e.EVENT_ID ID,
+CASE WHEN e.feature_id='VALVE' then 'VALVE.png' 
+  WHEN e.feature_id='WATERWAY' then 'uz_reka.png' 
+  WHEN e.feature_id='ROAD' then 'uz_doroga.png' 
+  ELSE     'uz_doroga.png' 
+   END AS "TYPE",
+       s.station || ' км' "LABEL",
+       abs(({BEGIN_MEASURE}-s.measure)/({BEGIN_MEASURE}-{END_MEASURE})*248) /*мм*/ x,
+       0 y
+  from pods.station_point s,  pods.event_range e,stat st
+ where e.feature_id in ('VALVE','ROAD','WATERWAY','RAILROAD')
+       and s.station_id = e.station_id_begin
+       and s.station_id =st.station_id
+union all
+select  e.event_id ID,
+CASE WHEN t.index_description='ANOMALY_EXT_001' then 'uz_korr.png'
+      WHEN t.index_description='ANOMALY_EXT_009' then 'uz_mech_povr.png'
+ ELSE
+   CASE WHEN t.code in (132,146,138) THEN             'quest.png'
+        WHEN t.code in (14,125,128,5022) THEN         'uz_prod_tresh.png'
+        WHEN t.code in (5030,5026,8) THEN        'uz_anom_kolc_shov.png'
+        WHEN t.code in (5031) THEN                    'uz_anom_prod_shov.png'
+        WHEN t.code in (131,1,5027) THEN              'uz_vmayt.png'
+   ELSE                                               'uz_remont.png' /*УЗ ремонт по необходимости*/ 
+   END
+   END AS "TYPE",
+      s.station||' км' "LABEL",
+       abs(({BEGIN_MEASURE}-s.measure)/({BEGIN_MEASURE}-{END_MEASURE})*248) /*мм*/ x,
+       0 y
+  from pods.ili_data d,
+       pods.ili_anomaly_type_cl t,
+       pods.station_point s,
+       pods.event_range e,pods.sto_sheet_excavate_list exc
+ where     d.event_id = e.event_id
+       and e.station_id_begin = s.station_id
+       and t.code = d.anomaly_type_cl
+       and d.event_id is not NULL
+       and exc.sheet_id={SHEET_ID}
+       and d.ili_data_id=exc.ili_data_id
+       ) dd order by dd.X
+
+
+    </query>
+</geoQuery>
+</select>
+  </data>
+
+  <data id="STO_SHURF_SCHEMA_OBJ_TEXT" comment="Текстовые подписи" schema="PODS" table="ILI_DATA">
+    <select>
+<geoQuery idField="ID" geoField="X,Y">
+   <var name="ROUTE_ID" default="null"/>
+   <var name="BEGIN_MEASURE" default="1000000000"/>
+   <var name="END_MEASURE" default="-1"/>
+   <var name="ILI_INSPECTION_ID" default="-1"/>
+   <var name="SHEET_ID" default="-1"/>
+<query>
+WITH route as (select route_id from pods.station_point sp,
+ pods.event_Range er, 
+ pods.ili_inspection_range ir where ir.ili_inspection_id={ILI_INSPECTION_ID}
+
+and ir.event_id=er.event_id and er.station_id_begin=sp.station_id),
+stat as (select station_id,measure
+                              from pods.station_point sp,route r where sp.route_id=r.route_id
+                               and sp.measure&gt;={BEGIN_MEASURE} and sp.measure&lt;={END_MEASURE}
+                               ),
+pnt as (select row_number() OVER() seq,* from 
+   (SELECT ID, X, Y, "TYPE", "LABEL",measure FROM ( 
+select s.measure,e.EVENT_ID ID, e.feature_id "TYPE", s.station || ' км' "LABEL", abs(({BEGIN_MEASURE}-s.measure)/({BEGIN_MEASURE}-{END_MEASURE})*248) /*мм*/ x, -7 y from pods.station_point s, pods.event_range e,stat st where e.feature_id in ('VALVE','ROAD','WATERWAY','RAILROAD') and s.station_id = e.station_id_begin and s.station_id =st.station_id union all 
+select s.measure,e.event_id ID, t.index_description "TYPE", s.station||' км' "LABEL", abs(({BEGIN_MEASURE}-s.measure)/({BEGIN_MEASURE}-{END_MEASURE})*248) /*мм*/ x, 0 y
+  from pods.ili_data d, pods.ili_anomaly_type_cl t, pods.station_point s, pods.event_range e,pods.sto_sheet_excavate_list exc where d.event_id = e.event_id and e.station_id_begin = s.station_id and t.code = d.anomaly_type_cl and d.event_id is not NULL and exc.sheet_id={SHEET_ID} and d.ili_data_id=exc.ili_data_id ) dd order by dd.X)ddd )
+
+SELECT ID, X, Y, "TYPE", "LABEL","SEQUENCE" FROM  (
+select 
+e.EVENT_ID ID,
+'TEXT_7_CENTER' "TYPE",
+       round(s.station) || ' км' "LABEL",
+       abs(({BEGIN_MEASURE}-s.measure)/({BEGIN_MEASURE}-{END_MEASURE})*248) - length(s.station || ' км')*3/2 /*мм*/ x,
+       7 y,1 "SEQUENCE"
+  from pods.station_point s, pods.event_range e,stat st
+ where e.feature_id in ('VALVE','ROAD','WATERWAY','RAILROAD')
+       and s.station_id = e.station_id_begin
+       and s.station_id =st.station_id
+union all
+select  e.event_id ID,
+'TEXT_7_CENTER' "TYPE",
+      d.feature_description||'\n'||round(s.station)||' км' "LABEL",
+       abs(({BEGIN_MEASURE}-s.measure)/({BEGIN_MEASURE}-{END_MEASURE})*248) - length(d.feature_description)*3/2 /*мм*/ x,
+      7 y,1 "SEQUENCE"
+  from pods.ili_data d,
+       pods.station_point s,
+       pods.event_range e,pods.sto_sheet_excavate_list exc
+ where     d.event_id = e.event_id
+       and e.station_id_begin = s.station_id
+       and d.event_id is not NULL
+       and exc.sheet_id={SHEET_ID}
+       and d.ili_data_id=exc.ili_data_id
+  union all
+  select 
+e.EVENT_ID ID,
+'TEXT_7_CENTER' "TYPE",
+       round(s.station) || ' км' "LABEL",
+       abs(({BEGIN_MEASURE}-s.measure)/({BEGIN_MEASURE}-{END_MEASURE})*248) + length(s.station || ' км')*3/2 /*мм*/ x,
+       7 y,2 "SEQUENCE"
+  from pods.station_point s, pods.event_range e,stat st
+ where e.feature_id in ('VALVE','ROAD','WATERWAY','RAILROAD')
+       and s.station_id = e.station_id_begin
+       and s.station_id =st.station_id
+union all
+select  e.event_id ID,
+'TEXT_7_CENTER' "TYPE",
+      d.feature_description||'\n'||round(s.station)||' км' "LABEL",
+       abs(({BEGIN_MEASURE}-s.measure)/({BEGIN_MEASURE}-{END_MEASURE})*248) + length(d.feature_description)*3/2 /*мм*/ x,
+      7 y,2 "SEQUENCE"
+  from pods.ili_data d,
+       pods.station_point s,
+       pods.event_range e,pods.sto_sheet_excavate_list exc
+ where     d.event_id = e.event_id
+       and e.station_id_begin = s.station_id
+       and d.event_id is not NULL
+       and exc.sheet_id={SHEET_ID}
+       and d.ili_data_id=exc.ili_data_id
+union all
+select 
+e.EVENT_ID+10000000 ID,
+'TEXT_7_CENTER' "TYPE",
+       d.weld_number "LABEL",
+       abs(({BEGIN_MEASURE}-s.measure)/({BEGIN_MEASURE}-{END_MEASURE})*248) - length(COALESCE(d.weld_number,''))*3/2 /*мм*/ x,
+       0 y,1 "SEQUENCE"
+  from pods.ili_data d,
+       pods.station_point s,
+       pods.event_range e,pods.sto_sheet_excavate_list exc
+ where     d.event_id = e.event_id
+       and e.station_id_begin = s.station_id
+       and d.event_id is not NULL
+       and exc.sheet_id={SHEET_ID}
+       and d.ili_data_id=exc.ili_data_id
+ union all
+select e.EVENT_ID+10000000 ID,
+'TEXT_7_CENTER' "TYPE",
+       d.weld_number "LABEL",
+       abs(({BEGIN_MEASURE}-s.measure)/({BEGIN_MEASURE}-{END_MEASURE})*248) + length(COALESCE(d.weld_number,''))*3/2 /*мм*/ x,
+       0 y,1 "SEQUENCE"
+  from pods.ili_data d,
+       pods.station_point s,
+       pods.event_range e,pods.sto_sheet_excavate_list exc
+ where     d.event_id = e.event_id
+       and e.station_id_begin = s.station_id
+       and d.event_id is not NULL
+       and exc.sheet_id={SHEET_ID}
+       and d.ili_data_id=exc.ili_data_id
+union all
+SELECT t1.ID+2000000 AS ID,
+ 'TEXT_7_CENTER' "TYPE",
+ round(t2.measure-t1.measure)::text AS "LABEL",
+ t1.X+(t2.X-t1.X)/2-5 X,
+ -7 Y,
+ 1 "SEQUENCE"
+ FROM pnt AS t1, pnt AS t2 WHERE t1.seq+1 = t2.seq
+union all
+SELECT t1.ID+2000000 AS ID,
+ 'TEXT_7_CENTER' "TYPE",
+ round(t2.measure-t1.measure)::text AS "LABEL",
+ t1.X+(t2.X-t1.X)/2+5 X,
+ -7 Y,
+ 2 "SEQUENCE"
+ FROM pnt AS t1, pnt AS t2 WHERE t1.seq+1 = t2.seq     
+
+) dd order by dd.ID,dd."SEQUENCE"
+    </query>
+</geoQuery>
+</select>
+  </data>
+
+  <data id="STO_SHURF_SCHEMA_OBJ_LINE" comment="Линии между объектами" schema="PODS" table="ILI_DATA">
+    <select>
+<geoQuery idField="ID" geoField="X,Y">
+   <var name="ROUTE_ID" default="null"/>
+   <var name="BEGIN_MEASURE" default="1000000000"/>
+   <var name="END_MEASURE" default="-1"/>
+   <var name="ILI_INSPECTION_ID" default="-1"/>
+   <var name="SHEET_ID" default="-1"/>
+<query>
+        WITH route as (select route_id from pods.station_point sp,
+ pods.event_Range er, 
+ pods.ili_inspection_range ir where ir.ili_inspection_id={ILI_INSPECTION_ID}
+
+and ir.event_id=er.event_id and er.station_id_begin=sp.station_id),
+stat as (select station_id,measure
+                              from pods.station_point sp,route r where sp.route_id=r.route_id
+                               and sp.measure&gt;={BEGIN_MEASURE} and sp.measure&lt;={END_MEASURE}
+                               )
+SELECT ID, X, Y, "TYPE", "LABEL","SEQUENCE" FROM  (
+select 
+e.EVENT_ID ID,
+'BLACK_LINE_1' "TYPE",
+       null "LABEL",
+       abs(({BEGIN_MEASURE}-s.measure)/({BEGIN_MEASURE}-{END_MEASURE})*248) /*мм*/ x,
+       0 y,1 "SEQUENCE"
+  from pods.station_point s, pods.event_range e,stat st
+ where e.feature_id in ('VALVE','ROAD','WATERWAY','RAILROAD')
+       and s.station_id = e.station_id_begin
+       and s.station_id =st.station_id
+union all
+select  e.event_id ID,
+'BLACK_LINE_1' "TYPE",
+      null "LABEL",
+       abs(({BEGIN_MEASURE}-s.measure)/({BEGIN_MEASURE}-{END_MEASURE})*248) /*мм*/ x,
+      0 y,1 "SEQUENCE"
+  from pods.ili_data d,
+       pods.station_point s,
+       pods.event_range e,pods.sto_sheet_excavate_list exc
+ where     d.event_id = e.event_id
+       and e.station_id_begin = s.station_id
+       and d.event_id is not NULL
+       and exc.sheet_id={SHEET_ID}
+       and d.ili_data_id=exc.ili_data_id
+  union all
+  select 
+e.EVENT_ID ID,
+'BLACK_LINE_1' "TYPE",
+       null "LABEL",
+       abs(({BEGIN_MEASURE}-s.measure)/({BEGIN_MEASURE}-{END_MEASURE})*248) /*мм*/ x,
+       -7 y,2 "SEQUENCE"
+  from pods.station_point s, pods.event_range e,stat st
+ where e.feature_id in ('VALVE','ROAD','WATERWAY','RAILROAD')
+       and s.station_id = e.station_id_begin
+       and s.station_id =st.station_id
+union all
+select  e.event_id ID,
+'BLACK_LINE_1' "TYPE",
+      null "LABEL",
+       abs(({BEGIN_MEASURE}-s.measure)/({BEGIN_MEASURE}-{END_MEASURE})*248) /*мм*/ x,
+      -7 y,2 "SEQUENCE"
+  from pods.ili_data d,
+       pods.station_point s,
+       pods.event_range e,pods.sto_sheet_excavate_list exc
+ where     d.event_id = e.event_id
+       and e.station_id_begin = s.station_id
+       and d.event_id is not NULL
+       and exc.sheet_id={SHEET_ID}
+       and d.ili_data_id=exc.ili_data_id
+union all
+select 
+1111111 ID,
+'BLACK_LINE_1' "TYPE",
+       '222' "LABEL",
+       abs(({BEGIN_MEASURE}-s.measure)/({BEGIN_MEASURE}-{END_MEASURE})*248) /*мм*/ x,
+       -7 y,1 "SEQUENCE"
+  from pods.station_point s, pods.valve v, pods.event_range e,stat st
+ where e.event_id = v.event_id
+       and s.station_id = e.station_id_begin
+       and s.station_id =st.station_id and s.measure=(select min(stt.measure) from stat stt,pods.valve vv,pods.event_range ee where vv.event_id=ee.event_id 
+       and ee.station_id_begin=stt.station_id)
+       union all
+select 
+1111111 ID,
+'BLACK_LINE_1' "TYPE",
+       '222' "LABEL",
+       abs(({BEGIN_MEASURE}-s.measure)/({BEGIN_MEASURE}-{END_MEASURE})*248) /*мм*/ x,
+       -7 y,2 "SEQUENCE"
+  from pods.station_point s, pods.valve v, pods.event_range e,stat st
+ where e.event_id = v.event_id
+       and s.station_id = e.station_id_begin
+       and s.station_id =st.station_id and s.measure=(select max(stt.measure) from stat stt,pods.valve vv,pods.event_range ee where vv.event_id=ee.event_id 
+       and ee.station_id_begin=stt.station_id)
+       ) dd order by dd.ID,dd."SEQUENCE"
+    </query>
+</geoQuery>
+</select>
+  </data>
+   
+</root>

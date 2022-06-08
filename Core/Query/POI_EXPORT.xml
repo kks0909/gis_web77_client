@@ -1,0 +1,57 @@
+﻿<root version="postgres 7.7.3.1">
+  <data id="WEB50_POI_POINT" table="POI_POINT" schema="WEB50" comment="WEB50.POI_POINT">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+          SELECT *
+            FROM (SELECT POINT_ID AS ID
+                        ,NAME                
+                        ,DESCR                
+                        ,TIME_STAMP                
+                        ,COMMENTS                 
+                        ,SYMBOL                 
+                        ,CTIME                 
+                        ,CUSER_ID                
+                        ,MTIME                 
+                        ,MUSER_ID                  
+                    FROM WEB50.POI_POINT) d
+           WHERE {FILTER}
+          </query>
+      </dbQuery>
+    </select>
+  </data>  
+  <data id="WEB50_POI_TRACK" table="POI_TRACK" schema="WEB50" comment="WEB50.POI_TRACK">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+           SELECT *
+            FROM (SELECT TRACK_ID AS ID  
+                        ,NAME                
+                        ,DESCR                
+                        ,TYPE                
+                        ,CTIME                
+                        ,CUSER_ID                
+                        ,MTIME                
+                        ,MUSER_ID            
+                   FROM WEB50.POI_TRACK) d
+          WHERE {FILTER}
+          </query>
+      </dbQuery>
+    </select>
+  </data> 
+<data id="WEB50_POI_DEBRIS" table="POI_DEBRIS" schema="WEB50" comment="WEB50.POI_DEBRIS">
+		<select>
+		  <dbQuery idField="ID">
+			<var name="FILTER" default="1=1">
+			</var>
+			<query>
+				SELECT ID ИДЕНТИФИКАТОР_ОБЪЕКТА, SRV_DISTRICT_ID ЛПУ_ИД, STATION_BEGIN НАЧ_КМ, STATION_END КОН_КМ, DESCRIPTION ОПИСАНИЕ, SQUARE ПЛОЩАДЬ, CTIME ДАТА_СОЗДАНИЯ, MTIME ДАТА_ИЗМЕНЕНИЯ,
+					CUSER_ID ПОЛЬЗОВАТЕЛЬ_СОЗДАТЕЛЬ, MUSER_ID КТО_ИЗМЕНИЛ
+				FROM (SELECT  ID,  SRV_DISTRICT_ID, STATION_BEGIN, STATION_END, DESCRIPTION, SQUARE, CTIME, MTIME, CUSER_ID, MUSER_ID FROM WEB50.POI_DEBRIS) d WHERE {FILTER}
+			</query>
+		  </dbQuery>
+		</select>
+  </data>  
+</root>

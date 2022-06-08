@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="760" xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml" styleName="darkCanvas">
+  <dataProvider>ADM_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="760">
+    <mx:HBox percentWidth="100">
+      <mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Название" width="140" />
+          <mx:TextInput id="NAME" width="225" maxChars="250" height="20" tabIndex="1"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Описание" width="140" />
+          <mx:TextInput id="DESCR" width="225" maxChars="250" height="20" tabIndex="2"/>
+        </mx:HBox>
+		<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Источник данных" width="140" />
+          <mx:TextInput id="PROVIDER" width="225" maxChars="250" height="20" tabIndex="3"/>
+        </mx:HBox>
+		<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Статус документа" width="140" />
+          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+            <mx:ComboBox id="STATUS_ID" width="205" height="22" dataProvider="SYS_SEM.xml#WEB50_B_STATUS_REF" tabIndex="4"/>
+            <mx:Button id="BTN_LIST_STATUS_ID" selectedField="WEB50_B_STATUS_REF" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16" tabIndex="5"/>
+          </mx:HBox>
+        </mx:HBox>
+		<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Выберите файл" width="140" />
+          <controls:FileInput id="FILE_NAME" width="225" height="20" fileFilterDescription="Все файлы" fileFilterExtension="*.*" uploadPath="LIB\" tabIndex="6"/>
+        </mx:HBox>
+		<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Дата создания файла" width="140" />
+          <mx:DateField id="TIME_STAMP" width="90" editable="false" height="20" formatString="DD.MM.YYYY" tabIndex="7"/>
+        </mx:HBox>
+		<mx:HBox percentWidth="100">
+		  <mx:Text textAlign="right" text="Координата Y/X" width="140"/>
+			<controls:NumberInput id="Y_COORD" width="75" maxChars="22" height="20" tabIndex="8"/>		  
+			<controls:NumberInput id="X_COORD" width="75" maxChars="22" height="20" tabIndex="9"/>
+		  </mx:HBox>
+	  </mx:VBox>
+	  <mx:VBox percentWidth="50">
+		<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Дата создания записи" width="140" />
+          <mx:DateField id="CTIME" width="90" editable="false" height="20" formatString="DD.MM.YYYY" tabIndex="10"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Кто создал" width="140" />
+          <mx:TextInput id="CUSER" editable="false" width="225" height="20" tabIndex="11"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Дата изменения записи" width="140" />
+          <mx:DateField id="MTIME" width="90" editable="false" height="20" formatString="DD.MM.YYYY" tabIndex="12"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Кто изменил" width="140" />
+          <mx:TextInput id="MUSER" editable="false" width="225" height="20" tabIndex="13"/>
+        </mx:HBox>
+		<mx:HBox percentWidth="100">
+		  <mx:Text textAlign="right" text="Идентификатор объекта" width="140" visible="{CONFIG.SHOW_SYSTEM_INFO}"/>
+		  <controls:NumberInput id="DOC_ID" editable="false" width="75" maxChars="22" height="20" tabIndex="14" visible="{CONFIG.SHOW_SYSTEM_INFO}"/>
+		</mx:HBox>
+		<mx:HBox percentWidth="100">
+		  <mx:Text textAlign="right" text="Идентификатор предка" width="140" visible="{CONFIG.SHOW_SYSTEM_INFO}"/>
+		  <controls:NumberInput id="PARENT_DOC_ID" editable="false" width="75" maxChars="22" height="20" tabIndex="15" visible="{CONFIG.SHOW_SYSTEM_INFO}"/>
+		</mx:HBox>
+		<mx:HBox percentWidth="100">
+		  <mx:Text textAlign="right" text="Идентификатор геом." width="140" visible="{CONFIG.SHOW_SYSTEM_INFO}"/>
+		  <controls:NumberInput id="GID" editable="false" width="75" maxChars="22" height="20" tabIndex="16" visible="{CONFIG.SHOW_SYSTEM_INFO}"/>
+		</mx:HBox>
+      </mx:VBox>
+    </mx:HBox>
+  </mx:VBox>
+  <validatorsArray>
+    <controls:DefaultStringValidator source="{DESCR}" property="text" enabled="false" minLength="1" requiredFieldError="Поле 'Описание' обязательно для заполнения." tooShortError="Поле 'Описание' обязательно для заполнения." />
+    <controls:DefaultStringValidator source="{NAME}" property="text" enabled="false" minLength="1" requiredFieldError="Поле 'Название' обязательно для заполнения." tooShortError="Поле 'Название' обязательно для заполнения." />
+  </validatorsArray>
+</DATA_EDIT_FORM>

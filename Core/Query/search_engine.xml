@@ -1,0 +1,283 @@
+﻿<root version="postgres 7.7.5.0">
+<data id="search_idx_common" table="search_idx_common" schema="web50"  comment="web50">
+        <select>
+            <dbQuery idField="ID">
+				<var name="FILTER" default=""/>
+				<var name="TS_QUERY_STRING" default="plainto_tsquery(s.content) AS q"/>
+				<var name="TS_VECTOR_STRING" default="to_tsvector(s.content) @@ q"/>	
+				<var name="TS_VECTOR_RANK" default="ts_rank(to_tsvector(s.content), plainto_tsquery('{FILTER}')),ts_rank(to_tsvector(s.content), plainto_tsquery('{FILTER}'))"/>					
+				<var name="CATEGORY_ID" default="select distinct category_id from web50.search_idx_common"/>
+				<var name="XMIN" default="-1"/>
+				<var name="YMIN" default="-1"/>
+				<var name="XMAX" default="100000"/>
+				<var name="YMAX" default="100000"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+                <query>
+					 select {COLUMNS_FILTER} from (
+					 SELECT 
+					 ROW_NUMBER() OVER (ORDER BY {TS_VECTOR_RANK} DESC) RWN, 
+					 s.owner,
+					 s.table_name,
+					 s.key_field,
+					 s.key_value, 
+					 s.category_id, 
+					 s.title, 
+					 s.content
+					FROM web50.search_idx_common s,
+					{TS_QUERY_STRING}						
+					WHERE {TS_VECTOR_STRING}
+					and (
+							({XMIN}&lt;"XMIN" and {YMIN}&lt;"YMIN" and {XMAX}&gt;"XMAX" and {YMAX}&gt;"YMAX")
+						or  ("XMIN" is null and "YMIN" is null and "XMAX" is null and "YMAX" is null)
+					)
+
+					and CATEGORY_ID in ({CATEGORY_ID})) sorted
+					     WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}   
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+	
+    <data id="search_idx_gas" table="search_idx_gas" schema="web50"  comment="web50">
+        <select>
+            <dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<var name="TS_QUERY_STRING" default="plainto_tsquery('{FILTER}') AS q"/>
+				<var name="TS_VECTOR_STRING" default="to_tsvector(s.content) @@ q"/>
+				<var name="ROUTE_NAME_FILTER" default="select distinct route_name from web50.search_idx_gas"/>
+				<var name="TS_VECTOR_RANK" default="ts_rank(to_tsvector(s.content), plainto_tsquery('{FILTER}')),ts_rank(to_tsvector(s.content), plainto_tsquery('{FILTER}'))"/>					
+				<var name="CATEGORY_ID" default="select distinct category_id from web50.search_idx_gas"/>
+				<var name="XMIN" default="-1"/>
+				<var name="YMIN" default="-1"/>
+				<var name="XMAX" default="100000"/>
+				<var name="YMAX" default="100000"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+                <query>
+					 select {COLUMNS_FILTER} from (
+					 SELECT 
+					 ROW_NUMBER() OVER (ORDER BY {TS_VECTOR_RANK} DESC) RWN, 
+					 s.owner,
+					 s.table_name,
+					 s.key_field,
+					 s.key_value, 
+					 s.category_id, 
+					 s.title, 
+					 s.content
+					FROM web50.search_idx_gas s,
+						{TS_QUERY_STRING}
+					WHERE {TS_VECTOR_STRING} 
+					and (
+							({XMIN}&lt;"XMIN" and {YMIN}&lt;"YMIN" and {XMAX}&gt;"XMAX" and {YMAX}&gt;"YMAX")
+						or  ("XMIN" is null and "YMIN" is null and "XMAX" is null and "YMAX" is null)
+					)
+					and CATEGORY_ID in ({CATEGORY_ID})
+					and (route_name in ({ROUTE_NAME_FILTER}) or route_name is null)
+
+					) sorted
+					     WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+    <data id="search_idx_common_cnt" table="search_idx_common" schema="web50"  comment="web50">
+        <select>
+            <dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+                <query>
+				 SELECT 
+					 count(*)
+					FROM web50.search_idx_common s,
+					    plainto_tsquery('{FILTER}') AS q
+					WHERE to_tsvector(s.content) @@ q
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+    <data id="search_idx_common_geo" table="search_idx_common" schema="web50"  comment="web50">
+        <select>
+            <dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<var name="ORDER_COLUMNS" default="category_id"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="SRID" default="4326"/>
+				<var name="B_COORD" default="-1"/>
+				<var name="L_COORD" default="-1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+                <query>
+				 select {COLUMNS_FILTER} from (
+				     SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN, owner,table_name, key_field, key_value,  category_id, title,topology_id, ST_AsEWKT(pg_geometry)
+				FROM web50.search_idx_common 
+				WHERE ST_DWithin(
+				        pg_geometry,
+				        ST_GeomFromEWKT('SRID={SRID};POINT({B_COORD} {L_COORD})'),
+				        0.005)) sorted
+				     WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}   
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+    <data id="search_idx_common_geo_cnt" table="search_idx_common" schema="web50"  comment="web50">
+        <select>
+            <dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<var name="SRID" default="4326"/>
+				<var name="B_COORD" default="-1"/>
+				<var name="L_COORD" default="-1"/>
+                <query>
+				 select count(*) CNT from web50.search_idx_common 
+				WHERE ST_DWithin(
+				        pg_geometry,
+				        ST_GeomFromEWKT('SRID={SRID};POINT({B_COORD} {L_COORD})'),
+				        0.005)
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+    <data id="search_idx_common_tst" table="search_idx_common" schema="web50"  comment="web50">
+        <select>
+            <dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<var name="ORDER_COLUMNS" default="category_id"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+                <query>
+					 select {COLUMNS_FILTER} from (
+					     SELECT 
+							ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN, 
+							owner, 
+							table_name, 
+							key_field, 
+							key_value, 
+							category_id, 
+							title, 
+							content 
+						from web50.search_idx_common 
+						where content like '%{FILTER}%') sorted
+					     WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}   
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+    <data id="search_idx_common_tst_cnt" table="search_idx_common" schema="web50"  comment="web50">
+        <select>
+            <dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+                <query>
+				 select count(*) cnt from 
+						web50.search_idx_common 
+					where content like '%{FILTER}%'
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+
+    <data id="search_idx_gas_cnt" table="search_idx_gas" schema="web50"  comment="web50">
+        <select>
+            <dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+                <query>
+					SELECT 
+					 count(*)
+					FROM web50.search_idx_gas s,
+					    plainto_tsquery('{FILTER}') AS q
+					WHERE to_tsvector(s.content) @@ q
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+    <data id="search_idx_gas_geo" table="search_idx_gas" schema="gas"  comment="web50">
+        <select>
+            <dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<var name="ORDER_COLUMNS" default="category_id"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="SRID" default="4326"/>
+				<var name="B_COORD" default="-1"/>
+				<var name="L_COORD" default="-1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+                <query>
+				 select {COLUMNS_FILTER} from (
+				     SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN, owner,table_name, key_field, key_value,  category_id, title,topology_id, ST_AsEWKT(pg_geometry)
+				FROM web50.search_idx_gas 
+				WHERE ST_DWithin(
+				        pg_geometry,
+				        ST_GeomFromEWKT('SRID={SRID};POINT({B_COORD} {L_COORD})'),
+				        0.005)) sorted
+				     WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}   
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+    <data id="search_idx_gas_geo_cnt" table="search_idx_gas" schema="web50"  comment="web50">
+        <select>
+            <dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<var name="SRID" default="4326"/>
+				<var name="B_COORD" default="-1"/>
+				<var name="L_COORD" default="-1"/>
+                <query>
+				 select count(*) CNT from web50.search_idx_gas 
+				WHERE ST_DWithin(
+				        pg_geometry,
+				        ST_GeomFromEWKT('SRID={SRID};POINT({B_COORD} {L_COORD})'),
+				        0.005)
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+	
+	<data id="search_idx_gas_tst" table="search_idx_gas" schema="web50"  comment="web50">
+        <select>
+            <dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<var name="ORDER_COLUMNS" default="category_id"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+                <query>
+					 select {COLUMNS_FILTER} from (
+					     SELECT 
+							ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN, 
+							owner, 
+							table_name, 
+							key_field, 
+							key_value, 
+							category_id, 
+							title, 
+							content 
+						from web50.search_idx_gas 
+						where content like '%{FILTER}%') sorted
+					     WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}   
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+    <data id="search_idx_gas_tst_cnt" table="search_idx_gas" schema="web50"  comment="web50">
+        <select>
+            <dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+                <query>
+				 select count(*) cnt from 
+						web50.search_idx_gas 
+					where content like '%{FILTER}%'
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+</root>

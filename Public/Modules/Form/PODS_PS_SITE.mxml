@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="760" readOnly="false" xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml">
+  <dataProvider>GAZPROM_SYS_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="760">
+    <mx:HBox width="100%">
+      <mx:VBox width="50%">
+        <mx:HBox width="100%">
+          <mx:Text textAlign="right" text="Коридор:" width="135" />
+          <mx:TextInput id="PIPE_SYSTEM_DESCRIPTION" editable="false" width="225" maxChars="70" height="20" />
+		  <mx:Button id="BUTTON_PIPE_SYSTEM_ID" selectedField="PODS_PIPE_SYSTEM_CL" enabled="false" styleName="refObject" toolTip="Перейти к коридору" width="16" height="16" />
+		  <mx:TextInput id="PIPE_SYSTEM_ID" editable="false" visible="false" width="1" maxChars="20" height="20" />
+        </mx:HBox>
+        <mx:HBox width="100%">
+          <mx:Text textAlign="right" text="Начальный / конечный километр, км" width="227" />
+          <controls:NumberInput id="KM_START" editable="true" width="60" maxChars="22" height="20" />
+          <controls:NumberInput id="KM_END" editable="true" width="60" maxChars="22" height="20" />
+        </mx:HBox>
+      </mx:VBox>
+      <mx:VBox width="50%">
+        <mx:HBox width="100%">
+          <mx:Text textAlign="right" text="Удаленность от оси коридора, м" width="140" />
+          <controls:NumberInput id="DISTANCE" editable="true" width="60" maxChars="22" height="20" />
+        </mx:HBox>
+        <mx:HBox width="100%">
+          <mx:Text textAlign="right" text="Начальная / конечная линейная дистанция, м " width="140" />
+          <controls:NumberInput id="LINE_COORD_START" editable="true" width="60" maxChars="22" height="20" />
+          <controls:NumberInput id="LINE_COORD_END" editable="true" width="60" maxChars="22" height="20" />
+        </mx:HBox>
+      </mx:VBox>
+    </mx:HBox>
+  </mx:VBox>
+  <validatorsArray />
+</DATA_EDIT_FORM>

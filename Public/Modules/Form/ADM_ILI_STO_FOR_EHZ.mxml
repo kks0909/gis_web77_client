@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="880" xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml" title="Расчет линейных показателей в соответствии с инструкцией ВНИИГАЗ 2004">
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="880">
+    <mx:HBox width="100%" horizontalAlign="right">
+      <mx:Text text="Расчет для межкамерного участка" width="200" textAlign="right"/>
+      <mx:CheckBox id="calc_line_events" selected="true"/>
+      <mx:Text text="Запрос для определения границ участка" width="220" textAlign="right"/>
+      <mx:TextInput id="line_events_query" width="410" height="22" enabled="{calc_line_events.selected}"
+        text="select event_id from PODS.ILI_INSPECTION_RANGE where ili_inspection_id = {INSPECTION_ID}"/>
+    </mx:HBox>
+    <mx:HBox width="100%" horizontalAlign="right">
+      <mx:Text text="Расчет для межкранового участка" width="200" textAlign="right"/>
+      <mx:CheckBox id="calc_construction_intervals" selected="true"/>
+      <mx:Text text="Запрос для определения границ участка" width="220" textAlign="right"/>
+      <mx:TextInput id="construction_element_query" width="410" height="22" enabled="{calc_construction_intervals.selected}"
+        text="select event_id from pods.valve"/>
+    </mx:HBox>
+    <mx:HBox width="100%" horizontalAlign="left">
+      <mx:Text text="Расчет для участка заданной длины" width="200" textAlign="right"/>
+      <mx:CheckBox id="calc_regular_intervals" selected="true"/>
+      <mx:Text text="Длина участка" width="220" textAlign="right"/>
+      <controls:NumberInput id="regular_intervals_distance" width="50" height="22" enabled="{calc_regular_intervals.selected}"
+        text="100"/>
+      <mx:Text text=" " width="352" textAlign="right"/>
+    </mx:HBox>
+
+    <mx:HBox width="100%">
+      <mx:Text textAlign="right" text="Дата укладки газопровода" width="150"/>
+      <mx:DateField id="install_date" width="100" height="20" formatString="DD.MM.YYYY" tabIndex="4"/>
+      <mx:Text text="Расчет по инструкции ВНИИГАЗ 2004 'Защита от коррозии'" width="100%" textAlign="right"/>
+      <mx:CheckBox id="calc_sto_xxx" selected="true"/>
+    </mx:HBox>
+  </mx:VBox>
+  <validatorsArray>
+    <controls:DefaultDateValidator source="{install_date}" defaultValue="11.06.2002" property="selectedDate" enabled="false" requiredFieldError="Поле 'Дата обследования' обязательно для заполнения."/>
+    <controls:DefaultStringValidator source="{line_events_query}" property="text" defaultValue="select event_id from PODS.ILI_INSPECTION_RANGE where ili_inspection_id = {INSPECTION_ID}" enabled="false" minLength="1" requiredFieldError="Поле 'Запрос для определения границ участка' обязательно для заполнения." tooShortError="Поле 'Запрос для определения границ участка' обязательно для заполнения."/>
+    <controls:DefaultStringValidator source="{construction_element_query}" property="text" defaultValue="select event_id from pods.valve" enabled="false" minLength="1" requiredFieldError="Поле 'Запрос для определения границ участка' обязательно для заполнения." tooShortError="Поле 'Запрос для определения границ участка' обязательно для заполнения."/>
+    <controls:DefaultNumberValidator source="{regular_intervals_distance}" property="text" defaultValue="100" enabled="false" required="false" allowNegative="false" minLength="0"
+                                       precision="0" minValue="0" maxValue="99999"
+                                       tooShortError="Поле обязательно для заполнения." precisionError="Значение в поле должно иметь не более 0 цифр после запятой"
+                                       exceedsMaxError="Значение в поле может иметь 5 цифр до запятой и 0 после" lowerThanMinError="Значение в поле не может быть меньше 0" negativeError="Значение в поле не может быть меньше 0"/>
+  </validatorsArray>
+</DATA_EDIT_FORM>

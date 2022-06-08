@@ -1,0 +1,38 @@
+﻿Установка и запуск службы:
+1) Устанавливаем необходимые пакеты для компиляции исходников службы маршрутизации 
+sudo apt install build-essential git cmake pkg-config \
+libbz2-dev libstxxl-dev libstxxl1v5 libxml2-dev \
+libzip-dev libboost-all-dev lua5.2 liblua5.2-dev libtbb-dev
+2) Сборка из исходников(Сборка проекта из исходных текстов длится около 10-15 минут)
+а) Если папка osrm-backend существует и в ней установлена старая служба, то удаляем эту папку
+б) копируем архив osrm-backend-5.12.0.tar.gz в папку /home/user/GIS_WEB60/RoutingService и переходим в эту папку в консоли
+cd /home/user/GIS_WEB60/RoutingService
+в) распаковываем архив и созданную папку переименовываем в osrm-backend
+tar -xzf osrm-backend-5.12.0.tar.gz 
+mv osrm-backend-X.Y.Z osrm-backend 
+в) Компиляция и установка в систему сервера маршрутизации
+cd osrm-backend
+mkdir -p build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake --build .
+sudo cmake --build . --target install      
+г) Если используем большой граф дорог, например, всей России, то создаем файл подкачки
+г.1) Если файл подкачки уже существует(/home/user/GIS_WEB60/RoutingService/RoadServiceSwapFile), то нужно его удалить(либо не трогать. Предпочтительно не трогать)
+sudo swapoff /home/user/GIS_WEB60/RoutingService/RoadServiceSwapFile
+rm /home/user/GIS_WEB60/RoutingService/RoadServiceSwapFile
+г.2) Создание файла подкачки
+fallocate -l 40G /home/user/GIS_WEB60/RoutingService/RoadServiceSwapFile
+chmod 600 /home/user/GIS_WEB60/RoutingService/RoadServiceSwapFile
+mkswap /home/user/GIS_WEB60/RoutingService/RoadServiceSwapFile
+sudo swapon /home/user/GIS_WEB60/RoutingService/RoadServiceSwapFile
+nano ../osrm-backend/build/.stxxl
+disk=/tmp/stxxl,40G,syscall
+д) Удаляем все файлы в папке /home/user/GIS_WEB60/RoutingService/RoadService
+е) Копируем новые 24 файла графа дорог RU*.* в папку /home/user/GIS_WEB60/RoutingService/RoadService
+ё) запускаем службу для соответствующего графа(RU.osrm - Россия, RU_SPE.osrm - Санкт-Петербург)
+osrm-routed -p 8484 -t 8 RU_SPE.osrm
+ж) ждём сообщение в консоли, что служба готова к приёму запросов 
+[info] running and waiting for requests
+з) проверяем работу службы через запрос (ip подставить нужный)
+http://192.168.1.126:8484/route/v1/driving/30.348887,60.010632;30.32459,59.873786?overview=false&steps=true

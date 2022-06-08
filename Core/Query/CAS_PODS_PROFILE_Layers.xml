@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root version="7.7.5.1" descr="Продольный профиль трубопровода">
+  <dataProvider type="style" source="CAS_PODS_PROFILE_STYLE.xml" />
+	<layer id="CAS_PROFILE" comment="CAS.PROFILE" schema="PODS" table="ROUTE" descr="Профиль трубопровода" projection="EPSG:5807" dataType="vector" type="system" spacing="common" cover="false" fitMap="false" order="10" visible="true" topology="polygon" labelField="LABEL" classField="TYPE_CL"  >
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#CAS_PROFILE" />
+		<dataProvider type="semantic" source="CAS_PODS_PROFILE_SEM.xml#CAS_PROFILE" />
+		<dataProvider type="spatial" source="CAS_PODS_PROFILE_GEO.xml#CAS_PROFILE" />
+	</layer>
+  <layer id="CAS_DEPTH_OF_COVER" comment="CAS.DEPTH_OF_COVER" schema="CAS" table="DEPTH_OF_COVER" descr="Глубины заложения трубопровода" projection="EPSG:5807" dataType="vector" type="system" spacing="common" cover="false" fitMap="false" order="20" visible="true" topology="line" labelField="LABEL" classField="TYPE_CL" >
+    <dataProvider type="spatial" source="CAS_PODS_PROFILE_GEO.xml#CAS_DEPTH_OF_COVER" />
+  </layer>
+</root>

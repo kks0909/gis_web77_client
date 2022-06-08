@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="760" xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml">
+  <dataProvider>SYS_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="760">
+    <mx:HBox percentWidth="100">
+      <mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Имя для входа в систему" width="140" />
+          <mx:TextInput id="LOGIN" width="225" maxChars="80" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Пароль" width="140" />
+          <mx:TextInput id="PASSWORD" displayAsPassword="true" editable="true" width="225" maxChars="80" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Подтверждение пароля" width="140" />
+          <mx:TextInput id="PASSWORDACCEPT" displayAsPassword="true" editable="true" width="225" maxChars="80" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Фамилия" width="140" />
+          <mx:TextInput id="LASTNAME" width="225" maxChars="80" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Имя" width="140" />
+          <mx:TextInput id="FIRSTNAME" width="225" maxChars="80" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Отчество" width="140" />
+          <mx:TextInput id="SECONDNAME" width="225" maxChars="80" height="20" />
+        </mx:HBox>
+        <mx:TextInput id="STATUS" width="2" maxChars="10" text="{CONFIG.USER_STATUS_AFTER_REG}" height="20" visible="false" enabled="false" />
+      </mx:VBox>
+      <mx:VBox percentWidth="50">
+        <!--<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Пол/дата рождения" width="140" />
+          <mx:ComboBox id="SEX" width="100">
+            <mx:dataProvider>
+              <mx:Object CODE="М" DESCR="Мужской" label="Мужской" />
+              <mx:Object CODE="Ж" DESCR="Женский" label="Женский" />
+            </mx:dataProvider>
+          </mx:ComboBox>
+          <mx:DateField id="BIRTHDAY" width="97" height="20" formatString="DD.MM.YYYY" />
+          <mx:TextInput id="STATUS" width="2" maxChars="10" text="{CONFIG.USER_STATUS_AFTER_REG}" height="20" visible="false" enabled="false" />
+        </mx:HBox>-->
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Электронная почта" width="140" />
+          <mx:TextInput id="MAIL" width="225" maxChars="2000" height="20" />
+        </mx:HBox>
+        <!--<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Изображение" width="140" />
+          <mx:TextInput id="PICTURE" width="225" maxChars="2000" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Часовой пояс" width="140" />
+          <mx:ComboBox id="TIMEZONE" width="225" text="{CONFIG.USER_TIMEZONE}">
+            <mx:dataProvider>
+              <mx:Object CODE="-12:00" DESCR="(GMT - 12:00) Эневеток, Кваджалейн" label="(GMT - 12:00) Эневеток, Кваджалейн" />
+              <mx:Object CODE="-11:00" DESCR="(GMT - 11:00) о.Мидуэй, Самоа" label="(GMT - 11:00) о.Мидуэй, Самоа" />
+              <mx:Object CODE="-10:00" DESCR="(GMT - 10:00) Гавайи" label="(GMT - 10:00) Гавайи" />
+              <mx:Object CODE="-9:00" DESCR="(GMT - 9:00) Аляска" label="(GMT - 9:00) Аляска" />
+              <mx:Object CODE="-8:00" DESCR="(GMT - 8:00) Тихоокеанское время (США и Канада), Тихуана" label="(GMT - 8:00) Тихоокеанское время (США и Канада), Тихуана" />
+              <mx:Object CODE="-7:00" DESCR="(GMT - 7:00) Горное время (США и Канада), Аризона" label="(GMT - 7:00) Горное время (США и Канада), Аризона" />
+              <mx:Object CODE="-6:00" DESCR="(GMT - 6:00) Центральное время (США и Канада), Мехико" label="(GMT - 6:00) Центральное время (США и Канада), Мехико" />
+              <mx:Object CODE="-5:00" DESCR="(GMT - 5:00) Восточное время (США и Канада), Богота, Лима, Кито" label="(GMT - 5:00) Восточное время (США и Канада), Богота, Лима, Кито" />
+              <mx:Object CODE="-4:00" DESCR="(GMT - 4:00) Атлантическое время (Канада), Каракас, Ла Пас, Сантьяго" label="(GMT - 4:00) Атлантическое время (Канада), Каракас, Ла Пас, Сантьяго" />
+              <mx:Object CODE="-3:30" DESCR="(GMT - 3:30) Ньюфаундленд" label="(GMT - 3:30) Ньюфаундленд" />
+              <mx:Object CODE="-3:00" DESCR="(GMT - 3:00) Бразилия, Буэнос-Айрес, Джорджтаун, Гренландия" label="(GMT - 3:00) Бразилия, Буэнос-Айрес, Джорджтаун, Гренландия" />
+              <mx:Object CODE="-2:00" DESCR="(GMT - 2:00) Среднеатлантическое время" label="(GMT - 2:00) Среднеатлантическое время" />
+              <mx:Object CODE="-1:00" DESCR="(GMT - 1:00) Азорские о-ва, о-ва Зеленого мыса" label="(GMT - 1:00) Азорские о-ва, о-ва Зеленого мыса" />
+              <mx:Object CODE="00:00" DESCR="(GMT) Касабланка, Дублин, Эдинбург, Лиссабон, Лондон, Монровия" label="(GMT) Касабланка, Дублин, Эдинбург, Лиссабон, Лондон, Монровия" />
+              <mx:Object CODE="+1:00" DESCR="(GMT + 1:00) Амстердам, Берлин, Брюссель, Мадрид, Париж, Рим" label="(GMT + 1:00) Амстердам, Берлин, Брюссель, Мадрид, Париж, Рим" />
+              <mx:Object CODE="+2:00" DESCR="(GMT + 2:00) Каир, Хельсинки, Калининград, Южная Африка, Варшава" label="(GMT + 2:00) Каир, Хельсинки, Калининград, Южная Африка, Варшава" />
+              <mx:Object CODE="+3:00" DESCR="(GMT + 3:00) Багдад, Эр-Рияд, Москва, Найроби" label="(GMT + 3:00) Багдад, Эр-Рияд, Москва, Найроби" />
+              <mx:Object CODE="+3:30" DESCR="(GMT + 3:30) Тегеран" label="(GMT + 3:30) Тегеран" />
+              <mx:Object CODE="+4:00" DESCR="(GMT + 4:00) Абу-Даби, Баку, Мускат, Тбилиси" label="(GMT + 4:00) Абу-Даби, Баку, Мускат, Тбилиси" />
+              <mx:Object CODE="+4:30" DESCR="(GMT + 4:30) Кабул" label="(GMT + 4:30) Кабул" />
+              <mx:Object CODE="+5:00" DESCR="(GMT + 5:00) Екатеринбург, Исламабад, Карачи, Ташкент" label="(GMT + 5:00) Екатеринбург, Исламабад, Карачи, Ташкент" />
+              <mx:Object CODE="+5:30" DESCR="(GMT + 5:30) Бомбей, Калькутта, Мадрас, Нью-Дели" label="(GMT + 5:30) Бомбей, Калькутта, Мадрас, Нью-Дели" />
+              <mx:Object CODE="+6:00" DESCR="(GMT + 6:00) Алма-Ата, Коломбо, Дхака, Новосибирск, Омск" label="(GMT + 6:00) Алма-Ата, Коломбо, Дхака, Новосибирск, Омск" />
+              <mx:Object CODE="+7:00" DESCR="(GMT + 7:00) Бангкок, Ханой, Джакарта, Красноярск" label="(GMT + 7:00) Бангкок, Ханой, Джакарта, Красноярск" />
+              <mx:Object CODE="+8:00" DESCR="(GMT + 8:00) Пекин, Гонконг, Перт, Сингапур, Тайпей" label="(GMT + 8:00) Пекин, Гонконг, Перт, Сингапур, Тайпей" />
+              <mx:Object CODE="+9:00" DESCR="(GMT + 9:00) Осака, Саппоро, Сеул, Токио, Якутск" label="(GMT + 9:00) Осака, Саппоро, Сеул, Токио, Якутск" />
+              <mx:Object CODE="+9:30" DESCR="(GMT + 9:30) Аделаида, Дарвин" label="(GMT + 9:30) Аделаида, Дарвин" />
+              <mx:Object CODE="+10:00" DESCR="(GMT + 10:00) Канберра, Мельбурн, Гуам, Сидней, Владивосток" label="(GMT + 10:00) Канберра, Мельбурн, Гуам, Сидней, Владивосток" />
+              <mx:Object CODE="+11:00" DESCR="(GMT + 11:00) Магадан, Новая Каледония, Соломоновы о-ва" label="(GMT + 11:00) Магадан, Новая Каледония, Соломоновы о-ва" />
+              <mx:Object CODE="+12:00" DESCR="(GMT + 12:00) Окленд, Фиджи, Камчатка, Веллингтон" label="(GMT + 12:00) Окленд, Фиджи, Камчатка, Веллингтон" />
+              <mx:Object CODE="+13:00" DESCR="(GMT + 13:00) Камчатка, Анадырь" label="(GMT + 13:00) Камчатка, Анадырь" />
+              <mx:Object CODE="+14:00" DESCR="(GMT + 14:00) Киритимати (остров Рождества)" label="(GMT + 14:00) Киритимати (остров Рождества)" />
+            </mx:dataProvider>
+          </mx:ComboBox>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Секретный вопрос для восстановления пароля" width="140" />
+          <mx:TextInput id="SECURITY_QUESTION" width="225" maxChars="2000" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Ответ на секретный вопрос" width="140" />
+          <mx:TextInput id="SECURITY_ANSWER" width="225" maxChars="2000" height="20" />
+        </mx:HBox>-->
+      </mx:VBox>
+    </mx:HBox>
+  </mx:VBox>
+  <validatorsArray>
+    <controls:DefaultStringValidator source="{LOGIN}" property="text" enabled="false" required="true" requiredFieldError="Поле 'Имя пользователя' обязательно для заполнения." />
+    <controls:DefaultStringValidator source="{PASSWORD}" property="text" enabled="false" required="true" requiredFieldError="Поле 'Пароль' обязательно для заполнения." />
+    <controls:DefaultStringValidator source="{LASTNAME}" property="text" enabled="false" required="true" requiredFieldError="Поле 'Фамилия' обязательно для заполнения." />
+    <controls:DefaultStringValidator source="{FIRSTNAME}" property="text" enabled="false" required="true" requiredFieldError="Поле 'Имя' обязательно для заполнения." />
+    <!--<controls:DefaultStringValidator source="{MAIL}" property="text" enabled="false" required="true" requiredFieldError="Поле 'Адрес электронной почты' обязательно для заполнения." />-->
+    <controls:FieldComparisonValidator enabled="false" source="{PASSWORD}" property="text" destination="{PASSWORDACCEPT}" destinationProperty="text" required="true" comparisonError="Поле 'Пароль' и поле 'Подтверждение пароля' должны совпадать." />
+  </validatorsArray>
+</DATA_EDIT_FORM>

@@ -1,0 +1,37 @@
+﻿<!--7.7.5.0-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="3"  headerVertSize="50"
+            id="ADM_MAPS_LIST"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelTemplateName="ADM_MAPS_LIST"
+            layerId="WEB50_M_MAP" propertyPanelName="WEB50_M_MAP"
+            dataRequest="ADM_SEM.xml#WEB50_M_MAP"
+            dataRequestLayers="ADM_SEM.xml#EDIT_LAYER_XML"
+            dataRequestStyles="ADM_SEM.xml#EDIT_STYLE_XML"
+            initialSortField="DESCRIPTION,LAYERS_FILE_NAME"
+            >
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/createObject.png"
+        tooltip="Создать новую карту"
+        clickEvent="gridAdmMapsCreateMap"
+        isEnabled="null" />
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+      <columns:GridColumn headerText="" width="750" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="Идентификатор" dataField="ID"  itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          hidden="true" editable="false" filterComparisionType="number" width="40" />                    
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

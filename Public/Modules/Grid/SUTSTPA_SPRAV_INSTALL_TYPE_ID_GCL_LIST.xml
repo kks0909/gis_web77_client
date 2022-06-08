@@ -1,0 +1,73 @@
+﻿<!--7.7.7.4-->
+
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="6"  headerVertSize="50"
+            id="SUTSTPA_SPRAV_INSTALL_TYPE_ID_GCL"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            labelColumn="LABEL"
+            primaryKeyField="CODE"
+            layerId="SUTSTPA_SPRAV_INSTALL_TYPE_ID_GCL" propertyPanelName="SUTSTPA_SPRAV_INSTALL_TYPE_ID_GCL"
+            dataRequest="SUTSTPA_GRID.xml#SUTSTPA_SPRAV_INSTALL_TYPE_ID_GCL"
+            initialSortField="ID">
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/paste.png"
+        tooltip="Вставить данные из excel"
+        clickEvent="PasteFromExcelEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+<picPutton:GridButton source="../../ui/images/save.png"
+       tooltip="Сохранить изменения"
+       clickEvent="ApplyUpdatedCellEvent"
+       isEnabled="null" />
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="Идентификатор" dataField="ID" itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          hidden="true" editable="false" filterComparisionType="string" width="40" /> 
+      <columns:GridColumn headerText="Идентификатор" dataField="CODE"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="160"/>
+      <columns:GridColumn headerText="Название" dataField="DESCR"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="260"/> 
+      <columns:GridColumn headerText="Используется" dataField="ACTIVE_INDICATOR_LF"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=SUTSTPA_SEM_DICT.xml#YESNO" filterComparisionType="array" 
+                          filterRequestId="SUTSTPA_SEM_DICT.xml#YESNO"
+                          editable="true"
+                          filterRenderer="ru.corelight.view.controls.dynamicFilter.InListControl"
+                          width="50"/>  
+      <columns:GridColumn headerText="Источник" dataField="SOURCE_GCL"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_SEM_DICT.xml#PODS_SOURCE_GCL" filterComparisionType="array" 
+                          filterRequestId="PODS_SEM_DICT.xml#PODS_SOURCE_GCL"
+                          editable="true"
+                          filterRenderer="ru.corelight.view.controls.dynamicFilter.InListControl"
+                          width="100"/>                                                                               
+  
+  </grids:columns>
+</grids:Grid>

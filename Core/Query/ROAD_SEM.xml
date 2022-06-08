@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.4.10" descr="Диагностика и ремонт дорожных переходов">
+    <data table="ROAD" schema="WEB50" id="ROAD" comment="ROAD">
+        <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+                <query>
+                    SELECT id, road_id, description, type_cl, category_id, osm_id, "comments" FROM web50.road where {FILTER}
+                </query>
+            </dbQuery>
+        </select>
+        <insert>
+            <dbCommand>
+				<param name="ROAD_ID" type="Int64" default="0"  />
+                <param name="DESCRIPTION" default="" type="String"/>
+                <param name="TYPE_CL" default="" type="String"/>
+                <param name="CATEGORY_ID" default="" type="String"/>
+                <param name="OSM_ID" default="" type="String"/>
+                <param name="COMMENTS" default="" type="String"/>
+                <var name="ID" type="Int64" direction="Output" default="SELECT max(id) id FROM web50.road"/>
+                <query>
+					INSERT INTO web50.road
+                    (road_id, description, type_cl, category_id, osm_id, "comments")
+                    VALUES( :ROAD_ID, :DESCRIPTION, :TYPE_CL, :CATEGORY_ID, :OSM_ID, :COMMENTS)
+                </query>
+            </dbCommand>
+        </insert>
+        <update>
+            <dbCommand>
+				<param name="ROAD_ID" type="Int64" default="0"  />
+                <param name="DESCRIPTION" default="" type="String"/>
+                <param name="TYPE_CL" default="" type="String"/>
+                <param name="CATEGORY_ID" default="" type="String"/>
+                <param name="OSM_ID" default="" type="String"/>
+                <param name="COMMENTS" default="" type="String"/>
+                <param name="ID" type="Int64"/>
+                <query>
+                    UPDATE web50.road
+                    SET description=:DESCRIPTION, type_cl=:TYPE_CL, category_id=:CATEGORY_ID, osm_id=:OSM_ID, "comments"=:COMMENTS where id=:ID;
+                </query>
+            </dbCommand>
+        </update>
+        <delete>
+            <dbCommand>
+                <param name="ID" type="Int64" direction="Input"/>
+                <query>
+					DELETE FROM web50.road WHERE  id=:ID
+                </query>
+            </dbCommand>
+        </delete>
+    </data>
+    <data table="ROAD_CROSS" schema="WEB50" id="ROAD_CROSS" comment="ROAD.CROSS">
+        <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+                <query>
+                   select * from ( SELECT 
+                    road_cross_id id,
+                    road_cross_id, 
+                    line_id, road_id, case_lf, 
+                    station, station_road, 
+                    road_length, pipe_category_id, pipe_diameter, pipe_thickness, 
+                    case_length, case_diameter_gcl, case_thickness, 
+                    date_installed, pi_cp_type, insp_date, insp_performed_by, 
+                    insp_pipe_case_contact_lf, insp_result_case_necessity_lf, insp_result_case_length_repair, 
+                    insp_result_road_accord_lf, insp_result_other_disorder, insp_result_condition, repair_date, repair_type, 
+                    repair_performed_by, repair_complited_work, repair_result_condition, srv_district
+                    FROM web50.road_cross ) dd where {FILTER}
+                </query>
+            </dbQuery>
+        </select>
+        <insert>
+            <dbCommand>
+                <var name="ID" type="Int64" direction="Output" default="SELECT max(road_cross_id) id FROM web50.road_cross"/>
+                <param name="LINE_ID" type="Int64" default="0" />
+                <param name="ROAD_ID" default="0" type="Int64" />
+                <param name="CASE_LF" default="" type="String" />
+                <param name="STATION" type="Decimal" default="0" />
+                <param name="STATION_ROAD" default="0" type="Decimal" />
+                <param name="ROAD_LENGTH" default="0" type="Decimal" />
+                <param name="PIPE_CATEGORY_ID" default="" type="String" />
+                <param name="PIPE_DIAMETER" default="0" type="Decimal" />
+                <param name="PIPE_THICKNESS" default="0" type="Decimal" />
+                <param name="CASE_LENGTH" default="0" type="Decimal" />
+                <param name="CASE_DIAMETER_GCL" default="0" type="Decimal" />
+                <param name="CASE_THICKNESS" default="" type="Decimal" />
+                <param name="DATE_INSTALLED" default="" type="DateTime" />
+                <param name="PI_CP_TYPE" default="" type="String" />
+                <param name="INSP_DATE" default="" type="DateTime" />
+                <param name="INSP_PERFORMED_BY" type="String" default="" />
+                <param name="INSP_PIPE_CASE_CONTACT_LF" type="String" default="" />
+                <param name="INSP_RESULT_CASE_NECESSITY_LF" default="" type="String" />
+                <param name="INSP_RESULT_CASE_LENGTH_REPAIR" default="0" type="Decimal" />
+                <param name="INSP_RESULT_ROAD_ACCORD_LF" default="" type="String" />
+                <param name="INSP_RESULT_OTHER_DISORDER" default="" type="String" />
+                <param name="INSP_RESULT_CONDITION" default="" type="String" />
+                <param name="REPAIR_DATE" default="" type="DateTime" />
+                <param name="REPAIR_TYPE" default="" type="String" />
+                <param name="REPAIR_PERFORMED_BY" default="" type="String" />
+                <param name="REPAIR_COMPLITED_WORK" default="" type="String" />
+                <param name="REPAIR_RESULT_CONDITION" default="" type="String" />
+                <param name="SRV_DISTRICT" default="" type="String" />
+                <query>
+                    INSERT INTO web50.road_cross
+                    ( line_id, road_id, case_lf, station, station_road, road_length, pipe_category_id, pipe_diameter, pipe_thickness, case_length, case_diameter_gcl, case_thickness, date_installed, pi_cp_type, insp_date, insp_performed_by, insp_pipe_case_contact_lf, insp_result_case_necessity_lf, insp_result_case_length_repair, insp_result_road_accord_lf, insp_result_other_disorder, insp_result_condition, repair_date, repair_type, repair_performed_by, repair_complited_work, repair_result_condition, srv_district)
+                    VALUES( :LINE_ID, :ROAD_ID, :CASE_LF, :STATION, :STATION_ROAD, :ROAD_LENGTH, :PIPE_CATEGORY_ID, :PIPE_DIAMETER, :PIPE_THICKNESS, :CASE_LENGTH, :CASE_DIAMETER_GCL, :CASE_THICKNESS,  :DATE_INSTALLED, :PI_CP_TYPE, :INSP_DATE, :INSP_PERFORMED_BY, :INSP_PIPE_CASE_CONTACT_LF, :INSP_RESULT_CASE_NECESSITY_LF, :INSP_RESULT_CASE_LENGTH_REPAIR, :INSP_RESULT_ROAD_ACCORD_LF, :INSP_RESULT_OTHER_DISORDER, :INSP_RESULT_CONDITION, :REPAIR_DATE, :REPAIR_TYPE, :REPAIR_PERFORMED_BY, :REPAIR_COMPLITED_WORK, :REPAIR_RESULT_CONDITION, :SRV_DISTRICT)
+                </query>
+            </dbCommand>
+        </insert>
+        <update>
+            <dbCommand>
+                <param name="ROAD_CROSS_ID" type="Int64" default="0" /> 
+                <param name="LINE_ID" type="Int64" default="0" />
+                <param name="ROAD_ID" default="0" type="Int64" />
+                <param name="CASE_LF" default="" type="String" />
+                <param name="STATION" type="Decimal" default="0" />
+                <param name="STATION_ROAD" default="0" type="Decimal" />
+                <param name="ROAD_LENGTH" default="0" type="Decimal" />
+                <param name="PIPE_CATEGORY_ID" default="" type="String" />
+                <param name="PIPE_DIAMETER" default="0" type="Decimal" />
+                <param name="PIPE_THICKNESS" default="0" type="Decimal" />
+                <param name="CASE_LENGTH" default="0" type="Decimal" />
+                <param name="CASE_DIAMETER_GCL" default="0" type="Decimal" />
+                <param name="CASE_THICKNESS" default="" type="Decimal" />
+                <param name="DATE_INSTALLED" default="" type="DateTime" />
+                <param name="PI_CP_TYPE" default="" type="String" />
+                <param name="INSP_DATE" default="" type="DateTime" />
+                <param name="INSP_PERFORMED_BY" type="String" default="" />
+                <param name="INSP_PIPE_CASE_CONTACT_LF" type="String" default="" />
+                <param name="INSP_RESULT_CASE_NECESSITY_LF" default="" type="String" />
+                <param name="INSP_RESULT_CASE_LENGTH_REPAIR" default="0" type="Decimal" />
+                <param name="INSP_RESULT_ROAD_ACCORD_LF" default="" type="String" />
+                <param name="INSP_RESULT_OTHER_DISORDER" default="" type="String" />
+                <param name="INSP_RESULT_CONDITION" default="" type="String" />
+                <param name="REPAIR_DATE" default="" type="DateTime" />
+                <param name="REPAIR_TYPE" default="" type="String" />
+                <param name="REPAIR_PERFORMED_BY" default="" type="String" />
+                <param name="REPAIR_COMPLITED_WORK" default="" type="String" />
+                <param name="REPAIR_RESULT_CONDITION" default="" type="String" />
+                <param name="SRV_DISTRICT" default="" type="String" />
+                <query>
+                    UPDATE web50.road_cross
+                    SET  line_id=:LINE_ID, road_id=:ROAD_ID, case_lf=:CASE_LF, station=:STATION, station_road=:STATION_ROAD, road_length=:ROAD_LENGTH, pipe_category_id=:PIPE_CATEGORY_ID, pipe_diameter=:PIPE_DIAMETER, pipe_thickness=:PIPE_THICKNESS, case_length=:CASE_LENGTH, case_diameter_gcl=:CASE_DIAMETER_GCL, case_thickness=:CASE_THICKNESS, date_installed=:DATE_INSTALLED, pi_cp_type=:PI_CP_TYPE, insp_date=:INSP_DATE, insp_performed_by=:INSP_PERFORMED_BY, insp_pipe_case_contact_lf=:INSP_PIPE_CASE_CONTACT_LF, insp_result_case_necessity_lf=:INSP_RESULT_CASE_NECESSITY_LF, insp_result_case_length_repair=:INSP_RESULT_CASE_LENGTH_REPAIR, insp_result_road_accord_lf=:INSP_RESULT_ROAD_ACCORD_LF, insp_result_other_disorder=:INSP_RESULT_OTHER_DISORDER, insp_result_condition=:INSP_RESULT_CONDITION, repair_date=:REPAIR_DATE, repair_type=:REPAIR_PERFORMED_BY, repair_performed_by=:REPAIR_PERFORMED_BY, repair_complited_work=:REPAIR_COMPLITED_WORK, repair_result_condition=:REPAIR_RESULT_CONDITION, srv_district=:SRV_DISTRICT where road_cross_id=:ID
+                </query>
+            </dbCommand>
+        </update>
+        <delete>
+            <dbCommand>
+                <param name="ID" type="Int64" direction="Input"/>
+                <query>
+                    DELETE FROM web50.road_cross    
+                    where road_cross_id=:ID
+                </query>
+            </dbCommand>
+        </delete>
+    </data>
+	<data id="ROAD_CL" comment="WEB50_ROAD_CL" schema="WEB50" table="ROAD_CL">
+        <select>
+          <dbQuery idField="ID">
+            <query>
+                SELECT distinct  ROAD_ID CODE, DESCRIPTION AS DESCR, 'Y' ACTIVE_INDICATOR_LF, 'OSM' SOURCE_GCL FROM WEB50.ROAD
+            </query>
+          </dbQuery>
+        </select>
+    </data>
+</root>    

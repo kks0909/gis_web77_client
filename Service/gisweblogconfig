@@ -1,0 +1,29 @@
+/home/websys53/GIS_WEB60/Log/UTEService/log.txt 
+/home/websys53/GIS_WEB60/Log/UTEService/log_integr.txt 
+/home/websys53/GIS_WEB60/Log/UTEService/Batch_run_calc_ili_sto_ehz_all.txt 
+/home/websys53/GIS_WEB60/Log/UTEService/Batch_run_calc_ili_sto_all.txt 
+/home/websys53/GIS_WEB60/Log/UTEService/Batch_run_calc_pressure_all.txt 
+/home/websys53/GIS_WEB60/Log/UTEService/Batch_run_calc_cluster_all.txt 
+/home/websys53/GIS_WEB60/Log/WebSite/log.txt 
+/home/websys53/GIS_WEB60/Log/nodejsservice/log.txt 
+/home/websys53/GIS_WEB60/MapGen/mapgen.txt 
+/home/websys53/GIS_WEB60/MapGen/mapgensrv.txt{
+	su root websys53
+	maxsize=2M
+	compress
+	missingok
+	rotate 20
+}
+/home/websys53/.pm2/pm2.log
+/home/websys53/.pm2/logs/*.log {
+	su root websys53
+	maxsize=2M
+	compress
+	missingok
+	rotate 20
+	postrotate
+		PATH=/usr/local/lib/node/nodejs/bin:$PATH
+		su - websys53 -c "pm2 flush > /dev/null;"
+	endscript
+}
+

@@ -1,0 +1,105 @@
+﻿<dataset name="МГ: Журналы оперативных данных" version="7.7.3.0">
+  <group comment="Команды">
+ <invoke id="gridToolModule" type="global" event_name="FULL_GRID_EVENT_ID_MODULE"
+				  tooltip="Показать списком"
+				  icon="Public/assets/GRID.png">
+	<!-- Общие параметры-->
+	<!-- имя функции открытия, если пустое, то всегда в новом окне -->
+	<var name="functionName" value=""/>
+	<!-- доп параметры открытия окна из windowsTemplates.xml -->
+	<var name="windowTemplateId" value="gridWindow"/>
+	<!-- Задача -->
+	<var name="task" value="GRID"/>
+<var name="mdl" value="Public/SWF/Grid_55.swf"/>
+	<!-- Необходимо ли в команды передавать фильтр верхнего уровня -->
+	<var name="needTopFilter" value="true"/>
+	<!-- Флаг указывает, всегда ли открывать в новом окне или можно использовать команды синхронизации -->
+	<var name="useSynchCommands" value="false"/>
+	<!-- шаблон грида -->
+	<var name="gridId" value=""/>
+	<!-- заголовок грида -->
+	<var name="title" value=""/>
+	<!-- полный идентификатор слоя -->
+	<var name="layerId" value=""/>
+</invoke>
+    <invoke id="showGrid" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="exportToExcel" type="global" event_name="exportToExcelFromTree" tooltip="Экспорт в Excel" icon="Public/assets/excel.png">
+      <var name="dataRequestId" value="" />
+</invoke>
+<invoke id="createNewObject" type="global" event_name="createObjectFromTree" tooltip="Добавить запись" icon="Public/assets/addObject.png">
+      <var name="classId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="checkBoxTool" type="global" event_name="checkBoxEvent" tooltip="Вкл/Выкл видимость слоя">
+      <var layerParams="" />
+    </invoke>
+  </group>
+  <tree max_items="20" toolbarStyle="toolbarStyle" toolbarButtonStyle="mapIcon">
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_HIST_Layers.xml#PODS_CHEMICAL_INJECTION_LOG;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_CHEMICAL_INJECTION_LOG" FILE_NAME="PODS_HIST_STYLE.xml" />
+      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_CHEMICAL_INJECTION_LOG" />
+<context_menu run_invoke="createNewObject" classId="PODS_CHEMICAL_INJECTION_LOG"/>
+
+
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_CHEMICAL_INJECTION_LOG;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_CHEMICAL_INJECTION_LOG;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_HIST_STYLE.xml" />
+      </level>
+    </level>
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_HIST_Layers.xml#PODS_GRANDFATHER_PRESSURE;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_GRANDFATHER_PRESSURE" FILE_NAME="PODS_HIST_STYLE.xml" />
+      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_GRANDFATHER_PRESSURE" />
+<context_menu run_invoke="createNewObject" classId="PODS_GRANDFATHER_PRESSURE"/>
+
+
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_GRANDFATHER_PRESSURE;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_GRANDFATHER_PRESSURE;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_HIST_STYLE.xml" />
+      </level>
+    </level>
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_HIST_Layers.xml#PODS_CUSTOMER_INTERRUPT;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_CUSTOMER_INTERRUPT" FILE_NAME="PODS_HIST_STYLE.xml" />
+      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_CUSTOMER_INTERRUPT" />
+<context_menu run_invoke="createNewObject" classId="PODS_CUSTOMER_INTERRUPT"/>
+
+
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_CUSTOMER_INTERRUPT;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_CUSTOMER_INTERRUPT;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_HIST_STYLE.xml" />
+      </level>
+    </level>
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_HIST_Layers.xml#PODS_LEAK_HISTORY;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_LEAK_HISTORY" FILE_NAME="PODS_HIST_STYLE.xml" />
+      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_LEAK_HISTORY" />
+<context_menu run_invoke="createNewObject" classId="PODS_LEAK_HISTORY"/>
+
+
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_LEAK_HISTORY;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_LEAK_HISTORY;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_HIST_STYLE.xml" />
+      </level>
+    </level>
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_HIST_Layers.xml#PODS_PIPE_OPERATING_HISTORY;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_PIPE_OPERATING_HISTORY" FILE_NAME="PODS_HIST_STYLE.xml" />
+      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_PIPE_OPERATING_HISTORY" />
+<context_menu run_invoke="createNewObject" classId="PODS_PIPE_OPERATING_HISTORY"/>
+
+
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_PIPE_OPERATING_HISTORY;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_PIPE_OPERATING_HISTORY;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_HIST_STYLE.xml" />
+      </level>
+    </level>
+  </tree>
+</dataset>

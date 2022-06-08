@@ -1,0 +1,34 @@
+<form class="sendMailForm">
+    <div class="options">
+        <span>
+            <div class="optionSendMailSelect">
+                <div class="optionSendMailLabel"><label for="sendMailErrorType">Тип ошибки</label></div>
+                <div class="optionSendMailSelect" class="sendMailCombo">
+                    <select id="sendMailErrorType">
+                        <option value="1">Обнаружена ошибка в данных</option>
+                        <option value="2">Обнаружена ошибка приложения</option>
+                    </select>
+                </div>
+            </div>
+            <div class="optionSendMail">
+                <div class="optionSendMailLabel"><label for="sendMailAddress">Добавить адрес получателя</label></div>
+                <div class="sendMailCombo" ><input type="text" id="sendMailAddress" /></div>
+            </div>
+            <div class="optionSendMail">
+                <div class="optionSendMailLabel"><label for="sendMailName">Имя для входа в систему</label></div>
+                <div class="sendMailCombo"><input type="text" id="sendMailName" disabled /></div>
+            </div>
+            <div class="optionSendMail">
+                <div class="optionSendMailLabel" style="margin-top: 8px;"><label for="sendMailFIO">ФИО</label></div>
+                <div class="sendMailCombo"><input type="text" id="sendMailFIO" disabled /></div>
+            </div>
+            <div class="optionSendMailTextArea">
+               <textarea id="sendMailMessage"></textarea>
+            </div>
+        </span>
+    </div>
+</form>
+<div class="sendMailButtons">
+    <input type="button" name="send" class="map-search-button map-dialog-button" id="sendMailSend" value="Отправить">
+    <input type="button" name="cancel" class="map-search-button map-dialog-button" id="sendMailCancel" value="Отмена">
+</div>

@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns="view.data.*"
+                title="СТО Газпром 2-2.3-112-2007. Оценка работоспособности"
+                width="790"
+                ext_data_id="PODS_EXPORT.xml#PODS_STO_PERFORMANCE_EVAL"
+                excelTemplate="PODS_STO_PERFORMANCE_EVAL">
+	  <dataProvider>PODS_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	  <mx:VBox width="790">
+		    <mx:HBox percentWidth="100">
+			      <mx:Text textAlign="right" text="Обследование" width="140"/>
+			      <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+				        <mx:ComboBox id="ILI_INSPECTION_ID" enabled="false" editable="false" width="585" height="20"
+                         dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION"/>
+				        
+			      </mx:HBox>
+		    </mx:HBox>
+		    <mx:HBox percentWidth="100">
+			      <mx:VBox percentWidth="50">
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Описание" width="140"/>
+					          <mx:TextInput id="DESCRIPTION" width="225" maxChars="254" height="40"/>
+				        </mx:HBox>
+              <mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Начальный км" width="140"/>
+                <mx:TextInput id="STATION_BEG" width="80" maxChars="16" height="20"/>
+              </mx:HBox>
+              <mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Номер трубы" width="140"/>
+                <mx:TextInput id="WELD_NUMBER" width="80" maxChars="16" height="20"/>
+              </mx:HBox>
+              <mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Оценка работоспособности" width="140"/>
+                <mx:TextInput id="STO_112_2007_PERFORMANCE_EVAL" width="225" maxChars="255" height="40"/>
+              </mx:HBox>
+	<mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Коэффициент учета величины рабочего давления" width="140"/>
+                <mx:TextInput id="STO_112_2007_WORK_PRESS_KOEF" width="225" maxChars="255" height="40"/>
+              </mx:HBox>
+	<mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Расчетное сопротивление сжатию(растяжению), Н/м.кв." width="140"/>
+                <mx:TextInput id="STO_112_2007_COMPRESS_STRENGTH" width="225" maxChars="255" height="40"/>
+              </mx:HBox>
+
+		      </mx:VBox>
+
+          <mx:VBox percentWidth="50">
+	<mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Коэффициент учета длины дефекта" width="140"/>
+                <mx:TextInput id="STO_112_2007_LENGTH_KOEF" width="225" maxChars="255" height="40"/>
+              </mx:HBox>
+            <mx:HBox percentWidth="100">
+              <mx:Text textAlign="right" text="Идентификация" width="140"/>
+              <mx:TextInput id="FEATURE_DESCRIPTION" width="225" maxChars="300" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+              <mx:Text textAlign="right" text="Тип дефекта" width="140"/>
+              <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+                <mx:ComboBox id="ANOMALY_TYPE_CL" width="200" height="20"
+                             dataProvider="PODS_SEM_DICT.xml#PODS_ILI_ANOMALY_TYPE_CL_ID"/>
+                <mx:Button id="BTN_LIST_ANOMALY_TYPE_CL" selectedField="PODS_ILI_ANOMALY_TYPE_CL"
+                           enabled="false"
+                           styleName="refList"
+                           toolTip="Перейти к редактированию справочника"
+                           width="16"
+                           height="16"/>
+              </mx:HBox>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+              <mx:Text textAlign="right" text="Длина/ширина дефекта" width="140"/>
+              <controls:NumberInput id="LENGTH" width="40" maxChars="22" height="20"/>
+              <mx:Text textAlign="left" text="мм" width="30"/>
+              <controls:NumberInput id="WIDTH" width="40" maxChars="22" height="20"/>
+              <mx:Text textAlign="left" text="мм" width="30"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+              <mx:Text textAlign="right" text="Глубина/ориентация" width="140"/>
+              <controls:NumberInput id="AVERAGE_DEPTH" width="40" maxChars="22" height="20"/>
+              <mx:Text textAlign="left" text="%" width="30"/>
+              <controls:NumberInput id="ORIENTATION_DEG" width="40" maxChars="22" height="20"/>
+              <mx:Text textAlign="left" text="град" width="30"/>
+            </mx:HBox>
+
+	<mx:HBox percentWidth="100">
+	 <mx:Text textAlign="right" text="Параметры трубы" width="140"/>
+	 <mx:TextInput id="PIPE_PARAMS" width="225" maxChars="255" height="40"/>
+	</mx:HBox>
+
+            <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Перейти к реперу" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:Button id="BUTTON_REF_EVENT_ID" selectedField="PODS_EVENT_RANGE" enabled="false"
+                             styleName="refObject"
+                             toolTip="Перейти к объекту, который соответствует данному реперу"
+                             width="16"
+                             height="16"/>
+						            <controls:NumberInput id="REF_EVENT_ID" editable="false" width="85" maxChars="22" height="20"
+                                        visible="{CONFIG.SHOW_SYSTEM_INFO}"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Источник информации" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="SOURCE_GCL" enabled="false" editable="false" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_SOURCE_GCL"/>
+						            <mx:Button id="BTN_LIST_SOURCE_GCL" selectedField="PODS_SOURCE_GCL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Идентификатор координат аномалии" width="140"/>
+					          <controls:NumberInput id="COORDINATE_ID" editable="false" width="85" maxChars="22" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Идентификатор геообъекта (для аномалий с координатами)"
+                        width="140"/>
+					          <controls:NumberInput id="EVENT_ID" editable="false" width="85" maxChars="22" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Идентификатор аномалии" width="140"/>
+					          <controls:NumberInput id="ILI_DATA_ID" editable="false" width="85" maxChars="22" height="20"/>
+				        </mx:HBox>
+            <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+               <mx:Text textAlign="right" text="Зарезервированный ключ для ссылки на исходные данные"
+                        width="140"/>
+               <mx:TextInput id="RAW_REFERENCE_KEY" editable="false" width="160" maxChars="32" height="20"/>
+            </mx:HBox>
+
+			      </mx:VBox>
+		    </mx:HBox>
+	  </mx:VBox>
+	  
+</DATA_EDIT_FORM>

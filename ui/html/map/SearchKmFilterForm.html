@@ -1,0 +1,36 @@
+<form class="searchDialogForm">
+    <div class="options">
+        <span>
+            <label for="searchLineBox" style="font-style: italic;">Внимание! Для поиска записей в списке введите часть строки.</label>
+            <div class="option" style="height: 26px;margin-top: 4px;">
+                <label for="searchLineBox">Газопровод</label>
+                <div class="searchCombo" id="searchLineBox" ></div>
+            </div>
+            <div class="option" >
+                <label>Доступен интервал с </label> <label id="startLabel"></label><label> по </label><label id="endLabel"></label><label> км. Перейти на:</label>
+            </div>
+            <div class="option">
+                <div class="option map-border-div">
+                    <!--<input class="map-inline-div" type="radio" name="searchInputRadio" id="searchRadioKm" />-->
+                    <div class="map-inline-div map-border-div-inside" id="searchRadioKm" ></div>
+                    <div class="map-inline-div map-border-div-inside" ><label for="searchRadioKm">Километр</label></div>
+                    <div id="searchKm" ></div>
+                </div>
+                <div class="option map-border-div">
+                   <!-- <input class="map-inline-div" type="radio" name="searchInputRadio" id="searchRadioRoute">-->
+                    <div class="map-inline-div searchKmInput map-border-div-inside" id="searchRadioRoute"></div>
+                    <div class="map-inline-div map-border-div-inside" ><label class="searchKmLabel" for="searchRadioRoute">Участок</label></div>
+                    <div class="map-inline-div map-border-div-inside" style="margin-left: 23px;"><label class="searchKmLabel" for="searchBeginKm">С нач. км.</label></div>
+                    <div  id="searchBeginKm" class="searchKmInput"></div>
+                    <div class="map-inline-div map-border-div-inside"><label class="searchKmLabel" for="searchEndKm">по конеч. км.</label></div>
+                    <div  id="searchEndKm" class="searchKmInput" ></div>
+                </div>
+            </div>
+        </span>
+    </div>
+
+    <div class="button" style="margin-top: 3px;margin-left: 153px;">
+        <input type="button" name="search" class="searchKmButton map-dialog-button map-search-button" id="searchKmFind" value="Найти">
+        <input type="button" name="cancel" class="searchKmButton map-dialog-button map-search-button" id="searchKmCancel" value="Отмена">
+    </div>
+</form>

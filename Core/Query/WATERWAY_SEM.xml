@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.7.5" descr="Водные переходы">
+    <data table="WATERWAY" schema="WEB50" id="WATERWAY" comment="WATERWAY">
+        <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+                <query>
+                    SELECT id, waterway_id, description, category_id, osm_id, "comments" FROM web50.waterway where {FILTER}
+                </query>
+            </dbQuery>
+        </select>
+       <insert>
+            <dbCommand>
+				<param name="WATERWAY_ID" type="Int64" default="0"  />
+                <param name="DESCRIPTION" default="" type="String"/>
+                <param name="CATEGORY_ID" default="" type="String"/>
+                <param name="OSM_ID" default="" type="String"/>
+                <param name="COMMENTS" default="" type="String"/>
+                <var name="ID" type="Int64" direction="Output" default="SELECT max(id) id FROM web50.waterway"/>
+                <query>
+					INSERT INTO web50.waterway
+                    (waterway_id, description, category_id, osm_id, "comments")
+                    VALUES( :WATERWAY_ID, :DESCRIPTION, :CATEGORY_ID, :OSM_ID, :COMMENTS)
+                </query>
+            </dbCommand>
+        </insert>
+        <update>
+            <dbCommand>
+				<param name="WATERWAY_ID" type="Int64" default="0"  />
+                <param name="DESCRIPTION" default="" type="String"/>
+                <param name="CATEGORY_ID" default="" type="String"/>
+                <param name="OSM_ID" default="" type="String"/>
+                <param name="COMMENTS" default="" type="String"/>
+                <param name="ID" type="Int64"/>
+                <query>
+                    UPDATE web50.waterway
+                    SET description=:DESCRIPTION, category_id=:CATEGORY_ID, osm_id=:OSM_ID, "comments"=:COMMENTS where id=:ID;
+                </query>
+            </dbCommand>
+        </update>
+        <delete>
+            <dbCommand>
+                <param name="ID" type="Int64" direction="Input"/>
+                <query>
+					DELETE FROM web50.waterway WHERE  id=:ID
+                </query>
+            </dbCommand>
+        </delete>
+    </data>
+    <data table="WATERWAY_CROSS" schema="WEB50" id="WATERWAY_CROSS" comment="WATERWAY.CROSS">
+        <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+                <query>
+                   select * from ( SELECT 
+                    waterway_cross_id id,
+                    waterway_cross_id, 
+                    line_id, waterway_id, 
+                    station_begin, station_end, 
+                    water_speed, pipe_constr, pipe_pressure, pipe_length,
+                    pipe_length_underwater, pipe_depth,
+                    inv_num, pipe_diameter, pipe_thickness,
+                    date_installed, pi_cp_type, insp_date, insp_performed_by, 
+                    insp_result_other_disorder, insp_result_condition, repair_date, repair_type, 
+                    repair_performed_by, repair_complited_work, repair_result_condition, srv_district
+                    FROM web50.waterway_cross ) dd where {FILTER}
+                </query>
+            </dbQuery>
+        </select>
+        <insert>
+            <dbCommand>
+                <var name="ID" type="Int64" direction="Output" default="SELECT max(waterway_cross_id) id FROM web50.waterway_cross"/>
+                <param name="LINE_ID" type="Int64" default="0" />
+                <param name="WATERWAY_ID" default="0" type="Int64" />
+                <param name="STATION_BEGIN" type="Decimal" default="0" />
+                <param name="STATION_END" default="0" type="Decimal" />
+                <param name="WATER_SPEED" default="0" type="Decimal" />
+                <param name="PIPE_CONSTR" default="" type="String" />
+                <param name="PIPE_PRESSURE" default="0" type="Decimal" />
+                <param name="PIPE_LENGTH" default="0" type="Decimal" />
+                <param name="PIPE_LENGTH_UNDERWATER" default="0" type="Decimal" />
+                <param name="INV_NUM" default="" type="String" />
+                <param name="PIPE_DIAMETERL" default="" type="Decimal" />
+                <param name="PIPE_THICKNESS" default="0" type="Decimal" />
+                <param name="DATE_INSTALLED" default="" type="DateTime" />
+                <param name="PI_CP_TYPE" default="" type="String" />
+                <param name="INSP_DATE" default="" type="DateTime" />
+                <param name="INSP_PERFORMED_BY" type="String" default="" />
+                <param name="INSP_RESULT_OTHER_DISORDER" default="" type="String" />
+                <param name="INSP_RESULT_CONDITION" default="" type="String" />
+                <param name="REPAIR_DATE" default="" type="DateTime" />
+                <param name="REPAIR_TYPE" default="" type="String" />
+                <param name="REPAIR_PERFORMED_BY" default="" type="String" />
+                <param name="REPAIR_COMPLITED_WORK" default="" type="String" />
+                <param name="REPAIR_RESULT_CONDITION" default="" type="String" />
+                <param name="SRV_DISTRICT" default="" type="String" />
+                <query>
+                    INSERT INTO web50.waterway_cross
+                    (line_id, waterway_id, station_begin, station_end, water_speed, pipe_constr, pipe_pressure, pipe_length, pipe_length_underwater, pipe_depth, inv_num, pipe_diameter, pipe_thickness, date_installed, pi_cp_type, insp_date, insp_performed_by, insp_result_other_disorder, insp_result_condition, repair_date, repair_type, repair_performed_by, repair_complited_work, repair_result_condition, srv_district)
+                    VALUES( :LINE_ID, :WATERWAY_ID, :STATION_BEGIN, :STATION_END, :WATER_SPEED, :PIPE_CONSTR, :PIPE_PRESSURE, :PIPE_LENGTH, :PIPE_LENGTH_UNDERWATER, :PIPE_DEPTH, :INV_NUM, :PIPE_DIAMETER, :PIPE_THICKNESS, :DATE_INSTALLED, :PI_CP_TYPE, :INSP_DATE, :INSP_PERFORMED_BY, :INSP_RESULT_OTHER_DISORDER, :INSP_RESULT_CONDITION, :REPAIR_DATE, :REPAIR_TYPE, :REPAIR_PERFORMED_BY, :REPAIR_COMPLITED_WORK, :REPAIR_RESULT_CONDITION, :SRV_DISTRICT)
+                </query>
+            </dbCommand>
+        </insert>
+        <update>
+            <dbCommand>
+                <param name="WATERWAY_CROSS_ID" type="Int64" default="0" /> 
+                <param name="LINE_ID" type="Int64" default="0" />
+                <param name="WATERWAY_ID" default="0" type="Int64" />
+                <param name="STATION_BEGIN" type="Decimal" default="0" />
+                <param name="STATION_END" default="0" type="Decimal" />
+                <param name="WATER_SPEED" default="0" type="Decimal" />
+                <param name="PIPE_CONSTR" default="" type="String" />
+                <param name="PIPE_PRESSURE" default="0" type="Decimal" />
+                <param name="PIPE_LENGTH" default="0" type="Decimal" />
+                <param name="PIPE_LENGTH_UNDERWATER" default="0" type="Decimal" />
+                <param name="INV_NUM" default="" type="String" />
+                <param name="PIPE_DIAMETERL" default="" type="Decimal" />
+                <param name="PIPE_THICKNESS" default="0" type="Decimal" />
+                <param name="DATE_INSTALLED" default="" type="DateTime" />
+                <param name="PI_CP_TYPE" default="" type="String" />
+                <param name="INSP_DATE" default="" type="DateTime" />
+                <param name="INSP_PERFORMED_BY" type="String" default="" />
+                <param name="INSP_RESULT_OTHER_DISORDER" default="" type="String" />
+                <param name="INSP_RESULT_CONDITION" default="" type="String" />
+                <param name="REPAIR_DATE" default="" type="DateTime" />
+                <param name="REPAIR_TYPE" default="" type="String" />
+                <param name="REPAIR_PERFORMED_BY" default="" type="String" />
+                <param name="REPAIR_COMPLITED_WORK" default="" type="String" />
+                <param name="REPAIR_RESULT_CONDITION" default="" type="String" />
+                <param name="SRV_DISTRICT" default="" type="String" />
+                <query>
+                    UPDATE web50.waterway_cross
+                    SET  line_id=:LINE_ID, waterway_id=:WATERWAY_ID, station_begin=:STATION_BEGIN, station_end=:STATION_END, water_speed=:WATER_SPEED, pipe_constr=:PIPE_CONSTR, pipe_pressure=:PIPE_PRESSURE, pipe_length=:PIPE_LENGTH, pipe_length_underwater=:PIPE_LENGTH_UNDERWATER, pipe_depth=:PIPE_DEPTH, inv_num=:INV_NUM, pipe_diameter=:PIPE_DIAMETER,pipe_thickness=:PIPE_THICKNESS, date_installed=:DATE_INSTALLED, pi_cp_type=:PI_CP_TYPE, insp_date=:INSP_DATE, insp_performed_by=:INSP_PERFORMED_BY, insp_result_other_disorder=:INSP_RESULT_OTHER_DISORDER, insp_result_condition=:INSP_RESULT_CONDITION, repair_date=:REPAIR_DATE, repair_type=:REPAIR_PERFORMED_BY, repair_performed_by=:REPAIR_PERFORMED_BY, repair_complited_work=:REPAIR_COMPLITED_WORK, repair_result_condition=:REPAIR_RESULT_CONDITION, srv_district=:SRV_DISTRICT where waterway_cross_id=:ID
+                </query>
+            </dbCommand>
+        </update>
+        <delete>
+            <dbCommand>
+                <param name="ID" type="Int64" direction="Input"/>
+                <query>
+                    DELETE FROM web50.waterway_cross    
+                    where waterway_cross_id=:ID
+                </query>
+            </dbCommand>
+        </delete>
+    </data>
+	<data id="WATERWAY_CL" comment="WEB50_WATERWAY_CL" schema="WEB50" table="WATERWAY_CL">
+        <select>
+          <dbQuery idField="ID">
+            <query>
+                SELECT distinct  WATERWAY_ID CODE, DESCRIPTION AS DESCR, 'Y' ACTIVE_INDICATOR_LF, 'OSM' SOURCE_GCL FROM WEB50.WATERWAY
+            </query>
+          </dbQuery>
+        </select>
+    </data>
+    <data id="WATERWAY_LINE_LIST" comment="WATERWAY_LINE_LIST" schema="WEB50" table="WATERWAY_LINE_LIST">
+        <select>
+          <dbQuery idField="ID">
+             <param name="ZONE_ID" default="" type="String"/>
+            <query>
+select distinct zone_id, c.line_id ,l.description||' '||round(c.station_begin,2)||' - '||round(c.station_end,2)||' км.' descr,  c.station_begin start_km, 
+c.station_end finish_km,
+(select p.measure_offset from web50.waterway_cross_station_point p where p.waterway_cross_id=c.waterway_cross_id and p.line_id=c.line_id limit 1) measure_offset
+from web50.waterway_cross c, pods.line l where zone_id={ZONE_ID} and l.line_id=c.line_id and (c.pipe_type like 'основная' or c.pipe_type is null)
+            </query>
+          </dbQuery>
+        </select>
+    </data>
+</root>    

@@ -1,0 +1,505 @@
+<root version="postgres 7.7.3.0">
+  <data id="WEB50_M_200_GIDR_LP" comment="WEB50.M_200_GIDR_LP" schema="WEB50" table="M_200_GIDR_LP">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C7,all_in_one.C8,all_in_one.C20,all_in_one.C21
+          ,all_in_one.C23,all_in_one.C24,all_in_one.C25,all_in_one.C26,all_in_one.C29
+          ,all_in_one.C30,all_in_one.C32,all_in_one.C36,all_in_one.C38,all_in_one.C141
+          ,all_in_one.C142,all_in_one.C144,all_in_one.C145,all_in_one.C146,all_in_one.C147
+          ,all_in_one.C149,all_in_one.C150,all_in_one.C157,all_in_one.C158,all_in_one.C162
+          ,all_in_one.C163,all_in_one.C165,all_in_one.C168,all_in_one.C175,all_in_one.C180
+          ,all_in_one.C182
+          FROM (SELECT m.*
+          FROM WEB50.M_200_GIDR_LP m) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_GIDR_LP_CNT" comment="WEB50.M_200_GIDR_LP" schema="WEB50" table="M_200_GIDR_LP">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_200_GIDR_LP m ) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_GIDR_S" comment="WEB50.M_200_GIDR_S" schema="WEB50" table="M_200_GIDR_S">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C7,all_in_one.C8,all_in_one.C11,all_in_one.C20
+          ,all_in_one.C21,all_in_one.C23,all_in_one.C24,all_in_one.C25,all_in_one.C26
+          ,all_in_one.C29,all_in_one.C30,all_in_one.C32,all_in_one.C36,all_in_one.C38
+          ,all_in_one.C141,all_in_one.C142,all_in_one.C145,all_in_one.C146,all_in_one.C147
+          ,all_in_one.C149,all_in_one.C150,all_in_one.C157,all_in_one.C158,all_in_one.C175
+          ,all_in_one.C180,all_in_one.C182
+          FROM (SELECT m.*
+          FROM WEB50.M_200_GIDR_S m) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_GIDR_S_CNT" comment="WEB50.M_200_GIDR_S" schema="WEB50" table="M_200_GIDR_S">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_200_GIDR_S m ) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_LIMITS" comment="WEB50.M_200_LIMITS" schema="WEB50" table="M_200_LIMITS">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C5,all_in_one.C111,all_in_one.C112,all_in_one.C180
+          
+          FROM (SELECT m.*
+          FROM WEB50.M_200_LIMITS m) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_LIMITS_CNT" comment="WEB50.M_200_LIMITS" schema="WEB50" table="M_200_LIMITS">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_200_LIMITS m ) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_PROM" comment="WEB50.M_200_PROM" schema="WEB50" table="M_200_PROM">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C51,all_in_one.C52,all_in_one.C53,all_in_one.C54
+          ,all_in_one.C55,all_in_one.C56,all_in_one.C57,all_in_one.C58,all_in_one.C59
+          ,all_in_one.C65,all_in_one.C66,all_in_one.C99,all_in_one.C142,all_in_one.C146
+          ,all_in_one.C160,all_in_one.C163,all_in_one.C164,all_in_one.C172,all_in_one.C180
+          ,all_in_one.C183
+          FROM (SELECT m.*
+          FROM WEB50.M_200_PROM m) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_PROM_CNT" comment="WEB50.M_200_PROM" schema="WEB50" table="M_200_PROM">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_200_PROM m ) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_PROM_GAS" comment="WEB50.M_200_PROM_GAS" schema="WEB50" table="M_200_PROM_GAS">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C51,all_in_one.C52,all_in_one.C53,all_in_one.C54
+          ,all_in_one.C55,all_in_one.C56,all_in_one.C57,all_in_one.C58,all_in_one.C59
+          ,all_in_one.C65,all_in_one.C66,all_in_one.C99,all_in_one.C142,all_in_one.C146
+          ,all_in_one.C160,all_in_one.C163,all_in_one.C164,all_in_one.C172,all_in_one.C180
+          ,all_in_one.C183
+          FROM (SELECT m.*
+          FROM WEB50.M_200_PROM_GAS m) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_PROM_GAS_CNT" comment="WEB50.M_200_PROM_GAS" schema="WEB50" table="M_200_PROM_GAS">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_200_PROM_GAS m ) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_RAST_LP" comment="WEB50.M_200_RAST_LP" schema="WEB50" table="M_200_RAST_LP">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C91,all_in_one.C92,all_in_one.C95,all_in_one.C96
+          ,all_in_one.C97,all_in_one.C102,all_in_one.C143,all_in_one.C149
+          FROM (SELECT m.*
+          FROM WEB50.M_200_RAST_LP m) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_RAST_LP_CNT" comment="WEB50.M_200_RAST_LP" schema="WEB50" table="M_200_RAST_LP">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_200_RAST_LP m ) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_RAST_S" comment="WEB50.M_200_RAST_S" schema="WEB50" table="M_200_RAST_S">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C91,all_in_one.C92,all_in_one.C94,all_in_one.C95
+          ,all_in_one.C96,all_in_one.C102,all_in_one.C103,all_in_one.C104,all_in_one.C143
+          ,all_in_one.C149,all_in_one.C180
+          FROM (SELECT m.*
+          FROM WEB50.M_200_RAST_S m) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_RAST_S_CNT" comment="WEB50.M_200_RAST_S" schema="WEB50" table="M_200_RAST_S">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_200_RAST_S m ) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_RELIEF" comment="WEB50.M_200_RELIEF" schema="WEB50" table="M_200_RELIEF">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C66,all_in_one.C89,all_in_one.C90,all_in_one.C141
+          ,all_in_one.C142,all_in_one.C146,all_in_one.C149,all_in_one.C150,all_in_one.C180
+          
+          FROM (SELECT m.*
+          FROM WEB50.M_200_RELIEF m) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_RELIEF_CNT" comment="WEB50.M_200_RELIEF" schema="WEB50" table="M_200_RELIEF">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_200_RELIEF m ) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_ROADS" comment="WEB50.M_200_ROADS" schema="WEB50" table="M_200_ROADS">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C67,all_in_one.C68,all_in_one.C70,all_in_one.C71
+          ,all_in_one.C72,all_in_one.C75,all_in_one.C76,all_in_one.C77,all_in_one.C80
+          ,all_in_one.C87,all_in_one.C142,all_in_one.C146,all_in_one.C147,all_in_one.C149
+          ,all_in_one.C158,all_in_one.C161,all_in_one.C162,all_in_one.C163,all_in_one.C165
+          ,all_in_one.C180,all_in_one.C182
+          FROM (SELECT m.*
+          FROM WEB50.M_200_ROADS m) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_ROADS_CNT" comment="WEB50.M_200_ROADS" schema="WEB50" table="M_200_ROADS">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_200_ROADS m ) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_SURVEY" comment="WEB50.M_200_SURVEY" schema="WEB50" table="M_200_SURVEY">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C1,all_in_one.C141,all_in_one.C168,all_in_one.C180
+          
+          FROM (SELECT m.*
+          FROM WEB50.M_200_SURVEY m) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_SURVEY_CNT" comment="WEB50.M_200_SURVEY" schema="WEB50" table="M_200_SURVEY">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_200_SURVEY m ) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_SWAMP" comment="WEB50.M_200_SWAMP" schema="WEB50" table="M_200_SWAMP">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C180
+          FROM (SELECT m.*
+          FROM WEB50.M_200_SWAMP m) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_SWAMP_CNT" comment="WEB50.M_200_SWAMP" schema="WEB50" table="M_200_SWAMP">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_200_SWAMP m ) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_TEXT" comment="WEB50.M_200_TEXT" schema="WEB50" table="M_200_TEXT">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.MIF_TEXT,all_in_one.C9,all_in_one.C172,all_in_one.C183
+          ,all_in_one.C192,all_in_one.C193
+          FROM (SELECT m.*
+          FROM WEB50.M_200_TEXT m) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_TEXT_CNT" comment="WEB50.M_200_TEXT" schema="WEB50" table="M_200_TEXT">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_200_TEXT m ) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_TOWN" comment="WEB50.M_200_TOWN" schema="WEB50" table="M_200_TOWN">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID, all_in_one.OBJ_CLS_ID
+          ,all_in_one.DESCR,all_in_one.C39,all_in_one.C40,all_in_one.C41,all_in_one.C42
+          ,all_in_one.C44,all_in_one.C45,all_in_one.C51,all_in_one.C52,all_in_one.C65
+          ,all_in_one.C66,all_in_one.C87,all_in_one.C99,all_in_one.C142,all_in_one.C163
+          ,all_in_one.C180,all_in_one.C182,all_in_one.C192
+
+          FROM (SELECT m.*
+          FROM WEB50.M_200_TOWN m) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_200_TOWN_CNT" comment="WEB50.M_200_TOWN" schema="WEB50" table="M_200_TOWN">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_200_TOWN m ) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+</root>

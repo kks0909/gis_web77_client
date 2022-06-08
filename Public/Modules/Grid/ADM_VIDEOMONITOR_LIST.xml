@@ -1,0 +1,74 @@
+﻿<!--7.7.6.8-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="4"  headerVertSize="50"
+            id="ADM_VIDEOMONITOR_LIST"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelTemplateName="ADM_VIDEOMONITOR_LIST"
+            layerId="LIB_DOC_GEO_VIDEO" propertyPanelName="LIB_DOC_GEO_VIDEO"
+            dataRequest="LIB_DOC_GRID.xml#LIB_DOC_GEO_VIDEO"
+            totalRecordsRequest="LIB_DOC_GRID.xml#LIB_DOC_GEO_VIDEO_CNT"
+            >
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/createObject.png"
+        tooltip="Создать объект"
+        clickEvent="ru.corelight.business.events.CreateObjectEvent"
+        isEnabled="null" />
+    <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../Public/assets/unknown.png"
+        tooltip="Привязать видеозапись к треку"
+        clickEvent="gridAdmVideomonitorSetTrackToVideo"
+        selectedObjects="1"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/unknown.png"
+        width="220"
+        tooltip="Привязать видеозапись к трубопроводу"
+        clickEvent="gridAdmVideomonitorSetRoutesToVideo"
+        selectedObjects="1"
+        position="top"/>
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=showInfoEvent;toolTip=Показать информацию по объекту"
+                          editable="true"/>
+      <columns:GridColumn headerText="Название видеозаписи" dataField="NAME"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="250"/>
+      <columns:GridColumn headerText="Адрес видеозаписи (FILE_NAME)" dataField="FILE_NAME"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="500"/>
+      <columns:GridColumn headerText="Документ ИД (DOC_ID)" dataField="ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="110"/>
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

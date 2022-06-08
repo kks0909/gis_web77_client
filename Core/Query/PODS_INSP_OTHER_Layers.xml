@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Файл описания слоёв "Оборудование линейной части" -->
+<root version="7.7.7.4" descr="Диагностические обследования прочие" name="NEW_DIAGNOSTIC">
+  <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml" />
+  <layer id="PODS_ILI_INSPECTION_RANGE" comment="PODS.ILI_INSPECTION_RANGE" descr="Участки ВТД, пройденные снарядом-дефектоскопом" topology="line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1050" visible="false" labelField="DESCRIPTION" classField="" schema="PODS" table="ILI_INSPECTION_RANGE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ILI_INSPECTION_RANGE" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_ILI_INSPECTION_RANGE"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ILI_INSPECTION_RANGE"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_ILI_INSPECTION_RANGE"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_ILI_INSPECTION_RANGE"/>
+  </layer>
+  <layer id="PODS_PI_GROUND_BED_READING" comment="PODS.PI_GROUND_BED_READING" descr="Данные ЭХЗ. Анодные заземления" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" order="660" visible="false" topology="point" fitMap="true" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_GROUND_BED_READING">
+    <filter>
+      <pattern> d.pi_cp_event_id IN ({FILTER}) </pattern>
+      <join>,</join>
+      <field>PODS_PI_CP_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_GROUND_BED_READING" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_GROUND_BED_READING"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_GROUND_BED_READING"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_GROUND_BED_READING"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_GROUND_BED_READING"/>
+  </layer>
+  <layer id="PODS_PI_ANODE_READING" comment="PODS.PI_ANODE_READING" descr="Данные ЭХЗ. Аноды" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" order="540" visible="false" topology="point" fitMap="true" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_ANODE_READING">
+    <filter>
+      <pattern> d.pi_cp_event_id IN ({FILTER}) </pattern>
+      <join>,</join>
+      <field>PODS_PI_CP_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_ANODE_READING" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_ANODE_READING"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_ANODE_READING"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_ANODE_READING"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_ANODE_READING"/>
+  </layer>
+  <layer id="PODS_PI_CASING_READING" comment="PODS.PI_CASING_READING" descr="Данные ЭХЗ. Защитные футляры" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" order="560" visible="false" topology="point" fitMap="true" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_CASING_READING">
+    <filter>
+      <pattern> d.pi_cp_event_id IN ({FILTER}) </pattern>
+      <join>,</join>
+      <field>PODS_PI_CP_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_CASING_READING" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CASING_READING"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_CASING_READING"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_CASING_READING"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_CASING_READING"/>
+  </layer>
+  <layer id="PODS_PI_IC_COUPON_READING" comment="PODS.PI_IC_COUPON_READING" descr="Данные ЭХЗ. Пластины контроля коррозионных процессов" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="READING" spacing="common" cover="false" fitMap="false" order="670" visible="false" topology="point" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_IC_COUPON_READING">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_IC_COUPON_READING" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_IC_COUPON_READING"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_IC_COUPON_READING"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_IC_COUPON_READING"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_IC_COUPON_READING"/>
+  </layer>
+  <layer id="PODS_PI_BOND_READING" comment="PODS.PI_BOND_READING" descr="Данные ЭХЗ. Соединительные провода и кабели" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" order="550" visible="false" topology="point" fitMap="true" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_BOND_READING">
+    <filter>
+      <pattern> d.pi_cp_event_id IN ({FILTER}) </pattern>
+      <join>,</join>
+      <field>PODS_PI_CP_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_BOND_READING" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_BOND_READING"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_BOND_READING"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_BOND_READING"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_BOND_READING"/>
+  </layer>
+  <layer id="PODS_PI_CP_INSPECTION" comment="PODS.PI_CP_INSPECTION" descr="Перечень обследований состояния ЭХЗ" topology="line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1130" visible="false" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_CP_INSPECTION">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_CP_INSPECTION" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_CP_INSPECTION"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_CP_INSPECTION"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_CP_INSPECTION"/>
+  </layer>
+  <!-- Не попавшие в рубрикатор -->
+  <layer id="PODS_PHYSICAL_INSPECTION" comment="PODS.PHYSICAL_INSPECTION" descr="Перечень наружных обследований" topology="line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1140" visible="false" labelField="DESCRIPTION" classField="" schema="PODS" table="PHYSICAL_INSPECTION">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PHYSICAL_INSPECTION" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PHYSICAL_INSPECTION"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PHYSICAL_INSPECTION"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PHYSICAL_INSPECTION"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PHYSICAL_INSPECTION"/>
+  </layer>
+  <layer id="PODS_PI_COATING_DATA" comment="PODS.PI_COATING_DATA" descr="Данные наружных обследований. Состояния изоляционного покрытия" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="580" visible="false" topology="point,line" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_COATING_DATA">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_COATING_DATA" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_COATING_DATA"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_COATING_DATA"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_COATING_DATA"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_COATING_DATA"/>
+  </layer>
+   <layer id="PODS_PI_CORROSION" comment="PODS.PI_CORROSION" descr="Данные наружных обследований. Общая коррозия" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="590" visible="false" topology="point,line" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_CORROSION">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_CORROSION" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CORROSION"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_CORROSION"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_CORROSION"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_CORROSION"/>
+  </layer>
+  <layer id="PODS_PI_CRACK" comment="PODS.PI_CRACK" descr="Данные наружных обследований. Наличие трещин" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="610" visible="false" topology="point,line" labelField="DESCRIPTION" classField="TYPE_CL" schema="PODS" table="PI_CRACK">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_CRACK" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CRACK"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_CRACK"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_CRACK"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_CRACK"/>
+  </layer>
+  <layer id="PODS_PI_DEBRIS" comment="PODS.PI_DEBRIS" descr="Данные наружных обследований. Мусор/загрязнения" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="620" visible="false" topology="point,line" labelField="DESCRIPTION" classField="TYPE_CL" schema="PODS" table="PI_DEBRIS">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_DEBRIS" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_DEBRIS"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_DEBRIS"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_DEBRIS"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_DEBRIS"/>
+  </layer>
+  <layer id="PODS_PI_ENVIRONMENT" comment="PODS.PI_ENVIRONMENT" descr="Данные наружных обследований. Состояние окружающей среды" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="630" visible="false" topology="point" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_ENVIRONMENT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_ENVIRONMENT" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_ENVIRONMENT"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_ENVIRONMENT"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_ENVIRONMENT"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_ENVIRONMENT"/>
+  </layer>
+  <layer id="PODS_PI_EXCAVATION" comment="PODS.PI_EXCAVATION" descr="Данные наружных обследований. Протяженные шурфы" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="640" visible="false" topology="point" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_EXCAVATION">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_EXCAVATION" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_EXCAVATION"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_EXCAVATION"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_EXCAVATION"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_EXCAVATION"/>
+  </layer>
+  <layer id="PODS_PI_GIRTH_WELD" comment="PODS.PI_GIRTH_WELD" descr="Данные наружных обследований. Сварные стыки" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="650" visible="false" topology="point,line" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_GIRTH_WELD">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_GIRTH_WELD" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_GIRTH_WELD"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_GIRTH_WELD"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_GIRTH_WELD"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_GIRTH_WELD"/>
+  </layer>
+  <layer id="PODS_PI_LEAK_SURVEY" comment="PODS.PI_LEAK_SURVEY" descr="Перечень обследований по выявлению утечек" topology="point,line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="680" visible="false" labelField="DESCRIPTION" classField="TYPE_CL" schema="PODS" table="PI_LEAK_SURVEY">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_LEAK_SURVEY" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_LEAK_SURVEY"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_LEAK_SURVEY"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_LEAK_SURVEY"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_LEAK_SURVEY"/>
+  </layer>
+  <layer id="PODS_PI_LEAK_SURVEY_READING" comment="PODS.PI_LEAK_SURVEY_READING" descr="Данные измерений при обследованиях по выявлению утечек" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="690" visible="false" topology="point" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_LEAK_SURVEY_READING">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_LEAK_SURVEY_READING" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_LEAK_SURVEY_READING"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_LEAK_SURVEY_READING"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_LEAK_SURVEY_READING"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_LEAK_SURVEY_READING"/>
+  </layer>
+  <layer id="PODS_PI_LONG_WELD" comment="PODS.PI_LONG_WELD" descr="Данные наружных обследований. Продольные швы" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="700" visible="false" topology="point,line" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_LONG_WELD">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_LONG_WELD" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_LONG_WELD"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_LONG_WELD"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_LONG_WELD"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_LONG_WELD"/>
+  </layer>
+  <layer id="PODS_PI_MARINE_GROWTH" comment="PODS.PI_MARINE_GROWTH" descr="Данные наружных обследований. Обрастание подводных участков" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="710" visible="false" topology="point,line" labelField="DESCRIPTION" classField="TYPE_CL" schema="PODS" table="PI_MARINE_GROWTH">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_MARINE_GROWTH" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_MARINE_GROWTH"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_MARINE_GROWTH"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_MARINE_GROWTH"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_MARINE_GROWTH"/>
+  </layer>
+  <layer id="PODS_PI_MATERIAL_DEFECT" comment="PODS.PI_MATERIAL_DEFECT" descr="Данные наружных обследований. Дефекты сплошности металла" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="720" visible="false" topology="point,line" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_MATERIAL_DEFECT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_MATERIAL_DEFECT" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_MATERIAL_DEFECT"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_MATERIAL_DEFECT"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_MATERIAL_DEFECT"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_MATERIAL_DEFECT"/>
+  </layer>
+  <layer id="PODS_PI_MECHANICAL_DAMAGE" comment="PODS.PI_MECHANICAL_DAMAGE" descr="Данные наружных обследований. Механические повреждения труб" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="730" visible="false" topology="point,line" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_MECHANICAL_DAMAGE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_MECHANICAL_DAMAGE" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_MECHANICAL_DAMAGE"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_MECHANICAL_DAMAGE"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_MECHANICAL_DAMAGE"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_MECHANICAL_DAMAGE"/>
+  </layer>
+  <layer id="PODS_PI_METAL_LOSS" comment="PODS.PI_METAL_LOSS" descr="Данные наружных обследований. Потери металла труб" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="740" visible="false" topology="point,line" labelField="DESCRIPTION" classField="TYPE_CL" schema="PODS" table="PI_METAL_LOSS">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_METAL_LOSS" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_METAL_LOSS"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_METAL_LOSS"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_METAL_LOSS"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_METAL_LOSS"/>
+  </layer>
+  <layer id="PODS_PI_PIPELINE_MOVEMENT" comment="PODS.PI_PIPELINE_MOVEMENT" descr="Данные наружных обследований. Смещения трубопровода" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="READING" spacing="common" cover="false" fitMap="false" order="750" visible="false" topology="point,line" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_PIPELINE_MOVEMENT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_PIPELINE_MOVEMENT" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_PIPELINE_MOVEMENT"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_PIPELINE_MOVEMENT"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_PIPELINE_MOVEMENT"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_PIPELINE_MOVEMENT"/>
+  </layer>
+  <layer id="PODS_PI_PIPE_CONDITION" comment="PODS.PI_PIPE_CONDITION" descr="Оценки состояния труб по данным обследований" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="760" visible="false" topology="point,line" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_PIPE_CONDITION">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_PIPE_CONDITION" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_PIPE_CONDITION"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_PIPE_CONDITION"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_PIPE_CONDITION"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_PIPE_CONDITION"/>
+  </layer>
+  <layer id="PODS_PI_RELIEF_VALVE" comment="PODS.PI_RELIEF_VALVE" descr="Данные наружных обследований. ЗРА" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="780" visible="false" topology="point" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_RELIEF_VALVE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_RELIEF_VALVE" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_RELIEF_VALVE"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_RELIEF_VALVE"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_RELIEF_VALVE"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_RELIEF_VALVE"/>
+  </layer>
+  <layer id="PODS_PI_RIGHT_OF_WAY" comment="PODS.PI_RIGHT_OF_WAY" descr="Данные наружных обследований. Нарушения охранной зоны" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="790" visible="false" topology="point,line" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_RIGHT_OF_WAY">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_RIGHT_OF_WAY" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_RIGHT_OF_WAY"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_RIGHT_OF_WAY"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_RIGHT_OF_WAY"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_RIGHT_OF_WAY"/>
+  </layer>
+  <layer id="PODS_PI_SOIL" comment="PODS.PI_SOIL" descr="Данные измерений. Грунты" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="800" visible="false" topology="point,line" labelField="DESCRIPTION" classField="TYPE_CL" schema="PODS" table="PI_SOIL">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_SOIL" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_SOIL"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_SOIL"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_SOIL"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_SOIL"/>
+  </layer>
+  <layer id="PODS_PI_SUBSEA_INSPECTION" comment="PODS.PI_SUBSEA_INSPECTION" descr="Перечень подводных обследований" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="810" visible="false" topology="line" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_SUBSEA_INSPECTION">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_SUBSEA_INSPECTION" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_SUBSEA_INSPECTION"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_SUBSEA_INSPECTION"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_SUBSEA_INSPECTION"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_SUBSEA_INSPECTION"/>
+  </layer>
+  <layer id="PODS_PI_WATER" comment="PODS.PI_WATER" descr="Данные измерений. Грунтовые воды" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="830" visible="false" topology="point,line" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_WATER">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_WATER" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_WATER"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_WATER"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_WATER"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_WATER"/>
+  </layer>
+  <layer id="PODS_SCC_PIPE_SUSCEPTIBILITY" comment="PODS.SCC_PIPE_SUSCEPTIBILITY" descr="Данные измерений. Подверженность стресс-коррозии" topology="point,line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="870" visible="false" labelField="DESCRIPTION" classField="" schema="PODS" table="SCC_PIPE_SUSCEPTIBILITY">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_SCC_PIPE_SUSCEPTIBILITY" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_SCC_PIPE_SUSCEPTIBILITY"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_SCC_PIPE_SUSCEPTIBILITY"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_SCC_PIPE_SUSCEPTIBILITY"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_SCC_PIPE_SUSCEPTIBILITY"/>
+  </layer>
+  <layer id="PODS_SCC_SOIL_POTENTIAL" comment="PODS.SCC_SOIL_POTENTIAL" descr="Данные измерений. Потенциалы грунта, вызывающие стресс-коррозию" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="READING" cover="false" fitMap="false" order="880" visible="false" topology="point,line" labelField="DESCRIPTION" classField="" schema="PODS" table="SCC_SOIL_POTENTIAL">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_SCC_SOIL_POTENTIAL" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_SCC_SOIL_POTENTIAL"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_SCC_SOIL_POTENTIAL"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_SCC_SOIL_POTENTIAL"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_SCC_SOIL_POTENTIAL"/>
+  </layer>
+  <layer id="PODS_PI_ADJACENT_CONSTRUCTION" comment="PODS.PI_ADJACENT_CONSTRUCTION" descr="Данные наружных обследований. Посторонние сооружения" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="850" visible="false" topology="point,line" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_ADJACENT_CONSTRUCTION">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_ADJACENT_CONSTRUCTION" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_ADJACENT_CONSTRUCTION"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_ADJACENT_CONSTRUCTION"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_ADJACENT_CONSTRUCTION"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_ADJACENT_CONSTRUCTION"/>
+  </layer>
+<layer id="PODS_PI_CP_INSPECTION_INTENS" comment="PODS.PI_CP_INSPECTION_INTENS" descr="Перечень обследований состояния ЭХЗ интенсивы" topology="line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1132" visible="false" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_CP_INSPECTION_INTENS">
+<!--<filter>
+      <pattern> d.pi_cp_event_id IN ({FILTER}) </pattern>
+      <join>,</join>
+      <field>PI_CP_EVENT_ID</field>
+      <replace>FILTER</replace>
+    </filter>-->
+ <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_CP_INSPECTION_INTENS" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_CP_INSPECTION_INTENS"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_CP_INSPECTION"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_CP_INSPECTION"/>
+</layer>
+<layer id="PODS_PI_CP_INSPECTION_KIP" comment="PODS.PI_CP_INSPECTION_KIP" descr="Перечень обследований состояния ЭХЗ на КИПах" topology="line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1131" visible="false" labelField="DESCRIPTION" classField="" schema="PODS" table="PI_CP_INSPECTION_KIP">
+<!--<filter>
+      <pattern> d.pi_cp_event_id IN ({FILTER}) </pattern>
+      <join>,</join>
+      <field>PI_CP_EVENT_ID</field>
+      <replace>FILTER</replace>
+    </filter>-->
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_CP_INSPECTION_KIP" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_CP_INSPECTION_KIP"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PI_CP_INSPECTION"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PI_CP_INSPECTION"/>
+  </layer>
+</root>

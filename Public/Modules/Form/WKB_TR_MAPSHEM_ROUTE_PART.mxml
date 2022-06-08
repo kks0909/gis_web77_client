@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns="view.data.*" xmlns:data="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns:mx="http://www.adobe.com/2006/mxml"
+                title="План капитальных ремонтов"
+                width="760"
+                ext_data_id="PODS_EXPORT.xml#WKB_TR_MAPSHEM_ROUTE_PART"
+                excelTemplate="WKB_TR_MAPSHEM_ROUTE_PART">
+  <dataProvider>TR_MAPSHEM_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+    <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+
+  <mx:HBox percentWidth="100">
+      <mx:VBox percentWidth="50">
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="СТО 292. Состояние трубопровода" width="140"/>
+            <mx:TextInput id="STO_292_2007_CONDITION" width="225" maxChars="50" height="40"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="СТО 292. Значение показателя состояния" width="140"/>
+            <mx:TextInput id="STO_292_2007_VALUE" width="225" maxChars="50" height="40"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Начало/конец участка,км" width="140"/>
+            <controls:NumberInput id="STATION_BEGIN" width="40" maxChars="22" height="20"/>
+            <controls:NumberInput id="STATION_END" width="40" maxChars="22" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+                    <mx:Text textAlign="right" text="Трубопровод" width="140"/>
+                    <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+                        <mx:ComboBox id="LINE_ID" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_LINE"/>
+                        <mx:Button id="BTN_LIST_LINE_ID" selectedField="PODS_LINE" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+                    </mx:HBox>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+                    <mx:Text textAlign="right" text="Тип трубопровода" width="140"/>
+                    <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+                        <mx:ComboBox id="CODE" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_ROUTE_TYPE_CL"/>
+                        <mx:Button id="BTN_LIST_TYPE_CL" selectedField="PODS_ROUTE_TYPE_CL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+                    </mx:HBox>
+                </mx:HBox>
+       
+      </mx:VBox>
+
+      <mx:VBox percentWidth="50">
+         <mx:HBox percentWidth="100">
+            <mx:Text textAlign="right" text="Название типа трубопровода" width="140"/>
+            <mx:TextInput id="ROUTE_TYPE_DESCRIPTION" width="160" maxChars="32" height="20"/>
+         </mx:HBox>
+         <mx:HBox percentWidth="100">
+                    <mx:Text textAlign="right" text="Дата проведения ВТД, по которой рассчитан показатель" width="140"/>
+                    <mx:DateField id="BEGIN_DATE" width="96" height="20" formatString="DD.MM.YYYY"/>
+         </mx:HBox>
+         
+         <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+            <mx:Text textAlign="right" text="Идентификатор трубопровода" width="140"/>
+            <controls:NumberInput id="ROUTE_ID" width="40" maxChars="22" height="20"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+            <mx:Text textAlign="right" text="Идентификатор обследованияа" width="140"/>
+            <controls:NumberInput id="ILI_INSPECTION_ID" width="40" maxChars="22" height="20"/>
+        </mx:HBox>
+      </mx:VBox>
+  </mx:HBox>
+  <validatorsArray>
+      
+  </validatorsArray>
+</DATA_EDIT_FORM>

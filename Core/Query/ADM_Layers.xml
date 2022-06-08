@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.3.0" descr="Служебная информация">
+  <dataProvider type="style" source="ADM_STYLE.xml" />
+  <layer id="ADM_VIDEOMONITOR" comment="ADM_VIDEOMONITOR" schema="WEB50" table="LIB_DOC" descr="Видеомониторинг">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#LIB_DOC_GEO_VIDEO" />
+    <dataProvider type="semantic" source="LIB_DOC_SEM.xml#LIB_DOC_GEO_VIDEO" />
+  </layer>
+  <layer id="ADM_AUDIT" comment="ADM_AUDIT" schema="WEB50" table="B_AUDIT_EVENT" descr="Журнал аудита">
+    <dataProvider type="semantic" source="ADM_SEM.xml#WEB50_B_AUDIT_EVENT" />
+  </layer>
+  <layer id="ADM_MAPS" comment="ADM_MAPS" schema="WEB50" table="M_MAP" descr="Карты">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_MAP" />
+    <dataProvider type="semantic" source="ADM_SEM.xml#WEB50_M_MAP" />
+  </layer>
+  <layer id="ADM_PIPE_SYSTEM" comment="ADM_PIPE_SYSTEM" schema="PODS" table="PIPE_SYSTEM_CL" descr="Коридоры">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PIPE_SYSTEM_CL" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PIPE_SYSTEM_CL" />
+  </layer>
+  <layer id="ADM_ILI" comment="ADM_ILI" schema="PODS" table="ILI_INSPECTION" descr="Отчёты ВТД">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ILI_INSPECTION" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ILI_INSPECTION" />
+  </layer>
+  <layer id="ADM_PI_CP" comment="ADM_PI_CP" schema="PODS" table="PI_CP_INSPECTION" descr="Отчёты ЭХЗ">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_CP_INSPECTION" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PI_CP_INSPECTION" />
+  </layer>
+  <layer id="ADM_POLICIES" comment="ADM_POLICIES" schema="WEB50" table="B_POLICY" descr="Политики безопасности">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_B_POLICY" />
+    <dataProvider type="semantic" source="ADM_SEM.xml#WEB50_B_POLICY" />
+  </layer>
+  <layer id="ADM_CONFIG" comment="ADM_CONFIG" schema="ADM" table="CONFIG" descr="Редактирование параметров конфигурации">
+    <dataProvider type="semantic" source="ADM_SEM.xml#GET_CLIENT_SETTINGS" />
+  </layer>
+  <layer id="ADM_ROLES" comment="ADM_ROLES" schema="WEB50" table="B_ROLE" descr="Роли">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_B_ROLE" />
+    <dataProvider type="semantic" source="ADM_SEM.xml#WEB50_B_ROLE" />
+  </layer>
+  <layer id="ADM_ROUTE" comment="ADM_ROUTE" schema="PODS" table="ROUTE" descr="Трубопровод">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ROUTE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ROUTE" />
+  </layer>
+  <layer id="ADM_LPU" comment="ADM_LPU" schema="PODS" table="SRV_DISTRICT_GCL" descr="Установка Зон и Номенклатур для ЛПУ">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_SRV_DISTRICT_GCL" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_SRV_DISTRICT_GCL" />
+  </layer>
+  <layer id="ADM_B_USER_PRIVATE" comment="ADM_B_USER_PRIVATE" schema="WEB50" table="B_USER_PRIVATE" descr="Учётные записи">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_B_USER_PRIVATE" />
+    <dataProvider type="semantic" source="ADM_SEM.xml#WEB50_B_USER_PRIVATE" />
+  </layer>
+  <layer id="ADM_LIB_DOC" comment="ADM_LIB_DOC" descr="Файловый архив" order="2" visible="false" type="system" dataType="vector" labelField="" classField="" spacing="" cover="false" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" schema="WEB50" table="LIB_DOC" topology="" fitMap="false" events="">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#LIB_DOC"/>
+    <dataProvider type="style" source="#"/>
+    <dataProvider type="semantic" source="LIB_DOC_SEM.xml#LIB_DOC"/>
+    <dataProvider type="spatial" source="#"/>
+    <dataProvider type="spatial_3D" source="#"/>
+  </layer>
+  <layer id="ADM_HODO" comment="ADM_HODO" descr="ХОДО" order="" visible="false" type="system" dataType="vector" labelField="" classField="" spacing="" cover="false" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" schema="WEB50" table="ROUTE_FOR_HODO" topology="" fitMap="false" events="">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ROUTE" />
+    <dataProvider type="style" source="#" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ROUTE" />
+    <dataProvider type="spatial" source="#" />
+    <dataProvider type="spatial_3D" source="#" />
+  </layer>
+<layer id="ADM_B_EDIT_CONTROLLER" comment="ADM_B_EDIT_CONTROLLER" schema="WEB50" table="B_EDIT_CONTROLLER" descr="Перечень контролируемых на предмет наличия изменений таблиц">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#ADM_B_EDIT_CONTROLLER" />
+    <dataProvider type="semantic" source="GAZPROM_ADM_SEM.xml#ADM_B_EDIT_CONTROLLER" />
+</layer>
+<layer id="ADM_B_EDIT_LOG" comment="ADM_B_EDIT_LOG" schema="WEB50" table="B_EDIT_LOG" descr="Перечень рассмотренных изменений">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#ADM_B_EDIT_LOG" />
+    <dataProvider type="semantic" source="GAZPROM_ADM_SEM.xml#ADM_B_EDIT_LOG" />
+</layer>
+<layer id="ADM_B_EDIT_TO_CONTROL" comment="ADM_B_EDIT_TO_CONTROL" schema="WEB50" table="B_EDIT_TO_CONTROL" descr="Изменения, ожидающие валидации контроллером">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#ADM_B_EDIT_TO_CONTROL" />
+    <dataProvider type="semantic" source="GAZPROM_ADM_SEM.xml#ADM_B_EDIT_TO_CONTROL" />
+</layer>
+</root>

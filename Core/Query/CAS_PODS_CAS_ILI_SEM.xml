@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="postgres 7.7.3.0">
+  <data table="ILI_KBD" schema="CAS" id="ILI_KBD" comment="CAS.ILI_KBD">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>SELECT * FROM (SELECT ILI_DATA_ID ID, t.* FROM PODS.ILI_DATA t JOIN pods.ili_anomaly_type_cl ia ON t.anomaly_type_cl = ia.code AND ia.category_cl = 1) d WHERE {FILTER}</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data table="ILI_DEPTH" schema="CAS" id="ILI_DEPTH" comment="CAS.ILI_DEPTH">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>SELECT * FROM (SELECT ILI_DATA_ID ID, t.* FROM PODS.ILI_DATA t JOIN pods.ili_anomaly_type_cl ia ON t.anomaly_type_cl = ia.code AND ia.category_cl = 1) d WHERE {FILTER}</query>
+      </dbQuery>
+    </select>
+  </data>
+</root>

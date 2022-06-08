@@ -1,0 +1,25 @@
+<div version="7.7.5.0" id="postId_{post_id}" class="postWrapper">
+    <div id="postHeaderId_{post_id}" class="postHeader">
+        <div class="postHeaderLeftColumn">{DESCR}<br/>{PARENT_NAME}</div>
+        <div class="postHeaderRightColumn">{NAME}</div>
+    </div>
+    <div id="postContentId_{post_id}" class="postContentWrapper">
+        <div style="text-align: center;">
+            <a href="#" onclick="if (ExportUtil!=undefined && typeof ExportUtil.exportToIMG=='function') ExportUtil.exportToIMG('{DOC_ID}','{FILE_NAME}');return false;" style="text-align: center;">
+                <img src="{image_file_name}">
+            </a>
+        </div>
+    </div>
+    <div id="postFooterId_{post_id}" class="postFooter">
+        <div class="postsAddPostHBox">
+            <div class="postFooterLeftColumn">{bottom_text}</div>
+            <div class="postFooterRightColumn">
+                <span>{header_text}</span>
+            </div>
+        </div>
+        <div class="postFooterBottomRight">
+            <span class="postFileLinkButton"><a href="#" onclick="if (App!=undefined && typeof App.getCurPostDocLink=='function') App.getCurPostDocLink('{file_path}','{post_id}');return false;"><img src="/ui/images/tag.png">Ссылка на файл</a> | </span>
+            <span class="postFileLoadButton"><a href="#" onclick="if (typeof App.openDocFile=='function') App.openDocFile('{file_path}','{post_id}'); return false;"><img src="/ui/images/save.png">Скачать файл</a></span>
+        </div>
+    </div>
+</div>

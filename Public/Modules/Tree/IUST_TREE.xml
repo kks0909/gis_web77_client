@@ -1,0 +1,564 @@
+﻿<dataset name="Спутниковый мониторинг" version="7.7.1.0">
+	<group comment="Команды" >
+		<invoke id="gridToolModule" type="global" event_name="FULL_GRID_EVENT_ID_MODULE"
+				 tooltip="Показать списком"
+				 icon="Public/assets/GRID.png">
+			<!-- Общие параметры-->
+			<!-- имя функции открытия, если пустое, то всегда в новом окне -->
+			<var name="functionName" value=""/>
+			<!-- доп параметры открытия окна из windowsTemplates.xml -->
+			<var name="windowTemplateId" value="gridWindow"/>
+			<!-- Задача -->
+			<var name="task" value="GRID"/>
+			<var name="mdl" value="Public/SWF/Grid_55.swf"/>
+			<!-- Необходимо ли в команды передавать фильтр верхнего уровня -->
+			<var name="needTopFilter" value="true"/>
+			<!-- Флаг указывает, всегда ли открывать в новом окне или можно использовать команды синхронизации -->
+			<var name="useSynchCommands" value="false"/>
+			<!-- шаблон грида -->
+			<var name="gridId" value=""/>
+			<!-- заголовок грида -->
+			<var name="title" value=""/>
+			<!-- полный идентификатор слоя -->
+			<var name="layerId" value=""/>
+		</invoke>
+		<invoke id="showFilterModule" type="global" event_name="FULL_GRID_ROUGH_FILTER_MODULE" tooltip="Показать списком" icon="Public/assets/GRID.png">
+			<!-- Общие параметры-->
+			<!-- имя функции открытия, если пустое, то всегда в новом окне -->
+			<var name="functionName" value=""/>
+			<!-- доп параметры открытия окна из windowsTemplates.xml -->
+			<var name="windowTemplateId" value="gridWindow"/>
+			<!-- Задача -->
+			<var name="task" value="GRID"/>
+			<var name="mdl" value="Public/SWF/Grid_55.swf"/>
+			<!-- Необходимо ли в команды передавать фильтр верхнего уровня -->
+			<var name="needTopFilter" value="true"/>
+			<!-- Флаг указывает, всегда ли открывать в новом окне или можно использовать команды синхронизации -->
+			<var name="useSynchCommands" value="false"/>
+
+			<!-- шаблон грида -->
+			<var name="gridId" value=""/>
+			<!-- заголовок грида -->
+			<var name="title" value=""/>
+			<!-- полный идентификатор слоя -->
+			<var name="layerId" value=""/>
+
+			<!-- Параметры для среднего фильтра -->
+			<var name="requestId" value="PODS_POLICY.xml#PODS_LINE_ID" />
+			<var name="variableName" value="LINE_ID" />
+			<var name="winTitle" value="Трубопровод" />
+			<var name="maxRecords" value="1" />
+		</invoke>
+		<invoke id="showGrid" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком" icon="Public/assets/GRID.png">
+			<var name="gridId" value="DEFAULT_GRID" />
+		</invoke>
+		<invoke id="showFilter" type="global" event_name="FULL_GRID_ROUGH_FILTER" tooltip="Показать списком" icon="Public/assets/GRID.png">
+			<var name="gridId" value="DEFAULT_GRID" />
+			<var name="requestId" value="PODS_POLICY.xml#PODS_LINE_ID" />
+			<var name="variableName" value="LINE_ID" />
+			<var name="winTitle" value="Трубопровод" />
+			<var name="maxRecords" value="1" />
+		</invoke>
+		<invoke id="createNewObject" type="global" event_name="createObjectFromTree" tooltip="Добавить запись" icon="Public/assets/addObject.png">
+			<var name="classId" value="DEFAULT_GRID" />
+		</invoke>
+		<invoke id="checkBoxTool" type="global" event_name="checkBoxEvent" tooltip="Вкл/Выкл видимость слоя">
+			<var layerParams="" />
+		</invoke>
+   </group>
+	<tree toolbarStyle="toolbarStyle" toolbarButtonStyle="mapIcon" max_items="20">
+    <level format="Объекты ГТС" icon="Public/assets/catalog.png" checkbox_type="childBased">
+	
+		<level format="Трубопроводы ГТС" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GTS_PIPELINE_L" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GTS_PIPELINE_L" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GTS_PIPELINE_L_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GTS_PIPELINE_L"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GTS_PIPELINE_L;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GTS_PIPELINE_L;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>		
+		</level>
+		<level format="Объекты ГТС, точечные" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GTS_OBJECTS_P" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GTS_OBJECTS_P" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GTS_OBJECTS_P_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GTS_OBJECTS_P"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GTS_OBJECTS_P;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GTS_OBJECTS_P;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>     
+	</level>
+    <level format="Объекты окружения" icon="Public/assets/catalog.png" checkbox_type="childBased">
+		<level format="ОО_Переходы и пересечения трубопровода" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#AMBIT_INDUSTRY_PIPELINE_P" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="AMBIT_INDUSTRY_PIPELINE_P" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="AMBIT_INDUSTRY_PIPELINE_P_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="AMBIT_INDUSTRY_PIPELINE_P"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_PIPELINE_P;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_PIPELINE_P;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОО_Опоры" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#AMBIT_INDUSTRY_COMM_P" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="AMBIT_INDUSTRY_COMM_P" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="AMBIT_INDUSTRY_COMM_P_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="AMBIT_INDUSTRY_COMM_P"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_COMM_P;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_COMM_P;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОО_Трубопроводная арматура" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#AMBIT_INDUSTRY_PIPE_UNITS_P" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="AMBIT_INDUSTRY_PIPE_UNITS_P" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="AMBIT_INDUSTRY_PIPE_UNITS_P_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="AMBIT_INDUSTRY_PIPE_UNITS_P"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_PIPE_UNITS_P;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_PIPE_UNITS_P;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОО_СПКЗ" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#AMBIT_INDUSTRY_PROTECT_P" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="AMBIT_INDUSTRY_PROTECT_P" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="AMBIT_INDUSTRY_PROTECT_P_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="AMBIT_INDUSTRY_PROTECT_P"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_PROTECT_P;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_PROTECT_P;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>	
+		<level format="ОО_Технологические объекты, не выражающиеся в масштабе" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#AMBIT_INDUSTRY_FILTERS_P" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="AMBIT_INDUSTRY_FILTERS_P" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="AMBIT_INDUSTRY_FILTERS_P_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="AMBIT_INDUSTRY_FILTERS_P"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_FILTERS_P;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_FILTERS_P;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОО_Резервуары и ёмкости" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#AMBIT_INDUSTRY_CAPACITIES_P" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="AMBIT_INDUSTRY_CAPACITIES_P" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="AMBIT_INDUSTRY_CAPACITIES_P_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="AMBIT_INDUSTRY_CAPACITIES_P"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_CAPACITIES_P;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_CAPACITIES_P;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОО_Мачты" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#AMBIT_INDUSTRY_ICS_P" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="AMBIT_INDUSTRY_ICS_P" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="AMBIT_INDUSTRY_ICS_P_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="AMBIT_INDUSTRY_ICS_P"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_ICS_P;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_ICS_P;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОО_Трубопроводы внешние" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#AMBIT_INDUSTRY_PIPELINE_L" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="AMBIT_INDUSTRY_PIPELINE_L" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="AMBIT_INDUSTRY_PIPELINE_L_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="AMBIT_INDUSTRY_PIPELINE_L"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_PIPELINE_L;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_PIPELINE_L;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level> 
+		<level format="ОО_Линии электропередач и связи" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#AMBIT_INDUSTRY_COMM_L" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="AMBIT_INDUSTRY_COMM_L" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="AMBIT_INDUSTRY_COMM_L_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="AMBIT_INDUSTRY_COMM_L"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_COMM_L;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_COMM_L;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>	
+		<level format="ОО_Дорожная сеть" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#AMBIT_ROADS_L" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="AMBIT_ROADS_L" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="AMBIT_ROADS_L_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="AMBIT_ROADS_L"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=AMBIT_ROADS_L;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=AMBIT_ROADS_L;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>	
+		<level format="ОО_Реки и ручьи" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#AMBIT_HYDRO_L" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="AMBIT_HYDRO_L" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="AMBIT_HYDRO_L_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="AMBIT_HYDRO_L"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=AMBIT_HYDRO_L;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=AMBIT_HYDRO_L;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОО_Строения" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#AMBIT_BUILDINGS_A" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="AMBIT_BUILDINGS_A" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="AMBIT_BUILDINGS_A_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="AMBIT_BUILDINGS_A"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=AMBIT_BUILDINGS_A;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=AMBIT_BUILDINGS_A;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>			
+		<level format="ОО_Технологические узлы и ГИС" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#AMBIT_INDUSTRY_PIPE_UNITS_A" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="AMBIT_INDUSTRY_PIPE_UNITS_A" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="AMBIT_INDUSTRY_PIPE_UNITS_A_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="AMBIT_INDUSTRY_PIPE_UNITS_A"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_PIPE_UNITS_A;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_PIPE_UNITS_A;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОО_АГНКС и АЗС" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#AMBIT_INDUSTRY_OILSTATIONS_A" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="AMBIT_INDUSTRY_OILSTATIONS_A" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="AMBIT_INDUSTRY_OILSTATIONS_A_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="AMBIT_INDUSTRY_OILSTATIONS_A"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_OILSTATIONS_A;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=AMBIT_INDUSTRY_OILSTATIONS_A;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОО_Площадки технологические и стоянки" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#AMBIT_PLATFORMS_A" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="AMBIT_PLATFORMS_A" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="AMBIT_PLATFORMS_A_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="AMBIT_PLATFORMS_A"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=AMBIT_PLATFORMS_A;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=AMBIT_PLATFORMS_A;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОО_Водоёмы" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#AMBIT_HYDRO_A" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="AMBIT_HYDRO_A" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="AMBIT_HYDRO_A_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="AMBIT_HYDRO_A"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=AMBIT_HYDRO_A;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=AMBIT_HYDRO_A;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОО_Растительность лесная" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#AMBIT_VEGETATION_FOREST_A" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="AMBIT_VEGETATION_FOREST_A" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="AMBIT_VEGETATION_FOREST_A_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="AMBIT_VEGETATION_FOREST_A"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=AMBIT_VEGETATION_FOREST_A;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=AMBIT_VEGETATION_FOREST_A;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОО_Растительность культурная" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#AMBIT_VEGETATION_FIELDS_A" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="AMBIT_VEGETATION_FIELDS_A" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="AMBIT_VEGETATION_FIELDS_A_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="AMBIT_VEGETATION_FIELDS_A"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=AMBIT_VEGETATION_FIELDS_A;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=AMBIT_VEGETATION_FIELDS_A;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>		
+	</level>	
+    <level format="Объекты общей топографии" icon="Public/assets/catalog.png" checkbox_type="childBased">
+    <level format="Точечные объекты" icon="Public/assets/catalog.png" checkbox_type="childBased">	
+		<level format="ОТ_Пограничные знаки" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_BOUNDARIES_P" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_BOUNDARIES_P" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_BOUNDARIES_P_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_BOUNDARIES_P"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_BOUNDARIES_P;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_BOUNDARIES_P;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>	
+		<level format="ОТ_Гидротехнические сооружения" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_HYDRAULICSTRUCT_P" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_HYDRAULICSTRUCT_P" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_HYDRAULICSTRUCT_P_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_HYDRAULICSTRUCT_P"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_HYDRAULICSTRUCT_P;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_HYDRAULICSTRUCT_P;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>	
+		<level format="ОТ_Водоёмы, не выражающиеся в масштабе" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_HYDROGRAPHY_P" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_HYDROGRAPHY_P" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_HYDROGRAPHY_P_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_HYDROGRAPHY_P"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_HYDROGRAPHY_P;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_HYDROGRAPHY_P;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>		
+		<level format="ОТ_Промышленные и вспомогательные объекты, не выражающиеся в масштабе" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_INDUCTRIALOBJ_P" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_INDUCTRIALOBJ_P" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_INDUCTRIALOBJ_P_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_INDUCTRIALOBJ_P"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_INDUCTRIALOBJ_P;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_INDUCTRIALOBJ_P;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОТ_Транспортные объекты, не выражающиеся в масштабе" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_ROADSTRUCTURES_P" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_ROADSTRUCTURES_P" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_ROADSTRUCTURES_P_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_ROADSTRUCTURES_P"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_ROADSTRUCTURES_P;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_ROADSTRUCTURES_P;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОТ_Перевалы и съезды с автодорог" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_ROADS_P" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_ROADS_P" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_ROADS_P_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_ROADS_P"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_ROADS_P;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_ROADS_P;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>	
+		<level format="ОТ_Элементарные формы рельефа" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_RELIEF_P" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_RELIEF_P" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_RELIEF_P_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_RELIEF_P"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_RELIEF_P;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_RELIEF_P;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>	
+		<level format="ОТ_Водные преграды и направления течения" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_HYDROGRAPHYREL_P" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_HYDROGRAPHYREL_P" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_HYDROGRAPHYREL_P_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_HYDROGRAPHYREL_P"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_HYDROGRAPHYREL_P;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_HYDROGRAPHYREL_P;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>	
+		<level format="ОТ_Стоянки юрт и чумов" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_SETTLEMENTS_P" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_SETTLEMENTS_P" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_SETTLEMENTS_P_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_SETTLEMENTS_P"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_SETTLEMENTS_P;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_SETTLEMENTS_P;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>	
+		<level format="ОТ_Одиночная растительность" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_VEGETATION_P" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_VEGETATION_P" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_VEGETATION_P_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_VEGETATION_P"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_VEGETATION_P;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_VEGETATION_P;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+	</level>
+    <level format="Линейные объекты" icon="Public/assets/catalog.png" checkbox_type="childBased">			
+		<level format="ОТ_Транспортные сооружения" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_ROADSTRUCTURES_L" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_ROADSTRUCTURES_L" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_ROADSTRUCTURES_L_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_ROADSTRUCTURES_L"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_ROADSTRUCTURES_L;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_ROADSTRUCTURES_L;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОТ_Вспомогательные трубопроводы и ограды" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_INDUCTRIALOBJ_L" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_INDUCTRIALOBJ_L" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_INDUCTRIALOBJ_L_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_INDUCTRIALOBJ_L"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_INDUCTRIALOBJ_L;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_INDUCTRIALOBJ_L;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОТ_Водопроводящие и водоподпорные сооружения" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_HYDRAULICSTRUCT_L" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_HYDRAULICSTRUCT_L" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_HYDRAULICSTRUCT_L_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_HYDRAULICSTRUCT_L"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_HYDRAULICSTRUCT_L;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_HYDRAULICSTRUCT_L;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОТ_Подземные участки рек, каналы и канавы" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_HYDROGRAPHY_L" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_HYDROGRAPHY_L" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_HYDROGRAPHY_L_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_HYDROGRAPHY_L"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_HYDROGRAPHY_L;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_HYDROGRAPHY_L;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОТ_Вспомогательные дороги" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_ROADS_L" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_ROADS_L" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_ROADS_L_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_ROADS_L"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_ROADS_L;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_ROADS_L;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОТ_Границы" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_BOUNDARIES_L" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_BOUNDARIES_L" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_BOUNDARIES_L_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_BOUNDARIES_L"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_BOUNDARIES_L;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_BOUNDARIES_L;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОТ_Полосы древесных насаждений и просеки" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_VEGETATION_L" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_VEGETATION_L" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_VEGETATION_L_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_VEGETATION_L"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_VEGETATION_L;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_VEGETATION_L;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОТ_Гидрографический рельеф" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_HYDROGRAPHYREL_L" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_HYDROGRAPHYREL_L" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_HYDROGRAPHYREL_L_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_HYDROGRAPHYREL_L"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_HYDROGRAPHYREL_L;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_HYDROGRAPHYREL_L;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОТ_Рельеф" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_RELIEF_L" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_RELIEF_L" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_RELIEF_L_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_RELIEF_L"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_RELIEF_L;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_RELIEF_L;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+	</level>
+    <level format="Площадные объекты" icon="Public/assets/catalog.png" checkbox_type="childBased">	
+		<level format="ОТ_Станции, платформы и стоянки" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_ROADSTRUCTURES_A" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_ROADSTRUCTURES_A" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_ROADSTRUCTURES_A_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_ROADSTRUCTURES_A"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_ROADSTRUCTURES_A;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_ROADSTRUCTURES_A;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОТ_Судоремонтные сооружения и насосные станции" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_HYDRAULICSTRUCT_A" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_HYDRAULICSTRUCT_A" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_HYDRAULICSTRUCT_A_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_HYDRAULICSTRUCT_A"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_HYDRAULICSTRUCT_A;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_HYDRAULICSTRUCT_A;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОТ_Промышленные и вспомогательные сооружения и территории" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_INDUCTRIALOBJ_A" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_INDUCTRIALOBJ_A" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_INDUCTRIALOBJ_A_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_INDUCTRIALOBJ_A"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_INDUCTRIALOBJ_A;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_INDUCTRIALOBJ_A;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОТ_Кварталы и улицы, ОТ_Населенные пункты" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_SETTLEMENTS_A" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_SETTLEMENTS_A" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_SETTLEMENTS_A_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_SETTLEMENTS_A"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_SETTLEMENTS_A;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_SETTLEMENTS_A;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОТ_Берега и водная растительность" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_HYDROGRAPHYREL_A" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_HYDROGRAPHYREL_A" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_HYDROGRAPHYREL_A_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_HYDROGRAPHYREL_A"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_HYDROGRAPHYREL_A;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_HYDROGRAPHYREL_A;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОТ_Грунты и поверхности" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_SOIL_A" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_SOIL_A" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_SOIL_A_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_SOIL_A"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_SOIL_A;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_SOIL_A;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОТ_Поверхности рельефа" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_RELIEF_A" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_RELIEF_A" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_RELIEF_A_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_RELIEF_A"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_RELIEF_A;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_RELIEF_A;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОТ_Растительность вспомогательная" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_VEGETATION_A" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_VEGETATION_A" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_VEGETATION_A_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_VEGETATION_A"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_VEGETATION_A;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_VEGETATION_A;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+		<level format="ОТ_Административные территории" icon="OPENSCALE" levelParams="layerId=IUST_LAYERS.xml#GEO_BOUNDARIES_A" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="GEO_BOUNDARIES_A" FILE_NAME="IUST_STYLE.xml" >  </query>
+			<context_menu run_invoke="gridToolModule" title="{descr}" gridId="GEO_BOUNDARIES_A_LIST"/>
+			<context_menu run_invoke="createNewObject" classId="GEO_BOUNDARIES_A"/>
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=GEO_BOUNDARIES_A;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=GEO_BOUNDARIES_A;" />
+				<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+				<query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="IUST_STYLE.xml" />
+				</level>			
+		</level>
+	</level>		
+	</level>		
+    </tree>  
+</dataset>

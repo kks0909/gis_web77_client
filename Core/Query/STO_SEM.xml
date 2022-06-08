@@ -1,0 +1,2544 @@
+﻿<root version="postgres 7.7.4.7">
+  <data id="PODS_STO_SHEET_EXCAVATE_LIST_BATCH_RECREATE" comment="Команды для групповых вставки и  дефектов в ведомость создаваемую из существующей" schema="STO" table="pods.sto_sheet_excavate_list">
+     <insert>
+      <dbCommand> 
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(SHEET_ID) id FROM pods.sto_sheet_excavate_list" /> 
+        <var name="FILTER" default="1=1"/>
+        <var name="ROUTE_ID" default="NULL"/>
+        <var name="BEGIN_MEASURE" default="1000000000"/>
+        <var name="END_MEASURE" default="-1"/>
+        <var name="ILI_LBL" default=""/>
+        <var name="ROUTE_DESCR" default=""/>
+        <var name="ILI_INSPECTION_ID" default="-1"/>
+        <var name="SHEET_ID" default="NULL"/>
+        <var name="SHEET_ID_OLD" default="-1"/>		
+        <query>
+          INSERT INTO 
+            pods.sto_sheet_excavate_list
+          (
+            sheet_id,
+            ili_data_id,
+            description,
+            type,
+            comments,
+            phys_comments,
+            ddk_ds_weld_odometer,
+            ddk_weld_description,
+            ddk_weld_orientation_deg,
+            ddk_weld_length,
+            ddk_wall_thickness,
+            ddk_anomaly_type_cl,
+            ddk_ds_weld_distance,
+            ddk_orientation_deg,
+            ddk_length,
+            ddk_width,
+            ddk_depth,
+            ctime,
+            cuser_id,
+           ddk_pipe_material_type_cl,
+            ddk_pipe_standard_cl,
+            ddk_pipe_construction_type_cl,
+            ddk_pipe_manufacturer_cl,
+            ddk_pipe_isolation_cl,
+            ddk_orientation_def1,
+            ddk_orientation_def2
+          )
+           select   
+            {SHEET_ID} SHEET_ID,
+            ILI_DATA_ID,
+            null DESCRIPTION,
+            type_def "TYPE",
+            null "COMMENTS",
+            null PHYS_COMMENTS,
+            null DDK_DS_WELD_ODOMETER,
+            null DDK_WELD_DESCRIPTION,
+            null DDK_WELD_ORIENTATION_DEG,
+            null DDK_WELD_LENGTH,
+            null DDK_WALL_THICKNESS,
+            null DDK_ANOMALY_TYPE_CL,
+            null DDK_DS_WELD_DISTANCE,
+            null DDK_ORIENTATION_DEG,
+            null DDK_LENGTH,
+            null DDK_WIDTH,
+            null DDK_DEPTH,
+            current_timestamp,
+            {USER_ID} USER_ID,
+            null DDK_PIPE_MATERIAL_TYPE_CL,
+            null DDK_PIPE_STANDARD_CL,
+            null DDK_PIPE_CONSTRUCTION_TYPE_CL,
+            null DDK_PIPE_MANUFACTURER_CL,
+            null DDK_PIPE_ISOLATION_CL,
+            null DDK_ORIENTATION_DEF1,
+            null DDK_ORIENTATION_DEF2
+           from (
+               SELECT 
+           id,
+          event_id,
+          ili_inspection_id,
+          description,
+          comments,
+          station,
+          measure,
+          type_def,
+          weld_number,
+          absolute_odometer,
+          us_weld_distance,
+          ds_weld_distance,
+          average_depth,
+          length,
+          width,
+          orientation_deg::char orientation_deg,
+          anomaly_type_cl,
+          internal_external_cl,
+          anomaly_extension_cl,
+          ovality,
+          seam_orientation,
+          measured_wall_thickness,
+          nominal_wall_thickness,
+          coordinate_id,
+          feature_description,
+          ili_data_id,
+          ili_cluster_id,
+          (select '{ROUTE_DESCR}' limit 1) "LABEL"
+               from 
+          (select * from 
+          (
+          select 
+          d.ili_data_id id,
+          d.event_id,
+          d.ili_inspection_id,
+          d.description,
+          d.comments,
+          s.station,
+          s.measure,
+          'ДЕФЕКТ_ОДИНОЧНЫЙ' type_def,
+          d.weld_number,
+          d.absolute_odometer,
+          d.us_weld_distance,
+          d.ds_weld_distance,
+          d.average_depth,
+          d.length,
+          d.width,
+          d.orientation_deg::char orientation_deg,
+          d.anomaly_type_cl,
+          d.internal_external_cl,
+          d.anomaly_extension_cl,
+          d.ovality,
+          d.seam_orientation,
+          d.measured_wall_thickness,
+          d.nominal_wall_thickness,
+          d.coordinate_id,
+          d.feature_description,
+          d.ili_data_id,
+          null ili_cluster_id
+           from 
+           pods.ili_data d
+           join pods.event_range e on d.event_id=e.event_id
+           join pods.station_point s on s.route_id={ROUTE_ID} and s.measure&gt;={BEGIN_MEASURE} and s.measure&lt;={END_MEASURE} and e.station_id_begin=s.station_id
+           join pods.sto_sheet_excavate_list se on se.ili_data_id=d.ili_data_id and se.sheet_id={SHEET_ID_OLD}
+           ) dd ) all_in_one WHERE {FILTER}) ff
+        </query>
+      </dbCommand>
+    </insert>
+  </data>  
+<data id="PODS_STO_SHEET_EXCAVATE_LIST_BATCH" comment="Команды для групповых вставки и удаления дефектов в ведомости шурфовок" schema="STO" table="pods.sto_sheet_excavate_list">
+     <insert>
+      <dbCommand> 
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(SHEET_ID) id FROM pods.sto_sheet_excavate_list" /> 
+        <var name="FILTER" default="1=1"/>
+        <var name="ROUTE_ID" default="NULL"/>
+        <var name="BEGIN_MEASURE" default="1000000000"/>
+        <var name="END_MEASURE" default="-1"/>
+        <var name="ILI_LBL" default=""/>
+        <var name="ROUTE_DESCR" default=""/>
+        <var name="ILI_INSPECTION_ID" default="-1"/>
+        <var name="SHEET_ID" default="NULL"/>
+        <query>
+          INSERT INTO 
+            pods.sto_sheet_excavate_list
+          (
+            sheet_id,
+            ili_data_id,
+            description,
+            type,
+            comments,
+            phys_comments,
+            ddk_ds_weld_odometer,
+            ddk_weld_description,
+            ddk_weld_orientation_deg,
+            ddk_weld_length,
+            ddk_wall_thickness,
+            ddk_anomaly_type_cl,
+            ddk_ds_weld_distance,
+            ddk_orientation_deg,
+            ddk_length,
+            ddk_width,
+            ddk_depth,
+            ctime,
+            cuser_id,
+           ddk_pipe_material_type_cl,
+            ddk_pipe_standard_cl,
+            ddk_pipe_construction_type_cl,
+            ddk_pipe_manufacturer_cl,
+            ddk_pipe_isolation_cl,
+            ddk_orientation_def1,
+            ddk_orientation_def2
+          )
+           select   
+            {SHEET_ID} SHEET_ID,
+            ILI_DATA_ID,
+            null DESCRIPTION,
+            type_def "TYPE",
+            null "COMMENTS",
+            null PHYS_COMMENTS,
+            null DDK_DS_WELD_ODOMETER,
+            null DDK_WELD_DESCRIPTION,
+            null DDK_WELD_ORIENTATION_DEG,
+            null DDK_WELD_LENGTH,
+            null DDK_WALL_THICKNESS,
+            null DDK_ANOMALY_TYPE_CL,
+            null DDK_DS_WELD_DISTANCE,
+            null DDK_ORIENTATION_DEG,
+            null DDK_LENGTH,
+            null DDK_WIDTH,
+            null DDK_DEPTH,
+            current_timestamp,
+            {USER_ID} USER_ID,
+            null DDK_PIPE_MATERIAL_TYPE_CL,
+            null DDK_PIPE_STANDARD_CL,
+            null DDK_PIPE_CONSTRUCTION_TYPE_CL,
+            null DDK_PIPE_MANUFACTURER_CL,
+            null DDK_PIPE_ISOLATION_CL,
+            null DDK_ORIENTATION_DEF1,
+            null DDK_ORIENTATION_DEF2
+           from (
+               SELECT 
+           id,
+          event_id,
+          ili_inspection_id,
+          description,
+          comments,
+          station,
+          measure,
+          type_def,
+          weld_number,
+          absolute_odometer,
+          us_weld_distance,
+          ds_weld_distance,
+          average_depth,
+          length,
+          width,
+          orientation_deg::char orientation_deg,
+          anomaly_type_cl,
+          internal_external_cl,
+          anomaly_extension_cl,
+          ovality,
+          seam_orientation,
+          measured_wall_thickness,
+          nominal_wall_thickness,
+          coordinate_id,
+          feature_description,
+          ili_data_id,
+          ili_cluster_id,
+          (select '{ROUTE_DESCR}' limit 1) "LABEL"
+               from 
+          (select * from 
+          (
+          select 
+          d.ili_data_id id,
+          d.event_id,
+          d.ili_inspection_id,
+          d.description,
+          d.comments,
+          s.station,
+          s.measure,
+          'ДЕФЕКТ_ОДИНОЧНЫЙ' type_def,
+          d.weld_number,
+          d.absolute_odometer,
+          d.us_weld_distance,
+          d.ds_weld_distance,
+          d.average_depth,
+          d.length,
+          d.width,
+          d.orientation_deg::char orientation_deg,
+          d.anomaly_type_cl,
+          d.internal_external_cl,
+          d.anomaly_extension_cl,
+          d.ovality,
+          d.seam_orientation,
+          d.measured_wall_thickness,
+          d.nominal_wall_thickness,
+          d.coordinate_id,
+          d.feature_description,
+          d.ili_data_id,
+          null ili_cluster_id
+           from 
+           pods.ili_data d
+           join pods.event_range e on d.event_id=e.event_id
+           join pods.station_point s on s.route_id={ROUTE_ID} and s.measure&gt;={BEGIN_MEASURE} and s.measure&lt;={END_MEASURE} and e.station_id_begin=s.station_id
+		   /*JOIN pods.ili_anomaly_type_cl ia ON d.anomaly_type_cl = ia.code AND ia.category_cl in (0,1)*/
+           join pods.sto_ili_data_adv d_adv on d_adv.ili_data_id=d.ili_data_id and d_adv.danger in ('(b)','(a)')
+           where d.ili_inspection_id={ILI_INSPECTION_ID}
+           ) dd ) all_in_one WHERE {FILTER}) ff
+        </query>
+      </dbCommand>
+    </insert>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="String" direction="Input" />
+        <query>
+          DELETE FROM pods.sto_sheet_excavate_list WHERE list_id  in ({ID})
+        </query>
+      </dbCommand>
+    </delete>
+  </data>
+	<data table="STO_SHURF_DATE_DICT" schema="PODS" id="PODS_STO_SHURF_DATE_DICT" comment="PODS.STO_SHURF_PLAN">
+        <select>
+            <dbQuery idField="ID">                
+                <query>
+                    select 2012 code,2012 descr union ALL
+          					select 2013 code,2013 descr  union ALL
+          					select 2014 code,2014 descr  union ALL
+          					select 2015 code,2015 descr  union ALL
+          					select 2016 code,2016 descr  union ALL
+          					select 2017 code,2017 descr  union ALL
+          					select 2018 code,2018 descr  union ALL
+          					select 2019 code,2019 descr  union ALL
+          					select 2020 code,2020 descr	 union ALL
+          					select 2021 code,2021 descr	 union ALL
+          					select 2022 code,2022 descr                  
+          			</query>
+            </dbQuery>
+        </select>
+      </data>
+    <data table="STO_SHURF_PLAN" schema="PODS" id="PODS_STO_SHURF_PLAN" comment="PODS.STO_SHURF_PLAN">
+        <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+                <query>
+                    SELECT *
+                    FROM (SELECT t.ili_data_id ID, t.*,
+                    ili_inspection_id, calc_cnt, cluster_cnt, stess_cnt, calc_cnt, insp_def_cnt, rep_def_cnt 
+                    FROM pods.STO_SHURF_PLAN t JOIN pods.STO_SHURF_PLAN ia
+                    ON t.anomaly_type_cl = ia.code AND ia.category_cl in (0,1)
+                    LEFT JOIN pods.sto_ili_data_adv c ON t.ili_data_id = c.ili_data_id
+                    ) d WHERE {FILTER}
+                </query>
+            </dbQuery>
+        </select>
+      </data>
+	 <data table="STO_ILI_DATA_SHEET_BASE" schema="PODS" id="PODS_STO_ILI_DATA_SHEET_BASE" comment="PODS.STO_ILI_DATA_SHEET_BASE">
+        <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+                <query>
+                    SELECT *
+                    FROM (SELECT t.ili_data_id ID, t.*,
+                    absolute_odometer, us_weld_distance, ds_weld_distance, weld_number, weld_length, weld_type, anomaly_type_cl, orientation_deg, nominal_wall_thickness, length, width, average_depth, orientation_deg, comments, 
+					UNKNOWN1, UNKNOWN2, UNKNOWN3, UNKNOWN4, UNKNOWN5, UNKNOWN6, UNKNOWN7, UNKNOWN8
+                     FROM pods.STO_ILI_DATA_SHEET_BASE t JOIN pods.STO_ILI_DATA_SHEET_BASE ia
+                    ON t.anomaly_type_cl = ia.code AND ia.category_cl in (0,1)
+                    LEFT JOIN pods.sto_ili_data_adv c ON t.ili_data_id = c.ili_data_id
+                    ) d WHERE {FILTER}
+                </query>
+            </dbQuery>
+        </select>
+      </data>
+<data table="STO_SHEET_EXCAVATE" schema="PODS" id="PODS_STO_SHEET_EXCAVATE_BLANK" comment="копия PODS_STO_SHEET_EXCAVATE_BLANK для сохранения ведомости из формы, где нет полей участка и обследования. Заполняются автоматом ">
+      <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(SHEET_ID) id FROM pods.sto_sheet_excavate" /> 
+        <param name="DESCRIPTION" type="String" direction="Input" />
+        <param name="TYPE_CL" type="String" direction="Input" />
+        <param name="STO_ILI_INSP_EVENT_ID" type="Int64" direction="Input" />
+        <param name="ILI_INSPECTION_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+    <param name="PHYS_DATE_BEGIN" default="" type="DateTime"/>
+    <param name="PHYS_DATE_END" default="" type="DateTime"/>
+    <param name="PHYS_ORGANIZATION_EXEC" type="String" direction="Input" />
+    <param name="PHYS_DATE_RELEASE" default="" type="DateTime"/>
+    <param name="PHYS_SHEET_NUMBER" type="String" direction="Input" />
+    <param name="PHYS_CONTROL_REASON" type="String" direction="Input" />
+    <param name="PHYS_COMMENTS" type="String" direction="Input" />
+    <param name="PHYS_RESOLUTION" type="String" direction="Input" />
+        <query>
+          INSERT INTO pods.sto_sheet_excavate
+(
+  sto_ili_insp_event_id,
+  ili_inspection_id,
+  description,
+  type_cl,
+  phys_date_begin,
+  phys_date_end,
+  phys_organization_exec,
+  phys_date_release,
+  phys_sheet_number,
+  phys_control_reason,
+  phys_comments,
+  phys_resolution,
+  ctime,
+  cuser_id
+)
+VALUES (
+  :STO_ILI_INSP_EVENT_ID,
+  :ILI_INSPECTION_ID,
+  :DESCRIPTION,
+  :TYPE_CL,
+  :PHYS_DATE_BEGIN,
+  :PHYS_DATE_END,
+  :PHYS_ORGANIZATION_EXEC,
+  :PHYS_DATE_RELEASE,
+  :PHYS_SHEET_NUMBER,
+  :PHYS_CONTROL_REASON,
+  :PHYS_COMMENTS,
+  :PHYS_RESOLUTION,
+  current_timestamp,
+  :USER_ID
+)
+    </query>
+      </dbCommand>
+    </insert>
+      </data>
+
+   <data table="STO_SHEET_EXCAVATE" schema="PODS" id="PODS_STO_SHEET_EXCAVATE" comment="PODS.STO_SHEET_EXCAVATE">
+        <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <query>
+                    SELECT *
+                    FROM (SELECT 
+e.sheet_id id,
+  e.sheet_id,
+  e.sto_ili_insp_event_id,
+  l.description||' '||round(sb.station)||' - '||round(se.station)||' км' insp_route_description,
+  e.ili_inspection_id,
+  tv.description||', '||to_char(i.begin_date,'YYYY')||' г.' insp_description,
+  e.description,
+  e.type_cl,
+  e.ctime,
+  (SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = e.cuser_id) AS CUSER,
+  e.mtime,
+  (SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = e.muser_id) AS MUSER,
+  e.phys_date_begin,
+  e.phys_date_end,
+  e.phys_organization_exec,
+  e.phys_date_release,
+  e.phys_sheet_number,
+  e.phys_control_reason,
+  e.phys_comments,
+  e.phys_resolution
+FROM 
+  pods.sto_sheet_excavate e,pods.event_Range er,pods.station_point sb,pods.station_point se,pods.line l,pods.ili_inspection i,pods.ili_tool_vendor_cl tv
+  where e.sto_ili_insp_event_id=er.event_id and er.station_id_begin=sb.station_id and er.station_id_end=se.station_id and sb.line_id=l.line_id 
+and e.ili_inspection_id=i.ili_inspection_id and tv.code=i.tool_vendor_cl
+ ) d WHERE {FILTER}
+                </query>
+            </dbQuery>
+        </select>
+      <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(SHEET_ID) id FROM pods.sto_sheet_excavate" /> 
+        <param name="DESCRIPTION" type="String" direction="Input" />
+        <param name="TYPE_CL" type="String" direction="Input" />
+        <param name="STO_ILI_INSP_EVENT_ID" type="Int64" direction="Input" />
+        <param name="ILI_INSPECTION_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+	  <param name="PHYS_DATE_BEGIN" default="" type="DateTime"/>
+	  <param name="PHYS_DATE_END" default="" type="DateTime"/>
+	  <param name="PHYS_ORGANIZATION_EXEC" type="String" direction="Input" />
+	  <param name="PHYS_DATE_RELEASE" default="" type="DateTime"/>
+	  <param name="PHYS_SHEET_NUMBER" type="String" direction="Input" />
+	  <param name="PHYS_CONTROL_REASON" type="String" direction="Input" />
+	  <param name="PHYS_COMMENTS" type="String" direction="Input" />
+	  <param name="PHYS_RESOLUTION" type="String" direction="Input" />
+        <query>
+	        INSERT INTO pods.sto_sheet_excavate
+(
+  sto_ili_insp_event_id,
+  ili_inspection_id,
+  description,
+  type_cl,
+  phys_date_begin,
+  phys_date_end,
+  phys_organization_exec,
+  phys_date_release,
+  phys_sheet_number,
+  phys_control_reason,
+  phys_comments,
+  phys_resolution,
+  ctime,
+  cuser_id
+)
+VALUES (
+  :STO_ILI_INSP_EVENT_ID,
+  :ILI_INSPECTION_ID,
+  :DESCRIPTION,
+  :TYPE_CL,
+  :PHYS_DATE_BEGIN,
+  :PHYS_DATE_END,
+  :PHYS_ORGANIZATION_EXEC,
+  :PHYS_DATE_RELEASE,
+  :PHYS_SHEET_NUMBER,
+  :PHYS_CONTROL_REASON,
+  :PHYS_COMMENTS,
+  :PHYS_RESOLUTION,
+  current_timestamp,
+  :USER_ID
+)
+		</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="DESCRIPTION" type="String" direction="Input" />
+        <param name="TYPE_CL" type="String" direction="Input" />
+        <param name="STO_ILI_INSP_EVENT_ID" type="Int64" direction="Input" />
+        <param name="ILI_INSPECTION_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />	
+	  <param name="PHYS_DATE_BEGIN" default="" type="DateTime"/>
+	  <param name="PHYS_DATE_END" default="" type="DateTime"/>
+	  <param name="PHYS_ORGANIZATION_EXEC" type="String" direction="Input" />
+	  <param name="PHYS_DATE_RELEASE" default="" type="DateTime"/>
+	  <param name="PHYS_SHEET_NUMBER" type="String" direction="Input" />
+	  <param name="PHYS_CONTROL_REASON" type="String" direction="Input" />
+	  <param name="PHYS_COMMENTS" type="String" direction="Input" />
+	  <param name="PHYS_RESOLUTION" type="String" direction="Input" />
+        <query>
+	UPDATE   pods.sto_sheet_excavate SET 
+  sto_ili_insp_event_id = :STO_ILI_INSP_EVENT_ID,
+  ili_inspection_id = :ILI_INSPECTION_ID,
+  description = :DESCRIPTION,
+  type_cl = :TYPE_CL,
+  phys_date_begin = :PHYS_DATE_BEGIN,
+  phys_date_end = :PHYS_DATE_END,
+  phys_organization_exec = :PHYS_ORGANIZATION_EXEC,
+  phys_date_release = :PHYS_DATE_RELEASE,
+  phys_sheet_number = :PHYS_SHEET_NUMBER,
+  phys_control_reason = :PHYS_CONTROL_REASON,
+  phys_comments = :PHYS_COMMENTS,
+  phys_resolution = :PHYS_RESOLUTION,
+  mtime = current_timestamp,
+  muser_id = :USER_ID
+WHERE 
+  sheet_id = :ID
+		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+        <query>
+		DO $$
+	    BEGIN
+	        DELETE FROM pods.sto_sheet_excavate_list WHERE   sheet_id = {ID};
+	        DELETE FROM pods.sto_sheet_excavate WHERE   sheet_id = {ID};
+	    END $$;
+		</query>
+      </dbCommand>
+    </delete>
+      </data>
+
+
+   <data table="STO_SHEET_MTR" schema="PODS" id="PODS_STO_SHEET_MTR" comment="PODS.STO_SHEET_MTR">
+          <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <query>
+                    SELECT *
+                    FROM (SELECT 
+e.sheet_id id,
+e.sheet_id, 
+e.sto_ili_insp_event_id,  
+e.ili_inspection_id,  
+  l.description||' '||round(sb.station)||' - '||round(se.station)||' км' insp_route_description,
+  tv.description||', '||to_char(i.begin_date,'YYYY')||' г.' insp_description,
+e.description,  
+e.type_cl,  
+e.comments,  
+e.ctime,  
+  (SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = e.cuser_id) AS CUSER,
+  e.mtime,
+  (SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = e.muser_id) AS MUSER
+FROM   pods.sto_sheet_mtd e,pods.event_Range er,pods.station_point sb,pods.station_point se,pods.line l,pods.ili_inspection i,pods.ili_tool_vendor_cl tv
+  where e.sto_ili_insp_event_id=er.event_id and er.station_id_begin=sb.station_id and er.station_id_end=se.station_id and sb.line_id=l.line_id
+and e.ili_inspection_id=i.ili_inspection_id and tv.code=i.tool_vendor_cl
+  ) d WHERE {FILTER}
+                </query>
+            </dbQuery>
+        </select>
+      <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(SHEET_ID) id FROM pods.sto_sheet_mtd" /> 
+        <param name="DESCRIPTION" type="String" direction="Input" />
+        <param name="COMMENTS" type="String" direction="Input" />
+        <param name="TYPE_CL" type="String" direction="Input" />
+        <param name="STO_ILI_INSP_EVENT_ID" type="Int64" direction="Input" />
+        <param name="ILI_INSPECTION_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+	        INSERT INTO pods.sto_sheet_mtd
+(
+  sto_ili_insp_event_id,
+  ili_inspection_id,
+  description,
+  type_cl,
+  comments,
+  ctime,
+  cuser_id,
+  mtime,
+  muser_id
+)
+VALUES (
+  :STO_ILI_INSP_EVENT_ID,
+  :ILI_INSPECTION_ID,
+  :DESCRIPTION,
+  :TYPE_CL,
+  :COMMENTS,
+  current_timestamp,
+  :USER_ID,
+  null,
+  null
+)
+		</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="DESCRIPTION" type="String" direction="Input" />
+        <param name="COMMENTS" type="String" direction="Input" />
+        <param name="TYPE_CL" type="String" direction="Input" />
+        <param name="STO_ILI_INSP_EVENT_ID" type="Int64" direction="Input" />
+        <param name="ILI_INSPECTION_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />	
+        <query>
+	UPDATE   pods.sto_sheet_mtd SET 
+  sto_ili_insp_event_id = :STO_ILI_INSP_EVENT_ID,
+  ili_inspection_id = :ILI_INSPECTION_ID,
+  description = :DESCRIPTION,
+  type_cl = :TYPE_CL,
+  comments = :COMMENTS,
+  mtime = current_timestamp,
+  muser_id = :USER_ID
+WHERE 
+  sheet_id = :ID
+		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+        <query>
+	        DELETE FROM pods.sto_sheet_mtd WHERE   sheet_id = :ID
+		</query>
+      </dbCommand>
+    </delete>
+      </data>
+
+  <data table="STO_SHEET_REPAIR" schema="PODS" id="PODS_STO_SHEET_REPAIR" comment="PODS.STO_SHEET_REPAIR">
+          <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <query>
+                    SELECT *
+                    FROM (SELECT 
+e.sheet_id id,
+e.sheet_id,
+e.sto_ili_insp_event_id,
+e.ili_inspection_id,
+  l.description||' '||round(sb.station)||' - '||round(se.station)||' км' insp_route_description,
+  tv.description||', '||to_char(i.begin_date,'YYYY')||' г.' insp_description,
+e.sheet_number,
+e.description,
+e.comments,
+e.organization_exec,
+e.ctime,
+  (SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = e.cuser_id) AS CUSER,
+  e.mtime,
+  (SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = e.muser_id) AS MUSER,
+e.date_begin,
+e.date_end,
+e.gas_value
+FROM 
+  pods.sto_sheet_repair e,pods.event_Range er,pods.station_point sb,pods.station_point se,pods.line l,pods.ili_inspection i,pods.ili_tool_vendor_cl tv
+  where e.sto_ili_insp_event_id=er.event_id and er.station_id_begin=sb.station_id and er.station_id_end=se.station_id and sb.line_id=l.line_id
+and e.ili_inspection_id=i.ili_inspection_id and tv.code=i.tool_vendor_cl
+) d WHERE {FILTER}
+                </query>
+            </dbQuery>
+        </select>
+      <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(SHEET_ID) id FROM pods.sto_sheet_repair" />
+        <param name="DESCRIPTION" type="String" direction="Input" />
+        <param name="COMMENTS" type="String" direction="Input" />
+        <param name="ORGANIZATION_EXEC" type="String" direction="Input" />
+        <param name="SHEET_NUMBER" type="String" direction="Input" />
+        <param name="STO_ILI_INSP_EVENT_ID" type="Int64" direction="Input" />
+        <param name="ILI_INSPECTION_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <param name="DATE_BEGIN" default="" type="DateTime" direction="Input"/>
+        <param name="DATE_END" default="" type="DateTime" direction="Input"/>
+        <param name="GAS_VALUE" type="Decimal" default="NULL" direction="Input" />
+        <query>
+	        INSERT INTO 
+  pods.sto_sheet_repair
+(
+  sto_ili_insp_event_id,
+  ili_inspection_id,
+  sheet_number,
+  description,
+  comments,
+  organization_exec,
+  ctime,
+  cuser_id,
+  date_begin,
+  date_end,
+  gas_value
+)
+VALUES (
+  :STO_ILI_INSP_EVENT_ID,
+  :ILI_INSPECTION_ID,
+  :SHEET_NUMBER,
+  :DESCRIPTION,
+  :COMMENTS,
+  :ORGANIZATION_EXEC,
+  current_timestamp,
+  :USER_ID,
+  :DATE_BEGIN,
+  :DATE_END,
+  :GAS_VALUE)
+		</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="DESCRIPTION" type="String" direction="Input" />
+        <param name="COMMENTS" type="String" direction="Input" />
+        <param name="ORGANIZATION_EXEC" type="String" direction="Input" />
+        <param name="SHEET_NUMBER" type="String" direction="Input" />
+        <param name="STO_ILI_INSP_EVENT_ID" type="Int64" direction="Input" />
+        <param name="ILI_INSPECTION_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />	
+        <param name="DATE_BEGIN" default="" type="DateTime" direction="Input"/>
+        <param name="DATE_END" default="" type="DateTime" direction="Input"/>
+        <param name="GAS_VALUE" type="Decimal" default="NULL" direction="Input" />
+        <query>
+UPDATE 
+  pods.sto_sheet_repair 
+SET 
+  sto_ili_insp_event_id = :STO_ILI_INSP_EVENT_ID,
+  ili_inspection_id = :ILI_INSPECTION_ID,
+  sheet_number = :SHEET_NUMBER,
+  description = :DESCRIPTION,
+  comments = :COMMENTS,
+  organization_exec = :ORGANIZATION_EXEC,
+  mtime = current_timestamp,
+  muser_id = :USER_ID,
+  date_begin= :DATE_BEGIN,
+  date_end= :DATE_END,
+  gas_value=:GAS_VALUE
+WHERE 
+  sheet_id = :ID
+		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+        <query>
+	       DO $$
+	    BEGIN
+	        DELETE FROM pods.sto_sheet_repair_list WHERE   sheet_id = {ID};
+	        DELETE FROM pods.sto_sheet_repair WHERE   sheet_id = {ID};
+	    END $$;
+		</query>
+      </dbCommand>
+    </delete>
+      </data>
+
+
+<data id="STO_DICT_1" comment="Запрос на перечень межкрановых участков" schema="STO" table="STO_ILI_RANGE">
+	<select>
+		<dbQuery>
+	<var name="ILI_INSP_FILTER" default="SELECT ILI_INSPECTION_ID FROM PODS.ILI_INSPECTION"/>		
+			<query>
+		with cnt as (select distinct d.weld_number,ss.measure,ad.danger,d.ili_inspection_id from pods.ili_data d,pods.event_range er,pods.station_point ss,pods.sto_ili_data_adv ad
+		 where  d.event_id>0 and d.event_id=er.event_id and er.station_id_begin=ss.station_id and ad.ili_data_id=d.ili_data_id and d.ili_inspection_id in ({ILI_INSP_FILTER}))
+SELECT 
+ l.description||', '||round(spb.station)||' - '||round(spe.station)||' км. '||to_Char(i.begin_date,'DD.MM.YYYY') route_descr,
+f.ili_inspection_id,
+f.event_id, 
+spb.station station_begin,
+spe.station station_end,
+spb.measure begin_measure,
+spe.measure end_measure,
+spb.route_id, 
+spb.station_id 
+station_id_begin,
+spe.station_id station_id_end,
+  (select res from (
+    select v.name||' ('|| spb.station||' км)' res from pods.valve v,pods.event_range ee where v.event_id=ee.event_id
+   and ee.station_id_begin=spb.station_id union all
+   select v.description||' ('|| spb.station||' км)' res from pods.launcher_receiver v,pods.event_range ee where v.event_id=ee.event_id
+   and ee.station_id_begin=spb.station_id
+      ) d limit 1)  beg_name,
+  (select res from (select v.name||' ('|| spe.station||' км)' res from pods.valve v,pods.event_range ee where v.event_id=ee.event_id
+   and ee.station_id_begin=spe.station_id union all
+   select v.description||' ('|| spb.station||' км)' res from pods.launcher_receiver v,pods.event_range ee where v.event_id=ee.event_id
+   and ee.station_id_begin=spe.station_id) d limit 1) end_name,
+  coalesce((select count(*) from cnt c where c.ili_inspection_id=f.ILI_INSPECTION_ID and c.measure&gt;=spb.measure and c.measure&lt;spe.measure and c.danger like '%(a)%'),0) cat_a,
+  coalesce((select count(*) from cnt c where c.ili_inspection_id=f.ILI_INSPECTION_ID and c.measure&gt;=spb.measure and c.measure&lt;spe.measure and c.danger like '%(b)%'),0) cat_b,
+  coalesce((select count(*) from cnt c where c.ili_inspection_id=f.ILI_INSPECTION_ID and c.measure&gt;=spb.measure and c.measure&lt;spe.measure and c.danger like '%(c)%'),0) cat_c
+   from  pods.sto_ili_inspection_calc f
+   join pods.event_range e
+     on e.event_id=f.event_id and f.ili_inspection_id in ({ILI_INSP_FILTER}) and f.type_cl like 'Оценка состояния по межконструкционным участкам'
+   join pods.station_point spb
+     on spb.station_id =e.station_id_begin
+   join pods.station_point spe
+     on spe.station_id =e.station_id_end  
+   join pods.line l
+    on l.line_id=spb.line_id
+   join pods.ili_inspection i 
+     on i.ili_inspection_id=f.ili_inspection_id   
+ order by  spb.measure
+			</query>
+		</dbQuery>
+	</select>
+</data>
+
+<data id="STO_DATA_EXC_CHOOSE" comment="Перечень ведомостей шурфовок для данного отчета ВТД" schema="STO" table="pods.sto_sheet_excavate">
+     <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <query>
+select 
+  sheet_id id, 
+  sto_ili_insp_event_id,
+  spb.route_id,
+  spb.measure begin_measure,
+  spe.measure end_measure,
+  ili_inspection_id,
+ spb.station||'-'||spe.station||' км, '||t.description||', '||e.description descr
+ from pods.sto_sheet_excavate e
+ join pods.event_Range er
+ on e.sto_ili_insp_event_id=er.event_id 
+ join pods.station_point spb
+ ON er.station_id_begin=spb.station_id
+ join pods.station_point spe
+ on er.station_id_end=spe.station_id
+ left join pods.sto_sheet_type_cl t
+ on  t.code=e.type_cl
+where e.ili_inspection_id in ({ILI_INSP_FILTER}) 
+                </query>
+            </dbQuery>
+        </select>
+</data>
+
+<data id="STO_DATA_REP_CHOOSE" comment="Перечень ведомостей ремонтов для данного отчета ВТД" schema="STO" table="pods.sto_sheet_repair">
+     <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <query>
+select 
+  sheet_id id, 
+  sto_ili_insp_event_id,
+  spb.route_id,
+  spb.measure begin_measure,
+  spe.measure end_measure,
+  ili_inspection_id,
+  '№'||e.sheet_number||', '||e.description descr
+ from pods.sto_sheet_repair e, pods.event_Range er,pods.station_point spb,pods.station_point spe
+where e.ili_inspection_id in ({ILI_INSP_FILTER}) and e.sto_ili_insp_event_id=er.event_id 
+and er.station_id_begin=spb.station_id
+ and er.station_id_end=spe.station_id
+                </query>
+            </dbQuery>
+        </select>
+</data>
+
+<data id="STO_DATA_MTD_CHOOSE" comment="Перечень ведомостей МТР для данного отчета ВТД" schema="STO" table="pods.sto_sheet_mtd">
+     <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <query>
+select 
+  sheet_id id, 
+  sto_ili_insp_event_id,
+  spb.route_id,
+  spb.measure begin_measure,
+  spe.measure end_measure,
+  ili_inspection_id,
+  t.description||', '||e.description descr
+ from pods.sto_sheet_mtd e
+ join pods.event_Range er
+ on e.sto_ili_insp_event_id=er.event_id 
+ join pods.station_point spb
+ ON er.station_id_begin=spb.station_id
+ join pods.station_point spe
+ on er.station_id_end=spe.station_id
+ left join pods.sto_sheet_type_cl t
+ on  t.code=e.type_cl
+where e.ili_inspection_id in ({ILI_INSP_FILTER}) 
+                </query>
+            </dbQuery>
+        </select>
+</data>
+
+<data id="PODS_STO_SHEET_EXCAVATE_LIST" comment="Команды для работы со вкладкой по сведениям о шурфовке и наружном контроле" schema="STO" table="pods.sto_sheet_excavate_list">
+     <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <query>
+                    SELECT *
+                    FROM (SELECT 
+  el.list_id id,
+  el.list_id,
+  el.sheet_id,
+  l.description||' '||round(sb.station)||' - '||round(se.station)||' км' insp_route_description,
+  el.ili_data_id,
+  el.ili_cluster_id,
+  el.description,
+  el.type,
+  el.comments,
+  el.ctime,
+  (SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = el.cuser_id) AS CUSER,
+  el.mtime,
+  (SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = el.muser_id) AS MUSER,
+  el.phys_comments,
+  el.ddk_ds_weld_odometer,
+  el.ddk_weld_description,
+  el.ddk_weld_orientation_deg,
+  el.ddk_weld_length,
+  el.ddk_wall_thickness,
+  el.ddk_anomaly_type_cl,
+  el.ddk_ds_weld_distance,
+  el.ddk_orientation_deg,
+  el.ddk_length,
+  el.ddk_width,
+  el.ddk_depth,
+  el.ddk_pipe_material_type_cl,
+  el.ddk_pipe_standard_cl,
+  el.ddk_pipe_construction_type_cl,
+  el.ddk_pipe_manufacturer_cl,
+  el.ddk_pipe_isolation_cl,
+  el.ddk_orientation_def1,
+  el.ddk_orientation_def2
+					FROM 
+					  pods.sto_sheet_excavate_list el,pods.sto_sheet_excavate e,pods.event_Range er,pods.station_point sb,pods.station_point se,pods.line l
+  where el.sheet_id=e.sheet_id and
+e.sto_ili_insp_event_id=er.event_id and er.station_id_begin=sb.station_id and er.station_id_end=se.station_id and sb.line_id=l.line_id) d WHERE {FILTER}
+                </query>
+            </dbQuery>
+        </select>
+    <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(LIST_ID) id FROM pods.sto_sheet_excavate_list" /> 
+        <param name="DESCRIPTION" type="String" default="" direction="Input" />
+        <param name="COMMENTS" type="String" default="" direction="Input" />
+        <param name="TYPE" type="String" default="" direction="Input" />
+        <param name="SHEET_ID" type="Int64" direction="Input" />
+        <param name="ILI_DATA_ID" type="Int64" direction="Input" />
+        <param name="ILI_CLUSTER_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <param name="PHYS_COMMENTS" type="String" default="" direction="Input" />
+        <param name="DDK_DS_WELD_ODOMETER" type="Decimal" default="NULL" direction="Input" />
+        <param name="DDK_WELD_DESCRIPTION" type="String" default="" direction="Input" />
+        <param name="DDK_WELD_ORIENTATION_DEG" type="Decimal" default="NULL" direction="Input" />
+        <param name="DDK_WELD_LENGTH" type="Decimal" default="NULL" direction="Input" />
+        <param name="DDK_WALL_THICKNESS" type="Decimal" default="NULL" direction="Input" />
+        <param name="DDK_ANOMALY_TYPE_CL" type="Int64" default="NULL" direction="Input" />
+        <param name="DDK_DS_WELD_DISTANCE" type="Decimal" default="NULL" direction="Input" />
+        <param name="DDK_ORIENTATION_DEG" type="Decimal" default="NULL" direction="Input" />
+        <param name="DDK_LENGTH" type="Decimal" default="NULL" direction="Input" />
+        <param name="DDK_WIDTH" type="Decimal" default="NULL" direction="Input" />
+        <param name="DDK_DEPTH" type="Decimal" default="NULL" direction="Input" />
+        <param name="DDK_PIPE_MATERIAL_TYPE_CL" default="UNKNOWN" type="String" direction="Input"/>
+        <param name="DDK_PIPE_STANDARD_CL" default="UNKNOWN" type="String" direction="Input"/>
+        <param name="DDK_PIPE_CONSTRUCTION_TYPE_CL" default="UNKNOWN" type="String" direction="Input"/>
+        <param name="DDK_PIPE_MANUFACTURER_CL" default="UNKNOWN" type="String" direction="Input"/>
+        <param name="DDK_PIPE_ISOLATION_CL" default="UNKNOWN" type="String" direction="Input"/>
+        <param name="DDK_ORIENTATION_DEF1" default="NULL" type="Decimal" direction="Input"/>
+        <param name="DDK_ORIENTATION_DEF2" default="NULL" type="Decimal" direction="Input"/>
+        <query>
+	        INSERT INTO 
+  pods.sto_sheet_excavate_list
+(
+  sheet_id,
+  ili_data_id,
+  ili_cluster_id,
+  description,
+  type,
+  comments,
+  phys_comments,
+  ddk_ds_weld_odometer,
+  ddk_weld_description,
+  ddk_weld_orientation_deg,
+  ddk_weld_length,
+  ddk_wall_thickness,
+  ddk_anomaly_type_cl,
+  ddk_ds_weld_distance,
+  ddk_orientation_deg,
+  ddk_length,
+  ddk_width,
+  ddk_depth,
+  ctime,
+  cuser_id,
+ ddk_pipe_material_type_cl,
+  ddk_pipe_standard_cl,
+  ddk_pipe_construction_type_cl,
+  ddk_pipe_manufacturer_cl,
+  ddk_pipe_isolation_cl,
+  ddk_orientation_def1,
+  ddk_orientation_def2
+)
+VALUES (
+  :SHEET_ID,
+  :ILI_DATA_ID,
+  :ILI_CLUSTER_ID,
+  :DESCRIPTION,
+  :TYPE,
+  :COMMENTS,
+  :PHYS_COMMENTS,
+  :DDK_DS_WELD_ODOMETER,
+  :DDK_WELD_DESCRIPTION,
+  :DDK_WELD_ORIENTATION_DEG,
+  :DDK_WELD_LENGTH,
+  :DDK_WALL_THICKNESS,
+  :DDK_ANOMALY_TYPE_CL,
+  :DDK_DS_WELD_DISTANCE,
+  :DDK_ORIENTATION_DEG,
+  :DDK_LENGTH,
+  :DDK_WIDTH,
+  :DDK_DEPTH,
+  current_timestamp,
+  :USER_ID,
+  :DDK_PIPE_MATERIAL_TYPE_CL,
+  :DDK_PIPE_STANDARD_CL,
+  :DDK_PIPE_CONSTRUCTION_TYPE_CL,
+  :DDK_PIPE_MANUFACTURER_CL,
+  :DDK_PIPE_ISOLATION_CL,
+  :DDK_ORIENTATION_DEF1,
+  :DDK_ORIENTATION_DEF2
+
+)
+		</query>
+      </dbCommand>
+    </insert>
+<update>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="DESCRIPTION" type="String" direction="Input" />
+        <param name="COMMENTS" type="String" direction="Input" />
+        <param name="TYPE" type="String" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />	
+        <param name="PHYS_COMMENTS" type="String" direction="Input" />
+        <param name="DDK_DS_WELD_ODOMETER" type="Decimal" direction="Input" />
+        <param name="DDK_WELD_DESCRIPTION" type="String" direction="Input" />
+        <param name="DDK_WELD_ORIENTATION_DEG" type="Decimal" direction="Input" />
+        <param name="DDK_WELD_LENGTH" type="Decimal" direction="Input" />
+        <param name="DDK_WALL_THICKNESS" type="Decimal" direction="Input" />
+        <param name="DDK_ANOMALY_TYPE_CL" type="Int64" direction="Input" />
+        <param name="DDK_DS_WELD_DISTANCE" type="Decimal" direction="Input" />
+        <param name="DDK_ORIENTATION_DEG" type="Decimal" direction="Input" />
+        <param name="DDK_LENGTH" type="Decimal" direction="Input" />
+        <param name="DDK_WIDTH" type="Decimal" direction="Input" />
+        <param name="DDK_DEPTH" type="Decimal" direction="Input" />
+        <param name="DDK_PIPE_MATERIAL_TYPE_CL" default="UNKNOWN" type="String" direction="Input"/>
+        <param name="DDK_PIPE_STANDARD_CL" default="UNKNOWN" type="String" direction="Input"/>
+        <param name="DDK_PIPE_CONSTRUCTION_TYPE_CL" default="UNKNOWN" type="String" direction="Input"/>
+        <param name="DDK_PIPE_MANUFACTURER_CL" default="UNKNOWN" type="String" direction="Input"/>
+        <param name="DDK_PIPE_ISOLATION_CL" default="UNKNOWN" type="String" direction="Input"/>
+        <param name="DDK_ORIENTATION_DEF1" default="NULL" type="Decimal" direction="Input"/>
+        <param name="DDK_ORIENTATION_DEF2" default="NULL" type="Decimal" direction="Input"/>
+        <query>
+	UPDATE 
+  pods.sto_sheet_excavate_list 
+SET 
+  description = :DESCRIPTION,
+  type = :TYPE,
+  comments = :COMMENTS,
+  phys_comments = :PHYS_COMMENTS,
+  ddk_ds_weld_odometer = :DDK_DS_WELD_ODOMETER ,
+  ddk_weld_description = :DDK_WELD_DESCRIPTION,
+  ddk_weld_orientation_deg = :DDK_WELD_ORIENTATION_DEG,
+  ddk_weld_length = :DDK_WELD_LENGTH,
+  ddk_wall_thickness = :DDK_WALL_THICKNESS,
+  ddk_anomaly_type_cl = :DDK_ANOMALY_TYPE_CL,
+  ddk_ds_weld_distance = :DDK_DS_WELD_DISTANCE,
+  ddk_orientation_deg = :DDK_ORIENTATION_DEG,
+  ddk_length = :DDK_LENGTH,
+  ddk_width = :DDK_WIDTH,
+  ddk_depth = :DDK_DEPTH,
+  mtime = current_timestamp,
+  muser_id = :USER_ID,
+  ddk_pipe_material_type_cl= :DDK_PIPE_MATERIAL_TYPE_CL,
+  ddk_pipe_standard_cl= :DDK_PIPE_STANDARD_CL,
+  ddk_pipe_construction_type_cl= :DDK_PIPE_CONSTRUCTION_TYPE_CL,
+  ddk_pipe_manufacturer_cl= :DDK_PIPE_MANUFACTURER_CL,
+  ddk_pipe_isolation_cl= :DDK_PIPE_ISOLATION_CL,
+  ddk_orientation_def1= :DDK_ORIENTATION_DEF1,
+  ddk_orientation_def2= :DDK_ORIENTATION_DEF2
+WHERE 
+  list_id = :ID
+		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+        <query>
+	        DELETE FROM pods.sto_sheet_excavate_list WHERE list_id = :ID
+	</query>
+      </dbCommand>
+    </delete>
+</data>
+
+
+<data id="PODS_STO_SHEET_REPAIR_LIST" comment="Команды для работы со вкладкой сведении по ремонту дефекта" schema="STO" table="pods.sto_sheet_repair_list">
+     <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <query>
+                    SELECT *
+                    FROM (SELECT 
+  rl.list_id id,
+  rl.list_id,
+  rl.sheet_id,
+  l.description||' '||round(sb.station)||' - '||round(se.station)||' км' insp_route_description,
+  rl.ili_data_id,
+  rl.ili_cluster_id,
+  rl.description,
+  rl.pipe_category,
+  rl.pipe_construction_type_cl,
+  rl.pipe_value,
+  rl.person_executive,
+  rl.comments,
+  rl.ctime,
+  (SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = rl.cuser_id) AS CUSER,
+  rl.mtime,
+  (SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = rl.muser_id) AS MUSER,
+  rl.repair_type_cl,
+  rl.repair_diameter,
+  rl.repair_thickness,
+  rl.length,
+  rl.width,
+  rl.repair_method_cl
+FROM 
+  pods.sto_sheet_repair_list rl, pods.sto_sheet_repair e,pods.event_Range er,pods.station_point sb,pods.station_point se,pods.line l
+  where 
+rl.sheet_id=e.sheet_id and
+e.sto_ili_insp_event_id=er.event_id and er.station_id_begin=sb.station_id and er.station_id_end=se.station_id and sb.line_id=l.line_id
+) d WHERE {FILTER}
+                </query>
+            </dbQuery>
+        </select>
+    <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(LIST_ID) id FROM pods.sto_sheet_repair_list" /> 
+        <param name="DESCRIPTION" type="String" direction="Input" />
+        <param name="COMMENTS" type="String" direction="Input" />
+        <param name="SHEET_ID" type="Int64" direction="Input" />
+        <param name="ILI_DATA_ID" type="Int64" direction="Input" />
+        <param name="ILI_CLUSTER_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+  <param name="PIPE_CATEGORY" type="String" direction="Input" />
+  <param name="PIPE_CONSTRUCTION_TYPE_CL" default="UNKNOWN" type="String" direction="Input" />
+  <param name="PIPE_VALUE" type="Decimal" direction="Input" />
+  <param name="PERSON_EXECUTIVE" type="String" direction="Input" />
+  <param name="REPAIR_TYPE_CL" default="UNKNOWN" type="String" direction="Input"/>
+  <param name="REPAIR_DIAMETER" default="NULL" type="Decimal" direction="Input"/>
+  <param name="REPAIR_THICKNESS" default="NULL" type="Decimal" direction="Input"/>
+  <param name="LENGTH" default="NULL" type="Decimal" direction="Input"/>
+  <param name="WIDTH" default="NULL" type="Decimal" direction="Input"/>
+  <param name="REPAIR_METHOD_CL" default="UNKNOWN" type="String" direction="Input"/>
+
+        <query>
+INSERT INTO 
+  pods.sto_sheet_repair_list
+(
+  sheet_id,
+  ili_data_id,
+  ili_cluster_id,
+  description,
+  pipe_category,
+  pipe_construction_type_cl,
+  pipe_value,
+  person_executive,
+  comments,
+  ctime,
+  cuser_id,
+  repair_type_cl,
+  repair_diameter,
+  repair_thickness,
+  length,
+  width,
+  repair_method_cl
+)
+VALUES (
+  :SHEET_ID,
+  :ILI_DATA_ID,
+  :ILI_CLUSTER_ID,
+  :DESCRIPTION,
+  :PIPE_CATEGORY,
+  :PIPE_CONSTRUCTION_TYPE_CL,
+  :PIPE_VALUE,
+  :PERSON_EXECUTIVE,
+  :COMMENTS,
+  current_timestamp,
+  :USER_ID,
+  :REPAIR_TYPE_CL,
+  :REPAIR_DIAMETER,
+  :REPAIR_THICKNESS,
+  :LENGTH,
+  :WIDTH,
+  :REPAIR_METHOD_CL
+)
+		</query>
+      </dbCommand>
+    </insert>
+<update>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="DESCRIPTION" type="String" direction="Input" />
+        <param name="COMMENTS" type="String" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />	
+	<param name="PIPE_CATEGORY" type="String" direction="Input" />
+	<param name="PIPE_CONSTRUCTION_TYPE_CL" default="UNKNOWN" type="String" direction="Input" />
+	<param name="PIPE_VALUE" type="Decimal" direction="Input" />
+	<param name="PERSON_EXECUTIVE" type="String" direction="Input" />
+	<param name="REPAIR_TYPE_CL" default="UNKNOWN" type="String" direction="Input"/>
+	<param name="REPAIR_DIAMETER" default="NULL" type="Decimal" direction="Input"/>
+	<param name="REPAIR_THICKNESS" default="NULL" type="Decimal" direction="Input"/>
+	<param name="LENGTH" default="NULL" type="Decimal" direction="Input"/>
+	<param name="WIDTH" default="NULL" type="Decimal" direction="Input"/>
+	<param name="REPAIR_METHOD_CL" default="UNKNOWN" type="String" direction="Input"/>
+        <query>
+UPDATE 
+  pods.sto_sheet_repair_list 
+SET 
+  description = :DESCRIPTION,
+  pipe_category = :PIPE_CATEGORY,
+  pipe_construction_type_cl = :PIPE_CONSTRUCTION_TYPE_CL,
+  pipe_value = :PIPE_VALUE,
+  person_executive = :PERSON_EXECUTIVE,
+  comments = :COMMENTS,
+  mtime = current_timestamp,
+  muser_id = :USER_ID,
+  repair_type_cl = :REPAIR_TYPE_CL,
+  repair_diameter = :REPAIR_DIAMETER,
+  repair_thickness = :REPAIR_THICKNESS,
+  length = :LENGTH,
+  width = :WIDTH,
+  repair_method_cl = :REPAIR_METHOD_CL
+WHERE 
+  list_id = :ID
+		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+        <query>
+	        DELETE FROM pods.sto_sheet_repair_list WHERE   list_id = :ID
+	</query>
+      </dbCommand>
+    </delete>
+</data>
+
+<data id="PODS_STO_ILI_INSPECTION_SHEET" comment="Сведения о приемке отчета ВТД" schema="STO" table="pods.sto_ili_inspection_sheet">
+     <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <query>
+                    SELECT *
+                    FROM (SELECT ili_inspection_id id,
+  ili_inspection_id,
+  date_begin_acceptance,
+  date_end_acceptance,
+  initial_report_number,
+  date_initial_report,
+  final_report_number,
+  date_final_report
+FROM 
+  pods.sto_ili_inspection_sheet) d WHERE {FILTER}
+                </query>
+            </dbQuery>
+        </select>
+    <insert>
+      <dbCommand>
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <param name="DATE_BEGIN_ACCEPTANCE" default="" type="DateTime"/>
+        <param name="DATE_END_ACCEPTANCE" default="" type="DateTime"/>
+        <param name="INITIAL_REPORT_NUMBER" type="String" direction="Input" />
+        <param name="DATE_INITIAL_REPORT" default="" type="DateTime"/>
+        <param name="FINAL_REPORT_NUMBER" type="String" direction="Input" />
+        <param name="DATE_FINAL_REPORT" default="" type="DateTime"/>
+        <query>
+INSERT INTO 
+  pods.sto_ili_inspection_sheet
+(
+  ili_inspection_id,
+  date_begin_acceptance,
+  date_end_acceptance,
+  initial_report_number,
+  date_initial_report,
+  final_report_number,
+  date_final_report
+)
+VALUES (
+  :SYS_OBJ_ID,
+  :DATE_BEGIN_ACCEPTANCE,
+  :DATE_END_ACCEPTANCE,
+  :INITIAL_REPORT_NUMBER,
+  :DATE_INITIAL_REPORT,
+  :FINAL_REPORT_NUMBER,
+  :DATE_FINAL_REPORT
+)	</query>
+      </dbCommand>
+    </insert>
+<update>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="DATE_BEGIN_ACCEPTANCE" default="" type="DateTime"/>
+        <param name="DATE_END_ACCEPTANCE" default="" type="DateTime"/>
+        <param name="INITIAL_REPORT_NUMBER" type="String" direction="Input" />
+        <param name="DATE_INITIAL_REPORT" default="" type="DateTime"/>
+        <param name="FINAL_REPORT_NUMBER" type="String" direction="Input" />
+        <param name="DATE_FINAL_REPORT" default="" type="DateTime"/>
+        <query>
+UPDATE 
+  pods.sto_ili_inspection_sheet 
+SET 
+  date_begin_acceptance = :DATE_BEGIN_ACCEPTANCE,
+  date_end_acceptance = :DATE_END_ACCEPTANCE,
+  initial_report_number = :INITIAL_REPORT_NUMBER,
+  date_initial_report = :DATE_INITIAL_REPORT,
+  final_report_number = :FINAL_REPORT_NUMBER,
+  date_final_report = :DATE_FINAL_REPORT
+WHERE 
+  ili_inspection_id = :ID
+		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+        <query>
+	        DELETE FROM pods.sto_ili_inspection_sheet WHERE ili_inspection_id = :ID
+	</query>
+      </dbCommand>
+    </delete>
+</data>
+
+<data id="PODS_STO_SHEET_TYPE_CL" comment="PODS.STO_SHEET_TYPE_CL" schema="PODS" table="STO_SHEET_TYPE_CL">
+    <select>
+      <dbQuery idField="ID">
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM PODS.STO_SHEET_TYPE_CL  ORDER BY DESCR</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+        <var name="DESCR" default="" type="String"/>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_SHEET_TYPE_CL" /> 
+        <var name="POLICY" default="POLICY.xml#INSERT_PODS_SEM_DICT"  />
+        <var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          INSERT INTO PODS.STO_SHEET_TYPE_CL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+          VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+        <var name="DESCR" default="" type="String"/>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_SHEET_TYPE_CL" /> 
+        <var name="POLICY" default="POLICY.xml#UPDATE_PODS_SEM_DICT"  />
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          UPDATE PODS.STO_SHEET_TYPE_CL SET
+          CODE = '{CODE}'
+          ,DESCRIPTION = '{DESCR}'
+          ,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+          ,SOURCE_GCL = '{SOURCE_GCL}'
+          WHERE CODE = '{CODE}'
+</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_SHEET_TYPE_CL" /> 
+        <var name="POLICY" default="POLICY.xml#DELETE_PODS_SEM_DICT"  />
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          DELETE from PODS.STO_SHEET_TYPE_CL WHERE CODE = '{CODE}'
+</query>
+      </dbCommand>
+    </delete>
+  </data>
+
+ <data id="PODS_STO_REPAIR_TYPE_CL" comment="PODS.STO_REPAIR_TYPE_CL" schema="PODS" table="STO_REPAIR_TYPE_CL">
+    <select>
+      <dbQuery idField="ID">
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM PODS.STO_REPAIR_TYPE_CL  ORDER BY DESCR</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+        <var name="DESCR" default="" type="String"/>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_REPAIR_TYPE_CL" /> 
+        <var name="POLICY" default="POLICY.xml#INSERT_PODS_SEM_DICT"  />
+        <var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          INSERT INTO PODS.STO_REPAIR_TYPE_CL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+          VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+        <var name="DESCR" default="" type="String"/>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_REPAIR_TYPE_CL" /> 
+        <var name="POLICY" default="POLICY.xml#UPDATE_PODS_SEM_DICT"  />
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          UPDATE PODS.STO_REPAIR_TYPE_CL SET
+          CODE = '{CODE}'
+          ,DESCRIPTION = '{DESCR}'
+          ,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+          ,SOURCE_GCL = '{SOURCE_GCL}'
+          WHERE CODE = '{CODE}'
+</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_REPAIR_TYPE_CL" /> 
+        <var name="POLICY" default="POLICY.xml#DELETE_PODS_SEM_DICT"  />
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          DELETE from PODS.STO_REPAIR_TYPE_CL WHERE CODE = '{CODE}'
+</query>
+      </dbCommand>
+    </delete>
+  </data>
+
+ <data id="PODS_STO_PIPE_CONSTRUCTION_CL" comment="PODS.STO_PIPE_CONSTRUCTION_CL" schema="PODS" table="STO_PIPE_CONSTRUCTION_CL">
+    <select>
+      <dbQuery idField="ID">
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM PODS.STO_PIPE_CONSTRUCTION_CL  ORDER BY DESCR</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+        <var name="DESCR" default="" type="String"/>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_PIPE_CONSTRUCTION_TYPE_CL" /> 
+        <var name="POLICY" default="POLICY.xml#INSERT_PODS_SEM_DICT"  />
+        <var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          INSERT INTO PODS.STO_PIPE_CONSTRUCTION_CL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+          VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+        <var name="DESCR" default="" type="String"/>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_PIPE_CONSTRUCTION_TYPE_CL" /> 
+        <var name="POLICY" default="POLICY.xml#UPDATE_PODS_SEM_DICT"  />
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          UPDATE PODS.STO_PIPE_CONSTRUCTION_CL SET
+          CODE = '{CODE}'
+          ,DESCRIPTION = '{DESCR}'
+          ,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+          ,SOURCE_GCL = '{SOURCE_GCL}'
+          WHERE CODE = '{CODE}'
+</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_PIPE_CONSTRUCTION_TYPE_CL" /> 
+        <var name="POLICY" default="POLICY.xml#DELETE_PODS_SEM_DICT"  />
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          DELETE from PODS.STO_PIPE_CONSTRUCTION_TYPE_CL WHERE CODE = '{CODE}'
+</query>
+      </dbCommand>
+    </delete>
+  </data>
+ <data id="PODS_STO_REPAIR_TYPE_CL" comment="PODS.STO_REPAIR_TYPE_CL" schema="PODS" table="STO_REPAIR_TYPE_CL">
+    <select>
+      <dbQuery idField="ID">
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM PODS.STO_REPAIR_TYPE_CL  ORDER BY DESCR</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+        <var name="DESCR" default="" type="String"/>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_REPAIR_TYPE_CL" /> 
+        <var name="POLICY" default="POLICY.xml#INSERT_PODS_SEM_DICT"  />
+        <var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          INSERT INTO PODS.STO_REPAIR_TYPE_CL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+          VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+        <var name="DESCR" default="" type="String"/>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_REPAIR_TYPE_CL" /> 
+        <var name="POLICY" default="POLICY.xml#UPDATE_PODS_SEM_DICT"  />
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          UPDATE PODS.STO_REPAIR_TYPE_CL SET
+          CODE = '{CODE}'
+          ,DESCRIPTION = '{DESCR}'
+          ,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+          ,SOURCE_GCL = '{SOURCE_GCL}'
+          WHERE CODE = '{CODE}'
+</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_REPAIR_TYPE_CL" /> 
+        <var name="POLICY" default="POLICY.xml#DELETE_PODS_SEM_DICT"  />
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          DELETE from PODS.STO_REPAIR_TYPE_CL WHERE CODE = '{CODE}'
+</query>
+      </dbCommand>
+    </delete>
+  </data>
+ <data id="PODS_STO_REPAIR_METHOD_CL" comment="PODS.STO_REPAIR_METHOD_CL" schema="PODS" table="STO_REPAIR_METHOD_CL">
+    <select>
+      <dbQuery idField="ID">
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM PODS.STO_REPAIR_METHOD_CL  ORDER BY DESCR</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+        <var name="DESCR" default="" type="String"/>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_REPAIR_METHOD_CL" /> 
+        <var name="POLICY" default="POLICY.xml#INSERT_PODS_SEM_DICT"  />
+        <var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          INSERT INTO PODS.STO_REPAIR_METHOD_CL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+          VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+        <var name="DESCR" default="" type="String"/>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_REPAIR_METHOD_CL" /> 
+        <var name="POLICY" default="POLICY.xml#UPDATE_PODS_SEM_DICT"  />
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          UPDATE PODS.STO_REPAIR_METHOD_CL SET
+          CODE = '{CODE}'
+          ,DESCRIPTION = '{DESCR}'
+          ,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+          ,SOURCE_GCL = '{SOURCE_GCL}'
+          WHERE CODE = '{CODE}'
+</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_REPAIR_METHOD_CL" /> 
+        <var name="POLICY" default="POLICY.xml#DELETE_PODS_SEM_DICT"  />
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          DELETE from PODS.STO_REPAIR_METHOD_CL WHERE CODE = '{CODE}'
+</query>
+      </dbCommand>
+    </delete>
+  </data>
+ <data id="PODS_STO_PIPE_MATERIAL_TYPE_CL" comment="PODS.STO_PIPE_MATERIAL_TYPE_CL" schema="PODS" table="STO_PIPE_MATERIAL_TYPE_CL">
+    <select>
+      <dbQuery idField="ID">
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM PODS.STO_PIPE_MATERIAL_TYPE_CL  ORDER BY DESCR</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+        <var name="DESCR" default="" type="String"/>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_PIPE_MATERIAL_TYPE_CL" /> 
+        <var name="POLICY" default="POLICY.xml#INSERT_PODS_SEM_DICT"  />
+        <var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          INSERT INTO PODS.STO_PIPE_MATERIAL_TYPE_CL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+          VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+        <var name="DESCR" default="" type="String"/>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_PIPE_MATERIAL_TYPE_CL" /> 
+        <var name="POLICY" default="POLICY.xml#UPDATE_PODS_SEM_DICT"  />
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          UPDATE PODS.STO_PIPE_MATERIAL_TYPE_CL SET
+          CODE = '{CODE}'
+          ,DESCRIPTION = '{DESCR}'
+          ,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+          ,SOURCE_GCL = '{SOURCE_GCL}'
+          WHERE CODE = '{CODE}'
+</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_PIPE_MATERIAL_TYPE_CL" /> 
+        <var name="POLICY" default="POLICY.xml#DELETE_PODS_SEM_DICT"  />
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          DELETE from PODS.STO_PIPE_MATERIAL_TYPE_CL WHERE CODE = '{CODE}'
+</query>
+      </dbCommand>
+    </delete>
+  </data>
+ <data id="PODS_STO_PIPE_STANDARD_CL" comment="PODS.STO_PIPE_STANDARD_CL" schema="PODS" table="STO_PIPE_STANDARD_CL">
+    <select>
+      <dbQuery idField="ID">
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM PODS.STO_PIPE_STANDARD_CL  ORDER BY DESCR</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+        <var name="DESCR" default="" type="String"/>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_PIPE_STANDARD_CL" /> 
+        <var name="POLICY" default="POLICY.xml#INSERT_PODS_SEM_DICT"  />
+        <var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          INSERT INTO PODS.STO_PIPE_STANDARD_CL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+          VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+        <var name="DESCR" default="" type="String"/>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_PIPE_STANDARD_CL" /> 
+        <var name="POLICY" default="POLICY.xml#UPDATE_PODS_SEM_DICT"  />
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          UPDATE PODS.STO_PIPE_STANDARD_CL SET
+          CODE = '{CODE}'
+          ,DESCRIPTION = '{DESCR}'
+          ,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+          ,SOURCE_GCL = '{SOURCE_GCL}'
+          WHERE CODE = '{CODE}'
+</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_PIPE_STANDARD_CL" /> 
+        <var name="POLICY" default="POLICY.xml#DELETE_PODS_SEM_DICT"  />
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          DELETE from PODS.STO_PIPE_STANDARD_CL WHERE CODE = '{CODE}'
+</query>
+      </dbCommand>
+    </delete>
+  </data>
+ 
+ <data id="PODS_STO_PIPE_MANUFACTURER_CL" comment="PODS.STO_PIPE_MANUFACTURER_CL" schema="PODS" table="STO_PIPE_MANUFACTURER_CL">
+    <select>
+      <dbQuery idField="ID">
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM PODS.STO_PIPE_MANUFACTURER_CL  ORDER BY DESCR</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+        <var name="DESCR" default="" type="String"/>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_PIPE_MANUFACTURER_CL" /> 
+        <var name="POLICY" default="POLICY.xml#INSERT_PODS_SEM_DICT"  />
+        <var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          INSERT INTO PODS.STO_PIPE_MANUFACTURER_CL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+          VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+        <var name="DESCR" default="" type="String"/>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_PIPE_MANUFACTURER_CL" /> 
+        <var name="POLICY" default="POLICY.xml#UPDATE_PODS_SEM_DICT"  />
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          UPDATE PODS.STO_PIPE_MANUFACTURER_CL SET
+          CODE = '{CODE}'
+          ,DESCRIPTION = '{DESCR}'
+          ,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+          ,SOURCE_GCL = '{SOURCE_GCL}'
+          WHERE CODE = '{CODE}'
+</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_PIPE_MANUFACTURER_CL" /> 
+        <var name="POLICY" default="POLICY.xml#DELETE_PODS_SEM_DICT"  />
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          DELETE from PODS.STO_PIPE_MANUFACTURER_CL WHERE CODE = '{CODE}'
+</query>
+      </dbCommand>
+    </delete>
+  </data>
+ <data id="PODS_STO_PIPE_ISOLATION_CL" comment="PODS.STO_PIPE_ISOLATION_CL" schema="PODS" table="STO_PIPE_ISOLATION_CL">
+    <select>
+      <dbQuery idField="ID">
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM PODS.STO_PIPE_ISOLATION_CL  ORDER BY DESCR</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+        <var name="DESCR" default="" type="String"/>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_PIPE_ISOLATION_CL" /> 
+        <var name="POLICY" default="POLICY.xml#INSERT_PODS_SEM_DICT"  />
+        <var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          INSERT INTO PODS.STO_PIPE_ISOLATION_CL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+          VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+        <var name="DESCR" default="" type="String"/>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_PIPE_ISOLATION_CL" /> 
+        <var name="POLICY" default="POLICY.xml#UPDATE_PODS_SEM_DICT"  />
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          UPDATE PODS.STO_PIPE_ISOLATION_CL SET
+          CODE = '{CODE}'
+          ,DESCRIPTION = '{DESCR}'
+          ,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+          ,SOURCE_GCL = '{SOURCE_GCL}'
+          WHERE CODE = '{CODE}'
+</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="CODE" default="-1" type="String"/>
+        <var name="CLASS_ID" type="String" direction="Input" default="PODS_STO_PIPE_ISOLATION_CL" /> 
+        <var name="POLICY" default="POLICY.xml#DELETE_PODS_SEM_DICT"  />
+        <var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+        <query>
+          DELETE from PODS.STO_PIPE_ISOLATION_CL WHERE CODE = '{CODE}'
+</query>
+      </dbCommand>
+    </delete>
+  </data>
+ <data id="GET_EXCAVATE_SHEET_ID_BY_ILI_DATA_ID" comment="ЗАполнение для списка STO_SHEET_EXCAVATE" schema="PODS" table="STO_SHEET_EXCAVATE">
+    <select>
+      <dbQuery idField="ID">
+        <param name="ILI_DATA_ID" type="Int64" direction="Input"/>
+		<param name="ILI_CLUSTER_ID" type="Int64" direction="Input"/>
+		<var name="FILTER" default="1=1"/>
+        <query>
+SELECT 
+	e.sheet_id,
+        e.sto_ili_insp_event_id,
+        e.phys_sheet_number,
+         l.description||' '||round(sb.station)||' - '||round(se.station)||' км' insp_route_description,
+        e.description,
+        e.phys_date_begin,
+	e.phys_date_end
+  FROM PODS.STO_SHEET_EXCAVATE e,pods.event_Range er,pods.station_point sb,pods.station_point se,pods.line l
+ where e.sheet_id in 
+   (select sheet_id from pods.sto_sheet_excavate_list l where l.ili_data_id=:ILI_DATA_ID union all
+   select sheet_id from pods.sto_sheet_excavate_list l where l.ili_cluster_id=:ILI_CLUSTER_ID)
+   and e.sto_ili_insp_event_id=er.event_id and er.station_id_begin=sb.station_id and er.station_id_end=se.station_id 
+     and sb.line_id=l.line_id and {FILTER} order by e.sheet_id desc limit 1
+</query>
+      </dbQuery>
+    </select>
+  </data>
+
+<data id="GET_REPAIR_SHEET_ID_BY_ILI_DATA_ID" comment="ЗАполнение для списка STO_SHEET_REPAIR" schema="PODS" table="STO_SHEET_REPAIR">
+    <select>
+      <dbQuery idField="ID">
+        <param name="ILI_DATA_ID" type="Int64" direction="Input"/>
+		<param name="ILI_CLUSTER_ID" type="Int64" direction="Input"/>
+		<var name="FILTER" default="1=1"/>
+        <query>
+SELECT 
+	e.sheet_id,
+        e.sto_ili_insp_event_id,
+        e.sheet_number,
+         l.description||' '||round(sb.station)||' - '||round(se.station)||' км' insp_route_description,
+        e.description,
+        e.date_begin,
+	e.date_end
+  FROM PODS.STO_SHEET_REPAIR e,pods.event_Range er,pods.station_point sb,pods.station_point se,pods.line l
+ where e.sheet_id in 
+   (select sheet_id from pods.sto_sheet_repair_list l where l.ili_data_id=:ILI_DATA_ID union all
+   select sheet_id from pods.sto_sheet_repair_list l where l.ili_cluster_id=:ILI_CLUSTER_ID)
+   and e.sto_ili_insp_event_id=er.event_id and er.station_id_begin=sb.station_id and er.station_id_end=se.station_id 
+     and sb.line_id=l.line_id and {FILTER} order by e.sheet_id desc limit 1
+ </query>
+      </dbQuery>
+    </select>
+  </data>
+  
+  <data id="GET_INSP_EVENT_ID_BY_ILI_DATA_ID" comment="Получение идентификатора межкранового участка по идентификатору дефекта" schema="PODS" table="STO_ILI_INSPECTION_CALC">
+    <select>
+      <dbQuery idField="ID">
+        <param name="ILI_DATA_ID" type="Int64" direction="Input"/>
+	<param name="ILI_CLUSTER_ID" type="Int64" direction="Input"/>
+		<var name="FILTER" default="1=1"/>
+        <query>
+with def as (select er.event_id,s.measure,s.station_id,s.route_id,d.ili_inspection_id from pods.event_Range er,pods.station_point s, pods.ili_data d where d.ili_data_id=:ILI_DATA_ID and 
+  d.event_id=er.event_id and er.station_id_begin=s.station_id 
+   union all 
+select er.event_id,s.measure,s.station_id,s.route_id,d.ili_inspection_id from pods.event_Range er,pods.station_point s, pods.ili_cluster d where d.ili_cluster_id=:ILI_CLUSTER_ID and 
+  d.event_id=er.event_id and er.station_id_begin=s.station_id 
+)
+SELECT 
+	c.event_id sto_ili_insp_event_id,
+	sb.route_id,
+	s.ili_inspection_id
+  FROM def s,PODS.sto_ili_inspection_calc c,pods.event_range cer,  pods.station_point sb,pods.station_point se
+ where   se.measure &gt; s.measure and sb.measure &lt; s.measure and se.route_id=s.route_id and sb.route_id=s.route_id and
+  cer.station_id_begin=sb.station_id and cer.station_id_end=se.station_id and cer.event_id=c.event_id and c.type_cl like 'Оценка состояния по межконструкционным участкам' and s.ili_inspection_id=c.ili_inspection_id
+ </query>
+      </dbQuery>
+    </select>
+  </data>
+  
+  <data id="ADD_NEW_DEFECT_BY_WELD" comment="Добавление нового произвольного дефекта" schema="PODS" table="STO_SHEET_EXCAVATE_LIST">
+     <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(LIST_ID) id FROM pods.sto_sheet_excavate_list" /> 
+		<var name="WELD_ID" default="" />
+        <param name="DESCRIPTION" type="String" default="" direction="Input" />
+        <param name="COMMENTS" type="String" default="" direction="Input" />
+        <param name="TYPE" type="String" default="" direction="Input" />
+        <var name="SHEET_ID" default="-1" />
+        <param name="ILI_DATA_ID" type="Int64" direction="Input" />
+        <param name="ILI_CLUSTER_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <param name="PHYS_COMMENTS" type="String" default="" direction="Input" />
+        <param name="DDK_DS_WELD_ODOMETER" type="Decimal" default="NULL" direction="Input" />
+        <param name="DDK_WELD_DESCRIPTION" type="String" default="" direction="Input" />
+        <param name="DDK_WELD_ORIENTATION_DEG" type="Decimal" default="NULL" direction="Input" />
+        <param name="DDK_WELD_LENGTH" type="Decimal" default="NULL" direction="Input" />
+        <param name="DDK_WALL_THICKNESS" type="Decimal" default="NULL" direction="Input" />
+        <param name="DDK_ANOMALY_TYPE_CL" type="Int64" default="NULL" direction="Input" />
+        <param name="DDK_DS_WELD_DISTANCE" type="Decimal" default="NULL" direction="Input" />
+        <param name="DDK_ORIENTATION_DEG" type="Decimal" default="NULL" direction="Input" />
+        <param name="DDK_LENGTH" type="Decimal" default="NULL" direction="Input" />
+        <param name="DDK_WIDTH" type="Decimal" default="NULL" direction="Input" />
+        <param name="DDK_DEPTH" type="Decimal" default="NULL" direction="Input" />
+        <param name="DDK_PIPE_MATERIAL_TYPE_CL" default="UNKNOWN" type="String" direction="Input"/>
+        <param name="DDK_PIPE_STANDARD_CL" default="UNKNOWN" type="String" direction="Input"/>
+        <param name="DDK_PIPE_CONSTRUCTION_TYPE_CL" default="UNKNOWN" type="String" direction="Input"/>
+        <param name="DDK_PIPE_MANUFACTURER_CL" default="UNKNOWN" type="String" direction="Input"/>
+        <param name="DDK_PIPE_ISOLATION_CL" default="UNKNOWN" type="String" direction="Input"/>
+        <param name="DDK_ORIENTATION_DEF1" default="NULL" type="Decimal" direction="Input"/>
+        <param name="DDK_ORIENTATION_DEF2" default="NULL" type="Decimal" direction="Input"/>
+        <query>
+	        INSERT INTO 
+  pods.sto_sheet_excavate_list
+(
+  sheet_id,
+  ili_data_id,
+  ili_cluster_id,
+  description,
+  type,
+  comments,
+  phys_comments,
+  ddk_ds_weld_odometer,
+  ddk_weld_description,
+  ddk_weld_orientation_deg,
+  ddk_weld_length,
+  ddk_wall_thickness,
+  ddk_anomaly_type_cl,
+  ddk_ds_weld_distance,
+  ddk_orientation_deg,
+  ddk_length,
+  ddk_width,
+  ddk_depth,
+  ctime,
+  cuser_id,
+ ddk_pipe_material_type_cl,
+  ddk_pipe_standard_cl,
+  ddk_pipe_construction_type_cl,
+  ddk_pipe_manufacturer_cl,
+  ddk_pipe_isolation_cl,
+  ddk_orientation_def1,
+  ddk_orientation_def2
+)
+VALUES (
+  {SHEET_ID},
+  (select ili_data_id from pods.ili_Data d where d.weld_number like '{WELD_ID}' and ili_inspection_id in (select ili_inspection_id from pods.sto_sheet_excavate e where e.sheet_id={SHEET_ID}) limit 1),
+  null,
+  :DESCRIPTION,
+  :TYPE,
+  :COMMENTS,
+  :PHYS_COMMENTS,
+  :DDK_DS_WELD_ODOMETER,
+  :DDK_WELD_DESCRIPTION,
+  :DDK_WELD_ORIENTATION_DEG,
+  :DDK_WELD_LENGTH,
+  :DDK_WALL_THICKNESS,
+  :DDK_ANOMALY_TYPE_CL,
+  :DDK_DS_WELD_DISTANCE,
+  :DDK_ORIENTATION_DEG,
+  :DDK_LENGTH,
+  :DDK_WIDTH,
+  :DDK_DEPTH,
+  current_timestamp,
+  :USER_ID,
+  :DDK_PIPE_MATERIAL_TYPE_CL,
+  :DDK_PIPE_STANDARD_CL,
+  :DDK_PIPE_CONSTRUCTION_TYPE_CL,
+  :DDK_PIPE_MANUFACTURER_CL,
+  :DDK_PIPE_ISOLATION_CL,
+  :DDK_ORIENTATION_DEF1,
+  :DDK_ORIENTATION_DEF2
+)
+		</query>
+      </dbCommand>
+    </insert>
+    </data>
+	<data id="ADD_NEW_REPAIR_BY_WELD" comment="Добавление нового ремонта" schema="PODS" table="STO_SHEET_REPAIR_LIST">
+     <insert>
+      <dbCommand>
+  <var name="ID" type="Int64" direction="Output" default="SELECT max(LIST_ID) id FROM pods.sto_sheet_repair_list" /> 
+  <var name="WELD_ID" default="" />
+  <param name="DESCRIPTION" type="String" direction="Input" />
+  <param name="COMMENTS" type="String" direction="Input" />
+  <var name="SHEET_ID" type="Int64" direction="Input" />
+  <param name="ILI_DATA_ID" type="Int64" direction="Input" />
+  <param name="ILI_CLUSTER_ID" type="Int64" direction="Input" />
+  <param name="USER_ID" type="Int64" direction="Input" />
+  <param name="PIPE_CATEGORY" type="String" direction="Input" />
+  <param name="PIPE_CONSTRUCTION_TYPE_CL" default="UNKNOWN" type="String" direction="Input" />
+  <param name="PIPE_VALUE" type="Decimal" direction="Input" />
+  <param name="PERSON_EXECUTIVE" type="String" direction="Input" />
+  <param name="REPAIR_TYPE_CL" default="UNKNOWN" type="String" direction="Input"/>
+  <param name="REPAIR_DIAMETER" default="NULL" type="Decimal" direction="Input"/>
+  <param name="REPAIR_THICKNESS" default="NULL" type="Decimal" direction="Input"/>
+  <param name="LENGTH" default="NULL" type="Decimal" direction="Input"/>
+  <param name="WIDTH" default="NULL" type="Decimal" direction="Input"/>
+  <param name="REPAIR_METHOD_CL" default="UNKNOWN" type="String" direction="Input"/>
+        <query>
+INSERT INTO 
+  pods.sto_sheet_repair_list
+(
+  sheet_id,
+  ili_data_id,
+  ili_cluster_id,
+  description,
+  pipe_category,
+  pipe_construction_type_cl,
+  pipe_value,
+  person_executive,
+  comments,
+  ctime,
+  cuser_id,
+  repair_type_cl,
+  repair_diameter,
+  repair_thickness,
+  length,
+  width,
+  repair_method_cl
+)
+VALUES (
+  {SHEET_ID},
+  (select ili_data_id from pods.ili_Data d where d.weld_number like '{WELD_ID}' and ili_inspection_id in (select ili_inspection_id from pods.sto_sheet_repair e where e.sheet_id={SHEET_ID}) limit 1),
+  :ILI_CLUSTER_ID,
+  :DESCRIPTION,
+  :PIPE_CATEGORY,
+  :PIPE_CONSTRUCTION_TYPE_CL,
+  :PIPE_VALUE,
+  :PERSON_EXECUTIVE,
+  :COMMENTS,
+  current_timestamp,
+  :USER_ID,
+  :REPAIR_TYPE_CL,
+  :REPAIR_DIAMETER,
+  :REPAIR_THICKNESS,
+  :LENGTH,
+  :WIDTH,
+  :REPAIR_METHOD_CL
+)
+		</query>
+      </dbCommand>
+    </insert>
+</data>
+<data id="STO_ILI_DATA_ADV" comment="STO_ILI_DATA_ADV" schema="PODS" table="STO_ILI_DATA_ADV">
+	<insert>
+		<dbCommand>
+		<var name="ILI_INSPECTION_ID" type="Decimal"/>	
+		<var name="SSID" type="Decimal"/>	
+		<var name="ABSOLUTE_ODOMETER" type="Decimal"/>	
+		<var name="LEFT_SHOV_TO_MAX" type="Decimal"/>	
+		<var name="LEFT_SHOV_TO_BEGIN" type="Decimal"/>	
+		<var name="RIGHT_SHOV_TO_MAX" type="Decimal"/>	
+		<var name="RIGHT_SHOV_TO_BEGIN" type="Decimal"/>	
+		<var name="PSH_TO_BEGIN" type="Decimal"/>	
+		<var name="PSH_TO_MAX" type="Decimal"/>	
+		<var name="PSH_TO_CENTER" type="Decimal"/>	
+		<var name="MIS_DIST_TO_PSH" type="Decimal"/>	
+		<var name="MIN_DIST_TO_WELD_SH" type="Decimal"/>	
+		<var name="WELD_ID" type="String"/> 
+		<var name="PIPE_LENGTH" type="Decimal"/>	
+		<var name="PIPE_TYPE_DESCR" type="String"/>
+		<var name="INCOME_PSH" type="Decimal"/>	
+		<var name="OUTCOME_PSH" type="Decimal"/>	
+		<var name="FROM_REPER" type="String"/>
+		<var name="TO_REPER" type="String"/>
+		<var name="ANOMALY_CATEGORY_DESCR" type="String"/> 
+		<var name="ANOMALY_TYPE_DESCR" type="String"/> 
+		<var name="SIZE_CLASS" type="String"/> 
+		<var name="DESCRIPTION" type="String"/>
+		<var name="ABBR_CATEGORY" type="String"/>
+		<var name="ABBR_TYPE" type="String"/>
+		<var name="ABBR_SIZE_CLASS" type="String"/> 
+		<var name="ORIENTATION_BEGIN" type="Decimal"/>	
+		<var name="ORIENTATION_MAX" type="Decimal"/>	
+		<var name="ORIENTATION_CENTER" type="Decimal"/>	
+		<var name="THICKNESS" type="Decimal"/>	
+		<var name="DEF_LENGTH" type="Decimal"/>	
+		<var name="DEF_WIDTH" type="Decimal"/>	
+		<var name="DEF_DEPTH" type="Decimal"/>	
+		<var name="INS_OUT_LOCATION" type="String"/>
+		<var name="DEF_COMMENT" type="String"/>
+		<var name="PIPE_COMMENT" type="String"/>
+		<var name="LATITUDE" type="Decimal"/>	
+		<var name="LONGITUDE" type="Decimal"/>	
+		<var name="HEIGHT" type="Decimal"/>	
+		<var name="TIME_TO_EXT_EXAM" type="Decimal"/>	
+		<var name="KBD" type="Decimal"/>	
+		<var name="PRESSURE_D" type="Decimal"/>	
+		<var name="PRESSURE_MAOP" type="Decimal"/>	
+		<var name="PRESSURE_SW" type="Decimal"/>	
+		<var name="PRESSURE_F" type="Decimal"/>	
+		<var name="DANGER" type="String"/>
+			<query>
+			insert into pods.sto_ili_data_adv(ili_inspection_id, ili_data_id, ssid, absolute_odometer, left_shov_to_max, left_shov_to_begin, right_shov_to_max, right_shov_to_begin, psh_to_begin, psh_to_max, psh_to_center, mis_dist_to_psh, min_dist_to_weld_sh, weld_id, pipe_length, pipe_type_descr, income_psh, outcome_psh, from_reper, to_reper, anomaly_category_descr, anomaly_type_descr, size_class, description, abbr_category, abbr_type, abbr_size_class, orientation_begin, orientation_max, orientation_center, thickness, def_length, def_width, def_depth, ins_out_location, def_comment, pipe_comment, latitude, longitude, height, time_to_ext_exam, kbd, pressure_d, pressure_maop, pressure_sw, pressure_f, danger)
+VALUES({ILI_INSPECTION_ID}, -1, {SSID}, {ABSOLUTE_ODOMETER}, {LEFT_SHOV_TO_MAX}, {LEFT_SHOV_TO_BEGIN}, {RIGHT_SHOV_TO_MAX}, {RIGHT_SHOV_TO_BEGIN}, {PSH_TO_BEGIN}, {PSH_TO_MAX}, {PSH_TO_CENTER}, {MIS_DIST_TO_PSH}, {MIN_DIST_TO_WELD_SH}, '{WELD_ID}', {PIPE_LENGTH}, '{PIPE_TYPE_DESCR}', {INCOME_PSH}, {OUTCOME_PSH}, '{FROM_REPER}', '{TO_REPER}', '{ANOMALY_CATEGORY_DESCR}', '{ANOMALY_TYPE_DESCR}', '{SIZE_CLASS}', '{DESCRIPTION}', '{ABBR_CATEGORY}', '{ABBR_TYPE}', '{ABBR_SIZE_CLASS}', {ORIENTATION_BEGIN}, {ORIENTATION_MAX}, {ORIENTATION_CENTER}, {THICKNESS}, 
+{DEF_LENGTH}, {DEF_WIDTH}, {DEF_DEPTH}, '{INS_OUT_LOCATION}', '{DEF_COMMENT}', '{PIPE_COMMENT}', {LATITUDE}, {LONGITUDE}, {HEIGHT}, {TIME_TO_EXT_EXAM}, {KBD}, {PRESSURE_D}, {PRESSURE_MAOP}, {PRESSURE_SW}, {PRESSURE_F}, '{DANGER}')
+			</query>
+		</dbCommand>
+	</insert>
+</data>
+
+<data id="STO_ILI_DATA_ADV_LINK" comment="STO_ILI_DATA_ADV_LINK" schema="PODS" table="STO_ILI_DATA_ADV">
+	<update>
+		<dbCommand>
+		<var name="ILI_INSPECTION_ID" type="Decimal"/>	
+			<query>
+			DO $$
+begin
+update pods.sto_ili_data_adv a set 
+ili_data_id=coalesce((select ili_data_id from pods.ili_data d where d.ili_inspection_id=a.ili_inspection_id 
+and abs(d.absolute_odometer-a.absolute_odometer)&lt;1 
+and abs(d.length-a.def_length)&lt;1 
+and abs(d.width-a.def_width)&lt;1 limit 1),-1) where a.ili_inspection_id={ILI_INSPECTION_ID};
+
+update pods.sto_ili_data_adv a set ili_data_id=coalesce((select ili_data_id from pods.ili_data d 
+where d.ili_inspection_id=a.ili_inspection_id and abs(d.absolute_odometer-a.absolute_odometer)&lt;2 
+ and abs(d.length-a.def_length)&lt;1 and abs(d.width-a.def_width)&lt;1 limit 1),-1) where 
+ (a.ili_data_id is null or a.ili_data_id=-1) and a.ili_inspection_id={ILI_INSPECTION_ID};
+
+update pods.sto_ili_data_adv a set ili_data_id=coalesce((select ili_data_id from pods.ili_data d 
+where d.ili_inspection_id=a.ili_inspection_id and abs(d.absolute_odometer-a.absolute_odometer)&lt;10 and 
+(replace(d.weld_number,'а','') = replace(a.weld_id,'а','') 
+or replace(d.weld_number,'б','') = replace(a.weld_id,'б','') 
+or replace(d.weld_number,'в','') = replace(a.weld_id,'в','') 
+or replace(d.weld_number,'г','') = replace(a.weld_id,'г','')
+ or replace(d.weld_number,'д','') = replace(a.weld_id,'д','')) 
+ and abs(d.length-a.def_length)&lt;1 and abs(d.width-a.def_width)&lt;1 limit 1),-1) where  
+(a.ili_data_id is null or a.ili_data_id=-1) and a.ili_inspection_id={ILI_INSPECTION_ID};
+
+update pods.sto_ili_data_adv a set ili_data_id=coalesce((select ili_data_id from pods.ili_data d
+where d.ili_inspection_id=a.ili_inspection_id and abs(d.absolute_odometer-a.absolute_odometer)&lt;10 and d.weld_number=a.weld_id 
+and d.length is null and d.width is null and d.anomaly_type_cl&lt;&gt;5001 limit 1),-1) where 
+(a.ili_data_id is null or a.ili_data_id=-1) and a.ili_inspection_id={ILI_INSPECTION_ID};
+
+update pods.sto_ili_data_adv a set ili_data_id=coalesce((select ili_data_id from pods.ili_data d 
+where d.ili_inspection_id=a.ili_inspection_id and abs(d.absolute_odometer-a.absolute_odometer)&lt;10 
+and d.anomaly_type_cl=3 limit 1),-1) where 
+(a.ili_data_id is null or a.ili_data_id=-1) and a.ili_inspection_id={ILI_INSPECTION_ID} and a.anomaly_type_descr like 'Эллипсность%';
+
+update pods.sto_ili_data_adv a set ili_data_id=coalesce((select ili_data_id from pods.ili_data d 
+where d.ili_inspection_id=a.ili_inspection_id and abs(d.absolute_odometer-a.absolute_odometer)&lt;10 and 
+(replace(d.weld_number,'а','') = replace(a.weld_id,'а','') 
+or replace(d.weld_number,'б','') = replace(a.weld_id,'б','') 
+or replace(d.weld_number,'в','') = replace(a.weld_id,'в','') 
+or replace(d.weld_number,'г','') = replace(a.weld_id,'г','')
+ or replace(d.weld_number,'д','') = replace(a.weld_id,'д','')) 
+ and d.anomaly_type_cl=5027 limit 1),-1) where 
+ (a.ili_data_id is null or a.ili_data_id=-1) and a.ili_inspection_id={ILI_INSPECTION_ID} and a.anomaly_type_descr like 'Вмят%';
+END$$;
+		</query>
+		</dbCommand>
+	</update>
+</data>
+<data id="STO_ILI_DATA_ADV_CHECK" comment="STO_ILI_DATA_ADV_CHECK" schema="PODS" table="STO_ILI_DATA_ADV">
+	<select>
+		<dbQuery>
+		<var name="ILI_INSPECTION_ID" type="Decimal"/>	
+			<query>
+			select count(*) cnt from pods.sto_ili_data_adv a where a.ili_inspection_id={ILI_INSPECTION_ID}
+		</query>
+		</dbQuery>
+	</select>
+</data>
+<data id="STO_ILI_DATA_ADV_CRITICAL_CHECK" comment="Получение количества дефектов, которые имеют наивысшую критичность" schema="PODS" table="STO_ILI_DATA_ADV">
+	<select>
+		<dbQuery>
+		<var name="ILI_INSPECTION_ID" type="Decimal"/>	
+		<var name="ROUTE_ID" type="Decimal"/>	
+		<var name="BEGIN_MEASURE" type="Decimal"/>	
+		<var name="END_MEASURE" type="Decimal"/>	
+			<query>
+          	select count(*) cnt 
+           from 
+           pods.ili_data d
+           join pods.event_range e on d.event_id=e.event_id
+           join pods.station_point s on s.route_id={ROUTE_ID} and s.measure&gt;={BEGIN_MEASURE} and s.measure&lt;={END_MEASURE} and e.station_id_begin=s.station_id
+		   JOIN pods.ili_anomaly_type_cl ia ON d.anomaly_type_cl = ia.code AND ia.category_cl in (0,1)
+           join pods.sto_ili_data_adv d_adv on d_adv.ili_data_id=d.ili_data_id and d_adv.danger in ('(b)','(a)')
+           where d.ili_inspection_id={ILI_INSPECTION_ID}
+		</query>
+		</dbQuery>
+	</select>
+</data>
+<data id="PODS_STO_ILI_DATA_ADV" comment="PODS_STO_ILI_DATA_ADV" schema="PODS" table="STO_ILI_DATA_ADV">
+	<select>
+ 	 <dbQuery idField="ID">
+                <var name="FILTER" default="1=1"/>
+                <query>
+                    SELECT * FROM (SELECT ILI_DATA_ID ID,ILI_DATA_ID ADV_ID, t.* FROM PODS.STO_ILI_DATA_ADV t) d WHERE {FILTER}
+                </query>
+            </dbQuery>
+	</select>
+	<insert>
+	<dbCommand>
+    <var name="ILI_INSPECTION_ID" type="Decimal"/>
+	  <var name="ILI_DATA_ID" type="Decimal"/>	  
+		<var name="SSID" type="Decimal"/>	
+		<var name="ABSOLUTE_ODOMETER" type="Decimal"/>	
+		<var name="LEFT_SHOV_TO_MAX" type="Decimal"/>	
+		<var name="LEFT_SHOV_TO_BEGIN" type="Decimal"/>	
+		<var name="RIGHT_SHOV_TO_MAX" type="Decimal"/>	
+		<var name="RIGHT_SHOV_TO_BEGIN" type="Decimal"/>	
+		<var name="PSH_TO_BEGIN" type="Decimal"/>	
+		<var name="PSH_TO_MAX" type="Decimal"/>	
+		<var name="PSH_TO_CENTER" type="Decimal"/>	
+		<var name="MIS_DIST_TO_PSH" type="Decimal"/>	
+		<var name="MIN_DIST_TO_WELD_SH" type="Decimal"/>	
+		<var name="WELD_ID" type="String"/> 
+		<var name="PIPE_LENGTH" type="Decimal"/>	
+		<var name="PIPE_TYPE_DESCR" type="String"/>
+		<var name="INCOME_PSH" type="Decimal"/>	
+		<var name="OUTCOME_PSH" type="Decimal"/>	
+		<var name="FROM_REPER" type="String"/>
+		<var name="TO_REPER" type="String"/>
+		<var name="ANOMALY_CATEGORY_DESCR" type="String"/> 
+		<var name="ANOMALY_TYPE_DESCR" type="String"/> 
+		<var name="SIZE_CLASS" type="String"/> 
+		<var name="DESCRIPTION" type="String"/>
+		<var name="ABBR_CATEGORY" type="String"/>
+		<var name="ABBR_TYPE" type="String"/>
+		<var name="ABBR_SIZE_CLASS" type="String"/> 
+		<var name="ORIENTATION_BEGIN" type="Decimal"/>	
+		<var name="ORIENTATION_MAX" type="Decimal"/>	
+		<var name="ORIENTATION_CENTER" type="Decimal"/>	
+		<var name="THICKNESS" type="Decimal"/>	
+		<var name="DEF_LENGTH" type="Decimal"/>	
+		<var name="DEF_WIDTH" type="Decimal"/>	
+		<var name="DEF_DEPTH" type="Decimal"/>	
+		<var name="INS_OUT_LOCATION" type="String"/>
+		<var name="DEF_COMMENT" type="String"/>
+		<var name="PIPE_COMMENT" type="String"/>
+		<var name="LATITUDE" type="Decimal"/>	
+		<var name="LONGITUDE" type="Decimal"/>	
+		<var name="HEIGHT" type="Decimal"/>	
+		<var name="TIME_TO_EXT_EXAM" type="Decimal"/>	
+		<var name="KBD" type="Decimal"/>	
+		<var name="PRESSURE_D" type="Decimal"/>	
+		<var name="PRESSURE_MAOP" type="Decimal"/>	
+		<var name="PRESSURE_SW" type="Decimal"/>	
+		<var name="PRESSURE_F" type="Decimal"/>	
+		<var name="DANGER" type="String"/>
+			<query>
+			insert into pods.sto_ili_data_adv(ili_inspection_id, ili_data_id, ssid, absolute_odometer, left_shov_to_max, left_shov_to_begin, right_shov_to_max, right_shov_to_begin, psh_to_begin, psh_to_max, psh_to_center, mis_dist_to_psh, min_dist_to_weld_sh, weld_id, pipe_length, pipe_type_descr, income_psh, outcome_psh, from_reper, to_reper, anomaly_category_descr, anomaly_type_descr, size_class, description, abbr_category, abbr_type, abbr_size_class, orientation_begin, orientation_max, orientation_center, thickness, def_length, def_width, def_depth, ins_out_location, def_comment, pipe_comment, latitude, longitude, height, time_to_ext_exam, kbd, pressure_d, pressure_maop, pressure_sw, pressure_f, danger)
+VALUES((select ILI_INSPECTION_ID from pods.ili_data where ili_data_id={ILI_DATA_ID} limit 1) ,{ILI_DATA_ID}, {SSID}, {ABSOLUTE_ODOMETER}, {LEFT_SHOV_TO_MAX}, {LEFT_SHOV_TO_BEGIN}, {RIGHT_SHOV_TO_MAX}, {RIGHT_SHOV_TO_BEGIN}, {PSH_TO_BEGIN}, {PSH_TO_MAX}, {PSH_TO_CENTER}, {MIS_DIST_TO_PSH}, {MIN_DIST_TO_WELD_SH}, '{WELD_ID}', {PIPE_LENGTH}, '{PIPE_TYPE_DESCR}', {INCOME_PSH}, {OUTCOME_PSH}, '{FROM_REPER}', '{TO_REPER}', '{ANOMALY_CATEGORY_DESCR}', '{ANOMALY_TYPE_DESCR}', '{SIZE_CLASS}', '{DESCRIPTION}', '{ABBR_CATEGORY}', '{ABBR_TYPE}', '{ABBR_SIZE_CLASS}', {ORIENTATION_BEGIN}, {ORIENTATION_MAX}, {ORIENTATION_CENTER}, {THICKNESS}, 
+{DEF_LENGTH}, {DEF_WIDTH}, {DEF_DEPTH}, '{INS_OUT_LOCATION}', '{DEF_COMMENT}', '{PIPE_COMMENT}', {LATITUDE}, {LONGITUDE}, {HEIGHT}, {TIME_TO_EXT_EXAM}, {KBD}, {PRESSURE_D}, {PRESSURE_MAOP}, {PRESSURE_SW}, {PRESSURE_F}, '{DANGER}')
+			</query>
+		</dbCommand>
+	</insert>
+	<update>
+	<dbCommand>
+    <var name="ILI_INSPECTION_ID" type="Decimal"/>	
+	  <var name="ADV_ID" type="Decimal"/>	
+		<var name="SSID" default="NULL" type="Decimal"/>	
+		<var name="ABSOLUTE_ODOMETER" default="NULL" type="Decimal"/>	
+		<var name="LEFT_SHOV_TO_MAX" default="NULL" type="Decimal"/>	
+		<var name="LEFT_SHOV_TO_BEGIN" default="NULL" type="Decimal"/>	
+		<var name="RIGHT_SHOV_TO_MAX" default="NULL" type="Decimal"/>	
+		<var name="RIGHT_SHOV_TO_BEGIN" default="NULL" type="Decimal"/>	
+		<var name="PSH_TO_BEGIN" default="NULL" type="Decimal"/>	
+		<var name="PSH_TO_MAX" default="NULL" type="Decimal"/>	
+		<var name="PSH_TO_CENTER" default="NULL" type="Decimal"/>	
+		<var name="MIS_DIST_TO_PSH" default="NULL" type="Decimal"/>	
+		<var name="MIN_DIST_TO_WELD_SH" default="NULL" type="Decimal"/>	
+		<var name="WELD_ID" default="" type="String"/> 
+		<var name="PIPE_LENGTH" default="NULL" type="Decimal"/>	
+		<var name="PIPE_TYPE_DESCR" default="" type="String"/>
+		<var name="INCOME_PSH" default="NULL" type="Decimal"/>	
+		<var name="OUTCOME_PSH" default="NULL" type="Decimal"/>	
+		<var name="FROM_REPER" default="" type="String"/>
+		<var name="TO_REPER" default="" type="String"/>
+		<var name="ANOMALY_CATEGORY_DESCR" default="" type="String"/> 
+		<var name="ANOMALY_TYPE_DESCR" default="" type="String"/> 
+		<var name="SIZE_CLASS" default="" type="String"/> 
+		<var name="DESCRIPTION" default="" type="String"/>
+		<var name="ABBR_CATEGORY" default="" type="String"/>
+		<var name="ABBR_TYPE" default="" type="String"/>
+		<var name="ABBR_SIZE_CLASS" default="" type="String"/> 
+		<var name="ORIENTATION_BEGIN" default="NULL" type="Decimal"/>	
+		<var name="ORIENTATION_MAX" default="NULL" type="Decimal"/>	
+		<var name="ORIENTATION_CENTER" default="NULL" type="Decimal"/>	
+		<var name="THICKNESS" default="NULL" type="Decimal"/>	
+		<var name="DEF_LENGTH" default="NULL" type="Decimal"/>	
+		<var name="DEF_WIDTH" default="NULL" type="Decimal"/>	
+		<var name="DEF_DEPTH" default="NULL" type="Decimal"/>	
+		<var name="INS_OUT_LOCATION" default="" type="String"/>
+		<var name="DEF_COMMENT" default="" type="String"/>
+		<var name="PIPE_COMMENT" default="" type="String"/>
+		<var name="LATITUDE" default="NULL" type="Decimal"/>	
+		<var name="LONGITUDE" default="NULL" type="Decimal"/>	
+		<var name="HEIGHT" default="NULL" type="Decimal"/>	
+		<var name="TIME_TO_EXT_EXAM" default="NULL" type="Decimal"/>	
+		<var name="KBD" default="NULL" type="Decimal"/>	
+		<var name="PRESSURE_D" default="NULL" type="Decimal"/>	
+		<var name="PRESSURE_MAOP" default="NULL" type="Decimal"/>	
+		<var name="PRESSURE_SW" default="NULL" type="Decimal"/>	
+		<var name="PRESSURE_F" default="NULL" type="Decimal"/>	
+		<var name="DANGER" default="" type="String"/>
+			<query>
+			update pods.sto_ili_data_adv
+			set
+			 ssid={SSID}
+			 , absolute_odometer= {ABSOLUTE_ODOMETER}
+			 , left_shov_to_max= {LEFT_SHOV_TO_MAX}
+			 , left_shov_to_begin= {LEFT_SHOV_TO_BEGIN}
+			 , right_shov_to_max= {RIGHT_SHOV_TO_MAX}
+			 , right_shov_to_begin= {RIGHT_SHOV_TO_BEGIN}
+			 , psh_to_begin= {PSH_TO_BEGIN}
+			 , psh_to_max= {PSH_TO_MAX}
+			 , psh_to_center= {PSH_TO_CENTER}
+			 , mis_dist_to_psh= {MIS_DIST_TO_PSH}
+			 , min_dist_to_weld_sh= {MIN_DIST_TO_WELD_SH}
+			 , weld_id='{WELD_ID}'
+			 , pipe_length= {PIPE_LENGTH} 
+			 , pipe_type_descr='{PIPE_TYPE_DESCR}'
+			 , income_psh= {INCOME_PSH}
+			 , outcome_psh= {OUTCOME_PSH}
+			 , from_reper= '{FROM_REPER}'
+			 , to_reper= '{TO_REPER}'
+			 , anomaly_category_descr= '{ANOMALY_CATEGORY_DESCR}'
+			 , anomaly_type_descr= '{ANOMALY_TYPE_DESCR}'
+			 , size_class='{SIZE_CLASS}'
+			 , description= '{DESCRIPTION}'
+			 , abbr_category= '{ABBR_CATEGORY}'
+			 , abbr_type= '{ABBR_TYPE}'
+			 , abbr_size_class= '{ABBR_SIZE_CLASS}'
+			 , orientation_begin= {ORIENTATION_BEGIN}
+			 , orientation_max= {ORIENTATION_MAX}
+			 , orientation_center= {ORIENTATION_CENTER}
+			 , thickness= {THICKNESS} 
+			 , def_width={DEF_LENGTH}
+			 , def_length= {DEF_WIDTH}
+			 , def_depth= {DEF_DEPTH}
+			 , ins_out_location= '{INS_OUT_LOCATION}'
+			 , def_comment= '{DEF_COMMENT}'
+			 , pipe_comment= '{PIPE_COMMENT}'
+			 , latitude= {LATITUDE}
+			 , longitude={LONGITUDE}
+			 , height= {HEIGHT}
+			 , time_to_ext_exam= {TIME_TO_EXT_EXAM}
+			 , kbd={KBD}
+			 , pressure_d= {PRESSURE_D}
+			 , pressure_maop= {PRESSURE_MAOP}
+			 , pressure_sw= {PRESSURE_SW}
+			 , pressure_f= {PRESSURE_F}
+			 , danger='{DANGER}'
+			where ili_data_id={ADV_ID}
+			</query>
+		</dbCommand>
+	</update>
+	    <delete>
+      <dbCommand>
+	    <var name="ADV_ID" type="Decimal"/>	
+        <query>
+          DELETE from pods.sto_ili_data_adv WHERE ili_data_id={ADV_ID}
+        </query>
+      </dbCommand>
+    </delete>
+</data>
+
+<data id="PODS_STO_ILI_DATA_SHEET_ADD" comment="PODS.STO_ILI_DATA_SHEET" schema="PODS" table="STO_ILI_DATA_SHEET">
+    <select>
+ <dbQuery>
+   <var name="FILTER" default="1=1"/>
+   <var name="ROUTE_ID" default="null"/>
+   <var name="BEGIN_MEASURE" default="1000000000"/>
+   <var name="END_MEASURE" default="-1"/>
+   <var name="ILI_LBL" default=""/>
+   <var name="ROUTE_DESCR" default=""/>
+   <var name="ILI_INSPECTION_ID" default="-1"/>
+   <var name="SHEET_ID" default="NULL"/>
+   <query>
+ select 
+ id,
+event_id,
+ili_inspection_id,
+description,
+comments,
+station,
+measure,
+type_def,
+weld_number,
+absolute_odometer,
+us_weld_distance,
+ds_weld_distance,
+average_depth,
+length,
+width,
+anomaly_type_cl,
+coordinate_id,
+feature_description,
+ssid, 
+left_shov_to_max, 
+left_shov_to_begin, 
+right_shov_to_max, 
+right_shov_to_begin, 
+psh_to_begin, 
+psh_to_max, 
+psh_to_center, 
+mis_dist_to_psh, 
+min_dist_to_weld_sh, 
+weld_id, 
+pipe_length, 
+pipe_type_descr, 
+income_psh, 
+outcome_psh, 
+from_reper, 
+to_reper, 
+anomaly_category_descr, 
+anomaly_type_descr, 
+size_class, 
+abbr_category, 
+abbr_type, 
+abbr_size_class, 
+orientation_begin, 
+orientation_max, 
+orientation_center, 
+thickness, 
+def_length, 
+def_width, 
+def_depth, 
+ins_out_location, 
+def_comment, 
+pipe_comment, 
+time_to_ext_exam, 
+kbd, 
+pressure_d, 
+pressure_maop, 
+pressure_sw, 
+pressure_f, 
+danger,
+ili_data_id,
+ili_cluster_id,
+    x_coord,
+  y_coord,
+  z_coord,
+(select '{ROUTE_DESCR}' limit 1) "LABEL"
+     from 
+(select  
+d.ili_data_id id,
+d.event_id,
+d.ili_inspection_id,
+d.description,
+d.comments,
+s.station,
+s.measure,
+'ДЕФЕКТ_ОДИНОЧНЫЙ' type_def,
+d.weld_number,
+d.absolute_odometer,
+d.us_weld_distance,
+d.ds_weld_distance,
+d.average_depth,
+d.length,
+d.width,
+d.anomaly_type_cl,
+d.coordinate_id,
+d.feature_description,
+d_adv.ssid, 
+d_adv.left_shov_to_max, 
+d_adv.left_shov_to_begin, 
+d_adv.right_shov_to_max, 
+d_adv.right_shov_to_begin, 
+d_adv.psh_to_begin, 
+d_adv.psh_to_max, 
+d_adv.psh_to_center, 
+d_adv.mis_dist_to_psh, 
+d_adv.min_dist_to_weld_sh, 
+d_adv.weld_id, 
+d_adv.pipe_length, 
+d_adv.pipe_type_descr, 
+d_adv.income_psh, 
+d_adv.outcome_psh, 
+d_adv.from_reper, 
+d_adv.to_reper, 
+d_adv.anomaly_category_descr, 
+d_adv.anomaly_type_descr, 
+d_adv.size_class, 
+d_adv.abbr_category, 
+d_adv.abbr_type, 
+d_adv.abbr_size_class, 
+d_adv.orientation_begin, 
+d_adv.orientation_max, 
+d_adv.orientation_center, 
+d_adv.thickness, 
+d_adv.def_length, 
+d_adv.def_width, 
+d_adv.def_depth, 
+d_adv.ins_out_location, 
+d_adv.def_comment, 
+d_adv.pipe_comment, 
+d_adv.time_to_ext_exam, 
+d_adv.kbd, 
+d_adv.pressure_d, 
+d_adv.pressure_maop, 
+d_adv.pressure_sw, 
+d_adv.pressure_f, 
+d_adv.danger,
+d.ili_data_id,
+null ili_cluster_id,
+    c.x_coord,
+  c.y_coord,
+  c.z_coord
+ from 
+ pods.ili_data d
+ join pods.event_range e on d.event_id=e.event_id
+ join pods.station_point s on s.route_id={ROUTE_ID} and s.measure&gt;={BEGIN_MEASURE} and s.measure&lt;={END_MEASURE} and e.station_id_begin=s.station_id
+ left join pods.sto_ili_data_adv d_adv on d_adv.ili_data_id=d.ili_data_id
+ left join pods.coordinate c on c.location_id=s.location_id
+ where d.ili_inspection_id={ILI_INSPECTION_ID}
+ and not exists (select 1 from pods.sto_sheet_excavate_list l where l.sheet_id={SHEET_ID} and l.ili_data_id=d.ili_data_id)) dd order by dd.measure
+   </query>
+ </dbQuery>
+    </select>
+  </data>
+</root>

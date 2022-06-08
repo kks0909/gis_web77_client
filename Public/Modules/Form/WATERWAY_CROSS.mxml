@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+   xmlns="view.data.*"
+   title="Водные переходы"
+   width="760"
+   excelTemplate="WATERWAY_CROSS">
+   <dataProvider>WATERWAY_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	  <mx:VBox width="760">
+		    <mx:HBox percentWidth="100">
+			      <mx:VBox percentWidth="50">
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="№ п/п" width="140"/>
+					          <mx:TextInput id="WATERWAY_CROSS_ID" width="140" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Трубопровод" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="LINE_ID" width="200" height="20"
+                               					 dataProvider="PODS_SEM_DICT.xml#PODS_LINE"/>
+					          </mx:HBox>
+					    </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Нач.км:" width="40"/>
+					          <controls:NumberInput id="STATION_BEGIN" width="50" height="20"/>
+					          <mx:Text textAlign="right" text="Кон.км:" width="40"/>
+					          <controls:NumberInput id="STATION_END" width="50" height="20"/>
+					    </mx:HBox>
+				        <mx:HBox percentWidth="100">
+				        	  <mx:Text textAlign="right" text="Река" width="120"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="WATERWAY_ID" width="200" height="20"
+                               					 dataProvider="WATERWAY_SEM.xml#WATERWAY_CL"/>
+                              </mx:HBox>
+                              <mx:Text textAlign="right" text="Скорость течения" width="120"/>
+					          <controls:NumberInput id="WATER_SPEED" width="50" height="20"/>
+                        </mx:HBox>
+                        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Год ввода в экспл." width="100"/>
+					          <mx:DateField id="DATE_INSTALLED" width="80" height="20" formatString="DD.MM.YYYY"/>
+				        </mx:HBox>						
+					    <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Параметры перехода:" width="140" />
+				        </mx:HBox>
+				         <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Инв. номер" width="80"/>
+					          <mx:TextInput id="INV_NUM" width="80"  height="20"/>
+					    </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Констр. труб-да" width="120"/>
+					          <mx:TextInput id="PIPE_CONSTR" width="40"  height="20"/>
+					          <mx:Text textAlign="right" text="Допуст. давление" width="120"/>
+					          <controls:NumberInput id="PIPE_PRESSURE" width="40" height="20"/>
+					    </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Протяж. перехода" width="120"/>
+					          <controls:NumberInput id="PIPE_LENGTH" width="40" height="20"/>
+					          <mx:Text textAlign="right" text="Протяж. подвод. части" width="120"/>
+					          <controls:NumberInput id="PIPE_LENGTH_UNDERWATER" width="40" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Глубина заложения" width="120"/>
+					          <controls:NumberInput id="PIPE_DEPTH" width="40" height="20"/>
+					          <mx:Text textAlign="right" text="Тип ЭХЗ" width="120"/>
+					          <mx:TextInput id="PI_CP_TYPE" width="40"  height="20"/>
+					    </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="D нар. трубы, мм" width="120"/>
+					          <controls:NumberInput id="PIPE_DIAMETER" width="40" height="20"/>
+					          <mx:Text textAlign="right" text="Толщ. ст. труб-да, мм" width="120"/>
+					          <controls:NumberInput id="PIPE_THICKNESS" width="40" height="20"/>
+				        </mx:HBox>
+				       
+			      </mx:VBox>
+			      <mx:VBox percentWidth="50">
+				       <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Ремонт:" width="140" />
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+				        	  <mx:Text textAlign="right" text="Дата проведния" width="140"/>
+					          <mx:DateField id="REPAIR_DATE" width="100" height="20" formatString="DD.MM.YYYY"/>
+					          <mx:Text textAlign="right" text="Исполнитель" width="140"/>
+					          <mx:TextInput id="REPAIR_PERFORMRD_BY" width="100" height="20"/>
+					    </mx:HBox>
+					    <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Вид ремонта" width="140"/>
+					          <mx:TextInput id="REPAIR_TYPE" width="220" height="20"/>
+					    </mx:HBox>
+					    <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Перечень выпол. работ" width="140"/>
+					          <mx:TextInput id="REPAIR_COMPLITED_WORK" width="220" height="20"/>
+					    </mx:HBox>
+					    <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Тех.сост. перехода" width="140"/>
+					          <mx:TextInput id="REPAIR_RESULT_CONDITION" width="220"  height="40"/>
+				        </mx:HBox> 
+ 					   <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Обследование:" width="100" />
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Дата обслед." width="100"/>
+					          <mx:DateField id="INSP_DATE" width="80" height="20" formatString="DD.MM.YYYY"/>
+					          <mx:Text textAlign="right" text="Исполнитель" width="80"/>
+					          <mx:TextInput id="INSP_PERFORMED_BY" width="100"  height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Результаты обследования:" width="150" />
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Прочие деф.,наруш.,несоотв." width="140"/>
+					          <mx:TextInput id="INSP_RESULT_OTHER_DISORDER" width="200"  height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Тех. сост. перехода" width="100"/>
+					          <mx:TextInput id="INSP_RESULT_CONDITION" width="200"  height="40"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:VBox width="140">
+						            <mx:Text textAlign="right" text="Идентификаторы участка:" width="140"/>
+					          </mx:VBox>
+					          <mx:VBox percentWidth="50">
+						            <mx:HBox percentWidth="100">
+							              <mx:Text textAlign="right" text="Текущий WATERWAY_ID" width="100"/>
+							              <controls:NumberInput id="WATERWAY_ID" editable="false" width="85" height="20"/>
+						            </mx:HBox>
+						            <mx:HBox percentWidth="100">
+							              <mx:Text textAlign="right" text="Текущий LINE_ID" width="100"/>
+							              <controls:NumberInput id="LINE_ID" editable="false" width="85" height="20"/>
+						            </mx:HBox>
+						            <mx:HBox percentWidth="100">
+							              <mx:Text textAlign="right" text="Текущий ID" width="100"/>
+							              <controls:NumberInput id="ID" editable="false" width="85" height="20"/>
+						            </mx:HBox>
+					          </mx:VBox>
+				        </mx:HBox>
+			      </mx:VBox>
+		    </mx:HBox>
+	  </mx:VBox>
+</DATA_EDIT_FORM>

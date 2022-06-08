@@ -1,0 +1,142 @@
+﻿<!--7.7.6.8-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="6"  headerVertSize="50"
+            id="ADM_USERS_LIST"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelDataRequest="ADM_SEM.xml#WEB50_B_USER_PRIVATE_EXPORT"
+            excelTemplateName="ADM_USERS_LIST"
+            layerId="WEB50_B_USER_PRIVATE" propertyPanelName="WEB50_B_USER_PRIVATE"
+            dataRequest="ADM_SEM.xml#WEB50_B_USER_PRIVATE_LIST"
+            formatDataFunction="getDataFromUsersList"
+            initialSortField="LOGIN,USER_ID"
+            >
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <!-- В гриде пользователей создание делается отдельной формой, поэтому используем отдельное событие gridAdmUsersRegisterUser -->
+  <picPutton:GridButton source="../../Public/assets/createObject.png"
+        tooltip="Зарегистрировать учетную запись"
+        clickEvent="gridAdmUsersRegisterUser"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../Public/assets/excel.png"
+        tooltip="Экспортировать в Excel"
+        clickEvent="ru.corelight.business.events.ExportToExcelEvent"
+        selectedObjects="this" />
+    <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+  <!--<picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Редактировать учетную запись"
+        clickEvent=""
+        selectedObjects="this" />-->
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Заблокировать учетные записи"
+        clickEvent="gridAdmUsersBlockUsers"
+        selectedObjects="this" 
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Разблокировать учетные записи"
+        clickEvent="gridAdmUsersUnblockUsers"
+        selectedObjects="this"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Задать пароль пользователю"
+        clickEvent="gridAdmUsersSetUserPassword"
+        selectedObjects="1"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Назначить роли пользователям"
+        clickEvent="gridAdmUsersSetRolesToUsers"
+        selectedObjects="this" 
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Разослать уведомления пользователям"
+        clickEvent="gridAdmUsersSendMails"
+        selectedObjects="this"
+        position="top"/>
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=showInfoEvent;toolTip=Показать информацию по объекту"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/excel.png;eventName=ru.corelight.business.events.ExportToExcelEvent;toolTip=Выгрузить в Excel;templateName=ADM_USERS_LIST"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/delete.png;eventName=ru.corelight.business.events.RemoveGridRowEvent;toolTip=Удалить запись"
+                          editable="true"/>
+      <columns:GridColumn headerText="Идентификатор" dataField="ID"  itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          hidden="true" editable="false" filterComparisionType="number" width="40" />                    
+      <columns:GridColumn headerText="Логин" dataField="LOGIN"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="100"/>
+      <columns:GridColumn headerText="Фамилия" dataField="LASTNAME"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="50"/>
+      <columns:GridColumn headerText="Имя" dataField="FIRSTNAME"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="50"/>
+      <columns:GridColumn headerText="Отчество" dataField="SECONDNAME"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="50"/>
+      <columns:GridColumn headerText="Роли" dataField="ROLE_DESCRS"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="200"/>
+      <columns:GridColumn headerText="Статус" dataField="STATUS"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="40"/>
+      <columns:GridColumn headerText="Дата и время\nпоследнего\nдоступа" dataField="LOGONTIME"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer"
+                          editable="true"
+                          filterComparisionType="date"
+                          width="100"/>
+      <columns:GridColumn headerText="E-mail" dataField="MAIL"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="100"/>
+      <columns:GridColumn headerText="Внешняя\nавторизация" dataField="EXT_AUTH"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="50"/>  
+      <columns:GridColumn headerText="User ID" dataField="USER_ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

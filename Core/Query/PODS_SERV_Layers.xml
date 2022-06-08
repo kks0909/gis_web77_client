@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Файл описания слоёв "Служебная информация" -->
+<root version="7.7.7.4" descr="МГ: Служебная информация" name="PODS_SERV">
+  <dataProvider type="style" source="PODS_SERV_STYLE.xml" />
+  <layer id="PODS_PIPE_SYSTEM_CL" comment="PODS.PIPE_SYSTEM_CL" descr="Перечень газотранспортных коридоров" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1490" visible="false" topology="polygon" classField="" schema="PODS" table="PIPE_SYSTEM_CL">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PIPE_SYSTEM_CL" />
+    <dataProvider type="style" source="PODS_SERV_STYLE.xml#PODS_PIPE_SYSTEM_CL"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PIPE_SYSTEM_CL"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PIPE_SYSTEM_CL"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PIPE_SYSTEM_CL"/>
+  </layer>
+  <layer id="PODS_SRV_DISTRICT_GCL" comment="PODS.SRV_DISTRICT_GCL" descr="Перечень линейных подразделений" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1480" visible="false" topology="polygon" classField="" schema="PODS" table="SRV_DISTRICT_GCL">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_SRV_DISTRICT_GCL" />
+    <dataProvider type="style" source="PODS_SERV_STYLE.xml#PODS_SRV_DISTRICT_GCL"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_SRV_DISTRICT_GCL"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_SRV_DISTRICT_GCL"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_SRV_DISTRICT_GCL"/>
+  </layer>
+</root>

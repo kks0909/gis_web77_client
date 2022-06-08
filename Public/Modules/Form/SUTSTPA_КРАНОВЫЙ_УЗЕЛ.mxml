@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns="view.data.*" xmlns:data="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" 
+						xmlns:controls="view.controls.*" 
+						xmlns:mx="http://www.adobe.com/2006/mxml" 
+						title="Крановый узел" 
+						width="760" 
+						ext_data_id="" 
+						excelTemplate="">
+	<dataProvider>SUTSTPA_SEM.xml</dataProvider>
+	<panel:buttons>
+		<picPutton:PanelButton source="../images/catalog.png" 
+			tooltip="Прикрепленные документы / комментарии" 
+			clickEvent="DocsEvent" />
+		<picPutton:PanelButton source="../images/save.png" 
+			tooltip="Сохранить" 
+			clickEvent="SaveEvent" />
+		<picPutton:PanelButton source="../images/undo.png" 
+			tooltip="Отменить изменения" 
+			clickEvent="UndoEvent" />
+		<picPutton:PanelButton source="../images/delete.png" 
+			tooltip="Удалить" 
+			clickEvent="DeleteEvent" />
+		<picPutton:PanelButton source="../images/showOnMap.png" 
+			tooltip="Показать на карте" 
+			clickEvent="ShowOnMapEvent" />
+		<picPutton:PanelButton source="../images/find_path.png" 
+			tooltip="Построение маршрута" 
+			clickEvent="FindRouteEvent" />
+		<picPutton:PanelButton source="../images/bufferZone.png" 
+			tooltip="Построить буферную зону" 
+			clickEvent="BufferCustomEvent" />
+		<picPutton:PanelButton source="../images/excel.png" 
+			tooltip="Экспорт в Excel" 
+			clickEvent="ExportToExcelEvent" />
+		<picPutton:PanelButton source="../images/back.png" 
+			tooltip="Вернуться к предыдущему объекту" 
+			clickEvent="BackEvent" />
+		<picPutton:PanelButton source="../images/forward.png" 
+			tooltip="Отменить возврат к предыдущему объекту" 
+			clickEvent="ForwardEvent" />
+	</panel:buttons>
+	<mx:HBox percentWidth="100">
+		<!--левая колонка полей-->
+		<mx:VBox percentWidth="50">
+			<mx:HBox percentWidth="100">
+				<mx:Text textAlign="right" text="ЛПУ/ЛЭС" width="140" />
+				<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+					<mx:ComboBox id="LPU" width="165" maxChars="100" height="20" dataProvider="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_LPU_GCL"/>
+						            <mx:Button id="BTN_LIST_LPU" selectedField="SUTSTPA_SPRAV_LPU_GCL" enabled="false"
+	                         styleName="refList"
+	                         toolTip="Перейти к редактированию справочника"
+	                         width="16"
+	                         height="16"/>						   
+				</mx:HBox>
+				<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+					<mx:ComboBox id="LES" width="125" maxChars="100" height="20" dataProvider="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_LES_GCL"/>
+						            <mx:Button id="BTN_LIST_LES" selectedField="SUTSTPA_SPRAV_LES_GCL" enabled="false"
+	                         styleName="refList"
+	                         toolTip="Перейти к редактированию справочника"
+	                         width="16"
+	                         height="16"/>						   
+				</mx:HBox>
+			</mx:HBox>
+			<mx:HBox percentWidth="100">
+				<mx:Text textAlign="right" text="Наименование газопровода/КМ" width="140" />
+				<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+					<mx:ComboBox id="PIPE" width="225" maxChars="100" height="20" dataProvider="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_PIPE_GCL"/>
+						            <mx:Button id="BTN_LIST_PIPE" selectedField="SUTSTPA_SPRAV_PIPE_GCL" enabled="false"
+	                         styleName="refList"
+	                         toolTip="Перейти к редактированию справочника"
+	                         width="16"
+	                         height="16"/>						   
+				</mx:HBox>
+				<controls:NumberInput id="STATION" editable="true" width="45" maxChars="22" height="20" />
+			</mx:HBox>
+			<mx:HBox percentWidth="60">
+				<mx:Text textAlign="right" text="Дата осмотра" width="60" />
+				<mx:DateField id="DATE_INSP" width="96" height="20" formatString="DD.MM.YYYY" />
+			</mx:HBox>
+			<mx:HBox percentWidth="100">				
+				<mx:CheckBox id="CONT_MEAS_8_IS" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="Проведение РСО" width="170" />				
+			</mx:HBox>
+			<mx:HBox percentWidth="100">
+				<mx:Text textAlign="right" text="План.дата выполн.РСО" width="140" />
+				<mx:DateField id="DATE_RSO_PLAN" width="96" height="20" formatString="DD.MM.YYYY" />
+				<mx:Text textAlign="right" text="Дата выполнения РСО" width="180" />
+				<mx:DateField id="DATE_RSO_FACT" width="96" height="20" formatString="DD.MM.YYYY" />
+			</mx:HBox>
+			<mx:HBox percentWidth="100">
+                <mx:Text textAlign="left" text="Состояние территории:"/>
+            </mx:HBox>
+			<mx:HBox percentWidth="100">				
+				<mx:CheckBox id="TERRITORY_1_IS" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="Обводнения, заболоченности" width="170" />				
+				<mx:CheckBox id="TERRITORY_2_IS" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="Планировка территории" width="150" />
+			</mx:HBox>
+			<mx:HBox percentWidth="100">				
+				<mx:CheckBox id="TERRITORY_3_IS" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="Кол. калиток на КУ &gt; 2х" width="170" />				
+				<mx:CheckBox id="TERRITORY_4_IS" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="Замки на калитках" width="150" />
+			</mx:HBox>
+			<mx:HBox percentWidth="100">
+                <mx:Text textAlign="left" text="Состояние ограждений:"/>
+            </mx:HBox>
+			<mx:HBox percentWidth="100">				
+				<mx:CheckBox id="BARRIER_1_IS" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="Ограждения &gt; 2,2 м" width="170" />				
+				<mx:CheckBox id="BARRIER_2_IS" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="Высота егозы 0,5 мм" width="150" />
+			</mx:HBox>
+			<mx:HBox percentWidth="100">				
+				<mx:CheckBox id="BARRIER_4_IS" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="Тверд. покрытия на КП" width="170" />
+				<mx:CheckBox id="BARRIER_3_IS" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="Размер ячеек  ограждения 50х150 мм" width="150" />
+			</mx:HBox>
+			<mx:HBox percentWidth="100">				
+				<mx:CheckBox id="BARRIER_5_IS" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="Растительность внутри КП" width="300" />
+			</mx:HBox>
+		</mx:VBox>
+		<!--Правая колонка полей-->
+		<mx:VBox percentWidth="50">	
+			<mx:HBox percentWidth="100" >
+	            <mx:Text textAlign="right" text="Идентификатор" width="80" />
+	            <controls:NumberInput id="ID" editable="false" width="85" maxChars="22" height="20" />
+	            <mx:Text textAlign="right" text="Ранг" width="60" />
+	            <controls:NumberInput id="RANK" editable="false" width="60" maxChars="22" height="20"/>
+	        </mx:HBox>
+			<mx:HBox percentWidth="100">
+                <mx:Text textAlign="left" text="Знаки предупреждения:"/>
+            </mx:HBox>       		
+			<mx:HBox percentWidth="100">	
+				<mx:CheckBox id="SIGN_2_IS" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="ГАЗ! Вход запрещен" width="170" />
+			</mx:HBox>
+			<mx:HBox percentWidth="100">
+				<mx:CheckBox id="SIGN_3_IS" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="Запрещ. пользов. откр. огнем и курить" width="170" />
+				<mx:CheckBox id="SIGN_4_IS" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="Знак.с указанием ЭО и телефона филиала" width="150" />		
+			</mx:HBox>
+			<mx:HBox percentWidth="100">
+				<mx:CheckBox id="SIGN_5_IS" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="Категорий по взрывопож. опасн." width="170" />
+				<mx:CheckBox id="SIGN_6_IS" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="Наличие техсхемы" width="150" />		
+			</mx:HBox>
+			<mx:HBox percentWidth="100">
+                <mx:Text textAlign="left" text="Содержание оборудования:"/>
+            </mx:HBox> 
+            <mx:HBox percentWidth="100">
+            	<mx:CheckBox id="ORDER_1_IS" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="След гидрожидкости и смаз. вещ-в" width="170" />
+				<mx:CheckBox id="ORDER_2_IS" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="Посторонние предметы" width="150" />
+			</mx:HBox>
+			<mx:HBox percentWidth="100">	
+				<mx:CheckBox id="ORDER_3_IS" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="Незадейств. оборуд. на ТПА, КП" width="170" />
+				<mx:CheckBox id="ORDER_4_IS" type="number" width="10" height="10" />
+                <mx:Text textAlign="left" text="Наличие площадок для обслуж ТПА &gt;1,6" width="150" />
+			</mx:HBox>
+			<mx:HBox percentWidth="100">
+				<mx:CheckBox id="ORDER_5_IS" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="Соотв-вие ЛКП корпор. стилю" width="170" />
+			</mx:HBox>
+			<mx:HBox percentWidth="100">	
+				<mx:CheckBox id="ADD_PET_IS_1" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="Наличие журнала свароч. работ" width="170" />
+				<mx:CheckBox id="ADD_PET_IS_2" type="number" width="10" height="10" />
+                <mx:Text textAlign="left" text="Наличие рабочих чертежей" width="150" />
+			</mx:HBox>
+			<mx:HBox percentWidth="100">	
+				<mx:CheckBox id="ADD_PET_IS_3" type="number" width="10" height="10" />
+				<mx:Text textAlign="left" text="Наличие спецификации оборудования" width="170" />
+				<mx:CheckBox id="ADD_PET_IS_4" type="number" width="10" height="10" />
+                <mx:Text textAlign="left" text="Соответ. исп.докум. с  факт. исполнением" width="150" />
+			</mx:HBox>
+			<mx:HBox percentWidth="100">
+				<mx:Text textAlign="right" text="Коррект. дейст-я" width="140" />
+				<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+					<mx:ComboBox id="CORR_ID" width="225" maxChars="100" height="20" dataProvider="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_SERVICE_MAINT_CORRECTION_GCL"/>
+						            <mx:Button id="BTN_LIST_CORR_ID" selectedField="SUTSTPA_SPRAV_SERVICE_MAINT_CORRECTION_GCL" enabled="false"
+	                         styleName="refList"
+	                         toolTip="Перейти к редактированию справочника"
+	                         width="16"
+	                         height="16"/>						   
+				</mx:HBox>
+			</mx:HBox>
+			<mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+	            <mx:Text textAlign="right" text="ОПЕРАТОР" width="140" />
+	            <mx:Text textAlign="right" text="1" width="30"/>
+	            <mx:CheckBox id="OPERATOR1" type="number" width="10" height="10" />
+	            <mx:Text textAlign="right" text="2" width="30"/>
+	            <mx:CheckBox id="OPERATOR2" type="number" width="10" height="10" />
+	            <mx:Text textAlign="right" text="3" width="30"/>
+	            <mx:CheckBox id="OPERATOR3" type="number" width="10" height="10" />
+	        </mx:HBox>
+	        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+	            <mx:Text textAlign="right" text="ОПЕРАТОР" width="140" />
+	            <mx:Text textAlign="right" text="4" width="30"/>
+	            <mx:CheckBox id="OPERATOR4" type="number" width="10" height="10" />
+	            <mx:Text textAlign="right" text="5" width="30"/>
+	            <mx:CheckBox id="OPERATOR5" type="number" width="10" height="10" />
+	            <mx:Text textAlign="right" text="6" width="30"/>
+	            <mx:CheckBox id="OPERATOR6" type="number" width="10" height="10" />
+	        </mx:HBox>
+	        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+				<mx:Text textAlign="right" text="TYPE" width="100"/>
+				<mx:TextInput id="TYPE" width="200" maxChars="23" height="40"/>
+			</mx:HBox>
+	        
+	        </mx:VBox>
+	</mx:HBox>	
+</DATA_EDIT_FORM>

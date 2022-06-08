@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.7.4" xsi:noNamespaceSchemaLocation="lay.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" descr="Карта мира" name="M_W">
+  <dataProvider type="style" source="M_W_STYLE.xml" />
+  <layer id="WEB50_M_W_MIR_GORODA" descr="МИР_ГОРОДА" comment="WEB50.M_W_MIR_GORODA" order="3" visible="true" topology="point" projection="EPSG:4326" zoomMin="11" zoomMax="9" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_W_MIR_GORODA">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_W_MIR_GORODA" />
+    <dataProvider type="style" source="M_W_STYLE.xml#WEB50_M_W_MIR_GORODA" />
+    <dataProvider type="semantic" source="M_W_SEM.xml#WEB50_M_W_MIR_GORODA" />
+    <dataProvider type="spatial" source="M_W_GEO.xml#WEB50_M_W_MIR_GORODA" />
+  </layer>
+  <layer id="WEB50_M_W_MIR_GORODA_OSNOVNYE" descr="МИР_ГОРОДА_ОСНОВНЫЕ" comment="WEB50.M_W_MIR_GORODA_OSNOVNYE" order="2" visible="true" topology="point" projection="EPSG:4326" zoomMin="11" zoomMax="7" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_W_MIR_GORODA_OSNOVNYE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_W_MIR_GORODA_OSNOVNYE" />
+    <dataProvider type="style" source="M_W_STYLE.xml#WEB50_M_W_MIR_GORODA_OSNOVNYE" />
+    <dataProvider type="semantic" source="M_W_SEM.xml#WEB50_M_W_MIR_GORODA_OSNOVNYE" />
+    <dataProvider type="spatial" source="M_W_GEO.xml#WEB50_M_W_MIR_GORODA_OSNOVNYE" />
+  </layer>
+  <layer id="WEB50_M_W_MIR_OKEAN" descr="МИР_ОКЕАН" comment="WEB50.M_W_MIR_OKEAN" order="4" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="0" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_W_MIR_OKEAN">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_W_MIR_OKEAN" />
+    <dataProvider type="style" source="M_W_STYLE.xml#WEB50_M_W_MIR_OKEAN" />
+    <dataProvider type="semantic" source="M_W_SEM.xml#WEB50_M_W_MIR_OKEAN" />
+    <dataProvider type="spatial" source="M_W_GEO.xml#WEB50_M_W_MIR_OKEAN" />
+  </layer>
+  <layer id="WEB50_M_W_MIR_STOLITCY" descr="МИР_СТОЛИЦЫ" comment="WEB50.M_W_MIR_STOLITCY" order="1" visible="true" topology="point" projection="EPSG:4326" zoomMin="11" zoomMax="0" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_W_MIR_STOLITCY">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_W_MIR_STOLITCY" />
+    <dataProvider type="style" source="M_W_STYLE.xml#WEB50_M_W_MIR_STOLITCY" />
+    <dataProvider type="semantic" source="M_W_SEM.xml#WEB50_M_W_MIR_STOLITCY" />
+    <dataProvider type="spatial" source="M_W_GEO.xml#WEB50_M_W_MIR_STOLITCY" />
+  </layer>
+  <layer id="WEB50_M_W_MIR_STRANY" descr="МИР_СТРАНЫ" comment="WEB50.M_W_MIR_STRANY" order="5" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="0" dataType="vector" type="common" labelField="СТРАНА" classField="" spacing="common" cover="false" schema="WEB50" table="M_W_MIR_STRANY">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_W_MIR_STRANY" />
+    <dataProvider type="style" source="M_W_STYLE.xml#WEB50_M_W_MIR_STRANY" />
+    <dataProvider type="semantic" source="M_W_SEM.xml#WEB50_M_W_MIR_STRANY" />
+    <dataProvider type="spatial" source="M_W_GEO.xml#WEB50_M_W_MIR_STRANY" />
+  </layer>
+</root>

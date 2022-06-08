@@ -1,0 +1,22 @@
+<form version="7.7.2.2" class="mxForm" style="overflow: hidden;">
+    <div class="vBox" name="vbox" style="width: 395px;">
+        <span>
+            <div id="admRoutesIntervalDividingForm_useIntervalsButton" style="font-size: 11px; color: #ffffff">Регулярная разбивка</div>
+            <div style="padding-bottom: 5px">
+                <div class="text" style="width:150px; text-align: right; padding-right: 5px;">Размер шага разбивки, м:</div>
+                <input name="regular_intervals_distance" />
+            </div>
+            <div id="admRoutesIntervalDividingForm_dontUseIntervalsButton" style="font-size: 11px; color: #ffffff">Пообъектная разбивка</div>
+            <div style="padding-bottom: 5px; padding-left: 5px;">
+                <div class="text" style="text-align: left;">SQL-запрос для построения выборки объектов между которыми будет проводиться разбивка:</div>
+                <div contenteditable="true" class="contenteditable-text" name="construction_element_query" style="width:385px; height:45px;">select event_id from pods.valve</div>
+                <!--<textarea name="construction_element_query" rows="3" style="width:385px" >select event_id from pods.valve</textarea>-->
+            </div>
+            <div id="admRoutesIntervalDividingForm_PODS_FEATURE_TABLE" style="width:395px"></div>
+        </span>
+        <div class="buttons" style="padding: 0">
+            <input type="button" name="ok" value="ОK">
+            <input type="button" name="cancel" value="Отмена">
+        </div>
+    </div>
+</form>

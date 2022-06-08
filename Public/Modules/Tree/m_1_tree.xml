@@ -1,0 +1,124 @@
+﻿<dataset name="ВТД, коррекция геопривязки" version="7.7.6.8">
+	<group comment="Команды" >
+	<invoke id="gridToolModule" type="global" event_name="FULL_GRID_EVENT_ID_MODULE"
+				 tooltip="Показать списком"
+				 icon="Public/assets/GRID.png">   
+			<!-- Общие параметры-->
+			<!-- имя функции открытия, если пустое, то всегда в новом окне -->
+			<var name="functionName" value=""/>
+			<!-- доп параметры открытия окна из windowsTemplates.xml -->
+			<var name="windowTemplateId" value="gridWindow"/>
+			<!-- Задача -->
+			<var name="task" value="GRID"/>
+			<var name="mdl" value="Public/SWF/Grid_55.swf"/>
+			<!-- Необходимо ли в команды передавать фильтр верхнего уровня -->
+			<var name="needTopFilter" value="true"/>
+			<!-- Флаг указывает, всегда ли открывать в новом окне или можно использовать команды синхронизации -->
+			<var name="useSynchCommands" value="false"/>
+			<!-- шаблон грида -->
+			<var name="gridId" value=""/>
+			<!-- заголовок грида -->
+			<var name="title" value=""/>
+			<!-- полный идентификатор слоя -->
+			<var name="layerId" value=""/>
+		</invoke>		
+<invoke id="createNewObject" type="global" event_name="createObjectFromTree" tooltip="Добавить запись" icon="Public/assets/addObject.png">
+			<var name="classId" value="DEFAULT_GRID" />
+		</invoke>
+		<invoke id="checkBoxTool" type="global" event_name="checkBoxEvent" tooltip="Вкл/Выкл видимость слоя">
+			<var layerParams="" />
+		</invoke>
+   </group>
+	<tree toolbarStyle="toolbarStyle" toolbarButtonStyle="mapIcon" max_items="20">
+		<level format="M1_ГИДРОГРАФИЯ_ЛИН_ТОЧ" icon="OPENSCALE" levelParams="layerId=M_1_Layers.xml#WEB50_M_1_GIDR_LP" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WEB50_M_1_GIDR_LP" FILE_NAME="M_1_STYLE.xml" />  
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_GIDR_LP;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_GIDR_LP;" />
+		</level>
+		<!--<level format="M1_ГИДРОГРАФИЯ_ПЛ" icon="OPENSCALE" levelParams="layerId=M_1_Layers.xml#WEB50_M_1_GIDR_S" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WEB50_M_1_GIDR_S" FILE_NAME="M_1_STYLE.xml" />  
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_GIDR_S;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_GIDR_S;" />
+		</level>
+		<level format="M1_ГРУНТЫ" icon="OPENSCALE" levelParams="layerId=M_1_Layers.xml#WEB50_M_1_GRUNT" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WEB50_M_1_GRUNT" FILE_NAME="M_1_STYLE.xml" />  
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_GRUNT;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_GRUNT;" />
+		</level>
+		<level format="M1_ГРАНИЦЫ" icon="OPENSCALE" levelParams="layerId=M_1_Layers.xml#WEB50_M_1_LIMITS" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WEB50_M_1_LIMITS" FILE_NAME="M_1_STYLE.xml" />  
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_LIMITS;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_LIMITS;" />
+		</level>
+		<level format="M1_ГАЗОПРОВОДНАЯ_СЕТЬ" icon="OPENSCALE" levelParams="layerId=M_1_Layers.xml#WEB50_M_1_PROM_GAS" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WEB50_M_1_PROM_GAS" FILE_NAME="M_1_STYLE.xml" />  
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_PROM_GAS;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_PROM_GAS;" />
+		</level>
+		<level format="M1_ПРОМ_ОБЪЕКТЫ_ЛИН_ТОЧ" icon="OPENSCALE" levelParams="layerId=M_1_Layers.xml#WEB50_M_1_PROM_LP" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WEB50_M_1_PROM_LP" FILE_NAME="M_1_STYLE.xml" />  
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_PROM_LP;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_PROM_LP;" />
+		</level>
+		<level format="M1_ПРОМ_ОБЪЕКТЫ_ПЛ" icon="OPENSCALE" levelParams="layerId=M_1_Layers.xml#WEB50_M_1_PROM_S" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WEB50_M_1_PROM_S" FILE_NAME="M_1_STYLE.xml" />  
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_PROM_S;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_PROM_S;" />
+		</level>
+		<level format="M1_РАСТИТЕЛЬНОСТЬ_ЛИН_ТОЧ" icon="OPENSCALE" levelParams="layerId=M_1_Layers.xml#WEB50_M_1_RAST_LP" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WEB50_M_1_RAST_LP" FILE_NAME="M_1_STYLE.xml" />  
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_RAST_LP;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_RAST_LP;" />
+		</level>
+		<level format="M1_РАСТИТЕЛЬНОСТЬ_ПЛ" icon="OPENSCALE" levelParams="layerId=M_1_Layers.xml#WEB50_M_1_RAST_S" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WEB50_M_1_RAST_S" FILE_NAME="M_1_STYLE.xml" />  
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_RAST_S;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_RAST_S;" />
+		</level>
+		<level format="M1_РЕЛЬЕФ" icon="OPENSCALE" levelParams="layerId=M_1_Layers.xml#WEB50_M_1_RELIEF" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WEB50_M_1_RELIEF" FILE_NAME="M_1_STYLE.xml" />  
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_RELIEF;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_RELIEF;" />
+		</level>
+		<level format="M1_ДОРОГИ_ЛИН_ТОЧ" icon="OPENSCALE" levelParams="layerId=M_1_Layers.xml#WEB50_M_1_ROADS_LP" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WEB50_M_1_ROADS_LP" FILE_NAME="M_1_STYLE.xml" />  
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_ROADS_LP;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_ROADS_LP;" />
+		</level>
+		<level format="M1_ДОРОГИ_ПЛ" icon="OPENSCALE" levelParams="layerId=M_1_Layers.xml#WEB50_M_1_ROADS_S" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WEB50_M_1_ROADS_S" FILE_NAME="M_1_STYLE.xml" />  
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_ROADS_S;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_ROADS_S;" />
+		</level>
+		<level format="M1_ПЛАН_ВЫС_ОСНОВА" icon="OPENSCALE" levelParams="layerId=M_1_Layers.xml#WEB50_M_1_SURVEY" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WEB50_M_1_SURVEY" FILE_NAME="M_1_STYLE.xml" />  
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_SURVEY;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_SURVEY;" />
+		</level>
+		<level format="M1_БОЛОТА" icon="OPENSCALE" levelParams="layerId=M_1_Layers.xml#WEB50_M_1_SWAMP" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WEB50_M_1_SWAMP" FILE_NAME="M_1_STYLE.xml" />  
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_SWAMP;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_SWAMP;" />
+		</level>
+		<level format="M1_ТЕКСТ_ПОДПИСИ" icon="OPENSCALE" levelParams="layerId=M_1_Layers.xml#WEB50_M_1_TEXT" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WEB50_M_1_TEXT" FILE_NAME="M_1_STYLE.xml" />  
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_TEXT;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_TEXT;" />
+		</level>
+		<level format="M1_НАСЕЛ_ПУНКТЫ_ЛИН_ТОЧ" icon="OPENSCALE" levelParams="layerId=M_1_Layers.xml#WEB50_M_1_TOWN_LP" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WEB50_M_1_TOWN_LP" FILE_NAME="M_1_STYLE.xml" />  
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_TOWN_LP;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_TOWN_LP;" />
+		</level>
+		<level format="M1_НАСЕЛ_ПУНКТЫ_ПЛ" icon="OPENSCALE" levelParams="layerId=M_1_Layers.xml#WEB50_M_1_TOWN_S" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WEB50_M_1_TOWN_S" FILE_NAME="M_1_STYLE.xml" />  
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_TOWN_S;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_TOWN_S;" />
+		</level>
+		<level format="M1_ЗОНА" icon="OPENSCALE" levelParams="layerId=M_1_Layers.xml#WEB50_M_1_ZONE" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WEB50_M_1_ZONE" FILE_NAME="M_1_STYLE.xml" />  
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_ZONE;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WEB50_M_1_ZONE;" />
+		</level>		-->
+    </tree>  
+</dataset>

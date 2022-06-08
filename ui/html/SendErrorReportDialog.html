@@ -1,0 +1,37 @@
+<form class="smallDialogForm">
+    <div class="alertfield">
+        <div class="alert">Внимание! Для более эффективной работы по исправлению возникшей ошибки, просим Вас идентифицировать себя:
+            указать ФИО, телефон, № кабинета, и описать проблему как можно подробней.</div>
+    </div>
+    <div class="field">
+        <div class="label">Тип ошибки</div>
+        <div class="value">
+            <select name="type">
+                <option value="Обнаружена ошибка в данных">Обнаружена ошибка в данных</option>
+                <option value="Обнаружена ошибка приложения">Обнаружена ошибка приложения</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="label">Добавить адрес получателя</div>
+        <div class="value"><input name="email" type="text" value=""></div>
+    </div>    
+
+    <div class="field">
+        <div class="label">Имя для входа в систему</div>
+        <div class="value"><input name="user" type="text" value="" class="readOnly" disabled="disabled"></div>
+    </div>    
+
+    <div class="field">
+        <div class="label">ФИО</div>
+        <div class="value"><input name="name" type="text" value="" ></div>
+    </div>    
+        
+    <textarea name="description" style="width:100%; height:100px"></textarea>
+    
+    <textarea name="data" style="width:100%; height:100px; display:none"></textarea>
+    <textarea name="paramsdata" style="width:100%; height:100px; display:none"></textarea>
+</form>
+
+

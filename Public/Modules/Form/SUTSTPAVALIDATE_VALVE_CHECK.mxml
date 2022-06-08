@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns="view.data.*" xmlns:data="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns:mx="http://www.adobe.com/2006/mxml"
+                title="Кран, полевые данные"
+                width="760"
+                ext_data_id=""
+                excelTemplate="">
+  <dataProvider>SUTSTPAVALIDATE_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+    </panel:buttons>
+    <mx:HBox percentWidth="100">
+        <!--левая колонка полей-->  
+        <mx:VBox percentWidth="50">
+            <mx:HBox percentWidth="100">
+                <mx:CheckBox id="VALIDATE_IS" type="number" width="10" height="10" />
+                <mx:Text textAlign="left" text="Сверка данных выполнена" width="170" />
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Ранг" width="50" />
+                <controls:NumberInput id="RANK" editable="false" width="45" maxChars="22" height="20" />
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:Text textAlign="left" text="Наличие табличек:"/>
+            </mx:HBox>               
+            <mx:HBox percentWidth="100">
+                <mx:CheckBox id="TECH_NUM_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Техн. номер ТПА" width="100"/>                
+                <mx:CheckBox id="PLATE_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Изготовитель ТПА" width="100"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:Text textAlign="left" text="Коррозионное состояние:"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:CheckBox id="EXT_CORR_1_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Коррозия на ТПА" width="100"/>
+                <mx:CheckBox id="EXT_CORR_2_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Отслоение" width="100"/>
+                <mx:CheckBox id="EXT_CORR_3_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Трещины" width="50"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:Text textAlign="left" text="Земля-воздух:"/>
+            </mx:HBox>
+             <mx:HBox percentWidth="100">
+                <mx:CheckBox id="GROUND_1_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Колонны &gt; 15 см" width="100"/>
+                <mx:CheckBox id="GROUND_2_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="СОГ 15 см" width="100"/>
+             </mx:HBox>
+             <mx:HBox percentWidth="100">
+                <mx:CheckBox id="GROUND_3_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Отслоение" width="100"/>
+                <mx:CheckBox id="GROUND_4_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Трещины" width="100"/>
+                <mx:CheckBox id="GROUND_5_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Сквозные дефекты" width="50"/>
+             </mx:HBox>
+             <mx:HBox percentWidth="100">
+                <mx:Text textAlign="left" text="Окраска:"/>
+            </mx:HBox>     
+             <mx:HBox percentWidth="100">
+                <mx:CheckBox id="COLOR_1_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Трубопровод-жёлтый" width="100"/>
+                <mx:CheckBox id="COLOR_2_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="СОГ-жёлтый" width="100"/>
+                <mx:CheckBox id="COLOR_3_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Привод арматуры-жёлтый" width="50"/>
+             </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:CheckBox id="COLOR_4_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Корп. арматуры и колонны-синие" width="100"/>
+                <mx:CheckBox id="COLOR_5_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Штурвалы, рукоятки-красный" width="100"/>
+                <mx:CheckBox id="COLOR_6_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Фланцы-красный" width="50"/>
+             </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:Text textAlign="left" text="Утечки:"/>
+            </mx:HBox> 
+            <mx:HBox percentWidth="100">                
+                <mx:CheckBox id="CONT_MEAS_5_IS" type="number" width="10" height="10" />
+                <mx:Text textAlign="left" text="Утечка. на ЭПУУ, штуцерных соединений" width="170" />               
+                <mx:CheckBox id="CONT_MEAS_6_IS" type="number" width="10" height="10" />
+                <mx:Text textAlign="left" text="Утечка. на импульсной обвязке крана" width="150" />
+            </mx:HBox>
+            <mx:HBox percentWidth="100">                
+                <mx:CheckBox id="ADD_IS_4" type="number" width="10" height="10" />
+                <mx:Text textAlign="left" text="Утечки газа через уплот. шпинделя крана" width="280" />
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:CheckBox id="ELECTRIC_DRIVE_READY_DESCR" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Готовность крана к телемеханизации" width="350"/>
+             </mx:HBox>
+          </mx:VBox>
+          
+          <!--Правая колонка полей-->
+          <mx:VBox percentWidth="50">
+            
+             <mx:HBox percentWidth="100">
+                <mx:Text textAlign="left" text="Информация:"/>
+             </mx:HBox>       
+             <mx:HBox percentWidth="100">
+                <mx:CheckBox id="INF_1_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Налич.информ. о марке заправл.гидр.жидк. на гидр. цилиндре привода" width="350"/>
+             </mx:HBox>
+              <mx:HBox percentWidth="100">
+                <mx:CheckBox id="INF_2_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Стрелка на маховике «О»и«З» («Открыто», «Закрыто»)" width="350"/>
+             </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:CheckBox id="INF_3_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Руч. насос «О», «З» и «Д» и «Р»" width="150"/>
+                <mx:CheckBox id="INF_4_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Полож. затвора букв «О» и «З» на корп. привода" width="150"/>               
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:CheckBox id="INF_5_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Хар-ка ТПА. Налич. систем резерв-я ТПА" width="350"/>
+             </mx:HBox>
+             <mx:HBox percentWidth="100">
+                <mx:CheckBox id="INF_6_IS" type="number" width="10" height="10"/>
+                <mx:Text textAlign="left" text="Налич.техн.нум-ции на корп/приводе арм-ры или на бирках" width="350"/>
+             </mx:HBox>
+             <mx:HBox percentWidth="100">
+                <mx:CheckBox id="ORDER_6_IS" type="number" width="10" height="10" />
+                <mx:Text textAlign="left" text="Стальные заглушки на СОГ" width="150" />
+                <mx:CheckBox id="CONT_MEAS_7_IS" type="number" width="10" height="10" />
+                <mx:Text textAlign="left" text="Налич. диэл. вставок на трубках импул.газа" width="150" />
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:CheckBox id="CONT_MEAS_2_IS" type="number" width="10" height="10" />
+                <mx:Text textAlign="left" text="Испр. сост. манометров на ТПА, СОГ" width="150" />
+                <mx:CheckBox id="CONT_MEAS_3_IS" type="number" width="10" height="10" />
+                <mx:Text textAlign="left" text="Дата поверки манометров" width="150" /> 
+            </mx:HBox>          
+            <mx:HBox percentWidth="100">                
+                <mx:CheckBox id="CONT_MEAS_4_IS" type="number" width="10" height="10" />
+                <mx:Text textAlign="left" text="Налич. на манометре красной черты, соотв. Pразр" width="300" />
+            </mx:HBox>
+            <mx:HBox percentWidth="100">                
+                <mx:CheckBox id="ADD_IS_1" type="number" width="10" height="10" />
+                <mx:Text textAlign="left" text="Расст. от фланца пр-да до земли не в интервале 800 - 1100 мм" width="300" />
+            </mx:HBox>
+            <mx:HBox percentWidth="100">                
+                <mx:CheckBox id="ADD_IS_2" type="number" width="10" height="10" />
+                <mx:Text textAlign="left" text="Вверху колонны нет отверстия D&gt;10мм для проверки грунт. вод " width="280" />
+            </mx:HBox>
+            <mx:HBox percentWidth="100">                
+                <mx:CheckBox id="ADD_IS_3" type="number" width="10" height="10" />
+                <mx:Text textAlign="left" text="На корпусе, приводе, свар. швах вмятины, задиры, мех. повр., корр." width="280" />
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:CheckBox id="EXEC_DOC_IS" type="number" width="10" height="10" />
+                <mx:Text textAlign="left" text="Найден паспорт исп.докум." width="170" />
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:CheckBox id="ELECTRIC_DRIVE_READY_IS" type="number" width="10" height="10" />
+                <mx:Text textAlign="left" text="Имеется возможность телемеханизации" width="170" />
+            </mx:HBox>
+           <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+                <mx:Text textAlign="right" text="ОПЕРАТОР" width="140" />
+                <mx:Text textAlign="right" text="1" width="30"/>
+                <mx:CheckBox id="OPERATOR1" type="number" width="10" height="10" />
+                <mx:Text textAlign="right" text="2" width="30"/>
+                <mx:CheckBox id="OPERATOR2" type="number" width="10" height="10" />
+                <mx:Text textAlign="right" text="3" width="30"/>
+                <mx:CheckBox id="OPERATOR3" type="number" width="10" height="10" />
+            </mx:HBox>
+            <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+	            <mx:Text textAlign="right" text="ОПЕРАТОР" width="140" />
+	            <mx:Text textAlign="right" text="4" width="30"/>
+	            <mx:CheckBox id="OPERATOR4" type="number" width="10" height="10" />
+	            <mx:Text textAlign="right" text="5" width="30"/>
+	            <mx:CheckBox id="OPERATOR5" type="number" width="10" height="10" />
+	            <mx:Text textAlign="right" text="6" width="30"/>
+	            <mx:CheckBox id="OPERATOR6" type="number" width="10" height="10" />
+	        </mx:HBox>
+           
+         </mx:VBox>
+    </mx:HBox>
+</DATA_EDIT_FORM>

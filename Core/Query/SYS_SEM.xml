@@ -1,0 +1,838 @@
+﻿<root version="postgres 7.7.7.3">
+ <!-- Запрос для получения фильтра по описанию грида -->
+  <data id="GET_FILTER" comment="Запрос для получения фильтра по описанию грида" schema="-" table="-" descr="Запрос для получения фильтра по описанию грида">
+    <select>
+      <exslt xmlPath="..\..\Public\Modules\Grid\{FILE}.xml" xsltPath="getFilter.xslt">
+		  </exslt>
+    </select>
+  </data>   
+
+ <!-- Запрос для получения из файла file запроса с id=dataId (используется для получения переменных для ПКА из запросов геометрии слоя) -->
+  <data id="GET_DATA_XML" comment="-" schema="-" table="-">
+    <select>
+      <xmlQuery source="{file}" xpath="//data[@id='{dataId}']">
+		  <var name="file"/>
+		  <var name="dataId"/>
+	  </xmlQuery>
+    </select>
+  </data>
+  <!-- Запрос для получения содержимого XML-файла -->
+  <data id="GET_XML_FILE" comment="Запрос для получения содержимого XML-файла" schema="-" table="-" descr="Запрос для получения содержимого XML-файла">
+    <select>
+      <xmlQuery source="{FILE}">
+		  <var name="FILE"/>
+	  </xmlQuery>
+    </select>
+  </data>
+  <data id="GET_LPU_BOUNDS" comment="Получение рамок ЛПУ">
+	<select>
+		<dbQuery idField="ID">
+			<var name="FILTER" default="NULL"  />
+			<query>
+				select g."XMIN",g."YMIN",g."XMAX",g."YMAX" from pods.srv_district_g g where g.gid in (select d.gid from pods.srv_district_gcl d where d.srv_district_id in ({FILTER}))
+			</query>
+		</dbQuery>
+	</select>
+  </data> 
+	
+  <!-- Запрос для получения только стилей DEFAULT (без value) из XML-файла стилей -->
+  <data id="GET_DEFAULT_STYLES_XML" comment="Запрос для получения только стилей DEFAULT (без value) из XML-файла стилей" schema="-" table="-">
+    <select>
+      <xmlQuery source="{FILE}" xpath="//Style[not(value)]">
+		  <var name="FILE"/>
+	  </xmlQuery>
+    </select>
+  </data>
+  <!-- Запросы для личного кабинета пользователя и регистрации нового пользователя -->
+  <data id="WEB50_B_USER_PRIVATE" comment="Запросы для работы с таблицей WEB50.B_USER_PRIVATE">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+			SELECT bup.USER_ID ,bup.LOGIN ,bup.LASTNAME ,bup.FIRSTNAME ,bup.SECONDNAME ,bup.SEX ,bup.BIRTHDAY
+			      ,bup.MAIL ,bup.THEME ,bup.TIMEZONE ,bup.STATUS ,bup.LANGUAGE ,bup.SECURITY_QUESTION
+			      ,bup.SECURITY_ANSWER ,bup.CREATED ,bup.LOGONTIME ,bup.ACCESSTIME ,bup.CTIME
+			,(SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = bup.CUSER_ID) AS CUSER
+			,(SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = bup.MUSER_ID) AS MUSER
+			,bup.MTIME  FROM WEB50.B_USER_PRIVATE bup WHERE USER_ID = :SYS_OBJ_ID
+		</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(USER_ID) id FROM WEB50.B_USER_PUBLIC" />
+        <var name="LOGIN" type="String" direction="Input" />
+        <var name="PASSWORD" type="String" direction="Input" />
+        <var name="LASTNAME" type="String" direction="Input" />
+		<var name="NAME" type="String" direction="Input" />
+        <var name="FIRSTNAME" type="String" direction="Input" />
+        <var name="SECONDNAME" type="String" direction="Input" />
+        <var name="SEX" type="String" direction="Input" />
+        <var name="BIRTHDAY" type="DateTime" direction="Input" />
+        <var name="MAIL" type="String" direction="Input" />
+        <var name="PICTURE" type="String" direction="Input" />
+		<var name="THEME" type="String" direction="Input" />
+        <var name="TIMEZONE" type="String" direction="Input" />
+        <var name="STATUS" type="String" direction="Input" />
+        <var name="SECURITY_QUESTION" type="String" direction="Input" />
+        <var name="SECURITY_ANSWER" type="String" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+        <query>
+		DO $$
+			DECLARE v_user_id BIGINT;
+			same_user_id BIGINT;
+			BEGIN
+			SELECT COUNT(*) INTO same_user_id FROM WEB50.B_USER_PUBLIC WHERE UPPER(NICKNAME)=UPPER('{LOGIN}');
+			IF (same_user_id &gt; 0)
+			THEN
+				RAISE EXCEPTION 'Невозможно создать пользователя. Пользователь с таким именем уже существует.';
+			ELSE
+			INSERT INTO WEB50.B_USER_PUBLIC (NICKNAME,CUSER_ID) VALUES ('{LOGIN}',-1) RETURNING USER_ID INTO v_user_id;
+			INSERT INTO WEB50.B_USER_PRIVATE(USER_ID ,LOGIN ,PASSWORD ,LASTNAME ,FIRSTNAME ,SECONDNAME ,SEX ,BIRTHDAY
+			                                ,MAIL ,PICTURE, THEME ,TIMEZONE ,STATUS ,LANGUAGE ,SECURITY_QUESTION ,SECURITY_ANSWER
+			                                ,CREATED ,CUSER_ID)
+			                          VALUES(v_user_id ,'{LOGIN}','{PASSWORD}','{LASTNAME}','{FIRSTNAME}','{SECONDNAME}','{SEX
+			                               }','{BIRTHDAY}','{MAIL}','{PICTURE}','{THEME}','{TIMEZONE}','{STATUS}','ru' ,'{SECURITY_QUESTION
+			                               }','{SECURITY_ANSWER}',current_timestamp,-1 );
+			INSERT INTO WEB50.B_USER_TO_B_ROLE(USER_ID,ROLE_ID,CTIME,CUSER_ID) VALUES (v_user_id,1046,current_timestamp,0);
+			END IF;
+			END $$;
+		</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <param name="LASTNAME" type="String" direction="Input" />
+        <param name="FIRSTNAME" type="String" direction="Input" />
+        <param name="SECONDNAME" type="String" direction="Input" />
+		<param name="THEME" type="String" direction="Input" />
+        <param name="SEX" type="String" direction="Input" />
+        <param name="BIRTHDAY" type="DateTime" direction="Input" />
+        <param name="MAIL" type="String" direction="Input" />
+        <param name="TIMEZONE" type="String" direction="Input" />
+        <param name="LANGUAGE" type="String" direction="Input" />
+        <param name="SECURITY_QUESTION" type="String" direction="Input" />
+        <param name="SECURITY_ANSWER" type="String" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>			
+			UPDATE WEB50.B_USER_PRIVATE
+			SET
+			LASTNAME = :LASTNAME
+			,FIRSTNAME = :FIRSTNAME
+			,SECONDNAME = :SECONDNAME
+			,THEME = :THEME
+			,SEX = :SEX
+			,BIRTHDAY = :BIRTHDAY
+			,MAIL = :MAIL
+			,TIMEZONE = :TIMEZONE
+			,LANGUAGE = :LANGUAGE
+			,SECURITY_QUESTION = :SECURITY_QUESTION
+			,SECURITY_ANSWER = :SECURITY_ANSWER
+			,MTIME = current_timestamp
+			,MUSER_ID = :USER_ID
+			WHERE USER_ID = :SYS_OBJ_ID			
+		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>			
+			UPDATE WEB50.B_USER_PRIVATE SET STATUS = 'B'
+			WHERE USER_ID = :SYS_OBJ_ID
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="WEB50_B_USER_PRIVATE_REG" comment="Запросы для регистрации WEB50.B_USER_PRIVATE_REG">
+    <select>
+      <dbQuery idField="ID" />
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(USER_ID) id FROM WEB50.B_USER_PUBLIC" />
+        <var name="LOGIN" type="String" direction="Input" />
+        <var name="PASSWORD" type="String" direction="Input" />
+        <var name="LASTNAME" type="String" direction="Input" />
+		<var name="NAME" type="String" direction="Input" />
+        <var name="FIRSTNAME" type="String" direction="Input" />
+        <var name="SECONDNAME" type="String" direction="Input" />
+        <var name="SEX" type="String" direction="Input" />
+        <var name="BIRTHDAY" type="DateTime" direction="Input" />
+        <var name="MAIL" type="String" direction="Input" />
+        <var name="PICTURE" type="String" direction="Input" />
+        <var name="TIMEZONE" type="String" direction="Input" />
+        <var name="STATUS" type="String" direction="Input" />
+        <var name="SECURITY_QUESTION" type="String" direction="Input" />
+        <var name="SECURITY_ANSWER" type="String" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+        <query>
+		DO $$
+			DECLARE v_user_id BIGINT;
+			same_user_id BIGINT;
+			BEGIN
+			SELECT COUNT(*) INTO same_user_id FROM WEB50.B_USER_PUBLIC WHERE UPPER(NICKNAME)=UPPER('{LOGIN}');
+			IF (same_user_id &gt; 0)
+			THEN
+				RAISE EXCEPTION 'Невозможно создать пользователя. Пользователь с таким именем уже существует.';
+			ELSE
+			INSERT INTO WEB50.B_USER_PUBLIC (NICKNAME,CUSER_ID) VALUES ('{LOGIN}',0) RETURNING USER_ID INTO v_user_id;
+			INSERT INTO WEB50.B_USER_PRIVATE(USER_ID,LOGIN,PASSWORD,LASTNAME,FIRSTNAME,SECONDNAME,SEX,BIRTHDAY
+			                                ,MAIL,PICTURE,TIMEZONE,STATUS,LANGUAGE,SECURITY_QUESTION,SECURITY_ANSWER
+			                                ,CREATED,CUSER_ID)
+			                          VALUES(v_user_id,'{LOGIN}','{PASSWORD}','{LASTNAME}','{FIRSTNAME}','{SECONDNAME}','{SEX}','{BIRTHDAY}'
+			                               ,'{MAIL}','{PICTURE}','{TIMEZONE}','{STATUS}','ru','{SECURITY_QUESTION}','{SECURITY_ANSWER}'
+			                               ,current_timestamp,0); 
+			INSERT INTO WEB50.B_USER_TO_B_ROLE(USER_ID,ROLE_ID,CTIME,CUSER_ID) VALUES (v_user_id,1046,current_timestamp,0);
+			END IF;
+			END $$;
+		</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+          UPDATE WEB50.B_USER_PRIVATE
+          SET
+          LOGONTIME = current_timestamp
+          WHERE USER_ID = :SYS_OBJ_ID
+        </query>
+      </dbCommand>
+    </update>
+  </data>
+  <data id="DOCUMENT_OPEN" comment="Запрос для открытия выбранного документа">
+    <select>
+      <dbQuery idField="ID">
+        <param name="DOC_ID" type="Int64" direction="Input" />
+        <query>
+			SELECT ldv.DOC_ID,ldv.STORAGE_ID,ldv.MIME_TYPE_ID,ldv.NAME,ldv.DESCR,ldv.FILE_NAME,ls.PATH, lpd.NAME FOLDER_NAME 
+			FROM WEB50.LIB_DOC_VERSION ldv 
+			JOIN WEB50.LIB_DOC ld ON ld.DOC_ID=ldv.DOC_ID 
+			LEFT JOIN WEB50.LIB_DOC lpd ON ld.PARENT_DOC_ID = lpd.DOC_ID 
+			JOIN WEB50.LIB_STORAGE ls ON ls.STORAGE_ID=ldv.STORAGE_ID 
+			WHERE ldv.DOC_ID=:DOC_ID
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+    <data id="FIRST_DOCS" comment="Запросы для формы добавления документа из существующих">
+        <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" type="Int64" direction="Input" />
+                <query>WITH admin_grants
+                    AS (SELECT 1 dummy
+                    FROM WEB50.B_USER_TO_B_ROLE u2r
+                    JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                    ON u2r.ROLE_ID = r2p.ROLE_ID
+                    JOIN WEB50.B_POLICY_RULES pr
+                    ON r2p.POLICY_ID = pr.POLICY_ID
+                    WHERE u2r.USER_ID = :USER_ID
+                    AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                    AND pr.SELECT_PERMITTED = '1'),
+                    user_grants
+                    AS (SELECT 1 dummy
+                    FROM WEB50.B_USER_TO_B_ROLE u2r
+                    JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                    ON u2r.ROLE_ID = r2p.ROLE_ID
+                    JOIN WEB50.B_POLICY_RULES pr
+                    ON r2p.POLICY_ID = pr.POLICY_ID
+                    WHERE u2r.USER_ID = :USER_ID
+                    AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                    AND pr.SELECT_PERMITTED = '1')
+
+                    SELECT ld.DOC_ID,ld.DOC_TYPE_ID,ld.PARENT_DOC_ID,ld.NAME,ld.DESCR,ld.TIME_STAMP
+                    FROM WEB50.LIB_DOC ld
+                    WHERE (ld.DOC_TYPE_ID=0 OR ld.DOC_TYPE_ID=1 OR ld.DOC_TYPE_ID=41) AND ld.PARENT_DOC_ID IS NULL AND (((ld.status_id = 1
+                    OR (ld.cuser_id = :USER_ID
+                    AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                    OR EXISTS (SELECT 1 FROM admin_grants))
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+    <data id="DOCS_BY_PARENT" comment="Запросы для формы добавления документа из существующих (запрос для дочерних)">
+        <select>
+            <dbQuery idField="ID">
+                <param name="PARENT_DOC_ID" type="Int64" direction="Input" />
+                <param name="USER_ID" type="Int64" direction="Input" />
+                <query>WITH admin_grants
+                    AS (SELECT 1 dummy
+                    FROM WEB50.B_USER_TO_B_ROLE u2r
+                    JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                    ON u2r.ROLE_ID = r2p.ROLE_ID
+                    JOIN WEB50.B_POLICY_RULES pr
+                    ON r2p.POLICY_ID = pr.POLICY_ID
+                    WHERE u2r.USER_ID = :USER_ID
+                    AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                    AND pr.SELECT_PERMITTED = '1'),
+                    user_grants
+                    AS (SELECT 1 dummy
+                    FROM WEB50.B_USER_TO_B_ROLE u2r
+                    JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                    ON u2r.ROLE_ID = r2p.ROLE_ID
+                    JOIN WEB50.B_POLICY_RULES pr
+                    ON r2p.POLICY_ID = pr.POLICY_ID
+                    WHERE u2r.USER_ID = :USER_ID
+                    AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                    AND pr.SELECT_PERMITTED = '1')
+                    SELECT ld.DOC_ID,ld.DOC_TYPE_ID,ld.PARENT_DOC_ID,ld.NAME,ld.DESCR,ld.TIME_STAMP
+                    FROM WEB50.LIB_DOC ld
+                    WHERE ld.PARENT_DOC_ID=:PARENT_DOC_ID  AND (((ld.status_id = 1
+                    OR (ld.cuser_id = :USER_ID
+                    AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                    OR EXISTS (SELECT 1 FROM admin_grants))
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+    <data id="WEB50_LIB_DOC_PARENT" comment="Запрос для comboBox формы WEB50_LIB_DOC, в котором перечислены папки, в которые можно положить документ">
+        <select>
+            <dbQuery idField="ID">
+                <query>
+                    SELECT DOC_ID AS CODE, NAME AS DESCR FROM  WEB50.LIB_DOC WHERE DOC_TYPE_ID='0' UNION ALL SELECT -1 AS CODE, ' по умолчанию ' AS DESCR  ORDER BY DESCR
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+    <data id="WEB50_LIB_DOC" comment="WEB50.LIB_DOC" schema="WEB50" table="LIB_DOC" descr="Документ">
+        <select>
+            <dbQuery idField="ID">
+                <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+                <param name="USER_ID" type="Int64" direction="Input" />
+                <query>
+                    WITH admin_grants
+                    AS (SELECT 1 dummy
+                    FROM WEB50.B_USER_TO_B_ROLE u2r
+                    JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                    ON u2r.ROLE_ID = r2p.ROLE_ID
+                    JOIN WEB50.B_POLICY_RULES pr
+                    ON r2p.POLICY_ID = pr.POLICY_ID
+                    WHERE u2r.USER_ID = :USER_ID
+                    AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                    AND pr.SELECT_PERMITTED = '1'),
+                    user_grants
+                    AS (SELECT 1 dummy
+                    FROM WEB50.B_USER_TO_B_ROLE u2r
+                    JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                    ON u2r.ROLE_ID = r2p.ROLE_ID
+                    JOIN WEB50.B_POLICY_RULES pr
+                    ON r2p.POLICY_ID = pr.POLICY_ID
+                    WHERE u2r.USER_ID = :USER_ID
+                    AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                    AND pr.SELECT_PERMITTED = '1')
+                    SELECT ld.NAME,ld.DESCR,ld.PROVIDER,ld.STATUS_ID,ld.TIME_STAMP,ld.GID,ld.DOC_TYPE_ID,ld.PARENT_DOC_ID
+                    ,ld.CTIME,ld.CUSER_ID,ld.MUSER_ID,ld.MTIME,ld.DOC_ID,ldv.STORAGE_ID,ldv.FILE_NAME,
+                    ldtr.NAME TYPE_NAME, ldtr.DESCR TYPE_DESCR, bupm.LOGIN MUSER
+                    FROM WEB50.LIB_DOC ld
+                    JOIN web50.lib_doc_type_ref ldtr ON ldtr.DOC_TYPE_ID=ld.DOC_TYPE_ID
+                    LEFT JOIN web50.b_user_private bupm ON bupm.USER_ID=ld.MUSER_ID
+                    LEFT JOIN WEB50.LIB_DOC_VERSION ldv
+                    ON ldv.DOC_ID=ld.DOC_ID
+                    WHERE ld.DOC_ID = :SYS_OBJ_ID  AND (((ld.status_id = 1
+                    OR (ld.cuser_id = :USER_ID
+                    AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                    OR EXISTS (SELECT 1 FROM admin_grants))
+                </query>
+            </dbQuery>
+        </select>
+        <!-- В скрипте используется вставка только файла, поэтому DOC_TYPE_ID=1 !!! В этом же скрипте вставляется LIB_DOC_VERSION -->
+        <insert>
+            <dbCommand>
+                <var name="ID" type="Int64" direction="Output" default="SELECT max(DOC_ID) id FROM WEB50.LIB_DOC" />
+                <var name="NAME" type="String" direction="Input" />
+                <var name="DESCR" type="String" direction="Input" />
+                <var name="PARENT_DOC_ID" type="Int64" direction="Input" />
+                <var name="USER_ID" type="Int64" direction="Input" />
+                <var name="MIME_NAME" type="String" direction="Input" />
+                <var name="STORAGE_ID" type="Int64" direction="Input" default="0"/>
+                <var name="FILE_NAME" type="String" direction="Input" />
+                <query>
+				DO $$
+                    DECLARE varDocId BIGINT;
+                    BEGIN
+                    INSERT INTO WEB50.LIB_DOC(NAME,DESCR,PROVIDER,STATUS_ID,TIME_STAMP,DOC_TYPE_ID,PARENT_DOC_ID,CTIME,CUSER_ID)
+                    VALUES('{NAME}','{DESCR}',NULL,1,current_timestamp,1,{PARENT_DOC_ID},current_timestamp,{USER_ID})
+                    RETURNING DOC_ID INTO varDocId;
+                    INSERT INTO WEB50.LIB_DOC_VERSION (DOC_ID,NEXT_DOC_VERSION_ID,MIME_TYPE_ID,STORAGE_ID,NAME,DESCR,VERSION_NUMBER,BODY,FILE_NAME,CTIME,CUSER_ID,MTIME,MUSER_ID)
+                    VALUES (varDocId,NULL,0, {STORAGE_ID},NULL,'Начальная вставка',1.0,NULL,'{FILE_NAME}',current_timestamp,{USER_ID},NULL,NULL);
+                    END $$;
+                </query>
+            </dbCommand>
+        </insert>
+        <update>
+            <dbCommand>
+                <var name="NAME" type="String" direction="Input" />
+                <var name="DESCR" type="String" direction="Input" />
+                <var name="PARENT_DOC_ID" type="Int64" direction="Input" />
+                <var name="USER_ID" type="Int64" direction="Input" />
+                <var name="MIME_NAME" type="String" direction="Input" />
+                <var name="SYS_OBJ_ID" type="Int64" direction="Input" />
+                <query>
+				DO $$
+				BEGIN
+                    UPDATE WEB50.LIB_DOC
+                    SET
+                    NAME = '{NAME}'
+                    ,DESCR = '{DESCR}'
+                    ,PARENT_DOC_ID = {PARENT_DOC_ID}
+                    ,MTIME = current_timestamp
+                    ,MUSER_ID = {USER_ID}
+                    WHERE DOC_ID = {SYS_OBJ_ID};
+                    UPDATE WEB50.LIB_DOC_VERSION SET MIME_TYPE_ID= 0,
+                    NAME='Документ изменен',FILE_NAME='{FILE_NAME}',MTIME=current_timestamp,MUSER_ID={USER_ID}
+                    WHERE DOC_ID = {SYS_OBJ_ID};  
+				END $$;
+                </query>
+            </dbCommand>
+        </update>
+        <delete>
+            <dbCommand>
+                <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+                <query>
+                    DO $$
+					BEGIN
+                    DELETE
+                    FROM WEB50.LIB_DOC_VERSION
+                    WHERE DOC_ID = {SYS_OBJ_ID};
+                    DELETE FROM WEB50.LIB_DOC WHERE DOC_ID = {SYS_OBJ_ID};
+                    END $$
+                </query>
+            </dbCommand>
+        </delete>
+    </data>
+  <data id="EXTERNAL_DATA" comment="Запрос для запуска полученного запроса, результатом будут свойства">
+    <select>
+      <dbQuery idField="ID">
+        <query>
+			{SQL_QUERY}
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запросы для редактирования сравочников -->
+  <data id="DIRECTORY_EDIT">
+    <select>
+      <dbQuery idField="ID">
+        <query>{SQL_QUERY}</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+        <query>{SQL_QUERY}</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+        <query>{SQL_QUERY}</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+        <query>{SQL_QUERY}</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="EXPORT_SCENE3D" comment="Запрос для построения списка 3D-сцен">
+    <select>
+      <dbQuery idField="ID">
+        <query>
+		  SELECT ld.DOC_ID,ld.DOC_TYPE_ID,ld.STATUS_ID,ld.NAME,ld.DESCR,ldv.CTIME,ldv.DOC_VERSION_ID,ldv.FILE_NAME,ldtr.DESCR AS CATEGORY,usr.LOGIN AS USERNAME 
+		  FROM WEB50.LIB_DOC ld JOIN WEB50.LIB_DOC_VERSION ldv ON (ld.DOC_ID=ldv.DOC_ID AND ldv.NEXT_DOC_VERSION_ID IS NULL) JOIN WEB50.LIB_DOC_TYPE_REF ldtr ON ld.DOC_TYPE_ID = ldtr.DOC_TYPE_ID JOIN WEB50.B_USER_PRIVATE usr ON usr.USER_ID=ldv.CUSER_ID 
+		  WHERE ld.DOC_TYPE_ID=37 ORDER BY ldv.DOC_VERSION_ID
+	  </query>
+      </dbQuery>
+    </select>
+  </data>
+	
+  <!-- Запросы для comboBox треков/точек -->
+  <data id="WEB50_POI_COORD_TYPE_REF" comment="WEB50.POI_COORD_TYPE_REF" schema="WEB50" table="POI_COORD_TYPE_REF">
+    <select>
+      <dbQuery idField="ID">
+        <query>SELECT COORD_TYPE_ID AS CODE, DESCR AS DESCR FROM  WEB50.POI_COORD_TYPE_REF ORDER BY DESCR</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_B_STATUS_REF" comment="WEB50.B_STATUS_REF" schema="WEB50" table="B_STATUS_REF">
+    <select>
+      <dbQuery idField="ID">
+        <query>SELECT STATUS_ID AS CODE, DESCR AS DESCR FROM  WEB50.B_STATUS_REF ORDER BY DESCR</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ID" type="String" direction="Output" default="SELECT max(STATUS_ID) id FROM WEB50.B_STATUS_REF" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+		<param name="DESCR" type="String" direction="Input" />
+		<query>
+			INSERT INTO WEB50.B_STATUS_REF(DESCR, CTIME, CUSER_ID)
+			VALUES (:DESCR, current_timestamp, :USER_ID)
+		</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="USER_ID" type="Int64" direction="Input" />
+		<param name="DESCR" type="String" direction="Input" />
+		<param name="CODE" type="Int64" direction="Input" />
+		<query>
+			UPDATE WEB50.B_STATUS_REF SET
+			DESCR = :DESCR
+			,MTIME = current_timestamp
+			,MUSER_ID = :USER_ID
+			WHERE STATUS_ID = :CODE
+		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <query>
+			DELETE FROM WEB50.B_STATUS_REF WHERE STATUS_ID = :CODE
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запросы для comboBox карт -->
+  <data id="WEB50_M_CLASSIFIER_REF" comment="WEB50.M_CLASSIFIER_REF" schema="WEB50" table="M_CLASSIFIER_REF">
+    <select>
+      <dbQuery idField="ID">
+        <query>SELECT CLASSIFIER_ID AS CODE, DESCRIPTION AS DESCR FROM WEB50.M_CLASSIFIER_REF ORDER BY DESCR</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_TOPOLOGY_REF" comment="WEB50.M_TOPOLOGY_REF" schema="WEB50" table="M_TOPOLOGY_REF">
+    <select>
+      <dbQuery idField="ID">
+        <query>SELECT TOPOLOGY_ID AS CODE, DESCRIPTION AS DESCR FROM WEB50.M_TOPOLOGY_REF ORDER BY DESCR</query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запросы для вкладок с гридом (координатная привязка) -->
+  <data id="POI_COORD_TRACK_DATA_GRID" comment="Запрос для получения координат трека (грид)">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+			SELECT tp.COORD_SEQ AS SEQUENCE_NO, ROUND(c.X,8) AS X_COORD, ROUND(c.Y,8) AS Y_COORD, ROUND(c.Z,8) AS Z_COORD, ctr.DESCR AS TYPE
+			FROM WEB50.POI_TRACK t
+			JOIN WEB50.POI_TRACK_TO_POI_COORD tp on tp.TRACK_ID = t.TRACK_ID
+			JOIN WEB50.POI_COORD c on c.COORD_ID = tp.COORD_ID
+			JOIN WEB50.POI_COORD_TYPE_REF ctr on ctr.COORD_TYPE_ID = c.COORD_TYPE_ID
+			WHERE t.TRACK_ID = :SYS_OBJ_ID
+			ORDER BY tp.COORD_SEQ
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+    <!-- Запросы для работы со вкладкой "прикрепленные документы" -->
+    <data id="DOCUMENT_LIST" comment="Запросы для получения списка прикрепленных документов по SYS_FULL_ID объекта; для вставки в LNK_GATE; для удаления из LNK_GATE">
+        <select>
+            <dbQuery idField="ID">
+                <param name="SYS_FULL_ID" type="String" direction="Input" />
+                <query>
+                    WITH s_gate AS (SELECT gate_id,substr(left_obj_id,15) obj_id
+                    FROM WEB50.LNK_GATE WHERE left_obj_id like 'WEB50_LIB_DOC/%'
+                    UNION  SELECT gate_id,substr(right_obj_id,15) obj_id
+                    FROM WEB50.LNK_GATE WHERE right_obj_id like 'WEB50_LIB_DOC/%')
+                    SELECT sg.GATE_ID,lg.LEFT_OBJ_ID,lg.RIGHT_OBJ_ID,lg.CTIME,usr.LOGIN AS USERNAME,ld.DESCR AS CATEGORY,ld.NAME AS DESCR,ld.DOC_ID AS DOC_ID,ld.DOC_TYPE_ID AS DOC_TYPE_ID,ldv.DOC_VERSION_ID AS DOC_VERSION_ID,ldv.FILE_NAME AS FILE_NAME
+                    FROM s_gate sg
+                    JOIN WEB50.LNK_GATE lg ON sg.GATE_ID = lg.GATE_ID
+                    JOIN WEB50.B_USER_PRIVATE usr ON usr.USER_ID=lg.CUSER_ID
+                    JOIN WEB50.LIB_DOC ld ON ld.DOC_ID::text = sg.OBJ_ID
+                    JOIN WEB50.LIB_DOC_TYPE_REF ldtr ON ld.DOC_TYPE_ID = ldtr.DOC_TYPE_ID
+                    LEFT OUTER JOIN WEB50.LIB_DOC_VERSION ldv ON ldv.DOC_ID = ld.DOC_ID
+                    WHERE lg.LNK_TYPE_ID='3' AND (lg.LEFT_OBJ_ID=:SYS_FULL_ID or lg.RIGHT_OBJ_ID=:SYS_FULL_ID)
+                </query>
+            </dbQuery>
+        </select>
+        <insert>
+            <dbCommand>
+                <var name="ID" type="Int64" direction="Output" default="SELECT max(GATE_ID) id FROM WEB50.LNK_GATE" />
+                <var name="USER_ID" type="Int64" direction="Input" />
+                <var name="LEFT_OBJ_ID" type="String" direction="Input" />
+                <var name="RIGHT_OBJ_ID" type="String" direction="Input" />
+                <query>
+				DO $$
+                    DECLARE v_same_id BIGINT;
+					
+                    BEGIN
+                    /* не добавляем связь, если уже существует точно такая же, или если пытаемся добавить связь видеозаписи с треком, когда у этой видеозаписи уже есть связь с другим треком */
+                    SELECT COUNT(*) INTO v_same_id FROM WEB50.LNK_GATE WHERE LEFT_OBJ_ID='{LEFT_OBJ_ID}' AND
+                    (RIGHT_OBJ_ID='{RIGHT_OBJ_ID}' OR (LEFT_OBJ_ID in (select 'WEB50_LIB_DOC/'||(doc_id)::text FROM WEB50.LIB_DOC WHERE DOC_TYPE_ID=41) AND RIGHT_OBJ_ID LIKE 'WEB50_POI_TRACK/%' AND '{RIGHT_OBJ_ID}' LIKE 'WEB50_POI_TRACK/%'));
+                    IF (v_same_id &gt; 0)
+                    THEN
+                    RAISE EXCEPTION 'Невозможно добавить связь. Такая связь уже существует.';
+                    ELSE
+                    INSERT INTO WEB50.LNK_GATE (LEFT_OBJ_ID,RIGHT_OBJ_ID,LNK_TYPE_ID,CTIME,CUSER_ID,MTIME,MUSER_ID)
+                    VALUES ('{LEFT_OBJ_ID}','{RIGHT_OBJ_ID}',3,current_timestamp,{USER_ID},NULL,NULL);
+                    END IF;
+                    END $$;
+                </query>
+            </dbCommand>
+        </insert>
+        <delete>
+            <dbCommand>
+                <param name="GATE_ID" type="Int64" direction="Input" />
+                <query>
+                    DELETE FROM WEB50.LNK_GATE WHERE GATE_ID=:GATE_ID
+                </query>
+            </dbCommand>
+        </delete>
+    </data>
+    <!-- Запросы для работы с новостной лентой комментариев и прикрепленных документов -->
+    <data id="LIB_DOC_COMMENTS_LIST" comment="Запросы для получения списка прикрепленных документов и комментариев по SYS_FULL_ID объекта для новостной ленты; для вставки в WEB50_LIB_DOC, LNK_GATE; для удаления из LNK_GATE">
+        <select>
+            <dbQuery idField="ID">
+                <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+                <param name="SYS_FULL_ID" type="String" direction="Input" />
+                <param name="DB_TABLE_ID" type="String" direction="Input" />
+				<var name="ORDER_COLUMNS" default="CTIME, DOC_TYPE_ID, DESCR"/>
+				<var name="LINE_ID_FILTER" default="SELECT line_id FROM pods.line"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="1000"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+                <query>
+				   with rt as (select route_id from pods.route r where r.line_id in ({LINE_ID_FILTER})),
+					s_gate AS (SELECT gate_id,right_obj_id obj_id
+                    FROM WEB50.LNK_GATE WHERE LEFT_OBJ_ID=:SYS_FULL_ID and LNK_TYPE_ID='3'
+                    UNION  SELECT gate_id,left_obj_id obj_id
+                    FROM WEB50.LNK_GATE WHERE RIGHT_OBJ_ID=:SYS_FULL_ID and LNK_TYPE_ID='3')			
+, atch as (select unnest(string_to_array(replace(replace(replace(case when position('[{"path":"' in :SYS_FULL_ID)>0 then :SYS_FULL_ID else '' end,'[{',''),'}]',''),'"',''),'},{')) str),
+ str_lf_rg as (select left(t.str,position(',created' in t.str)-1) file_name,left(right(t.str,length(t.str)-position(',created' in t.str)),position(',mime' in right(t.str,length(t.str)-position(',created' in t.str)))-1) created,
+right(t.str,length(t.str)-position(',desc' in t.str)) descr from atch t)
+           select {COLUMNS_FILTER} from (
+           SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN, GATE_ID, LEFT_OBJ_ID, RIGHT_OBJ_ID,DOC_ID, DOC_TYPE_ID, PARENT_DOC_ID, NAME, DESCR, PARENT_NAME,
+          CTIME, CUSER_ID, USERNAME, MUSER_ID, MTIME, MUSER,DOC_VERSION_ID, FILE_NAME, STATUS_ID, TYPE_NAME, TYPE_DESCR, STATUS_DESCR from (
+          SELECT gg.GATE_ID,gg.obj_id LEFT_OBJ_ID,gg.obj_id RIGHT_OBJ_ID,ld.DOC_ID, ld.DOC_TYPE_ID, ld.PARENT_DOC_ID, ld.NAME AS NAME, ld.DESCR AS DESCR, parentld.NAME AS PARENT_NAME,
+          ld.CTIME, ld.CUSER_ID, usr.LOGIN AS USERNAME, ld.MUSER_ID, ld.MTIME, musr.LOGIN AS MUSER,
+          ldv.DOC_VERSION_ID, ldv.FILE_NAME, ld.STATUS_ID, ldtr.NAME AS TYPE_NAME, ldtr.DESCR AS TYPE_DESCR, bsr.DESCR STATUS_DESCR
+          FROM WEB50.LIB_DOC ld
+		  JOIN s_gate gg ON 'WEB50_LIB_DOC/'||ld.doc_id=gg.obj_id
+          JOIN WEB50.LIB_DOC_TYPE_REF ldtr ON ld.DOC_TYPE_ID = ldtr.DOC_TYPE_ID
+          LEFT JOIN WEB50.LIB_DOC_VERSION ldv ON ldv.DOC_ID = ld.DOC_ID
+          LEFT JOIN WEB50.B_STATUS_REF bsr ON bsr.STATUS_ID = ld.STATUS_ID
+          LEFT OUTER JOIN WEB50.B_USER_PRIVATE usr ON usr.USER_ID=ld.CUSER_ID
+          LEFT OUTER JOIN WEB50.B_USER_PRIVATE musr ON musr.USER_ID=ld.MUSER_ID
+          LEFT OUTER JOIN WEB50.LIB_DOC parentld ON parentld.DOC_ID=ld.PARENT_DOC_ID
+ union all
+		  select RWN GATE_ID,null LEFT_OBJ_ID,null RIGHT_OBJ_ID,RWN DOC_ID, null DOC_TYPE_ID,null PARENT_DOC_ID,replace(descr,'desc:','') tt,replace(descr,'desc:','') DESCR,null PARENT_NAME,
+		  to_date(replace(created,'created:',''),'YYYY-MM-DD') CTIME,null CUSER_ID,null USERNAME,null MUSER_ID,null MTIME,null MUSER,null DOC_VERSION_ID,  
+		  replace(file_name,'path:.\/attachments\','/LIB_NAS/attachments/') FILE_NAME,null STATUS_ID,null TYPE_NAME,null TYPE_DESCR,null STATUS_DESCR 
+    		  from (SELECT ROW_NUMBER() OVER (ORDER BY file_name) RWN,t.* from str_lf_rg t)
+		  ff) 
+		  sorted) dd
+     WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+                </query>
+            </dbQuery>
+        </select>
+        <insert>
+            <dbCommand>
+                <var name="ID" type="Int64" direction="Output" default="SELECT max(GATE_ID) id FROM WEB50.LNK_GATE" />
+                <var name="USER_ID" type="Int64" direction="Input" />
+                <var name="LEFT_OBJ_ID" type="String" direction="Input" />
+                <var name="RIGHT_OBJ_ID" type="String" direction="Input" />
+                <query>
+				DO $$
+                    DECLARE v_same_id BIGINT;
+                    BEGIN
+                    /* не добавляем связь, если уже существует точно такая же, или если пытаемся добавить связь видеозаписи с треком, когда у этой видеозаписи уже есть связь с другим треком */
+                    SELECT COUNT(*) INTO v_same_id FROM WEB50.LNK_GATE WHERE LEFT_OBJ_ID='{LEFT_OBJ_ID}' AND
+                    (RIGHT_OBJ_ID='{RIGHT_OBJ_ID}' OR (LEFT_OBJ_ID in (select 'WEB50_LIB_DOC/'||(doc_id)::text FROM WEB50.LIB_DOC WHERE DOC_TYPE_ID=41) AND RIGHT_OBJ_ID LIKE 'WEB50_POI_TRACK/%' AND '{RIGHT_OBJ_ID}' LIKE 'WEB50_POI_TRACK/%'));
+                    IF (v_same_id &gt; 0)
+                    THEN
+                    RAISE EXCEPTION 'Невозможно добавить связь. Такая связь уже существует.';
+                    ELSE
+                    INSERT INTO WEB50.LNK_GATE (LEFT_OBJ_ID,RIGHT_OBJ_ID,LNK_TYPE_ID,CTIME,CUSER_ID,MTIME,MUSER_ID)
+                    VALUES ('{LEFT_OBJ_ID}','{RIGHT_OBJ_ID}',3,current_timestamp,{USER_ID},NULL,NULL);
+                    END IF;
+                    END $$;
+                </query>
+            </dbCommand>
+        </insert>
+        <delete>
+            <dbCommand>
+                <param name="GATE_ID" type="Int64" direction="Input" />
+                <query>
+                    DELETE FROM WEB50.LNK_GATE WHERE GATE_ID=:GATE_ID;   
+                </query>
+            </dbCommand>
+        </delete>
+    </data>
+  <data id="LIB_DOC_COMMENTS_BY_PARENT_LIST" comment="Запросы для получения списка прикрепленных документов по PARENT_DOC_ID объекта для новостной ленты">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+		<var name="ORDER_COLUMNS" default="CTIME, DOC_TYPE_ID, DESCR"/>
+		<var name="LINE_ID_FILTER" default="SELECT line_id FROM pods.line"/>
+		<var name="LOW_LIMIT" default="1"/>
+		<var name="HIGH_LIMIT" default="1000"/>
+		<var name="COLUMNS_FILTER" default="*"/>
+        <query>
+with rt as (select route_id from pods.route r where r.line_id in ({LINE_ID_FILTER})),
+gate as (
+select g.left_obj_id obj_id from web50.lnk_gate g,rt r where g.right_obj_id='PODS_ROUTE/'||r.route_id
+union all 
+select g.right_obj_id obj_id from web50.lnk_gate g,rt r where g.left_obj_id='PODS_ROUTE/'||r.route_id)
+	  select {COLUMNS_FILTER} from (
+           SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN, DOC_ID, DOC_TYPE_ID, PARENT_DOC_ID, NAME, DESCR, PARENT_NAME,
+          CTIME, CUSER_ID, USERNAME, MUSER_ID, MTIME, MUSER,DOC_VERSION_ID, FILE_NAME, STATUS_ID, TYPE_NAME, TYPE_DESCR, STATUS_DESCR from (
+           select ld.DOC_ID, ld.DOC_TYPE_ID, ld.PARENT_DOC_ID, ld.NAME AS NAME, ld.DESCR AS DESCR, parentld.NAME AS PARENT_NAME,
+          ld.CTIME, ld.CUSER_ID, usr.LOGIN AS USERNAME, ld.MUSER_ID, ld.MTIME, musr.LOGIN AS MUSER,
+          ldv.DOC_VERSION_ID, ldv.FILE_NAME, ld.STATUS_ID, ldtr.NAME AS TYPE_NAME, ldtr.DESCR AS TYPE_DESCR, bsr.DESCR STATUS_DESCR
+          FROM WEB50.LIB_DOC ld
+          JOIN WEB50.LIB_DOC_TYPE_REF ldtr ON ld.DOC_TYPE_ID = ldtr.DOC_TYPE_ID
+          LEFT JOIN WEB50.LIB_DOC_VERSION ldv ON ldv.DOC_ID = ld.DOC_ID
+          LEFT JOIN WEB50.B_STATUS_REF bsr ON bsr.STATUS_ID = ld.STATUS_ID
+          LEFT OUTER JOIN WEB50.B_USER_PRIVATE usr ON usr.USER_ID=ld.CUSER_ID
+          LEFT OUTER JOIN WEB50.B_USER_PRIVATE musr ON musr.USER_ID=ld.MUSER_ID
+          LEFT OUTER JOIN WEB50.LIB_DOC parentld ON parentld.DOC_ID=ld.PARENT_DOC_ID
+          WHERE 
+      	  ld.doc_type_id&gt;0 and {FILTER} and 'WEB50_LIB_DOC/'||ld.doc_id in (select obj_id from gate)
+          union all
+          SELECT ld.DOC_ID, ld.DOC_TYPE_ID, ld.PARENT_DOC_ID, ld.NAME AS NAME, ld.DESCR AS DESCR, parentld.NAME AS PARENT_NAME,
+          ld.CTIME, ld.CUSER_ID, usr.LOGIN AS USERNAME, ld.MUSER_ID, ld.MTIME, musr.LOGIN AS MUSER,
+          ldv.DOC_VERSION_ID, ldv.FILE_NAME, ld.STATUS_ID, ldtr.NAME AS TYPE_NAME, ldtr.DESCR AS TYPE_DESCR, bsr.DESCR STATUS_DESCR
+          FROM WEB50.LIB_DOC ld
+          JOIN WEB50.LIB_DOC_TYPE_REF ldtr ON ld.DOC_TYPE_ID = ldtr.DOC_TYPE_ID
+          LEFT JOIN WEB50.LIB_DOC_VERSION ldv ON ldv.DOC_ID = ld.DOC_ID
+          LEFT JOIN WEB50.B_STATUS_REF bsr ON bsr.STATUS_ID = ld.STATUS_ID
+          LEFT OUTER JOIN WEB50.B_USER_PRIVATE usr ON usr.USER_ID=ld.CUSER_ID
+          LEFT OUTER JOIN WEB50.B_USER_PRIVATE musr ON musr.USER_ID=ld.MUSER_ID
+          LEFT OUTER JOIN WEB50.LIB_DOC parentld ON parentld.DOC_ID=ld.PARENT_DOC_ID
+          WHERE 
+          (select count(*) from web50.lib_doc dd where dd.parent_doc_id=ld.doc_id and dd.doc_type_id&gt;0) +
+          (select count(*) from web50.lib_doc dd,web50.lib_doc ddd where dd.parent_doc_id=ld.doc_id and ddd.doc_id=dd.parent_doc_id and ddd.doc_type_id&gt;0) +
+          (select count(*) from web50.lib_doc dd,web50.lib_doc ddd,web50.lib_doc dddd  where dd.parent_doc_id=ld.doc_id and ddd.doc_id=dd.parent_doc_id and ddd.parent_doc_id=dddd.doc_id and dddd.doc_type_id&gt;0)&gt;0 and
+          {FILTER} and 'WEB50_LIB_DOC/'||ld.doc_id in (select obj_id from gate)) res) sorted
+     WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+	<data table="ROUTE_STATION_LIST" schema="PODS" id="PODS_ROUTE_STATION_LIST" comment="Запрос получения начальных, конечных километров для газопроводов">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					select r.line_id,s.route_id,s.station_begin,s.station_end from pods.series s,pods.route r where s.route_id=r.route_id and r.type_cl in ('ROUTE_TYPE_04',
+					'ROUTE_TYPE_10',
+					'ROUTE_TYPE_11',
+					'ROUTE_TYPE_12')
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+
+  <data id="ACTIVE_USER" comment="Запрос на получение данных пользователя" schema="-" table="-" descr="Запрос на получение данных пользователя">
+    <select>
+      <dbQuery idField="ID">
+        <var name="LOGIN" default=""  />
+        <query>
+         select au.MODULE, up.USER_ID, up.STATUS, up.PASSWORD PASS from WEB50.B_USER_PRIVATE up LEFT JOIN WEB50.B_USER_AUTHMAPS au ON up.USER_ID = au.USER_ID WHERE UPPER(up.LOGIN) = UPPER('{LOGIN}')
+        </query>
+      </dbQuery>
+    </select>
+    <update>
+      <dbCommand>
+       <var name="LOGIN" default=""  />
+       <var name="NEW_PASSWORD" default=""  />
+        <query>     
+        update WEB50.b_user_private set password = '{NEW_PASSWORD}' where UPPER(login) = UPPER('{LOGIN}')
+        </query>
+      </dbCommand>
+    </update>
+  </data>   
+  <data id="GET_ROLES_BY_USER" comment="Запрос на получение списка ролей пользователя" schema="-" table="-" descr="Запрос на получение списка ролей пользователя">
+    <select>
+      <dbQuery idField="ID">
+        <var name="LOGIN" default=""  />
+        <query>
+        select r.ROLE_ID from web50.b_user_to_b_role ur, web50.b_role r, web50.b_user_private u where ur.user_id = u.user_id and r.role_id = ur.role_id and UPPER(u.login) = UPPER('{LOGIN}') order by r.role_id
+        </query>
+      </dbQuery>
+    </select>
+  </data>   
+  <data id="HAS_ADMIN_ROLE" comment="Является ли пользователь администратором" schema="-" table="-" descr="Является ли пользователь администратором">
+    <select>
+      <dbQuery idField="ID">
+        <var name="LOGIN" default=""  />
+        <query>
+        SELECT bup.USER_ID FROM WEB50.B_USER_PRIVATE bup JOIN WEB50.B_USER_TO_B_ROLE bubr ON bubr.USER_ID=bup.USER_ID AND bubr.ROLE_ID=0 WHERE UPPER(bup.LOGIN) = UPPER('{LOGIN}')
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="GET_CLIENT_CONFIG" comment="Запрос для получения содержимого XML-файла" schema="-" table="-" descr="Запрос для получения содержимого web.config">
+    <select>
+      <xmlQuery source="{FILE}" xpath="//clientSettings">
+          <var name="FILE"/>
+      </xmlQuery>
+    </select>
+  </data>
+  <data id="GET_USER_TASKS" comment="Запрос для получения содержимого XML-файла" schema="-" table="-" descr="Запрос для получения содержимого B_ROLE_TO_TASKS.xml">
+    <select>
+      <xmlQuery source="{FILE}" xpath="//role[ contains(' {ROLES} ', concat(' ', @id, ' '))]">
+          <var name="FILE"/>
+      <var name="ROLES"/>
+      </xmlQuery>
+    </select>
+  </data>
+        <data table="B_USER_PUBLIC_SAVED_TASKS" schema="WEB50" id="WEB50_B_USER_PUBLIC_SAVED_TASKS" comment="Работа с сохраненными задачами">
+        <select>
+            <dbQuery idField="ID">
+                <var name="FILTER" default="1=1"/>
+                <query>
+				SELECT id, user_id, task_name, task_description, parent_task_file_name, file_name, ctime, cuser_id, mtime, muser_id
+FROM web50.b_user_public_saved_tasks where {FILTER}
+                </query>
+            </dbQuery>
+        </select>
+        <insert>
+            <dbCommand>
+				<var name="CLASS_ID" type="String" direction="Input" default="WEB50_B_USER_PUBLIC_SAVED_TASKS"/> 
+            	<var name="USER_ID" default="" type="Decimal"/>
+                <var name="TASK_NAME" default="" type="String"/>
+                <var name="TASK_DESCRIPTION" default="" type="String"/>
+                <var name="PARENT_TASK_FILE_NAME" default="" type="String"/>
+                <var name="FILE_NAME" default="" type="String"/>
+                <var name="ID" type="Int64" direction="Output" default="SELECT max(id) id FROM web50.b_user_public_saved_tasks"/>
+                <query>
+				INSERT INTO web50.b_user_public_saved_tasks
+(user_id, task_name, task_description, parent_task_file_name, file_name, ctime, cuser_id)
+VALUES({USER_ID}, '{TASK_NAME}', '{TASK_DESCRIPTION}', '{PARENT_TASK_FILE_NAME}', '{FILE_NAME}',current_timestamp,{USER_ID})
+                </query>
+            </dbCommand>
+        </insert>
+        <update>
+            <dbCommand>
+            	<var name="USER_ID" default="" type="Decimal"/>
+                <var name="TASK_NAME" default="" type="String"/>
+                <var name="TASK_DESCRIPTION" default="" type="String"/>
+                <var name="PARENT_TASK_FILE_NAME" default="" type="String"/>
+                <var name="FILE_NAME" default="" type="String"/>
+                <var name="ID" type="Int64"/>
+                <query>
+				UPDATE web50.b_user_public_saved_tasks
+SET task_name='{TASK_NAME}', task_description='{TASK_DESCRIPTION}', parent_task_file_name='{PARENT_TASK_FILE_NAME}', file_name='{FILE_NAME}',  mtime=current_timestamp, muser_id={USER_ID}
+WHERE id={ID}
+                </query>
+            </dbCommand>
+        </update>
+        <delete>
+            <dbCommand>
+				    <var name="CLASS_ID" type="String" direction="Input" default="WEB50_B_USER_PUBLIC_SAVED_TASKS"/> 
+                <param name="ID" type="Int64" direction="Input"/>
+                <query>
+                    DELETE FROM web50.b_user_public_saved_tasks WHERE id=:ID
+                </query>
+            </dbCommand>
+        </delete>
+    </data>
+</root>

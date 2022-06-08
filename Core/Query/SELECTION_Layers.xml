@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.3.0" descr="Служебные данные">
+  <layer id="SELECT_OFFLINE" comment="WEB50.LNK_SELECTION"
+         descr="ГРС/КС" projection="EPSG:4326" dataType="vector" type="common" 
+         spacing="common" cover="false" fitMap="false" order="100" visible="true" >
+    <dataProvider type="spatial" source="SELECTION_GEO.xml#SELECT_OFFLINE" />
+    <filter>
+      <pattern>{FILTER}</pattern>
+      <join>,</join>
+      <replace>FILTER</replace>
+    </filter>
+  </layer>
+  <layer id="SELECT_ROUTE" comment="WEB50.LNK_SELECTION"
+         descr="Участки ремонтов трубопроводов" projection="EPSG:4326" dataType="vector" type="common"
+         spacing="common" cover="false" fitMap="true" order="100" visible="true" >
+    <dataProvider type="spatial" source="SELECTION_GEO.xml#SELECT_ROUTE" />
+    <filter>
+      <pattern>{FILTER}</pattern>
+      <join>,</join>
+      <replace>FILTER</replace>
+    </filter>
+  </layer>
+  <layer id="SELECT_SITE" comment="WEB50.LNK_SELECTION"
+         descr="Сооружения инфраструктуры" projection="EPSG:4326" dataType="vector" type="common"
+         spacing="common" cover="false" fitMap="false" order="100" visible="true" >
+    <dataProvider type="spatial" source="SELECTION_GEO.xml#SELECT_SITE" />
+    <filter>
+      <pattern>{FILTER}</pattern>
+      <join>,</join>
+      <replace>FILTER</replace>
+    </filter>
+  </layer>
+</root>

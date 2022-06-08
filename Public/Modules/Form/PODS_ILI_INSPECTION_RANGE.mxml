@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns="view.data.*"
+                title="Участки ВТД, пройденные снарядом-дефектоскопом"
+                width="760"
+                ext_data_id="PODS_EXPORT.xml#PODS_ILI_INSPECTION_RANGE"
+                excelTemplate="PODS_ILI_INSPECTION_RANGE">
+	  <dataProvider>PODS_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	  <mx:VBox width="760">
+		    <mx:HBox percentWidth="100">
+			      <mx:Text textAlign="right" text="Перейти к обследованию" width="140"/>
+			      <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+				        <mx:ComboBox id="ILI_INSPECTION_ID" enabled="false" editable="false" width="585" height="20"
+                         dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION"/>
+				        <mx:Button id="BUTTON_ILI_INSPECTION_ID" selectedField="PODS_ILI_INSPECTION"
+                       enabled="false"
+                       styleName="refObject"
+                       toolTip="Перейти к внутритрубному обследованию"
+                       width="16"
+                       height="16"/>
+			      </mx:HBox>
+		    </mx:HBox>
+		    <mx:HBox percentWidth="100">
+			      <mx:VBox percentWidth="50">
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Описание" width="140"/>
+					          <mx:TextInput id="DESCRIPTION" width="225" maxChars="50" height="40"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Камера запуска" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="LAUNCHER_EVENT_ID" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_LAUNCHER_RECEIVER"/>
+						            <mx:Button id="BUTTON_LAUNCHER_EVENT_ID" selectedField="PODS_LAUNCHER_RECEIVER"
+                             enabled="false"
+                             styleName="refObject"
+                             toolTip="Перейти к камере запуска"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Камера приёма" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="RECEIVER_EVENT_ID" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_LAUNCHER_RECEIVER"/>
+						            <mx:Button id="BUTTON_RECEIVER_EVENT_ID" selectedField="PODS_LAUNCHER_RECEIVER"
+                             enabled="false"
+                             styleName="refObject"
+                             toolTip="Перейти к камере приёма"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Начальное/конечное показание одометра" width="140"/>
+					          <controls:NumberInput id="START_ODOMETER" width="85" maxChars="22" height="20"/>
+					          <controls:NumberInput id="END_ODOMETER" width="85" maxChars="22" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Возрастание одометра по километражу" width="140"/>
+					          <controls:NumberInput id="ASCENDING" width="110" maxChars="22" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Порядковый номер пропуска снаряда в обследовании"
+                        width="140"/>
+					          <controls:NumberInput id="SEQUENCE" width="20" maxChars="22" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Начальный номер шва" width="140"/>
+					          <mx:TextInput id="WELD_START_NUMBER" width="86" maxChars="22" height="20"/>
+					          <mx:Text textAlign="right" text="Инкремент номера шва" width="95"/>
+					          <controls:NumberInput id="WELD_INCREMENT" width="25" maxChars="22" height="20"/>
+				        </mx:HBox>
+			      </mx:VBox>
+			      <mx:VBox percentWidth="50">
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Комментарии" width="140"/>
+					          <mx:TextInput id="COMMENTS" width="225" maxChars="255" height="40"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Перейти к наряд-заказу" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="WORK_ORDER_ID" enabled="false" editable="false"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_WORK_ORDER"
+                               width="200"
+                               height="20"/>
+						            <!--mx:Button id="BUTTON_WORK_ORDER_ID" selectedField="PODS_WORK_ORDER" enabled="false" styleName="refObject" toolTip="Перейти к наряд-заказу" width="16" height="16" /-->
+					</mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Источник информации" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="SOURCE_GCL" enabled="false" editable="false" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_SOURCE_GCL"/>
+						            <mx:Button id="BTN_LIST_SOURCE_GCL" selectedField="PODS_SOURCE_GCL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Идентификатор прохода снаряда" width="140"/>
+					          <controls:NumberInput id="ILI_INSPECTION_RANGE_ID" editable="false" width="85" maxChars="22"
+                                     height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Идентификатор объекта" width="140"/>
+					          <controls:NumberInput id="EVENT_ID" editable="false" width="85" maxChars="22" height="20"/>
+				        </mx:HBox>
+			      </mx:VBox>
+		    </mx:HBox>
+	  </mx:VBox>
+	  <validatorsArray>
+		    <controls:DefaultNumberValidator source="{START_ODOMETER}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="3"
+                                       precisionError="Значение в поле должно иметь не более 3 цифр после запятой"
+                                       maxValue="9999999999999.999"
+                                       exceedsMaxError="Значение в поле может иметь 13 цифр до запятой и 3 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{END_ODOMETER}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="3"
+                                       precisionError="Значение в поле должно иметь не более 3 цифр после запятой"
+                                       maxValue="9999999999999.999"
+                                       exceedsMaxError="Значение в поле может иметь 13 цифр до запятой и 3 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{SEQUENCE}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="0"
+                                       precisionError="Значение в поле должно иметь не более 0 цифр после запятой"
+                                       maxValue="999"
+                                       exceedsMaxError="Значение в поле может иметь 3 цифр до запятой и 0 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{WELD_INCREMENT}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="0"
+                                       precisionError="Значение в поле должно иметь не более 0 цифр после запятой"
+                                       maxValue="9999"
+                                       exceedsMaxError="Значение в поле может иметь 4 цифр до запятой и 0 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+	  </validatorsArray>
+</DATA_EDIT_FORM>

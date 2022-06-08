@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.7.4" xsi:noNamespaceSchemaLocation="lay.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" descr="Карта РФ" name="M_R">
+  <dataProvider type="style" source="M_R_STYLE.xml" />
+  <layer id="WEB50_M_R_DOROGI_AVTOMOBIL_NYE" descr="ДОРОГИ_АВТОМОБИЛЬНЫЕ" comment="WEB50.M_R_DOROGI_AVTOMOBIL_NYE" order="8" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="9" dataType="vector" type="common" labelField="ДОРОГА_ИД" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_DOROGI_AVTOMOBIL_NYE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_DOROGI_AVTOMOBIL_NYE" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_DOROGI_AVTOMOBIL_NYE" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_DOROGI_AVTOMOBIL_NYE" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_DOROGI_AVTOMOBIL_NYE" />
+  </layer>
+  <layer id="WEB50_M_R_DOROGI_JELEZNYE" descr="ДОРОГИ_ЖЕЛЕЗНЫЕ" comment="WEB50.M_R_DOROGI_JELEZNYE" order="7" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="8" dataType="vector" type="common" labelField="" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_DOROGI_JELEZNYE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_DOROGI_JELEZNYE" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_DOROGI_JELEZNYE" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_DOROGI_JELEZNYE" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_DOROGI_JELEZNYE" />
+  </layer>
+  <layer id="WEB50_M_R_DOROGI_JELEZNYE_STANCII" descr="ДОРОГИ_ЖЕЛЕЗНЫЕ_СТАНЦИИ" comment="WEB50.M_R_DOROGI_JELEZNYE_STANCII" order="6" visible="true" topology="point" projection="EPSG:4326" zoomMin="11" zoomMax="9" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_DOROGI_JELEZNYE_STANCII">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_DOROGI_JELEZNYE_STANCII" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_DOROGI_JELEZNYE_STANCII" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_DOROGI_JELEZNYE_STANCII" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_DOROGI_JELEZNYE_STANCII" />
+  </layer>
+  <layer id="WEB50_M_R_GAZPROM_OBSESTVA_DOCERNI" descr="ГАЗПРОМ_ОБЩЕСТВА_ДОЧЕРНИЕ" comment="WEB50.M_R_GAZPROM_OBSESTVA_DOCERNI" order="1002" visible="false" topology="point,line,polygon" projection="EPSG:4326" zoomMin="6" zoomMax="0" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_GAZPROM_OBSESTVA_DOCERNI">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_GAZPROM_OBSESTVA_DOCERNI" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_GAZPROM_OBSESTVA_DOCERNI" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_GAZPROM_OBSESTVA_DOCERNI" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_GAZPROM_OBSESTVA_DOCERNI" />
+  </layer>
+  <layer id="WEB50_M_R_GAZPROM_OBSESTVA_POEMG" descr="ГАЗПРОМ_ОБЩЕСТВА_ПОЭМГ" comment="WEB50.M_R_GAZPROM_OBSESTVA_POEMG" order="1" visible="false" topology="point" projection="EPSG:4326" zoomMin="27" zoomMax="0" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_GAZPROM_OBSESTVA_POEMG">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_GAZPROM_OBSESTVA_POEMG" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_GAZPROM_OBSESTVA_POEMG" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_GAZPROM_OBSESTVA_POEMG" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_GAZPROM_OBSESTVA_POEMG" />
+  </layer>
+  <layer id="WEB50_M_R_GIDROGRAFIA_RF_1_OZERA_M" descr="ГИДРОГРАФИЯ_РФ_1_ОЗЕРА_МОРЯ" comment="WEB50.M_R_GIDROGRAFIA_RF_1_OZERA_M" order="14" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="0" dataType="vector" type="common" labelField="" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_GIDROGRAFIA_RF_1_OZERA_M">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_GIDROGRAFIA_RF_1_OZERA_M" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_GIDROGRAFIA_RF_1_OZERA_M" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_GIDROGRAFIA_RF_1_OZERA_M" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_GIDROGRAFIA_RF_1_OZERA_M" />
+  </layer>
+  <layer id="WEB50_M_R_GIDROGRAFIA_RF_1_REKI_LI" descr="ГИДРОГРАФИЯ_РФ_1_РЕКИ_ЛИН" comment="WEB50.M_R_GIDROGRAFIA_RF_1_REKI_LI" order="10" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="8" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_GIDROGRAFIA_RF_1_REKI_LI">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_GIDROGRAFIA_RF_1_REKI_LI" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_GIDROGRAFIA_RF_1_REKI_LI" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_GIDROGRAFIA_RF_1_REKI_LI" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_GIDROGRAFIA_RF_1_REKI_LI" />
+  </layer>
+  <layer id="WEB50_M_R_GIDROGRAFIA_RF_2_OZERA_M" descr="ГИДРОГРАФИЯ_РФ_2_ОЗЕРА_МОРЯ" comment="WEB50.M_R_GIDROGRAFIA_RF_2_OZERA_M" order="13" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="8" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_GIDROGRAFIA_RF_2_OZERA_M">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_GIDROGRAFIA_RF_2_OZERA_M" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_GIDROGRAFIA_RF_2_OZERA_M" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_GIDROGRAFIA_RF_2_OZERA_M" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_GIDROGRAFIA_RF_2_OZERA_M" />
+  </layer>
+  <layer id="WEB50_M_R_GIDROGRAFIA_RF_2_REKI_LI" descr="ГИДРОГРАФИЯ_РФ_2_РЕКИ_ЛИН" comment="WEB50.M_R_GIDROGRAFIA_RF_2_REKI_LI" order="9" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="9" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_GIDROGRAFIA_RF_2_REKI_LI">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_GIDROGRAFIA_RF_2_REKI_LI" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_GIDROGRAFIA_RF_2_REKI_LI" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_GIDROGRAFIA_RF_2_REKI_LI" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_GIDROGRAFIA_RF_2_REKI_LI" />
+  </layer>
+  <layer id="WEB50_M_R_NASEL_PUNKTY_GORODA_PROC" descr="НАСЕЛ_ПУНКТЫ_ГОРОДА_ПРОЧИЕ" comment="WEB50.M_R_NASEL_PUNKTY_GORODA_PROC" order="4" visible="true" topology="point" projection="EPSG:4326" zoomMin="11" zoomMax="7" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_NASEL_PUNKTY_GORODA_PROC">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_NASEL_PUNKTY_GORODA_PROC" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_NASEL_PUNKTY_GORODA_PROC" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_NASEL_PUNKTY_GORODA_PROC" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_NASEL_PUNKTY_GORODA_PROC" />
+  </layer>
+  <layer id="WEB50_M_R_NASEL_PUNKTY_PROCIE" descr="НАСЕЛ_ПУНКТЫ_ПРОЧИЕ" comment="WEB50.M_R_NASEL_PUNKTY_PROCIE" order="5" visible="true" topology="point" projection="EPSG:4326" zoomMin="11" zoomMax="9" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_NASEL_PUNKTY_PROCIE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_NASEL_PUNKTY_PROCIE" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_NASEL_PUNKTY_PROCIE" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_NASEL_PUNKTY_PROCIE" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_NASEL_PUNKTY_PROCIE" />
+  </layer>
+  <layer id="WEB50_M_R_NASEL_PUNKTY_STOLICY" descr="НАСЕЛ_ПУНКТЫ_СТОЛИЦЫ" comment="WEB50.M_R_NASEL_PUNKTY_STOLICY" order="11" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="0" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_NASEL_PUNKTY_STOLICY">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_NASEL_PUNKTY_STOLICY" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_NASEL_PUNKTY_STOLICY" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_NASEL_PUNKTY_STOLICY" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_NASEL_PUNKTY_STOLICY" />
+  </layer>
+  <layer id="WEB50_M_R_SOPRED_GOSUDARSTVA" descr="СОПРЕД_ГОСУДАРСТВА" comment="WEB50.M_R_SOPRED_GOSUDARSTVA" order="17" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="0" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_SOPRED_GOSUDARSTVA">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_SOPRED_GOSUDARSTVA" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_SOPRED_GOSUDARSTVA" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_SOPRED_GOSUDARSTVA" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_SOPRED_GOSUDARSTVA" />
+  </layer>
+  <layer id="WEB50_M_R_SUB_EKTY_RF" descr="СУБЪЕКТЫ_РФ" comment="WEB50.M_R_SUB_EKTY_RF" order="16" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="0" dataType="vector" type="common" labelField="НАЗВАНИЕ_1" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_SUB_EKTY_RF">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_SUB_EKTY_RF" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_SUB_EKTY_RF" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_SUB_EKTY_RF" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_SUB_EKTY_RF" />
+  </layer>
+  <layer id="WEB50_M_R_SUB_EKTY_RF_ADM_CENTRY" descr="СУБЪЕКТЫ_РФ_АДМ_ЦЕНТРЫ" comment="WEB50.M_R_SUB_EKTY_RF_ADM_CENTRY" order="12" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="3" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_SUB_EKTY_RF_ADM_CENTRY">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_SUB_EKTY_RF_ADM_CENTRY" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_SUB_EKTY_RF_ADM_CENTRY" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_SUB_EKTY_RF_ADM_CENTRY" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_SUB_EKTY_RF_ADM_CENTRY" />
+  </layer>
+  <layer id="WEB50_M_R_SUB_EKTY_RF_RAYONY" descr="СУБЪЕКТЫ_РФ_РАЙОНЫ" comment="WEB50.M_R_SUB_EKTY_RF_RAYONY" order="15" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="7" dataType="vector" type="common" labelField="НАЗВАНИЕ_2" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_SUB_EKTY_RF_RAYONY">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_SUB_EKTY_RF_RAYONY" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_SUB_EKTY_RF_RAYONY" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_SUB_EKTY_RF_RAYONY" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_SUB_EKTY_RF_RAYONY" />
+  </layer>
+  <layer id="WEB50_M_R_SUB_EKTY_RF_RAYONY_ADM_C" descr="СУБЪЕКТЫ_РФ_РАЙОНЫ_АДМ_ЦЕНТРЫ" comment="WEB50.M_R_SUB_EKTY_RF_RAYONY_ADM_C" order="3" visible="true" topology="point,line,polygon" projection="EPSG:4326" zoomMin="11" zoomMax="7" dataType="vector" type="common" labelField="НАЗВАНИЕ" classField="" spacing="common" cover="false" schema="WEB50" table="M_R_SUB_EKTY_RF_RAYONY_ADM_C">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_M_R_SUB_EKTY_RF_RAYONY_ADM_C" />
+    <dataProvider type="style" source="M_R_STYLE.xml#WEB50_M_R_SUB_EKTY_RF_RAYONY_ADM_C" />
+    <dataProvider type="semantic" source="M_R_SEM.xml#WEB50_M_R_SUB_EKTY_RF_RAYONY_ADM_C" />
+    <dataProvider type="spatial" source="M_R_GEO.xml#WEB50_M_R_SUB_EKTY_RF_RAYONY_ADM_C" />
+  </layer>
+</root>

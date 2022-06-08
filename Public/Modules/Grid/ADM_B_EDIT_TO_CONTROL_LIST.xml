@@ -1,0 +1,102 @@
+﻿<!--7.7.5.0-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="5"  headerVertSize="50"
+            id="ADM_B_EDIT_TO_CONTROL_LIST"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelDataRequest="GAZPROM_ADM_SEM.xml#ADM_B_EDIT_TO_CONTROL_EXPORT"
+            excelTemplateName="ADM_B_EDIT_TO_CONTROL_LIST"
+            layerId="ADM_B_EDIT_TO_CONTROL" propertyPanelName="ADM_B_EDIT_TO_CONTROL"
+            dataRequest="GAZPROM_ADM_SEM.xml#ADM_B_EDIT_TO_CONTROL"
+            totalRecordsRequest="GAZPROM_ADM_SEM.xml#ADM_B_EDIT_TO_CONTROL_CNT"
+            initialSortField="ID"
+            >
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Принять изменения"
+        clickEvent="bEditControlApply"
+        isEnabled="true"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Откатить изменения"
+        clickEvent="bEditControlRollback"
+        selectedObjects="this"
+        position="top"/>
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+
+  <grids:columns>
+	<columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=showInfoEvent;toolTip=Показать информацию по объекту"
+                          editable="true"/>          
+	  <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/template.png;eventName=ru.corelight.business.events.BEditControlShowEvent;toolTip=Показать изменения"
+                          editable="true"/>                      	
+<columns:GridColumn headerText="ID" dataField="ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="60"/>
+	<columns:GridColumn headerText="Схема" dataField="OWNER"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="50"/>
+	<columns:GridColumn headerText="Таблица" dataField="TABLE_NAME"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="100"/>
+	<columns:GridColumn headerText="Поле\nключа" dataField="KEY_FIELD"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="50"/>
+	<columns:GridColumn headerText="Значение\nпервич.ключа" dataField="KEY_VALUE"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="100"/>
+	<columns:GridColumn headerText="Тип\nконтрол.\nоперации\n(D/I/E)" dataField="OPERATION_TYPE"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="50"/> 
+	<columns:GridColumn headerText="Кортеж новых данных" dataField="DATA_TO_CONTROL"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="120"/>
+	<columns:GridColumn headerText="Кортеж старых данных" dataField="DATA_TO_RESTORE"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="120"/>
+	<columns:GridColumn headerText="Команда для восстановления" dataField="COMMAND_TO_RESTORE"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="150"/>
+
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

@@ -1,0 +1,13 @@
+﻿<ROOT prevTask="close" version="6.0.2.0">
+  <hbox percentWidth="100" percentHeight="100">
+	<panel id="ADM_LPU_ZONES" percentWidth="100" percentHeight="100" reload="true">
+		<settings>
+			<requestFilterByGtp>GAZPROM_ADM_SEM.xml#PODS_COMPANY_GCL</requestFilterByGtp>
+			<requestGetLpu>GAZPROM_ADM_SEM.xml#PODS_SRV_DISTRICT_GCL</requestGetLpu>
+			<requestGetZoneGroups>GAZPROM_ADM_SEM.xml#WEB50_M_ZONE_GROUPS</requestGetZoneGroups>
+			<requestGetZoneRes>GAZPROM_ADM_SEM.xml#WEB50_M_ZONE_RES</requestGetZoneRes>
+			<requestGetLpuToZones>GAZPROM_ADM_SEM.xml#WEB50_LPU_TO_M_ZONES</requestGetLpuToZones>
+		</settings>
+	</panel>
+  </hbox>
+</ROOT>

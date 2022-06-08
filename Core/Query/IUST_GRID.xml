@@ -1,0 +1,1538 @@
+﻿<root version="7.7.4.0">
+	<data id="GTS_PIPELINE_L" comment="GTS_PIPELINE_L" schema="IUST" table="GTS_PIPELINE_L">
+		<select>
+		  <dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared_pipes.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="gts_pipeline_l" />	
+				<param name="COLUMN_LIST" default="RWN,ID,name,kmonpipe,idinfotech,pipelinename,cost,pipeidinfotech,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>					
+				<query>              
+				</query>
+		  </dbQuery>
+		</select>
+	</data>
+	<data id="GTS_PIPELINE_L_CNT" comment="GTS_PIPELINE_L" schema="IUST" table="GTS_PIPELINE_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared_pipes.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="gts_pipeline_l" />	
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>					
+				<query>              
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_BUILDINGS_A" comment="AMBIT_BUILDINGS_A" schema="IUST" table="AMBIT_BUILDINGS_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,manufacture,name,material,yearcommiss,topocode,cost,height,area_,floors,buidingpurpose,materialgroup,population"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_buildings_a" />				
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_BUILDINGS_A_CNT" comment="AMBIT_BUILDINGS_A" schema="IUST" table="AMBIT_BUILDINGS_A">
+		<select>
+			<dbQuery>				
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_buildings_a" />				
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GTS_OBJECTS_P" comment="GTS_OBJECTS_P" schema="IUST" table="GTS_OBJECTS_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,name,kmonpipe,idinfotech,pipelinename,cost,pipeidinfotech,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="gts_objects_p" />				
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GTS_OBJECTS_P_CNT" comment="GTS_OBJECTS_P" schema="IUST" table="GTS_OBJECTS_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="gts_objects_p" />				
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>  
+	<data id="AMBIT_INDUSTRY_PIPELINE_P" comment="AMBIT_INDUSTRY_PIPELINE_P" schema="IUST" table="AMBIT_INDUSTRY_PIPELINE_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,diameter,topocode,angle,name,yearcommiss,pressuredesign,cost,number_,pipelining,producttrans"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_p" />				
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_PIPELINE_P_CNT" comment="AMBIT_INDUSTRY_PIPELINE_P" schema="IUST" table="AMBIT_INDUSTRY_PIPELINE_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>			
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_p" />				
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_COMM_P" comment="AMBIT_INDUSTRY_COMM_P" schema="IUST" table="AMBIT_INDUSTRY_COMM_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,angle,name,lines,cost,voltage,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_p" />				
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_COMM_P_CNT" comment="AMBIT_INDUSTRY_COMM_P" schema="IUST" table="AMBIT_INDUSTRY_COMM_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_p" />				
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_PIPE_UNITS_P" comment="AMBIT_INDUSTRY_PIPE_UNITS_P" schema="IUST" table="AMBIT_INDUSTRY_PIPE_UNITS_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,pressurenominal,name,valvetype,instplace,technum,yearcommiss,cost,pipediameter,drivetype,angle,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_p" />				
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_PIPE_UNITS_P_CNT" comment="AMBIT_INDUSTRY_PIPE_UNITS_P" schema="IUST" table="AMBIT_INDUSTRY_PIPE_UNITS_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_p" />				
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_PROTECT_P" comment="AMBIT_INDUSTRY_PROTECT_P" schema="IUST" table="AMBIT_INDUSTRY_PROTECT_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,name,cost,topocode,yearcommiss"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_protect_p" />			
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_PROTECT_P_CNT" comment="AMBIT_INDUSTRY_PROTECT_P" schema="IUST" table="AMBIT_INDUSTRY_PROTECT_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_protect_p" />			
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>		
+	<data id="AMBIT_INDUSTRY_FILTERS_P" comment="AMBIT_INDUSTRY_FILTERS_P" schema="IUST" table="AMBIT_INDUSTRY_FILTERS_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,diameter,topocode,angle,name,yearcommiss,length,cost,devicetype,height"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_filters_p" />		
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_FILTERS_P_CNT" comment="AMBIT_INDUSTRY_FILTERS_P" schema="IUST" table="AMBIT_INDUSTRY_FILTERS_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_filters_p" />		
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>		
+	<data id="AMBIT_INDUSTRY_CAPACITIES_P" comment="AMBIT_INDUSTRY_CAPACITIES_P" schema="IUST" table="AMBIT_INDUSTRY_CAPACITIES_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,diameter,topocode,angle,name,capacitieform,length,yearcommiss,productstorage,cost,height"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_capacities_p" />	
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_CAPACITIES_P_CNT" comment="AMBIT_INDUSTRY_CAPACITIES_P" schema="IUST" table="AMBIT_INDUSTRY_CAPACITIES_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_capacities_p" />	
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_ICS_P" comment="AMBIT_INDUSTRY_ICS_P" schema="IUST" table="AMBIT_INDUSTRY_ICS_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,topocode,angle,name,stpower,yearcommiss,height,cost"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_ics_p" />	
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_ICS_P_CNT" comment="AMBIT_INDUSTRY_ICS_P" schema="IUST" table="AMBIT_INDUSTRY_ICS_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_ics_p" />	
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_BOUNDARIES_P" comment="GEO_BOUNDARIES_P" schema="IUST" table="GEO_BOUNDARIES_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,relheight,topocode,name,boundtype"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_BOUNDARIES_P_CNT" comment="GEO_BOUNDARIES_P" schema="IUST" table="GEO_BOUNDARIES_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>				
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>		
+	<data id="GEO_HYDRAULICSTRUCT_P" comment="GEO_HYDRAULICSTRUCT_P" schema="IUST" table="GEO_HYDRAULICSTRUCT_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,lowwatermark,name,highwatermark,relheight,objstate,objmaterial,absheight,depth,angle,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_HYDRAULICSTRUCT_P_CNT" comment="GEO_HYDRAULICSTRUCT_P" schema="IUST" table="GEO_HYDRAULICSTRUCT_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_HYDROGRAPHY_P" comment="GEO_HYDROGRAPHY_P" schema="IUST" table="GEO_HYDROGRAPHY_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,angle,name,navigable,moveperiod,absheight,depth,topocode,speed"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_HYDROGRAPHY_P_CNT" comment="GEO_HYDROGRAPHY_P" schema="IUST" table="GEO_HYDROGRAPHY_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_INDUCTRIALOBJ_P" comment="GEO_INDUCTRIALOBJ_P" schema="IUST" table="GEO_INDUCTRIALOBJ_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,angle,name,relheight,objstate,objmaterial,length,width,depth,funcpurpose,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_INDUCTRIALOBJ_P_CNT" comment="GEO_INDUCTRIALOBJ_P" schema="IUST" table="GEO_INDUCTRIALOBJ_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>		
+	<data id="GEO_ROADSTRUCTURES_P" comment="GEO_ROADSTRUCTURES_P" schema="IUST" table="GEO_ROADSTRUCTURES_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,clearance,angle,name,relheight,objstate,objmaterial,absheight,length,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_ROADSTRUCTURES_P_CNT" comment="GEO_ROADSTRUCTURES_P" schema="IUST" table="GEO_ROADSTRUCTURES_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_ROADS_P" comment="GEO_ROADS_P" schema="IUST" table="GEO_ROADS_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,topocode,lanes,name,objstate,moveperiod,roadnum,angle,coatingmaterial"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roads_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_ROADS_P_CNT" comment="GEO_ROADS_P" schema="IUST" table="GEO_ROADS_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roads_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>		
+	<data id="GEO_RELIEF_P" comment="GEO_RELIEF_P" schema="IUST" table="GEO_RELIEF_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,origin,angle,name,maxwidth,relheight,depth,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_RELIEF_P_CNT" comment="GEO_RELIEF_P" schema="IUST" table="GEO_RELIEF_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_HYDROGRAPHYREL_P" comment="GEO_HYDROGRAPHYREL_P" schema="IUST" table="GEO_HYDROGRAPHYREL_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,groundtype,lowwatermark,name,highwatermark,relheight,absheight,width,depth,shorelinetype,angle,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_HYDROGRAPHYREL_P_CNT" comment="GEO_HYDROGRAPHYREL_P" schema="IUST" table="GEO_HYDROGRAPHYREL_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>		
+	<data id="GEO_SETTLEMENTS_P" comment="GEO_SETTLEMENTS_P" schema="IUST" table="GEO_SETTLEMENTS_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,belongterritory,administratunit,objstate,objmaterial,settlementunit,settlementtype,topocode,population,name"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_SETTLEMENTS_P_CNT" comment="GEO_SETTLEMENTS_P" schema="IUST" table="GEO_SETTLEMENTS_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_VEGETATION_P" comment="GEO_VEGETATION_P" schema="IUST" table="GEO_VEGETATION_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,name,relheight,vegetationtype,treethickness,passability,topocode,treedistance"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_VEGETATION_P_CNT" comment="GEO_VEGETATION_P" schema="IUST" table="GEO_VEGETATION_P">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_p" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_PIPELINE_L" comment="AMBIT_INDUSTRY_PIPELINE_L" schema="IUST" table="AMBIT_INDUSTRY_PIPELINE_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,diameter,topocode,name,yearcommiss,pressuredesign,cost,number_,pipelining,producttrans"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_PIPELINE_L_CNT" comment="AMBIT_INDUSTRY_PIPELINE_L" schema="IUST" table="AMBIT_INDUSTRY_PIPELINE_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_ROADSTRUCTURES_L" comment="GEO_ROADSTRUCTURES_L" schema="IUST" table="GEO_ROADSTRUCTURES_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,clearance,name,relheight,objstate,objmaterial,absheight,length,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_ROADSTRUCTURES_L_CNT" comment="GEO_ROADSTRUCTURES_L" schema="IUST" table="GEO_ROADSTRUCTURES_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_COMM_L" comment="AMBIT_INDUSTRY_COMM_L" schema="IUST" table="AMBIT_INDUSTRY_COMM_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,name,lines,cost,voltage,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_COMM_L_CNT" comment="AMBIT_INDUSTRY_COMM_L" schema="IUST" table="AMBIT_INDUSTRY_COMM_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>		
+	<data id="AMBIT_ROADS_L" comment="AMBIT_ROADS_L" schema="IUST" table="AMBIT_ROADS_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,lanes,name,electricity,roadstatus,moveperiod,cost,roadnum,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_roads_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_ROADS_L_CNT" comment="AMBIT_ROADS_L" schema="IUST" table="AMBIT_ROADS_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_roads_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>		
+	<data id="GEO_INDUCTRIALOBJ_L" comment="GEO_INDUCTRIALOBJ_L" schema="IUST" table="GEO_INDUCTRIALOBJ_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,name,relheight,objstate,objmaterial,length,width,depth,funcpurpose,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_INDUCTRIALOBJ_L_CNT" comment="GEO_INDUCTRIALOBJ_L" schema="IUST" table="GEO_INDUCTRIALOBJ_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_HYDRAULICSTRUCT_L" comment="GEO_HYDRAULICSTRUCT_L" schema="IUST" table="GEO_HYDRAULICSTRUCT_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,lowwatermark,name,highwatermark,relheight,objstate,objmaterial,absheight,depth,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_HYDRAULICSTRUCT_L_CNT" comment="GEO_HYDRAULICSTRUCT_L" schema="IUST" table="GEO_HYDRAULICSTRUCT_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>		
+	<data id="AMBIT_HYDRO_L" comment="AMBIT_HYDRO_L" schema="IUST" table="AMBIT_HYDRO_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,width_area,topocode,depth,watercoursetype"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_HYDRO_L_CNT" comment="AMBIT_HYDRO_L" schema="IUST" table="AMBIT_HYDRO_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_HYDROGRAPHY_L" comment="GEO_HYDROGRAPHY_L" schema="IUST" table="GEO_HYDROGRAPHY_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,name,navigable,moveperiod,absheight,depth,topocode,speed"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_HYDROGRAPHY_L_CNT" comment="GEO_HYDROGRAPHY_L" schema="IUST" table="GEO_HYDROGRAPHY_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_ROADS_L" comment="GEO_ROADS_L" schema="IUST" table="GEO_ROADS_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,topocode,lanes,name,objstate,moveperiod,roadnum,coatingmaterial"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roads_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_ROADS_L_CNT" comment="GEO_ROADS_L" schema="IUST" table="GEO_ROADS_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roads_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_BOUNDARIES_L" comment="GEO_BOUNDARIES_L" schema="IUST" table="GEO_BOUNDARIES_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,relheight,topocode,name,boundtype"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_BOUNDARIES_L_CNT" comment="GEO_BOUNDARIES_L" schema="IUST" table="GEO_BOUNDARIES_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>		
+	<data id="GEO_VEGETATION_L" comment="GEO_VEGETATION_L" schema="IUST" table="GEO_VEGETATION_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,name,relheight,vegetationtype,treethickness,passability,topocode,treedistance"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_VEGETATION_L_CNT" comment="GEO_VEGETATION_L" schema="IUST" table="GEO_VEGETATION_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_HYDROGRAPHYREL_L" comment="GEO_HYDROGRAPHYREL_L" schema="IUST" table="GEO_HYDROGRAPHYREL_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,groundtype,lowwatermark,name,highwatermark,relheight,absheight,width,depth,shorelinetype,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_HYDROGRAPHYREL_L_CNT" comment="GEO_HYDROGRAPHYREL_L" schema="IUST" table="GEO_HYDROGRAPHYREL_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_RELIEF_L" comment="GEO_RELIEF_L" schema="IUST" table="GEO_RELIEF_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,origin,name,maxwidth,relheight,absheight,depth,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_RELIEF_L_CNT" comment="GEO_RELIEF_L" schema="IUST" table="GEO_RELIEF_L">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_l" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_PIPE_UNITS_A" comment="AMBIT_INDUSTRY_PIPE_UNITS_A" schema="IUST" table="AMBIT_INDUSTRY_PIPE_UNITS_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,pressurenominal,name,valvetype,instplace,technum,yearcommiss,cost,pipediameter,drivetype,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_PIPE_UNITS_A_CNT" comment="AMBIT_INDUSTRY_PIPE_UNITS_A" schema="IUST" table="AMBIT_INDUSTRY_PIPE_UNITS_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_OILSTATIONS_A" comment="AMBIT_INDUSTRY_OILSTATIONS_A" schema="IUST" table="AMBIT_INDUSTRY_OILSTATIONS_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,name,yearcommiss,cost,sttype,numofstations,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_oilstations_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_OILSTATIONS_A_CNT" comment="AMBIT_INDUSTRY_OILSTATIONS_A" schema="IUST" table="AMBIT_INDUSTRY_OILSTATIONS_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_oilstations_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_PLATFORMS_A" comment="AMBIT_PLATFORMS_A" schema="IUST" table="AMBIT_PLATFORMS_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,name,area_,topocode,platformtype,cost"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_platforms_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_PLATFORMS_A_CNT" comment="AMBIT_PLATFORMS_A" schema="IUST" table="AMBIT_PLATFORMS_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_platforms_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_ROADSTRUCTURES_A" comment="GEO_ROADSTRUCTURES_A" schema="IUST" table="GEO_ROADSTRUCTURES_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,clearance,name,relheight,objstate,objmaterial,absheight,length,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_ROADSTRUCTURES_A_CNT" comment="GEO_ROADSTRUCTURES_A" schema="IUST" table="GEO_ROADSTRUCTURES_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_HYDRAULICSTRUCT_A" comment="GEO_HYDRAULICSTRUCT_A" schema="IUST" table="GEO_HYDRAULICSTRUCT_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,lowwatermark,name,highwatermark,relheight,objstate,objmaterial,absheight,depth,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_HYDRAULICSTRUCT_A_CNT" comment="GEO_HYDRAULICSTRUCT_A" schema="IUST" table="GEO_HYDRAULICSTRUCT_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_INDUCTRIALOBJ_A" comment="GEO_INDUCTRIALOBJ_A" schema="IUST" table="GEO_INDUCTRIALOBJ_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,name,relheight,objstate,objmaterial,length,width,depth,funcpurpose,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_INDUCTRIALOBJ_A_CNT" comment="GEO_INDUCTRIALOBJ_A" schema="IUST" table="GEO_INDUCTRIALOBJ_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_SETTLEMENTS_A" comment="GEO_SETTLEMENTS_A" schema="IUST" table="GEO_SETTLEMENTS_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,belongterritory,administratunit,objstate,objmaterial,settlementunit,settlementtype,topocode,population,name"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_SETTLEMENTS_A_CNT" comment="GEO_SETTLEMENTS_A" schema="IUST" table="GEO_SETTLEMENTS_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>		
+	<data id="GEO_HYDROGRAPHYREL_A" comment="GEO_HYDROGRAPHYREL_A" schema="IUST" table="GEO_HYDROGRAPHYREL_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,groundtype,lowwatermark,name,highwatermark,relheight,absheight,width,depth,shorelinetype,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_HYDROGRAPHYREL_A_CNT" comment="GEO_HYDROGRAPHYREL_A" schema="IUST" table="GEO_HYDROGRAPHYREL_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_SOIL_A" comment="GEO_SOIL_A" schema="IUST" table="GEO_SOIL_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,relheight,depth,topocode,passability,name"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_soil_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_SOIL_A_CNT" comment="GEO_SOIL_A" schema="IUST" table="GEO_SOIL_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_soil_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>		
+	<data id="AMBIT_HYDRO_A" comment="AMBIT_HYDRO_A" schema="IUST" table="AMBIT_HYDRO_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,width_area,topocode,depth,watercoursetype"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_HYDRO_A_CNT" comment="AMBIT_HYDRO_A" schema="IUST" table="AMBIT_HYDRO_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_RELIEF_A" comment="GEO_RELIEF_A" schema="IUST" table="GEO_RELIEF_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,origin,name,maxwidth,relheight,absheight,depth,topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_RELIEF_A_CNT" comment="GEO_RELIEF_A" schema="IUST" table="GEO_RELIEF_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_VEGETATION_FOREST_A" comment="AMBIT_VEGETATION_FOREST_A" schema="IUST" table="AMBIT_VEGETATION_FOREST_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,cost,forestsection,treeheight,treethickness,unitcost,name,topocode,treedistance,vegtype"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_forest_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_VEGETATION_FOREST_A_CNT" comment="AMBIT_VEGETATION_FOREST_A" schema="IUST" table="AMBIT_VEGETATION_FOREST_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_forest_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_VEGETATION_FIELDS_A" comment="AMBIT_VEGETATION_FIELDS_A" schema="IUST" table="AMBIT_VEGETATION_FIELDS_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,topocode,cost,name,crop"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_fields_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="AMBIT_VEGETATION_FIELDS_A_CNT" comment="AMBIT_VEGETATION_FIELDS_A" schema="IUST" table="AMBIT_VEGETATION_FIELDS_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_fields_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>		
+	<data id="GEO_VEGETATION_A" comment="GEO_VEGETATION_A" schema="IUST" table="GEO_VEGETATION_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,name,relheight,vegetationtype,treethickness,passability,topocode,treedistance"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_VEGETATION_A_CNT" comment="GEO_VEGETATION_A" schema="IUST" table="GEO_VEGETATION_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>	
+	<data id="GEO_BOUNDARIES_A" comment="GEO_BOUNDARIES_A" schema="IUST" table="GEO_BOUNDARIES_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="RWN,ID,relheight,topocode,name,boundtype"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="GEO_BOUNDARIES_A_CNT" comment="GEO_BOUNDARIES_A" schema="IUST" table="GEO_BOUNDARIES_A">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<param name="COLUMN_LIST" default="CNT"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_a" />
+				<query>
+				</query>
+			</dbQuery>
+		</select>
+	</data>		
+</root>

@@ -1,0 +1,615 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root version="postgres 7.7.4.4">
+        <data id="STO_ILI_MAPINFO" comment="Экспорт в Mapinfo" schema="PODS" table="ILI_DATA">
+        <select>
+            <dbQuery idField="ID">
+                <var name="ILI_INSP_FILTER" default="select ili_inspection_id from pods.ili_inspection"/>
+                <param name="ID" type="Int64" direction="Input"/>
+                <query>
+SELECT 
+                            idata.ILI_DATA_ID ОБЪЕКТ_ИД,
+                            idata.ILI_INSPECTION_ID ОТЧЕТ_ИД,
+                            case  when t.category_cl in (0,1) or t.category_cl is NULL  then 'ДЕФЕКТ'
+                                  when t.category_cl in (2,4) then 'ОСОБЕННОСТЬ'
+                                  else 'ДЕФЕКТ'
+                             end as ТИП_ОБЪЕКТА,
+                            SUBSTR (idata.FEATURE_DESCRIPTION, 1, 250) ОПИСАНИЕ,
+                            idata.ABSOLUTE_ODOMETER ДИСТАНЦИЯ_ОДОМЕТР,
+                            SUBSTR (idata.DESCRIPTION, 1, 250) КОММЕНТАРИЙ,
+                            l.depth_of_cover ГЛУБИНА_ЗАЛОЖЕНИЯ,
+                            c.z_coord АБС_ВЫСОТА,
+                            stapoint.measure ДИСТАНЦИЯ_ГИС,
+                            STAPOINT.STATION  КИЛОМЕТР_ГИС,
+                            idata.DATE_COLLECTED ДАТА_ВСТАВКИ_БД,
+                            c.x_coord ШИРОТА_WGS84,
+                            c.y_coord ДОЛГОТА_WGS84,
+                            idata.weld_number НОМЕР_ТРУБЫ,
+                            idata.length ДЛИНА,
+                            idata.width ШИРИНА,
+                            idata.orientation_deg ОРИЕНТАЦИЯ,
+                            idata.average_depth ГЛУБИНА_ПОРАЖЕНИЯ,
+                            idata.us_weld_distance ОТ_ШВА,
+                            idata.ds_weld_distance ДО_ШВА,
+			    case  when t.category_cl in (2,4) then 
+                            'Symbol (37,'
+                            || (  ASCII (SUBSTR (UPPER (LTRIM (idata.FEATURE_DESCRIPTION, ' ')), 1, 1))
+                                * 255
+                                * 255
+                                - 500000
+                                + ASCII (SUBSTR (UPPER (LTRIM (idata.FEATURE_DESCRIPTION, ' ')), 2, 1)) * 2000
+                                + 5 * ASCII (SUBSTR (UPPER (LTRIM (idata.FEATURE_DESCRIPTION, ' ')), 3, 1))
+                                + 100)
+                            || ',10)'
+			    else
+  				'Symbol (34,'
+                                || (  ASCII (SUBSTR (UPPER (LTRIM (idata.FEATURE_DESCRIPTION, ' ')), 1, 1))
+                                    * 255
+                                    * 255
+                                    - 500000
+                                    + ASCII (SUBSTR (UPPER (LTRIM (idata.FEATURE_DESCRIPTION, ' ')), 2, 1)) * 2000
+                                    + 5 * ASCII (SUBSTR (UPPER (LTRIM (idata.FEATURE_DESCRIPTION, ' ')), 3, 1))
+                                    + 100)
+                                || ',10)'
+                            end as MI_STYLE,
+                            idata.ILI_DATA_ID MI_PRINX
+                     FROM PODS.ILI_DATA idata
+                          JOIN PODS.EVENT_RANGE er
+                            ON IDATA.EVENT_ID = ER.EVENT_ID and idata.ili_inspection_id in ({ILI_INSP_FILTER})
+                          JOIN PODS.STATION_POINT stapoint
+                            ON ER.STATION_ID_BEGIN = STAPOINT.STATION_ID
+                          join pods.location l on stapoint.location_id=l.location_id
+                          join pods.coordinate c on l.location_id=c.location_id
+                          join PODS.ILI_ANOMALY_TYPE_CL t on t.code=idata.anomaly_type_cl and
+                          (t.category_cl IN (0,1,2,4) or t.category_cl is null)
+                    WHERE er.CURRENT_INDICATOR_LF = 'Y'
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+        <data id="STO_ALLOW_ILI" comment="STO_ALLOW_ILI" schema="PODS" table="ILI_INSPECTION">
+        <select>
+            <dbQuery idField="ID">
+                <param name="SYS_OBJ_ID" type="Int64" direction="Input"/>
+                <query>SELECT * FROM (select
+    i.ili_inspection_id id,
+	'Г-д '||l.description||', участок '||rt.description||', '||round(s.station_begin,1)||'-'||round(s.station_end,1)||' км' INSP_LBL,
+	case when l.line_id = 0 then r.description else l.description end line_name,
+    c.description company_name,
+    i.begin_date,
+    sheet.date_begin_acceptance,
+    sheet.date_end_acceptance,
+    sheet.initial_report_number,
+    sheet.date_initial_report,
+    sheet.final_report_number,
+    sheet.date_Final_report,
+    sheet_exc.phys_date_begin,
+    sheet_exc.phys_date_end,
+   (SELECT 
+        array_to_string(
+             array(
+                  SELECT distinct d.weld_number::text 
+			 FROM pods.ili_data d,pods.sto_sheet_excavate_list sheet_l
+			 WHERE d.ili_data_id=sheet_l.ili_data_id and sheet_l.sheet_id=sheet_exc.sheet_id
+                  )
+                  ,', ')) weld_list,
+    sheet_exc.phys_organization_exec,
+    sheet_exc.phys_date_release
+from	pods.ili_inspection i
+join pods.ili_inspection_range r on
+	r.ili_inspection_id = i.ili_inspection_id
+	and i.ili_inspection_id = {SYS_OBJ_ID}
+join pods.event_range e on
+	e.event_id = r.event_id
+join pods.station_point sp on
+	sp.station_id = e.station_id_begin
+join pods.series s on
+	s.series_id = sp.series_id
+join pods.route rt on
+	sp.route_id = rt.route_id
+join pods.line l on
+	sp.line_id = l.line_id
+join pods.route_type_cl rtc on
+	rt.type_cl = rtc.code
+join pods.ili_tool_vendor_cl c on
+	c.code = i.tool_vendor_cl
+left join pods.sto_ili_inspection_sheet sheet on 
+ sheet.ili_inspection_id=i.ili_inspection_id
+ left join pods.sto_sheet_excavate sheet_exc on 
+ i.ili_inspection_id=sheet_exc.ili_inspection_id) d
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+    <data table="STO_ANOM_LIST" schema="PODS" id="STO_ANOM_LIST" comment="PODS.ILI_DATA">
+        <select>
+            <dbQuery idField="ID">
+                <param name="SYS_OBJ_ID" type="Int64" direction="Input"/>
+                <query>
+with report as (
+  select
+	'Г-д '||l.description||', участок '||rt.description||', '||round(s.station_begin,1)||'-'||round(s.station_end,1)||' км' INSP_LBL,
+	case when l.line_id = 0 then r.description else l.description end line_name,
+    c.description company_name,
+    i.begin_date,
+    i.*
+from	pods.ili_inspection i
+join pods.sto_sheet_excavate exc on 
+ exc.ili_inspection_id = i.ili_inspection_id and exc.sheet_id={SYS_OBJ_ID}
+join pods.ili_inspection_range r on
+	r.ili_inspection_id = i.ili_inspection_id
+join pods.event_range e on
+	e.event_id = r.event_id
+join pods.station_point sp on
+	sp.station_id = e.station_id_begin
+join pods.series s on
+	s.series_id = sp.series_id
+join pods.route rt on
+	sp.route_id = rt.route_id
+join pods.line l on
+	sp.line_id = l.line_id
+join pods.route_type_cl rtc on
+	rt.type_cl = rtc.code
+join pods.ili_tool_vendor_cl c on
+	c.code = i.tool_vendor_cl)
+     select 
+    d.absolute_odometer,
+d.us_weld_distance,
+d.ds_weld_distance,
+d.weld_number,
+(select ip.end_odometer-ip.start_odometer from pods.ili_pipe_length ip 
+where ip.ili_inspection_id=d.ili_inspection_id and ip.start_odometer&lt;=d.absolute_odometer and ip.end_odometer&gt;d.absolute_odometer limit 1) pipe_length,
+t.description anomaly_type_lbl,
+d.feature_description,
+dc.orientation_max orientation_deg,
+d.nominal_wall_thickness,
+d.length,
+d.width,
+d.average_depth,
+ie.description internal_external_lbl,
+d.comments,
+dc.time_to_ext_exam,
+dc.kbd,
+dc.pressure_sw,
+dc.pressure_f,
+dc.danger,
+r.insp_lbl
+from pods.ili_data d
+join pods.sto_sheet_excavate_list l
+on l.ili_data_id=d.ili_data_id and l.sheet_id={SYS_OBJ_ID}
+join pods.ili_anomaly_type_cl t
+on t.code=d.anomaly_type_cl
+join pods.internal_external_cl ie
+on ie.code=d.internal_external_cl
+join report r on
+r.ili_inspection_id=d.ili_inspection_id
+left join pods.sto_ili_data_adv dc
+on r.ili_inspection_id=dc.ili_inspection_id and dc.ili_data_id=d.ili_data_id
+ order by d.absolute_odometer
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+    <data table="STO_FUTURE_PLAN_LIST" schema="PODS" id="STO_FUTURE_PLAN_LIST" comment="ILI_INSPECTION">
+        <select>
+            <dbQuery idField="ID">
+                <param name="SYS_OBJ_ID" type="String" direction="Input"/>
+                <query>
+with report as (
+  select
+	'Г-д '||l.description||', участок '||rt.description||', '||round(s.station_begin,1)||'-'||round(s.station_end,1)||' км' INSP_LBL,
+	case when l.line_id = 0 then r.description else l.description end line_name,
+    c.description company_name,
+    i.begin_date,
+    (select g.description from pods.srv_district_gcl g,pods.location loc where g.srv_district_id=loc.srv_district_gcl and loc.location_id=sp.location_id) srv_district_lbl,
+    i.ili_inspection_id
+from	pods.ili_inspection i
+join pods.ili_inspection_range r on
+	r.ili_inspection_id = i.ili_inspection_id and i.ili_inspection_id in ({SYS_OBJ_ID})
+join pods.event_range e on
+	e.event_id = r.event_id
+join pods.station_point sp on
+	sp.station_id = e.station_id_begin
+join pods.series s on
+	s.series_id = sp.series_id
+join pods.route rt on
+	sp.route_id = rt.route_id
+join pods.line l on
+	sp.line_id = l.line_id
+join pods.route_type_cl rtc on
+	rt.type_cl = rtc.code
+join pods.ili_tool_vendor_cl c on
+	c.code = i.tool_vendor_cl)
+ select 
+  row_number() over() row_id,
+  r.srv_district_lbl,
+  r.insp_lbl,
+  to_char(r.begin_date,'YYYY') last_ili_year,
+ (select count(*) from (select distinct weld_number from pods.ili_data d where d.ili_inspection_id=i.ili_inspection_id) dd) def_pipe_cnt,
+ (select count(*) from pods.ili_data d where d.ili_inspection_id=i.ili_inspection_id and d.anomaly_type_cl in (select code from pods.ili_anomaly_type_cl t where t.index_description='ANOMALY_EXT_005')) def_krn_cnt,
+ null def_krn_q_cnt,
+ (select count(*) from pods.ili_data d where d.ili_inspection_id=i.ili_inspection_id and d.anomaly_type_cl in (132,146,138)) def_pop_crack_cnt,
+ (select count(*) from pods.ili_data d where d.ili_inspection_id=i.ili_inspection_id and d.anomaly_type_cl in (14,125,128,5022)) def_prod_crack_cnt,
+ (select count(*) from pods.ili_data d where d.ili_inspection_id=i.ili_inspection_id and d.anomaly_type_cl in (select code from pods.ili_anomaly_type_cl t where t.index_description='ANOMALY_EXT_001')) corr_cnt,
+ (select count(*) from pods.ili_data d where d.ili_inspection_id=i.ili_inspection_id and d.anomaly_type_cl in (5030,5001,5026,8)) def_shov_kolc_cnt,
+ (select count(*) from pods.ili_data d where d.ili_inspection_id=i.ili_inspection_id and d.anomaly_type_cl in (5031)) def_shov_prod_cnt,
+ (select count(*) from pods.ili_data d where d.ili_inspection_id=i.ili_inspection_id and d.anomaly_type_cl in (select code from pods.ili_anomaly_type_cl t where t.index_description='ANOMALY_EXT_009')) def_mech_dam_cnt,
+ (select count(*) from pods.ili_data d where d.ili_inspection_id=i.ili_inspection_id and d.anomaly_type_cl in 
+ (select code from pods.ili_anomaly_type_cl t where t.index_description not in ('ANOMALY_EXT_001','ANOMALY_EXT_009','ANOMALY_EXT_005','ANOMALY_EXT_004'))) def_other_cnt,
+ null unknown3,
+ null unknown4,
+(select to_char(i.begin_date,'YYYY')::numeric-coalesce(min(time_to_ext_exam),0) from pods.sto_ili_data_adv ca where ca.ili_inspection_id=i.ili_inspection_id) r_620_2011_date_test
+from pods.ili_inspection i 
+join report r on
+r.ili_inspection_id=i.ili_inspection_id  and i.ili_inspection_id in ({SYS_OBJ_ID})
+order by row_id
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+    <data table="STO_PHYS_INSP_LIST" schema="PODS" id="STO_PHYS_INSP_LIST" comment="ILI_DATA">
+        <select>
+            <dbQuery idField="ID">
+                <param name="SYS_OBJ_ID" type="Int64" direction="Input"/>
+                <query>
+with report as (
+  select
+	'Г-д '||l.description||', участок '||rt.description||', '||round(s.station_begin,1)||'-'||round(s.station_end,1)||' км' INSP_LBL,
+	case when l.line_id = 0 then r.description else l.description end line_name,
+    c.description company_name,
+    i.begin_date,
+    (select g.description from pods.srv_district_gcl g,pods.location loc where g.srv_district_id=loc.srv_district_gcl and loc.location_id=sp.location_id limit 1) srv_district_lbl,
+    i.ili_inspection_id,
+    (select coalesce(nullif(min(ps.nominal_diameter_gcl), 0), '1420') nominal_diameter_gcl from
+  	 pods.station_point spe
+	  join pods.event_range eps on
+	 spe.station_id = eps.station_id_begin and eps.FEATURE_ID = 'PIPE_SEGMENT'
+	  join pods.pipe_segment ps on
+	 eps.event_id = ps.event_id and sp.route_id = spe.route_id) diameter
+from	pods.ili_inspection i
+join pods.ili_inspection_range r on
+	r.ili_inspection_id = i.ili_inspection_id
+join pods.event_range e on
+	e.event_id = r.event_id
+join pods.station_point sp on
+	sp.station_id = e.station_id_begin
+join pods.series s on
+	s.series_id = sp.series_id
+join pods.route rt on
+	sp.route_id = rt.route_id
+join pods.line l on
+	sp.line_id = l.line_id
+join pods.route_type_cl rtc on
+	rt.type_cl = rtc.code
+join pods.ili_tool_vendor_cl c on
+	c.code = i.tool_vendor_cl)
+select * from (
+ select 
+  row_number() over() row_id,
+d.weld_number,
+COALESCE(dc.pipe_type_descr,'Нет данных')||'/'||round(coalesce(dc.pipe_length,-1),2)||' м/'||round(coalesce(dc.thickness,-1))||' мм' pipe_constr,
+dc.income_psh       pipe_seam_orientation_deg_1,
+dc.outcome_psh      pipe_seam_orientation_deg_2,
+d.feature_description,
+d.ds_weld_distance,
+dc.mis_dist_to_psh from_long_seam,
+dc.orientation_center orientation_deg,
+d.length,
+d.width,
+d.average_depth,
+d.nominal_wall_thickness-d.average_depth remain_thickness,
+l.phys_comments,
+dc.danger r_595_2011_repair_method,
+   substr((SELECT 
+        array_to_string(
+             array(
+                  SELECT distinct dd.weld_number::text 
+			 FROM pods.ili_data dd,pods.sto_sheet_excavate_list sheet_l
+			 WHERE dd.ili_data_id=sheet_l.ili_data_id and sheet_l.sheet_id=sheet_exc.sheet_id
+                  )
+                  ,', ')),0,32767) weld_list,
+r.insp_lbl,
+r.diameter,
+r.SRV_district_lbl,
+sheet_exc.phys_organization_exec,
+r.begin_date,
+sheet_exc.phys_date_end,
+sheet_exc.phys_sheet_number,
+dc.pipe_type_descr                     pipe_description,
+dc.pipe_length  pipe_length,
+dc.thickness          pipe_nominal_wall_thickness
+from pods.ili_data d
+join report r on
+r.ili_inspection_id=d.ili_inspection_id 
+join pods.sto_sheet_excavate_list l
+on l.ili_data_id=d.ili_data_id
+join pods.sto_sheet_excavate sheet_exc
+on sheet_exc.sheet_id=l.sheet_id and sheet_exc.sheet_id={SYS_OBJ_ID}
+left join pods.sto_ili_data_adv dc
+on dc.ili_data_id=d.ili_data_id
+order by d.absolute_odometer) dd order by dd.row_id
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+pipe_nominal_wall_thickness
+    <data table="STO_REPAIR_LIST" schema="PODS" id="STO_REPAIR_LIST" comment="ILI_DATA">
+        <select>
+            <dbQuery idField="ID">
+                <param name="SYS_OBJ_ID" type="Int64" direction="Input"/>
+                <query>
+with report as (
+  select
+	'Г-д '||l.description||', участок '||rt.description||', '||round(s.station_begin,1)||'-'||round(s.station_end,1)||' км' INSP_LBL,
+	case when l.line_id = 0 then r.description else l.description end line_name,
+    c.description company_name,
+    i.begin_date,
+    (select g.description from pods.srv_district_gcl g,pods.location loc where g.srv_district_id=loc.srv_district_gcl and loc.location_id=sp.location_id) srv_district_lbl,
+    i.ili_inspection_id,
+    (select coalesce(nullif(min(ps.nominal_diameter_gcl), 0), '1420') nominal_diameter_gcl from
+  	 pods.station_point spe
+	  join pods.event_range eps on
+	 spe.station_id = eps.station_id_begin and eps.FEATURE_ID = 'PIPE_SEGMENT'
+	  join pods.pipe_segment ps on
+	 eps.event_id = ps.event_id and sp.route_id = spe.route_id) diameter
+from	pods.ili_inspection i
+join pods.ili_inspection_range r on
+	r.ili_inspection_id = i.ili_inspection_id
+join pods.event_range e on
+	e.event_id = r.event_id
+join pods.station_point sp on
+	sp.station_id = e.station_id_begin
+join pods.series s on
+	s.series_id = sp.series_id
+join pods.route rt on
+	sp.route_id = rt.route_id
+join pods.line l on
+	sp.line_id = l.line_id
+join pods.route_type_cl rtc on
+	rt.type_cl = rtc.code
+join pods.ili_tool_vendor_cl c on
+	c.code = i.tool_vendor_cl)
+ select 
+  row_number() over() row_id,
+d.weld_number,
+COALESCE(ip.pipe_type_descr,'Нет данных')||'/'||round(coalesce(ip.pipe_length,-1),2)||' м/'||round(coalesce(ip.thickness,-1))||' мм' pipe_constr,
+ip.income_psh           pipe_seam_orientation_deg_1,
+ip.outcome_psh       pipe_seam_orientation_deg_2,
+d.feature_description,
+d.ds_weld_distance,
+ip.orientation_center from_long_seam,
+d.orientation_deg,
+d.length,
+d.width,
+d.average_depth,
+d.nominal_wall_thickness-d.average_depth remain_thickness,
+rep.description rep_desription,
+rep.pipe_category,
+pc.description pipe_type,
+rep.pipe_value,
+rep.person_executive,
+null rospis,
+sheet_rep.sheet_number,
+r.insp_lbl,
+r.diameter,
+r.SRV_district_lbl,
+sheet_rep.organization_exec,
+(select sheet_exc.phys_sheet_number from  pods.sto_sheet_excavate_list l,pods.sto_sheet_excavate sheet_exc
+ where  l.ili_data_id = d.ili_data_id and sheet_exc.sheet_id = l.sheet_id and sheet_exc.phys_sheet_number is not null order by sheet_exc.sheet_id desc limit 1) phys_sheet_number,
+(select sheet_exc.phys_date_end from  pods.sto_sheet_excavate_list l,pods.sto_sheet_excavate sheet_exc 
+ where  l.ili_data_id = d.ili_data_id and sheet_exc.sheet_id = l.sheet_id and sheet_exc.phys_date_end is not null order by sheet_exc.sheet_id desc limit 1) phys_date_end
+from pods.ili_data d
+join report r on
+r.ili_inspection_id=d.ili_inspection_id 
+join pods.sto_sheet_repair_list rep
+on rep.ili_data_id=d.ili_data_id
+join pods.sto_sheet_repair sheet_rep
+on sheet_rep.sheet_id=rep.sheet_id and sheet_rep.sheet_id={SYS_OBJ_ID}
+left join pods.sto_ili_data_adv ip
+on d.ili_data_id=ip.ili_data_id
+left join pods.sto_pipe_construction_cl pc on pc.code=rep.pipe_construction_type_cl
+order by d.absolute_odometer
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+
+    <data table="STO_DOP_PHYS_LIST" schema="PODS" id="STO_DOP_PHYS_LIST" comment="ILI_DATA">
+        <select>
+            <dbQuery idField="ID">
+                <param name="SYS_OBJ_ID" type="Int64" direction="Input"/>
+                <query>
+with report as (
+  select
+	'Г-д '||l.description||', участок '||rt.description||', '||round(s.station_begin,1)||'-'||round(s.station_end,1)||' км' INSP_LBL,
+	case when l.line_id = 0 then r.description else l.description end line_name,
+    c.description company_name,
+    i.begin_date,
+    (select g.description from pods.srv_district_gcl g,pods.location loc where g.srv_district_id=loc.srv_district_gcl and loc.location_id=sp.location_id) srv_district_lbl,
+    i.ili_inspection_id,
+    (select coalesce(nullif(min(ps.nominal_diameter_gcl), 0), '1420') nominal_diameter_gcl from
+  	 pods.station_point spe
+	  join pods.event_range eps on
+	 spe.station_id = eps.station_id_begin and eps.FEATURE_ID = 'PIPE_SEGMENT'
+	  join pods.pipe_segment ps on
+	 eps.event_id = ps.event_id and sp.route_id = spe.route_id) diameter
+from	pods.ili_inspection i
+join pods.ili_inspection_range r on
+	r.ili_inspection_id = i.ili_inspection_id
+join pods.event_range e on
+	e.event_id = r.event_id
+join pods.station_point sp on
+	sp.station_id = e.station_id_begin
+join pods.series s on
+	s.series_id = sp.series_id
+join pods.route rt on
+	sp.route_id = rt.route_id
+join pods.line l on
+	sp.line_id = l.line_id
+join pods.route_type_cl rtc on
+	rt.type_cl = rtc.code
+join pods.ili_tool_vendor_cl c on
+	c.code = i.tool_vendor_cl)
+ select 
+r.insp_lbl,
+sheet_exc.phys_comments sto_sheet_comments,
+sheet_exc.phys_resolution sto_sheet_resolution,
+r.diameter,
+r.SRV_district_lbl,substr(
+(SELECT 
+        array_to_string(
+             array(
+                  SELECT distinct dd.weld_number::text 
+			 FROM pods.ili_data dd,pods.sto_sheet_excavate_list sheet_l
+			 WHERE dd.ili_data_id=sheet_l.ili_data_id and sheet_l.sheet_id=sheet_exc.sheet_id
+                  )
+                  ,', ')),0,32767) weld_list,
+sheet_exc.phys_control_reason,
+sheet_exc.phys_date_begin,
+sheet_exc.phys_date_end,
+sheet_ili.final_report_number,
+ (select count(*) from (select distinct ddd.weld_number from pods.ili_data ddd where d.ili_data_id=ddd.ili_data_id) dd) weld_insp_cnt,
+d.weld_number,
+ip.start_odometer pipe_start_odometer,
+ip.description pipe_description,
+ip.seam_orientation_deg pipe_seam_orientation_deg,
+ip.end_odometer-ip.start_odometer pipe_length,
+ip.nominal_wall_thickness pipe_nominal_wall_thickness,
+l.ddk_ds_weld_odometer exc_list_ddk_ds_weld_odometer,
+l.ddk_weld_description exc_list_ddk_weld_description,
+l.ddk_weld_orientation_deg exc_list_ddk_weld_orientation_deg,
+l.ddk_weld_length exc_list_ddk_weld_length,
+l.ddk_wall_thickness exc_list_ddk_wall_thickness,
+d.feature_description,
+d.ds_weld_distance,
+d.orientation_deg,
+d.length,
+d.width,
+d.average_depth,
+l.ddk_anomaly_type_cl exc_list_ddk_anomaly_type_cl,
+l.ddk_ds_weld_distance exc_list_ddk_ds_weld_distance,
+l.ddk_orientation_deg exc_list_ddk_orientation_deg,
+l.ddk_length exc_list_ddk_length,
+l.ddk_width exc_list_ddk_width,
+l.ddk_depth exc_list_ddk_depth
+from pods.ili_data d
+join report r on
+r.ili_inspection_id=d.ili_inspection_id 
+join pods.sto_sheet_excavate_list l
+on l.ili_data_id=d.ili_data_id
+join pods.sto_sheet_excavate sheet_exc
+on sheet_exc.sheet_id=l.sheet_id and sheet_exc.sheet_id={SYS_OBJ_ID}
+left join pods.sto_ili_inspection_sheet sheet_ili
+on sheet_ili.ili_inspection_id=d.ili_inspection_id
+left join pods.ili_pipe_length ip
+on d.absolute_odometer&gt;=ip.start_odometer and d.absolute_odometer&lt;ip.end_odometer and ip.ili_inspection_id=d.ili_inspection_id
+order by d.absolute_odometer
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+    <data table="STO_INFOTEH_ANOMALY_DATA" schema="PODS" id="STO_INFOTEH_ANOMALY_DATA" comment="ILI_DATA">
+        <select>
+            <dbQuery idField="ID">
+                <param name="SYS_OBJ_ID" type="Int64" direction="Input"/>
+                <query>
+with report as (
+  select
+	'Г-д '||l.description||', участок '||rt.description||', '||round(s.station_begin,1)||'-'||round(s.station_end,1)||' км' INSP_LBL,
+	case when l.line_id = 0 then r.description else l.description end line_name,
+    c.description company_name,
+    i.begin_date,
+    (select g.description from pods.srv_district_gcl g,pods.location loc where g.srv_district_id=loc.srv_district_gcl and loc.location_id=sp.location_id) srv_district_lbl,
+    i.ili_inspection_id,
+    (select coalesce(nullif(min(ps.nominal_diameter_gcl), 0), '1420') nominal_diameter_gcl from
+  	 pods.station_point spe
+	  join pods.event_range eps on
+	 spe.station_id = eps.station_id_begin and eps.FEATURE_ID = 'PIPE_SEGMENT'
+	  join pods.pipe_segment ps on
+	 eps.event_id = ps.event_id and sp.route_id = spe.route_id) diameter
+from	pods.ili_inspection i
+join pods.ili_inspection_range r on
+	r.ili_inspection_id = i.ili_inspection_id
+join pods.event_range e on
+	e.event_id = r.event_id
+join pods.station_point sp on
+	sp.station_id = e.station_id_begin
+join pods.series s on
+	s.series_id = sp.series_id
+join pods.route rt on
+	sp.route_id = rt.route_id
+join pods.line l on
+	sp.line_id = l.line_id
+join pods.route_type_cl rtc on
+	rt.type_cl = rtc.code
+join pods.ili_tool_vendor_cl c on
+	c.code = i.tool_vendor_cl)
+ select 
+  row_number() over() row_id,
+d.weld_number,
+null k_def,
+d.feature_description,
+d.absolute_odometer,
+d.ds_weld_distance,
+s.station,
+d.length,
+d.width,
+d.average_depth,
+d.orientation_deg,
+r.SRV_district_lbl,
+it.description,
+l.ddk_length,
+l.ddk_width,
+l.ddk_depth,
+l.ddk_orientation_def1,
+l.ddk_orientation_def2,
+sheet_exc.phys_date_end,
+c.x_coord,
+c.y_coord,
+c.z_coord,
+l.ddk_pipe_material_type_cl,
+l.ddk_pipe_standard_cl,
+l.ddk_pipe_construction_type_cl,
+l.ddk_pipe_manufacturer_cl,
+l.ddk_pipe_isolation_cl,
+l.description,
+rl.repair_type_cl,
+rl.length,
+rl.width,
+rl.repair_diameter,
+rl.repair_thickness,
+sheet_rep.date_end,
+sheet_rep.gas_value,
+rl.description,
+rl.repair_method_cl,
+r.insp_lbl||' '||to_char(r.begin_date,'DD.MM.YYYY') insp_lbl
+from pods.ili_data d
+join report r on
+r.ili_inspection_id=d.ili_inspection_id and d.ili_inspection_id={SYS_OBJ_ID}
+left join pods.sto_sheet_excavate_list l
+on l.ili_data_id=d.ili_data_id and l.sheet_id in (select max(rep.sheet_id) from pods.sto_sheet_excavate_list rep where rep.ili_data_id=l.ili_data_id) 
+left join pods.sto_sheet_excavate sheet_exc
+on sheet_exc.sheet_id=l.sheet_id
+left join pods.ili_anomaly_type_cl it on 
+it.code=l.ddk_anomaly_type_cl
+left join pods.event_range e on
+e.event_id=d.event_id
+left join pods.station_point s on
+s.station_id=e.station_id_begin
+left join pods.coordinate c on
+c.location_id=s.location_id
+left join pods.sto_sheet_repair_list rl on
+rl.ili_data_id=d.ili_data_id and rl.sheet_id in (select max(rep.sheet_id) from pods.sto_sheet_repair_list rep where rep.ili_data_id=l.ili_data_id) 
+left join pods.sto_sheet_repair sheet_rep on
+sheet_rep.sheet_id=rl.sheet_id
+order by d.absolute_odometer
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+ </root>

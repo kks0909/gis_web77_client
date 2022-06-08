@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<kml version="7.7.7.5">
+  <Document>
+	<!-- Стиль линии для подписей на карте легенды (линия прозрачная и белая, чтобы была видна только подпись) -->
+	<Style id="CAS_LEGEND" comment="CAS.LEGEND">
+		<zoomMin>NAN</zoomMin>
+		<zoomMax>NAN</zoomMax>
+		<LabelStyle>
+			<zoomMin>NaN</zoomMin>
+			<zoomMax>NaN</zoomMax>
+			<field>LABEL</field>
+			<color>FF404040</color>
+			<fontSize>10</fontSize>
+			<bold>0</bold>
+			<italic>0</italic>
+			<underline>0</underline>
+			<parallel>1</parallel>
+			<auto>1</auto>
+			<offset>0</offset>
+			<duplicate>0</duplicate>
+			<overlap>1</overlap>
+      <align>right|bottom</align>
+		</LabelStyle>
+		<LineStyle>
+			<color>00FFFFFF</color>
+			<width>1</width>
+			</LineStyle>
+	</Style>
+	<!-- Стиль для единиц измерения на карте и легенде -->
+	<Style id="CAS_UNITS" comment="CAS.UNITS">
+		<zoomMin>NAN</zoomMin>
+		<zoomMax>NAN</zoomMax>
+		<LabelStyle>
+			<zoomMin>NaN</zoomMin>
+			<zoomMax>NaN</zoomMax>
+			<field>LABEL</field>
+			<color>7D000000</color>
+			<fontSize>10</fontSize>
+			<bold>0</bold>
+			<italic>1</italic>
+			<underline>0</underline>
+			<parallel>1</parallel>
+			<auto>1</auto>
+			<offset>0</offset>
+			<duplicate>0</duplicate>
+			<overlap>1</overlap>
+		</LabelStyle>
+		<LineStyle>
+			<color>00FFFFFF</color>
+			<width>1</width>
+			</LineStyle>
+	</Style>
+	<!-- Стиль линии для осей на карте диаграмм и на карте легенды (линия серая, чтобы не мешалась) -->
+	<Style id="CAS_AXES" schema="CAS" table="AXES" comment="CAS.AXES">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+      	<color>FF000000</color>
+      	<width>2</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <field>LABEL</field>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <parallel>1</parallel>
+        <auto>1</auto>
+        <offset>0</offset>
+        <duplicate>1</duplicate>
+        <overlap>0</overlap>
+      </LabelStyle>
+    </Style>
+	<!-- Стиль линии для вертикальных разделительных осей на карте диаграмм и на карте легенды (линия свето-серая, чтобы не мешалась) -->
+	<Style id="CAS_LIGHT_AXES" schema="CAS" table="LIGHT_AXES" comment="CAS.LIGHT_AXES">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+         <color>FFC0C0C0</color>
+	       <width>1</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <field>LABEL</field>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <parallel>1</parallel>
+        <auto>1</auto>
+        <offset>0</offset>
+        <duplicate>1</duplicate>
+        <overlap>0</overlap>
+      </LabelStyle>
+    </Style>
+  <!-- Стиль для порогового анализа -->
+   <Style id="BOUNDARY_ANALYSIS_LINE" comment="CAS.LIGHT_AXES">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+     
+      <LineStyle>
+        <color>FF9b2d30</color>
+        <width>1</width>
+      </LineStyle>
+       <LineStyle>
+        <color>FF505050</color>
+        <width>2</width>
+     </LineStyle>
+    </Style>
+    <Style id="BOUNDARY_ANALYSIS_POINT" comment="CAS.LIGHT_AXES">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <form>square</form>
+		  <size>2</size>
+        </Icon>
+        <color>FF9b2d30</color>
+        <outline>1</outline>
+      </IconStyle>
+      <LineStyle>
+        <color>FF9b2d30</color>
+        <width>1</width>
+      </LineStyle>
+    </Style>
+    <Style id="FREQUENCY_DISTRIBUTION_LINE" comment="CAS.LIGHT_AXES">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFffc0cb</color>
+        <width>2</width>
+      </LineStyle>
+       <LineStyle>
+        <color>FFffc0cb</color>
+        <width>3</width>
+       </LineStyle>
+    </Style>
+    <Style id="GISTOGRAM_LINE" comment="CAS.LIGHT_AXES">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF42aaff</color>
+        <width>2</width>
+      </LineStyle>
+       <LineStyle>
+        <color>FF42aaff</color>
+        <width>3</width>
+       </LineStyle>
+    </Style>
+    <Style id="REGRESSION_LINE" comment="CAS.LIGHT_AXES">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFFF00FF</color>
+        <width>2</width>
+       </LineStyle>
+       <LineStyle>
+        <color>FFFF00FF</color>
+        <width>3</width>
+       </LineStyle>
+    </Style>
+  <!-- Стили линий отсечек на графиках ПКА -->
+	<Style id="CAS_COSMETIC_ELEMENT_RED" comment="CAS_COSMETIC_ELEMENT_RED">
+		<zoomMin>NAN</zoomMin>
+		<zoomMax>NAN</zoomMax>		
+		<LineStyle>
+			<color>FFFF0000</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="CAS_COSMETIC_ELEMENT_GREEN" comment="CAS_COSMETIC_ELEMENT_GREEN">
+		<zoomMin>NAN</zoomMin>
+		<zoomMax>NAN</zoomMax>		
+		<LineStyle>
+			<color>FF00FF00</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+
+  <!-- стили для сгруппированных слоёв  -->
+  <Style id="GROUP_POSITION_HORIZONTAL_0" schema="" table="" comment="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF3154d5</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>663154d5</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>      
+    </Style>
+    <Style id="GROUP_POSITION_HORIZONTAL_0" schema="" table="" comment="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF3154d5</color>
+        <width>1</width>
+      </LineStyle>   
+    </Style>
+    <Style id="GROUP_POSITION_HORIZONTAL_0" schema="" table="" comment="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <form>circle</form>
+          <size>4</size>
+        </Icon>
+        <color>FF3154d5</color>
+        <outline>1</outline>
+      </IconStyle>     
+     </Style>
+  <Style id="GROUP_POSITION_HORIZONTAL_1" schema="" table="" comment="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFff8c00</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>66ff8c00</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>      
+    </Style>
+    <Style id="GROUP_POSITION_HORIZONTAL_1" schema="" table="" comment="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFff8c00</color>
+        <width>1</width>
+      </LineStyle>   
+    </Style>
+    <Style id="GROUP_POSITION_HORIZONTAL_1" schema="" table="" comment="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <form>circle</form>
+          <size>4</size>
+        </Icon>
+        <color>FFff8c00</color>
+        <outline>1</outline>
+      </IconStyle>     
+     </Style>
+     <Style id="GROUP_POSITION_HORIZONTAL_1" schema="" table="" comment="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF9932cc</color>
+        <width>2</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>669932cc</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>      
+    </Style>
+    <Style id="GROUP_POSITION_HORIZONTAL_1" schema="" table="" comment="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF9932cc</color>
+        <width>1</width>
+      </LineStyle>   
+    </Style>
+    <Style id="GROUP_POSITION_HORIZONTAL_1" schema="" table="" comment="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <form>circle</form>
+          <size>4</size>
+        </Icon>
+        <color>FF9932cc</color>
+        <outline>1</outline>
+      </IconStyle>     
+     </Style>
+     <Style id="GROUP_POSITION_HORIZONTAL_2" schema="" table="" comment="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>660000ff</color>
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>330000ff</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>      
+    </Style>
+    <Style id="GROUP_POSITION_HORIZONTAL_2" schema="" table="" comment="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF0000ff</color>
+        <width>1</width>
+      </LineStyle>   
+    </Style>
+    <Style id="GROUP_POSITION_HORIZONTAL_2" schema="" table="" comment="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <form>circle</form>
+          <size>4</size>
+        </Icon>
+        <color>FF0000ff</color>
+        <outline>1</outline>
+      </IconStyle>     
+     </Style>
+     <Style id="GROUP_POSITION_HORIZONTAL_3" schema="" table="" comment="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF7b68ee</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>667b68ee</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>      
+    </Style>
+    <Style id="GROUP_POSITION_HORIZONTAL_3" schema="" table="" comment="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF7b68ee</color>
+        <width>1</width>
+      </LineStyle>   
+    </Style>
+    <Style id="GROUP_POSITION_HORIZONTAL_3" schema="" table="" comment="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <form>circle</form>
+          <size>4</size>
+        </Icon>
+        <color>FF7b68ee</color>
+        <outline>1</outline>
+      </IconStyle>     
+     </Style>
+  </Document>
+</kml>

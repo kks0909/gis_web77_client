@@ -1,0 +1,165 @@
+{
+  "code":200,
+  "version":"7.7.7.3",
+  "id":"MAPSERVICE",
+  "canvas":{
+    "width": "100%",
+    "height": 3000
+  },
+  "map":{
+    "_comment": "Тип карты, если widget, то карта открывается в iframe",
+    "type":"widget",
+    "position":{
+      "width":"25%",
+      "height":"50%"
+    }
+  },
+  "chart":{
+    "position":{
+      "width":"25%",
+      "height":"50%"
+    }
+  },
+  "grid":{
+    "_comment": "Нужно ли показывать кнопки закрытия, сворачивания в гридах",
+    "titlebar":true,
+    "_comment": "Нужно ли показывать открывать гриды в одной вкладке с перезапрашиванием данных, либо в отдельных вкладках",
+    "duplicate": true,
+    "_comment": "Нужно ли открывать гриды с одной вкладкой с закрытием",
+    "singleTab": true,
+    "_comment": "Перечень кнопок быстрого доступа к гридам, которые расположены вверху карты",
+    "fast_buttons":[],
+    "_comment": "Возможность расширять размеры грида",
+    "resizable": true,
+    "_comment": "Возможность двигать грид",
+    "draggable": true,
+    "_comment": "Настройки панели свойств грида",
+    "ppanel":{
+      "_comment": "Расположение панели свойств внутри таба с гридами либо общий, как в карте local|global",
+      "position": "global"
+    },
+    "_comment": "Начальное положение грида",
+    "position":{
+      "width":"50%",
+      "height":"50%",
+      "left": 0,
+      "top": 0
+    }    
+  },
+  "_comment":"Настройки рубрикатор",
+  "tree":{
+    "isMaximized":true,
+    "treePercentWidth":20,
+    "visible": false,
+    "trees":[{
+        "id":"SUTSTPA_LIST",
+        "title":"СУ ТС ТПА",
+        "templateUrl":"Public/Modules/Tree/sutstpa_tree.xml",
+        "topFilterId":"lpuFilter",
+        "default":true        
+      }
+    ]
+  },
+  "startupScenario":{
+    "openLayers":[],
+    "openTables":[
+      {
+        "title":"Кран",
+        "gridId":"SUTSTPA_КРАН_LIST",
+        "levelParams":"layerId=SUTSTPA_Layers.xml#SUTSTPA_КРАН;",
+        "showDashboard": true,
+        "query":
+        {
+          "source":"COMMON_TREE.xml#LAYER_STYLE_BASE",
+          "LAYER_ID":"SUTSTPA_SUTSTPA_КРАНОВЫЙ_УЗЕЛСВЕЧА",
+          "FILE_NAME":"SUTSTPA_STYLE.xml"
+        }
+      }
+    ]
+  },
+  "_comment":"Настройки панели свойств",
+  "ppanel":{
+    "showSystemInfo":false
+  },
+  "vectorlayers":["SUTSTPA_Layers.xml"],
+  "charts": [
+    {
+      "title": "Тип привода,Номин. давление Pn",
+      "type": "pie",
+      "sql": "ANALYTIC_SEM.xml#ANALYTIC_2",
+      "params": {
+        "SPRAV_SEM_QUERY":"with sprav0 as( SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.sprav_valve_op_type_gcl ORDER BY DESCR) , sprav1 as(SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.sprav_nom_pressure_gcl ORDER BY DESCR) ",
+        "SPRAV_LIST": "sprav0 sp0, sprav1 sp1",
+        "SPRAV_PREDICATE_LIST": "OPER_TYPE_ID=sp0.code and NOM_PRESS_ID=sp1.code",
+        "GROUP_1": "sp0.descr d0, sp1.descr d1",
+        "GROUP_2": "sp0.descr, sp1.descr",
+        "ORDER": "sp0.descr, sp1.descr",
+        "FILTER": "8=8"
+      },
+      "layerName": "SUTSTPA_КРАН",
+      "position": {
+        "left": "1%",
+        "top": "1%",
+        "width": "49%",
+        "height": "30%"
+      }
+    },
+    {
+      "title": "Тип привода",
+      "type": "bar",
+      "sql": "ANALYTIC_SEM.xml#ANALYTIC_2",
+      "params":{
+        "SPRAV_SEM_QUERY":"with sprav0 as( SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.sprav_valve_op_type_gcl ORDER BY DESCR) ",
+        "SPRAV_LIST": "sprav0 sp0",
+        "SPRAV_PREDICATE_LIST": "OPER_TYPE_ID=sp0.code",
+        "GROUP_1": "sp0.descr d0",
+        "GROUP_2": "sp0.descr",
+        "ORDER": "sp0.descr",
+        "FILTER": "8=8",
+        "SCHEMA": "sutstpa",
+        "TABLE_NAME": "valve"
+      },
+      "layerName": "SUTSTPA_КРАН",
+      "position": {
+        "left": "51%",
+        "top": "1%",
+        "width": "24%",
+        "height": "14.7%"
+      }
+    },
+    {
+      "title": "ЛПУ,Привод арматуры-желтый",
+      "type": "pie",
+      "sql": "ANALYTIC_SEM.xml#ANALYTIC_2",
+      "params":{
+        "SPRAV_SEM_QUERY":"with sprav0 as( SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.sprav_lpu_gcl ORDER BY DESCR), sprav1 as (select 1 code, 'ДА' descr union ALL select 0 code, 'НЕТ' descr)",
+        "SPRAV_LIST": "sprav0 sp0, sprav1 sp1",
+        "SPRAV_PREDICATE_LIST": "LPU=sp0.code and COLOR_3_IS=sp1.code",
+        "GROUP_1": "sp0.descr d0, sp1.descr d1",
+        "GROUP_2": "sp0.descr, sp1.descr",
+        "ORDER": "sp0.descr, sp1.descr",
+        "FILTER": "8=8",
+        "SCHEMA": "sutstpa",
+        "TABLE_NAME": "valve"
+      },
+      "layerName": "SUTSTPA_КРАН",
+      "position": {
+        "left": "51%",
+        "top": "16.3%",
+        "width": "24%",
+        "height": "14.7%"
+      }
+    }   
+  ],
+  "_comment":"Настройки формы фильтра у дашборда",
+  "dashboard":{
+    "position": {
+      "width":"23%",
+        "height":"30%",
+        "left": "76%",
+        "top": "1%"
+    },
+        "resizable": false,
+    "draggable": false
+  }
+}

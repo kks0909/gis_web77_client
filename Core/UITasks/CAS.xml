@@ -1,0 +1,54 @@
+﻿<ROOT prevTask="close" version="7.7.3.0" reload="true">
+	<panel id="CAS" url="Public/SWF/Modules/CAS_Module.SWF" percentWidth="100" percentHeight="100" reload="false">
+	  <settings>
+      <!--Радиус поиска векторных объектов на карте, в пикселях -->
+      <add key="MAP_Info_Radius" value="5"/>
+      <!-- Шаг матрицы разрежения объектов на карте по Х -->
+      <add key="MAP_Matrix_DX" value="1"/>
+      <!-- Шаг матрицы разрежения объектов на карте по Y -->
+      <add key="MAP_Matrix_DY" value="1"/>
+      <!-- Максимальное отношение длины подписи (в пикселах) к длине объекта (в пикселах), при котором подпись выводится -->
+      <add key="MAP_Label_Len_Ratio" value = "1.5"/>
+      <!-- Минимальное отношение длины видимого линейного объекта к ширине экрана -->
+      <add key="MAP_Len_Ratio" value = "0.001"/>
+      <!-- Коэффициент при расчете размера шрифта подписи -->
+      <add key="MAP_Label_Font_Ratio" value = "0.9"/>
+      <!-- часть высоты карты, через которую повторяется подпись протяженного линейного объекта -->
+      <add key="MAP_Label_Repeat_Ratio" value = "1.5"/>
+	  <!-- Максимально допустимое расстояние от конца подписи до линии (в пикселах) -->
+	  <add key="MAP_Label_Cut_Tolerance" value = "15"/>
+	  <!-- Процент обрезки подписей в случае режима MAP_Label_Draw_Type="cut" -->
+	  <add key="MAP_Label_Cut_Ratio" value = "0.1"/>
+	  <!-- Тип отрисовки подписей для линий (вдоль линии, обрезать) along, cut. Значение по умолчанию "cut" -->
+	  <add key="MAP_Label_Draw_Type" value = "cut"/>
+	  <!--  Смещение по x,y текста относительно подписи (в пикселах)  -->
+	  <add key="MAP_Label_Offset" value = "0"/>  
+      <Models>
+		    <model name="CAS_PODS_PROFILE" descr="Продольный профиль трубопровода" onTaskChanged="delete" onUserChanged="delete"/>
+		    <model name="CAS_PODS_EQUIP" descr="Основное оборудование" onTaskChanged="delete" onUserChanged="delete"/>
+		    <model name="CAS_PODS_OTH" descr="Узлы ввода, соединения, прочее оборудование" onTaskChanged="delete" onUserChanged="delete"/>
+		    <model name="CAS_PODS_PI_CP" descr="Диагностика" onTaskChanged="delete" onUserChanged="delete"/>
+		    <model name="CAS_PODS_OFFLINE" descr="Вдольтрассовые\n объекты" onTaskChanged="delete" onUserChanged="delete"/>
+		    <model name="CAS_PODS_EXP" descr="Основные \nэксплуатационные данные" onTaskChanged="delete" onUserChanged="delete"/>
+		    <model name="CAS_PODS_BOUND" descr="Разграничения территорий" onTaskChanged="delete" onUserChanged="delete"/>
+		    <model name="CAS_PODS_HIST" descr="Журналы \nоперативных данных" onTaskChanged="delete" onUserChanged="delete"/>
+		    <model name="CAS_PODS_CAS_ILI" descr="ВТД" onTaskChanged="delete" onUserChanged="delete"/>
+		    <model name="CAS_PODS_CAS_CP" descr="ЭХЗ" onTaskChanged="delete" onUserChanged="delete"/>
+	    </Models>
+	    <MIN_START_END_KM_DELTA>0.1</MIN_START_END_KM_DELTA>
+	  </settings>
+	</panel>
+	<panel id="PROP" url="Public/SWF/modules/PropertiesM.swf" height="0" percentWidth="100">
+    <settings>
+      <editable>false</editable>
+      <title />
+      <width>790</width>
+      <height>250</height>
+      <!-- Флаг отображения системных свойств в формах -->
+      <add key="Show_System_Info" value="false" />
+      <dataSource>SYS_PROP.xml#PROP_LIST</dataSource>
+      <enableEmbed>false</enableEmbed>
+    </settings>
+  </panel>
+  <functional id="CAS_BALLOON" url="Public/SWF/modules/CASBalloonModule.swf" reload='true' percentWidth='0' percentHeight='0'/>
+</ROOT>

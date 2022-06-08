@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Файл описания слоёв "Планирование шурфов" -->
+<root version="7.7.4.2" descr="Планирование шурфов" name="PODS_STO">
+  <dataProvider type="style" source="STO_SHURF_SCHEMA_STYLE.xml" />
+  <dataProvider type="style" source="PODS_EQUIP_STYLE.xml" />   
+  <layer id="STO_SHURF_SCHEMA_DECORATE" comment="PODS.STO_SHURF_SCHEMA_DECORATE" schema="PODS" table="STO_SHURF_SCHEMA_DECORATE" descr="Зарамочное оформление" 
+ projection="EPSG:5807" dataType="vector" type="system" labelField="TEXT" classField="STYLE" spacing="STO_SHURF_SCHEMA_DECORATE" cover="true" fitMap="false" order="100" visible="true" topology="point,line,polygon">
+    <dataProvider type="spatial" source="STO_SHURF_SCHEMA_GEO.xml#STO_SHURF_SCHEMA_DECORATE" />
+  </layer>
+   
+  <layer id="STO_SHURF_SCHEMA_OBJ" comment="STO_SHURF_SCHEMA_OBJ" schema="PODS" table="ILI_DATA" descr="Объекты схемы" 
+ projection="EPSG:5807" dataType="vector" type="system" labelField="TEXT" classField="STYLE" spacing="STO_SHURF_SCHEMA_OBJ" cover="true" fitMap="false" order="20" visible="true" topology="point">
+    <dataProvider type="spatial" source="STO_SHURF_SCHEMA_GEO.xml#STO_SHURF_SCHEMA_OBJ" />
+  </layer>
+   
+  <layer id="STO_SHURF_SCHEMA_OBJ_TEXT" comment="PODS.STO_SHURF_SCHEMA_OBJ_TEXT" schema="PODS" table="ILI_DATA" descr="Текстовые подписи" 
+ projection="EPSG:5807" dataType="vector" type="system" labelField="TEXT" classField="STYLE" spacing="STO_SHURF_SCHEMA_OBJ_TEXT" cover="true" fitMap="false" order="10" visible="true" topology="line">
+    <dataProvider type="spatial" source="STO_SHURF_SCHEMA_GEO.xml#STO_SHURF_SCHEMA_OBJ_TEXT" />
+  </layer>
+   
+  <layer id="STO_SHURF_SCHEMA_OBJ_LINE" comment="PODS.STO_SHURF_SCHEMA_OBJ_LINE" schema="PODS" table="ILI_DATA" descr="Линии между объектами" 
+ projection="EPSG:5807" dataType="vector" type="system" labelField="TEXT" classField="STYLE" spacing="STO_SHURF_SCHEMA_OBJ_LINE" cover="true" fitMap="false" order="30" visible="true" topology="line">
+    <dataProvider type="spatial" source="STO_SHURF_SCHEMA_GEO.xml#STO_SHURF_SCHEMA_OBJ_LINE" />
+  </layer>
+</root>

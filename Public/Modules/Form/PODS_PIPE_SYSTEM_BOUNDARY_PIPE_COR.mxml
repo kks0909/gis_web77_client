@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="760" xmlns="view.data.*" xmlns:data="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml">
+  <dataProvider>GAZPROM_SYS_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="760">
+	  <mx:HBox percentWidth="100">
+		  <mx:Text textAlign="right" text="Трубопровод" width="140" />
+		  <mx:ComboBox id="LINE_ID" enabled="false" editable="false" width="585" height="20" dataProvider="GAZPROM_SYS_SEM.xml#PODS_LINE_WITHOUT_DEFAULT" />
+	  </mx:HBox>
+      <mx:HBox percentWidth="100">
+        <mx:Text textAlign="right" text="Пикетажный километр начальный/конечный, км" width="140" />
+        <controls:NumberInput id="KM_BEGIN" width="60" maxChars="22" height="20" />
+        <controls:NumberInput id="KM_END" width="60" maxChars="22" height="20" />
+        <mx:HBox width="200">
+          <mx:Text textAlign="right" text="Титульный" width="140" />
+          <mx:CheckBox id="TITLE_EVENT_INDICATOR_LF" width="20" height="20" />
+        </mx:HBox>
+        <controls:NumberInput id="EVENT_ID" enabled="false" editable="false" visible="false" width="5" maxChars="22" height="20" />
+		<mx:TextInput id="PIPE_SYSTEM_ID" enabled="false" editable="false" visible="false" width="5" maxChars="254" height="40" />
+    </mx:HBox>
+  </mx:VBox>
+  <validatorsArray>
+    <controls:DefaultNumberValidator source="{KM_BEGIN}" property="text" enabled="false" minLength="1" requiredFieldError="Поле 'Пикетажный километр начальный' обязательно для заполнения." tooShortError="Поле 'Пикетажный километр начальный' обязательно для заполнения." />
+    <controls:DefaultNumberValidator source="{KM_END}" property="text" enabled="false" minLength="1" requiredFieldError="Поле 'Пикетажный километр конечный' обязательно для заполнения." tooShortError="Поле 'Пикетажный километр конечный' обязательно для заполнения." />
+  </validatorsArray>
+</DATA_EDIT_FORM>

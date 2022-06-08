@@ -1,0 +1,266 @@
+﻿<root version="postgres 7.7.4.12">
+  <data id="WEB50_POI_POINT" comment="WEB50.POI_POINT" schema="WEB50" table="POI_POINT" descr="Путевые точки">
+    <select>
+      <geoQuery idField="ID" geoField="X,Y" partField="">
+        <var name="USER_ID" direction="Input" default="select user_id from web50.b_user_private" />
+        <var name="FILTER" default="1=1" />
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID in ({USER_ID})
+                   AND pr.CLASS_ID='WEB50_POI_POINT_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID in ({USER_ID}) 
+                   AND pr.CLASS_ID='WEB50_POI_POINT_USER'
+                   AND pr.SELECT_PERMITTED = '1') 
+SELECT *
+  FROM ( SELECT p.POINT_ID ID, c.X, c.Y, p.symbol "TYPE", p.name "LABEL"
+            FROM WEB50.POI_POINT p
+                 JOIN WEB50.POI_COORD c 
+                   ON c.COORD_ID = p.COORD_ID
+            WHERE c.X IS NOT NULL 
+              AND c.Y IS NOT NULL 
+              AND (((p.status_id = 1
+                      OR (p.cuser_id in ({USER_ID})
+                         AND p.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))) d
+WHERE {FILTER}
+       </query>
+      </geoQuery>
+    </select>
+    <insert>
+      <geoCommand>
+        <var name="USER_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#INSERT_WEB50_POI_POINT"  />	
+		<var name="COORD_ID" type="Decimal" direction="Output" default="SELECT max(COORD_ID) from web50.POI_COORD"/>	
+        <coord>
+			DO $$
+			DECLARE
+			returnID integer;
+			BEGIN
+			INSERT INTO web50.POI_COORD(X, Y, COORD_TYPE_ID, CTIME, CUSER_ID) VALUES ({X}, {Y}, 2, current_timestamp, {USER_ID}) 
+			RETURNING COORD_ID INTO returnID;
+			UPDATE WEB50.POI_POINT SET COORD_ID=returnID WHERE POINT_ID={ID};
+			END $$;
+		</coord>
+      </geoCommand>
+    </insert>
+    <update>
+      <geoCommand>
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <param name="ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#UPDATE_WEB50_POI_POINT"  />	       
+
+        <coord>
+			UPDATE WEB50.POI_COORD 
+			SET X={X}, Y={Y}, MTIME= current_timestamp, MUSER_ID={USER_ID}  
+			WHERE COORD_ID = (SELECT COORD_ID FROM WEB50.POI_POINT WHERE POINT_ID={ID})
+		</coord>
+      </geoCommand>
+    </update>
+    <delete>
+      <dbCommand>
+		<var name="USER_ID" type="Int64" direction="Input" />
+		<var name="ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#DELETE_WEB50_POI_POINT"  />	 
+        <query>
+		DO $$
+          DECLARE
+            v_coord_id bigint;
+            v_permission_granted bigint;
+            v_object_exists bigint;
+          BEGIN
+            SELECT COUNT(*)
+              INTO v_object_exists
+              FROM WEB50.POI_POINT pp
+             WHERE pp.point_id = {ID};
+              
+            IF v_object_exists = 0
+            THEN RETURN;
+            END IF;
+
+			      SELECT COORD_ID 
+              INTO v_coord_id 
+              FROM WEB50.POI_POINT
+             WHERE POINT_ID={ID};
+             
+			      UPDATE WEB50.POI_POINT 
+               SET COORD_ID=NULL 
+             WHERE POINT_ID = {ID};
+             
+			      DELETE 
+              FROM WEB50.POI_COORD 
+             WHERE COORD_ID = v_coord_id;
+          END $$;                
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="WEB50_POI_TRACK" comment="WEB50.POI_TRACK" schema="WEB50" table="POI_TRACK" descr="Треки">
+    <select>
+      <geoQuery idField="ID" geoField="X,Y" partField="">
+        <var name="USER_ID" direction="Input" default="select user_id from web50.b_user_private" />
+        <var name="FILTER" default="1=1" />
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID in ({USER_ID})
+                   AND pr.CLASS_ID='WEB50_POI_TRACK_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID in ({USER_ID}) 
+                   AND pr.CLASS_ID='WEB50_POI_TRACK_USER'
+                   AND pr.SELECT_PERMITTED = '1') 
+SELECT ID,X,Y,"TYPE","LABEL"      
+  FROM (SELECT t.TRACK_ID ID, c.X X, c.Y Y, t.STATUS_ID "TYPE", t.name "LABEL",tp.COORD_SEQ
+          FROM web50.POI_TRACK t
+          JOIN web50.POI_TRACK_TO_POI_COORD tp 
+            ON tp.TRACK_ID = t.TRACK_ID
+          JOIN web50.POI_COORD c 
+            ON c.COORD_ID = tp.COORD_ID
+          WHERE c.X IS NOT NULL 
+            AND c.Y IS NOT NULL 
+            AND (((t.status_id = 1
+                      OR (t.cuser_id  in ({USER_ID}) 
+                         AND t.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))) d
+WHERE {FILTER}          
+ORDER BY ID, COORD_SEQ	
+       </query>
+      </geoQuery>
+    </select>
+    <insert>
+      <geoCommand>
+        <var name="USER_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#INSERT_WEB50_POI_TRACK"  />	
+        <coord>
+		DO $$
+          DECLARE VAR_COORD_ID numeric(16,0);
+          BEGIN
+          INSERT INTO WEB50.POI_COORD(X, Y, COORD_TYPE_ID, CTIME, CUSER_ID)
+          VALUES ({X}, {Y}, 1, current_timestamp,{USER_ID}) RETURNING COORD_ID INTO VAR_COORD_ID;
+          INSERT INTO WEB50.POI_TRACK_TO_POI_COORD(TRACK_ID, COORD_ID, COORD_SEQ, CTIME, CUSER_ID) VALUES ({ID}, VAR_COORD_ID, {SEQ}, current_timestamp,{USER_ID});
+          END $$;
+        </coord>
+      </geoCommand>
+    </insert>
+    <update>
+      <geoCommand>
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <param name="ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#UPDATE_WEB50_POI_TRACK"  />	 
+        <coord>
+		DO $$
+			DECLARE VAR_COORD_ID numeric(16,0);
+			BEGIN
+                        delete from WEB50.POI_TRACK_TO_POI_COORD where TRACK_ID={ID};
+			INSERT INTO WEB50.POI_COORD(X, Y, COORD_TYPE_ID, CTIME, CUSER_ID)
+			VALUES ({X}, {Y}, 1, current_timestamp,{USER_ID}) RETURNING COORD_ID INTO VAR_COORD_ID;
+			INSERT INTO WEB50.POI_TRACK_TO_POI_COORD(TRACK_ID, COORD_ID, COORD_SEQ, CTIME, CUSER_ID) VALUES ({ID}, VAR_COORD_ID, {SEQ}, current_timestamp,{USER_ID});
+			END $$;
+		</coord>
+      </geoCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="USER_ID" type="Int64" direction="Input" />
+        <var name="ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#DELETE_WEB50_POI_TRACK"  />	
+        <query>
+		DO $$
+          DECLARE
+            v_permission_granted bigint;
+            v_object_exists bigint;
+			BEGIN
+         
+            SELECT COUNT(*)
+              INTO v_object_exists
+              FROM WEB50.POI_TRACK t 
+             WHERE t.track_id = {ID};
+              
+            IF v_object_exists = 0
+            THEN RETURN;
+            END IF;
+
+            /* удаляем связь с прикрепленным документом, если она была (когда к треку привязана видеозапись, например) */
+            DELETE FROM WEB50.LNK_GATE
+            WHERE left_obj_id = 'WEB50_POI_TRACK/'||TO_NUMBER({ID})
+               OR right_obj_id = 'WEB50_POI_TRACK/'||TO_NUMBER({ID});
+			END $$;
+
+           delete from WEB50.POI_TRACK_TO_POI_COORD where TRACK_ID={ID};
+          
+      </query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="WEB50_POI_DEBRIS" comment="WEB50.POI_DEBRIS" schema="WEB50" table="POI_DEBRIS">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="FILTER" default="1=1"/>
+				<query>
+					select ID, SRV_DISTRICT_ID, WKB_GEOMETRY, DESCRIPTION, STATION_BEGIN, STATION_END, SQUARE  from
+					(SELECT 
+ID, SRV_DISTRICT_ID, WKB_GEOMETRY, DESCRIPTION, STATION_BEGIN, STATION_END, SQUARE FROM
+					WEB50.POI_DEBRIS) d WHERE {FILTER} ORDER BY ID
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#INSERT_KADASTR_GEO" />				
+				<object>
+  UPDATE WEB50.POI_DEBRIS SET WKB_GEOMETRY=:WKB WHERE ID = :ID
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#UPDATE_KADASTR_GEO" />				
+				<object>
+     UPDATE WEB50.POI_DEBRIS SET WKB_GEOMETRY=:WKB WHERE ID = :ID
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#DELETE_KADASTR_GEO" />				
+				<query>
+  UPDATE WEB50.POI_DEBRIS SET WKB_GEOMETRY=NULL WHERE ID = :ID
+				</query>
+			</dbCommand>
+		</delete>
+  </data>
+</root>

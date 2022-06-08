@@ -1,0 +1,2367 @@
+﻿<root version="7.7.7.6">
+<data id="PODS_ACTIVITY_ZONE">
+	<panel descr="Паспорт" source="PODS_ACTIVITY_ZONE" dataRequest="PODS_SEM.xml#PODS_ACTIVITY_ZONE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_CATHODIC_PROTECTION_RANGE">
+	<panel descr="Паспорт" source="PODS_CATHODIC_PROTECTION_RANGE" dataRequest="PODS_SEM.xml#PODS_CATHODIC_PROTECTION_RANGE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_COUNTY_BOUNDARY">
+	<panel descr="Паспорт" source="PODS_COUNTY_BOUNDARY" dataRequest="PODS_SEM.xml#PODS_COUNTY_BOUNDARY" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_DEPTH_OF_COVER">
+	<panel descr="Паспорт" source="PODS_DEPTH_OF_COVER" dataRequest="PODS_SEM.xml#PODS_DEPTH_OF_COVER" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_FLOW_DIRECTION_RANGE">
+	<panel descr="Паспорт" source="PODS_FLOW_DIRECTION_RANGE" dataRequest="PODS_SEM.xml#PODS_FLOW_DIRECTION_RANGE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_HCA_BOUNDARY">
+	<panel descr="Паспорт" source="PODS_HCA_BOUNDARY" dataRequest="PODS_SEM.xml#PODS_HCA_BOUNDARY" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_ILI_RANGE">
+	<panel descr="Паспорт" source="PODS_ILI_RANGE" dataRequest="PODS_SEM.xml#PODS_ILI_RANGE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_LAND_USE">
+	<panel descr="Паспорт" source="PODS_LAND_USE" dataRequest="PODS_SEM.xml#PODS_LAND_USE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_LEGACY_LINE_BOUNDARY">
+	<panel descr="Паспорт" source="PODS_LEGACY_LINE_BOUNDARY" dataRequest="PODS_SEM.xml#PODS_LEGACY_LINE_BOUNDARY" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_ODORANT_RANGE">
+	<panel descr="Паспорт" source="PODS_ODORANT_RANGE" dataRequest="PODS_SEM.xml#PODS_ODORANT_RANGE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_OWNER_OPERATOR_RANGE">
+	<panel descr="Паспорт" source="PODS_OWNER_OPERATOR_RANGE" dataRequest="PODS_SEM.xml#PODS_OWNER_OPERATOR_RANGE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_PIPE_SYSTEM_BOUNDARY">
+	<panel descr="Паспорт" source="PODS_PIPE_SYSTEM_BOUNDARY" dataRequest="PODS_SEM.xml#PODS_PIPE_SYSTEM_BOUNDARY" default="true" order="1" />
+	<!-- panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" / -->
+</data>
+  <data id="PODS_PRODUCT_RANGE">
+	<panel descr="Паспорт" source="PODS_PRODUCT_RANGE" dataRequest="PODS_SEM.xml#PODS_PRODUCT_RANGE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_SRV_DISTRICT_BOUNDARY">
+	<panel descr="Паспорт" source="PODS_SRV_DISTRICT_BOUNDARY" dataRequest="PODS_SEM.xml#PODS_SRV_DISTRICT_BOUNDARY" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_STATUS_RANGE">
+	<panel descr="Паспорт" source="PODS_STATUS_RANGE" dataRequest="PODS_SEM.xml#PODS_STATUS_RANGE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_TAX_DISTRICT_BOUNDARY">
+	<panel descr="Паспорт" source="PODS_TAX_DISTRICT_BOUNDARY" dataRequest="PODS_SEM.xml#PODS_TAX_DISTRICT_BOUNDARY" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_TOWNSHIP_BOUNDARY">
+	<panel descr="Паспорт" source="PODS_TOWNSHIP_BOUNDARY" dataRequest="PODS_SEM.xml#PODS_TOWNSHIP_BOUNDARY" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_ANODE">
+	<panel descr="Паспорт" source="PODS_ANODE" dataRequest="PODS_SEM.xml#PODS_ANODE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Группа анодных заземлений" source="PODS_GROUND_BED_FOR_ANODE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_GROUND_BED_FOR_ANODE" order="3" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_BOND_LEAD">
+	<panel descr="Паспорт" source="PODS_BOND_LEAD" dataRequest="PODS_SEM.xml#PODS_BOND_LEAD" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_CASING">
+	<panel descr="Паспорт" source="PODS_CASING" dataRequest="PODS_SEM.xml#PODS_CASING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_CHEMICAL_INJECTOR">
+	<panel descr="Паспорт" source="PODS_CHEMICAL_INJECTOR" dataRequest="PODS_SEM.xml#PODS_CHEMICAL_INJECTOR" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_CLOSURE">
+	<panel descr="Паспорт" source="PODS_CLOSURE" dataRequest="PODS_SEM.xml#PODS_CLOSURE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_COMPRESSOR_STATION">
+	<panel descr="Паспорт" source="PODS_COMPRESSOR_STATION" dataRequest="PODS_SEM.xml#PODS_COMPRESSOR_STATION" default="true" order="1" />
+	<panel descr="Группы" source="PODS_OFFLINE_GROUP_LIST" order="2" />
+	<panel descr="Координатная привязка" source="PODS_COORD_OFFL_SHAPE_LIST" order="15" />
+</data>
+  <data id="PODS_COUPON_SITE">
+	<panel descr="Паспорт" source="PODS_COUPON_SITE" dataRequest="PODS_SEM.xml#PODS_COUPON_SITE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Контрольные пластины" source="PODS_COUPON_LIST_FOR_COUPON_SITE" order="3" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_CP_FOREIGN_LINE_CROSSING">
+	<panel descr="Паспорт" source="PODS_CP_FOREIGN_LINE_CROSSING" dataRequest="PODS_SEM.xml#PODS_CP_FOREIGN_LINE_CROSSING" default="true" order="1" />
+	<panel descr="Коридорная привязка" source="PODS_PS_GEOGRAPHIC_ENTITY" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_GEOGRAPHIC_ENTITY" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_GE_SHAPE_LIST" order="15" />
+</data>
+  <data id="PODS_DISTRIBUTION_PLANT">
+	<panel descr="Паспорт" source="PODS_DISTRIBUTION_PLANT" dataRequest="PODS_SEM.xml#PODS_DISTRIBUTION_PLANT" default="true" order="1" />
+	<panel descr="Группы" source="PODS_OFFLINE_GROUP_LIST" order="2" />
+	<panel descr="Координатная привязка" source="PODS_COORD_OFFL_SHAPE_LIST" order="15" />
+</data>
+  <data id="PODS_EXPOSURE">
+	<panel descr="Паспорт" source="PODS_EXPOSURE" dataRequest="PODS_SEM.xml#PODS_EXPOSURE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_EXTERNAL_COATING">
+	<panel descr="Паспорт" source="PODS_EXTERNAL_COATING" dataRequest="PODS_SEM.xml#PODS_EXTERNAL_COATING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_EXTRUSION">
+	<panel descr="Паспорт" source="PODS_EXTRUSION" dataRequest="PODS_SEM.xml#PODS_EXTRUSION" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_EXTRUSION_OPENING">
+	<panel descr="Паспорт" source="PODS_EXTRUSION_OPENING" dataRequest="PODS_SEM.xml#PODS_EXTRUSION_OPENING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_GROUND_BED">
+	<panel descr="Паспорт" source="PODS_GROUND_BED" dataRequest="PODS_SEM.xml#PODS_GROUND_BED" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Перечень анодных заземлений" source="PODS_ANODE_LIST_FOR_GROUND_BED" order="3" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_HORIZONTAL_DIRECTIONAL_DRILL">
+	<panel descr="Паспорт" source="PODS_HORIZONTAL_DIRECTIONAL_DRILL" dataRequest="PODS_SEM.xml#PODS_HORIZONTAL_DIRECTIONAL_DRILL" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_INTERFACE_DETECTOR">
+	<panel descr="Паспорт" source="PODS_INTERFACE_DETECTOR" dataRequest="PODS_SEM.xml#PODS_INTERFACE_DETECTOR" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_INTERNAL_COATING">
+	<panel descr="Паспорт" source="PODS_INTERNAL_COATING" dataRequest="PODS_SEM.xml#PODS_INTERNAL_COATING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_JUNCTION_BOX">
+	<panel descr="Паспорт" source="PODS_JUNCTION_BOX" dataRequest="PODS_SEM.xml#PODS_JUNCTION_BOX" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_LAUNCHER_RECEIVER">
+	<panel descr="Паспорт" source="PODS_LAUNCHER_RECEIVER" dataRequest="PODS_SEM.xml#PODS_LAUNCHER_RECEIVER" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_METER">
+	<panel descr="Паспорт" source="PODS_METER" dataRequest="PODS_SEM.xml#PODS_METER" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_METER_STATION">
+	<panel descr="Паспорт" source="PODS_METER_STATION" dataRequest="PODS_SEM.xml#PODS_METER_STATION" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PIG_SIGNAL">
+	<panel descr="Паспорт" source="PODS_PIG_SIGNAL" dataRequest="PODS_SEM.xml#PODS_PIG_SIGNAL" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PIPE_LENGTH">
+	<panel descr="Паспорт" source="PODS_PIPE_LENGTH" dataRequest="PODS_SEM.xml#PODS_PIPE_LENGTH" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_PIPE_SEGMENT">
+	<panel descr="Паспорт" source="PODS_PIPE_SEGMENT" dataRequest="PODS_SEM.xml#PODS_PIPE_SEGMENT" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+  </data>
+  <data id="PODS_PRESSURE_CAP">
+	<panel descr="Паспорт" source="PODS_PRESSURE_CAP" dataRequest="PODS_SEM.xml#PODS_PRESSURE_CAP" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PROFILE">
+	<panel descr="Паспорт" source="PODS_PROFILE" dataRequest="PODS_SEM.xml#PODS_PROFILE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_RECTIFIER">
+	<panel descr="Паспорт" source="PODS_RECTIFIER" dataRequest="PODS_SEM.xml#PODS_RECTIFIER" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Корпус установки КЗ/ДЗ" source="PODS_RECTIFIER_ENCLOSURE_FOR_RECTIFIER" dataRequest="GAZPROM_SYS_SEM.xml#PODS_RECTIFIER_ENCLOSURE_FOR_RECTIFIER" order="3" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_ROUTE">
+	<panel descr="Паспорт" source="PODS_ROUTE" dataRequest="PODS_SEM.xml#PODS_ROUTE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Координатная привязка" source="PODS_COORD_ROUTE_LIST" order="15" />
+</data>
+  <data id="PODS_SITE">
+	<panel descr="Паспорт" source="PODS_SITE" dataRequest="PODS_SEM.xml#PODS_SITE" default="true" order="1" />
+	<panel descr="Коридорная привязка" source="PODS_PS_SITE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_SITE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_SITE_SHAPE_LIST" order="15" />
+</data>
+  <data id="PODS_SLEEVE">
+	<panel descr="Паспорт" source="PODS_SLEEVE" dataRequest="PODS_SEM.xml#PODS_SLEEVE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_TEST_LEAD">
+	<panel descr="Паспорт" source="PODS_TEST_LEAD" dataRequest="PODS_SEM.xml#PODS_TEST_LEAD" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Провода и кабели" source="PODS_BOND_LEAD_LIST" order="3" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_VALVE">
+	<panel descr="Паспорт" source="PODS_VALVE" dataRequest="PODS_SEM.xml#PODS_VALVE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Привод ЗРА" source="PODS_VALVE_OPERATOR_VALVE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_VALVE_OPERATOR_VALVE" order="3" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_VENT_PIPE">
+	<panel descr="Паспорт" source="PODS_VENT_PIPE" dataRequest="PODS_SEM.xml#PODS_VENT_PIPE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_VESSEL">
+	<panel descr="Паспорт" source="PODS_VESSEL" dataRequest="PODS_SEM.xml#PODS_VESSEL" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_FACILITY_RANKING">
+	<panel descr="Паспорт" source="PODS_FACILITY_RANKING" dataRequest="PODS_SEM.xml#PODS_FACILITY_RANKING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_FACILITY_RATING">
+	<panel descr="Паспорт" source="PODS_FACILITY_RATING" dataRequest="PODS_SEM.xml#PODS_FACILITY_RATING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_FACILITY_RATING_VARIANCE">
+	<panel descr="Паспорт" source="PODS_FACILITY_RATING_VARIANCE" dataRequest="PODS_SEM.xml#PODS_FACILITY_RATING_VARIANCE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_FLOW_MEASUREMENT">
+	<panel descr="Паспорт" source="PODS_FLOW_MEASUREMENT" dataRequest="PODS_SEM.xml#PODS_FLOW_MEASUREMENT" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_MAINTENANCE">
+	<panel descr="Паспорт" source="PODS_MAINTENANCE" dataRequest="PODS_SEM.xml#PODS_MAINTENANCE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_MAOP_RATING">
+	<panel descr="Паспорт" source="PODS_MAOP_RATING" dataRequest="PODS_SEM.xml#PODS_MAOP_RATING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_ODORANT_MEASUREMENT">
+	<panel descr="Паспорт" source="PODS_ODORANT_MEASUREMENT" dataRequest="PODS_SEM.xml#PODS_ODORANT_MEASUREMENT" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PRESSURE_MEASUREMENT">
+	<panel descr="Паспорт" source="PODS_PRESSURE_MEASUREMENT" dataRequest="PODS_SEM.xml#PODS_PRESSURE_MEASUREMENT" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_TEMPERATURE_MEASUREMENT">
+	<panel descr="Паспорт" source="PODS_TEMPERATURE_MEASUREMENT" dataRequest="PODS_SEM.xml#PODS_TEMPERATURE_MEASUREMENT" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_TEST_PRESSURE">
+	<panel descr="Паспорт" source="PODS_TEST_PRESSURE" dataRequest="PODS_SEM.xml#PODS_TEST_PRESSURE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_CHEMICAL_INJECTION_LOG">
+	<panel descr="Паспорт" source="PODS_CHEMICAL_INJECTION_LOG" dataRequest="PODS_SEM.xml#PODS_CHEMICAL_INJECTION_LOG" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_CUSTOMER_INTERRUPT">
+	<panel descr="Паспорт" source="PODS_CUSTOMER_INTERRUPT" dataRequest="PODS_SEM.xml#PODS_CUSTOMER_INTERRUPT" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_GRANDFATHER_PRESSURE">
+	<panel descr="Паспорт" source="PODS_GRANDFATHER_PRESSURE" dataRequest="PODS_SEM.xml#PODS_GRANDFATHER_PRESSURE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_LEAK_HISTORY">
+	<panel descr="Паспорт" source="PODS_LEAK_HISTORY" dataRequest="PODS_SEM.xml#PODS_LEAK_HISTORY" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Перечень выполненых ремонтов" source="PODS_MAINTENANCE_LIST_FOR_LEAK_HISTORY" order="3" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PIPE_OPERATING_HISTORY">
+	<panel descr="Паспорт" source="PODS_PIPE_OPERATING_HISTORY" dataRequest="PODS_SEM.xml#PODS_PIPE_OPERATING_HISTORY" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_ILI_DATA">
+	<panel descr="Паспорт" source="PODS_ILI_DATA" dataRequest="PODS_SEM.xml#PODS_ILI_DATA" default="true" order="1" />
+	<panel descr="Допсведения" source="PODS_STO_ILI_DATA_ADV" dataRequest="STO_SEM.xml#PODS_STO_ILI_DATA_ADV" order="5" />
+	<panel descr="Наружное обследование" source="PODS_STO_SHEET_EXCAVATE_LIST" dataRequest="STO_SEM.xml#PODS_STO_SHEET_EXCAVATE_LIST" order="10" />
+	<panel descr="Ремонт" source="PODS_STO_SHEET_REPAIR_LIST" dataRequest="STO_SEM.xml#PODS_STO_SHEET_REPAIR_LIST" order="15" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE_ILI" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE_ILI" order="20" />
+	<panel descr="Координатная привязка" source="PODS_COORD_ILI_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_ILI_LIST" order="25" />
+</data>
+  <data id="PODS_ILI_CLUSTER">
+	<panel descr="Паспорт" source="PODS_ILI_CLUSTER" dataRequest="PODS_SEM.xml#PODS_ILI_CLUSTER" default="true" order="1" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE_ILI_C" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE_ILI_C" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST_ILI_CL" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST_ILI_CL" order="15" />
+	<panel descr="Сведения о выполненном наружном обследовании" source="PODS_STO_SHEET_EXCAVATE_LIST" dataRequest="STO_SEM.xml#PODS_STO_SHEET_EXCAVATE_LIST" order="20" />
+	<panel descr="Сведения о выполненном ремонте" source="PODS_STO_SHEET_REPAIR_LIST" dataRequest="STO_SEM.xml#PODS_STO_SHEET_REPAIR_LIST" order="25" />
+</data>
+  <data id="PODS_ILI_DATA_FEATURE">
+	<panel descr="Паспорт" source="PODS_ILI_DATA_FEATURE" dataRequest="PODS_SEM.xml#PODS_ILI_DATA_FEATURE" default="true" order="1" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE_ILI" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE_ILI" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_ILI_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_ILI_LIST" order="15" />
+</data>
+  <data id="PODS_ILI_DATA_JUNCTION">
+	<panel descr="Паспорт" source="PODS_ILI_DATA_JUNCTION" dataRequest="PODS_SEM.xml#PODS_ILI_DATA_JUNCTION" default="true" order="1" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE_ILI" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE_ILI" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_ILI_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_ILI_LIST" order="15" />
+  </data>
+  <data id="PODS_ILI_INSPECTION_RANGE">
+	<panel descr="Паспорт" source="PODS_ILI_INSPECTION_RANGE" dataRequest="PODS_SEM.xml#PODS_ILI_INSPECTION_RANGE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="INFOTEH_REPAIR">
+	<panel descr="Паспорт" source="INFOTEH_REPAIR" dataRequest="PODS_SEM.xml#INFOTEH_REPAIR" default="true" order="1" />
+</data>
+<data id="INFOTEH_EXCAVATE">
+	<panel descr="Паспорт" source="INFOTEH_EXCAVATE" dataRequest="PODS_SEM.xml#INFOTEH_EXCAVATE" default="true" order="1" />
+</data>
+  <data id="PODS_ILI_INSPECTION">
+	<panel descr="Паспорт" source="PODS_ILI_INSPECTION" dataRequest="PODS_SEM.xml#PODS_ILI_INSPECTION" default="true" order="1" />
+	<panel descr="Сведения о приемке отчета" source="PODS_STO_ILI_INSPECTION_SHEET" dataRequest="STO_SEM.xml#PODS_STO_ILI_INSPECTION_SHEET" order="5" />
+</data>
+  <data id="PODS_ILI_PIPE_LENGTH">
+	<panel descr="Паспорт" source="PODS_ILI_PIPE_LENGTH" dataRequest="PODS_SEM.xml#PODS_ILI_PIPE_LENGTH" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_FOREIGN_LINE_CROSSING">
+	<panel descr="Паспорт" source="PODS_FOREIGN_LINE_CROSSING" dataRequest="PODS_SEM.xml#PODS_FOREIGN_LINE_CROSSING" default="true" order="1" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_HCA_CA_SEGMENT">
+	<panel descr="Паспорт" source="PODS_HCA_CA_SEGMENT" dataRequest="PODS_SEM.xml#PODS_HCA_CA_SEGMENT" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_HCA_IDENTIFIED_SITE">
+	<panel descr="Паспорт" source="PODS_HCA_IDENTIFIED_SITE" dataRequest="PODS_SEM.xml#PODS_HCA_IDENTIFIED_SITE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_OFFLINE_GROUP_LIST" order="2" />
+	<panel descr="Коридорная привязка" source="PODS_PS_OFFLINE_EVENT" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_OFFLINE_EVENT" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_OFFL_SHAPE_LIST" order="15" />
+</data>
+  <data id="PODS_POPULATED_AREA">
+	<panel descr="Паспорт" source="PODS_POPULATED_AREA" dataRequest="PODS_SEM.xml#PODS_POPULATED_AREA" default="true" order="1" />
+	<panel descr="Группы" source="PODS_OFFLINE_GROUP_LIST" order="2" />
+	<panel descr="Зоны опасных последствий" source="PODS_HCA_IDENTIFIED_SITE_POPULATED_AREA" dataRequest="GAZPROM_SYS_SEM.xml#PODS_HCA_IDENTIFIED_SITE_POPULATED_AREA" order="3" />
+	<panel descr="Коридорная привязка" source="PODS_PS_OFFLINE_EVENT" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_OFFLINE_EVENT" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_OFFL_SHAPE_LIST" order="15" />
+</data>
+  <data id="PODS_RAILROAD">
+	<panel descr="Паспорт" source="PODS_RAILROAD" dataRequest="PODS_SEM.xml#PODS_RAILROAD" default="true" order="1" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_RIGHT_OF_WAY">
+	<panel descr="Паспорт" source="PODS_RIGHT_OF_WAY" dataRequest="PODS_SEM.xml#PODS_RIGHT_OF_WAY" default="true" order="1" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_GEOGRAPHIC_ENTITY" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_GEOGRAPHIC_ENTITY" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_GE_SHAPE_LIST" order="15" />
+</data>
+  <data id="PODS_ROAD_ENTITY">
+	<panel descr="Паспорт" source="PODS_ROAD_ENTITY" dataRequest="PODS_SEM.xml#PODS_ROAD_ENTITY" default="true" order="1" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_GEOGRAPHIC_ENTITY" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_GEOGRAPHIC_ENTITY" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_GE_SHAPE_LIST" order="15" />
+</data>
+  <data id="PODS_WATERWAY_ENTITY">
+	<panel descr="Паспорт" source="PODS_WATERWAY_ENTITY" dataRequest="PODS_SEM.xml#PODS_WATERWAY_ENTITY" default="true" order="1" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_GEOGRAPHIC_ENTITY" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_GEOGRAPHIC_ENTITY" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_GE_SHAPE_LIST" order="15" />
+</data>
+  <data id="PODS_ROAD">
+	<panel descr="Паспорт" source="PODS_ROAD" dataRequest="PODS_SEM.xml#PODS_ROAD" default="true" order="1" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_ROUTING_NOTE">
+	<panel descr="Паспорт" source="PODS_ROUTING_NOTE" dataRequest="PODS_SEM.xml#PODS_ROUTING_NOTE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_SHEET_NOTE">
+	<panel descr="Паспорт" source="PODS_SHEET_NOTE" dataRequest="PODS_SEM.xml#PODS_SHEET_NOTE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_STRUCTURE">
+	<panel descr="Паспорт" source="PODS_STRUCTURE" dataRequest="PODS_SEM.xml#PODS_STRUCTURE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_OFFLINE_GROUP_LIST" order="2" />
+	<panel descr="Коридорная привязка" source="PODS_PS_OFFLINE_EVENT" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_OFFLINE_EVENT" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_OFFL_SHAPE_LIST" order="15" />
+</data>
+  <data id="PODS_WATERWAY">
+	<panel descr="Паспорт" source="PODS_WATERWAY" dataRequest="PODS_SEM.xml#PODS_WATERWAY" default="true" order="1" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_BRANCH_CONNECT">
+	<panel descr="Паспорт" source="PODS_BRANCH_CONNECT" dataRequest="PODS_SEM.xml#PODS_BRANCH_CONNECT" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_CONCRETE_SLAB">
+	<panel descr="Паспорт" source="PODS_CONCRETE_SLAB" dataRequest="PODS_SEM.xml#PODS_CONCRETE_SLAB" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_DRAG_REDUCING_AGENT">
+	<panel descr="Паспорт" source="PODS_DRAG_REDUCING_AGENT" dataRequest="PODS_SEM.xml#PODS_DRAG_REDUCING_AGENT" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_DRIP">
+	<panel descr="Паспорт" source="PODS_DRIP" dataRequest="PODS_SEM.xml#PODS_DRIP" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_DRIP_RISER">
+	<panel descr="Паспорт" source="PODS_DRIP_RISER" dataRequest="PODS_SEM.xml#PODS_DRIP_RISER" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_ELBOW">
+	<panel descr="Паспорт" source="PODS_ELBOW" dataRequest="PODS_SEM.xml#PODS_ELBOW" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_FABRICATION">
+	<panel descr="Паспорт" source="PODS_FABRICATION" dataRequest="PODS_SEM.xml#PODS_FABRICATION" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_FLANGE">
+	<panel descr="Паспорт" source="PODS_FLANGE" dataRequest="PODS_SEM.xml#PODS_FLANGE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_FLEXIBLE_JOINT">
+	<panel descr="Паспорт" source="PODS_FLEXIBLE_JOINT" dataRequest="PODS_SEM.xml#PODS_FLEXIBLE_JOINT" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_INJECTOR">
+	<panel descr="Паспорт" source="PODS_INJECTOR" dataRequest="PODS_SEM.xml#PODS_INJECTOR" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PIPE_BEND">
+	<panel descr="Паспорт" source="PODS_PIPE_BEND" dataRequest="PODS_SEM.xml#PODS_PIPE_BEND" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PIPE_JOIN">
+	<panel descr="Паспорт" source="PODS_PIPE_JOIN" dataRequest="PODS_SEM.xml#PODS_PIPE_JOIN" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_REDUCER">
+	<panel descr="Паспорт" source="PODS_REDUCER" dataRequest="PODS_SEM.xml#PODS_REDUCER" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_RIVER_WEIGHT">
+	<panel descr="Паспорт" source="PODS_RIVER_WEIGHT" dataRequest="PODS_SEM.xml#PODS_RIVER_WEIGHT" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_STRAIGHTENING_VANES">
+	<panel descr="Паспорт" source="PODS_STRAIGHTENING_VANES" dataRequest="PODS_SEM.xml#PODS_STRAIGHTENING_VANES" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_TAP">
+	<panel descr="Паспорт" source="PODS_TAP" dataRequest="PODS_SEM.xml#PODS_TAP" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_TEE">
+	<panel descr="Паспорт" source="PODS_TEE" dataRequest="PODS_SEM.xml#PODS_TEE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_WELLHEAD_ASSEMBLY">
+	<panel descr="Паспорт" source="PODS_WELLHEAD_ASSEMBLY" dataRequest="PODS_SEM.xml#PODS_WELLHEAD_ASSEMBLY" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_ANODE_READING">
+	<panel descr="Паспорт" source="PODS_PI_ANODE_READING" dataRequest="PODS_SEM.xml#PODS_PI_ANODE_READING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_BOND_READING">
+	<panel descr="Паспорт" source="PODS_PI_BOND_READING" dataRequest="PODS_SEM.xml#PODS_PI_BOND_READING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_CASING_READING">
+	<panel descr="Паспорт" source="PODS_PI_CASING_READING" dataRequest="PODS_SEM.xml#PODS_PI_CASING_READING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_CIS_READING">
+	<panel descr="Паспорт" source="PODS_PI_CIS_READING" dataRequest="PODS_SEM.xml#PODS_PI_CIS_READING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_CP_READING">
+	<panel descr="Паспорт" source="PODS_PI_CP_READING" dataRequest="PODS_SEM.xml#PODS_PI_CP_READING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_CP_INSPECTION">
+	<panel descr="Паспорт" source="PODS_PI_CP_INSPECTION" dataRequest="PODS_SEM.xml#PODS_PI_CP_INSPECTION" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_PI_GROUND_BED_READING">
+	<panel descr="Паспорт" source="PODS_PI_GROUND_BED_READING" dataRequest="PODS_SEM.xml#PODS_PI_GROUND_BED_READING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_IC_COUPON_READING">
+	<panel descr="Паспорт" source="PODS_PI_IC_COUPON_READING" dataRequest="PODS_SEM.xml#PODS_PI_IC_COUPON_READING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_RECTIFIER_READING">
+	<panel descr="Паспорт" source="PODS_PI_RECTIFIER_READING" dataRequest="PODS_SEM.xml#PODS_PI_RECTIFIER_READING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_ADJACENT_CONSTRUCTION">
+	<panel descr="Паспорт" source="PODS_PI_ADJACENT_CONSTRUCTION" dataRequest="PODS_SEM.xml#PODS_PI_ADJACENT_CONSTRUCTION" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_DEBRIS">
+	<panel descr="Паспорт" source="PODS_PI_DEBRIS" dataRequest="PODS_SEM.xml#PODS_PI_DEBRIS" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_ENVIRONMENT">
+	<panel descr="Паспорт" source="PODS_PI_ENVIRONMENT" dataRequest="PODS_SEM.xml#PODS_PI_ENVIRONMENT" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_LEAK_SURVEY">
+	<panel descr="Паспорт" source="PODS_PI_LEAK_SURVEY" dataRequest="PODS_SEM.xml#PODS_PI_LEAK_SURVEY" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_PI_LEAK_SURVEY_READING">
+	<panel descr="Паспорт" source="PODS_PI_LEAK_SURVEY_READING" dataRequest="PODS_SEM.xml#PODS_PI_LEAK_SURVEY_READING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_MARINE_GROWTH">
+	<panel descr="Паспорт" source="PODS_PI_MARINE_GROWTH" dataRequest="PODS_SEM.xml#PODS_PI_MARINE_GROWTH" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_RIGHT_OF_WAY">
+	<panel descr="Паспорт" source="PODS_PI_RIGHT_OF_WAY" dataRequest="PODS_SEM.xml#PODS_PI_RIGHT_OF_WAY" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_SOIL">
+	<panel descr="Паспорт" source="PODS_PI_SOIL" dataRequest="PODS_SEM.xml#PODS_PI_SOIL" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_SUBSEA_INSPECTION">
+	<panel descr="Паспорт" source="PODS_PI_SUBSEA_INSPECTION" dataRequest="PODS_SEM.xml#PODS_PI_SUBSEA_INSPECTION" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_WATER">
+	<panel descr="Паспорт" source="PODS_PI_WATER" dataRequest="PODS_SEM.xml#PODS_PI_WATER" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_SCC_PIPE_SUSCEPTIBILITY">
+	<panel descr="Паспорт" source="PODS_SCC_PIPE_SUSCEPTIBILITY" dataRequest="PODS_SEM.xml#PODS_SCC_PIPE_SUSCEPTIBILITY" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_SCC_SOIL_POTENTIAL">
+	<panel descr="Паспорт" source="PODS_SCC_SOIL_POTENTIAL" dataRequest="PODS_SEM.xml#PODS_SCC_SOIL_POTENTIAL" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PHYSICAL_INSPECTION">
+	<panel descr="Паспорт" source="PODS_PHYSICAL_INSPECTION" dataRequest="PODS_SEM.xml#PODS_PHYSICAL_INSPECTION" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+  <data id="PODS_PI_COATING_DATA">
+	<panel descr="Паспорт" source="PODS_PI_COATING_DATA" dataRequest="PODS_SEM.xml#PODS_PI_COATING_DATA" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_CORROSION">
+	<panel descr="Паспорт" source="PODS_PI_CORROSION" dataRequest="PODS_SEM.xml#PODS_PI_CORROSION" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_CRACK">
+	<panel descr="Паспорт" source="PODS_PI_CRACK" dataRequest="PODS_SEM.xml#PODS_PI_CRACK" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_EXCAVATION">
+	<panel descr="Паспорт" source="PODS_PI_EXCAVATION" dataRequest="PODS_SEM.xml#PODS_PI_EXCAVATION" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_GIRTH_WELD">
+	<panel descr="Паспорт" source="PODS_PI_GIRTH_WELD" dataRequest="PODS_SEM.xml#PODS_PI_GIRTH_WELD" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_LONG_WELD">
+	<panel descr="Паспорт" source="PODS_PI_LONG_WELD" dataRequest="PODS_SEM.xml#PODS_PI_LONG_WELD" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_MATERIAL_DEFECT">
+	<panel descr="Паспорт" source="PODS_PI_MATERIAL_DEFECT" dataRequest="PODS_SEM.xml#PODS_PI_MATERIAL_DEFECT" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_MECHANICAL_DAMAGE">
+	<panel descr="Паспорт" source="PODS_PI_MECHANICAL_DAMAGE" dataRequest="PODS_SEM.xml#PODS_PI_MECHANICAL_DAMAGE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_METAL_LOSS">
+	<panel descr="Паспорт" source="PODS_PI_METAL_LOSS" dataRequest="PODS_SEM.xml#PODS_PI_METAL_LOSS" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_PIPELINE_MOVEMENT">
+	<panel descr="Паспорт" source="PODS_PI_PIPELINE_MOVEMENT" dataRequest="PODS_SEM.xml#PODS_PI_PIPELINE_MOVEMENT" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_PIPE_CONDITION">
+	<panel descr="Паспорт" source="PODS_PI_PIPE_CONDITION" dataRequest="PODS_SEM.xml#PODS_PI_PIPE_CONDITION" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_PI_RELIEF_VALVE">
+	<panel descr="Паспорт" source="PODS_PI_RELIEF_VALVE" dataRequest="PODS_SEM.xml#PODS_PI_RELIEF_VALVE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_COLLAR">
+	<panel descr="Паспорт" source="PODS_COLLAR" dataRequest="PODS_SEM.xml#PODS_COLLAR" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_COLLET_CONNECTOR">
+	<panel descr="Паспорт" source="PODS_COLLET_CONNECTOR" dataRequest="PODS_SEM.xml#PODS_COLLET_CONNECTOR" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_FAIRING">
+	<panel descr="Паспорт" source="PODS_FAIRING" dataRequest="PODS_SEM.xml#PODS_FAIRING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_OFFSHORE_RISER">
+	<panel descr="Паспорт" source="PODS_OFFSHORE_RISER" dataRequest="PODS_SEM.xml#PODS_OFFSHORE_RISER" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_STABILIZATION">
+	<panel descr="Паспорт" source="PODS_STABILIZATION" dataRequest="PODS_SEM.xml#PODS_STABILIZATION" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_STRAKE">
+	<panel descr="Паспорт" source="PODS_STRAKE" dataRequest="PODS_SEM.xml#PODS_STRAKE" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_SUBSEA_SLED_ASSEMBLY">
+	<panel descr="Паспорт" source="PODS_SUBSEA_SLED_ASSEMBLY" dataRequest="PODS_SEM.xml#PODS_SUBSEA_SLED_ASSEMBLY" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_TAPERED_STRESS_JOINT">
+	<panel descr="Паспорт" source="PODS_TAPERED_STRESS_JOINT" dataRequest="PODS_SEM.xml#PODS_TAPERED_STRESS_JOINT" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_UMBILICAL">
+	<panel descr="Паспорт" source="PODS_UMBILICAL" dataRequest="PODS_SEM.xml#PODS_UMBILICAL" default="true" order="1" />
+	<panel descr="Группы" source="PODS_OFFLINE_GROUP_LIST" order="2" />
+	<panel descr="Коридорная привязка" source="PODS_PS_OFFLINE_EVENT" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_OFFLINE_EVENT" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_OFFL_SHAPE_LIST" order="15" />
+  </data>
+  <data id="PODS_PIPE_SYSTEM_CL">
+	<panel descr="Паспорт" source="PODS_PIPE_SYSTEM_CL" dataRequest="PODS_SEM.xml#PODS_PIPE_SYSTEM_CL" default="true" order="1" />
+	<panel descr="Координатная привязка" source="PODS_COORD_PIPE_SYSTEM_CL_LIST" order="15" />
+  </data>
+  <data id="PODS_SRV_DISTRICT_GCL">
+	<panel descr="Паспорт" source="PODS_SRV_DISTRICT_GCL" dataRequest="PODS_SEM.xml#PODS_SRV_DISTRICT_GCL" default="true" order="1" />
+	<panel descr="Координатная привязка" source="PODS_COORD_SRV_DISTRICT_GCL_LIST" order="15" />
+  </data>
+  <data id="WEB50_POI_POINT">
+	<panel descr="Паспорт" source="WEB50_POI_POINT" dataRequest="POI_SEM.xml#WEB50_POI_POINT" default="true" order="1" />
+	<panel descr="Координатная привязка" source="WEB50_POI_COORD_POINT" dataRequest="POI_SEM.xml#WEB50_POI_COORD_POINT" order="15" />
+  </data>
+  <data id="WEB50_POI_TRACK">
+	<panel descr="Паспорт" source="WEB50_POI_TRACK" dataRequest="POI_SEM.xml#WEB50_POI_TRACK" default="true" order="1" />
+	<panel descr="Координатная привязка" source="WEB50_POI_COORD_TRACK_LIST" order="15" />
+  </data>
+  <data id="WEB50_POI_DEBRIS">
+	<panel descr="Паспорт" source="WEB50_POI_DEBRIS" dataRequest="POI_SEM.xml#WEB50_POI_DEBRIS" default="true" order="1" />
+</data>
+
+  <data id="PODS_STRUCTURE_CP_BLOCK">
+	<panel descr="Паспорт" source="PODS_STRUCTURE_CP_BLOCK" dataRequest="PODS_SEM.xml#PODS_STRUCTURE_CP_BLOCK" default="true" order="1" />
+	<panel descr="Группы" source="PODS_OFFLINE_GROUP_LIST" order="2" />
+	<panel descr="Коридорная привязка" source="PODS_PS_OFFLINE_EVENT" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_OFFLINE_EVENT" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_OFFL_SHAPE_LIST" order="15" />
+</data>
+
+  <data id="PODS_STRUCTURE_CP_TRANS">
+	<panel descr="Паспорт" source="PODS_STRUCTURE_CP_TRANS" dataRequest="PODS_SEM.xml#PODS_STRUCTURE_CP_TRANS" default="true" order="1" />
+	<panel descr="Группы" source="PODS_OFFLINE_GROUP_LIST" order="2" />
+	<panel descr="Коридорная привязка" source="PODS_PS_OFFLINE_EVENT" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_OFFLINE_EVENT" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_OFFL_SHAPE_LIST" order="15" />
+</data>
+<data id="PODS_SHEET_NOTE_LINK">
+	<panel descr="Паспорт" source="PODS_SHEET_NOTE_LINK" dataRequest="PODS_SEM.xml#PODS_SHEET_NOTE_LINK" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_FOREIGN_LINE_CROSSING_LINK">
+	<panel descr="Паспорт" source="PODS_FOREIGN_LINE_CROSSING_LINK" dataRequest="PODS_SEM.xml#PODS_FOREIGN_LINE_CROSSING_LINK" default="true" order="1" />
+	<panel descr="Коридорная привязка" source="PODS_PS_GEOGRAPHIC_ENTITY" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_GEOGRAPHIC_ENTITY" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_GE_SHAPE_LIST" order="15" />
+</data>
+  <!-- Недостающие для ПКА -->
+<data id="CAS_PODS_STO_100_DANGER_DEG">
+ <panel descr="Паспорт" source="PODS_STO_100_DANGER_DEG" dataRequest="PODS_SEM.xml#PODS_STO_100_DANGER_DEG" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>  
+<data id="CAS_PROFILE">
+	<panel descr="Паспорт" source="CAS_PROFILE" dataRequest="CAS_PODS_PROFILE_SEM.xml#CAS_PROFILE" default="true" order="1" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+  </data>
+    <data id="PI_PS_ON">
+	<panel descr="Паспорт" source="PI_PS_ON" dataRequest="CAS_PODS_CAS_CP_SEM.xml#PI_PS_ON" default="true" order="1" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+<data id="PI_PS_OFF">
+	<panel descr="Паспорт" source="PI_PS_OFF" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+<data id="PI_DC_POTENTIAL_VOLTS">
+	<panel descr="Паспорт" source="PI_DC_POTENTIAL_VOLTS" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+<data id="PI_STATIC">
+	<panel descr="Паспорт" source="PI_STATIC" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+<data id="PI_CP_GRAD_ON">
+	<panel descr="Паспорт" source="PI_CP_GRAD_ON" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+<data id="PI_CP_GRAD_OFF">
+	<panel descr="Паспорт" source="PI_CP_GRAD_OFF" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+<data id="PI_CP_D_GRAD">
+	<panel descr="Паспорт" source="PI_CP_D_GRAD" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+<data id="PI_CP_DD_GRAD">
+	<panel descr="Паспорт" source="PI_CP_DD_GRAD" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+<data id="PI_CP_PS_ON">
+	<panel descr="Паспорт" source="PI_CP_PS_ON" dataRequest="CAS_PODS_CAS_CP_SEM.xml#PI_CP_PS_ON" default="true" order="1" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+<data id="PI_CP_PS_OFF">
+	<panel descr="Паспорт" source="PI_CP_PS_OFF" dataRequest="CAS_PODS_CAS_CP_SEM.xml#PI_CP_PS_OFF" default="true" order="1" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+<data id="PI_DC_POTENTIAL_READING">
+	<panel descr="Паспорт" source="PODS_PI_CP_READING" dataRequest="PODS_SEM.xml#PODS_PI_CP_READING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+<data id="PI_CP_CURRENT_READING">
+	<panel descr="Паспорт" source="PODS_PI_CP_READING" dataRequest="PODS_SEM.xml#PODS_PI_CP_READING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+<data id="PI_CP_RESISTANCE_READING">
+	<panel descr="Паспорт" source="PODS_PI_CP_READING" dataRequest="PODS_SEM.xml#PODS_PI_CP_READING" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+<data id="PI_CP_GRAD_ON_KIP">
+	<panel descr="Паспорт" source="PI_CP_GRAD_ON_KIP" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+<data id="PI_CP_GRAD_OFF_KIP">
+	<panel descr="Паспорт" source="PI_CP_GRAD_OFF_KIP" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+<data id="PI_CP_D_GRAD_KIP">
+	<panel descr="Паспорт" source="PI_CP_D_GRAD_KIP" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PI_CP_DD_GRAD_KIP">
+	<panel descr="Паспорт" source="PI_CP_DD_GRAD_KIP" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+
+<data id="ILI_KBD">
+	<panel descr="Паспорт" source="ILI_KBD" dataRequest="CAS_PODS_CAS_ILI_SEM.xml#ILI_KBD" default="true" order="1" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE_ILI" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE_ILI" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_ILI_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_ILI_LIST" order="15" />
+</data>
+<data id="ILI_DEPTH">
+	<panel descr="Паспорт" source="ILI_DEPTH" dataRequest="CAS_PODS_CAS_ILI_SEM.xml#ILI_DEPTH" default="true" order="1" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE_ILI" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE_ILI" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_ILI_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_ILI_LIST" order="15" />
+</data>
+<data id="PODS_SHEET_NOTE_FUND">
+	<panel descr="Паспорт" source="PODS_SHEET_NOTE_FUND" dataRequest="PODS_SEM.xml#PODS_SHEET_NOTE_FUND" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+   <data id="PODS_MARKER">
+	<panel descr="Паспорт" source="PODS_MARKER" dataRequest="PODS_SEM.xml#PODS_MARKER" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_MARKER_POINT">
+	<panel descr="Паспорт" source="PODS_MARKER_POINT" dataRequest="PODS_SEM.xml#PODS_MARKER_POINT" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+  <data id="PODS_MARKER_KM">
+	<panel descr="Паспорт" source="PODS_MARKER_KM" dataRequest="PODS_SEM.xml#PODS_MARKER_KM" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_LIST" order="15" />
+</data>
+<data id="PODS_STO_REPAIR_METHOD">
+ <panel descr="Паспорт" source="PODS_STO_REPAIR_METHOD" dataRequest="PODS_SEM.xml#PODS_STO_REPAIR_METHOD" default="true" order="1" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE_ILI" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE_ILI" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_ILI_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_ILI_LIST" order="15" />
+</data>
+<data id="PODS_STO_PERFORMANCE_EVAL">
+ <panel descr="Паспорт" source="PODS_STO_PERFORMANCE_EVAL" dataRequest="PODS_SEM.xml#PODS_STO_PERFORMANCE_EVAL" default="true" order="1" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE_ILI" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE_ILI" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_ILI_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_ILI_LIST" order="15" />
+</data>
+<data id="PODS_STO_DANGER_DEGREE">
+ <panel descr="Паспорт" source="PODS_STO_DANGER_DEGREE" dataRequest="PODS_SEM.xml#PODS_STO_DANGER_DEGREE" default="true" order="1" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE_ILI" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE_ILI" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_ILI_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_ILI_LIST" order="15" />
+</data>
+<data id="PODS_STO_DANGER_RANK">
+ <panel descr="Паспорт" source="PODS_STO_DANGER_RANK" dataRequest="PODS_SEM.xml#PODS_STO_DANGER_RANK" default="true" order="1" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE_ILI" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE_ILI" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_ILI_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_ILI_LIST" order="15" />
+</data>
+<data id="PODS_STO_FAIL_PROBABILITY">
+ <panel descr="Паспорт" source="PODS_STO_FAIL_PROBABILITY" dataRequest="PODS_SEM.xml#PODS_STO_FAIL_PROBABILITY" default="true" order="1" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE_ILI" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE_ILI" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_ILI_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_ILI_LIST" order="15" />
+</data>
+<data id="PODS_STO_DATE_TEST">
+ <panel descr="Паспорт" source="PODS_STO_DATE_TEST" dataRequest="PODS_SEM.xml#PODS_STO_DATE_TEST" default="true" order="1" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE_ILI" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE_ILI" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_ILI_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_ILI_LIST" order="15" />
+</data>
+<data id="PODS_STO_DATE_REPAIR">
+ <panel descr="Паспорт" source="PODS_STO_DATE_REPAIR" dataRequest="PODS_SEM.xml#PODS_STO_DATE_REPAIR" default="true" order="1" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE_ILI" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE_ILI" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_ILI_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_ILI_LIST" order="15" />
+</data>
+<data id="PODS_LTG_KOCHETKOVA">
+ <panel descr="Паспорт" source="PODS_LTG_KOCHETKOVA" dataRequest="PODS_SEM.xml#PODS_LTG_KOCHETKOVA" default="true" order="1" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE_ILI" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE_ILI" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_ILI_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_ILI_LIST" order="15" />
+</data>
+<data id="PODS_STO_100_VALUE_PIPE">
+ <panel descr="Паспорт" source="PODS_STO_100_VALUE_PIPE" dataRequest="PODS_SEM.xml#PODS_STO_100_VALUE_PIPE" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_100_DAMAGE_MECHANICAL">
+ <panel descr="Паспорт" source="PODS_STO_100_DAMAGE_MECHANICAL" dataRequest="PODS_SEM.xml#PODS_STO_100_DAMAGE_MECHANICAL" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_100_VALUE_WELD">
+ <panel descr="Паспорт" source="PODS_STO_100_VALUE_WELD" dataRequest="PODS_SEM.xml#PODS_STO_100_VALUE_WELD" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_100_DAMAGE_CRACK">
+ <panel descr="Паспорт" source="PODS_STO_100_DAMAGE_CRACK" dataRequest="PODS_SEM.xml#PODS_STO_100_DAMAGE_CRACK" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_100_DAMAGE_CORROSION">
+ <panel descr="Паспорт" source="PODS_STO_100_DAMAGE_CORROSION" dataRequest="PODS_SEM.xml#PODS_STO_100_DAMAGE_CORROSION" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_100_DAMAGE_DENT">
+ <panel descr="Паспорт" source="PODS_STO_100_DAMAGE_DENT" dataRequest="PODS_SEM.xml#PODS_STO_100_DAMAGE_DENT" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_100_VALUE_CONDITION">
+ <panel descr="Паспорт" source="PODS_STO_100_VALUE_CONDITION" dataRequest="PODS_SEM.xml#PODS_STO_100_VALUE_CONDITION" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_100_DAMAGE_DUTY">
+ <panel descr="Паспорт" source="PODS_STO_100_DAMAGE_DUTY" dataRequest="PODS_SEM.xml#PODS_STO_100_DAMAGE_DUTY" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_100_PROJECTED_SCC">
+ <panel descr="Паспорт" source="PODS_STO_100_PROJECTED_SCC" dataRequest="PODS_SEM.xml#PODS_STO_100_PROJECTED_SCC" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_100_PROJECTED_COR">
+ <panel descr="Паспорт" source="PODS_STO_100_PROJECTED_COR" dataRequest="PODS_SEM.xml#PODS_STO_100_PROJECTED_COR" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_100_DANGER_DEG">
+ <panel descr="Паспорт" source="PODS_STO_100_DANGER_DEG" dataRequest="PODS_SEM.xml#PODS_STO_100_DANGER_DEG" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_100_SEGMENT_CATEGORY">
+ <panel descr="Паспорт" source="PODS_STO_100_SEGMENT_CATEGORY" dataRequest="PODS_SEM.xml#PODS_STO_100_SEGMENT_CATEGORY" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_100_TIME_TO_CRIT_DEPTH">
+ <panel descr="Паспорт" source="PODS_STO_100_TIME_TO_CRIT_DEPTH" dataRequest="PODS_SEM.xml#PODS_STO_100_TIME_TO_CRIT_DEPTH" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_VALVE_VALUE_PIPE">
+ <panel descr="Паспорт" source="PODS_STO_VALVE_VALUE_PIPE" dataRequest="PODS_SEM.xml#PODS_STO_VALVE_VALUE_PIPE" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_VALVE_DAMAGE_MECHANICAL">
+ <panel descr="Паспорт" source="PODS_STO_VALVE_DAMAGE_MECHANICAL" dataRequest="PODS_SEM.xml#PODS_STO_VALVE_DAMAGE_MECHANICAL" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_VALVE_VALUE_WELD">
+ <panel descr="Паспорт" source="PODS_STO_VALVE_VALUE_WELD" dataRequest="PODS_SEM.xml#PODS_STO_VALVE_VALUE_WELD" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_VALVE_DAMAGE_CRACK">
+ <panel descr="Паспорт" source="PODS_STO_VALVE_DAMAGE_CRACK" dataRequest="PODS_SEM.xml#PODS_STO_VALVE_DAMAGE_CRACK" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_VALVE_DAMAGE_CORROSION">
+ <panel descr="Паспорт" source="PODS_STO_VALVE_DAMAGE_CORROSION" dataRequest="PODS_SEM.xml#PODS_STO_VALVE_DAMAGE_CORROSION" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_VALVE_DAMAGE_DENT">
+ <panel descr="Паспорт" source="PODS_STO_VALVE_DAMAGE_DENT" dataRequest="PODS_SEM.xml#PODS_STO_VALVE_DAMAGE_DENT" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_VALVE_VALUE_CONDITION">
+ <panel descr="Паспорт" source="PODS_STO_VALVE_VALUE_CONDITION" dataRequest="PODS_SEM.xml#PODS_STO_VALVE_VALUE_CONDITION" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_VALVE_DAMAGE_DUTY">
+ <panel descr="Паспорт" source="PODS_STO_VALVE_DAMAGE_DUTY" dataRequest="PODS_SEM.xml#PODS_STO_VALVE_DAMAGE_DUTY" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id=" PODS_STO_VALVE_PROJECTED_SCC">
+ <panel descr="Паспорт" source="PODS_STO_VALVE_PROJECTED_SCC" dataRequest="PODS_SEM.xml#PODS_STO_VALVE_PROJECTED_SCC" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_VALVE_PROJECTED_COR">
+ <panel descr="Паспорт" source="PODS_STO_VALVE_PROJECTED_COR" dataRequest="PODS_SEM.xml#PODS_STO_VALVE_PROJECTED_COR" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_VALVE_DANGER_DEG">
+ <panel descr="Паспорт" source="PODS_STO_VALVE_DANGER_DEG" dataRequest="PODS_SEM.xml#PODS_STO_VALVE_DANGER_DEG" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_VALVE_SEGMENT_CATEGORY">
+ <panel descr="Паспорт" source="PODS_STO_VALVE_SEGMENT_CATEGORY" dataRequest="PODS_SEM.xml#PODS_STO_VALVE_SEGMENT_CATEGORY" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_VALVE_TIME_TO_CRIT_DEPTH">
+ <panel descr="Паспорт" source="PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" dataRequest="PODS_SEM.xml#PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_VALUE_PIPE">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_VALUE_PIPE" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_VALUE_PIPE" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_DAMAGE_MECHANICAL">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_DAMAGE_MECHANICAL" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_DAMAGE_MECHANICAL" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_VALUE_WELD">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_VALUE_WELD" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_VALUE_WELD" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_DAMAGE_CRACK">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_DAMAGE_CRACK" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_DAMAGE_CRACK" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_DAMAGE_CORROSION">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_DAMAGE_CORROSION" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_DAMAGE_CORROSION" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_DAMAGE_DENT">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_DAMAGE_DENT" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_DAMAGE_DENT" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_VALUE_CONDITION">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_VALUE_CONDITION" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_VALUE_CONDITION" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_DAMAGE_DUTY">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_DAMAGE_DUTY" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_DAMAGE_DUTY" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_TIME_LIMIT_EXPL">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_TIME_LIMIT_EXPL" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_TIME_LIMIT_EXPL" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_OPTIM_TIM_BFR_ILI">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_OPTIM_TIM_BFR_ILI" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_OPTIM_TIM_BFR_ILI" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_MIN_UNIT_COST_YKM">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_MIN_UNIT_COST_YKM" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_MIN_UNIT_COST_YKM" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_FAILURE_PROBABLY">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_FAILURE_PROBABLY" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_FAILURE_PROBABLY" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_OP_REP_PIPE_COUNT">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_OP_REP_PIPE_COUNT" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_OP_REP_PIPE_COUNT" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_MEAN_TIME_FAIL">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_MEAN_TIME_FAIL" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_MEAN_TIME_FAIL" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_PROJECTED_SCC">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_PROJECTED_SCC" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_PROJECTED_SCC" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_NEXT_INSP_SCC">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_NEXT_INSP_SCC" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_NEXT_INSP_SCC" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_PROJECTED_COR">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_PROJECTED_COR" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_PROJECTED_COR" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_NEXT_INSP">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_NEXT_INSP" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_NEXT_INSP" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_DANGER_DEG">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_DANGER_DEG" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_DANGER_DEG" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_SEGMENT_CATEGORY">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_SEGMENT_CATEGORY" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_SEGMENT_CATEGORY" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_STO_RANGE_TIME_TO_CRIT_DEPTH">
+ <panel descr="Паспорт" source="PODS_STO_RANGE_TIME_TO_CRIT_DEPTH" dataRequest="PODS_SEM.xml#PODS_STO_RANGE_TIME_TO_CRIT_DEPTH" default="true" order="1" />
+ <panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+ <panel descr="Километр" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+ <panel descr="Координаты" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<!-- Вкладки для документов (LIB_DOC_Layers.xml) -->
+<data id="LIB_DOC">
+  <panel descr="Паспорт" source="LIB_DOC" dataRequest="LIB_DOC_SEM.xml#LIB_DOC" default="true" order="1" />
+</data>
+<data id="LIB_DOC_WRL">
+  <panel descr="Паспорт" source="LIB_DOC_WRL" dataRequest="LIB_DOC_SEM.xml#LIB_DOC_WRL" default="true" order="1" />
+</data>
+<data id="LIB_DOC_IMG">
+  <panel descr="Паспорт" source="LIB_DOC_IMG" dataRequest="LIB_DOC_SEM.xml#LIB_DOC_IMG" default="true" order="1" />
+</data>
+<data id="LIB_DOC_GEO_VIDEO">
+  <panel descr="Паспорт" source="LIB_DOC_GEO_VIDEO" dataRequest="LIB_DOC_SEM.xml#LIB_DOC_GEO_VIDEO" default="true" order="1" />
+</data>
+<!-- Карта мира (M_W_Layers.xml) -->
+<data id="WEB50_M_W_MIR_GORODA">
+  <panel descr="Паспорт" source="WEB50_M_W_MIR_GORODA" dataRequest="M_W_SEM.xml#WEB50_M_W_MIR_GORODA" default="true" order="1" />
+</data>
+<data id="WEB50_M_W_MIR_GORODA_OSNOVNYE">
+  <panel descr="Паспорт" source="WEB50_M_W_MIR_GORODA_OSNOVNYE" dataRequest="M_W_SEM.xml#WEB50_M_W_MIR_GORODA_OSNOVNYE" default="true" order="1" />
+</data>
+<data id="WEB50_M_W_MIR_OKEAN">
+  <panel descr="Паспорт" source="WEB50_M_W_MIR_OKEAN" dataRequest="M_W_SEM.xml#WEB50_M_W_MIR_OKEAN" default="true" order="1" />
+</data>
+<data id="WEB50_M_W_MIR_STOLITCY">
+  <panel descr="Паспорт" source="WEB50_M_W_MIR_STOLITCY" dataRequest="M_W_SEM.xml#WEB50_M_W_MIR_STOLITCY" default="true" order="1" />
+</data>
+<data id="WEB50_M_W_MIR_STRANY">
+  <panel descr="Паспорт" source="WEB50_M_W_MIR_STRANY" dataRequest="M_W_SEM.xml#WEB50_M_W_MIR_STRANY" default="true" order="1" />
+</data>
+<!-- Карта РФ (M_R_Layers.xml) -->
+<data id="WEB50_M_R_DOROGI_AVTOMOBIL_NYE">
+  <panel descr="Паспорт" source="WEB50_M_R_DOROGI_AVTOMOBIL_NYE" dataRequest="M_R_SEM.xml#WEB50_M_R_DOROGI_AVTOMOBIL_NYE" default="true" order="1" />
+</data>
+<data id="WEB50_M_R_DOROGI_JELEZNYE">
+  <panel descr="Паспорт" source="WEB50_M_R_DOROGI_JELEZNYE" dataRequest="M_R_SEM.xml#WEB50_M_R_DOROGI_JELEZNYE" default="true" order="1" />
+</data>
+<data id="WEB50_M_R_DOROGI_JELEZNYE_STANCII">
+  <panel descr="Паспорт" source="WEB50_M_R_DOROGI_JELEZNYE_STANCII" dataRequest="M_R_SEM.xml#WEB50_M_R_DOROGI_JELEZNYE_STANCII" default="true" order="1" />
+</data>
+<data id="WEB50_M_R_GAZPROM_OBSESTVA_DOCERNI">
+  <panel descr="Паспорт" source="WEB50_M_R_GAZPROM_OBSESTVA_DOCERNI" dataRequest="M_R_SEM.xml#WEB50_M_R_GAZPROM_OBSESTVA_DOCERNI" default="true" order="1" />
+</data>
+<data id="WEB50_M_R_GAZPROM_OBSESTVA_POEMG">
+  <panel descr="Паспорт" source="WEB50_M_R_GAZPROM_OBSESTVA_POEMG" dataRequest="M_R_SEM.xml#WEB50_M_R_GAZPROM_OBSESTVA_POEMG" default="true" order="1" />
+</data>
+<data id="WEB50_M_R_GIDROGRAFIA_RF_1_OZERA_M">
+  <panel descr="Паспорт" source="WEB50_M_R_GIDROGRAFIA_RF_1_OZERA_M" dataRequest="M_R_SEM.xml#WEB50_M_R_GIDROGRAFIA_RF_1_OZERA_M" default="true" order="1" />
+</data>
+<data id="WEB50_M_R_GIDROGRAFIA_RF_1_REKI_LI">
+  <panel descr="Паспорт" source="WEB50_M_R_GIDROGRAFIA_RF_1_REKI_LI" dataRequest="M_R_SEM.xml#WEB50_M_R_GIDROGRAFIA_RF_1_REKI_LI" default="true" order="1" />
+</data>
+<data id="WEB50_M_R_GIDROGRAFIA_RF_2_OZERA_M">
+  <panel descr="Паспорт" source="WEB50_M_R_GIDROGRAFIA_RF_2_OZERA_M" dataRequest="M_R_SEM.xml#WEB50_M_R_GIDROGRAFIA_RF_2_OZERA_M" default="true" order="1" />
+</data>
+<data id="WEB50_M_R_GIDROGRAFIA_RF_2_REKI_LI">
+  <panel descr="Паспорт" source="WEB50_M_R_GIDROGRAFIA_RF_2_REKI_LI" dataRequest="M_R_SEM.xml#WEB50_M_R_GIDROGRAFIA_RF_2_REKI_LI" default="true" order="1" />
+</data>
+<data id="WEB50_M_R_NASEL_PUNKTY_GORODA_PROC">
+  <panel descr="Паспорт" source="WEB50_M_R_NASEL_PUNKTY_GORODA_PROC" dataRequest="M_R_SEM.xml#WEB50_M_R_NASEL_PUNKTY_GORODA_PROC" default="true" order="1" />
+</data>
+<data id="WEB50_M_R_NASEL_PUNKTY_PROCIE">
+  <panel descr="Паспорт" source="WEB50_M_R_NASEL_PUNKTY_PROCIE" dataRequest="M_R_SEM.xml#WEB50_M_R_NASEL_PUNKTY_PROCIE" default="true" order="1" />
+</data>
+<data id="WEB50_M_R_NASEL_PUNKTY_STOLICY">
+  <panel descr="Паспорт" source="WEB50_M_R_NASEL_PUNKTY_STOLICY" dataRequest="M_R_SEM.xml#WEB50_M_R_NASEL_PUNKTY_STOLICY" default="true" order="1" />
+</data>
+<data id="WEB50_M_R_SOPRED_GOSUDARSTVA">
+  <panel descr="Паспорт" source="WEB50_M_R_SOPRED_GOSUDARSTVA" dataRequest="M_R_SEM.xml#WEB50_M_R_SOPRED_GOSUDARSTVA" default="true" order="1" />
+</data>
+<data id="WEB50_M_R_SUB_EKTY_RF">
+  <panel descr="Паспорт" source="WEB50_M_R_SUB_EKTY_RF" dataRequest="M_R_SEM.xml#WEB50_M_R_SUB_EKTY_RF" default="true" order="1" />
+</data>
+<data id="WEB50_M_R_SUB_EKTY_RF_ADM_CENTRY">
+  <panel descr="Паспорт" source="WEB50_M_R_SUB_EKTY_RF_ADM_CENTRY" dataRequest="M_R_SEM.xml#WEB50_M_R_SUB_EKTY_RF_ADM_CENTRY" default="true" order="1" />
+</data>
+<data id="WEB50_M_R_SUB_EKTY_RF_RAYONY">
+  <panel descr="Паспорт" source="WEB50_M_R_SUB_EKTY_RF_RAYONY" dataRequest="M_R_SEM.xml#WEB50_M_R_SUB_EKTY_RF_RAYONY" default="true" order="1" />
+</data>
+<data id="WEB50_M_R_SUB_EKTY_RF_RAYONY_ADM_C">
+  <panel descr="Паспорт" source="WEB50_M_R_SUB_EKTY_RF_RAYONY_ADM_C" dataRequest="M_R_SEM.xml#WEB50_M_R_SUB_EKTY_RF_RAYONY_ADM_C" default="true" order="1" />
+</data>
+<!-- Карта 1:5000 (M_5_Layers.xml) -->
+<data id="WEB50_M_5_GIDR_LP">
+  <panel descr="Паспорт" source="WEB50_M_5_GIDR_LP" dataRequest="M_5_SEM.xml#WEB50_M_5_GIDR_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_5_GIDR_S">
+  <panel descr="Паспорт" source="WEB50_M_5_GIDR_S" dataRequest="M_5_SEM.xml#WEB50_M_5_GIDR_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_5_GRUNT">
+  <panel descr="Паспорт" source="WEB50_M_5_GRUNT" dataRequest="M_5_SEM.xml#WEB50_M_5_GRUNT" default="true" order="1" />
+</data>
+<data id="WEB50_M_5_LIMITS">
+  <panel descr="Паспорт" source="WEB50_M_5_LIMITS" dataRequest="M_5_SEM.xml#WEB50_M_5_LIMITS" default="true" order="1" />
+</data>
+<data id="WEB50_M_5_PROM_GAS">
+  <panel descr="Паспорт" source="WEB50_M_5_PROM_GAS" dataRequest="M_5_SEM.xml#WEB50_M_5_PROM_GAS" default="true" order="1" />
+</data>
+<data id="WEB50_M_5_PROM_LP">
+  <panel descr="Паспорт" source="WEB50_M_5_PROM_LP" dataRequest="M_5_SEM.xml#WEB50_M_5_PROM_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_5_PROM_S">
+  <panel descr="Паспорт" source="WEB50_M_5_PROM_S" dataRequest="M_5_SEM.xml#WEB50_M_5_PROM_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_5_RAST_LP">
+  <panel descr="Паспорт" source="WEB50_M_5_RAST_LP" dataRequest="M_5_SEM.xml#WEB50_M_5_RAST_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_5_RAST_S">
+  <panel descr="Паспорт" source="WEB50_M_5_RAST_S" dataRequest="M_5_SEM.xml#WEB50_M_5_RAST_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_5_RELIEF">
+  <panel descr="Паспорт" source="WEB50_M_5_RELIEF" dataRequest="M_5_SEM.xml#WEB50_M_5_RELIEF" default="true" order="1" />
+</data>
+<data id="WEB50_M_5_ROADS_LP">
+  <panel descr="Паспорт" source="WEB50_M_5_ROADS_LP" dataRequest="M_5_SEM.xml#WEB50_M_5_ROADS_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_5_ROADS_S">
+  <panel descr="Паспорт" source="WEB50_M_5_ROADS_S" dataRequest="M_5_SEM.xml#WEB50_M_5_ROADS_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_5_SURVEY">
+  <panel descr="Паспорт" source="WEB50_M_5_SURVEY" dataRequest="M_5_SEM.xml#WEB50_M_5_SURVEY" default="true" order="1" />
+</data>
+<data id="WEB50_M_5_SWAMP">
+  <panel descr="Паспорт" source="WEB50_M_5_SWAMP" dataRequest="M_5_SEM.xml#WEB50_M_5_SWAMP" default="true" order="1" />
+</data>
+<data id="WEB50_M_5_TEXT">
+  <panel descr="Паспорт" source="WEB50_M_5_TEXT" dataRequest="M_5_SEM.xml#WEB50_M_5_TEXT" default="true" order="1" />
+</data>
+<data id="WEB50_M_5_TOWN_LP">
+  <panel descr="Паспорт" source="WEB50_M_5_TOWN_LP" dataRequest="M_5_SEM.xml#WEB50_M_5_TOWN_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_5_TOWN_S">
+  <panel descr="Паспорт" source="WEB50_M_5_TOWN_S" dataRequest="M_5_SEM.xml#WEB50_M_5_TOWN_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_5_ZONE">
+  <panel descr="Паспорт" source="WEB50_M_5_ZONE" dataRequest="M_5_SEM.xml#WEB50_M_5_ZONE" default="true" order="1" />
+</data>
+<!-- Карта 1:25000 (M_25_Layers.xml) -->
+<data id="WEB50_M_25_GIDR_LP">
+  <panel descr="Паспорт" source="WEB50_M_25_GIDR_LP" dataRequest="M_25_SEM.xml#WEB50_M_25_GIDR_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_25_GIDR_S">
+  <panel descr="Паспорт" source="WEB50_M_25_GIDR_S" dataRequest="M_25_SEM.xml#WEB50_M_25_GIDR_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_25_LIMITS">
+  <panel descr="Паспорт" source="WEB50_M_25_LIMITS" dataRequest="M_25_SEM.xml#WEB50_M_25_LIMITS" default="true" order="1" />
+</data>
+<data id="WEB50_M_25_PROM_GAS">
+  <panel descr="Паспорт" source="WEB50_M_25_PROM_GAS" dataRequest="M_25_SEM.xml#WEB50_M_25_PROM_GAS" default="true" order="1" />
+</data>
+<data id="WEB50_M_25_PROM_LP">
+  <panel descr="Паспорт" source="WEB50_M_25_PROM_LP" dataRequest="M_25_SEM.xml#WEB50_M_25_PROM_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_25_PROM_S">
+  <panel descr="Паспорт" source="WEB50_M_25_PROM_S" dataRequest="M_25_SEM.xml#WEB50_M_25_PROM_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_25_RAST_LP">
+  <panel descr="Паспорт" source="WEB50_M_25_RAST_LP" dataRequest="M_25_SEM.xml#WEB50_M_25_RAST_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_25_RAST_S">
+  <panel descr="Паспорт" source="WEB50_M_25_RAST_S" dataRequest="M_25_SEM.xml#WEB50_M_25_RAST_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_25_RELIEF">
+  <panel descr="Паспорт" source="WEB50_M_25_RELIEF" dataRequest="M_25_SEM.xml#WEB50_M_25_RELIEF" default="true" order="1" />
+</data>
+<data id="WEB50_M_25_ROADS_LP">
+  <panel descr="Паспорт" source="WEB50_M_25_ROADS_LP" dataRequest="M_25_SEM.xml#WEB50_M_25_ROADS_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_25_ROADS_S">
+  <panel descr="Паспорт" source="WEB50_M_25_ROADS_S" dataRequest="M_25_SEM.xml#WEB50_M_25_ROADS_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_25_SURVEY">
+  <panel descr="Паспорт" source="WEB50_M_25_SURVEY" dataRequest="M_25_SEM.xml#WEB50_M_25_SURVEY" default="true" order="1" />
+</data>
+<data id="WEB50_M_25_SWAMP">
+  <panel descr="Паспорт" source="WEB50_M_25_SWAMP" dataRequest="M_25_SEM.xml#WEB50_M_25_SWAMP" default="true" order="1" />
+</data>
+<data id="WEB50_M_25_TEXT">
+  <panel descr="Паспорт" source="WEB50_M_25_TEXT" dataRequest="M_25_SEM.xml#WEB50_M_25_TEXT" default="true" order="1" />
+</data>
+<data id="WEB50_M_25_TOWN_LP">
+  <panel descr="Паспорт" source="WEB50_M_25_TOWN_LP" dataRequest="M_25_SEM.xml#WEB50_M_25_TOWN_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_25_TOWN_S">
+  <panel descr="Паспорт" source="WEB50_M_25_TOWN_S" dataRequest="M_25_SEM.xml#WEB50_M_25_TOWN_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_25_ZONE">
+  <panel descr="Паспорт" source="WEB50_M_25_ZONE" dataRequest="M_25_SEM.xml#WEB50_M_25_ZONE" default="true" order="1" />
+</data>
+<!-- Карта 1:1000 (M_1_Layers.xml) -->
+<data id="WEB50_M_1_GIDR_LP">
+  <panel descr="Паспорт" source="WEB50_M_1_GIDR_LP" dataRequest="M_1_SEM.xml#WEB50_M_1_GIDR_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_1_GIDR_S">
+  <panel descr="Паспорт" source="WEB50_M_1_GIDR_S" dataRequest="M_1_SEM.xml#WEB50_M_1_GIDR_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_1_GRUNT">
+  <panel descr="Паспорт" source="WEB50_M_1_GRUNT" dataRequest="M_1_SEM.xml#WEB50_M_1_GRUNT" default="true" order="1" />
+</data>
+<data id="WEB50_M_1_LIMITS">
+  <panel descr="Паспорт" source="WEB50_M_1_LIMITS" dataRequest="M_1_SEM.xml#WEB50_M_1_LIMITS" default="true" order="1" />
+</data>
+<data id="WEB50_M_1_PROM_GAS">
+  <panel descr="Паспорт" source="WEB50_M_1_PROM_GAS" dataRequest="M_1_SEM.xml#WEB50_M_1_PROM_GAS" default="true" order="1" />
+</data>
+<data id="WEB50_M_1_PROM_LP">
+  <panel descr="Паспорт" source="WEB50_M_1_PROM_LP" dataRequest="M_1_SEM.xml#WEB50_M_1_PROM_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_1_PROM_S">
+  <panel descr="Паспорт" source="WEB50_M_1_PROM_S" dataRequest="M_1_SEM.xml#WEB50_M_1_PROM_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_1_RAST_LP">
+  <panel descr="Паспорт" source="WEB50_M_1_RAST_LP" dataRequest="M_1_SEM.xml#WEB50_M_1_RAST_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_1_RAST_S">
+  <panel descr="Паспорт" source="WEB50_M_1_RAST_S" dataRequest="M_1_SEM.xml#WEB50_M_1_RAST_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_1_RELIEF">
+  <panel descr="Паспорт" source="WEB50_M_1_RELIEF" dataRequest="M_1_SEM.xml#WEB50_M_1_RELIEF" default="true" order="1" />
+</data>
+<data id="WEB50_M_1_ROADS_LP">
+  <panel descr="Паспорт" source="WEB50_M_1_ROADS_LP" dataRequest="M_1_SEM.xml#WEB50_M_1_ROADS_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_1_ROADS_S">
+  <panel descr="Паспорт" source="WEB50_M_1_ROADS_S" dataRequest="M_1_SEM.xml#WEB50_M_1_ROADS_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_1_SURVEY">
+  <panel descr="Паспорт" source="WEB50_M_1_SURVEY" dataRequest="M_1_SEM.xml#WEB50_M_1_SURVEY" default="true" order="1" />
+</data>
+<data id="WEB50_M_1_SWAMP">
+  <panel descr="Паспорт" source="WEB50_M_1_SWAMP" dataRequest="M_1_SEM.xml#WEB50_M_1_SWAMP" default="true" order="1" />
+</data>
+<data id="WEB50_M_1_TEXT">
+  <panel descr="Паспорт" source="WEB50_M_1_TEXT" dataRequest="M_1_SEM.xml#WEB50_M_1_TEXT" default="true" order="1" />
+</data>
+<data id="WEB50_M_1_TOWN_LP">
+  <panel descr="Паспорт" source="WEB50_M_1_TOWN_LP" dataRequest="M_1_SEM.xml#WEB50_M_1_TOWN_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_1_TOWN_S">
+  <panel descr="Паспорт" source="WEB50_M_1_TOWN_S" dataRequest="M_1_SEM.xml#WEB50_M_1_TOWN_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_1_ZONE">
+  <panel descr="Паспорт" source="WEB50_M_1_ZONE" dataRequest="M_1_SEM.xml#WEB50_M_1_ZONE" default="true" order="1" />
+</data>
+<!-- Карта 1:10000 (M_10_Layers.xml) -->
+<data id="WEB50_M_10_GIDR_LP">
+  <panel descr="Паспорт" source="WEB50_M_10_GIDR_LP" dataRequest="M_10_SEM.xml#WEB50_M_10_GIDR_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_10_GIDR_S">
+  <panel descr="Паспорт" source="WEB50_M_10_GIDR_S" dataRequest="M_10_SEM.xml#WEB50_M_10_GIDR_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_10_LIMITS">
+  <panel descr="Паспорт" source="WEB50_M_10_LIMITS" dataRequest="M_10_SEM.xml#WEB50_M_10_LIMITS" default="true" order="1" />
+</data>
+<data id="WEB50_M_10_PROM_GAS">
+  <panel descr="Паспорт" source="WEB50_M_10_PROM_GAS" dataRequest="M_10_SEM.xml#WEB50_M_10_PROM_GAS" default="true" order="1" />
+</data>
+<data id="WEB50_M_10_PROM_LP">
+  <panel descr="Паспорт" source="WEB50_M_10_PROM_LP" dataRequest="M_10_SEM.xml#WEB50_M_10_PROM_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_10_PROM_S">
+  <panel descr="Паспорт" source="WEB50_M_10_PROM_S" dataRequest="M_10_SEM.xml#WEB50_M_10_PROM_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_10_RAST_LP">
+  <panel descr="Паспорт" source="WEB50_M_10_RAST_LP" dataRequest="M_10_SEM.xml#WEB50_M_10_RAST_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_10_RAST_S">
+  <panel descr="Паспорт" source="WEB50_M_10_RAST_S" dataRequest="M_10_SEM.xml#WEB50_M_10_RAST_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_10_RELIEF">
+  <panel descr="Паспорт" source="WEB50_M_10_RELIEF" dataRequest="M_10_SEM.xml#WEB50_M_10_RELIEF" default="true" order="1" />
+</data>
+<data id="WEB50_M_10_ROADS_LP">
+  <panel descr="Паспорт" source="WEB50_M_10_ROADS_LP" dataRequest="M_10_SEM.xml#WEB50_M_10_ROADS_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_10_ROADS_S">
+  <panel descr="Паспорт" source="WEB50_M_10_ROADS_S" dataRequest="M_10_SEM.xml#WEB50_M_10_ROADS_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_10_SURVEY">
+  <panel descr="Паспорт" source="WEB50_M_10_SURVEY" dataRequest="M_10_SEM.xml#WEB50_M_10_SURVEY" default="true" order="1" />
+</data>
+<data id="WEB50_M_10_SWAMP">
+  <panel descr="Паспорт" source="WEB50_M_10_SWAMP" dataRequest="M_10_SEM.xml#WEB50_M_10_SWAMP" default="true" order="1" />
+</data>
+<data id="WEB50_M_10_TEXT">
+  <panel descr="Паспорт" source="WEB50_M_10_TEXT" dataRequest="M_10_SEM.xml#WEB50_M_10_TEXT" default="true" order="1" />
+</data>
+<data id="WEB50_M_10_TOWN_LP">
+  <panel descr="Паспорт" source="WEB50_M_10_TOWN_LP" dataRequest="M_10_SEM.xml#WEB50_M_10_TOWN_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_10_TOWN_S">
+  <panel descr="Паспорт" source="WEB50_M_10_TOWN_S" dataRequest="M_10_SEM.xml#WEB50_M_10_TOWN_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_10_ZONE">
+  <panel descr="Паспорт" source="WEB50_M_10_ZONE" dataRequest="M_10_SEM.xml#WEB50_M_10_ZONE" default="true" order="1" />
+</data>
+<!-- Карта 1:100000 (M_100_Layers.xml) -->
+<data id="WEB50_M_100_GIDR_LP">
+  <panel descr="Паспорт" source="WEB50_M_100_GIDR_LP" dataRequest="M_100_SEM.xml#WEB50_M_100_GIDR_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_100_GIDR_S">
+  <panel descr="Паспорт" source="WEB50_M_100_GIDR_S" dataRequest="M_100_SEM.xml#WEB50_M_100_GIDR_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_100_LIMITS">
+  <panel descr="Паспорт" source="WEB50_M_100_LIMITS" dataRequest="M_100_SEM.xml#WEB50_M_100_LIMITS" default="true" order="1" />
+</data>
+<data id="WEB50_M_100_NOMENCLATURE_REF">
+  <panel descr="Паспорт" source="WEB50_M_100_NOMENCLATURE_REF" dataRequest="M_100_SEM.xml#WEB50_M_100_NOMENCLATURE_REF" default="true" order="1" />
+</data>
+<data id="WEB50_M_100_PROM">
+  <panel descr="Паспорт" source="WEB50_M_100_PROM" dataRequest="M_100_SEM.xml#WEB50_M_100_PROM" default="true" order="1" />
+</data>
+<data id="WEB50_M_100_PROM_GAS">
+  <panel descr="Паспорт" source="WEB50_M_100_PROM_GAS" dataRequest="M_100_SEM.xml#WEB50_M_100_PROM_GAS" default="true" order="1" />
+</data>
+<data id="WEB50_M_100_RAST_LP">
+  <panel descr="Паспорт" source="WEB50_M_100_RAST_LP" dataRequest="M_100_SEM.xml#WEB50_M_100_RAST_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_100_RAST_S">
+  <panel descr="Паспорт" source="WEB50_M_100_RAST_S" dataRequest="M_100_SEM.xml#WEB50_M_100_RAST_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_100_RELIEF">
+  <panel descr="Паспорт" source="WEB50_M_100_RELIEF" dataRequest="M_100_SEM.xml#WEB50_M_100_RELIEF" default="true" order="1" />
+</data>
+<data id="WEB50_M_100_ROADS">
+  <panel descr="Паспорт" source="WEB50_M_100_ROADS" dataRequest="M_100_SEM.xml#WEB50_M_100_ROADS" default="true" order="1" />
+</data>
+<data id="WEB50_M_100_SURVEY">
+  <panel descr="Паспорт" source="WEB50_M_100_SURVEY" dataRequest="M_100_SEM.xml#WEB50_M_100_SURVEY" default="true" order="1" />
+</data>
+<data id="WEB50_M_100_SWAMP">
+  <panel descr="Паспорт" source="WEB50_M_100_SWAMP" dataRequest="M_100_SEM.xml#WEB50_M_100_SWAMP" default="true" order="1" />
+</data>
+<data id="WEB50_M_100_TEXT">
+  <panel descr="Паспорт" source="WEB50_M_100_TEXT" dataRequest="M_100_SEM.xml#WEB50_M_100_TEXT" default="true" order="1" />
+</data>
+<data id="WEB50_M_100_TOWN">
+  <panel descr="Паспорт" source="WEB50_M_100_TOWN" dataRequest="M_100_SEM.xml#WEB50_M_100_TOWN" default="true" order="1" />
+</data>
+<!-- Карта 1:1000000 (M_1K_Layers.xml) -->
+<data id="WEB50_M_1K_GIDR_LP">
+  <panel descr="Паспорт" source="WEB50_M_1K_GIDR_LP" dataRequest="M_1K_SEM.xml#WEB50_M_1K_GIDR_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_1K_GIDR_S">
+  <panel descr="Паспорт" source="WEB50_M_1K_GIDR_S" dataRequest="M_1K_SEM.xml#WEB50_M_1K_GIDR_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_1K_LIMITS">
+  <panel descr="Паспорт" source="WEB50_M_1K_LIMITS" dataRequest="M_1K_SEM.xml#WEB50_M_1K_LIMITS" default="true" order="1" />
+</data>
+<data id="WEB50_M_1K_NOMENCLATURE_REF">
+  <panel descr="Паспорт" source="WEB50_M_1K_NOMENCLATURE_REF" dataRequest="M_1K_SEM.xml#WEB50_M_1K_NOMENCLATURE_REF" default="true" order="1" />
+</data>
+<data id="WEB50_M_1K_PROM">
+  <panel descr="Паспорт" source="WEB50_M_1K_PROM" dataRequest="M_1K_SEM.xml#WEB50_M_1K_PROM" default="true" order="1" />
+</data>
+<data id="WEB50_M_1K_PROM_GAS">
+  <panel descr="Паспорт" source="WEB50_M_1K_PROM_GAS" dataRequest="M_1K_SEM.xml#WEB50_M_1K_PROM_GAS" default="true" order="1" />
+</data>
+<data id="WEB50_M_1K_RAST_LP">
+  <panel descr="Паспорт" source="WEB50_M_1K_RAST_LP" dataRequest="M_1K_SEM.xml#WEB50_M_1K_RAST_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_1K_RAST_S">
+  <panel descr="Паспорт" source="WEB50_M_1K_RAST_S" dataRequest="M_1K_SEM.xml#WEB50_M_1K_RAST_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_1K_RELIEF">
+  <panel descr="Паспорт" source="WEB50_M_1K_RELIEF" dataRequest="M_1K_SEM.xml#WEB50_M_1K_RELIEF" default="true" order="1" />
+</data>
+<data id="WEB50_M_1K_ROADS">
+  <panel descr="Паспорт" source="WEB50_M_1K_ROADS" dataRequest="M_1K_SEM.xml#WEB50_M_1K_ROADS" default="true" order="1" />
+</data>
+<data id="WEB50_M_1K_SURVEY">
+  <panel descr="Паспорт" source="WEB50_M_1K_SURVEY" dataRequest="M_1K_SEM.xml#WEB50_M_1K_SURVEY" default="true" order="1" />
+</data>
+<data id="WEB50_M_1K_SWAMP">
+  <panel descr="Паспорт" source="WEB50_M_1K_SWAMP" dataRequest="M_1K_SEM.xml#WEB50_M_1K_SWAMP" default="true" order="1" />
+</data>
+<data id="WEB50_M_1K_TEXT">
+  <panel descr="Паспорт" source="WEB50_M_1K_TEXT" dataRequest="M_1K_SEM.xml#WEB50_M_1K_TEXT" default="true" order="1" />
+</data>
+<data id="WEB50_M_1K_TOWN">
+  <panel descr="Паспорт" source="WEB50_M_1K_TOWN" dataRequest="M_1K_SEM.xml#WEB50_M_1K_TOWN" default="true" order="1" />
+</data>
+<!-- Карта 1:200000 (M_200_Layers.xml) -->
+<data id="WEB50_M_200_GIDR_LP">
+  <panel descr="Паспорт" source="WEB50_M_200_GIDR_LP" dataRequest="M_200_SEM.xml#WEB50_M_200_GIDR_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_200_GIDR_S">
+  <panel descr="Паспорт" source="WEB50_M_200_GIDR_S" dataRequest="M_200_SEM.xml#WEB50_M_200_GIDR_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_200_LIMITS">
+  <panel descr="Паспорт" source="WEB50_M_200_LIMITS" dataRequest="M_200_SEM.xml#WEB50_M_200_LIMITS" default="true" order="1" />
+</data>
+<data id="WEB50_M_200_NOMENCLATURE_REF">
+  <panel descr="Паспорт" source="WEB50_M_200_NOMENCLATURE_REF" dataRequest="M_200_SEM.xml#WEB50_M_200_NOMENCLATURE_REF" default="true" order="1" />
+</data>
+<data id="WEB50_M_200_PROM">
+  <panel descr="Паспорт" source="WEB50_M_200_PROM" dataRequest="M_200_SEM.xml#WEB50_M_200_PROM" default="true" order="1" />
+</data>
+<data id="WEB50_M_200_PROM_GAS">
+  <panel descr="Паспорт" source="WEB50_M_200_PROM_GAS" dataRequest="M_200_SEM.xml#WEB50_M_200_PROM_GAS" default="true" order="1" />
+</data>
+<data id="WEB50_M_200_RAST_LP">
+  <panel descr="Паспорт" source="WEB50_M_200_RAST_LP" dataRequest="M_200_SEM.xml#WEB50_M_200_RAST_LP" default="true" order="1" />
+</data>
+<data id="WEB50_M_200_RAST_S">
+  <panel descr="Паспорт" source="WEB50_M_200_RAST_S" dataRequest="M_200_SEM.xml#WEB50_M_200_RAST_S" default="true" order="1" />
+</data>
+<data id="WEB50_M_200_RELIEF">
+  <panel descr="Паспорт" source="WEB50_M_200_RELIEF" dataRequest="M_200_SEM.xml#WEB50_M_200_RELIEF" default="true" order="1" />
+</data>
+<data id="WEB50_M_200_ROADS">
+  <panel descr="Паспорт" source="WEB50_M_200_ROADS" dataRequest="M_200_SEM.xml#WEB50_M_200_ROADS" default="true" order="1" />
+</data>
+<data id="WEB50_M_200_SURVEY">
+  <panel descr="Паспорт" source="WEB50_M_200_SURVEY" dataRequest="M_200_SEM.xml#WEB50_M_200_SURVEY" default="true" order="1" />
+</data>
+<data id="WEB50_M_200_SWAMP">
+  <panel descr="Паспорт" source="WEB50_M_200_SWAMP" dataRequest="M_200_SEM.xml#WEB50_M_200_SWAMP" default="true" order="1" />
+</data>
+<data id="WEB50_M_200_TEXT">
+  <panel descr="Паспорт" source="WEB50_M_200_TEXT" dataRequest="M_200_SEM.xml#WEB50_M_200_TEXT" default="true" order="1" />
+</data>
+<data id="WEB50_M_200_TOWN">
+  <panel descr="Паспорт" source="WEB50_M_200_TOWN" dataRequest="M_200_SEM.xml#WEB50_M_200_TOWN" default="true" order="1" />
+</data>
+<!-- Вкладки для косметических слоев (COSMETIC_Layers.xml) -->
+<data id="COSMETIC_OBJECT">
+  <panel descr="Паспорт" source="COSMETIC_OBJECT" dataRequest="COSMETIC_SEM.xml#COSMETIC_OBJECT" default="true" order="1" />
+</data>
+<data id="FIND_PATH_OBJECT">
+  <panel descr="Паспорт" source="FIND_PATH_OBJECT" dataRequest="COSMETIC_SEM.xml#COSMETIC_OBJECT" default="true" order="1" />
+</data>
+<data id="LIB_DOC_GEO_VIDEO_OBJECT">
+  <panel descr="Паспорт" source="LIB_DOC_GEO_VIDEO_OBJECT" dataRequest="COSMETIC_SEM.xml#COSMETIC_OBJECT" default="true" order="1" />
+</data>
+<!-- Вкладки для административных задач -->
+<data id="ADM_B_USER_PRIVATE">
+  <panel descr="Паспорт" source="ADM_B_USER_PRIVATE" dataRequest="ADM_SEM.xml#ADM_B_USER_PRIVATE" default="true" order="1" />
+</data>
+<data id="ADM_LIB_DOC">
+  <panel descr="Паспорт" source="ADM_LIB_DOC" dataRequest="ADM_SEM.xml#ADM_LIB_DOC" default="true" order="1" />
+</data>
+<data id="ADM_LIB_DOC_FOLDER">
+  <panel descr="Паспорт" source="ADM_LIB_DOC_FOLDER" dataRequest="ADM_SEM.xml#ADM_LIB_DOC_FOLDER" default="true" order="1" />
+</data>
+<data id="WEB50_B_USER_PRIVATE">
+  <panel descr="Паспорт" source="WEB50_B_USER_PRIVATE" dataRequest="SYS_SEM.xml#WEB50_B_USER_PRIVATE" default="true" order="1" />
+</data>
+<data id="WEB50_B_USER_PRIVATE_REG">
+  <panel descr="Паспорт" source="WEB50_B_USER_PRIVATE_REG" dataRequest="SYS_SEM.xml#WEB50_B_USER_PRIVATE_REG" default="true" order="1" />
+</data>
+<data id="PODS_COMMENTS">
+  <panel descr="Паспорт" source="PODS_COMMENTS" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COMMENTS" default="true" order="1" />
+</data>
+<data id="WEB50_LIB_DOC">
+  <panel descr="Паспорт" source="WEB50_LIB_DOC" dataRequest="SYS_SEM.xml#WEB50_LIB_DOC" default="true" order="1" />
+</data>
+<data id="PODS_EVENT_GROUP">
+  <panel descr="Паспорт" source="PODS_EVENT_GROUP" dataRequest="SYS_SEM.xml#PODS_EVENT_GROUP" default="true" order="1" />
+</data>
+<data id="PODS_PIPE_SYSTEM_BOUNDARY_PIPE_COR">
+  <panel descr="Паспорт" source="PODS_PIPE_SYSTEM_BOUNDARY_PIPE_COR" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PIPE_SYSTEM_BOUNDARY_PIPE_COR" default="true" order="1" />
+</data>
+<data id="WEB50_B_POLICY">
+  <panel descr="Паспорт" source="WEB50_B_POLICY" dataRequest="ADM_SEM.xml#WEB50_B_POLICY" default="true" order="1" />
+</data>
+<data id="WEB50_B_POLICY_RULES">
+  <panel descr="Паспорт" source="WEB50_B_POLICY_RULES" dataRequest="ADM_SEM.xml#WEB50_B_POLICY_RULES" default="true" order="1" />
+</data>
+<data id="WEB50_B_POLICY_RULE_FILTERS">
+  <panel descr="Паспорт" source="WEB50_B_POLICY_RULE_FILTERS" dataRequest="ADM_SEM.xml#WEB50_B_POLICY_RULE_FILTERS" default="true" order="1" />
+</data>
+<data id="WEB50_B_ROLE">
+  <panel descr="Паспорт" source="WEB50_B_ROLE" dataRequest="ADM_SEM.xml#WEB50_B_ROLE" default="true" order="1" />
+</data>
+<!-- Вкладки для административных задач javascript (mxml-формы, которые раньше были в коде) -->
+<!-- Задача администрирования трубопроводов -->
+<data id="ADM_ROUTES_GROUP_BY_ROUTE">
+  <panel descr="Паспорт" source="ADM_ROUTES_GROUP_BY_ROUTE" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<data id="ADM_ROUTES_OFFLINE_BINDING_BY_ROUTE">
+	<panel descr="Паспорт" source="ADM_ROUTES_OFFLINE_BINDING_BY_ROUTE" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<data id="ADM_ROUTES_LINE_BINDING_BY_ROUTE">
+	<panel descr="Паспорт" source="ADM_ROUTES_LINE_BINDING_BY_ROUTE" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<data id="ADM_ROUTES_INTERVAL_DIVIDING_ROUTES">
+	<panel descr="Паспорт" source="ADM_ROUTES_INTERVAL_DIVIDING_ROUTES" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<!-- Задача администрирования карт -->
+<data id="WEB50_M_MAP">
+	<panel descr="Паспорт" source="WEB50_M_MAP" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<data id="ADM_MAPS_IMPORT">
+	<panel descr="Паспорт" source="adm_maps_import" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<!-- Задача администрирования отчетов ВТД -->
+<data id="ADM_ILI_IMPORT">
+	<panel descr="Паспорт" source="ADM_ILI_IMPORT" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<data id="ADM_ILI_INSP_PROC">
+	<panel descr="Паспорт" source="adm_ili_insp_proc" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<data id="ADM_ILI_IMPORT_XML">
+	<panel descr="Паспорт" source="ADM_ILI_IMPORT_XML" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<data id="ADM_ILI_CLUSTER">
+	<panel descr="Паспорт" source="ADM_ILI_CLUSTER" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<data id="ADM_ILI_PRESSURE">
+	<panel descr="Паспорт" source="ADM_ILI_PRESSURE" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<data id="ADM_ILI_STO">
+	<panel descr="Паспорт" source="ADM_ILI_STO" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<data id="ADM_ILI_STO_FOR_EHZ">
+	<panel descr="Паспорт" source="ADM_ILI_STO_FOR_EHZ" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<!-- Задача администрирования отчетов ЭХЗ -->
+<data id="ADM_PI_CP_IMPORT">
+	<panel descr="Паспорт" source="ADM_PI_CP_IMPORT" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<data id="ADM_PI_CP_BIND_TO_LINE">
+	<panel descr="Паспорт" source="ADM_PI_CP_BIND_TO_LINE" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<!-- Задача редактирования параметров конфигурации -->
+<data id="ADM_CONFIG">
+	<panel descr="Паспорт" source="ADM_CONFIG" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<!-- Задача файлового архива -->
+<data id="ADM_LIB_DOC_GENERATE_IMG">
+	<panel descr="Паспорт" source="ADM_LIB_DOC_GENERATE_IMG" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<data id="ADM_LIB_DOC_GENERATE_VRML">
+	<panel descr="Паспорт" source="ADM_LIB_DOC_GENERATE_VRML" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<!-- Задача администрирования карт -->
+<data id="ADM_MAPS_CREATE_LAYER">
+	<panel descr="Паспорт" source="ADM_MAPS_CREATE_LAYER" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<data id="ADM_MAPS_EDIT_MAP">
+	<panel descr="Паспорт" source="ADM_MAPS_EDIT_MAP" dataRequest="ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<!-- Управление валидацией данныхй -->
+<data id="ADM_B_EDIT_LOG">
+	<panel descr="Паспорт" source="ADM_B_EDIT_LOG" dataRequest="GAZPROM_ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<data id="ADM_B_EDIT_CONTROLLER">
+	<panel descr="Паспорт" source="ADM_B_EDIT_CONTROLLER" dataRequest="GAZPROM_ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<data id="ADM_B_EDIT_TO_CONTROL">
+	<panel descr="Паспорт" source="ADM_B_EDIT_TO_CONTROL" dataRequest="GAZPROM_ADM_SEM.xml#BLANK" default="true" order="1" />
+</data>
+<!-- Конец описания форм для административных задач -->
+<data id="CADASTRE_DISTRICT">
+	<panel descr="Паспорт" source="CADASTRE_DISTRICT" default="true" order="1" />
+</data>
+<data id="CADASTRE_RAYON">
+	<panel descr="Паспорт" source="CADASTRE_RAYON" default="true" order="1" />
+</data>
+<data id="CADASTRE_KVARTAL">
+	<panel descr="Паспорт" source="CADASTRE_KVARTAL" default="true" order="1" />
+</data>
+<data id="CADASTRE_PARCEL">
+	<panel descr="Паспорт" source="CADASTRE_PARCEL" default="true" order="1" />
+</data>
+<data id="CADASTRE_OKS">
+	<panel descr="Паспорт" source="CADASTRE_OKS" default="true" order="1" />
+</data>
+<data id="CADASTRE_OBJECT">
+	<panel descr="Паспорт" source="CADASTRE_OBJECT" default="true" order="1" />
+</data>
+<data id="PODS_STO_PIPE_SEGMENT_PARAMS">
+	<panel descr="Паспорт" source="PODS_STO_PIPE_SEGMENT_PARAMS" dataRequest="PODS_SEM.xml#PODS_STO_PIPE_SEGMENT_PARAMS" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<!-- Задача Карта МДР -->
+<data id="WEB50_KADASTR_KVARTAL">
+	<panel descr="Паспорт" source="WEB50_KADASTR_KVARTAL" dataRequest="KADASTR_SEM.xml#WEB50_KADASTR_KVARTAL" default="true" order="1" />
+</data>
+<data id="WEB50_KADASTR_PODS_MDR">
+	<panel descr="Паспорт" source="WEB50_KADASTR_PODS_MDR" dataRequest="KADASTR_SEM.xml#WEB50_KADASTR_PODS_MDR" default="true" order="1" />
+</data>
+<data id="WEB50_KADASTR_ALERT">
+	<panel descr="Паспорт" source="WEB50_KADASTR_ALERT" dataRequest="KADASTR_SEM.xml#WEB50_KADASTR_ALERT" default="true" order="1" />
+</data>
+<data id="WEB50_KADASTR_GKS_WAY">
+	<panel descr="Паспорт" source="WEB50_KADASTR_GKS_WAY" dataRequest="KADASTR_SEM.xml#WEB50_KADASTR_GKS_WAY" default="true" order="1" />
+</data>
+<data id="WEB50_KADASTR_ALERT_OBJECT">
+	<panel descr="Паспорт" source="WEB50_KADASTR_ALERT_OBJECT" dataRequest="KADASTR_SEM.xml#WEB50_KADASTR_ALERT_OBJECT" default="true" order="1" />
+</data>
+<!-- Конец описания форм для задачи Карта МДР -->
+<data id="CADASTRE_DISTRICT_JSON">
+	<panel descr="Паспорт" source="CADASTRE_DISTRICT_JSON" default="true" order="1" />
+</data>
+<data id="CADASTRE_RAYON_JSON">
+	<panel descr="Паспорт" source="CADASTRE_RAYON_JSON" default="true" order="1" />
+</data>
+<data id="CADASTRE_KVARTAL_JSON">
+	<panel descr="Паспорт" source="CADASTRE_KVARTAL_JSON" default="true" order="1" />
+</data>
+<data id="CADASTRE_PARCEL_JSON">
+	<panel descr="Паспорт" source="CADASTRE_PARCEL_JSON" default="true" order="1" />
+</data>
+<data id="CADASTRE_ZOUIT_JSON">
+	<panel descr="Паспорт" source="CADASTRE_ZOUIT_JSON" default="true" order="1" />
+</data>
+	
+	
+	
+<data id="GTS_PIPELINE_L">
+	<panel descr="Паспорт" source="GTS_PIPELINE_L" dataRequest="IUST_SEM.xml#GTS_PIPELINE_L" default="true" order="1" />
+</data>
+<data id="AMBIT_BUILDINGS_A">
+	<panel descr="Паспорт" source="AMBIT_BUILDINGS_A" dataRequest="IUST_SEM.xml#AMBIT_BUILDINGS_A" default="true" order="1" />
+</data>
+<data id="GTS_OBJECTS_P">
+	<panel descr="Паспорт" source="GTS_OBJECTS_P" dataRequest="IUST_SEM.xml#GTS_OBJECTS_P" default="true" order="1" />
+</data>
+<data id="AMBIT_INDUSTRY_PIPELINE_P">
+	<panel descr="Паспорт" source="AMBIT_INDUSTRY_PIPELINE_P" dataRequest="IUST_SEM.xml#AMBIT_INDUSTRY_PIPELINE_P" default="true" order="1" />
+</data>
+<data id="AMBIT_INDUSTRY_COMM_P">
+	<panel descr="Паспорт" source="AMBIT_INDUSTRY_COMM_P" dataRequest="IUST_SEM.xml#AMBIT_INDUSTRY_COMM_P" default="true" order="1" />
+</data>
+<data id="AMBIT_INDUSTRY_PIPE_UNITS_P">
+	<panel descr="Паспорт" source="AMBIT_INDUSTRY_PIPE_UNITS_P" dataRequest="IUST_SEM.xml#AMBIT_INDUSTRY_PIPE_UNITS_P" default="true" order="1" />
+</data>
+<data id="AMBIT_INDUSTRY_PROTECT_P">
+	<panel descr="Паспорт" source="AMBIT_INDUSTRY_PROTECT_P" dataRequest="IUST_SEM.xml#AMBIT_INDUSTRY_PROTECT_P" default="true" order="1" />
+</data>
+<data id="AMBIT_INDUSTRY_FILTERS_P">
+	<panel descr="Паспорт" source="AMBIT_INDUSTRY_FILTERS_P" dataRequest="IUST_SEM.xml#AMBIT_INDUSTRY_FILTERS_P" default="true" order="1" />
+</data>
+<data id="AMBIT_INDUSTRY_CAPACITIES_P">
+	<panel descr="Паспорт" source="AMBIT_INDUSTRY_CAPACITIES_P" dataRequest="IUST_SEM.xml#AMBIT_INDUSTRY_CAPACITIES_P" default="true" order="1" />
+</data>
+<data id="AMBIT_INDUSTRY_ICS_P">
+	<panel descr="Паспорт" source="AMBIT_INDUSTRY_ICS_P" dataRequest="IUST_SEM.xml#AMBIT_INDUSTRY_ICS_P" default="true" order="1" />
+</data>
+<data id="GEO_BOUNDARIES_P">
+	<panel descr="Паспорт" source="GEO_BOUNDARIES_P" dataRequest="IUST_SEM.xml#GEO_BOUNDARIES_P" default="true" order="1" />
+</data>
+<data id="GEO_HYDRAULICSTRUCT_P">
+	<panel descr="Паспорт" source="GEO_HYDRAULICSTRUCT_P" dataRequest="IUST_SEM.xml#GEO_HYDRAULICSTRUCT_P" default="true" order="1" />
+</data>
+<data id="GEO_HYDROGRAPHY_P">
+	<panel descr="Паспорт" source="GEO_HYDROGRAPHY_P" dataRequest="IUST_SEM.xml#GEO_HYDROGRAPHY_P" default="true" order="1" />
+</data>
+<data id="GEO_INDUCTRIALOBJ_P">
+	<panel descr="Паспорт" source="GEO_INDUCTRIALOBJ_P" dataRequest="IUST_SEM.xml#GEO_INDUCTRIALOBJ_P" default="true" order="1" />
+</data>
+<data id="GEO_ROADSTRUCTURES_P">
+	<panel descr="Паспорт" source="GEO_ROADSTRUCTURES_P" dataRequest="IUST_SEM.xml#GEO_ROADSTRUCTURES_P" default="true" order="1" />
+</data>
+<data id="GEO_ROADS_P">
+	<panel descr="Паспорт" source="GEO_ROADS_P" dataRequest="IUST_SEM.xml#GEO_ROADS_P" default="true" order="1" />
+</data>
+<data id="GEO_RELIEF_P">
+	<panel descr="Паспорт" source="GEO_RELIEF_P" dataRequest="IUST_SEM.xml#GEO_RELIEF_P" default="true" order="1" />
+</data>
+<data id="GEO_HYDROGRAPHYREL_P">
+	<panel descr="Паспорт" source="GEO_HYDROGRAPHYREL_P" dataRequest="IUST_SEM.xml#GEO_HYDROGRAPHYREL_P" default="true" order="1" />
+</data>
+<data id="GEO_SETTLEMENTS_P">
+	<panel descr="Паспорт" source="GEO_SETTLEMENTS_P" dataRequest="IUST_SEM.xml#GEO_SETTLEMENTS_P" default="true" order="1" />
+</data>
+<data id="GEO_VEGETATION_P">
+	<panel descr="Паспорт" source="GEO_VEGETATION_P" dataRequest="IUST_SEM.xml#GEO_VEGETATION_P" default="true" order="1" />
+</data>
+<data id="AMBIT_INDUSTRY_PIPELINE_L">
+	<panel descr="Паспорт" source="AMBIT_INDUSTRY_PIPELINE_L" dataRequest="IUST_SEM.xml#AMBIT_INDUSTRY_PIPELINE_L" default="true" order="1" />
+</data>
+<data id="GEO_ROADSTRUCTURES_L">
+	<panel descr="Паспорт" source="GEO_ROADSTRUCTURES_L" dataRequest="IUST_SEM.xml#GEO_ROADSTRUCTURES_L" default="true" order="1" />
+</data>
+<data id="AMBIT_INDUSTRY_COMM_L">
+	<panel descr="Паспорт" source="AMBIT_INDUSTRY_COMM_L" dataRequest="IUST_SEM.xml#AMBIT_INDUSTRY_COMM_L" default="true" order="1" />
+</data>
+<data id="AMBIT_ROADS_L">
+	<panel descr="Паспорт" source="AMBIT_ROADS_L" dataRequest="IUST_SEM.xml#AMBIT_ROADS_L" default="true" order="1" />
+</data>
+<data id="GEO_INDUCTRIALOBJ_L">
+	<panel descr="Паспорт" source="GEO_INDUCTRIALOBJ_L" dataRequest="IUST_SEM.xml#GEO_INDUCTRIALOBJ_L" default="true" order="1" />
+</data>
+<data id="GEO_HYDRAULICSTRUCT_L">
+	<panel descr="Паспорт" source="GEO_HYDRAULICSTRUCT_L" dataRequest="IUST_SEM.xml#GEO_HYDRAULICSTRUCT_L" default="true" order="1" />
+</data>
+<data id="AMBIT_HYDRO_L">
+	<panel descr="Паспорт" source="AMBIT_HYDRO_L" dataRequest="IUST_SEM.xml#AMBIT_HYDRO_L" default="true" order="1" />
+</data>
+<data id="GEO_HYDROGRAPHY_L">
+	<panel descr="Паспорт" source="GEO_HYDROGRAPHY_L" dataRequest="IUST_SEM.xml#GEO_HYDROGRAPHY_L" default="true" order="1" />
+</data>
+<data id="GEO_ROADS_L">
+	<panel descr="Паспорт" source="GEO_ROADS_L" dataRequest="IUST_SEM.xml#GEO_ROADS_L" default="true" order="1" />
+</data>
+<data id="GEO_BOUNDARIES_L">
+	<panel descr="Паспорт" source="GEO_BOUNDARIES_L" dataRequest="IUST_SEM.xml#GEO_BOUNDARIES_L" default="true" order="1" />
+</data>
+<data id="GEO_VEGETATION_L">
+	<panel descr="Паспорт" source="GEO_VEGETATION_L" dataRequest="IUST_SEM.xml#GEO_VEGETATION_L" default="true" order="1" />
+</data>
+<data id="GEO_HYDROGRAPHYREL_L">
+	<panel descr="Паспорт" source="GEO_HYDROGRAPHYREL_L" dataRequest="IUST_SEM.xml#GEO_HYDROGRAPHYREL_L" default="true" order="1" />
+</data>
+<data id="GEO_RELIEF_L">
+	<panel descr="Паспорт" source="GEO_RELIEF_L" dataRequest="IUST_SEM.xml#GEO_RELIEF_L" default="true" order="1" />
+</data>
+<data id="AMBIT_INDUSTRY_PIPE_UNITS_A">
+	<panel descr="Паспорт" source="AMBIT_INDUSTRY_PIPE_UNITS_A" dataRequest="IUST_SEM.xml#AMBIT_INDUSTRY_PIPE_UNITS_A" default="true" order="1" />
+</data>
+<data id="AMBIT_INDUSTRY_OILSTATIONS_A">
+	<panel descr="Паспорт" source="AMBIT_INDUSTRY_OILSTATIONS_A" dataRequest="IUST_SEM.xml#AMBIT_INDUSTRY_OILSTATIONS_A" default="true" order="1" />
+</data>
+<data id="AMBIT_PLATFORMS_A">
+	<panel descr="Паспорт" source="AMBIT_PLATFORMS_A" dataRequest="IUST_SEM.xml#AMBIT_PLATFORMS_A" default="true" order="1" />
+</data>
+<data id="GEO_ROADSTRUCTURES_A">
+	<panel descr="Паспорт" source="GEO_ROADSTRUCTURES_A" dataRequest="IUST_SEM.xml#GEO_ROADSTRUCTURES_A" default="true" order="1" />
+</data>
+<data id="GEO_HYDRAULICSTRUCT_A">
+	<panel descr="Паспорт" source="GEO_HYDRAULICSTRUCT_A" dataRequest="IUST_SEM.xml#GEO_HYDRAULICSTRUCT_A" default="true" order="1" />
+</data>
+<data id="GEO_INDUCTRIALOBJ_A">
+	<panel descr="Паспорт" source="GEO_INDUCTRIALOBJ_A" dataRequest="IUST_SEM.xml#GEO_INDUCTRIALOBJ_A" default="true" order="1" />
+</data>
+<data id="GEO_SETTLEMENTS_A">
+	<panel descr="Паспорт" source="GEO_SETTLEMENTS_A" dataRequest="IUST_SEM.xml#GEO_SETTLEMENTS_A" default="true" order="1" />
+</data>
+<data id="GEO_HYDROGRAPHYREL_A">
+	<panel descr="Паспорт" source="GEO_HYDROGRAPHYREL_A" dataRequest="IUST_SEM.xml#GEO_HYDROGRAPHYREL_A" default="true" order="1" />
+</data>
+<data id="GEO_SOIL_A">
+	<panel descr="Паспорт" source="GEO_SOIL_A" dataRequest="IUST_SEM.xml#GEO_SOIL_A" default="true" order="1" />
+</data>
+<data id="AMBIT_HYDRO_A">
+	<panel descr="Паспорт" source="AMBIT_HYDRO_A" dataRequest="IUST_SEM.xml#AMBIT_HYDRO_A" default="true" order="1" />
+</data>
+<data id="GEO_RELIEF_A">
+	<panel descr="Паспорт" source="GEO_RELIEF_A" dataRequest="IUST_SEM.xml#GEO_RELIEF_A" default="true" order="1" />
+</data>
+<data id="AMBIT_VEGETATION_FOREST_A">
+	<panel descr="Паспорт" source="AMBIT_VEGETATION_FOREST_A" dataRequest="IUST_SEM.xml#AMBIT_VEGETATION_FOREST_A" default="true" order="1" />
+</data>
+<data id="AMBIT_VEGETATION_FIELDS_A">
+	<panel descr="Паспорт" source="AMBIT_VEGETATION_FIELDS_A" dataRequest="IUST_SEM.xml#AMBIT_VEGETATION_FIELDS_A" default="true" order="1" />
+</data>
+<data id="GEO_VEGETATION_A">
+	<panel descr="Паспорт" source="GEO_VEGETATION_A" dataRequest="IUST_SEM.xml#GEO_VEGETATION_A" default="true" order="1" />
+</data>
+<data id="GEO_BOUNDARIES_A">
+	<panel descr="Паспорт" source="GEO_BOUNDARIES_A" dataRequest="IUST_SEM.xml#GEO_BOUNDARIES_A" default="true" order="1" />
+</data>
+<!-- Задача Экомониторинг -->
+<data id="1_ZONI_BOLOT">
+	<panel descr="Паспорт" source="1_ZONI_BOLOT" dataRequest="eco_sem.xml#1_ZONI_BOLOT" default="true" order="1" />
+</data>
+<data id="2_ZONI_EROZ">
+	<panel descr="Паспорт" source="2_ZONI_EROZ" dataRequest="eco_sem.xml#2_ZONI_EROZ" default="true" order="1" />
+</data>
+<data id="3_ZONI_RAZV">
+	<panel descr="Паспорт" source="3_ZONI_RAZV" dataRequest="eco_sem.xml#3_ZONI_RAZV" default="true" order="1" />
+</data>
+<data id="4_ZONI_GEOD">
+	<panel descr="Паспорт" source="4_ZONI_GEOD" dataRequest="eco_sem.xml#4_ZONI_GEOD" default="true" order="1" />
+</data>
+<data id="5_ZONI_KOMP">
+	<panel descr="Паспорт" source="5_ZONI_KOMP" dataRequest="eco_sem.xml#5_ZONI_KOMP" default="true" order="1" />
+</data>
+<data id="7_ZONI_VOZM">
+	<panel descr="Паспорт" source="7_ZONI_VOZM" dataRequest="eco_sem.xml#7_ZONI_VOZM" default="true" order="1" />
+</data>
+<data id="9_PREDPOLAG">
+	<panel descr="Паспорт" source="9_PREDPOLAG" dataRequest="eco_sem.xml#9_PREDPOLAG" default="true" order="1" />
+</data>
+<data id="10_REPER">
+	<panel descr="Паспорт" source="10_REPER" dataRequest="eco_sem.xml#10_REPER" default="true" order="1" />
+</data>
+<data id="11_REPER">
+	<panel descr="Паспорт" source="11_REPER" dataRequest="eco_sem.xml#11_REPER" default="true" order="1" />
+</data>
+<data id="13_REPER">
+	<panel descr="Паспорт" source="13_REPER" dataRequest="eco_sem.xml#13_REPER" default="true" order="1" />
+</data>
+<data id="14_REPER">
+	<panel descr="Паспорт" source="14_REPER" dataRequest="eco_sem.xml#14_REPER" default="true" order="1" />
+</data>
+<data id="15_TORFORAZ">
+	<panel descr="Паспорт" source="15_TORFORAZ" dataRequest="eco_sem.xml#15_TORFORAZ" default="true" order="1" />
+</data>
+<data id="16_PERESECH">
+	<panel descr="Паспорт" source="16_PERESECH" dataRequest="eco_sem.xml#16_PERESECH" default="true" order="1" />
+</data>
+<data id="17_BEREGOV">
+	<panel descr="Паспорт" source="17_BEREGOV" dataRequest="eco_sem.xml#17_BEREGOV" default="true" order="1" />
+</data>
+<data id="18_ABRAZION">
+	<panel descr="Паспорт" source="18_ABRAZION" dataRequest="eco_sem.xml#18_ABRAZION" default="true" order="1" />
+</data>
+<data id="19_MALIE_VOD">
+	<panel descr="Паспорт" source="19_MALIE_VOD" dataRequest="eco_sem.xml#19_MALIE_VOD" default="true" order="1" />
+</data>
+<data id="VIRUBKI_2020">
+	<panel descr="Паспорт" source="VIRUBKI_2020" dataRequest="eco_sem.xml#VIRUBKI_2020" default="true" order="1" />
+</data>
+<data id="VIRUBKI_2019">
+	<panel descr="Паспорт" source="VIRUBKI_2019" dataRequest="eco_sem.xml#VIRUBKI_2019" default="true" order="1" />
+</data>
+<data id="VIRUBKI_2018">
+	<panel descr="Паспорт" source="VIRUBKI_2018" dataRequest="eco_sem.xml#VIRUBKI_2018" default="true" order="1" />
+</data>
+<data id="VIRUBKI_2017">
+	<panel descr="Паспорт" source="VIRUBKI_2017" dataRequest="eco_sem.xml#VIRUBKI_2017" default="true" order="1" />
+</data>
+<data id="VIRUBKI_2016">
+	<panel descr="Паспорт" source="VIRUBKI_2016" dataRequest="eco_sem.xml#VIRUBKI_2016" default="true" order="1" />
+</data>
+<data id="VIRUBKI_2015">
+	<panel descr="Паспорт" source="VIRUBKI_2015" dataRequest="eco_sem.xml#VIRUBKI_2015" default="true" order="1" />
+</data>
+<data id="VIRUBKI_2014">
+	<panel descr="Паспорт" source="VIRUBKI_2014" dataRequest="eco_sem.xml#VIRUBKI_2014" default="true" order="1" />
+</data>
+<data id="VIRUBKI_2013">
+	<panel descr="Паспорт" source="VIRUBKI_2013" dataRequest="eco_sem.xml#VIRUBKI_2013" default="true" order="1" />
+</data>
+<data id="PODTOPL_2019">
+	<panel descr="Паспорт" source="PODTOPL_2019" dataRequest="eco_sem.xml#PODTOPL_2019" default="true" order="1" />
+</data>
+<data id="PODTOPL_2017">
+	<panel descr="Паспорт" source="PODTOPL_2017" dataRequest="eco_sem.xml#PODTOPL_2017" default="true" order="1" />
+</data>
+<data id="200_METERS_Z">
+	<panel descr="Паспорт" source="200_METERS_Z" dataRequest="eco_sem.xml#200_METERS_Z" default="true" order="1" />
+</data>
+<data id="10_KM_ZONE">
+	<panel descr="Паспорт" source="10_KM_ZONE" dataRequest="eco_sem.xml#10_KM_ZONE" default="true" order="1" />
+</data>
+<data id="CHECK_POINTS">
+	<panel descr="Паспорт" source="CHECK_POINTS" dataRequest="eco_sem.xml#CHECK_POINTS" default="true" order="1" />
+</data>
+<!-- Конец описания форм для задачи Экомониторинг -->
+<!-- Задача планирования шурфов -->
+<data id="PODS_STO_ILI_DATA_SHEET_RELOAD">
+	<panel descr="Паспорт" source="PODS_ILI_DATA" dataRequest="PODS_SEM.xml#PODS_ILI_DATA" default="true" order="1" />
+	
+</data>
+<data id="PODS_STO_REPAIR_SHEET_RELOAD">
+	<panel descr="Паспорт" source="PODS_ILI_DATA" dataRequest="PODS_SEM.xml#PODS_ILI_DATA" default="true" order="1" />
+	
+</data>
+<data id="PODS_STO_SHEET_EXCAVATE_LIST">
+	<panel descr="Паспорт" source="PODS_STO_SHEET_EXCAVATE_LIST" dataRequest="STO_SEM.xml#PODS_STO_SHEET_EXCAVATE_LIST" default="true" order="1" />
+</data>
+<data id="PODS_STO_SHEET_REPAIR_LIST">
+	<panel descr="Паспорт" source="PODS_STO_SHEET_REPAIR_LIST" dataRequest="STO_SEM.xml#PODS_STO_SHEET_REPAIR_LIST" default="true" order="1" />
+</data>
+<data id="PODS_STO_SHEET_EXCAVATE">
+	<panel descr="Паспорт" source="PODS_STO_SHEET_EXCAVATE" dataRequest="STO_SEM.xml#PODS_STO_SHEET_EXCAVATE" default="true" order="1" />
+</data>
+<data id="PODS_STO_SHEET_EXCAVATE_BLANK">
+	<panel descr="Паспорт" source="PODS_STO_SHEET_EXCAVATE_BLANK" dataRequest="STO_SEM.xml#PODS_STO_SHEET_EXCAVATE" default="true" order="1" />
+</data>
+<data id="PODS_STO_SHEET_REPAIR">
+	<panel descr="Паспорт" source="PODS_STO_SHEET_REPAIR" dataRequest="STO_SEM.xml#PODS_STO_SHEET_REPAIR" default="true" order="1" />
+</data>
+<data id="PODS_STO_SHEET_MTR">
+	<panel descr="Паспорт" source="PODS_STO_SHEET_MTR" dataRequest="STO_SEM.xml#PODS_STO_SHEET_MTR" default="true" order="1" />
+</data>
+<!-- Конец описания форм для задачи планирования шурфов -->
+<!-- Задача Тех.схема со сведениями по дефектности -->
+<data id="WKB_TR_MAPSHEM_ROUTE_PART">
+	<panel descr="Паспорт" source="WKB_TR_MAPSHEM_ROUTE_PART" dataRequest="TR_MAPSHEM_SEM.xml#WKB_TR_MAPSHEM_ROUTE_PART" default="true" order="1" />
+</data>
+<data id="KAP_REMONT_PLAN">
+	<panel descr="Паспорт" source="KAP_REMONT_PLAN" dataRequest="TR_MAPSHEM_SEM.xml#KAP_REMONT_PLAN" default="true" order="1" />
+</data>
+<!-- Конец описания форм для задачи Тех.схема со сведениями по дефектности -->
+<!-- для задачи "обследование ЭХЗ" -->
+<data id="PODS_PI_CP_INSPECTION_KIP">
+	<panel descr="Паспорт" source="PODS_PI_CP_INSPECTION_KIP" dataRequest="PODS_SEM.xml#PODS_PI_CP_INSPECTION_KIP" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<data id="PODS_PI_CP_INSPECTION_INTENS">
+	<panel descr="Паспорт" source="PODS_PI_CP_INSPECTION_INTENS" dataRequest="PODS_SEM.xml#PODS_PI_CP_INSPECTION_INTENS" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST" order="15" />
+</data>
+<!-- для задачи "диагностика дорожных переходов" -->
+<data id="ROAD">
+	<panel descr="Паспорт" source="ROAD" dataRequest="ROAD_SEM.xml#ROAD" default="true" order="1" /></data>
+<data id="ROAD_CROSS">
+	<panel descr="Паспорт" source="ROAD_CROSS" dataRequest="ROAD_SEM.xml#ROAD_CROSS" default="true" order="1" />
+</data>
+<!-- для задачи "водные переходы" -->
+<data id="WATERWAY">
+	<panel descr="Паспорт" source="WATERWAY" dataRequest="WATERWAY_SEM.xml#WATERWAY" default="true" order="1" /></data>
+<data id="WATERWAY_CROSS">
+	<panel descr="Паспорт" source="WATERWAY_CROSS" dataRequest="WATERWAY_SEM.xml#WATERWAY_CROSS" default="true" order="1" />
+</data>
+<!-- для задачи "СУ ТС ТПА" -->
+<data id="SUTSTPA_СВЕЧА">
+	<panel descr="Паспорт" source="SUTSTPA_СВЕЧА" dataRequest="SUTSTPA_SEM.xml#SUTSTPA_СВЕЧА" default="true" order="1" />
+</data>
+<data id="SUTSTPA_КРАН">
+	<panel descr="Паспорт" source="SUTSTPA_КРАН" dataRequest="SUTSTPA_SEM.xml#SUTSTPA_КРАН" default="true" order="1" />
+	<panel descr="Привод" source="SUTSTPA_КРАН_OPER" dataRequest="SUTSTPA_SEM.xml#SUTSTPA_КРАН_OPER" order="2" />
+	<panel descr="Чек-лист" source="SUTSTPA_КРАН_CHECK" dataRequest="SUTSTPA_SEM.xml#SUTSTPA_КРАН_CHECK" order="3" />
+	<panel descr="Экспл. данные" source="SUTSTPA_КРАН_EXP" dataRequest="SUTSTPA_SEM.xml#SUTSTPA_КРАН_EXP" order="5" />
+	<panel descr="Инфотех. Сверка" source="SUTSTPA_КРАН_INF" dataRequest="SUTSTPA_SEM.xml#SUTSTPA_КРАН_INF" order="4" />
+	<panel descr="Исп. док-ция. Сверка" source="SUTSTPA_КРАН_EXEC_DOC" dataRequest="SUTSTPA_SEM.xml#SUTSTPA_КРАН_EXEC_DOC" order="5" />
+</data>
+<data id="SUTSTPA_КРАНОВЫЙ_УЗЕЛ">
+	<panel descr="Паспорт" source="SUTSTPA_КРАНОВЫЙ_УЗЕЛ" dataRequest="SUTSTPA_SEM.xml#SUTSTPA_КРАНОВЫЙ_УЗЕЛ" default="true" order="1" />
+</data>
+<data id="SUTSTPA_MISMATCH_EXEC_DOC">
+	<panel descr="Паспорт" source="SUTSTPA_MISMATCH_EXEC_DOC" dataRequest="SUTSTPA_SEM.xml#SUTSTPA_MISMATCH_EXEC_DOC" default="true" order="1" />
+</data>
+<data id="SUTSTPA_MISMATCH_EXEC_DOC_FORMAT">
+	<panel descr="Паспорт" source="SUTSTPA_MISMATCH_EXEC_DOC_FORMAT" dataRequest="SUTSTPA_SEM.xml#SUTSTPA_MISMATCH_EXEC_DOC_FORMAT" default="true" order="1" />
+</data>
+<data id="SUTSTPA_MISMATCH_INFOTEH">
+	<panel descr="Паспорт" source="SUTSTPA_MISMATCH_INFOTEH" dataRequest="SUTSTPA_SEM.xml#SUTSTPA_MISMATCH_INFOTEH" default="true" order="1" />
+</data>
+<data id="SUTSTPA_NOTIF_MESSAGE">
+	<panel descr="Паспорт" source="SUTSTPA_NOTIF_MESSAGE" dataRequest="SUTSTPA_SEM.xml#SUTSTPA_NOTIF_MESSAGE" default="true" order="1" />
+</data>
+<data id="SUTSTPA_NOTIF_PERSON">
+	<panel descr="Паспорт" source="SUTSTPA_NOTIF_PERSON" dataRequest="SUTSTPA_SEM.xml#SUTSTPA_NOTIF_PERSON" default="true" order="1" />
+</data>
+<data id="SUTSTPA_SERVICE_COND_VIOL">
+	<panel descr="Паспорт" source="SUTSTPA_SERVICE_COND_VIOL" dataRequest="SUTSTPA_SEM.xml#SUTSTPA_SERVICE_COND_VIOL" default="true" order="1" />
+</data>
+<data id="SUTSTPA_SERVICE_EPB">
+	<panel descr="Паспорт" source="SUTSTPA_SERVICE_EPB" dataRequest="SUTSTPA_SEM.xml#SUTSTPA_SERVICE_EPB" default="true" order="1" />
+</data>
+<data id="SUTSTPA_SERVICE_MAINTENANCE">
+	<panel descr="Паспорт" source="SUTSTPA_SERVICE_MAINTENANCE" dataRequest="SUTSTPA_SEM.xml#SUTSTPA_SERVICE_MAINTENANCE" default="true" order="1" />
+</data>
+<data id="SUTSTPA_SERVICE_REPAIR">
+	<panel descr="Паспорт" source="SUTSTPA_SERVICE_REPAIR" dataRequest="SUTSTPA_SEM.xml#SUTSTPA_SERVICE_REPAIR" default="true" order="1" />
+</data>
+<data id="SUTSTPAVALIDATE_VENT_PIPE">
+	<panel descr="Паспорт" source="SUTSTPAVALIDATE_VENT_PIPE" dataRequest="SUTSTPAVALIDATE_SEM.xml#SUTSTPAVALIDATE_VENT_PIPE" default="true" order="1" />
+</data>
+<data id="SUTSTPAVALIDATE_VALVE">
+	<panel descr="Паспорт" source="SUTSTPAVALIDATE_VALVE" dataRequest="SUTSTPAVALIDATE_SEM.xml#SUTSTPAVALIDATE_VALVE" default="true" order="1" />
+	<panel descr="Привод" source="SUTSTPAVALIDATE_VALVE_OPER" dataRequest="SUTSTPAVALIDATE_SEM.xml#SUTSTPAVALIDATE_VALVE_OPER" order="2" />
+	<panel descr="Чек-лист" source="SUTSTPAVALIDATE_VALVE_CHECK" dataRequest="SUTSTPAVALIDATE_SEM.xml#SUTSTPAVALIDATE_VALVE_CHECK" order="3" />
+</data>
+<data id="SUTSTPAVALIDATE_STRUCTURE">
+	<panel descr="Паспорт" source="SUTSTPAVALIDATE_STRUCTURE" dataRequest="SUTSTPAVALIDATE_SEM.xml#SUTSTPAVALIDATE_STRUCTURE" default="true" order="1" />
+</data>
+<data id="SUTSTPA_MISMATCH_EXEC_DATA">
+	<panel descr="Паспорт" source="SUTSTPA_MISMATCH_EXEC_DATA" dataRequest="SUTSTPAVALIDATE_SEM.xml#SUTSTPA_MISMATCH_EXEC_DATA" default="true" order="1" />
+</data>
+
+<!-- для задачи "ВТД, коррекция геопривязки" -->
+<data id="PODS_ILI_REPER">
+	<panel descr="Паспорт" source="PODS_ILI_REPER" dataRequest="ilicorr_SEM.xml#PODS_ILI_REPER" default="true" order="1" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE_ILI" dataRequest="GAZPROM_SYS_SEM.xml#PODS_PS_LC_EVENT_RANGE_ILI" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_ILI_LIST" dataRequest="GAZPROM_SYS_SEM.xml#PODS_COORD_ILI_LIST" order="15" />
+</data>
+<!-- для задачи ПКА показ трубного журнала на профиле" -->
+<data id="ILI_PIPE_LENGTH">
+	<panel descr="Паспорт" source="PODS_ILI_PIPE_LENGTH" dataRequest="PODS_SEM.xml#PODS_ILI_PIPE_LENGTH" default="true" order="1" />
+</data>
+</root>

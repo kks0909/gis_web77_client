@@ -1,0 +1,492 @@
+﻿<!-- ВТД -->
+<dataset name=" " version="7.7.5.0">
+  <group comment="Команды">
+	   <invoke id="gridToolModule" type="global" event_name="FULL_GRID_EVENT_ID_MODULE"
+					  tooltip="Показать списком"
+					  icon="Public/assets/GRID.png">
+		<!-- Общие параметры-->
+		<!-- имя функции открытия, если пустое, то всегда в новом окне -->
+		<var name="functionName" value=""/>
+		<!-- доп параметры открытия окна из windowsTemplates.xml -->
+		<var name="windowTemplateId" value="gridWindow"/>
+		<!-- Задача -->
+		<var name="task" value="GRID"/>
+		<var name="mdl" value="Public/SWF/Grid_55.swf"/>
+		<!-- Необходимо ли в команды передавать фильтр верхнего уровня -->
+		<var name="needTopFilter" value="true"/>
+		<!-- Флаг указывает, всегда ли открывать в новом окне или можно использовать команды синхронизации -->
+		<var name="useSynchCommands" value="false"/>
+		<!-- шаблон грида -->
+		<var name="gridId" value=""/>
+		<!-- заголовок грида -->
+		<var name="title" value=""/>
+		<!-- полный идентификатор слоя -->
+		<var name="layerId" value=""/>
+		<var name="filter" value="ILI_INSP_FILTER" />
+	  </invoke>
+	  <!-- Вызов без сообщения о чистке карты и грида-->
+	  <invoke id="gridToolModuleWoFilter" type="global" event_name="FULL_GRID_EVENT_ID_MODULE"
+				  tooltip="Показать списком"
+				  icon="Public/assets/GRID.png">
+		  <!-- Общие параметры-->
+		  <!-- имя функции открытия, если пустое, то всегда в новом окне -->
+		  <var name="functionName" value=""/>
+		  <!-- доп параметры открытия окна из windowsTemplates.xml -->
+		  <var name="windowTemplateId" value="gridWindow"/>
+		  <!-- Задача -->
+		  <var name="task" value="GRID"/>
+		  <var name="mdl" value="Public/SWF/Grid_55.swf"/>
+		  <!-- Необходимо ли в команды передавать фильтр верхнего уровня -->
+		  <var name="needTopFilter" value="true"/>
+		  <!-- Флаг указывает, всегда ли открывать в новом окне или можно использовать команды синхронизации -->
+		  <var name="useSynchCommands" value="false"/>
+		  <!-- шаблон грида -->
+		  <var name="gridId" value=""/>
+		  <!-- заголовок грида -->
+		  <var name="title" value=""/>
+		  <!-- полный идентификатор слоя -->
+		  <var name="layerId" value=""/>
+	  </invoke>
+	  <invoke id="showFilter_PI_CP_Module" type="global" event_name="FULL_GRID_ROUGH_FILTER_MODULE" tooltip="Показать списком" icon="Public/assets/GRID.png">
+		  <!-- Общие параметры-->
+		  <!-- имя функции открытия, если пустое, то всегда в новом окне -->
+		  <var name="functionName" value=""/>
+		  <!-- доп параметры открытия окна из windowsTemplates.xml -->
+		  <var name="windowTemplateId" value="gridWindow"/>
+		  <!-- Задача -->
+		  <var name="task" value="GRID"/>
+		  <var name="mdl" value="Public/SWF/Grid_55.swf"/>
+		  <!-- Необходимо ли в команды передавать фильтр верхнего уровня -->
+		  <var name="needTopFilter" value="true"/>
+		  <!-- Флаг указывает, всегда ли открывать в новом окне или можно использовать команды синхронизации -->
+		  <var name="useSynchCommands" value="false"/>
+
+		  <!-- шаблон грида -->
+		  <var name="gridId" value=""/>
+		  <!-- заголовок грида -->
+		  <var name="title" value=""/>
+		  <!-- полный идентификатор слоя -->
+		  <var name="layerId" value=""/>
+
+		  <!-- Параметры для среднего фильтра -->
+		  <var name="requestId" value="PODS_SEM_DICT.xml#PODS_PI_CP_INSPECTION" />
+		  <var name="variableName" value="PI_CP_EVENT_ID" />
+		  <var name="winTitle" value="Обследование ЭХЗ" />
+		  <var name="maxRecords" value="10" />
+	  </invoke>
+	  <invoke id="showFilter_PIPE_SEGMENT_Module" type="global" event_name="FULL_GRID_ROUGH_FILTER_MODULE" tooltip="Показать списком" icon="Public/assets/GRID.png">
+		  <!-- Общие параметры-->
+		  <!-- имя функции открытия, если пустое, то всегда в новом окне -->
+		  <var name="functionName" value=""/>
+		  <!-- доп параметры открытия окна из windowsTemplates.xml -->
+		  <var name="windowTemplateId" value="gridWindow"/>
+		  <!-- Задача -->
+		  <var name="task" value="GRID"/>
+		  <var name="mdl" value="Public/SWF/Grid_55.swf"/>
+		  <!-- Необходимо ли в команды передавать фильтр верхнего уровня -->
+		  <var name="needTopFilter" value="false"/>
+		  <!-- Флаг указывает, всегда ли открывать в новом окне или можно использовать команды синхронизации -->
+		  <var name="useSynchCommands" value="false"/>
+
+		  <!-- шаблон грида -->
+		  <var name="gridId" value=""/>
+		  <!-- заголовок грида -->
+		  <var name="title" value=""/>
+		  <!-- полный идентификатор слоя -->
+		  <var name="layerId" value=""/>
+
+		  <!-- Параметры для среднего фильтра -->
+		  <var name="requestId" value="PODS_POLICY.xml#PODS_LINE_ID" />
+		  <var name="variableName" value="LINE_ID" />
+		  <var name="winTitle" value="Трубопровод" />
+		  <var name="maxRecords" value="1" />
+	  </invoke>
+    <invoke id="showGrid" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+    </invoke>
+    <!--<invoke id="showFilter" type="global" event_name="FULL_GRID_ROUGH_FILTER" tooltip="Показать списком" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+      <var name="requestId" value="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION" />
+      <var name="variableName" value="ILI_INSPECTION_ID" />
+      <var name="winTitle" value="Обследование ВТД" />
+      <var name="maxRecords" value="10" />
+    </invoke>-->
+    <invoke id="showFilter" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком" icon="Public/assets/GRID.png">
+		<var name="gridId" value="DEFAULT_GRID" />
+		<var name="filter" value="ILI_INSP_FILTER" />
+    </invoke>
+    <invoke id="showFilter_PI_CP" type="global" event_name="FULL_GRID_ROUGH_FILTER" tooltip="Показать списком" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+      <var name="requestId" value="PODS_SEM_DICT.xml#PODS_PI_CP_INSPECTION" />
+      <var name="variableName" value="PI_CP_EVENT_ID" />
+      <var name="winTitle" value="Обследование ЭХЗ" />
+      <var name="maxRecords" value="10" />
+    </invoke>
+    <invoke id="exportToExcel" type="global" event_name="exportToExcelFromTree" tooltip="Экспорт в Excel" icon="Public/assets/excel.png">
+      <var name="dataRequestId" value="" />
+	</invoke>
+	<invoke id="createNewObject" type="global" event_name="createObjectFromTree" tooltip="Добавить запись" icon="Public/assets/addObject.png">
+      <var name="classId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="checkBoxTool" type="global" event_name="checkBoxEvent" tooltip="Вкл/Выкл видимость слоя">
+      <var layerParams="" />
+    </invoke>
+  </group>
+  <tree max_items="20" toolbarStyle="toolbarStyle" toolbarButtonStyle="mapIcon">
+    <level format="ВТД, перечень всех обследований, имеющихся в системе" icon="Public/assets/NO_GEO.png" max_items="20" levelParams="layerId=PODS_INSP_Layers.xml#PODS_ILI_INSPECTION;" checkbox_type="">
+	      <context_menu run_invoke="gridToolModuleWoFilter" title="ВТД, перечень всех обследований, имеющихся в системе" gridId="PODS_ILI_INSPECTION_LIST" />
+	      <context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_ILI_INSPECTION" />
+	    </level>
+   <level format="ВТД, фактические данные обследований" icon="Public/assets/catalog.png" checkbox_type="childBased">
+	    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_PIPE_SEGMENT_PARAMS;">
+	      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_PIPE_SEGMENT_PARAMS" FILE_NAME="PODS_INSP_STYLE.xml" />
+	      <context_menu run_invoke="showFilter_PIPE_SEGMENT_Module" title="{descr}" gridId="PODS_STO_PIPE_SEGMENT_PARAMS_LIST" />
+		  <context_menu run_invoke="createNewObject" classId="PODS_STO_PIPE_SEGMENT_PARAMS"/>
+	      <context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_STO_PIPE_SEGMENT_PARAMS" />
+	      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_PIPE_SEGMENT_PARAMS;" />
+	      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_PIPE_SEGMENT_PARAMS;" />
+	      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+	        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+	      </level>
+	    </level>  
+            <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_ILI_DATA;">
+	      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_ILI_DATA" FILE_NAME="PODS_INSP_STYLE.xml" />
+	      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_ILI_DATA_LIST" />
+	      <!--<context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_ILI_DATA" />-->
+	      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_ILI_DATA;" />
+	      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_ILI_DATA;" />
+	      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+	        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+	      </level>
+	    </level>
+	    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_ILI_DATA_FEATURE;">
+	      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_ILI_DATA_FEATURE" FILE_NAME="PODS_INSP_STYLE.xml" />
+	      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_ILI_DATA_FEATURE_LIST" />
+	      <!--<context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_ILI_DATA_FEATURE" />-->
+	      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_ILI_DATA_FEATURE;" />
+	      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_ILI_DATA_FEATURE;" />
+	      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+	        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+	      </level>
+	    </level>
+	    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_ILI_PIPE_LENGTH;">
+	      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_ILI_PIPE_LENGTH" FILE_NAME="PODS_INSP_STYLE.xml" />
+	      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+	      <!--<context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_ILI_PIPE_LENGTH" />-->
+	      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_ILI_PIPE_LENGTH;" />
+	      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_ILI_PIPE_LENGTH;" />
+	      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+	        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+	      </level>
+	    </level>
+            <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#INFOTEH_REPAIR;">
+	      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="INFOTEH_REPAIR" FILE_NAME="PODS_INSP_STYLE.xml" />
+	      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="INFOTEH_REPAIR_LIST" />
+	      <on_check run_invoke="checkBoxTool" layerParams="layerId=INFOTEH_REPAIR;" />
+	      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=INFOTEH_REPAIR;" />
+	      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+	        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+	      </level>
+	    </level>
+	    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#INFOTEH_EXCAVATE;">
+	      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="INFOTEH_EXCAVATE" FILE_NAME="PODS_INSP_STYLE.xml" />
+	      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="INFOTEH_EXCAVATE_LIST" />
+	      <on_check run_invoke="checkBoxTool" layerParams="layerId=INFOTEH_EXCAVATE;" />
+	      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=INFOTEH_EXCAVATE;" />
+	      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+	        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+	      </level>
+	    </level>
+    </level>
+    <level format="ВТД, расчеты: Р 595, СТО 112, СТО 292, Р 401, Р 620, оценка взаимодействия" icon="Public/assets/catalog.png" checkbox_type="childBased">
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_ILI_CLUSTER;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_ILI_CLUSTER" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_ILI_CLUSTER_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_ILI_CLUSTER;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_ILI_CLUSTER;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="Р 595. Методы ремонта" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_REPAIR_METHOD;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_REPAIR_METHOD" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_REPAIR_METHOD_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_REPAIR_METHOD;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_REPAIR_METHOD;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="СТО 112. Оценка работоспособности" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_PERFORMANCE_EVAL;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_PERFORMANCE_EVAL" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_PERFORMANCE_EVAL_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_PERFORMANCE_EVAL;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_PERFORMANCE_EVAL;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="СТО 173. КРН. Степень опасности дефектов" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_DANGER_DEGREE;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_DANGER_DEGREE" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_DANGER_DEGREE_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_DANGER_DEGREE;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_DANGER_DEGREE;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="СТО 292. Ранги опасности дефектов" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_DANGER_RANK;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_DANGER_RANK" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_DANGER_RANK_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_DANGER_RANK;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_DANGER_RANK;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="Р 401. Вероятности отказов" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_FAIL_PROBABILITY;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_FAIL_PROBABILITY" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_FAIL_PROBABILITY_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_FAIL_PROBABILITY;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_FAIL_PROBABILITY;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+   <level format="Р 620. Дата повторного обследования" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_DATE_TEST;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_DATE_TEST" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_DATE_TEST_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_DATE_TEST;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_DATE_TEST;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+<level format="Р 620. Дата ремонта" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_DATE_REPAIR;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_DATE_REPAIR" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_DATE_REPAIR_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_DATE_REPAIR;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_DATE_REPAIR;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+<level format="ЛТГ. Методика Кочетковой" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_LTG_KOCHETKOVA;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_LTG_KOCHETKOVA" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_LTG_KOCHETKOVA_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_LTG_KOCHETKOVA;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_LTG_KOCHETKOVA;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+</level>
+    <level format="ВТД, расчеты 100-метр. участки: СТО 292, ВНИИГАЗ-2004(инструкция по противокорр. защите)" icon="Public/assets/catalog.png" checkbox_type="childBased">
+      <level format="СТО 292. Показатель состояния ЛЧ МГ по результатам ВТД" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_100_VALUE_CONDITION;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_100_VALUE_CONDITION" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_100_VALUE_CONDITION_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_100_VALUE_CONDITION;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_100_VALUE_CONDITION;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="ВНИИГАЗ 2004. Степень коррозионной опасности" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_100_DANGER_DEG;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_100_DANGER_DEG" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_100_DANGER_DEG_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_100_DANGER_DEG;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_100_DANGER_DEG;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="ВНИИГАЗ 2004. Категория коррозийной опасности" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_100_SEGMENT_CATEGORY;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_100_SEGMENT_CATEGORY" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_100_SEGMENT_CATEGORY_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_100_SEGMENT_CATEGORY;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_100_SEGMENT_CATEGORY;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="ВНИИГАЗ 2004. Время до образования усредн. крит. дефекта" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_100_TIME_TO_CRIT_DEPTH;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_100_TIME_TO_CRIT_DEPTH" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_100_TIME_TO_CRIT_DEPTH_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_100_TIME_TO_CRIT_DEPTH;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_100_TIME_TO_CRIT_DEPTH;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+    </level>
+    <level format="ВТД, расчеты межкран. участки: СТО 292" icon="Public/assets/catalog.png" checkbox_type="childBased">
+      <level format="СТО 292. Показатель состояния ЛЧ МГ по результатам ВТД" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_VALVE_VALUE_CONDITION;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_VALVE_VALUE_CONDITION" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_VALVE_VALUE_CONDITION_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_VALVE_VALUE_CONDITION;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_VALVE_VALUE_CONDITION;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+    </level>
+    <level format="ВТД, расчеты  по участкам м/д УКЗ: ВНИИГАЗ-2004(инструкция по противокорр. защите)" icon="Public/assets/catalog.png" checkbox_type="childBased">
+      <level format="ВНИИГАЗ 2004. Степень коррозионной опасности" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_VALVE_DANGER_DEG;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_VALVE_DANGER_DEG" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_VALVE_DANGER_DEG_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_VALVE_DANGER_DEG;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_VALVE_DANGER_DEG;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="ВНИИГАЗ 2004. Категория коррозийной опасности" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_VALVE_SEGMENT_CATEGORY;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_VALVE_SEGMENT_CATEGORY" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_VALVE_SEGMENT_CATEGORY_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_VALVE_SEGMENT_CATEGORY;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_VALVE_SEGMENT_CATEGORY;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="ВНИИГАЗ 2004. Время до образования усредн. крит. дефекта" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_VALVE_TIME_TO_CRIT_DEPTH;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_VALVE_TIME_TO_CRIT_DEPTH_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_VALVE_TIME_TO_CRIT_DEPTH;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_VALVE_TIME_TO_CRIT_DEPTH;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+    </level>
+    <level format="ВТД, расчеты по участку пропуска:  СТО 292, Р 401, СТО 095, ВНИИГАЗ-2004(инструкция по противокорр. защите)" icon="Public/assets/catalog.png" checkbox_type="childBased">
+      <level format="СТО 292. Показатель состояния ЛЧ МГ по результатам ВТД" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_RANGE_VALUE_CONDITION;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_RANGE_VALUE_CONDITION" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_RANGE_VALUE_CONDITION_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_VALUE_CONDITION;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_VALUE_CONDITION;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="Р 401. Предел. срок эксплуатации до вывода в капремонт" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_RANGE_TIME_LIMIT_EXPL;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_RANGE_TIME_LIMIT_EXPL" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_RANGE_TIME_LIMIT_EXPL_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_TIME_LIMIT_EXPL;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_TIME_LIMIT_EXPL;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="Р 401. Оптим. время до проведения ВТД, год" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_RANGE_OPTIM_TIM_BFR_ILI;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_RANGE_OPTIM_TIM_BFR_ILI" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_RANGE_OPTIM_TIM_BFR_ILI_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_OPTIM_TIM_BFR_ILI;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_OPTIM_TIM_BFR_ILI;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="Р 401. Минимум удел. затрат, млн.руб./год на 1 км" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_RANGE_MIN_UNIT_COST_YKM;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_RANGE_MIN_UNIT_COST_YKM" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_RANGE_MIN_UNIT_COST_YKM_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_MIN_UNIT_COST_YKM;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_MIN_UNIT_COST_YKM;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="Р 401. Вероятность отказа участка МГ после ремонта" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_RANGE_FAILURE_PROBABLY;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_RANGE_FAILURE_PROBABLY" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_RANGE_FAILURE_PROBABLY_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_FAILURE_PROBABLY;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_FAILURE_PROBABLY;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="Р 401. Оптим. кол-во заменяемых труб, шт" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_RANGE_OP_REP_PIPE_COUNT;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_RANGE_OP_REP_PIPE_COUNT" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_RANGE_OP_REP_PIPE_COUNT_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_OP_REP_PIPE_COUNT;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_OP_REP_PIPE_COUNT;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="Р 401. Время наработки на отказ после капремонта, год" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_RANGE_MEAN_TIME_FAIL;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_RANGE_MEAN_TIME_FAIL" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_RANGE_MEAN_TIME_FAIL_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_MEAN_TIME_FAIL;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_MEAN_TIME_FAIL;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="СТО 095. Прогноз числа дефектов КРН" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_RANGE_PROJECTED_SCC;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_RANGE_PROJECTED_SCC" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_RANGE_PROJECTED_SCC_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_PROJECTED_SCC;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_PROJECTED_SCC;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="СТО 095. Срок до проведения повторной ВТД по КРН" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_RANGE_NEXT_INSP_SCC;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_RANGE_NEXT_INSP_SCC" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_RANGE_NEXT_INSP_SCC_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_NEXT_INSP_SCC;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_NEXT_INSP_SCC;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="СТО 095. Прогноз по числу корр. дефектов" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_RANGE_PROJECTED_COR;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_RANGE_PROJECTED_COR" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_RANGE_PROJECTED_COR_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_PROJECTED_COR;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_PROJECTED_COR;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="СТО 095. Срок до проведения повторной корроз. ВТД" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_RANGE_NEXT_INSP;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_RANGE_NEXT_INSP" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_RANGE_NEXT_INSP_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_NEXT_INSP;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_NEXT_INSP;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="ВНИИГАЗ 2004. Степень коррозионной опасности" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_RANGE_DANGER_DEG;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_RANGE_DANGER_DEG" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_RANGE_DANGER_DEG_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_DANGER_DEG;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_DANGER_DEG;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="ВНИИГАЗ 2004. Категория коррозийной опасности" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_RANGE_SEGMENT_CATEGORY;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_RANGE_SEGMENT_CATEGORY" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_RANGE_SEGMENT_CATEGORY_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_SEGMENT_CATEGORY;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_SEGMENT_CATEGORY;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="ВНИИГАЗ 2004. Время до образования усредн. крит. дефекта" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_STO_RANGE_TIME_TO_CRIT_DEPTH;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STO_RANGE_TIME_TO_CRIT_DEPTH" FILE_NAME="PODS_INSP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_STO_RANGE_TIME_TO_CRIT_DEPTH_LIST" />
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_TIME_TO_CRIT_DEPTH;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STO_RANGE_TIME_TO_CRIT_DEPTH;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+        </level>
+      </level>
+    </level>
+     
+   </tree>
+</dataset>

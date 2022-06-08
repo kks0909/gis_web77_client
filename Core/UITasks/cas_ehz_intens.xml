@@ -1,0 +1,58 @@
+﻿<ROOT prevTask="close" version="7.0.3.2" reload="true">
+	<panel id="CAS" url="Public/SWF/Modules/CAS_Module.SWF" percentWidth="100" percentHeight="100" reload="false">
+	  <settings>
+	<label text="КОММЕРЧЕСКАЯ ТАЙНА" font="Times" font-size="12" left="" right="10" top="" bottom="60" />
+	  <!-- параметр, скрывающий кнопку отправки сообщения -->
+	  <hideButtons>SendMail</hideButtons>
+      <!--Радиус поиска векторных объектов на карте, в пикселях -->
+      <add key="MAP_Info_Radius" value="5"/>
+      <!-- Шаг матрицы разрежения объектов на карте по Х -->
+      <add key="MAP_Matrix_DX" value="1"/>
+      <!-- Шаг матрицы разрежения объектов на карте по Y -->
+      <add key="MAP_Matrix_DY" value="1"/>
+      <!-- Максимальное отношение длины подписи (в пикселах) к длине объекта (в пикселах), при котором подпись выводится -->
+      <add key="MAP_Label_Len_Ratio" value = "1.5"/>
+      <!-- Минимальное отношение длины видимого линейного объекта к ширине экрана -->
+      <add key="MAP_Len_Ratio" value = "0.00000001"/>
+      <!-- Коэффициент при расчете размера шрифта подписи -->
+      <add key="MAP_Label_Font_Ratio" value = "0.7131"/>
+      <!-- часть высоты карты, через которую повторяется подпись протяженного линейного объекта -->
+      <add key="MAP_Label_Repeat_Ratio" value = "1.5"/>
+      <!-- Максимально допустимое расстояние от конца подписи до линии (в пикселах) -->
+      <add key="MAP_Label_Cut_Tolerance" value = "15"/>
+      <!-- Процент обрезки подписей в случае режима MAP_Label_Draw_Type="cut" -->
+      <add key="MAP_Label_Cut_Ratio" value = "0.1"/>
+      <!-- Тип отрисовки подписей для линий (вдоль линии, обрезать) along, cut. Значение по умолчанию "cut" -->
+      <add key="MAP_Label_Draw_Type" value = "cut"/>
+      <!--  Смещение по x,y текста относительно подписи (в пикселах)  -->
+      <add key="MAP_Label_Offset" value = "0"/>
+      <!--  Ширина легенды (в пикселах)  -->
+      <add key="MAP_Legend_Width" value = "190"/>
+      <!--  Высота отступа верхней границы 1-го сверху графика от границы диаграммы. В у.е(виртуальные пикселы), которые используются в GEO файлах для определения высоты графика  -->
+      <add key="MAP_First_Diagram_Offset" value = "7"/>
+      <!--  Высота отступа всех графиков, кроме первого, от предыдущего. В у.е(виртуальные пикселы), которые используются в GEO файлах для определения высоты графика  -->
+      <add key="MAP_Diagram_Offset" value = "3"/>  
+	<Models>
+		    <model name="CAS_EHZ_INTENS" descr="Обследования ЭХЗ, интенсивы" onTaskChanged="delete" onUserChanged="delete"/>
+	    </Models>
+	    <MIN_START_END_KM_DELTA>0.1</MIN_START_END_KM_DELTA>
+	    <tree id="EHZ" title="Обследования ЭХЗ" default="true">
+        	<startupScenario openLayers="CAS_PODS_STO_100_DANGER_DEG,CAS_PODS_ILI_CLUSTER,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_DANGER_RANK,PI_PS_ON,PI_DC_POTENTIAL_VOLTS,PI_STATIC" >
+        </startupScenario>
+    	</tree>
+	  </settings>
+	</panel>
+	<panel id="PROP" url="Public/SWF/modules/PropertiesM.swf" height="0" percentWidth="100">
+    <settings>
+      <editable>false</editable>
+      <title />
+      <width>790</width>
+      <height>250</height>
+      <!-- Флаг отображения системных свойств в формах -->
+      <add key="Show_System_Info" value="false" />
+      <dataSource>SYS_PROP.xml#PROP_LIST</dataSource>
+      <enableEmbed>false</enableEmbed>
+    </settings>
+  </panel>
+  <functional id="CAS_BALLOON" url="Public/SWF/modules/CASBalloonModule.swf" reload='true' percentWidth='0' percentHeight='0'/>
+</ROOT>

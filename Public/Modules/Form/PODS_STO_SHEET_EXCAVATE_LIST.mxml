@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="760" xmlns="view.data.*" title="Сведения о выполненном наружном обследовании" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml" initialId="LIST_ID">
+  <dataProvider>STO_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+   </panel:buttons>
+  <mx:VBox width="760">
+    <mx:HBox percentWidth="100">
+      <mx:VBox percentWidth="50">
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Описание" width="140"/>
+	  <mx:TextInput id="DESCRIPTION" width="160" maxChars="32" height="20"/>
+        </mx:HBox>
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Тип контроля" width="140"/>
+	  <mx:TextInput id="TYPE" width="50" maxChars="32" height="20"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Комментарии" width="140"/>
+	  <mx:TextInput id="COMMENTS" width="160" maxChars="32" height="20"/>
+        </mx:HBox>
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Результаты доп.диагностического контроля, дефект:" />
+	</mx:HBox>
+	<mx:HBox percentWidth="100">
+		<mx:Text textAlign="right" text="Тип дефекта" width="140"/>
+		<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+		<mx:ComboBox id="DDK_ANOMALY_TYPE_CL" width="200" height="20"
+		dataProvider="PODS_SEM_DICT.xml#PODS_ILI_ANOMALY_TYPE_CL"/>
+		<mx:Button id="BTN_LIST_DDK_ANOMALY_TYPE_CL" selectedField="DDK_ANOMALY_TYPE_CL" enabled="false"
+		styleName="refList"
+		toolTip="Перейти к редактированию справочника"
+		width="16"
+		height="16"/>
+		</mx:HBox>
+	</mx:HBox>
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Расстояние от первого шва до края дефекта, м/ Макс. глубина дефекта, %/мм" width="140"/>
+	  <mx:TextInput id="DDK_DS_WELD_DISTANCE" width="50" maxChars="32" height="20"/>
+	  <mx:TextInput id="DDK_DEPTH" width="50" maxChars="32" height="20"/>
+	</mx:HBox>
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Длина/Ширина дефекта,мм" width="140"/>
+	  <mx:TextInput id="DDK_LENGTH" width="50" maxChars="32" height="20"/>
+	  <mx:TextInput id="DDK_WIDTH" width="50" maxChars="32" height="20"/>
+	</mx:HBox>
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Ориентация 1 дефекта/ 2 дефекта, часы" width="140"/>
+	  <mx:TextInput id="DDK_ORIENTATION_DEF1" width="50" maxChars="32" height="20"/>
+	  <mx:TextInput id="DDK_ORIENTATION_DEF2" width="50" maxChars="32" height="20"/>
+        </mx:HBox>
+         
+      </mx:VBox>
+      <mx:VBox percentWidth="50">
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text=" Результаты доп.диагностического контроля, труба:"/>
+	</mx:HBox>
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Расстояние до первого шва от КЗ, м/ Ориентация продольных швов" width="140"/>
+	  <mx:TextInput id="DDK_DS_WELD_ODOMETER" width="50" maxChars="32" height="20"/>
+	  <mx:TextInput id="DDK_WELD_ORIENTATION_DEG" width="50" maxChars="32" height="20"/>
+        </mx:HBox>
+
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Тип/ Длина, м/ Толщина, мм" width="140"/>
+	  <mx:TextInput id="DDK_WELD_DESCRIPTION" width="50" maxChars="32" height="20"/>
+	  <mx:TextInput id="DDK_WELD_LENGTH" width="50" maxChars="32" height="20"/>
+	  <mx:TextInput id="DDK_WALL_THICKNESS" width="50" maxChars="32" height="20"/>
+        </mx:HBox>	
+	<mx:HBox percentWidth="100">
+		<mx:Text textAlign="right" text="Марка стали" width="140"/>
+		<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+		<mx:ComboBox id="DDK_PIPE_MATERIAL_TYPE_CL" width="200" height="20"
+		dataProvider="STO_SEM.xml#PODS_STO_PIPE_MATERIAL_TYPE_CL"/>
+		<mx:Button id="BTN_LIST_DDK_PIPE_MATERIAL_TYPE_CL" selectedField="DDK_PIPE_MATERIAL_TYPE_CL" enabled="false"
+		styleName="refList"
+		toolTip="Перейти к редактированию справочника"
+		width="16"
+		height="16"/>
+		</mx:HBox>
+	</mx:HBox>
+	<mx:HBox percentWidth="100">
+		<mx:Text textAlign="right" text="ТУ на трубу" width="140"/>
+		<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+		<mx:ComboBox id="DDK_PIPE_STANDARD_CL" width="200" height="20"
+		dataProvider="STO_SEM.xml#PODS_STO_PIPE_STANDARD_CL"/>
+		<mx:Button id="BTN_LIST_DDK_PIPE_STANDARD_CL" selectedField="DDK_PIPE_STANDARD_CL" enabled="false"
+		styleName="refList"
+		toolTip="Перейти к редактированию справочника"
+		width="16"
+		height="16"/>
+		</mx:HBox>
+	</mx:HBox>
+	<mx:HBox percentWidth="100">
+		<mx:Text textAlign="right" text="Конструкция трубы" width="140"/>
+		<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+		<mx:ComboBox id="DDK_PIPE_CONSTRUCTION_TYPE_CL" width="200" height="20"
+		dataProvider="STO_SEM.xml#PODS_STO_PIPE_CONSTRUCTION_CL"/>
+		<mx:Button id="BTN_LIST_DDK_PIPE_CONSTRUCTION_TYPE_CL" selectedField="DDK_PIPE_CONSTRUCTION_TYPE_CL" enabled="false"
+		styleName="refList"
+		toolTip="Перейти к редактированию справочника"
+		width="16"
+		height="16"/>
+		</mx:HBox>
+	</mx:HBox>
+	<mx:HBox percentWidth="100">
+		<mx:Text textAlign="right" text="Завод-изготовитель" width="140"/>
+		<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+		<mx:ComboBox id="DDK_PIPE_MANUFACTURER_CL" width="200" height="20"
+		dataProvider="STO_SEM.xml#PODS_STO_PIPE_MANUFACTURER_CL"/>
+		<mx:Button id="BTN_LIST_DDK_PIPE_MANUFACTURER_CL" selectedField="DDK_PIPE_MANUFACTURER_CL" enabled="false"
+		styleName="refList"
+		toolTip="Перейти к редактированию справочника"
+		width="16"
+		height="16"/>
+		</mx:HBox>
+	</mx:HBox>
+	<mx:HBox percentWidth="100">
+		<mx:Text textAlign="right" text="Конструкция изоляции" width="140"/>
+		<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+		<mx:ComboBox id="DDK_PIPE_ISOLATION_CL" width="200" height="20"
+		dataProvider="STO_SEM.xml#PODS_STO_PIPE_ISOLATION_CL"/>
+		<mx:Button id="BTN_LIST_DDK_PIPE_ISOLATION_CL" selectedField="DDK_PIPE_ISOLATION_CL" enabled="false"
+		styleName="refList"
+		toolTip="Перейти к редактированию справочника"
+		width="16"
+		height="16"/>
+		</mx:HBox>
+	</mx:HBox>
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Примечание (Срок безопасной эксплуатации, лет)" width="140"/>
+	  <mx:TextInput id="PHYS_COMMENTS" width="160" maxChars="32" height="20"/>
+        </mx:HBox>
+	<mx:HBox percentWidth="100">	
+            		<mx:Text textAlign="right" text="Дата создания/ Кто создал" width="140"/>
+            		<mx:DateField id="CTIME" editable="false" width="96" height="20" formatString="DD.MM.YYYY"/>
+            		<mx:TextInput id="CUSER" editable="false" width="96" height="20" maxChars="80"/>
+         	</mx:HBox>
+		<mx:HBox percentWidth="100">
+            		<mx:Text textAlign="right" text="Дата изменения/ Кто изменил" width="140"/>
+            		<mx:DateField id="MTIME" editable="false" width="96" height="20" formatString="DD.MM.YYYY"/>
+            		<mx:TextInput id="MUSER" editable="false" width="96" height="20" maxChars="80"/>
+        	</mx:HBox>
+        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Идентификатор" width="140" />
+          <controls:NumberInput id="ID" editable="false" width="225" maxChars="22" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Идентификатор ведомости" width="140" />
+          <controls:NumberInput id="SHEET_ID" editable="false" width="225" maxChars="22" height="20" />
+        </mx:HBox>
+	<mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Идентификатор дефекта" width="140" />
+          <controls:NumberInput id="ILI_DATA_ID" editable="false" width="225" maxChars="22" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Идентификатор группы дефектов" width="140" />
+          <controls:NumberInput id="ILI_CLUSTER_ID" editable="false" width="225" maxChars="22" height="20" />
+        </mx:HBox>
+      </mx:VBox>
+    </mx:HBox>
+  </mx:VBox>
+ <validatorsArray>
+    <controls:DefaultStringValidator source="{DESCRIPTION}" property="text" minLength="1" requiredFieldError="Поле обязательно для заполнения." tooShortError="Поле обязательно для заполнения." />
+ </validatorsArray>   
+</DATA_EDIT_FORM>

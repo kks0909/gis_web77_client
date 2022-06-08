@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<kml version="7.7.3.0">
+  <Document>
+    <Style id="LIB_DOC" schema="WEB50" table="LIB_DOC" comment="WEB50.LIB_DOC" descr="Геокодированные документы">
+      <!-- value></value -->
+      <zoomMin>0</zoomMin>
+      <!-- минимальный масштаб отображения -->
+      <zoomMax>800000</zoomMax>
+      <!-- максимальный масштаб отображения -->
+      <IconStyle>
+        <Icon>
+          <!-- Иконка -->
+          <href>Public/assets/comments.png</href>
+          <!-- относительный путь к иконке, если картинка -->
+          <form>bitmap</form>
+          <!-- форма объекта, если это не картинка. Допустимые значения: square|circle|triangle|star|cross|x -->
+          <size>48</size>
+          <!-- размер в пикселах. Положительное число. 16 по умолчанию -->
+        </Icon>
+        <color>FF000000</color>
+        <!-- цвет заливки, если не картинка. По-умолчанию черная непрозрачная. -->
+        <outline>0</outline>
+      </IconStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>  
+    <Style id="LIB_DOC_WRL" schema="WEB50" table="LIB_DOC" comment="WEB50.LIB_DOC" descr="Документы 3D-сцен">
+      <!-- value></value -->
+      <zoomMin>0</zoomMin>
+      <!-- минимальный масштаб отображения -->
+      <zoomMax>800000</zoomMax>
+      <!-- максимальный масштаб отображения -->
+      <IconStyle>
+        <Icon>
+          <!-- Иконка -->
+          <href>Public/assets/_wrl.png</href>
+          <!-- относительный путь к иконке, если картинка -->
+          <form>bitmap</form>
+          <!-- форма объекта, если это не картинка. Допустимые значения: square|circle|triangle|star|cross|x -->
+          <size>16</size>
+          <!-- размер в пикселах. Положительное число. 16 по умолчанию -->
+        </Icon>
+        <color>FF000000</color>
+        <!-- цвет заливки, если не картинка. По-умолчанию черная непрозрачная. -->
+        <outline>0</outline>
+      </IconStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>      
+    <Style id="LIB_DOC_IMG" schema="WEB50" table="LIB_DOC" comment="WEB50.LIB_DOC" descr="Навигационные карты (IMG)">
+      <!-- value></value -->
+      <zoomMin>0</zoomMin>
+      <!-- минимальный масштаб отображения -->
+      <zoomMax>800000</zoomMax>
+      <!-- максимальный масштаб отображения -->
+      <IconStyle>
+        <Icon>
+          <!-- Иконка -->
+          <href>Public/assets/_img.png</href>
+          <!-- относительный путь к иконке, если картинка -->
+          <form>bitmap</form>
+          <!-- форма объекта, если это не картинка. Допустимые значения: square|circle|triangle|star|cross|x -->
+          <size>16</size>
+          <!-- размер в пикселах. Положительное число. 16 по умолчанию -->
+        </Icon>
+        <color>FF000000</color>
+        <!-- цвет заливки, если не картинка. По-умолчанию черная непрозрачная. -->
+        <outline>0</outline>
+      </IconStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>      
+    <Style id="LIB_DOC_GEO_VIDEO" schema="WEB50" table="LIB_DOC" comment="WEB50.LIB_DOC" descr="Данные видеомониторинга">
+      <!-- value></value -->
+      <zoomMin>0</zoomMin>
+      <!-- минимальный масштаб отображения -->
+      <zoomMax>800000</zoomMax>
+      <!-- максимальный масштаб отображения -->
+      <LineStyle>
+        <color>FF8000FF</color>
+        <width>2</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF808080</color>
+        <width>4</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>1</duplicate>
+        <overlap>1</overlap>
+      </LabelStyle>
+    </Style>      
+  </Document>
+</kml>

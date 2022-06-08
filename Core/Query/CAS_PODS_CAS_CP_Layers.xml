@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.5.0" descr="ЭХЗ">
+  <layer id="PI_PS_ON_TO_CURRENT_READING" synonym="PODS_PI_CP_READING,PODS_PI_CIS_READING,PI_PS_ON_TO_CURRENT_READING,PI_PS_ON,PI_PS_OFF,PI_DC_POTENTIAL_VOLTS,PI_STATIC,PI_CP_PS_ON,PI_CP_PS_OFF,PI_DC_POTENTIAL_READING,PI_CP_CURRENT_READING,PI_CP_RESISTANCE_READING" visible="true" type="common" topology="polygon" table="PI_PS_ON_TO_CURRENT_READING" spacing="none" schema="CAS" projection="EPSG:5807" order="140" labelField="LABEL" fitMap="false" descr="Измерения КИП. Оценка состояния изоляции по критерию delta U/delta I" dataType="vector" cover="false" comment="PI_PS_ON_TO_CURRENT_READING (PTG)" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PI_PS_ON_TO_CURRENT_READING" />
+    <dataProvider type="semantic" source="CAS_PODS_CAS_CP_SEM.xml#PI_PS_ON_TO_CURRENT_READING" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_CP_GEO.xml#PI_PS_ON_TO_CURRENT_READING" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_PS_ON_TO_CURRENT_READING" />
+  </layer>
+  <layer id="PI_PS_ON" synonym="PODS_PI_CP_READING,PODS_PI_CIS_READING,PI_PS_ON_TO_CURRENT_READING,PI_PS_ON,PI_PS_OFF,PI_DC_POTENTIAL_VOLTS,PI_STATIC,PI_CP_PS_ON,PI_CP_PS_OFF,PI_DC_POTENTIAL_READING,PI_CP_CURRENT_READING,PI_CP_RESISTANCE_READING" visible="false" type="common" topology="line" table="PI_PS_ON" spacing="none" schema="CAS" projection="EPSG:5807" order="10" labelField="LABEL" fitMap="false" descr="Интенсивные измерения. Потенциал включения" dataType="vector" cover="false" comment="CAS_PI_PS_ON" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PI_PS_ON" />
+    <dataProvider type="semantic" source="CAS_PODS_CAS_CP_SEM.xml#PI_PS_ON" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_CP_GEO.xml#CAS_PI_PS_ON" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION" />
+  </layer>
+  <layer id="PI_PS_OFF" synonym="PODS_PI_CP_READING,PODS_PI_CIS_READING,PI_PS_ON_TO_CURRENT_READING,PI_PS_ON,PI_PS_OFF,PI_DC_POTENTIAL_VOLTS,PI_STATIC,PI_CP_PS_ON,PI_CP_PS_OFF,PI_DC_POTENTIAL_READING,PI_CP_CURRENT_READING,PI_CP_RESISTANCE_READING" visible="false" type="common" topology="line" table="ILI_DEPTH" spacing="none" schema="CAS" projection="EPSG:5807" order="20" labelField="LABEL" fitMap="false" descr="Интенсивные измерения. Потенциал отключения" dataType="vector" cover="false" comment="CAS_ILI_DEPTH" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PI_PS_OFF" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_CP_GEO.xml#CAS_PI_PS_OFF" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION" />
+  </layer>
+  <layer id="PI_DC_POTENTIAL_VOLTS" synonym="PODS_PI_CP_READING,PODS_PI_CIS_READING,PI_PS_ON_TO_CURRENT_READING,PI_PS_ON,PI_PS_OFF,PI_DC_POTENTIAL_VOLTS,PI_STATIC,PI_CP_PS_ON,PI_CP_PS_OFF,PI_DC_POTENTIAL_READING,PI_CP_CURRENT_READING,PI_CP_RESISTANCE_READING" visible="false" type="common" topology="line" table="PI_DC_POTENTIAL_VOLTS" spacing="none" schema="CAS" projection="EPSG:5807" order="30" labelField="LABEL" fitMap="false" descr="Интенсивные измерения. Минимальный поляризационный потенциал" dataType="vector" cover="false" comment="CAS_PI_DC_POTENTIAL_VOLTS" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PI_DC_POTENTIAL_VOLTS" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_CP_GEO.xml#CAS_PI_DC_POTENTIAL_VOLTS" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION" />
+  </layer>
+  <layer id="PI_STATIC" synonym="PODS_PI_CP_READING,PODS_PI_CIS_READING,PI_PS_ON_TO_CURRENT_READING,PI_PS_ON,PI_PS_OFF,PI_DC_POTENTIAL_VOLTS,PI_STATIC,PI_CP_PS_ON,PI_CP_PS_OFF,PI_DC_POTENTIAL_READING,PI_CP_CURRENT_READING,PI_CP_RESISTANCE_READING" visible="false" type="common" topology="line" table="CAS_PI_STATIC" spacing="none" schema="CAS" projection="EPSG:5807" order="40" labelField="LABEL" fitMap="false" descr="Интенсивные измерения. Защитный потенциал" dataType="vector" cover="false" comment="CAS_PI_STATIC" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PI_STATIC" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_CP_GEO.xml#CAS_PI_STATIC" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION" />
+  </layer>
+  <layer id="PI_CP_PS_ON" synonym="PODS_PI_CP_READING,PODS_PI_CIS_READING,PI_PS_ON_TO_CURRENT_READING,PI_PS_ON,PI_PS_OFF,PI_DC_POTENTIAL_VOLTS,PI_STATIC,PI_CP_PS_ON,PI_CP_PS_OFF,PI_DC_POTENTIAL_READING,PI_CP_CURRENT_READING,PI_CP_RESISTANCE_READING" visible="true" type="common" topology="line" table="PI_CP_PS_ON" spacing="none" schema="CAS" projection="EPSG:5807" order="90" labelField="LABEL" fitMap="false" descr="Измерения КИП. Потенциал включения" dataType="vector" cover="false" comment="CAS_PI_CP_PS_ON" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PI_CP_PS_ON" />
+    <dataProvider type="semantic" source="CAS_PODS_CAS_CP_SEM.xml#PI_CP_PS_ON" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_CP_GEO.xml#CAS_PI_CP_PS_ON" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION" />
+  </layer>
+  <layer id="PI_CP_PS_OFF" synonym="PODS_PI_CP_READING,PODS_PI_CIS_READING,PI_PS_ON_TO_CURRENT_READING,PI_PS_ON,PI_PS_OFF,PI_DC_POTENTIAL_VOLTS,PI_STATIC,PI_CP_PS_ON,PI_CP_PS_OFF,PI_DC_POTENTIAL_READING,PI_CP_CURRENT_READING,PI_CP_RESISTANCE_READING" visible="true" type="common" topology="line" table="CAS_PI_CP_PS_OFF" spacing="none" schema="CAS" projection="EPSG:5807" order="100" labelField="LABEL" fitMap="false" descr="Измерения КИП.  Потенциал отключения" dataType="vector" cover="false" comment="CAS_PI_CP_PS_OFF" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PI_CP_PS_OFF"/>
+    <dataProvider type="semantic" source="CAS_PODS_CAS_CP_SEM.xml#PI_CP_PS_OFF" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_CP_GEO.xml#CAS_PI_CP_PS_OFF" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION" />
+  </layer>
+  <layer id="PI_DC_POTENTIAL_READING" synonym="PODS_PI_CP_READING,PODS_PI_CIS_READING,PI_PS_ON_TO_CURRENT_READING,PI_PS_ON,PI_PS_OFF,PI_DC_POTENTIAL_VOLTS,PI_STATIC,PI_CP_PS_ON,PI_CP_PS_OFF,PI_DC_POTENTIAL_READING,PI_CP_CURRENT_READING,PI_CP_RESISTANCE_READING" visible="true" type="common" topology="point" table="PI_DC_POTENTIAL_READING" spacing="none" schema="CAS" projection="EPSG:5807" order="110" labelField="LABEL" fitMap="false" descr="Измерения КИП. Защитный потенциал." dataType="vector" cover="false" comment="CAS_PI_DC_POTENTIAL_READING" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PI_DC_POTENTIAL_READING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PI_CP_READING" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_CP_GEO.xml#CAS_PI_CP_POTENTIAL_READING" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_PI_CP_READING" />
+  </layer>
+  <layer id="PI_CP_CURRENT_READING" synonym="PODS_PI_CP_READING,PODS_PI_CIS_READING,PI_PS_ON_TO_CURRENT_READING,PI_PS_ON,PI_PS_OFF,PI_DC_POTENTIAL_VOLTS,PI_STATIC,PI_CP_PS_ON,PI_CP_PS_OFF,PI_DC_POTENTIAL_READING,PI_CP_CURRENT_READING,PI_CP_RESISTANCE_READING" visible="false" type="common" topology="point" table="PI_CP_CURRENT_READING" spacing="none" schema="CAS" projection="EPSG:5807" order="120" labelField="LABEL" fitMap="false" descr="Измерения КИП. Сила тока." dataType="vector" cover="false" comment="CAS_PI_CP_CURRENT_READING" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PI_CP_CURRENT_READING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PI_CP_READING" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_CP_GEO.xml#CAS_PI_CP_CURRENT_READING" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_PI_CP_READING" />
+  </layer>
+  <layer id="PI_CP_RESISTANCE_READING" synonym="PODS_PI_CP_READING,PODS_PI_CIS_READING,PI_PS_ON_TO_CURRENT_READING,PI_PS_ON,PI_PS_OFF,PI_DC_POTENTIAL_VOLTS,PI_STATIC,PI_CP_PS_ON,PI_CP_PS_OFF,PI_DC_POTENTIAL_READING,PI_CP_CURRENT_READING,PI_CP_RESISTANCE_READING" visible="false" type="common" topology="point" table="PI_CP_RESISTANCE_READING" spacing="none" schema="CAS" projection="EPSG:5807" order="130" labelField="LABEL" fitMap="false" descr="Измерения КИП. Переходное сопротивление." dataType="vector" cover="false" comment="CAS_PI_CP_RESISTANCE_READING" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PI_CP_RESISTANCE_READING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PI_CP_READING" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_CP_GEO.xml#CAS_PI_CP_RESISTANCE_READING" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_PI_CP_READING" />
+  </layer>
+</root>

@@ -1,0 +1,108 @@
+﻿<!--7.7.5.0-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="6"  headerVertSize="50"
+            id="WKB_TR_MAPSHEM_ROUTE_PART_LIST"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelTemplateName="WKB_TR_MAPSHEM_ROUTE_PART_LIST"
+excelDataRequest="PODS_EXPORT.xml#WKB_TR_MAPSHEM_ROUTE_PART"
+            layerId="WKB_TR_MAPSHEM_ROUTE_PART" propertyPanelName="WKB_TR_MAPSHEM_ROUTE_PART"
+            dataRequest="TR_MAPSHEM_GRID.xml#WKB_TR_MAPSHEM_ROUTE_PART"
+            totalRecordsRequest="TR_MAPSHEM_GRID.xml#WKB_TR_MAPSHEM_ROUTE_PART_CNT"
+            initialSortField="ID">
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/showOnMap.png"
+        tooltip="Показать на карте"
+        clickEvent="ru.corelight.business.events.ShowOnMapEvent"
+        isEnabled="length" />
+ <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=showInfoEvent;toolTip=Показать информацию по объекту"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/map.png;eventName=ru.corelight.business.events.ShowOnMapEvent;toolTip=Показать на карте;layerId=WKB_TR_MAPSHEM_ROUTE_PART"
+                          editable="true"/>
+      <columns:GridColumn headerText="Идентификатор" dataField="ID" itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="false" filterComparisionType="number" width="40" />                    
+      <columns:GridColumn headerText="Тип\nтруб-да" dataField="CODE"
+                          filterRequestId="PODS_POLICY.xml#PODS_ROUTE_TYPE_GRID"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_POLICY.xml#PODS_ROUTE_TYPE_GRID"
+                          filterComparisionType="array"
+                          editable="false" hidden="true"
+                          sortField="ROUTE_TYPE_LBL"
+                          width="50"/>                  
+      <columns:GridColumn headerText="Трубопровод" dataField="LINE_ID"
+                          filterRequestId="PODS_POLICY.xml#PODS_LINE_GRID"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_POLICY.xml#PODS_LINE_GRID"
+                          filterComparisionType="array"
+                          editable="false" hidden="true"
+                          sortField="LINE_ID_LBL"
+                          width="100"/>
+      <columns:GridColumn headerText="Нач.\nкм уч." dataField="STATION_BEGIN"
+                        itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                        editable="true"
+                        filterComparisionType="number"
+                        width="40"/>
+      <columns:GridColumn headerText="Кон.\nкм уч." dataField="STATION_END"
+                        itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                        editable="true"
+                        filterComparisionType="number"
+                        width="40"/> 
+      <columns:GridColumn headerText="СТО 292. Состояние трубопровода" dataField="STO_292_2007_CONDITION"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="60"/>
+      <columns:GridColumn headerText="СТО 292. Значение показателя состояния" dataField="STO_292_2007_VALUE"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="60"/>                                      
+      <columns:GridColumn headerText="Идентификатор трубопровода" dataField="ROUTE_ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          width="60" hidden="true"/>
+      <columns:GridColumn headerText="Идентификатор обследования" dataField="ILI_INSPECTION_ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          width="60" hidden="true"/>
+      <columns:GridColumn headerText="Название трубопоровда" dataField="DESCRIPTION"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"
+                          filterComparisionType="string"
+                          width="160"/>
+      <columns:GridColumn headerText="Название типа трубопровода" dataField="ROUTE_TYPE_DESCRIPTION"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"
+                          filterComparisionType="string"
+                          width="160"/>
+      <columns:GridColumn headerText="Дата проведения ВТД, по которой рассчитан показатель" width="60" dataField="BEGIN_DATE" 
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer" filterComparisionType="date"
+                          editable="true"
+                          hidden="true"
+                          filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+     
+     <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

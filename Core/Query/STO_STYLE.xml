@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<kml version="7.7.4.4">
+  <Document>
+    <Style id="PODS_STO_SHURF_PLAN" schema="PODS" table="STO_SHURF_PLAN" comment="PODS.STO_SHURF_PLAN" descr="Участки пропуска снарядов" short_name="" topology="">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <form>circle</form>
+          <size>4</size>
+        </Icon>
+        <color>FFFF1493</color>
+        <outline>1</outline>
+      </IconStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+    </Style>
+<Style id="PODS_STO_ILI_DATA_SHEET_BASE" schema="PODS" table="STO_ILI_DATA_SHEET_BASE" comment="PODS.STO_ILI_DATA_SHEET_BASE" descr="Ведомость аномалий" short_name="" topology="">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <form>circle</form>
+          <size>4</size>
+        </Icon>
+        <color>FFFF1493</color>
+        <outline>1</outline>
+      </IconStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+    </Style>    
+  <Style id="PODS_STO_SHEET_EXCAVATE" schema="PODS" table="STO_SHEET_EXCAVATE" comment="PODS.STO_SHEET_EXCAVATE" descr="Архив ведомостей аномалий(шурфовок)" short_name="" topology="">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <form>circle</form>
+          <size>4</size>
+        </Icon>
+        <color>FFFF1493</color>
+        <outline>1</outline>
+      </IconStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+    </Style>
+<Style id="PODS_STO_SHEET_MTR" schema="PODS" table="STO_SHEET_MTR" comment="PODS.STO_SHEET_MTR" descr="Архив ведомостей МТР" short_name="" topology="">
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <form>circle</form>
+          <size>4</size>
+        </Icon>
+        <color>FFFF1493</color>
+        <outline>1</outline>
+      </IconStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+    </Style>
+  </Document>
+</kml>

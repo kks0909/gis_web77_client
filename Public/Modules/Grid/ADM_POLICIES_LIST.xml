@@ -1,0 +1,93 @@
+﻿<!--7.7.5.0-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="6"  headerVertSize="50"
+            id="ADM_POLICIES_LIST"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelTemplateName="ADM_POLICIES_LIST"
+            layerId="WEB50_B_POLICY" propertyPanelName="WEB50_B_POLICY"
+            dataRequest="ADM_SEM.xml#WEB50_B_POLICY"
+            totalRecordsRequest="ADM_SEM.xml#WEB50_B_POLICY_CNT"
+            formatDataFunction="getDataFromPoliciesList"
+            initialSortField="DESCRIPTION,POLICY_ID"
+            >
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/createObject.png"
+        tooltip="Создать объект"
+        clickEvent="ru.corelight.business.events.CreateObjectEvent"
+        isEnabled="null" />
+  <!--<picPutton:GridButton source="../../Public/assets/excel.png"
+        tooltip="Экспортировать в Excel"
+        clickEvent="ru.corelight.business.events.ExportToExcelEvent"
+        selectedObjects="this" />-->
+    <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+
+  <picPutton:GridButton source="../../Public/assets/unknown.png"
+        tooltip="Правила политики"
+        clickEvent="gridAdmPoliciesPolicyRules"
+        selectedObjects="this"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/unknown.png"
+        tooltip="Установка политик ролям"
+        clickEvent="gridAdmPoliciesSetRoleToPolicy"
+        selectedObjects="this"
+        position="top"/>
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=showInfoEvent;toolTip=Показать информацию по объекту"
+                          editable="true"/>
+      <!--<columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/excel.png;eventName=ru.corelight.business.events.ExportToExcelEvent;toolTip=Выгрузить в Excel;templateName=ADM_POLICIES_LIST"
+                          editable="true"/>-->
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/delete.png;eventName=ru.corelight.business.events.RemoveGridRowEvent;toolTip=Удалить запись"
+                          editable="true"/>
+      <columns:GridColumn headerText="Идентификатор" dataField="ID"  itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          hidden="true" editable="false" filterComparisionType="number" width="40" />                    
+      <columns:GridColumn headerText="Описание" dataField="DESCRIPTION"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="280"/>
+      <columns:GridColumn headerText="Дата создания" dataField="CTIME"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer"
+                          editable="true"
+                          filterComparisionType="date"
+                          width="100"/>
+      <columns:GridColumn headerText="Дата изменения" dataField="MTIME"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer"
+                          editable="true"
+                          filterComparisionType="date"
+                          width="100"/>
+      <columns:GridColumn headerText="POLICY_ID" dataField="POLICY_ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="280"/>
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

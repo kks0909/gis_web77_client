@@ -1,0 +1,38 @@
+﻿<ROOT prevTask="close" version="7.7.3.0">
+	<vbox percentWidth="100" percentHeight="100">
+		<panel id="WIDGET_GRID" url="Public/SWF/modules/WidgetGridM.swf" percentWidth="100" percentHeight="100">
+			<settings>
+				<rendererStyle>Public/css/default/gridStatus.css</rendererStyle>
+			</settings>
+		</panel>
+		<hbox percentWidth="100" percentHeight="0">
+			<panel id="WIDGET_PROP" url="Public/SWF/modules/PropertiesM.swf" percentWidth="100" percentHeight="0">
+				<settings>
+					<title> </title>
+					<width>790</width>
+					<height>250</height>
+					<dataSource>SYS_PROP.xml#PROP_LIST</dataSource>
+					<!-- Флаг отображения системных свойств в формах -->
+					<add key="Show_System_Info" value="false" />
+				</settings>
+			</panel>
+		</hbox>
+	</vbox>
+  <functional id="WIDGET_EXPORT_IMG" url="Public/SWF/modules/WidgetExportIMG_FM.swf">
+    <settings>
+      <requestSource>GAZPROM_SYS_SEM.xml</requestSource>
+      <formTitle>Выберите навигационные карты для экспорта в навигационный приемник</formTitle>
+      <buttonOkLabel>Экспортировать</buttonOkLabel>
+      <dataRequest>GAZPROM_SYS_SEM.xml#EXPORT_IMG</dataRequest>
+    </settings>
+  </functional>
+  <functional id="WIDGET_EXPORT_WRL" url="Public/SWF/modules/WidgetExportWRL_FM.swf">
+    <settings>
+      <requestSource>GAZPROM_SYS_SEM.xml</requestSource>
+      <formTitle>Выберите 3D сцену для просмотра</formTitle>
+      <buttonOkLabel>Открыть</buttonOkLabel>
+      <dataRequest>GAZPROM_SYS_SEM.xml#EXPORT_SCENE3D</dataRequest>
+    </settings>
+  </functional>
+  <functional id="EXPORT_GPX_GRID" url="Public/SWF/modules/WidgetExportGPX_FM.swf"/>
+</ROOT>

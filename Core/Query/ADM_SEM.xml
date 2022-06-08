@@ -1,0 +1,1590 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="postgres 7.7.7.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <!-- Запрос для получения содержимого файла Web.config (только клиентские настройки) -->
+  <data id="GET_CLIENT_SETTINGS" comment="Запрос для получения содержимого файла Web.config (только клиентские настройки)" schema="-" table="-" descr="Запрос для получения содержимого XML-файла">
+    <select>
+      <xmlQuery source="../../Web.config" xpath="//*[self::clientSettings or self::appSettings]" />
+    </select>
+    <update>
+      <xmlCommand source="../../Web.config">
+        <var name="key" />
+        <var name="data" />
+        <transform>
+          <xsl:template match="//add[@key='{key}']">
+            <xsl:value-of select="string('{data}')" disable-output-escaping="yes" />
+          </xsl:template>
+        </transform>
+      </xmlCommand>
+    </update>
+  </data>
+ <!-- Запрос для получения содержимого файла Web.config (только клиентские настройки) -->
+  <data id="GET_CLIENT_SETTINGS_CNT" comment="Запросы для работы CNT">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+          SELECT 1  where 1=2
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запрос для TRUNCATE заданной таблицы (используется при очистке данных из слоев карты) -->
+  <data id="CLEAR_LAYER" comment="Запрос для TRUNCATE заданной таблицы">
+    <delete>
+      <dbCommand>
+        <var name="LAYER_SCHEMA" />
+        <var name="LAYER_TABLE" />
+        <query>
+			TRUNCATE TABLE {LAYER_SCHEMA}.{LAYER_TABLE}
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запрос для получения, вставки, изменения и удаления role с запросами в XML по file, data и dataId -->
+  <data id="EDIT_ROLE_TASKS_XML" comment="-" schema="-" table="-">
+    <select>
+      <xmlQuery source="{file}" xpath="//role[@id='{dataId}']">
+        <var name="file" />
+        <var name="dataId" />
+      </xmlQuery>
+    </select>
+    <insert>
+      <xmlCommand source="{file}">
+        <var name="file" />
+        <var name="data" />
+        <transform>
+          <xsl:template match="data">
+            <xsl:copy>
+              <xsl:apply-templates select="@* | node()" />
+              <xsl:value-of select="string('{data}')" disable-output-escaping="yes" />
+            </xsl:copy>
+          </xsl:template>
+        </transform>
+      </xmlCommand>
+    </insert>
+    <update>
+      <xmlCommand source="{file}">
+        <var name="file" />
+        <var name="data" />
+        <var name="dataId" />
+        <transform>
+          <xsl:template match="role[@id='{dataId}']">
+            <xsl:value-of select="string('{data}')" disable-output-escaping="yes" />
+          </xsl:template>
+        </transform>
+      </xmlCommand>
+    </update>
+    <delete>
+      <xmlCommand source="{file}">
+        <var name="file" />
+        <var name="dataId" />
+        <transform>
+          <xsl:template match="role[@id='{dataId}']" />
+        </transform>
+      </xmlCommand>
+    </delete>
+  </data>
+  <data id="COPY_ROLE_TASKS_XML" comment="-" schema="-" table="-">
+    <insert>
+      <xmlCommand source="{file}">
+        <var name="file" />
+        <param name="newId" />
+        <param name="origId" />
+        <transform>
+          <xsl:template match="role">
+            <xsl:copy>
+              <xsl:apply-templates select="@* | node()" />
+            </xsl:copy>
+            <xsl:if test="@id=$origId">
+              <xsl:copy>
+                <xsl:apply-templates select="@*" />
+                <xsl:attribute name="id">
+                  <xsl:value-of select="$newId" />
+                </xsl:attribute>
+                <xsl:apply-templates select="node()" />
+              </xsl:copy>
+            </xsl:if>
+          </xsl:template>
+        </transform>
+      </xmlCommand>
+    </insert>
+  </data>
+  <!-- Запрос для получения, вставки, изменения и удаления styles по file, data, dataId, styleValue и topology ('point','line','polygon') -->
+  <data id="EDIT_STYLE_XML" comment="-" schema="-" table="-">
+    <select>
+      <xmlQuery source="{file}" xpath="//Style[@id='{dataId}']">
+        <var name="file" />
+      </xmlQuery>
+    </select>
+    <insert>
+      <xmlCommand source="{file}" template="stylesTemplate.xml">
+        <var name="file" />
+        <var name="data" />
+        <transform>
+          <xsl:template match="//Document">
+            <xsl:copy>
+              <xsl:apply-templates select="@* | node()" />
+              <xsl:value-of select="string('{data}')" disable-output-escaping="yes" />
+            </xsl:copy>
+          </xsl:template>
+        </transform>
+      </xmlCommand>
+    </insert>
+    <update>
+      <xmlCommand source="{file}" template="stylesTemplate.xml">
+        <var name="file" />
+        <var name="data" />
+        <var name="dataId" />
+        <var name="styleValue" />
+        <var name="topology" />
+        <transform>
+          <xsl:template match="Style[@id='{dataId}' and (value='{styleValue}' or ('{styleValue}'='' and not(value))) and ( ('{topology}'='' and count(PolyStyle)=0 and count(LineStyle)=0 and count(IconStyle)=0) or ('{topology}'='polygon' and count(PolyStyle)&gt;0) or ('{topology}'='line' and count(PolyStyle)=0 and count(IconStyle)=0) or ('{topology}'='point' and count(PolyStyle)=0 and count(IconStyle)&gt;0) )]">
+            <xsl:value-of select="string('{data}')" disable-output-escaping="yes" />
+          </xsl:template>
+        </transform>
+      </xmlCommand>
+    </update>
+    <delete>
+      <xmlCommand source="{file}">
+        <var name="file" />
+        <var name="dataId" />
+        <var name="styleValue" />
+        <var name="topology" />
+        <transform>
+          <xsl:template match="Style[@id='{dataId}' and (value='{styleValue}' or ('{styleValue}'='' and not(value))) and ( ('{topology}'='' and count(PolyStyle)=0 and count(LineStyle)=0 and count(IconStyle)=0) or ('{topology}'='polygon' and count(PolyStyle)&gt;0) or ('{topology}'='line' and count(PolyStyle)=0 and count(IconStyle)=0) or ('{topology}'='point' and count(PolyStyle)=0 and count(IconStyle)&gt;0) )]" />
+        </transform>
+      </xmlCommand>
+    </delete>
+  </data>
+  <!-- Запрос для получения, вставки, изменения и удаления layers по file, data и dataId -->
+  <data id="EDIT_LAYER_XML" comment="-" schema="-" table="-">
+    <select>
+      <xmlQuery source="{file}">
+        <var name="file" />
+      </xmlQuery>
+    </select>
+    <insert>
+      <xmlCommand source="{file}" template="layersTemplate.xml">
+        <var name="file" />
+        <var name="data" />
+        <transform>
+          <xsl:template match="root">
+            <xsl:copy>
+              <xsl:apply-templates select="@* | node()" />
+              <xsl:value-of select="string('{data}')" disable-output-escaping="yes" />
+            </xsl:copy>
+          </xsl:template>
+        </transform>
+      </xmlCommand>
+    </insert>
+    <update>
+      <xmlCommand source="{file}" template="layersTemplate.xml">
+        <var name="file" />
+        <var name="data" />
+        <var name="dataId" />
+        <transform>
+          <xsl:template match="layer[@id='{dataId}']">
+            <xsl:value-of select="string('{data}')" disable-output-escaping="yes" />
+          </xsl:template>
+        </transform>
+      </xmlCommand>
+    </update>
+    <delete>
+      <xmlCommand source="{file}">
+        <var name="file" />
+        <var name="dataId" />
+        <transform>
+          <xsl:template match="layer[@id='{dataId}']" />
+        </transform>
+      </xmlCommand>
+    </delete>
+  </data>
+  <!-- Запрос для получения, вставки, изменения и удаления data с запросами в XML по file, data и dataId -->
+  <data id="EDIT_DATA_XML" comment="-" schema="-" table="-">
+    <select>
+      <xmlQuery source="{file}" xpath="//data[@id='{dataId}']">
+        <var name="file" />
+        <var name="dataId" />
+      </xmlQuery>
+    </select>
+    <insert>
+      <xmlCommand source="{file}" template="dataTemplate.xml">
+        <var name="file" />
+        <var name="data" />
+        <transform>
+          <xsl:template match="root">
+            <xsl:copy>
+              <xsl:apply-templates select="@* | node()" />
+              <xsl:value-of select="string('{data}')" disable-output-escaping="yes" />
+            </xsl:copy>
+          </xsl:template>
+        </transform>
+      </xmlCommand>
+    </insert>
+    <update>
+      <xmlCommand source="{file}" template="dataTemplate.xml">
+        <var name="file" />
+        <var name="data" />
+        <var name="dataId" />
+        <transform>
+          <xsl:template match="data[@id='{dataId}']">
+            <xsl:value-of select="string('{data}')" disable-output-escaping="yes" />
+          </xsl:template>
+        </transform>
+      </xmlCommand>
+    </update>
+    <delete>
+      <xmlCommand source="{file}">
+        <var name="file" />
+        <var name="dataId" />
+        <transform>
+          <xsl:template match="data[@id='{dataId}']" />
+        </transform>
+      </xmlCommand>
+    </delete>
+  </data>
+  <!-- Запрос для получения из папки WebSite\Core\Query перечня файлов стилей -->
+  <data id="GET_STYLE_FILES" comment="Запрос для получения из папки WebSite\Core\Query перечня файлов стилей">
+    <select>
+      <exslt xmlPath="../../Web.config" xsltPath="getStyleFiles.xslt" />
+    </select>
+  </data>
+  <!-- Запрос для получения из папки WebSite\Core\Query перечня файлов семантики -->
+  <data id="GET_SEM_FILES" comment="Запрос для получения из папки WebSite\Core\Query перечня файлов семантики">
+    <select>
+      <exslt xmlPath="../../Web.config" xsltPath="getSemFiles.xslt" />
+    </select>
+  </data>
+  <!-- Запрос для получения из папки WebSite\Core\Query перечня файлов геометрии -->
+  <data id="GET_GEO_FILES" comment="Запрос для получения из папки WebSite\Core\Query перечня файлов геометрии">
+    <select>
+      <exslt xmlPath="../../Web.config" xsltPath="getGeoFiles.xslt" />
+    </select>
+  </data>
+  <!-- Запрос для получения из папки WebSite\Core\Query перечня файлов геометрии 3D -->
+  <data id="GET_GEO3D_FILES" comment="Запрос для получения из папки WebSite\Core\Query перечня файлов геометрии 3D">
+    <select>
+      <exslt xmlPath="../../Web.config" xsltPath="getGeo3DFiles.xslt" />
+    </select>
+  </data>
+  <!-- Запрос для проверки наличия в файле file слоя с id=dataId -->
+  <data id="LAYER_XML_EXIST" comment="-" schema="-" table="-">
+    <select>
+      <xmlQuery source="{file}" xpath="//layer[@id='{dataId}']">
+        <var name="file" />
+        <var name="dataId" />
+      </xmlQuery>
+    </select>
+  </data>
+  <!-- Запрос для проверки наличия в файле file запроса с id=dataId -->
+  <data id="DATA_XML_EXIST" comment="-" schema="-" table="-">
+    <select>
+      <xmlQuery source="{file}" xpath="//data[@id='{dataId}']">
+        <var name="file" />
+        <var name="dataId" />
+      </xmlQuery>
+    </select>
+  </data>
+  <!-- Список ролей (для фильтра USERS по ролям) -->
+  <data id="WEB50_B_ROLES" comment="WEB50.B_ROLE" schema="WEB50" table="B_ROLE">
+    <select>
+      <dbQuery idField="ID">
+        <query>SELECT ROLE_ID CODE, DESCRIPTION DESCR FROM WEB50.B_ROLE ORDER BY DESCR</query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Список отфильтрованных пользователей для выгрузки в Excel -->
+  <data id="WEB50_B_USER_PRIVATE_EXPORT" comment="Запрос для выгрузки в Excel таблицы WEB50.B_USER_PRIVATE">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+          SELECT * FROM (SELECT
+          bup.USER_ID ID
+          ,bup.USER_ID
+          ,bup.LOGIN
+          ,bup.LASTNAME
+          ,bup.FIRSTNAME
+          ,bup.SECONDNAME
+          ,bup.MAIL
+          ,CASE WHEN bup.STATUS='A' THEN 'Активен' ELSE 'Заблокирован' END STATUS
+          ,TO_CHAR(bup.CREATED,'DD.MM.YYYY HH24:MI:SS') CREATED
+          ,TO_CHAR(bup.LOGONTIME,'DD.MM.YYYY HH24:MI:SS') LOGONTIME
+          ,TO_CHAR(bup.ACCESSTIME,'DD.MM.YYYY HH24:MI:SS') ACCESSTIME
+          FROM WEB50.B_USER_PRIVATE bup) d
+          WHERE {FILTER}
+          ORDER BY LOGIN, USER_ID
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Список отфильтрованных пользователей, update - для блокировки/разблокировки пользователей -->
+  <data id="WEB50_B_USER_PRIVATE" comment="Запросы для работы с таблицей WEB50.B_USER_PRIVATE">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+			SELECT * FROM (SELECT
+			bup.USER_ID ID
+			,bup.USER_ID
+			,bup.LOGIN
+			,bup.LASTNAME
+			,bup.FIRSTNAME
+			,bup.SECONDNAME
+			,bup.THEME
+			,bup.MAIL
+			,CASE WHEN bup.STATUS='A' THEN 'Активен' ELSE 'Заблокирован' END STATUS
+			,TO_CHAR(bup.CREATED,'DD.MM.YYYY HH24:MI:SS') CREATED
+			,TO_CHAR(bup.LOGONTIME,'DD.MM.YYYY HH24:MI:SS') LOGONTIME
+			,TO_CHAR(bup.ACCESSTIME,'DD.MM.YYYY HH24:MI:SS') ACCESSTIME
+			,br.ROLE_ID
+			,br.DESCRIPTION ROLE_DESCR
+			,br.DESCRIPTION ROLE_DESCRS
+			,bua.USER_ID EXT_AUTH
+			FROM WEB50.B_USER_PRIVATE bup
+			LEFT JOIN WEB50.B_USER_TO_B_ROLE bubr ON bubr.USER_ID=bup.USER_ID
+			LEFT JOIN WEB50.B_ROLE br ON br.ROLE_ID=bubr.ROLE_ID
+			LEFT JOIN WEB50.B_USER_AUTHMAPS bua ON bua.USER_ID=bup.USER_ID) d
+			WHERE {FILTER}
+			ORDER BY LOGIN, USER_ID
+		</query>
+      </dbQuery>
+    </select>
+    <update>
+      <dbCommand>
+        <param name="STATUS" type="String" direction="Input" default="B" />
+        <var name="FILTER" default="1=1" />
+        <query>
+			UPDATE WEB50.B_USER_PRIVATE SET STATUS = :STATUS
+			WHERE {FILTER}
+		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+        <query>
+			DO $$
+			BEGIN
+			DELETE FROM WEB50.B_USER_AUTHMAPS
+			WHERE USER_ID={ID};
+			DELETE FROM WEB50.B_USER_TO_B_ROLE
+			WHERE USER_ID={ID};
+			DELETE FROM WEB50.B_USER_PRIVATE
+			WHERE USER_ID={ID};
+			DELETE FROM WEB50.B_USER_PUBLIC
+			WHERE USER_ID={ID};
+			END $$;
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Список отфильтрованных пользователей -->
+  <data id="WEB50_B_USER_PRIVATE_CNT" comment="Запросы для работы CNT">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+          SELECT * FROM WEB50.B_USER_PRIVATE WHERE 1=2
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_B_USER_PRIVATE_LIST" comment="Запросы для работы с таблицей WEB50.B_USER_PRIVATE">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+      SELECT * FROM (SELECT
+      bup.USER_ID ID
+      ,bup.USER_ID
+      ,bup.LOGIN
+      ,bup.LASTNAME
+      ,bup.FIRSTNAME
+      ,bup.SECONDNAME
+      ,bup.THEME
+      ,bup.MAIL
+      ,CASE WHEN bup.STATUS='A' THEN 'Активен' ELSE 'Заблокирован' END STATUS
+      ,TO_CHAR(bup.CREATED,'DD.MM.YYYY HH24:MI:SS') CREATED
+      ,TO_CHAR(bup.LOGONTIME,'DD.MM.YYYY HH24:MI:SS') LOGONTIME
+      ,TO_CHAR(bup.ACCESSTIME,'DD.MM.YYYY HH24:MI:SS') ACCESSTIME
+      ,br.ROLE_ID
+      ,br.DESCRIPTION ROLE_DESCR
+      ,br.DESCRIPTION ROLE_DESCRS
+      ,bua.USER_ID EXT_AUTH
+      FROM WEB50.B_USER_PRIVATE bup
+      LEFT JOIN WEB50.B_USER_TO_B_ROLE bubr ON bubr.USER_ID=bup.USER_ID
+      LEFT JOIN WEB50.B_ROLE br ON br.ROLE_ID=bubr.ROLE_ID
+      LEFT JOIN WEB50.B_USER_AUTHMAPS bua ON bua.USER_ID=bup.USER_ID) d
+      WHERE USER_ID not in (-1, 0, 1, 1045 ) and {FILTER}
+      ORDER BY LOGIN, USER_ID
+    </query>
+      </dbQuery>
+    </select>
+    <update>
+      <dbCommand>
+        <param name="STATUS" type="String" direction="Input" default="B" />
+        <var name="FILTER" default="1=1" />
+        <query>
+      UPDATE WEB50.B_USER_PRIVATE SET STATUS = :STATUS
+      WHERE {FILTER}
+    </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+        <query>
+      DO $$
+      BEGIN
+      DELETE FROM WEB50.B_USER_AUTHMAPS
+      WHERE USER_ID={ID};
+      DELETE FROM WEB50.B_USER_TO_B_ROLE
+      WHERE USER_ID={ID};
+      DELETE FROM WEB50.B_USER_PRIVATE
+      WHERE USER_ID={ID};
+      DELETE FROM WEB50.B_USER_PUBLIC
+      WHERE USER_ID={ID};
+      END $$;
+    </query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Список отфильтрованных пользователей -->
+  <data id="WEB50_B_USER_PRIVATE_CNT" comment="Запросы для работы CNT">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+          SELECT * FROM WEB50.B_USER_PRIVATE WHERE 1=2
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запросы для создания и редактирования пользователя из задачи администрирования учетных записей, отделен от формы личного кабинета -->
+  <data id="ADM_B_USER_PRIVATE" comment="Запросы для работы с таблицей WEB50.B_USER_PRIVATE">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+			SELECT
+			bup.USER_ID
+			,bup.LOGIN
+			,bup.LASTNAME
+			,bup.FIRSTNAME
+			,bup.SECONDNAME
+			,bup.SEX
+			,bup.BIRTHDAY
+			,bup.MAIL
+			,bup.THEME
+			,bup.TIMEZONE
+			,bup.STATUS
+			,bup.LANGUAGE
+			,bup.SECURITY_QUESTION
+			,bup.SECURITY_ANSWER
+			,bup.CREATED
+			,bup.LOGONTIME
+			,bup.ACCESSTIME
+			,bup.CTIME
+			,(SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = bup.CUSER_ID) AS CUSER
+			,(SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = bup.MUSER_ID) AS MUSER
+			,bup.MTIME  FROM WEB50.B_USER_PRIVATE bup WHERE USER_ID = :SYS_OBJ_ID
+		</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand />
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <param name="LOGIN" type="String" direction="Input" />
+        <param name="LASTNAME" type="String" direction="Input" />
+        <param name="FIRSTNAME" type="String" direction="Input" />
+        <param name="SECONDNAME" type="String" direction="Input" />
+        <param name="SEX" type="String" direction="Input" />
+        <param name="BIRTHDAY" type="DateTime" direction="Input" />
+        <param name="MAIL" type="String" direction="Input" />
+        <param name="TIMEZONE" type="String" direction="Input" />
+        <param name="STATUS" type="String" direction="Input" default="A" />
+        <param name="LANGUAGE" type="String" direction="Input" />
+        <param name="SECURITY_QUESTION" type="String" direction="Input" />
+        <param name="SECURITY_ANSWER" type="String" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+			UPDATE WEB50.B_USER_PRIVATE
+			SET
+			LOGIN = :LOGIN
+			,LASTNAME = :LASTNAME
+			,FIRSTNAME = :FIRSTNAME
+			,SECONDNAME = :SECONDNAME
+			,SEX = :SEX
+			,BIRTHDAY = :BIRTHDAY
+			,MAIL = :MAIL
+			,TIMEZONE = :TIMEZONE
+			,STATUS = :STATUS
+			,LANGUAGE = :LANGUAGE
+			,SECURITY_QUESTION = :SECURITY_QUESTION
+			,SECURITY_ANSWER = :SECURITY_ANSWER
+			,MTIME = current_timestamp
+			,MUSER_ID = :USER_ID
+			WHERE USER_ID = :SYS_OBJ_ID
+		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+			UPDATE WEB50.B_USER_PRIVATE SET STATUS = 'B'
+			WHERE USER_ID = :SYS_OBJ_ID
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запрос для выдачи пользователю роли (задача администрирования учетных записей) -->
+  <data id="WEB50_USER_TO_ROLE" comment="WEB50.B_USER_TO_B_ROLE" schema="WEB50" table="B_USER_TO_B_ROLE">
+    <insert>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+        <param name="M_USER_ID" type="Int64" direction="Input" />
+        <param name="M_ROLE_ID" type="Int64" direction="Input" default="1046" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+			INSERT INTO WEB50.B_USER_TO_B_ROLE(USER_ID,ROLE_ID,CTIME,CUSER_ID) VALUES (:M_USER_ID,:M_ROLE_ID,current_timestamp,:USER_ID)
+		</query>
+      </dbCommand>
+    </insert>
+    <delete>
+      <dbCommand>
+        <param name="M_USER_ID" type="Int64" direction="Input" />
+        <param name="M_ROLE_ID" type="Int64" direction="Input" />
+        <query>
+			DELETE FROM WEB50.B_USER_TO_B_ROLE
+			WHERE USER_ID=:M_USER_ID AND ROLE_ID=:M_ROLE_ID
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Список отфильтрованных ролей, delete - для удаления нескольких ролей (задача администрирования ролей) -->
+  <data id="WEB50_B_ROLE" comment="Запросы для работы с таблицей WEB50.B_ROLE">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+			SELECT * FROM (SELECT
+			r.ROLE_ID ID
+			,r.ROLE_ID
+			,r.DESCRIPTION
+			,TO_CHAR(r.CTIME,'DD.MM.YYYY HH24:MI:SS') CTIME
+			,r.CUSER_ID
+			,TO_CHAR(r.MTIME,'DD.MM.YYYY HH24:MI:SS') MTIME
+			,r.MUSER_ID
+			,CASE WHEN r.AUDIT_ADMINISTRATOR='1' THEN 'Y' ELSE 'N' END AUDIT_ADMINISTRATOR
+			,CASE WHEN r.AUDIT_VIEWER='1' THEN 'Y' ELSE 'N' END AUDIT_VIEWER
+			,r.NAME
+			FROM WEB50.B_ROLE r) d
+			WHERE {FILTER}
+			ORDER BY DESCRIPTION,ID
+		</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(ROLE_ID) id FROM WEB50.B_ROLE" />
+        <param name="DESCRIPTION" type="String" direction="Input" />
+        <param name="AUDIT_ADMINISTRATOR" type="String" direction="Input" />
+        <param name="AUDIT_VIEWER" type="String" direction="Input" />
+        <param name="NAME" type="String" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+			INSERT INTO WEB50.B_ROLE(
+			DESCRIPTION
+			,CTIME
+			,CUSER_ID
+			,MTIME
+			,MUSER_ID
+			,AUDIT_ADMINISTRATOR
+			,AUDIT_VIEWER
+			,NAME
+			)
+			VALUES(
+			:DESCRIPTION
+			,current_timestamp
+			,:USER_ID
+			,NULL
+			,NULL
+			,CASE WHEN :AUDIT_ADMINISTRATOR='Y' THEN 1 ELSE 0 END
+			,CASE WHEN :AUDIT_VIEWER='Y' THEN 1 ELSE 0 END
+			,:NAME
+			) 
+		</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <param name="DESCRIPTION" type="String" direction="Input" />
+        <param name="AUDIT_ADMINISTRATOR" type="String" direction="Input" />
+        <param name="AUDIT_VIEWER" type="String" direction="Input" />
+        <param name="NAME" type="String" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+			UPDATE WEB50.B_ROLE
+			SET
+			DESCRIPTION = :DESCRIPTION
+			,AUDIT_ADMINISTRATOR = CASE WHEN :AUDIT_ADMINISTRATOR='Y' THEN 1 ELSE 0 END
+			,AUDIT_VIEWER = CASE WHEN :AUDIT_VIEWER='Y' THEN 1 ELSE 0 END
+			,NAME = :NAME
+			,MUSER_ID = :USER_ID
+			,MTIME = current_timestamp
+			WHERE ROLE_ID = :SYS_OBJ_ID
+		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ROLE_ID" type="Int64" direction="Input" />
+        <query>
+		DO $$
+            DECLARE 
+			i RECORD;
+BEGIN
+
+  FOR i IN SELECT *
+              FROM web50.b_policy p
+             WHERE EXISTS (SELECT 1
+                             FROM web50.b_role r
+                                  JOIN web50.b_role_to_b_policy r2p
+                                    ON r.role_id = r2p.role_id
+                            WHERE r.role_id = {ROLE_ID}
+                              AND p.policy_id = r2p.policy_id
+                              AND r.description = p.description)
+  LOOP
+  
+    DELETE
+      FROM web50.b_policy_rule_filters prf
+     WHERE EXISTS (SELECT 1
+                     FROM web50.b_policy_rules pr
+                    WHERE pr.rule_id = prf.rule_id
+                      AND pr.policy_id = i.policy_id);
+                    
+    DELETE 
+      FROM web50.b_policy_rules pr 
+     WHERE pr.policy_id = i.policy_id;                    
+
+    DELETE 
+      FROM web50.b_role_to_b_policy r2p 
+     WHERE r2p.policy_id = i.policy_id;                    
+
+                    
+    DELETE 
+      FROM web50.b_policy p 
+     WHERE p.policy_id = i.policy_id;                    
+                     
+       
+  END LOOP;
+
+   DELETE FROM WEB50.B_ROLE_TO_B_POLICY
+         WHERE ROLE_ID = {ROLE_ID};
+
+   DELETE FROM WEB50.B_USER_TO_B_ROLE
+         WHERE ROLE_ID = {ROLE_ID};
+
+   DELETE FROM WEB50.B_ROLE
+         WHERE ROLE_ID = {ROLE_ID};
+         
+      
+END $$;
+
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+<!-- Список отфильтрованных ролей (задача администрирования ролей) -->
+<data id="WEB50_B_ROLE_CNT" comment="Запросы для работы CNT">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+          SELECT * FROM WEB50.B_ROLE WHERE 1=2
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Список типов событий (для фильтра AUDIT_EVENT по типам событий) -->
+  <data id="WEB50_B_AUDIT_EVENT_CATEGORY" comment="WEB50.B_AUDIT_EVENT_CATEGORY" schema="WEB50" table="B_AUDIT_EVENT_CATEGORY">
+    <select>
+      <dbQuery idField="ID">
+        <query>SELECT CATEGORY_ID CODE, DESCRIPTION DESCR FROM WEB50.B_AUDIT_EVENT_CATEGORY ORDER BY DESCR</query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Список отфильтрованных событий аудита, delete - для удаления нескольких событий аудита (задача администрирования журнала аудита) -->
+  <data id="WEB50_B_AUDIT_EVENT" comment="Запросы для работы с таблицей WEB50.B_AUDIT_EVENT">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <param name="FROM_DATE" type="DateTime" direction="Input" />
+        <param name="TO_DATE" type="DateTime" direction="Input" />
+        <query>
+          SELECT * FROM (SELECT e.AUDIT_ID
+          ,e.AUDIT_ID ID
+          ,TO_CHAR(e.TIME_STAMP,'DD.MM.YYYY HH24:MI:SS') TIME_STAMP
+          ,e.TIME_STAMP FILTER_TIME_STAMP
+          ,e.USER_ID
+          ,CAST (e.DETAILED_MESSAGE AS VARCHAR(2000)) DETAILED_MESSAGE
+          ,e.EVENT_ID
+          ,t.CATEGORY_ID
+          ,t.DESCRIPTION DESCR
+          ,c.DESCRIPTION CATEGORY_DESCR
+          FROM WEB50.B_AUDIT_EVENT e
+          JOIN WEB50.B_AUDIT_EVENT_TEMPLATE t ON e.EVENT_ID = t.EVENT_ID
+          JOIN WEB50.B_AUDIT_EVENT_CATEGORY c ON t.CATEGORY_ID = c.CATEGORY_ID) d
+          WHERE {FILTER}
+          AND FILTER_TIME_STAMP BETWEEN (coalesce(:FROM_DATE,(current_timestamp - interval '1 year')))::date AND (coalesce(:TO_DATE,current_timestamp) + interval '1 day' )::date
+          ORDER BY FILTER_TIME_STAMP DESC
+        </query>
+      </dbQuery>
+    </select>
+    <delete>
+      <dbCommand>
+        <var name="FILTER" default="1=1" />
+        <query>
+			DELETE FROM WEB50.B_AUDIT_EVENT
+			WHERE {FILTER}
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+<!-- Список отфильтрованных событий аудита(задача администрирования журнала аудита) -->
+<data id="WEB50_B_AUDIT_EVENT_CNT" comment="Запросы для работы CNT">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+          SELECT * FROM WEB50.B_AUDIT_EVENT WHERE 1=2
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Список типов событий (для фильтра LOG_EVENT по типам событий) -->
+  <data id="WEB50_B_LOG_SEVERITY_REF" comment="WEB50.B_LOG_SEVERITY_REF" schema="WEB50" table="B_LOG_SEVERITY_REF">
+    <select>
+      <dbQuery idField="ID">
+        <query>SELECT SEVERITY CODE, DESCRIPTION DESCR FROM WEB50.B_LOG_SEVERITY_REF ORDER BY DESCR</query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Список отфильтрованных карт, delete отсутствует, т.к. файлы карт удаляются специальным сервисом -->
+  <data id="WEB50_M_MAP" comment="Запросы для работы с таблицей WEB50.M_MAP">
+    <select>
+      <exslt xmlPath="../../Web.config" xsltPath="map.xslt" />
+    </select>
+    <insert>
+      <xmlCommand source="{LAYERS_FILE_NAME}" template="layersTemplate.xml">
+        <var name="LAYERS_FILE_NAME" />
+        <var name="DESCRIPTION" />
+        <transform>
+          <xsl:template match="@* | node()">
+            <xsl:copy>
+              <xsl:attribute name="descr">{DESCRIPTION}</xsl:attribute>
+              <xsl:apply-templates select="@* | node()" />
+            </xsl:copy>
+          </xsl:template>
+        </transform>
+      </xmlCommand>
+    </insert>
+    <update>
+      <xmlCommand source="{LAYERS_FILE_NAME}">
+        <var name="DESCRIPTION" />
+        <var name="LAYERS_FILE_NAME" />
+        <transform>
+          <xsl:template match="@* | node()">
+            <xsl:copy>
+              <xsl:apply-templates select="@* | node()" />
+            </xsl:copy>
+          </xsl:template>
+          <xsl:template match="root/@descr">
+            <xsl:attribute name="descr">{DESCRIPTION}</xsl:attribute>
+          </xsl:template>
+        </transform>
+      </xmlCommand>
+    </update>
+  </data>
+  <!-- Запрос для выдачи политики доступа для роли (задача администрирования политик доступа) -->
+  <data id="WEB50_ROLE_TO_POLICY" comment="WEB50.B_ROLE_TO_B_POLICY" schema="WEB50" table="B_ROLE_TO_B_POLICY">
+    <insert>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+        <param name="M_ROLE_ID" type="Int64" direction="Input" />
+        <param name="M_POLICY_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+			INSERT INTO WEB50.B_ROLE_TO_B_POLICY(ROLE_ID,POLICY_ID,CTIME,CUSER_ID) VALUES (:M_ROLE_ID,:M_POLICY_ID,current_timestamp,:USER_ID)
+		</query>
+      </dbCommand>
+    </insert>
+    <delete>
+      <dbCommand>
+        <param name="M_ROLE_ID" type="Int64" direction="Input" />
+        <param name="M_USER_ID" type="Int64" direction="Input" />
+		<param name="M_POLICY_ID" type="Int64" direction="Input" />
+        <query>
+			DELETE FROM WEB50.B_ROLE_TO_B_POLICY
+			WHERE ROLE_ID=:M_ROLE_ID AND POLICY_ID=:M_POLICY_ID
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Список политик (задача администрирования политик доступа) -->
+  <data id="WEB50_B_POLICY" comment="WEB50.B_POLICY" schema="WEB50" table="B_POLICY">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+			SELECT * FROM (SELECT
+			bp.POLICY_ID ID
+			,bp.DESCRIPTION
+			,bp.CTIME
+			,bp.MTIME
+			,(SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = bp.CUSER_ID) AS CUSER
+			,(SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = bp.MUSER_ID) AS MUSER
+			,bp.POLICY_ID
+			,br.ROLE_ID
+			,br.DESCRIPTION ROLE_DESCR
+			FROM WEB50.B_POLICY bp
+			LEFT JOIN WEB50.B_ROLE_TO_B_POLICY brbp ON brbp.POLICY_ID=bp.POLICY_ID
+			LEFT JOIN WEB50.B_ROLE br ON br.ROLE_ID=brbp.ROLE_ID
+			) d
+			WHERE {FILTER}
+			ORDER BY DESCRIPTION,ID
+		</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(POLICY_ID) id FROM WEB50.B_POLICY" />
+        <param name="DESCRIPTION" type="String" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+			INSERT INTO WEB50.B_POLICY(
+			DESCRIPTION
+			,CTIME
+			,CUSER_ID
+			,MTIME
+			,MUSER_ID
+			)
+			VALUES(
+			:DESCRIPTION
+			,current_timestamp
+			,:USER_ID
+			,NULL
+			,NULL
+			) 
+		</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <param name="DESCRIPTION" type="String" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+			UPDATE WEB50.B_POLICY
+			SET
+			DESCRIPTION = :DESCRIPTION
+			,MUSER_ID = :USER_ID
+			,MTIME = current_timestamp
+			WHERE POLICY_ID = :SYS_OBJ_ID
+		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="POLICY_ID" type="Int64" direction="Input" />
+        <query>
+		DO $$
+			BEGIN
+			DELETE FROM WEB50.B_POLICY_RULE_FILTERS
+			WHERE RULE_ID IN (SELECT RULE_ID FROM WEB50.B_POLICY_RULES
+			WHERE POLICY_ID={POLICY_ID});
+			DELETE FROM WEB50.B_POLICY_RULES
+			WHERE POLICY_ID={POLICY_ID};
+			DELETE FROM WEB50.B_ROLE_TO_B_POLICY
+			WHERE POLICY_ID={POLICY_ID};
+			DELETE FROM WEB50.B_POLICY
+			WHERE POLICY_ID={POLICY_ID};
+		END $$;
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+<!-- Список политик (задача администрирования политик доступа) -->
+<data id="WEB50_B_POLICY_CNT" comment="Запросы для работы CNT">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+          SELECT * FROM WEB50.B_POLICY WHERE 1=2
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Список правил политики (задача администрирования политик доступа) -->
+  <data id="WEB50_B_POLICY_RULES" comment="WEB50.B_POLICY_RULES" schema="WEB50" table="B_POLICY_RULES">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+			SELECT * FROM (SELECT
+			bpr.RULE_ID ID
+			,bpr.CLASS_ID
+			,bpr.DESCRIPTION
+			,CASE WHEN bpr.SELECT_PERMITTED='1' THEN 'Y' ELSE 'N' END SELECT_PERMITTED
+			,CASE WHEN bpr.INSERT_PERMITTED='1' THEN 'Y' ELSE 'N' END INSERT_PERMITTED
+			,CASE WHEN bpr.UPDATE_PERMITTED='1' THEN 'Y' ELSE 'N' END UPDATE_PERMITTED
+			,CASE WHEN bpr.DELETE_PERMITTED='1' THEN 'Y' ELSE 'N' END DELETE_PERMITTED
+			,bpr.CTIME
+			,bpr.MTIME
+			,(SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = bpr.CUSER_ID) AS CUSER
+			,(SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = bpr.MUSER_ID) AS MUSER
+			,bpr.POLICY_ID
+			,bpr.RULE_ID
+			FROM WEB50.B_POLICY_RULES bpr
+			) d
+			WHERE {FILTER}
+			ORDER BY DESCRIPTION,ID
+		</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(RULE_ID) id FROM WEB50.B_POLICY_RULES" />
+        <param name="CLASS_ID" type="String" direction="Input" />
+        <param name="DESCRIPTION" type="String" direction="Input" />
+        <param name="POLICY_ID" type="Int64" direction="Input" />
+        <param name="SELECT_PERMITTED" type="String" direction="Input" default="N" />
+        <param name="INSERT_PERMITTED" type="String" direction="Input" default="N" />
+        <param name="UPDATE_PERMITTED" type="String" direction="Input" default="N" />
+        <param name="DELETE_PERMITTED" type="String" direction="Input" default="N" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+			INSERT INTO WEB50.B_POLICY_RULES(
+			CLASS_ID
+			,DESCRIPTION
+			,POLICY_ID
+			,SELECT_PERMITTED
+			,INSERT_PERMITTED
+			,UPDATE_PERMITTED
+			,DELETE_PERMITTED
+			,CTIME
+			,CUSER_ID
+			,MTIME
+			,MUSER_ID
+			)
+			VALUES(
+			:CLASS_ID
+			,:DESCRIPTION
+			,:POLICY_ID
+			,CASE WHEN :SELECT_PERMITTED='Y' THEN 1 ELSE 0 END
+			,CASE WHEN :INSERT_PERMITTED='Y' THEN 1 ELSE 0 END
+			,CASE WHEN :UPDATE_PERMITTED='Y' THEN 1 ELSE 0 END
+			,CASE WHEN :DELETE_PERMITTED='Y' THEN 1 ELSE 0 END
+			,current_timestamp
+			,:USER_ID
+			,NULL
+			,NULL
+			)
+		</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <param name="CLASS_ID" type="String" direction="Input" />
+        <param name="DESCRIPTION" type="String" direction="Input" />
+        <param name="POLICY_ID" type="Int64" direction="Input" />
+        <param name="SELECT_PERMITTED" type="String" direction="Input" default="N" />
+        <param name="INSERT_PERMITTED" type="String" direction="Input" default="N" />
+        <param name="UPDATE_PERMITTED" type="String" direction="Input" default="N" />
+        <param name="DELETE_PERMITTED" type="String" direction="Input" default="N" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+			UPDATE WEB50.B_POLICY_RULES
+			SET
+			CLASS_ID = :CLASS_ID
+			,DESCRIPTION = :DESCRIPTION
+			,POLICY_ID = :POLICY_ID
+			,SELECT_PERMITTED = CASE WHEN :SELECT_PERMITTED='Y' THEN 1 ELSE 0 END
+			,INSERT_PERMITTED = CASE WHEN :INSERT_PERMITTED='Y' THEN 1 ELSE 0 END
+			,UPDATE_PERMITTED = CASE WHEN :UPDATE_PERMITTED='Y' THEN 1 ELSE 0 END
+			,DELETE_PERMITTED = CASE WHEN :DELETE_PERMITTED='Y' THEN 1 ELSE 0 END
+			,MUSER_ID = :USER_ID
+			,MTIME = current_timestamp
+			WHERE RULE_ID = :SYS_OBJ_ID
+		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="RULE_ID" type="Int64" direction="Input" />
+        <query>
+		DO $$
+			BEGIN
+			DELETE FROM WEB50.B_POLICY_RULE_FILTERS
+			WHERE RULE_ID={RULE_ID};
+			DELETE FROM WEB50.B_POLICY_RULES
+			WHERE RULE_ID={RULE_ID};
+			END $$;
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Список фильтров правил политики (задача администрирования политик доступа) -->
+  <data id="WEB50_B_POLICY_RULE_FILTERS" comment="WEB50.B_POLICY_RULE_FILTERS" schema="WEB50" table="B_POLICY_RULE_FILTERS">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+			SELECT * FROM (SELECT
+			bprf.RULE_FILTER_ID ID
+			,bprf.PROPERTY_ID
+			,bprf.OPERATOR
+			,bprf.VALUE
+			,bprf.CTIME
+			,bprf.MTIME
+			,(SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = bprf.CUSER_ID) AS CUSER
+			,(SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = bprf.MUSER_ID) AS MUSER
+			,bprf.RULE_ID
+			,bprf.RULE_FILTER_ID
+			FROM WEB50.B_POLICY_RULE_FILTERS bprf
+			) d
+			WHERE {FILTER}
+			ORDER BY PROPERTY_ID,ID
+		</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(RULE_FILTER_ID) id FROM WEB50.B_POLICY_RULE_FILTERS" />
+        <param name="PROPERTY_ID" type="String" direction="Input" />
+        <param name="OPERATOR" type="String" direction="Input" />
+        <param name="VALUE" type="String" direction="Input" />
+        <param name="RULE_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+			INSERT INTO WEB50.B_POLICY_RULE_FILTERS(
+			PROPERTY_ID
+			,OPERATOR
+			,VALUE
+			,RULE_ID
+			,CTIME
+			,CUSER_ID
+			,MTIME
+			,MUSER_ID
+			)
+			VALUES(
+			:PROPERTY_ID
+			,:OPERATOR
+			,:VALUE
+			,:RULE_ID
+			,current_timestamp
+			,:USER_ID
+			,NULL
+			,NULL
+			)
+		</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <param name="PROPERTY_ID" type="String" direction="Input" />
+        <param name="OPERATOR" type="String" direction="Input" />
+        <param name="VALUE" type="String" direction="Input" />
+        <param name="RULE_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+			UPDATE WEB50.B_POLICY_RULE_FILTERS
+			SET
+			PROPERTY_ID = :PROPERTY_ID
+			,OPERATOR = :OPERATOR
+			,VALUE = :VALUE
+			,RULE_ID = :RULE_ID
+			,MUSER_ID = :USER_ID
+			,MTIME = current_timestamp
+			WHERE RULE_FILTER_ID = :SYS_OBJ_ID
+		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="RULE_FILTER_ID" type="Int64" direction="Input" />
+        <query>
+			DELETE FROM WEB50.B_POLICY_RULE_FILTERS
+			WHERE RULE_FILTER_ID=:RULE_FILTER_ID
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запрос для получения из WEB50.LIB_DOC списка папок и документов (задача администрирования файлового архива) -->
+  <data id="FIRST_DOCS" comment="Запросы для формы добавления документа из существующих">
+    <select>
+      <dbQuery idField="ID">
+        <param name="USER_ID" default="0" type="Int64" direction="Input" />
+        <var name="FILTER" default="1=1" />
+	<var name="ORDER_COLUMNS" default="DOC_TYPE_ID, DESCR"/>
+	<var name="LINE_ID_FILTER" default="SELECT line_id FROM pods.line"/>
+	<var name="LOW_LIMIT" default="1"/>
+	<var name="HIGH_LIMIT" default="1000"/>
+	<var name="COLUMNS_FILTER" default="*"/>
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = {USER_ID}
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = {USER_ID}
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                   AND pr.SELECT_PERMITTED = '1'),
+rt as (select route_id from pods.route r where r.line_id in ({LINE_ID_FILTER})),
+gate as (
+select g.left_obj_id obj_id from web50.lnk_gate g,rt r where g.right_obj_id='PODS_ROUTE/'||r.route_id
+union all 
+select g.right_obj_id obj_id from web50.lnk_gate g,rt r where g.left_obj_id='PODS_ROUTE/'||r.route_id)
+	  select {COLUMNS_FILTER} from (
+           SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN, ID, DOC_ID, DOC_TYPE_ID, PARENT_DOC_ID, NAME, DESCR,TIME_STAMP,DOC_VERSION_ID,FILE_NAME,STATUS_ID,STATUS_DESCR
+  from (
+                   SELECT ld.DOC_ID ID,ld.DOC_ID,ld.DOC_TYPE_ID,ld.PARENT_DOC_ID,ld.NAME,ld.DESCR,ld.TIME_STAMP,ldv.DOC_VERSION_ID,ldv.FILE_NAME,ld.STATUS_ID,bsr.DESCR STATUS_DESCR
+          FROM WEB50.LIB_DOC ld
+          JOIN WEB50.LIB_DOC_VERSION ldv ON ldv.DOC_ID = ld.DOC_ID
+          LEFT JOIN WEB50.B_STATUS_REF bsr ON bsr.STATUS_ID = ld.STATUS_ID
+          WHERE ld.PARENT_DOC_ID IS not NULL AND ld.DOC_ID!= -100  AND (((ld.status_id = 1
+                      OR (ld.cuser_id = {USER_ID}
+                         AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))
+         and {FILTER} and 'WEB50_LIB_DOC/'||ld.doc_id in (select obj_id from gate)
+         union all
+         SELECT ld.DOC_ID ID,ld.DOC_ID,ld.DOC_TYPE_ID,ld.PARENT_DOC_ID,ld.NAME,ld.DESCR,ld.TIME_STAMP,null DOC_VERSION_ID,null FILE_NAME,ld.STATUS_ID,bsr.DESCR STATUS_DESCR
+          FROM WEB50.LIB_DOC ld
+          LEFT JOIN WEB50.B_STATUS_REF bsr ON bsr.STATUS_ID = ld.STATUS_ID
+          WHERE 
+          not exists (select 1 from WEB50.LIB_DOC_VERSION ldv where ldv.DOC_ID = ld.DOC_ID) and
+          (select count(*) from web50.lib_doc dd where dd.parent_doc_id=ld.doc_id and dd.doc_type_id&gt;0) +
+          (select count(*) from web50.lib_doc dd,web50.lib_doc ddd where dd.parent_doc_id=ld.doc_id and ddd.doc_id=dd.parent_doc_id and ddd.doc_type_id&gt;0) +
+          (select count(*) from web50.lib_doc dd,web50.lib_doc ddd,web50.lib_doc dddd  where dd.parent_doc_id=ld.doc_id and ddd.doc_id=dd.parent_doc_id and ddd.parent_doc_id=dddd.doc_id and dddd.doc_type_id&gt;0)&gt;0 and
+          ld.PARENT_DOC_ID IS NULL AND ld.DOC_ID!= -100  AND (((ld.status_id = 1
+                      OR (ld.cuser_id = {USER_ID}
+                         AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))
+	 and {FILTER} and 'WEB50_LIB_DOC/'||ld.doc_id in (select obj_id from gate)) res) sorted
+     WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+<!-- Запрос для получения из WEB50.LIB_DOC списка папок и документов (задача администрирования файлового архива) -->
+<data id="FIRST_DOCS_CNT" comment="Запросы для работы CNT">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+
+        <query>
+          SELECT * FROM WEB50.LIB_DOC WHERE 1=2
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запрос для получения из WEB50.LIB_DOC списка папок и документов, дочерних для переданного ID (задача администрирования файлового архива) -->
+  <data id="DOCS_BY_PARENT" comment="Запросы для формы добавления документа из существующих (запрос для дочерних)">
+    <select>
+      <dbQuery idField="ID">
+        <param name="PARENT_DOC_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                   AND pr.SELECT_PERMITTED = '1')
+			SELECT ld.DOC_ID,ld.DOC_TYPE_ID,ld.PARENT_DOC_ID,ld.NAME,ld.DESCR,ld.TIME_STAMP,ldv.DOC_VERSION_ID,ldv.FILE_NAME,ld.STATUS_ID,bsr.DESCR STATUS_DESCR
+			FROM WEB50.LIB_DOC ld
+			LEFT JOIN WEB50.LIB_DOC_VERSION ldv ON ldv.DOC_ID = ld.DOC_ID
+			LEFT JOIN WEB50.B_STATUS_REF bsr ON bsr.STATUS_ID = ld.STATUS_ID
+			WHERE ld.PARENT_DOC_ID=:PARENT_DOC_ID  AND (((ld.status_id = 1
+                      OR (ld.cuser_id = :USER_ID
+                         AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запрос для открытия выбранного документа (задача администрирования файлового архива) -->
+  <data id="DOCUMENT_OPEN" comment="Запрос для открытия выбранного документа">
+    <select>
+      <dbQuery idField="ID">
+        <param name="DOC_ID" type="Int64" direction="Input" />
+        <query>
+			SELECT ldv.DOC_ID,ldv.STORAGE_ID,ldv.MIME_TYPE_ID,ldv.NAME,ldv.DESCR,ldv.FILE_NAME,ls.PATH, lpd.NAME FOLDER_NAME 
+			FROM WEB50.LIB_DOC_VERSION ldv 
+			JOIN WEB50.LIB_DOC ld ON ld.DOC_ID=ldv.DOC_ID 
+			LEFT JOIN WEB50.LIB_DOC lpd ON ld.PARENT_DOC_ID = lpd.DOC_ID 
+			JOIN WEB50.LIB_STORAGE ls ON ls.STORAGE_ID=ldv.STORAGE_ID 
+			WHERE ldv.DOC_ID=:DOC_ID
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запрос для удаления выбранного документа (задача администрирования файлового архива) -->
+  <data id="DOCUMENT_DELETE" comment="Запрос для удаления выбранного документа">
+    <delete>
+      <dbCommand>
+        <var name="DOC_ID" type="Int64" direction="Input" />
+        <query>
+		DO $$
+			BEGIN
+			DELETE FROM WEB50.LIB_DOC_VERSION WHERE DOC_ID = {DOC_ID};
+			DELETE FROM WEB50.LIB_DOC WHERE DOC_ID = {DOC_ID};
+			END $$;
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запросы для работы с бланком документа (задача администрирования файлового архива) -->
+  <data id="ADM_LIB_DOC" comment="WEB50.LIB_DOC" schema="WEB50" table="LIB_DOC" descr="Документ">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+        SELECT
+        ld.NAME
+        ,ld.DESCR
+        ,ld.PROVIDER
+        ,ld.STATUS_ID
+        ,ld.TIME_STAMP
+        ,ld.GID
+        ,ld.DOC_TYPE_ID
+        ,ld.PARENT_DOC_ID
+        ,ld.CTIME
+		,ld.CUSER_ID
+        ,(SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = ld.CUSER_ID) AS CUSER
+		,ld.MTIME
+		,ld.MUSER_ID
+        ,(SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = ld.MUSER_ID) AS MUSER
+        ,ld.DOC_ID
+        ,ldv.STORAGE_ID
+        ,ldv.FILE_NAME
+		,(lc."XMIN" + lc."XMAX") / 2 X_COORD
+        ,(lc."YMIN" + lc."YMAX") / 2 Y_COORD
+        FROM WEB50.LIB_DOC ld
+        LEFT JOIN WEB50.LIB_DOC_VERSION ldv ON ldv.DOC_ID=ld.DOC_ID
+		LEFT JOIN WEB50.LIB_COVERAGE lc ON ld.GID = lc.GID
+        WHERE ld.DOC_ID = :SYS_OBJ_ID
+      </query>
+      </dbQuery>
+    </select>
+    <!-- В скрипте используется вставка только файла, поэтому DOC_TYPE_ID=1 !!! В этом же скрипте вставляется LIB_DOC_VERSION (ссылка на файл) -->
+    <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(DOC_ID) id FROM WEB50.LIB_DOC" />
+        <var name="NAME" type="String" direction="Input" />
+        <var name="DESCR" type="String" direction="Input" />
+        <var name="PROVIDER" type="String" direction="Input" />
+        <var name="STATUS_ID" type="Int64" direction="Input" />
+        <var name="TIME_STAMP" type="DateTime" direction="Input" />
+        <!--var name="DOC_TYPE_ID" type="Int64" direction="Input" /-->
+        <var name="PARENT_DOC_ID" type="Int64" direction="Input" />
+        <var name="MIME_NAME" type="String" direction="Input" />
+        <var name="STORAGE_ID" type="Int64" direction="Input" default="0" />
+        <var name="FILE_NAME" type="String" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+        <query>
+		DO $$
+		  DECLARE varDocId bigint;
+		  BEGIN
+		  INSERT INTO WEB50.LIB_DOC(
+		  NAME
+		  ,DESCR
+		  ,PROVIDER
+		  ,STATUS_ID
+		  ,TIME_STAMP
+		  ,DOC_TYPE_ID
+		  ,PARENT_DOC_ID
+		  ,CTIME
+		  ,CUSER_ID
+		  )
+		  VALUES(
+		  '{NAME}'
+		  ,'{DESCR}'
+		  ,'{PROVIDER}'
+		  ,{STATUS_ID}
+		  ,current_timestamp
+		  ,1
+		  ,{PARENT_DOC_ID}
+		  ,current_timestamp
+		  ,{USER_ID}
+		  )
+		  RETURNING DOC_ID INTO varDocId;
+		  INSERT INTO WEB50.LIB_DOC_VERSION (DOC_ID,NEXT_DOC_VERSION_ID,MIME_TYPE_ID,STORAGE_ID,NAME,DESCR,VERSION_NUMBER,BODY,FILE_NAME,CTIME,CUSER_ID,MTIME,MUSER_ID)
+		  VALUES (varDocId,NULL,0,
+		  {STORAGE_ID},NULL,'Начальная вставка',1.0,NULL,'{FILE_NAME}',current_timestamp,{USER_ID},NULL,NULL);
+
+		  END $$;
+    </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="NAME" type="String" direction="Input" />
+        <var name="DESCR" type="String" direction="Input" />
+        <var name="PROVIDER" type="String" direction="Input" />
+        <var name="STATUS_ID" type="Int64" direction="Input" />
+        <var name="PARENT_DOC_ID" type="Int64" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+        <var name="MIME_NAME" type="String" direction="Input" />
+        <var name="FILE_NAME" type="String" direction="Input" />
+        <var name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+			DO $$
+			BEGIN
+			UPDATE WEB50.LIB_DOC
+			SET
+			NAME = '{NAME}'
+			,DESCR = '{DESCR}'
+			,PROVIDER = '{PROVIDER}'
+			,STATUS_ID = {STATUS_ID}
+			,PARENT_DOC_ID = {PARENT_DOC_ID}
+			,MTIME = current_timestamp
+			,MUSER_ID = {USER_ID}
+			WHERE DOC_ID = {SYS_OBJ_ID};
+			UPDATE WEB50.LIB_DOC_VERSION SET MIME_TYPE_ID=0,
+			NAME='Документ изменен',FILE_NAME='{FILE_NAME}',MTIME=current_timestamp,MUSER_ID={USER_ID}
+			WHERE DOC_ID = {SYS_OBJ_ID};
+			END $$;
+		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+		DO $$
+			BEGIN
+			DELETE
+			FROM WEB50.LIB_DOC_VERSION
+			WHERE DOC_ID = {SYS_OBJ_ID};
+
+			DELETE FROM WEB50.LIB_DOC WHERE DOC_ID = {SYS_OBJ_ID};
+			END $$;
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запросы для comboBox типов MIME (задача администрирования файлового архива) -->
+  <data id="WEB50_LIB_MIME_TYPE_REF" comment="WEB50.LIB_MIME_TYPE_REF" schema="WEB50" table="LIB_MIME_TYPE_REF">
+    <select>
+      <dbQuery idField="ID">
+        <query>SELECT MIME_TYPE_ID AS CODE, DESCR AS DESCR FROM  WEB50.LIB_MIME_TYPE_REF ORDER BY DESCR</query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запросы для создания/редактирования/удаления папки с документами (задача администрирования файлового архива) -->
+  <data id="ADM_LIB_DOC_FOLDER" comment="WEB50.LIB_DOC_FOLDER" schema="WEB50" table="LIB_DOC" descr="Папка">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+        SELECT
+        ld.NAME
+        ,ld.DESCR
+        ,ld.PARENT_DOC_ID
+        ,ld.DOC_ID
+        FROM WEB50.LIB_DOC ld
+        WHERE ld.DOC_ID = :SYS_OBJ_ID
+      </query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(DOC_ID) id FROM WEB50.LIB_DOC" />
+        <param name="NAME" type="String" direction="Input" />
+        <param name="DESCR" type="String" direction="Input" />
+        <param name="PROVIDER" type="String" direction="Input" />
+        <param name="STATUS_ID" type="Int64" direction="Input" default="1" />
+        <param name="PARENT_DOC_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+      INSERT INTO WEB50.LIB_DOC(
+      NAME
+      ,DESCR
+      ,PROVIDER
+      ,STATUS_ID
+      ,TIME_STAMP
+      ,DOC_TYPE_ID
+      ,PARENT_DOC_ID
+      ,CTIME
+      ,CUSER_ID
+      )
+      VALUES(
+      :NAME
+      ,:DESCR
+      ,null
+      ,:STATUS_ID
+      ,current_timestamp
+      ,0
+      ,:PARENT_DOC_ID
+      ,current_timestamp
+      ,:USER_ID
+      )
+    </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="DOC_ID" type="Int64" direction="Input" />
+        <param name="NAME" type="String" direction="Input" />
+        <param name="DESCR" type="String" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+	  UPDATE WEB50.LIB_DOC
+      SET
+	  NAME = :NAME
+      ,DESCR = :DESCR
+      WHERE DOC_ID = :DOC_ID
+        </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="DOC_ID" type="Int64" direction="Input" />
+        <query>
+		DO $$
+			BEGIN
+			DELETE
+			FROM WEB50.LIB_DOC_VERSION
+			WHERE DOC_ID = {DOC_ID};
+
+			DELETE FROM WEB50.LIB_DOC WHERE DOC_ID = {DOC_ID};
+			END $$;
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запрос для перемещения папки или файла в другую папку (задача администрирования файлового архива) -->
+  <data id="ADM_LIB_DOC_LINK_FOLDER" comment="WEB50.LIB_DOC_FOLDER" schema="WEB50" table="LIB_DOC" descr="Папка">
+    <update>
+      <dbCommand>
+        <param name="DOC_ID" type="Int64" direction="Input" />
+        <param name="PARENT_DOC_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <query>
+	  UPDATE WEB50.LIB_DOC
+      SET
+      PARENT_DOC_ID = :PARENT_DOC_ID
+      WHERE DOC_ID = :DOC_ID
+        </query>
+      </dbCommand>
+    </update>
+  </data>
+  <data id="ADM_LIB_COVERAGE" comment="WEB50.LIB_COVERAGE" schema="WEB50" table="LIB_COVERAGE" descr="Геопривязка документа">
+    <select>
+      <geoQuery idField="ID" geoField="X,Y" partField="">
+        <var name="FILTER" default="1=1" />
+        <query>
+        SELECT * FROM (
+        SELECT ld.DOC_ID ID
+		,lc.GID GID
+        ,(lc."XMIN" + lc."XMAX") / 2 X
+        ,(lc."YMIN" + lc."YMAX") / 2 Y
+        ,(lc."XMIN" + lc."XMAX") / 2 X_COORD
+        ,(lc."YMIN" + lc."YMAX") / 2 Y_COORD
+        FROM WEB50.LIB_DOC ld
+        JOIN WEB50.LIB_COVERAGE lc
+        ON ld.GID = lc.GID AND ld.DOC_TYPE_ID != 0 ) d
+		WHERE {FILTER}
+      </query>
+      </geoQuery>
+    </select>
+    <insert>
+      <geoCommand>
+        <var name="ID" type="Int64" direction="Input" default="UPDATE WEB50.LIB_DOC SET GID = {ID} WHERE DOC_ID = {ID}"/>
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <object>
+          INSERT INTO WEB50.LIB_COVERAGE(GID, WKB_GEOMETRY,"XMIN","XMAX","YMIN","YMAX",CTIME,CUSER_ID)
+          VALUES(:ID, :WKB, :XMIN, :XMAX, :YMIN, :YMAX, current_timestamp, :USER_ID)
+        </object>
+      </geoCommand>
+    </insert>
+    <update>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <object>
+          UPDATE WEB50.LIB_COVERAGE
+          SET WKB_GEOMETRY=:WKB
+          ,"XMIN"=:XMIN
+          ,"XMAX"=:XMAX
+          ,"YMIN"=:YMIN
+          ,"YMAX"=:YMAX
+          ,MTIME=current_timestamp
+          ,MUSER_ID=:USER_ID
+          WHERE GID = :ID
+        </object>
+      </geoCommand>
+    </update>
+    <delete>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <object />
+        <part />
+        <coord>
+			DO $$
+			BEGIN
+			UPDATE WEB50.LIB_DOC
+			SET GID = NULL
+			,MTIME=current_timestamp
+			,MUSER_ID={USER_ID}
+			WHERE DOC_ID = {ID};
+
+			DELETE
+			FROM WEB50.LIB_COVERAGE
+			WHERE GID = {ID};
+			END $$;
+		</coord>
+      </geoCommand>
+    </delete>
+  </data>
+</root>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="560" xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml" styleName="darkCanvas" title="Выбор трубы для привязки">
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="560">
+    <mx:HBox percentWidth="100">
+      <mx:Text textAlign="right" text="Выберите трубопровод" width="140" />
+      <mx:ComboBox id="LINE_DESCR" width="405" height="22" dataProvider="GAZPROM_SYS_SEM.xml#CAS_ROUTE" hint="Выберите трубопровод" tabIndex="2"/>
+    </mx:HBox>
+    <mx:HBox width="100%">
+      <mx:Text textAlign="right" text="Начальный км" width="140" />
+      <controls:NumberInput id="KM_START" editable="true" width="60" maxChars="22" height="20" />
+      <mx:Text textAlign="right" text="Конечный км" width="100" />
+      <controls:NumberInput id="KM_END" editable="true" width="60" maxChars="22" height="20" />
+      <mx:Text text=" " width="100%" />
+    </mx:HBox>
+  </mx:VBox>
+  <validatorsArray>
+    <controls:DefaultComboBoxValidator source="{LINE_DESCR}" property="CODE" enabled="false" requiredcombo="Поле 'Выберите трубопровод' обязательно для заполнения." />
+    <controls:DefaultNumberValidator source="{KM_START}" property="text" enabled="false" required="true"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле 'Начальный км.' обязательно для заполнения."
+                                       tooShortError="Поле 'Начальный км.' обязательно для заполнения."
+                                       precision="2"
+                                       precisionError="Значение в поле 'Начальный км.' должно иметь не более 2 цифр после запятой"
+                                       maxValue="9999999999.99"
+                                       exceedsMaxError="Значение в поле 'Начальный км.' может иметь 10 цифр до запятой и 2 после"
+                                       lowerThanMinError="Значение в поле 'Начальный км.' не может быть меньше 0"
+                                       negativeError="Значение в поле 'Начальный км.' не может быть меньше 0"/>
+    <controls:DefaultNumberValidator source="{KM_END}" property="text" enabled="false" required="true"
+                                   allowNegative="true"
+                                   minLength="0"
+                                   requiredFieldError="Поле 'Конечный км.' обязательно для заполнения."
+                                   tooShortError="Поле 'Конечный км.' обязательно для заполнения."
+                                   precision="2"
+                                   precisionError="Значение в поле 'Конечный км.' должно иметь не более 2 цифр после запятой"
+                                   maxValue="9999999999.99"
+                                   exceedsMaxError="Значение в поле 'Конечный км.' может иметь 10 цифр до запятой и 2 после"
+                                   lowerThanMinError="Значение в поле 'Конечный км.' не может быть меньше 0"
+                                   negativeError="Значение в поле 'Конечный км.' не может быть меньше 0"/>
+
+  </validatorsArray>
+</DATA_EDIT_FORM>

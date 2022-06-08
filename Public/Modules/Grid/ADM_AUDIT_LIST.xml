@@ -1,0 +1,102 @@
+﻿<!--7.7.1.2 -->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="4"  headerVertSize="50"
+            id="WEB50_B_AUDIT_EVENT"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelTemplateName="WEB50_B_AUDIT_EVENT_ADM"
+            layerId="ADM_AUDIT" propertyPanelName="WEB50_B_AUDIT_EVENT"
+            dataRequest="ADM_SEM.xml#WEB50_B_AUDIT_EVENT"
+            totalRecordsRequest="ADM_SEM.xml#WEB50_B_AUDIT_EVENT_CNT"
+            >
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <!--<picPutton:GridButton source="../../Public/assets/createObject.png"
+        tooltip="Создать объект"
+        clickEvent="ru.corelight.business.events.CreateObjectEvent"
+        isEnabled="null" />-->
+  <picPutton:GridButton source="../../Public/assets/excel.png"
+        tooltip="Экспортировать в Excel"
+        clickEvent="ru.corelight.business.events.ExportToExcelEvent"
+        selectedObjects="this" />
+  
+  <picPutton:GridButton source="../../Public/assets/unknown.png"
+        tooltip="Очистить журнал"
+        clickEvent="gridAdmAuditClearLog"
+        isEnabled="true"
+        position="top"/>
+
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+      <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/excel.png;eventName=ru.corelight.business.events.ExportToExcelEvent;toolTip=Выгрузить в Excel;templateName=ADM_AUDIT_LIST"
+                          editable="false"/>
+      <!--<columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/delete.png;eventName=ru.corelight.business.events.RemoveGridRowEvent;toolTip=Удалить запись"
+                          editable="false"/>-->
+      <columns:GridColumn headerText="Дата с" dataField="FROM_DATE"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer"
+                          editable="false"
+                          filterComparisionType="date"
+                          width="20"
+                          hidden="true"/>
+      <columns:GridColumn headerText="Дата по" dataField="TO_DATE"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer"
+                          editable="false"
+                          filterComparisionType="date"
+                          width="20"
+                          hidden="true"/>
+      <columns:GridColumn headerText="Audit ID (ID)" dataField="ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50"
+                          hidden="true"/>
+      <columns:GridColumn headerText="Audit ID" dataField="AUDIT_ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="40"/>
+      <columns:GridColumn headerText="Дата\nсоздания" dataField="FILTER_TIME_STAMP"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer"
+                          editable="false"
+                          filterComparisionType="date"
+                          width="50"/>
+      <columns:GridColumn headerText="Описание" dataField="DESCR"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"
+                          filterComparisionType="string"
+                          width="200"/>
+      <columns:GridColumn headerText="Детальное описание" dataField="DETAILED_MESSAGE"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"
+                          filterComparisionType="string"
+                          width="350"/>
+      <columns:GridColumn headerText="Категория" dataField="CATEGORY_ID"
+                          filterRequestId="ADM_SEM.xml#WEB50_B_AUDIT_EVENT_CATEGORY"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=ADM_SEM.xml#WEB50_B_AUDIT_EVENT_CATEGORY"
+                          filterComparisionType="array"
+                          editable="false"
+                          sortField="CATEGORY_DESCR"
+                          width="120"/>
+      <!--<columns:GridColumn headerText="Категория" dataField="CATEGORY_DESCR"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"
+                          filterComparisionType="string"
+                          width="100"/>-->
+      <columns:GridColumn headerText="User ID" dataField="USER_ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="false"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

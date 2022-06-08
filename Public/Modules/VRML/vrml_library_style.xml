@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Version: 4.3.1.0 -->
+<!--Revision: 1-->
+<library_style>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C2000017" descr="Газопроводы" query="SELECT p.*, m.obj_cls_id pipe_obj_cls_id, m.diameter pipe_diameter, m.descr pipe_descr FROM gis.m_3d_pipe_pikets_view p JOIN gis.gp_route m ON p.route_id = m.route_id WHERE m.obj_cls_id = 'C2000017' ORDER BY p.route_id, p.line_coord" layer_name="Газопроводы" style="appearance Appearance {
+ material Material { diffuseColor 0 .6 1 emissiveColor .3 .3 .5     transparency 0.000  } }" 
+    process="vrml_pipeline_make.xml" viewpoint="0" table="ГПН_ТРУБОПРОВОДЫ_ПРОЧИЕ" old_table="ГП_ПРОЧ_ТРУБЫ_ЛИН" id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C2000025" descr="Магистральные газопроводы" query="SELECT p.*, m.obj_cls_id pipe_obj_cls_id, m.diameter pipe_diameter, m.descr pipe_descr FROM gis.m_3d_pipe_pikets_view p JOIN gis.gp_route m ON p.route_id = m.route_id WHERE m.obj_cls_id = 'C2000025' ORDER BY p.route_id, p.line_coord" layer_name="Газопроводы" style="appearance Appearance {
+ material Material { diffuseColor 0.46 0.98 0.95 emissiveColor .3 .3 .5     transparency 0.000  } }" 
+    process="vrml_pipeline_make.xml" viewpoint="1"  table="ГПН_ТРУБОПРОВОДЫ_МАГИСТРАЛЬНЫЕ" old_table="ГП_МГ_ЛИН"  id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C2000027" descr="Отводы от магистральных газопроводов" query="SELECT p.*, m.obj_cls_id pipe_obj_cls_id, m.diameter pipe_diameter, m.descr pipe_descr FROM gis.m_3d_pipe_pikets_view p JOIN gis.gp_route m ON p.route_id = m.route_id WHERE m.obj_cls_id = 'C2000027' ORDER BY p.route_id, p.line_coord" layer_name="Газопроводы" style="appearance Appearance {
+ material Material { diffuseColor 0 .6 1 emissiveColor .3 .3 .5     transparency 0.000  } }" 
+    process="vrml_pipeline_make.xml"   table="ГПН_ТРУБОПРОВОДЫ_ОТВОДЫ" old_table="ГП_МГ_ЛИН"  id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C2000033" descr="Резервные газопроводы" query="SELECT p.*, m.obj_cls_id pipe_obj_cls_id, m.diameter pipe_diameter, m.descr pipe_descr FROM gis.m_3d_pipe_pikets_view p JOIN gis.gp_route m ON p.route_id = m.route_id WHERE m.obj_cls_id = 'C2000033' ORDER BY p.route_id, p.line_coord" layer_name="Лупинги, резервные газопроводы" style="appearance Appearance {
+ material Material { diffuseColor 0 .6 1 emissiveColor .3 .3 .5     transparency 0.000  } }" 
+    process="vrml_pipeline_make.xml"   table="ГПН_ТРУБОПРОВОДЫ_ЛУПИНГИ" old_table="ГП_МГ_ЛИН"  id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C2000034" descr="Перемычки" query="SELECT p.*, m.obj_cls_id pipe_obj_cls_id, m.diameter pipe_diameter, m.descr pipe_descr FROM gis.m_3d_pipe_pikets_view p JOIN gis.gp_route m ON p.route_id = m.route_id WHERE m.obj_cls_id = 'C2000034' ORDER BY p.route_id, p.line_coord" layer_name="Газопроводы" style="appearance Appearance {
+ material Material { diffuseColor 0 .6 1 emissiveColor .3 .3 .5     transparency 0.000  } }" 
+    process="vrml_pipeline_make.xml"  table="ГПН_ТРУБОПРОВОДЫ_ПЕРЕМЫЧКИ" old_table="ГП_ПРОЧ_ТРУБЫ_ЛИН"  id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C2000035" descr="Лупинги" query="SELECT p.*, m.obj_cls_id pipe_obj_cls_id, m.diameter pipe_diameter, m.descr pipe_descr FROM gis.m_3d_pipe_pikets_view p JOIN gis.gp_route m ON p.route_id = m.route_id WHERE m.obj_cls_id = 'C2000035' ORDER BY p.route_id, p.line_coord" layer_name="Лупинги, резервные газопроводы" style="appearance Appearance {
+ material Material { diffuseColor 0 .6 1 emissiveColor .3 .3 .5     transparency 0.000  } }" 
+    process="vrml_pipeline_make.xml"  table="ГПН_ТРУБОПРОВОДЫ_ЛУПИНГИ" old_table="ГП_МГ_ЛИН"  id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C1100005" descr="Камера запуска" query="SELECT * FROM gis.m_3d_prev_cur_next_piket_view where obj_cls_id = 'C1100005'" layer_name="Точечные объекты" style="appearance Appearance {
+ material Material { diffuseColor 1 .9 0 emissiveColor 1 .9 0     transparency 0.000  } }" 
+    process="vrml_cell_make.xml" table="ГПН_ОБЪЕКТЫ_КРАНЫ_ЛИН_КЗ_КП" old_table="ГП_КОНСТР_МГ_ТОЧ" id="MI_PRINX" viewpoint="0"/>"
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C1100022" descr="Камера приема" query="SELECT * FROM gis.m_3d_prev_cur_next_piket_view where obj_cls_id = 'C1100022'" layer_name="Точечные объекты" style="appearance Appearance {
+ material Material { diffuseColor 1 .9 0 emissiveColor 1 .8  0     transparency 0.000  } }" 
+    process="vrml_cell_make.xml"  table="ГПН_ОБЪЕКТЫ_КРАНЫ_ЛИН_КЗ_КП" old_table="ГП_КОНСТР_МГ_ТОЧ"  id="MI_PRINX" viewpoint="0"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C1100001" descr="Линейный кран газовый" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1100001'" layer_name="Точечные объекты" style="
+    Shape {  appearance Appearance { material Material { diffuseColor 0.6 0 0.6 } }
+      geometry Sphere {  radius  $RADIUS_1_15$ }}
+    Transform {	 translation 0 $RADIUS_3$ 0  children [
+        Shape { appearance Appearance { material Material { diffuseColor 0.6 0 0.6 } }
+          geometry Cylinder {  bottom  FALSE  height  $RADIUS_4$ radius  .03 top  FALSE } }  ]  }
+     Transform { translation 0 $RADIUS_5$ 0  children [
+        Shape { appearance Appearance { material Material { diffuseColor 0.6 0 0.6 } }
+          geometry Cylinder { height .03 radius $RADIUS_0_8$ }}]}
+    Transform { translation 0 $RADIUS_5$ 0  children[
+    Transform { translation 0 .1 0 children[ $TEXT_SIGN$ ]}]}
+    " process="vrml_pikets_make.xml" descr_name="DESCR" viewpoint="0"  table="ГПН_ОБЪЕКТЫ_КРАНЫ_ЛИН_КЗ_КП" old_table="ГП_КОНСТР_МГ_ТОЧ"  id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C1100019" descr="Кран газовый обводной,свечной" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1100019'" layer_name="Точечные объекты" style="
+    Shape { appearance Appearance { material Material  { diffuseColor 0.6 0 0.6 } }
+      geometry Sphere {  radius  $RADIUS_1_15$ } }
+    Transform  {	 translation 0 $RADIUS_3$ 0  children [
+        Shape  { appearance Appearance { material Material { diffuseColor 0.6 0 0.6 } }
+          geometry Cylinder { bottom  FALSE  height  $RADIUS_4$ radius  .03 top  FALSE }}]}
+   Transform  {	 translation 0 $RADIUS_5$ 0  children  [
+      Shape  { appearance Appearance { material Material { diffuseColor 0.6 0 0.6 } }
+        geometry Cylinder { height .03 radius $RADIUS_0_8$ }}] }
+   Transform { translation 0 $RADIUS_5$ 0  children[
+   Transform { translation 0 0.1 0 children[$TEXT_SIGN$]}]}
+" process="vrml_pikets_make.xml" descr_name="DESCR"  table="ГПН_ОБЪЕКТЫ_КОНСТРУКЦИИ" old_table="ГП_КОНСТР_ТОЧ"  id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C1100020" descr="Стояк отбора газа" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1100020'" layer_name="Точечные объекты" style="
+    Shape  { appearance Appearance {  material Material { diffuseColor 0.6 0 0.6 } }
+      geometry Sphere {  radius  $RADIUS_1_15$ } }
+    Transform {	 translation 0 $RADIUS_3$ 0 children [
+        Shape {  appearance Appearance { material Material { diffuseColor 0.6 0 0.6 } }
+           geometry Cylinder { bottom  FALSE  height  $RADIUS_4$ radius  .03 top  FALSE}}]}
+    Transform  {	 translation 0 $RADIUS_5$ 0   children  [
+        Shape   {  appearance Appearance { material Material { diffuseColor 0.6 0 0.6 } }
+          geometry Cylinder { height .03 radius $RADIUS_0_8$ } } ]}" 
+    process="vrml_pikets_make.xml"  table="ГПН_ОБЪЕКТЫ_КОНСТРУКЦИИ" old_table="ГП_КОНСТР_ТОЧ"  id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C1100006" descr="Свеча газовая" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1100006'" layer_name="Точечные объекты" style="
+    Shape { appearance Appearance { material Material { diffuseColor 1 1 0  } }
+  geometry Sphere {  radius  $RADIUS$ }}
+Transform {	 translation 0 1 0 children [
+ Shape {  appearance Appearance { material Material { diffuseColor 1 1 0  } }
+  geometry Cylinder { bottom  FALSE  height  2 radius  $RADIUS_0_8$ top     FALSE}}]}
+" process="vrml_pikets_make.xml"  table="ГПН_ОБЪЕКТЫ_СВЕЧИ" old_table="ГП_КОНСТР_ТОЧ"  id="MI_PRINX" viewpoint="0"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C1100002" descr="Маркер" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1100002'" layer_name="Точечные объекты" style="
+Transform {	   translation 0 $RADIUS$ 0   children   [
+    Shape { appearance Appearance { material Material { diffuseColor 0 1 0 }     }
+      geometry Cylinder { height .03 radius   $RADIUS$ }    }  ]}
+Transform {  translation 0 $RADIUS_2$ 0   children   [
+    Shape {  appearance Appearance { material Material { diffuseColor 0 1 0  } }
+      geometry Cylinder { height  $RADIUS_2$ radius  .03}  }   ]  }
+Transform { translation 0 $RADIUS_2$ 0 children[
+Transform { translation 0 .1 0 children[$TEXT_SIGN$]}]}
+" process="vrml_pikets_make.xml" descr_name="KM_NUMBER" viewpoint="0"  table="ГПН_ОБЪЕКТЫ_МАРКЕРЫ" old_table="ГП_КОНСТР_ТОЧ"  id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="SURFACE" descr="Поверхность земли" query="" layer_name="Поверхность земли" style="
+    DirectionalLight {    intensity 1    direction 0 0 -1    }
+    Shape {    appearance Appearance { material Material { diffuseColor 1 1 1 transparency 0.3  } }
+    geometry  IndexedFaceSet    {
+    colorPerVertex TRUE
+    ccw TRUE
+    creaseAngle 0.4
+    solid FALSE
+" process="vrml_surface_make.xml" table="NULL" old_table="NULL" id="NULL"/>
+<!--________________________________________________________________________________________________________-->
+  <object cls_id="C2000021" descr="Ограда" query="select ENTITY_ID,  DESCR, OBJ_CLS_ID, GEOLOC from gis.m_3d_gp_entity_view where obj_cls_id='C2000021' and gis.geo.validate_geoloc(geoloc)='TRUE'"
+    query_log ="select ENTITY_ID, DESCR, OBJ_CLS_ID, gis.geo.validate_geoloc(geoloc) ERROR_CODE from gis.m_3d_gp_entity_view where obj_cls_id='C2000021' and gis.geo.validate_geoloc(geoloc)!='TRUE'"       
+    layer_name="Площадные объекты" style=" 
+    appearance Appearance { material Material { diffuseColor 0.88 0.88 0.88 emissiveColor  0.88 0.88 0.88 transparency 0.0  } }
+#   appearance Appearance { material Material { diffuseColor 1 0 1 emissiveColor  1 0 1 transparency 0.0  } }
+    " process="vrml_fencing_make.xml" descr_name="DESCR"  table="ГПН_ПЛОЩАДКИ_КРАНОВЫЕ" old_table="ГП_ОГРАДЫ_КРАНОВЫХ_ПЛ"  id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C3000054" descr="Гидрография" query="select * from gis.m_3d_gp_entity_view e where e.obj_cls_id='C3000054' and gis.geo.validate_geoloc(geoloc)='TRUE'" 
+    query_log ="select ENTITY_ID, DESCR, OBJ_CLS_ID, gis.geo.validate_geoloc(geoloc) ERROR_CODE from gis.m_3d_gp_entity_view where obj_cls_id='C3000054' and gis.geo.validate_geoloc(geoloc)!='TRUE'"       
+    layer_name="Гидрография" style=" 
+    appearance Appearance {    material Material {  diffuseColor 0 .3 1 emissiveColor .3 .3 .5 transparency 0  } }
+    " process="vrml_area_make.xml" descr_name="DESCR" viewpoint="0" table="ГПН_ПЕРЕХОДЫ_Ч_ПРЕПЯТСТВИЯ" old_table="NULL" id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C3000052" descr="Строения" query="select * from gis.m_3d_gp_entity_view e where e.obj_cls_id='C3000052' and gis.geo.validate_geoloc(geoloc)='TRUE'" 
+    query_log ="select ENTITY_ID, DESCR, OBJ_CLS_ID, gis.geo.validate_geoloc(geoloc) ERROR_CODE from gis.m_3d_gp_entity_view where obj_cls_id='C3000052' and gis.geo.validate_geoloc(geoloc)!='TRUE'"       
+    layer_name="Площадные объекты" style=" 
+    appearance Appearance { material Material { diffuseColor 0.69 0.69 0.41 emissiveColor 0.69 0.69 0.41     transparency 0 } }
+    " process="vrml_building_make.xml" descr_name="DESCR" viewpoint="0" table="ГПН_ПЛОЩАДКИ_СТРОЕНИЯ" old_table="NULL" id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C2000018" descr="ЛЭП, линия связи" query="select * from gis.m_3d_gp_entity_view e where e.obj_cls_id='C2000018' and gis.geo.validate_geoloc(geoloc)='TRUE'" 
+    query_log ="select ENTITY_ID, DESCR, OBJ_CLS_ID, gis.geo.validate_geoloc(geoloc) ERROR_CODE from gis.m_3d_gp_entity_view where obj_cls_id='C2000018' and gis.geo.validate_geoloc(geoloc)!='TRUE'"       
+    layer_name="Линейные объекты" style=" 
+    appearance Appearance { material Material { diffuseColor 0.44 0.44 0.44 emissiveColor 0.44 0.44 0.44 transparency 0 } }
+    " process="vrml_line_make.xml" descr_name="DESCR" viewpoint="0" table="ГПН_ПЕРЕХОДЫ_Ч_ПРЕПЯТСТВИЯ" old_table="NULL" id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C3000053" descr="Дороги" query="select * from gis.m_3d_gp_entity_view e where e.obj_cls_id='C3000053' and gis.geo.validate_geoloc(geoloc)='TRUE'" 
+    query_log ="select ENTITY_ID, DESCR, OBJ_CLS_ID, gis.geo.validate_geoloc(geoloc) ERROR_CODE from gis.m_3d_gp_entity_view where obj_cls_id='C3000053' and gis.geo.validate_geoloc(geoloc)!='TRUE'"       
+    layer_name="Гидрография" style=" 
+    appearance Appearance {    material Material { diffuseColor 1.0 .90 .70  emissiveColor 1.0 .90 .70 transparency 0  } }
+    " process="vrml_area_make.xml" descr_name="DESCR" viewpoint="0" table="ГПН_ПЕРЕХОДЫ_Ч_ПРЕПЯТСТВИЯ" old_table="NULL" id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C2000028" descr="Железная дорога" query="select * from gis.m_3d_gp_entity_view e where e.obj_cls_id='C2000028'  and gis.geo.validate_geoloc(geoloc)='TRUE'" 
+    query_log ="select ENTITY_ID, DESCR, OBJ_CLS_ID, gis.geo.validate_geoloc(geoloc) ERROR_CODE from gis.m_3d_gp_entity_view where obj_cls_id='C2000028' and gis.geo.validate_geoloc(geoloc)!='TRUE'"       
+    layer_name="Линейные объекты" style=" 
+    appearance Appearance { material Material { diffuseColor 0 0.50 0.50 emissiveColor 0 0.50 0.50  transparency 0.000  } }
+    " process="vrml_railway_make.xml" descr_name="DESCR" viewpoint="0" table="ГПН_ПЕРЕХОДЫ_Ч_ПРЕПЯТСТВИЯ" old_table="NULL" id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C3000047" descr="Компрессорная станция" query="select * from gis.m_3d_gp_entity_view e where e.obj_cls_id='C3000047' and gis.geo.validate_geoloc(geoloc)='TRUE'" 
+    query_log ="select ENTITY_ID, DESCR, OBJ_CLS_ID, gis.geo.validate_geoloc(geoloc) ERROR_CODE from gis.m_3d_gp_entity_view where obj_cls_id='C3000047' and gis.geo.validate_geoloc(geoloc)!='TRUE'"       
+    layer_name="ГРС, КС" style=" 
+    appearance Appearance { material Material { diffuseColor 0.69 .69 .69 } }
+    " process="vrml_area_make.xml" descr_name="DESCR" viewpoint="0" table="ГПН_ПЛОЩАДКИ_ГРС_КС" old_table="ГП_ГРС_КС" id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C3000048" descr="Газораспределительная станция" query="select * from gis.m_3d_gp_entity_view e where e.obj_cls_id='C3000048' and gis.geo.validate_geoloc(geoloc)='TRUE'"
+    query_log ="select ENTITY_ID, DESCR, OBJ_CLS_ID, gis.geo.validate_geoloc(geoloc) ERROR_CODE from gis.m_3d_gp_entity_view where obj_cls_id='C3000048' and gis.geo.validate_geoloc(geoloc)!='TRUE'"       
+    layer_name="ГРС, КС" style=" 
+    appearance Appearance { material Material { diffuseColor 0.69 .69 .69 } }
+    " process="vrml_area_make.xml" descr_name="DESCR" viewpoint="0" table="ГПН_ПЛОЩАДКИ_ГРС_КС" old_table="ГП_ГРС_КС" id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C3000049" descr="Дом оператора" query="select * from gis.m_3d_gp_entity_view e where e.obj_cls_id='C3000049' and gis.geo.validate_geoloc(geoloc)='TRUE'" 
+    query_log ="select ENTITY_ID, DESCR, OBJ_CLS_ID, gis.geo.validate_geoloc(geoloc) ERROR_CODE from gis.m_3d_gp_entity_view where obj_cls_id='C3000049' and gis.geo.validate_geoloc(geoloc)!='TRUE'"       
+    layer_name="ГРС, КС" style=" 
+    appearance Appearance {  material Material { diffuseColor 0.69 .69 .69 } }
+    " process="vrml_area_make.xml" descr_name="DESCR" viewpoint="0" table="ГПН_ПЛОЩАДКИ_ГРС_КС" old_table="ГП_ГРС_КС" id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C1400014" descr="Столб" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1400014'" layer_name="Столбы, указатели" style="
+Transform {	 translation 0 5 0  children  [
+Shape { appearance Appearance { material Material { diffuseColor 0.69 .69 .69 emissiveColor 0.44 0.44 0.44  transparency 0.0 }}
+      geometry Cylinder { height 10 radius   .07 }}]}
+" process="vrml_pikets_make.xml" descr_name="DESCR" viewpoint="0"  table="ГПН_ОБЪЕКТЫ_СТОЛБЫ_УКАЗАТЕЛИ" old_table="ГП_СТОЛБЫ_УКАЗАТЕЛИ"  id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C1400003" descr="Километровый столб" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1400003'" layer_name="Столбы, указатели" style="
+Transform {	 translation 0 2.5 0 children [
+Shape {  appearance Appearance  {  material Material { diffuseColor 1 1 0 transparency 0.0 } }
+geometry Cylinder { height 5 radius   .03 }}]}
+Transform { translation 0 5 0  children[
+Transform { translation 0 .1 0 children[ $TEXT_SIGN$ ]}]}
+" process="vrml_pikets_make.xml" descr_name="DESCR" viewpoint="0"  table="ГПН_ОБЪЕКТЫ_СТОЛБЫ_КИЛОМЕТРОВЫЕ" old_table="ГП_СТОЛБЫ_УКАЗАТЕЛИ"  id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C1400013" descr="Указатель газопровода" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1400013'" layer_name="Столбы, указатели" style="
+Transform {  translation 0 1 0   children   [
+Shape    {  appearance Appearance  {  material Material  {  diffuseColor 1 1 0  transparency 0.0 } }
+      geometry Cylinder { height 2 radius   .03 }}]}
+Transform {	 translation 0 2 0  children [
+    Shape   { appearance Appearance  {    material Material      {  diffuseColor 1 1 0 emissiveColor 1 1 0 transparency 0.0  } }
+      geometry Box { size .1 .5 1 }}]}
+" process="vrml_pikets_make.xml" descr_name="DESCR" viewpoint="0"  table="ГПН_ОБЪЕКТЫ_СТОЛБЫ_УКАЗАТЕЛИ" old_table="ГП_СТОЛБЫ_УКАЗАТЕЛИ"  id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C1100037 " descr="Заглушка" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1100037'" layer_name="Точечные объекты" style="
+    Shape { appearance Appearance { material Material { diffuseColor 1 0 0  } }
+  geometry Sphere {  radius  $RADIUS$ }}
+" process="vrml_pikets_make.xml"  table="ГПН_ОБЪЕКТЫ_КОНСТРУКЦИИ" old_table="ГП_КОНСТР_ТОЧ"  viewpoint="0"   id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C1100053" descr="Отводной кран" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1100053'" layer_name="Точечные объекты" style="
+    Shape  { appearance Appearance { material Material  { diffuseColor 0.6 0 0.6 } }
+      geometry Sphere {  radius  $RADIUS_1_15$ } }
+    Transform  {	 translation 0 $RADIUS_3$ 0   children  [
+        Shape  { appearance Appearance { material Material { diffuseColor 0.6 0 0.6 } }
+          geometry Cylinder { bottom  FALSE  height  $RADIUS_4$ radius  .03 top  FALSE }}]}
+   Transform   {	 translation 0 $RADIUS_5$ 0  children [
+      Shape { appearance Appearance { material Material { diffuseColor 0.6 0 0.6 } }
+        geometry Cylinder { height .03 radius $RADIUS_0_8$ }}]}
+   Transform { translation 0 $RADIUS_5$ 0  children[
+   Transform { translation 0 0.1 0
+      children[$TEXT_SIGN$]}]}
+" process="vrml_pikets_make.xml" descr_name="DESCR"  table="" old_table="ГП_КОНСТР_ТОЧ"  id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C1200004" descr="Контрольно-измерительная колонка" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1200004'" layer_name="Система электрохимической защиты" style="
+     Transform  {	translation 0 $RADIUS_3$ 0  children  [
+        Shape { appearance Appearance { material Material { diffuseColor 1 1 0 } }
+          geometry Cylinder { bottom  FALSE  height  $RADIUS_6$ radius  0.1 top  FALSE }}] }
+" process="vrml_pikets_make.xml" descr_name="DESCR"  table="ГПН_ОБЪЕКТЫ_ЭХЗ" old_table="ГП_ЭХЗ" id="MI_PRINX" viewpoint="0"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C1200012" descr="Контрольно-измерительный пункт" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1200012'" layer_name="Система электрохимической защиты" style="
+     Transform     {	 translation 0 $RADIUS_3$ 0    children    [
+        Shape    { appearance Appearance { material Material { diffuseColor 1 1 0 } }
+          geometry Cylinder { bottom  FALSE  height  $RADIUS_6$ radius  0.2 top  FALSE }}]}
+" process="vrml_pikets_make.xml" descr_name="DESCR"  table="ГПН_ОБЪЕКТЫ_ЭХЗ" old_table="ГП_ЭХЗ" id="MI_PRINX" viewpoint="0"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C1200056" descr="Станция дренажной  защиты" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1200056'" style="
+    Shape { 
+ appearance Appearance { material Material { diffuseColor 1 1 0  } }
+  geometry Sphere {  radius  $RADIUS_1_15$ }}
+Transform {	 translation 0 $RADIUS_3$ 0 children [
+ Shape { appearance Appearance { material Material { diffuseColor 1 1 0  } }
+  geometry Cylinder { bottom  FALSE  height  $RADIUS_6$ radius  $RADIUS_0_8$ top     FALSE}
+}]}
+" process="vrml_pikets_make.xml"  table="ГПН_ОБЪЕКТЫ_ЭХЗ" old_table="ГП_ЭХЗ"  id="MI_PRINX" viewpoint="0"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C1400061" descr="Свеча защитного патрона" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1400061'" style="
+Shape { appearance Appearance { material Material { diffuseColor 1 1 0  } }
+  geometry Sphere {  radius  $RADIUS_1_15$ }}
+Transform {	 translation 0 $RADIUS_3$ 0 children [
+Shape {  appearance Appearance { material Material { diffuseColor 1 1 0  } }
+  geometry Cylinder { bottom  FALSE  height  $RADIUS_6$ radius  $RADIUS_0_8$ top     FALSE}}]}
+" process="vrml_pikets_make.xml"  table="ГПН_СООРУЖЕНИЯ_ЛЧ" old_table="ГП_КОНСТР_ТОЧ"  id="MI_PRINX" viewpoint="0"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C1400063" descr="Столбик-сторожок кабельный" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1400063'" layer_name="Столбы, указатели" style="
+Transform {  translation 0 1 0   children   [
+Shape    {  appearance Appearance  {  material Material  {  diffuseColor 1 1 0  transparency 0.0 } }
+      geometry Cylinder { height 2 radius   .03 }}]}
+Transform {	 translation 0 2 0  children [
+    Shape   { appearance Appearance  {    material Material      {  diffuseColor 1 1 0 emissiveColor 1 1 0 transparency 0.0  } }
+      geometry Box { size .1 .5 1 }}]}
+" process="vrml_pikets_make.xml" descr_name="DESCR" viewpoint="0"  table="ГПН_ОБЪЕКТЫ_СВЯЗИ" old_table="ГП_СТОЛБЫ_УКАЗАТЕЛИ"  id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C3000051" descr="Вертолетная площадка" query="select * from gis.m_3d_gp_entity_view e where e.obj_cls_id='C3000051' and gis.geo.validate_geoloc(geoloc)='TRUE'"
+    query_log ="select ENTITY_ID, DESCR, OBJ_CLS_ID, gis.geo.validate_geoloc(geoloc) ERROR_CODE from gis.m_3d_gp_entity_view where obj_cls_id='C3000051' and gis.geo.validate_geoloc(geoloc)!='TRUE'"       
+    layer_name="ГРС, КС" style=" 
+    appearance Appearance { material Material { diffuseColor 0.44 .44 .44  transparency 0 } }
+    " process="vrml_area_make.xml" descr_name="DESCR" viewpoint="0" table="ГПН_ПЛОЩАДКИ_ВЕРТ" old_table="NULL" id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C2000026" descr="Прочие коммуникации" query="select * from gis.m_3d_gp_entity_view e where e.obj_cls_id='C2000026' and gis.geo.validate_geoloc(geoloc)='TRUE'" 
+    query_log ="select ENTITY_ID, DESCR, OBJ_CLS_ID, gis.geo.validate_geoloc(geoloc) ERROR_CODE from gis.m_3d_gp_entity_view where obj_cls_id='C2000026' and gis.geo.validate_geoloc(geoloc)!='TRUE'"       
+    layer_name="Линейные объекты" style=" 
+    appearance Appearance { material Material { diffuseColor 0.1 0.1 0.1 emissiveColor 0.1 0.1 0.1     transparency 0.000  } }
+    " process="vrml_line_make.xml" descr_name="DESCR" viewpoint="0" table="ГПН_ПЕРЕХОДЫ_Ч_ПРЕПЯТСТВИЯ" old_table="NULL" id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+  <object cls_id="C1400069" descr="Шкаф(будка)распределительный" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1400069'" layer_name="Столбы, указатели" style="
+Transform {	 translation 0 1 0  children [
+    Shape   { appearance Appearance  {    material Material      { diffuseColor 0.69 .69 .69 emissiveColor 0.69 0.69 0.69 diffuseColor 0.69 0.69 0.69    transparency 0.0  } }
+    geometry Box { size 1 2 1 }}]}
+" process="vrml_pikets_make.xml" descr_name="DESCR" viewpoint="0"  table="ГПН_ОБЪЕКТЫ_СВЯЗИ" old_table="NULL"  id="MI_PRINX"/>
+<!--_______________________________________________________________________________________________________-->
+<object cls_id="C1200042" descr="Анодное заземление ЭХЗ" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1200042'" layer_name="Система электрохимической защиты" style="
+     Transform  {	translation 0 -1 0  children  [
+        Shape { appearance Appearance { material Material { diffuseColor 0.69 .69 .69 } }
+          geometry Cylinder { bottom  FALSE  height  3 radius  .1 top  FALSE }}] }
+" process="vrml_pikets_make.xml" descr_name="DESCR"  table="ГПН_ОБЪЕКТЫ_ЭХЗ" old_table="ГП_ЭХЗ" id="MI_PRINX" viewpoint="0"/>
+<!--_______________________________________________________________________________________________________-->
+<object cls_id="C1200011" descr="Станция(установка),трансформатор катодной защиты" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1200011'" layer_name="Система электрохимической защиты" style="
+     Transform {	 translation 0 .5 0  children [
+    Shape   { appearance Appearance  {    material Material      {  diffuseColor 0.69 0.69 0.69    transparency 0.0  } }
+    geometry Box { size 1 1 1 }}]}
+" process="vrml_pikets_make.xml" descr_name="DESCR"  table="ГПН_ОБЪЕКТЫ_ЭХЗ" old_table="ГП_ЭХЗ" id="MI_PRINX" viewpoint="0"/>
+  <!--_______________________________________________________________________________________________________-->
+  <object cls_id="C3000050" descr="Аварийный запас труб" query="select * from gis.m_3d_gp_entity_view e where e.obj_cls_id='C3000050' and gis.geo.validate_geoloc(geoloc)='TRUE'" 
+    query_log ="select ENTITY_ID, DESCR, OBJ_CLS_ID, gis.geo.validate_geoloc(geoloc) ERROR_CODE from gis.m_3d_gp_entity_view where obj_cls_id='C3000050' and gis.geo.validate_geoloc(geoloc)!='TRUE'"       
+    layer_name="ГРС, КС" style=" 
+    appearance Appearance { material Material { diffuseColor 0.69 .69 .69  transparency 0.000  } }
+    " process="vrml_area_make.xml" descr_name="DESCR" viewpoint="0" table="ГПН_ПЛОЩАДКИ_ЗАПАС_ТРУБ" old_table="NULL" id="MI_PRINX"/>
+  <!--_______________________________________________________________________________________________________-->
+  <!--object cls_id="DEFECT" descr="Дефекты ВТД" 
+          style="
+    Shape {  appearance Appearance { material Material { diffuseColor 0.6 0 0.6 } }
+      geometry Sphere {  radius  $RADIUS_1_15$ }}
+    " descr_name="DESCR" viewpoint="0" id="MI_PRINX"/-->
+  <!--_______________________________________________________________________________________________________-->
+  <object cls_id="DEFECT" descr="Дефекты" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1100001'" layer_name="Точечные объекты" style="
+    Shape  { appearance Appearance { material Material  { diffuseColor $COLOR_RGB$  transparency 0.5} }
+      geometry Sphere {  radius  $RADIUS_1_15$ } }
+    " process="vrml_pikets_make.xml" descr_name="DESCR" viewpoint="0"  table="ГПН_ОБЪЕКТЫ_КРАНЫ_ЛИН_КЗ_КП" old_table="ГП_КОНСТР_МГ_ТОЧ"  id="MI_PRINX"/>
+
+  <object cls_id="MEASURE" descr="Измерения" query="select * from gis.m_3d_pipe_pikets_view where obj_cls_id='C1100001'" layer_name="Точечные объекты" style="
+    Shape  { appearance Appearance { material Material  { diffuseColor $COLOR_RGB$ transparency 0.5 } }
+      geometry Sphere {  radius  $RADIUS_1_15$ } }
+    " process="vrml_pikets_make.xml" descr_name="DESCR" viewpoint="0"  table="ГПН_ОБЪЕКТЫ_КРАНЫ_ЛИН_КЗ_КП" old_table="ГП_КОНСТР_МГ_ТОЧ"  id="MI_PRINX"/>
+
+  <object cls_id="DOT_DEFAULT_STYLE" descr="Стиль по умолчанию точечных объектов"  style="
+    Shape  { appearance Appearance { material Material  { diffuseColor 0.6 0 0.6 } }
+      geometry Sphere {  radius  $RADIUS_1_15$ } }
+      Transform { translation 0 $RADIUS_5$ 0  children[ Transform { translation 0 0.1 0 children[$TEXT_SIGN$]}]}
+    " process="vrml_pikets_make.xml" descr_name="DESCR" viewpoint="0"   id="MI_PRINX"/>
+</library_style>
+

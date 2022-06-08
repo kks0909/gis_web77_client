@@ -1,0 +1,29 @@
+<form version="7.7.5.0" class="searchDialogForm">
+    <div class="options">
+        <span>
+            <label for="regionBox" style="font-style: italic;">Внимание! Для поиска записей в списке введите часть строки.</label>
+            <div class="optionAddress">
+                <label for="regionBox">Регион</label>
+                <div class="searchCombo" id="regionBox" ></div>
+            </div>
+            <div class="optionAddress">
+                <label for="settlementBox">Населенный пункт</label>	
+                <div class="searchCombo" id="settlementBox" ></div>
+            </div>
+            <div class="optionAddress">
+                <label for="streetBox">Улица</label>
+                <div class="searchCombo"><input type="text" id="streetBox" /></div>
+            </div>
+            <div class="optionAddress">
+                <label for="houseNumber">Дом</label>
+                <input class="smallText" type="text" style="margin-left: 34px" id="houseNumber" />
+                <label for="tankNumber" style="margin-left: 8px">Корпус</label>
+                <input class="smallText" type="text" style="margin-left: 23px" id="tankNumber" />
+            </div>
+        </span>
+    </div>
+</form>
+<div class="searchAddressButtons">
+    <input type="button" name="search" class="map-dialog-button map-search-button" id="searchFind" value="Найти">
+    <input type="button" name="cancel" class="map-dialog-button map-search-button" id="searchCancel" value="Отмена">
+</div>

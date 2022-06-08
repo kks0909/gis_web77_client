@@ -1,0 +1,10 @@
+﻿<root version="7.7.3.0">
+<!-- [position() &lt; {HIGH_LIMIT}][position() &gt;= {LOW_LIMIT}] -->
+<data id="PROP_LIST" comment="Список вкладок" schema="-" table="-" descr="Список вкладок">
+    <select>
+      <xmlQuery source="ALL_PROP_LIST.xml" xpath="//data[@id='{CLASS_NAME}']">
+        <var name="CLASS_NAME" />
+      </xmlQuery>
+    </select>
+</data>
+</root> 	

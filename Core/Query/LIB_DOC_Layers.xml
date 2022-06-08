@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.3.0" descr="Прикрепленные документы">
+  <dataProvider type="style" source="LIB_DOC_STYLE.xml" />
+  <layer id="LIB_DOC" comment="WEB50.LIB_DOC" descr="Геокодированные документы" projection="EPSG:4326" 
+         dataType="vector" type="common" labelField="" classField="" spacing="LIB_DOC" cover="false" useServerCache="true"
+         fitMap="false" order="200000" visible="true" topology="point"
+         events="{trigger:'mouseover';searchRadius:24;showTitle:true;imageMinSize:32;maxWidth:10;maxHeight:10;textWidth:100;type:'control.events.map.OSLayerMouseEvent#layerMouseOver';delay:250;listener:'DocumentPreview_M.swf'}
+         {trigger:'mouseout';type:'control.events.map.OSLayerMouseEvent#layerMouseOut';delay:250;listener:'DocumentPreview_M.swf'}">
+	  <!--Пустой фильтр, чтобы не учитывалось кеширование-->
+	  <filter>
+		  <pattern></pattern>
+		  <join></join>
+		  <field></field>
+		  <replace></replace>
+	  </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#LIB_DOC" />
+    <dataProvider type="style" source="LIB_DOC_STYLE.xml#LIB_DOC" />
+    <dataProvider type="semantic" source="LIB_DOC_SEM.xml#LIB_DOC" />
+    <dataProvider type="spatial" source="LIB_DOC_GEO.xml#LIB_DOC" />
+  </layer>
+  <layer id="LIB_DOC_WRL" comment="WEB50.LIB_DOC" descr="Документы  3D-сцен" projection="EPSG:4326" 
+         dataType="vector" type="common" labelField="" classField="" spacing="LIB_DOC_WRL" cover="false" useServerCache="true" 
+         fitMap="false" order="200000" visible="false" topology="point">
+	  <!--Пустой фильтр, чтобы не учитывалось кеширование-->
+	  <filter>
+		  <pattern></pattern>
+		  <join></join>
+		  <field></field>
+		  <replace></replace>
+	  </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#LIB_DOC_WRL" />
+    <dataProvider type="style" source="LIB_DOC_STYLE.xml#LIB_DOC_WRL" />
+    <dataProvider type="semantic" source="LIB_DOC_SEM.xml#LIB_DOC_WRL" />
+    <dataProvider type="spatial" source="LIB_DOC_GEO.xml#LIB_DOC_WRL" />
+  </layer>
+  <layer id="LIB_DOC_IMG" comment="WEB50.LIB_DOC" descr="Навигационные карты (IMG)" projection="EPSG:4326" 
+         dataType="vector" type="common" labelField="" classField="" spacing="LIB_DOC_IMG" cover="false" useServerCache="true"
+         fitMap="false" order="200000" visible="false" topology="point">
+	  <!--Пустой фильтр, чтобы не учитывалось кеширование-->
+	  <filter>
+		  <pattern></pattern>
+		  <join></join>
+		  <field></field>
+		  <replace></replace>
+	  </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#LIB_DOC_IMG" />
+    <dataProvider type="style" source="LIB_DOC_STYLE.xml#LIB_DOC_IMG" />
+    <dataProvider type="semantic" source="LIB_DOC_SEM.xml#LIB_DOC_IMG" />
+    <dataProvider type="spatial" source="LIB_DOC_GEO.xml#LIB_DOC_IMG" />
+  </layer>  
+  <layer id="LIB_DOC_GEO_VIDEO" comment="WEB50.LIB_DOC" descr="Данные видеомониторинга" projection="EPSG:4326" 
+         dataType="vector" type="common" labelField="" classField="" spacing="LIB_DOC_GEO_VIDEO" cover="false" useServerCache="true"
+         fitMap="false" order="1" visible="false" topology="line">
+	  <!--Пустой фильтр, чтобы не учитывалось кеширование-->
+	  <filter>
+		  <pattern></pattern>
+		  <join></join>
+		  <field></field>
+		  <replace></replace>
+	  </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#LIB_DOC_GEO_VIDEO" />
+    <dataProvider type="style" source="LIB_DOC_STYLE.xml#LIB_DOC_GEO_VIDEO" />
+    <dataProvider type="semantic" source="LIB_DOC_SEM.xml#LIB_DOC_GEO_VIDEO" />
+    <dataProvider type="spatial" source="LIB_DOC_GEO.xml#LIB_DOC_GEO_VIDEO" />
+  </layer>
+</root>

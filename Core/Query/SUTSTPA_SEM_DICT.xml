@@ -1,0 +1,1530 @@
+﻿<root version="7.7.7.2">
+<data id="TYPE" comment="TYPE" schema="GDAL" table="кран">
+		<select>
+			<dbQuery idField="ID">
+				<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+				<query>
+				select 'YELLOW' code, 'YELLOW' descr union ALL
+	          		select 'RED' code, 'RED' descr union all
+	          		select 'GREEN' code, 'GREEN' descr
+	          	</query>
+			</dbQuery>
+		</select>
+	</data>	
+		
+<data id="YESNO" comment="YESNO" schema="GDAL" table="кран">
+		<select>
+			<dbQuery idField="ID">
+				<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+				<query>
+					select 1 code, 'ДА' descr union ALL
+	          		select 0 code, 'НЕТ' descr
+	          	</query>
+			</dbQuery>
+		</select>
+	</data>		
+	<data id="SUTSTPA_SPRAV_DIAMETER_GCL" comment="SUTSTPA.SPRAV_DIAMETER_GCL" schema="SUTSTPA" table="SPRAV_DIAMETER_GCL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_DIAMETER_GCL ORDER BY DESCR</query>
+			</dbQuery>
+		</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_DIAMETER_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_DIAMETER_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_VALVE_TYPE_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+</data>
+<data id="SUTSTPA_SPRAV_LES_GCL" comment="SUTSTPA.SPRAV_LES_GCL" schema="SUTSTPA" table="SPRAV_LES_GCL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_LES_GCL ORDER BY DESCR</query>
+			</dbQuery>
+		</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		I NSERT INTO SUTSTPA.SPRAV_LES_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_LES_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_VALVE_TYPE_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+</data>
+<data id="SUTSTPA_SPRAV_LPU_GCL" comment="SUTSTPA.SPRAV_LPU_GCL" schema="SUTSTPA" table="SPRAV_LPU_GCL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_LPU_GCL ORDER BY DESCR</query>
+			</dbQuery>
+		</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_LPU_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_LPU_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_VALVE_TYPE_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+</data>
+<data id="SUTSTPA_SPRAV_NOM_PRESSURE_GCL" comment="SUTSTPA.SPRAV_NOM_PRESSURE_GCL" schema="SUTSTPA" table="SPRAV_NOM_PRESSURE_GCL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_NOM_PRESSURE_GCL ORDER BY DESCR</query>
+			</dbQuery>
+		</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_NOM_PRESSURE_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_NOM_PRESSURE_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_VALVE_TYPE_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+</data>
+<data id="SUTSTPA_SPRAV_PIPE_GCL" comment="SUTSTPA.SPRAV_PIPE_GCL" schema="SUTSTPA" table="SPRAV_PIPE_GCL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT CODE, DESCRIPTION AS DESCR,alt_description, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_PIPE_GCL ORDER BY DESCR</query>
+			</dbQuery>
+		</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="ALT_DESCRIPTION" default="" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_PIPE_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL, ALT_DESCRIPTION)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}','{ALT_DESCRIPTION}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="ALT_DESCRIPTION" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_PIPE_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		,ALT_DESCRIPTION='{ALT_DESCRIPTION}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_VALVE_TYPE_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+</data>
+<data id="SUTSTPA_SPRAV_VALVE_JOIN_GCL" comment="SUTSTPA.SPRAV_VALVE_JOIN_GCL" schema="SUTSTPA" table="SPRAV_VALVE_JOIN_GCL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_VALVE_JOIN_GCL ORDER BY DESCR</query>
+			</dbQuery>
+		</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_VALVE_JOIN_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_VALVE_JOIN_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_VALVE_TYPE_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+</data>
+<data id="SUTSTPA_SPRAV_VALVE_MANUF_GCL" comment="SUTSTPA.SPRAV_VALVE_MANUF_GCL" schema="SUTSTPA" table="SPRAV_VALVE_MANUF_GCL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_VALVE_MANUF_GCL ORDER BY DESCR</query>
+			</dbQuery>
+		</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_VALVE_MANUF_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_VALVE_MANUF_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_VALVE_TYPE_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+</data>
+<data id="SUTSTPA_SPRAV_VALVE_OP_TYPE_GCL" comment="SUTSTPA.SPRAV_VALVE_OP_TYPE_GCL" schema="SUTSTPA" table="SPRAV_VALVE_OP_TYPE_GCL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_VALVE_OP_TYPE_GCL ORDER BY DESCR</query>
+			</dbQuery>
+		</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_VALVE_OP_TYPE_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_VALVE_OP_TYPE_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_VALVE_TYPE_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+</data>
+<data id="SUTSTPA_SPRAV_VALVE_TPA_NAME_GCL" comment="SUTSTPA.SPRAV_VALVE_TPA_NAME_GCL" schema="SUTSTPA" table="SPRAV_VALVE_TPA_NAME_GCL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_VALVE_TPA_NAME_GCL ORDER BY DESCR</query>
+			</dbQuery>
+		</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_VALVE_TPA_NAME_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_VALVE_TPA_NAME_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_VALVE_TYPE_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+</data>
+<data id="SUTSTPA_SPRAV_VALVE_TYPE_GCL" comment="SUTSTPA.SPRAV_VALVE_TYPE_GCL" schema="SUTSTPA" table="SPRAV_VALVE_TYPE_GCL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_VALVE_TYPE_GCL ORDER BY DESCR</query>
+			</dbQuery>
+		</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_VALVE_TYPE_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_VALVE_TYPE_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_VALVE_TYPE_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+</data>
+<data id="SUTSTPA_SPRAV_CLIMATIC_TYPE_ID_GCL" comment="SUTSTPA.SPRAV_CLIMATIC_TYPE_ID_GCL" schema="SUTSTPA" table="SPRAV_CLIMATIC_TYPE_ID_GCL">
+    <select>
+		<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_CLIMATIC_TYPE_ID_GCL ORDER BY DESCR</query>
+		</dbQuery>
+	</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_CLIMATIC_TYPE_ID_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_CLIMATIC_TYPE_ID_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_CLIMATIC_TYPE_ID_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+    </data>
+    <data id="SUTSTPA_SPRAV_TPA_CONSTR_TYPE_ID_GCL" comment="SUTSTPA.SPRAV_TPA_CONSTR_TYPE_ID_GCL" schema="SUTSTPA" table="SPRAV_TPA_CONSTR_TYPE_ID_GCL">
+        <select>
+		<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_TPA_CONSTR_TYPE_ID_GCL ORDER BY DESCR</query>
+		</dbQuery>
+	</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_TPA_CONSTR_TYPE_ID_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_TPA_CONSTR_TYPE_ID_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_TPA_CONSTR_TYPE_ID_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+    </data>
+    <data id="SUTSTPA_SPRAV_TPA_FIGURE_TYPE_ID_GCL" comment="SUTSTPA.SPRAV_TPA_FIGURE_TYPE_ID_GCL" schema="SUTSTPA" table="SPRAV_TPA_FIGURE_TYPE_ID_GCL">
+        <select>
+		<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_TPA_FIGURE_TYPE_ID_GCL ORDER BY DESCR</query>
+		</dbQuery>
+	</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_TPA_FIGURE_TYPE_ID_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_TPA_FIGURE_TYPE_ID_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_TPA_FIGURE_TYPE_ID_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+    </data>
+    <data id="SUTSTPA_SPRAV_VALVE_MATERIAL_TYPE_CL_GCL" comment="SUTSTPA.SPRAV_VALVE_MATERIAL_TYPE_CL_GCL" schema="SUTSTPA" table="SPRAV_VALVE_MATERIAL_TYPE_CL_GCL">
+        <select>
+		<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_VALVE_MATERIAL_TYPE_CL_GCL ORDER BY DESCR</query>
+		</dbQuery>
+	</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_VALVE_MATERIAL_TYPE_CL_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_VALVE_MATERIAL_TYPE_CL_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_VALVE_MATERIAL_TYPE_CL_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+    </data>
+    <data id="SUTSTPA_SPRAV_EXECUTION_TYPE_ID_GCL" comment="SUTSTPA.SPRAV_EXECUTION_TYPE_ID_GCL" schema="SUTSTPA" table="SPRAV_EXECUTION_TYPE_ID_GCL">
+        <select>
+		<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_EXECUTION_TYPE_ID_GCL ORDER BY DESCR</query>
+		</dbQuery>
+	</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_EXECUTION_TYPE_ID_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_EXECUTION_TYPE_ID_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_EXECUTION_TYPE_ID_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+    </data>
+    <data id="SUTSTPA_SPRAV_INSTALL_TYPE_ID_GCL" comment="SUTSTPA.SPRAV_INSTALL_TYPE_ID_GCL" schema="SUTSTPA" table="SPRAV_INSTALL_TYPE_ID_GCL">
+        <select>
+		<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_INSTALL_TYPE_ID_GCL ORDER BY DESCR</query>
+		</dbQuery>
+	</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_INSTALL_TYPE_ID_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_INSTALL_TYPE_ID_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_INSTALL_TYPE_ID_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+    </data>
+    <data id="SUTSTPA_SPRAV_FUNC_TYPE_ID_GCL" comment="SUTSTPA.SPRAV_FUNC_TYPE_ID_GCL" schema="SUTSTPA" table="SPRAV_FUNC_TYPE_ID_GCL">
+        <select>
+		<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_FUNC_TYPE_ID_GCL ORDER BY DESCR</query>
+		</dbQuery>
+	</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_FUNC_TYPE_ID_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_FUNC_TYPE_ID_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_FUNC_TYPE_ID_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+    </data>
+    <data id="SUTSTPA_SPRAV_MATERIAL_ID_GCL" comment="SUTSTPA.SPRAV_MATERIAL_ID_GCL" schema="SUTSTPA" table="SPRAV_MATERIAL_ID_GCL">
+        <select>
+		<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_MATERIAL_ID_GCL ORDER BY DESCR</query>
+		</dbQuery>
+	</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_MATERIAL_ID_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_MATERIAL_ID_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_MATERIAL_ID_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+    </data>
+    <data id="SUTSTPA_SPRAV_OPER_LABEL_TYPE_ID_GCL" comment="SUTSTPA.SPRAV_OPER_LABEL_TYPE_ID_GCL" schema="SUTSTPA" table="SPRAV_OPER_LABEL_TYPE_ID_GCL">
+        <select>
+		<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_OPER_LABEL_TYPE_ID_GCL ORDER BY DESCR</query>
+		</dbQuery>
+	</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_OPER_LABEL_TYPE_ID_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_OPER_LABEL_TYPE_ID_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_OPER_LABEL_TYPE_ID_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+    </data>
+    <data id="SUTSTPA_SPRAV_OPER_MANUF_ID_GCL" comment="SUTSTPA.SPRAV_OPER_MANUF_ID_GCL" schema="SUTSTPA" table="SPRAV_OPER_MANUF_ID_GCL">
+        <select>
+		<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_OPER_MANUF_ID_GCL ORDER BY DESCR</query>
+		</dbQuery>
+	</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_OPER_MANUF_ID_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_OPER_MANUF_ID_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_OPER_MANUF_ID_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+    </data>
+    <data id="SUTSTPA_SPRAV_INF_COR_GCL" comment="SUTSTPA.SPRAV_INF_COR_GCL" schema="SUTSTPA" table="SPRAV_INF_COR_GCL">
+        <select>
+		<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		SELECT CODE, DESCRIPTION AS DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL FROM SUTSTPA.SPRAV_INF_COR_GCL ORDER BY DESCR</query>
+		</dbQuery>
+	</select>
+	<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.SPRAV_INF_COR_GCL(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.SPRAV_INF_COR_GCL SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.SPRAV_INF_COR_GCL WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+    </data>
+    <data id="SUTSTPA_SPRAV_SERVICE_MAINT_GCL" comment="SUTSTPA.SPRAV_SERVICE_MAINT_GCL" schema="SUTSTPA" table="SPRAV_SERVICE_MAINT_GCL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT CODE, description DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL from sutstpa.sprav_service_maint_gcl</query>
+			</dbQuery>
+		</select>
+		<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.sprav_service_maint_gcl(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.sprav_service_maint_gcl SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.sprav_service_maint_gcl WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+	</data>
+	<data id="SUTSTPA_SPRAV_SERVICE_EPB_GCL" comment="SUTSTPA.SPRAV_SERVICE_EPB_GCL" schema="SUTSTPA" table="SPRAV_SERVICE_EPB_GCL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT CODE, description DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL from sutstpa.sprav_service_epb_gcl</query>
+			</dbQuery>
+		</select>
+				<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.sprav_service_epb_gcl(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.sprav_service_epb_gcl SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.sprav_service_epb_gcl WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+	</data>
+	<data id="SUTSTPA_SPRAV_SERVICE_COND_VIOL_GCL" comment="SUTSTPA.SPRAV_SERVICE_COND_VIOL_GCL" schema="SUTSTPA" table="SPRAV_SERVICE_COND_VIOL_GCL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT CODE, description DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL from sutstpa.sprav_service_cond_viol_gcl</query>
+			</dbQuery>
+		</select>
+				<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.sprav_service_cond_viol_gcl(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.sprav_service_cond_viol_gcl SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.sprav_service_cond_viol_gcl WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+	</data>
+	<data id="SUTSTPA_SPRAV_SERVICE_REPAIR_GCL" comment="SUTSTPA.SPRAV_SERVICE_REPAIR_GCL" schema="SUTSTPA" table="SPRAV_SERVICE_REPAIR_GCL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT CODE, description DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL from sutstpa.sprav_service_repair_gcl</query>
+			</dbQuery>
+		</select>
+				<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.sprav_service_repair_gcl(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.sprav_service_repair_gcl SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.sprav_service_repair_gcl WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+	</data>
+	<data id="SUTSTPA_SPRAV_MISMATCH_ACTION_GCL" comment="SUTSTPA.SPRAV_SERVICE_ACTION_GCL" schema="SUTSTPA" table="SPRAV_SPRAV_SERVICE_ACTION_GCL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT CODE,description DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL from sutstpa.sprav_service_action_gcl</query>
+			</dbQuery>
+		</select>
+				<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.sprav_service_action_gcl(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.sprav_service_action_gcl SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.sprav_service_action_gcl WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+	</data>
+	<data id="SUTSTPA_VALVE_GCL" comment="SUTSTPA.VALVE" schema="SUTSTPA" table="VALVE_LBL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			select v.id CODE, spl.description||' ЛПУ, '||spp.description||', '||round(v.station,1)||' км, Dn='||v.nom_diam_id||', '||SPN.description DESCR, 'Y' ACTIVE_INDICATOR_LF, 'KZN' SOURCE_GCL from sutstpa.valve v,
+     sutstpa.sprav_lpu_gcl spl, sutstpa.sprav_pipe_gcl spp, sutstpa.sprav_valve_tpa_name_gcl spn where v.lpu=spl.code and v.pipe=spp.code and spn.code=v.name_id</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="SUTSTPA_PERSON_GCL" comment="SUTSTPA.NOTIF_PERSON" schema="SUTSTPA" table="PERSON_LBL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT p.person_id CODE, p.position||', '||p.name||' '||p.last_name DESCR, 'Y' ACTIVE_INDICATOR_LF, 'KZN' SOURCE_GCL from sutstpa.notif_person p</query>
+			</dbQuery>
+		</select>
+	</data>
+
+	<data id="SUTSTPA_USER_GCL" comment="WEB50.B_USER_PRIVATE" schema="WEB50" table="B_USER_PRIVATE">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			 SELECT p.user_id ID, p.lastname||' '||p.firstname||' '||p.secondname DESCR, 'Y' ACTIVE_INDICATOR_LF, 'KZN' SOURCE_GCL FROM WEB50.B_USER_PRIVATE p where p.status='A' and p.user_id not in (0,1,1045)
+			</query>
+			</dbQuery>
+		</select>
+	</data>
+
+	<data id="SUTSTPA_NOTIF_GCL" comment="SUTSTPA.NOTIF_MESSAGE" schema="SUTSTPA" table="NOTIF_LBL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT message_id CODE, description DESCR, 'Y' ACTIVE_INDICATOR_LF, 'KZN' SOURCE_GCL from sutstpa.notif_message</query>
+			</dbQuery>
+		</select>
+						<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.notif_message(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.notif_message SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.notif_message WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+	</data>
+	<data id="SUTSTPA_SPRAV_SERVICE_MAINT_1_RESULT_GCL" comment="SUTSTPA.SPRAV_SERVICE_MAINT_1_RESULT_GCL" schema="SUTSTPA" table="SPRAV_SERVICE_MAINT_1_RESULT_GCL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT CODE, description DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL from sutstpa.sprav_service_maint_1_result_gcl</query>
+			</dbQuery>
+		</select>
+						<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.sprav_service_maint_1_result_gcl(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.sprav_service_maint_1_result_gcl SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.sprav_service_maint_1_result_gcl WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+	</data>
+	<data id="SUTSTPA_SPRAV_SERVICE_MAINT_2_RESULT_GCL" comment="SUTSTPA.SPRAV_SERVICE_MAINT_2_RESULT_GCL" schema="SUTSTPA" table="SPRAV_SERVICE_MAINT_2_RESULT_GCL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT CODE, description DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL from sutstpa.sprav_service_maint_2_result_gcl</query>
+			</dbQuery>
+		</select>
+						<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.sprav_service_maint_2_result_gcl(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.sprav_service_maint_2_result_gcl SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.sprav_service_maint_2_result_gcl WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+	</data>
+	<data id="SUTSTPA_SPRAV_SERVICE_MAINT_CORRECTION_GCL" comment="SUTSTPA.SPRAV_SERVICE_MAINT_CORRECTION_GCL" schema="SUTSTPA" table="SPRAV_SPRAV_SERVICE_MAINT_CORRECTION_GCL">
+		<select>
+			<dbQuery idField="ID">
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+			<query>
+			SELECT CODE, description DESCR, ACTIVE_INDICATOR_LF, SOURCE_GCL from sutstpa.sprav_service_maint_correction_gcl</query>
+			</dbQuery>
+		</select>
+						<insert>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="ID" type="String" direction="Output" default="SELECT '{CODE}' id"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		INSERT INTO SUTSTPA.sprav_service_maint_correction_gcl(CODE, DESCRIPTION, ACTIVE_INDICATOR_LF, SOURCE_GCL)
+		VALUES ('{CODE}', '{DESCR}', '{ACTIVE_INDICATOR_LF}', '{SOURCE_GCL}')
+		</query>
+		</dbCommand>
+	</insert>
+	<update>
+		<dbCommand>
+			<var name="ACTIVE_INDICATOR_LF" default="Y" type="String"/>
+			<var name="DESCR" default="" type="String"/>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="SOURCE_GCL" default="UNKNOWN" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		UPDATE SUTSTPA.sprav_service_maint_correction_gcl SET
+		CODE = '{CODE}'
+		,DESCRIPTION = '{DESCR}'
+		,ACTIVE_INDICATOR_LF = '{ACTIVE_INDICATOR_LF}'
+		,SOURCE_GCL = '{SOURCE_GCL}'
+		WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</update>
+	<delete>
+		<dbCommand>
+			<var name="CODE" default="-1" type="String"/>
+			<var name="USER_ID" default="-1" type="Int64" direction="Input"/>
+		<query>
+		DELETE from SUTSTPA.sprav_service_maint_correction_gcl WHERE CODE = '{CODE}'
+		</query>
+		</dbCommand>
+	</delete>
+	</data>
+</root>

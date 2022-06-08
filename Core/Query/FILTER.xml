@@ -1,0 +1,10 @@
+﻿<root version="7.7.3.0">
+  <data id="FILTER_DATA_BY_ID" comment="Фильтрация данных">
+	<select>
+		<dataFilter by_row="true">
+			<var name="ORIGINAL_QUERY" default=""/>
+      <var name="FILTER_QUERY" default=""/>
+		</dataFilter>
+  </select>
+  </data>
+</root>

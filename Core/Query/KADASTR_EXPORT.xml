@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root version="postgres 7.7.3.0">
+	<data id="WEB50_KADASTR_KVARTAL" table="KADASTR_KVARTAL" schema="WEB50" comment="WEB50.KADASTR_KVARTAL">
+		<select>		
+		  <dbQuery idField="ID">
+			<var name="FILTER" default="1=1">
+			</var>
+				<query>
+					SELECT ID ИДЕНТИФИКАТОР_ОБЪЕКТА, CAD_NUM КАДАСТРОВЫЙ_НОМЕР_КВАРТАЛА, RAYON_NUM КАДАСТРОВЫЙ_РАЙОН FROM WEB50.KADASTR_KVARTAL WHERE {FILTER}
+				</query>
+		  </dbQuery>
+		</select>
+	</data>
+	<data id="WEB50_KADASTR_PODS_MDR" table="KADASTR_PODS_MDR" schema="WEB50" comment="WEB50.KADASTR_PODS_MDR">
+		<select>
+		  <dbQuery idField="MDR_ID">
+			<var name="FILTER" default="1=1">
+			</var>
+			<query>
+				SELECT ID ИДЕНТИФИКАТОР_ОБЪЕКТА, OBJ_TYPE ТИП_ОБЪЕКТА, STATION_BEGIN НАЧ_КМ, STATION_END КОН_КМ, DESCRIPTION ОПИСАНИЕ
+				FROM (SELECT MDR_ID ID,  OBJ_TYPE, STATION_BEGIN, STATION_END, DESCRIPTION FROM WEB50.KADASTR_PODS_MDR) d WHERE {FILTER}
+			</query>
+		  </dbQuery>
+		</select>
+  </data>
+<data id="WEB50_KADASTR_ALERT" table="KADASTR_ALERT" schema="WEB50" comment="WEB50.KADASTR_ALERT">
+		<select>
+		  <dbQuery idField="ID">
+			<var name="FILTER" default="1=1">
+			</var>
+			<query>
+				SELECT ID ИДЕНТИФИКАТОР_ОБЪЕКТА, OBJ_TYPE ТИП_НАРУШЕНИЯ, STATION_BEGIN НАЧ_КМ, STATION_END КОН_КМ, DESCRIPTION ОПИСАНИЕ, CTIME ДАТА_СОЗДАНИЯ, MTIME ДАТА_ИЗМЕНЕНИЯ,
+					CUSER_ID ПОЛЬЗОВАТЕЛЬ_СОЗДАТЕЛЬ, MUSER_ID КТО_ИЗМЕНИЛ
+				FROM (SELECT  ID,  OBJ_TYPE, STATION_BEGIN, STATION_END, DESCRIPTION, CTIME, MTIME, CUSER_ID, MUSER_ID FROM WEB50.KADASTR_ALERT) d WHERE {FILTER}
+			</query>
+		  </dbQuery>
+		</select>
+  </data>
+<data id="WEB50_KADASTR_GKS_WAY" table="KADASTR_GKS_WAY" schema="WEB50" comment="WEB50.KADASTR_GKS_WAY">
+		<select>
+		  <dbQuery idField="ID">
+			<var name="FILTER" default="1=1">
+			</var>
+			<query>
+				SELECT OBJ_TYPE ТИП_ОБЪЕКТА, STATION_BEGIN НАЧ_КМ, STATION_END КОН_КМ, DESCRIPTION ОПИСАНИЕ, DATE_BEGIN ДАТА_НАЧАЛА_ПАТРУЛИРОВАНИЯ,
+				DATE_END ДАТА_ОКОНЧАНИЯ_ПАТРУЛИРОВАНИЯ, ID ИДЕНТИФИКАТОР_МАРШРУТА, CTIME ДАТА_СОЗДАНИЯ, MTIME ДАТА_ИЗМЕНЕНИЯ,
+				CUSER_ID ПОЛЬЗОВАТЕЛЬ_СОЗДАТЕЛЬ, MUSER_ID КТО_ИЗМЕНИЛ
+				FROM (SELECT OBJ_TYPE, STATION_BEGIN, STATION_END, DESCRIPTION, DATE_BEGIN, DATE_END, TRACK_ID ID, CTIME, MTIME, CUSER_ID, MUSER_ID
+				FROM WEB50.KADASTR_GKS_WAY) d WHERE {FILTER}
+			</query>
+		  </dbQuery>
+		</select>
+  </data>
+<data id="WEB50_KADASTR_ALERT_OBJECT" table="KADASTR_ALERT_OBJECT" schema="WEB50" comment="WEB50.KADASTR_ALERT_OBJECT">
+		<select>
+		  <dbQuery idField="ID">
+			<var name="FILTER" default="1=1">
+			</var>
+			<query>
+				SELECT ID ИДЕНТИФИКАТОР_ОБЪЕКТА, ALERT_ID ИДЕНТИФИКАТОР_НАРУШЕНИЯ, OBJ_TYPE ТИП_ОБЪЕКТА_НАРУШЕНИЯ, DESCRIPTION ОПИСАНИЕ, 
+                                OWNER_NAME ВЛАДЕЛЕЦ, ADDRESS АДРЕС, SQUARE ПЛОЩАДЬ, CTIME ДАТА_СОЗДАНИЯ, CUSER_ID ПОЛЬЗОВАТЕЛЬ_СОЗДАТЕЛЬ, MUSER_ID КТО_ИЗМЕНИЛ, MTIME ДАТА_ИЗМЕНЕНИЯ
+				FROM (SELECT ID, ALERT_ID, OBJ_TYPE, DESCRIPTION, OWNER_NAME, ADDRESS, SQUARE, CTIME, CUSER_ID, MTIME, MUSER_ID FROM WEB50.KADASTR_ALERT_OBJECT) d WHERE {FILTER}
+			</query>
+		  </dbQuery>
+		</select>
+  </data>
+
+</root>

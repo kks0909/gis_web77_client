@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<kml version="7.7.3.0">
+	<Document>
+		<Style table="M_W_MIR_GORODA" schema="WEB50" id="WEB50_M_W_MIR_GORODA" descr="МИР_ГОРОДА" comment="МИР_ГОРОДА">
+			<zoomMin>11</zoomMin>
+			<zoomMax>9</zoomMax>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr</fontName>
+				<fontSize>8</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>1</auto>
+				<duplicate>1</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr",256,8,0,16777215)</MIStyle>
+			</LabelStyle>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/Points/err_10526975_346.png</href>
+					<form>bitmap</form>
+					<size>16</size>
+				</Icon>
+			</IconStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_W_MIR_GORODA_OSNOVNYE" schema="WEB50" id="WEB50_M_W_MIR_GORODA_OSNOVNYE" descr="МИР_ГОРОДА_ОСНОВНЫЕ" comment="МИР_ГОРОДА_ОСНОВНЫЕ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>7</zoomMax>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr</fontName>
+				<fontSize>8</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>1</auto>
+				<duplicate>1</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr",256,8,0,16777215)</MIStyle>
+			</LabelStyle>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/Points/err_10526975_348.png</href>
+					<form>bitmap</form>
+					<size>16</size>
+				</Icon>
+			</IconStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_W_MIR_OKEAN" schema="WEB50" id="WEB50_M_W_MIR_OKEAN" descr="МИР_ОКЕАН" comment="МИР_ОКЕАН">
+			<zoomMin>11</zoomMin>
+			<zoomMax>0</zoomMax>
+			<LineStyle>
+				<color>FFC6C9F5</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr</fontName>
+				<fontSize>9</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>0</auto>
+				<duplicate>1</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+			<PolyStyle>
+				<color>FFB9D7FF</color>
+				<fill>1</fill>
+				<outline>1</outline>
+				<fillPattern>solid</fillPattern>
+			</PolyStyle>
+		</Style>
+		<Style table="M_W_MIR_STOLITCY" schema="WEB50" id="WEB50_M_W_MIR_STOLITCY" descr="МИР_СТОЛИЦЫ" comment="МИР_СТОЛИЦЫ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>0</zoomMax>
+			<LabelStyle>
+				<color>FFC03000</color>
+				<fontName>Times New Roman CYR</fontName>
+				<fontSize>10</fontSize>
+				<bold>1</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>1</auto>
+				<duplicate>1</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Times New Roman CYR",257,10,12595200,16777215)</MIStyle>
+			</LabelStyle>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/Points/err_15848343_3410.png</href>
+					<form>bitmap</form>
+					<size>16</size>
+				</Icon>
+			</IconStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_W_MIR_STRANY" schema="WEB50" id="WEB50_M_W_MIR_STRANY" descr="МИР_СТРАНЫ" comment="МИР_СТРАНЫ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>0</zoomMax>
+			<LineStyle>
+				<color>FFA2A283</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF505050</color>
+				<fontName>Times New Roman CYR</fontName>
+				<fontSize>10</fontSize>
+				<bold>1</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>0</parallel>
+				<auto>1</auto>
+				<duplicate>1</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Times New Roman CYR",257,10,5263440,16777215)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+			<PolyStyle>
+				<color>FFC3C3C3</color>
+				<fill>1</fill>
+				<outline>1</outline>
+				<fillPattern>solid</fillPattern>
+			</PolyStyle>
+		</Style>
+	</Document>
+</kml>

@@ -1,0 +1,111 @@
+﻿<!--7.7.6.8-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="5"  headerVertSize="50"
+            id="ADM_B_EDIT_CONTROLLER_LIST"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelDataRequest="GAZPROM_ADM_SEM.xml#ADM_B_EDIT_CONTROLLER_EXPORT"
+            excelTemplateName="ADM_B_EDIT_CONTROLLER_LIST"
+            layerId="ADM_B_EDIT_CONTROLLER" propertyPanelName="ADM_B_EDIT_CONTROLLER"
+            dataRequest="GAZPROM_ADM_SEM.xml#ADM_B_EDIT_CONTROLLER"
+            totalRecordsRequest="GAZPROM_ADM_SEM.xml#ADM_B_EDIT_CONTROLLER_CNT"
+            initialSortField="CONTROLLER_USER_ID"
+            >
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+<picPutton:GridButton source="../../Public/assets/createObject.png"
+        tooltip="Создать объект"
+        clickEvent="ru.corelight.business.events.CreateObjectEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />
+ <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+
+  <grids:columns>
+	<columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="CONTROLLER_USER_ID"/>
+	 <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=showInfoEvent;toolTip=Показать информацию по объекту"
+                          editable="true"/>
+	<columns:GridColumn headerText="Идентификатор" dataField="ID"  itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+	                        hidden="true" editable="false" filterComparisionType="number" width="40" />
+	<columns:GridColumn headerText="Схема\nконтролируемой\nтаблицы" dataField="OWNER"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="48"/>
+	<columns:GridColumn headerText="Таблица" dataField="TABLE_NAME"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="100"/>
+	<columns:GridColumn headerText="Первич.\nключ" dataField="KEY_FIELD"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="50"/>
+	<columns:GridColumn headerText="Контроль\nвставки" dataField="ADOPT_INSERT"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="40"/>
+	<columns:GridColumn headerText="Контроль\nизменения" dataField="ADOPT_UPDATE"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="40"/>
+	<columns:GridColumn headerText="Контроль\nудаления" dataField="ADOPT_DELETE"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="40"/>      
+	<columns:GridColumn headerText="Описание" dataField="DESCRIPTION"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="100"/>
+	<columns:GridColumn headerText="Дата\nсоздания\nв табл.\nконтролер." width="60" dataField="CTIME" 
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer" filterComparisionType="date"
+                          editable="true"
+                          filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+	<columns:GridColumn headerText="Создал" dataField="CUSER_ID"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="70"/>
+	<columns:GridColumn headerText="Дата\nизменения" width="50" dataField="MTIME" 
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer" filterComparisionType="date"
+                          editable="true"
+                          filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+	<columns:GridColumn headerText="Изменил" dataField="MUSER_ID"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="70"/>
+	<columns:GridColumn headerText="CONTROLLER ID" dataField="CONTROLLER_USER_ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="90"/>
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

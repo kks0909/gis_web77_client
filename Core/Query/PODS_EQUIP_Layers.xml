@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Файл описания слоёв "Оборудование линейной части" -->
+<!-- Слои PODS_PIPE_LENGHT, PODS_EXTERNAL_COATING, PODS_INTERNAL_COATING, PODS_PIPE_SEGMENT, PODS_EXPOSURE, PODS_LEGACY_LINE_BOUNDARY, PODS_LAND_USE, PODS_ACTIVITY_ZONE, 
+PODS_SRV_DISTRICT_BOUNDARY, PODS_DEPTH_OF_COVER перенесены в файл PODS_INSP_Layers.xml в связи с переводом этих слоев из растрового режима в векторный для корректного отображения на карте -->
+<root version="7.7.7.4" descr="МГ: Оборудование линейной части" name="PODS_EQUIP">
+  <dataProvider type="style" source="PODS_EQUIP_STYLE.xml" />
+  <layer id="PODS_ANODE" comment="PODS.ANODE" descr="Аноды" projection="EPSG:4326" zoomMin="0" zoomMax="6000" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="100" visible="false" topology="point" labelField="DESCRIPTION" classField="TYPE_CL" useServerCache="true" schema="PODS" table="ANODE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ANODE" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_ANODE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ANODE" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_ANODE" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_ANODE" />
+  </layer>
+  <layer id="PODS_CLOSURE" comment="PODS.CLOSURE" descr="Заглушки" projection="EPSG:4326" zoomMin="0" zoomMax="1500" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="40" visible="true" topology="point" classField="TYPE_CL" useServerCache="true" schema="PODS" table="CLOSURE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_CLOSURE" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_CLOSURE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_CLOSURE" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_CLOSURE" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_CLOSURE" />
+  </layer>
+  <layer id="PODS_COMPRESSOR_STATION" comment="PODS.COMPRESSOR_STATION" descr="Компрессорные станции" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="COMPRESSOR_STATION" cover="false" fitMap="false" order="8" visible="true" topology="point,polygon" labelField="STATION_NAME" classField="" useServerCache="true" schema="PODS" table="COMPRESSOR_STATION">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_COMPRESSOR_STATION" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_COMPRESSOR_STATION" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_COMPRESSOR_STATION" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_COMPRESSOR_STATION" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_COMPRESSOR_STATION" />
+  </layer>
+  <layer id="PODS_CP_FOREIGN_LINE_CROSSING" comment="PODS.FOREIGN_LINE_CROSSING" descr="Линия электропередач" projection="EPSG:4326" zoomMin="25" zoomMax="12" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1110" visible="false" topology="line" classField="TYPE_CL" labelField="" events="" schema="PODS" table="FOREIGN_LINE_CROSSING" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_CP_FOREIGN_LINE_CROSSING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_CP_FOREIGN_LINE_CROSSING" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_CP_FOREIGN_LINE_CROSSING" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_CP_FOREIGN_LINE_CROSSING" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_CP_FOREIGN_LINE_CROSSING" />
+  </layer>
+  <layer id="PODS_DISTRIBUTION_PLANT" comment="PODS.DISTRIBUTION_PLANT" descr="Газораспределительные и шкафные распределительные пункты" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="distribution_plant" cover="false" fitMap="false" order="9" visible="true" topology="point,polygon" labelField="NAME" classField="TYPE_CL" schema="PODS" table="DISTRIBUTION_PLANT" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_DISTRIBUTION_PLANT" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_DISTRIBUTION_PLANT" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_DISTRIBUTION_PLANT" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_DISTRIBUTION_PLANT" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_DISTRIBUTION_PLANT" />
+  </layer>
+  <layer id="PODS_JUNCTION_BOX" comment="PODS.JUNCTION_BOX" descr="Необслуживаемые усилительные пункты" projection="EPSG:4326" zoomMin="0" zoomMax="11500" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="190" visible="false" topology="point" labelField="NAME" classField="" schema="PODS" table="JUNCTION_BOX" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_JUNCTION_BOX" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_JUNCTION_BOX" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_JUNCTION_BOX" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_JUNCTION_BOX" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_JUNCTION_BOX" />
+  </layer>
+  <layer id="PODS_LAUNCHER_RECEIVER" comment="PODS.LAUNCHER_RECEIVER" descr="Камеры приёма-запуска" projection="EPSG:4326" zoomMin="0" zoomMax="15000" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="60" visible="true" topology="point" labelField="NAME" classField="TYPE_CL" schema="PODS" table="LAUNCHER_RECEIVER" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_LAUNCHER_RECEIVER" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_LAUNCHER_RECEIVER" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_LAUNCHER_RECEIVER" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_LAUNCHER_RECEIVER" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_LAUNCHER_RECEIVER" />
+  </layer>
+  <layer id="PODS_METER_STATION" comment="PODS.METER_STATION" descr="Газоизмерительные станции" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="80" visible="true" topology="point" labelField="DESCRIPTION" classField="TYPE_CL" events="" schema="PODS" table="METER_STATION" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_METER_STATION" useServerCache="true" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_METER_STATION" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_METER_STATION" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_METER_STATION" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_METER_STATION" />
+  </layer>
+  <layer id="PODS_RECTIFIER" comment="PODS.RECTIFIER" descr="Установки катодной/дренажной защиты" projection="EPSG:4326" zoomMin="0" zoomMax="6000" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="140" visible="false" topology="point" labelField="DESCRIPTION" classField="TYPE_CL" schema="PODS" table="RECTIFIER" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_RECTIFIER" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_RECTIFIER" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_RECTIFIER" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_RECTIFIER" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_RECTIFIER" />
+  </layer>
+  <layer id="PODS_ROUTE" comment="PODS.ROUTE" descr="Нитки трубопроводов" topology="line" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1250" visible="true" labelField="DESCRIPTION" classField="TYPE_CL" events="" schema="PODS" table="ROUTE" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ROUTE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ROUTE" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_ROUTE" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_ROUTE" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_ROUTE" />
+  </layer>
+  <layer id="PODS_TEST_LEAD" comment="PODS.TEST_LEAD" descr="Контрольно-измерительные пункты" projection="EPSG:4326" zoomMin="0" zoomMax="6000" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="160" visible="false" topology="point" labelField="NAME" classField="TYPE_CL" schema="PODS" table="TEST_LEAD" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_TEST_LEAD" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_TEST_LEAD" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_TEST_LEAD" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_TEST_LEAD" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_TEST_LEAD" />
+  </layer>
+  <layer id="PODS_VALVE" comment="PODS.VALVE" descr="Запорно-регулирующая арматура" projection="EPSG:4326" zoomMin="25" zoomMax="13" dataType="vector" type="common" spacing="VALVE" cover="false" fitMap="false" order="20" visible="true" topology="point" labelField="VALVE_IDENTIFIER" classField="TYPE_CL" events="" schema="PODS" table="VALVE" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_VALVE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_VALVE" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_VALVE" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_VALVE" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_VALVE" />
+  </layer>
+  <layer id="PODS_VENT_PIPE" comment="PODS.VENT_PIPE" descr="Выпускные свечи" projection="EPSG:4326" zoomMin="0" zoomMax="1500" dataType="vector" type="common" spacing="VENT_PIPE" cover="false" fitMap="false" order="30" visible="true" topology="point" labelField="NAME" classField="" schema="PODS" table="VENT_PIPE" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_VENT_PIPE" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_VENT_PIPE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_VENT_PIPE" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_VENT_PIPE" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_VENT_PIPE" />
+  </layer>
+  <layer id="PODS_STRUCTURE_CP_BLOCK" comment="PODS.STRUCTURE" descr="Блок-боксы" projection="EPSG:4326" zoomMin="0" zoomMax="51800" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1360" visible="false" topology="point,polygon" labelField="NAME" classField="TYPE_CL" schema="PODS" table="STRUCTURE_CP_BLOCK" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STRUCTURE_CP_BLOCK" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_STRUCTURE_CP_BLOCK" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STRUCTURE_CP_BLOCK" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STRUCTURE_CP_BLOCK" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_STRUCTURE_CP_BLOCK" />
+  </layer>
+  <layer id="PODS_STRUCTURE_CP_TRANS" comment="PODS.STRUCTURE" descr="Комплексные трансформаторные станции" projection="EPSG:4326" zoomMin="0" zoomMax="51800" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1360" visible="false" topology="point,polygon" labelField="NAME" classField="TYPE_CL" schema="PODS" table="STRUCTURE_CP_TRANS" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STRUCTURE_CP_TRANS" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_STRUCTURE_CP_TRANS" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STRUCTURE_CP_TRANS" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STRUCTURE_CP_TRANS" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_STRUCTURE_CP_TRANS" />
+  </layer>
+  <layer id="PODS_SHEET_NOTE_LINK" comment="PODS.SHEET_NOTE" descr="Вышки РРС" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="PODS_SHEET_NOTE_LINK" cover="false" fitMap="false" order="320" visible="true" topology="point" labelField="DESCRIPTION" classField="TYPE_CL" events="" schema="PODS" table="SHEET_NOTE" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_SHEET_NOTE_LINK" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_SHEET_NOTE_LINK" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_SHEET_NOTE_LINK" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_SHEET_NOTE_LINK" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_SHEET_NOTE_LINK" />
+  </layer>
+  <layer id="PODS_FOREIGN_LINE_CROSSING_LINK" comment="PODS.FOREIGN_LINE_CROSSING" descr="Кабельные линии связи" projection="EPSG:4326" zoomMin="25" zoomMax="13" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1100" visible="true" topology="line" classField="TYPE_CL" labelField="" events="" schema="PODS" table="FOREIGN_LINE_CROSSING_LINK" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_FOREIGN_LINE_CROSSING_LINK" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_FOREIGN_LINE_CROSSING_LINK" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_FOREIGN_LINE_CROSSING_LINK" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_FOREIGN_LINE_CROSSING_LINK" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_FOREIGN_LINE_CROSSING_LINK" />
+  </layer>
+  <layer id="PODS_SHEET_NOTE_FUND" comment="PODS.SHEET_NOTE" descr="Опоры ЛЭП" projection="EPSG:4326" zoomMin="0" zoomMax="1500" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="335" visible="true" topology="point" labelField="DESCRIPTION" classField="TYPE_CL" schema="PODS" table="SHEET_NOTE_FUND" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_SHEET_NOTE_FUND" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_SHEET_NOTE_FUND" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_SHEET_NOTE_FUND" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_SHEET_NOTE_FUND" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_SHEET_NOTE_FUND" />
+  </layer>
+  <layer id="PODS_MARKER" comment="PODS.MARKER" descr="Маркеры" projection="EPSG:4326" zoomMin="25" zoomMax="16" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="200" visible="false" topology="point" labelField="MARKER_NUMBER" classField="MARKER_TYPE_GCL" events="" schema="PODS" table="MARKER" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_MARKER" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_MARKER" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_MARKER" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_MARKER" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_MARKER" />
+  </layer>
+  <layer id="PODS_MARKER_POINT" comment="PODS.MARKER" descr="Указатели газопровода" projection="EPSG:4326" zoomMin="25" zoomMax="16" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="210" visible="false" topology="point" labelField="MARKER_NUMBER" classField="MARKER_TYPE_GCL" events="" schema="PODS" table="MARKER" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_MARKER_POINT" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_MARKER_POINT" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_MARKER_POINT" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_MARKER_POINT" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_MARKER_POINT" />
+  </layer>
+  <layer id="PODS_MARKER_KM" comment="PODS.MARKER" descr="Километровые столбы" projection="EPSG:4326" zoomMin="25" zoomMax="16" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="220" visible="true" topology="point" labelField="MARKER_NUMBER" classField="MARKER_TYPE_GCL" events="" schema="PODS" table="MARKER" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_MARKER_KM" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_MARKER_KM" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_MARKER_KM" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_MARKER_KM" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_MARKER_KM" />
+  </layer>
+<layer id="PODS_STRUCTURE" comment="PODS.STRUCTURE" descr="Сооружения линейной части (площадки)" projection="EPSG:4326" zoomMin="0" zoomMax="51800" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1360" visible="true" topology="polygon" labelField="NAME" classField="TYPE_CL" schema="PODS" table="STRUCTURE" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STRUCTURE" />  
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_STRUCTURE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STRUCTURE" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STRUCTURE" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_STRUCTURE" />
+  </layer>
+  <layer id="PODS_FOREIGN_LINE_CROSSING" comment="PODS.FOREIGN_LINE_CROSSING" descr="Пересечения со сторонними трубопроводами, кабелями" projection="EPSG:4326" zoomMin="0" zoomMax="15000" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1040" visible="true" topology="point,line" classField="TYPE_CL" labelField="" schema="PODS" table="FOREIGN_LINE_CROSSING" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_FOREIGN_LINE_CROSSING" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_FOREIGN_LINE_CROSSING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_FOREIGN_LINE_CROSSING" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_FOREIGN_LINE_CROSSING" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_FOREIGN_LINE_CROSSING" />
+  </layer>
+  <layer id="PODS_METER" comment="PODS.METER" descr="Измерительные приборы и датчики" projection="EPSG:4326" zoomMin="0" zoomMax="1500" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="120" visible="false" topology="point" labelField="DESCRIPTION" classField="TYPE_CL" schema="PODS" table="METER" useServerCache="true">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_METER" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_METER" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_METER"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_METER"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_METER"/>
+  </layer>
+ </root>

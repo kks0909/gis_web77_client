@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.5.0" descr="Водные переходы">
+    <data id="WATERWAY" comment="WATERWAY" schema="WEB50" table="WATERWAY">
+        <select>
+            <geoQuery idField="ID" geoField="WKB_GEOMETRY">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <query>
+                    SELECT id ID, description "LABEL", category_id "TYPE", WKB_GEOMETRY  FROM
+                    web50.waterway 
+                    WHERE {FILTER} ORDER BY ID
+                </query>
+            </geoQuery>
+        </select>
+        <insert>
+            <geoCommand>
+                <param name="ID" type="Int64" direction="Input"/>               
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="POLICY" default="POLICY.xml#INSERT_KADASTR_GEO" />                   
+                <object>
+                    UPDATE web50.waterway SET WKB_GEOMETRY=:WKB WHERE ID = :ID
+                </object>
+            </geoCommand>
+        </insert>
+        <update>
+            <geoCommand>
+                <param name="ID" type="Int64" direction="Input"/>
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="POLICY" default="POLICY.xml#UPDATE_KADASTR_GEO" />               
+                <object>
+                    UPDATE web50.waterway  SET WKB_GEOMETRY=:WKB WHERE ID = :ID
+                </object>
+            </geoCommand>
+        </update>
+        <delete>
+            <dbCommand>
+                <param name="ID" type="Int64" direction="Input"/>
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="POLICY" default="POLICY.xml#DELETE_KADASTR_GEO" />               
+                <query>
+                    UPDATE web50.waterway  SET WKB_GEOMETRY=NULL WHERE ID = :ID
+                </query>
+            </dbCommand>
+        </delete>
+    </data>
+    <data id="WATERWAY_CROSS" comment="WATERWAY_CROSS" schema="WEB50" table="WATERWAY_CROSS">
+        <select>
+            <geoQuery idField="ID" geoField="WKB_GEOMETRY">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <query>
+                    select * from (SELECT waterway_cross_id ID, line_id, waterway_id, station_begin "LABEL", insp_result_other_disorder "TYPE", WKB_GEOMETRY  FROM
+                    web50.waterway_cross ) d 
+                    WHERE {FILTER} ORDER BY ID
+                </query>
+            </geoQuery>
+        </select>
+        <insert>
+            <geoCommand>
+                <param name="ID" type="Int64" direction="Input"/>               
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="POLICY" default="POLICY.xml#INSERT_KADASTR_GEO" />                   
+                <object>
+                    UPDATE web50.waterway_cross SET WKB_GEOMETRY=:WKB WHERE waterway_cross_id = :ID
+                </object>
+            </geoCommand>
+        </insert>
+        <update>
+            <geoCommand>
+                <param name="ID" type="Int64" direction="Input"/>
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="POLICY" default="POLICY.xml#UPDATE_KADASTR_GEO" />               
+                <object>
+                    UPDATE web50.waterway_cross  SET WKB_GEOMETRY=:WKB WHERE waterway_cross_id = :ID
+                </object>
+            </geoCommand>
+        </update>
+        <delete>
+            <dbCommand>
+                <param name="ID" type="Int64" direction="Input"/>
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="POLICY" default="POLICY.xml#DELETE_KADASTR_GEO" />               
+                <query>
+                    UPDATE web50.waterway  SET WKB_GEOMETRY=NULL WHERE waterway_cross_id = :ID
+                </query>
+            </dbCommand>
+        </delete>
+    </data>
+</root>

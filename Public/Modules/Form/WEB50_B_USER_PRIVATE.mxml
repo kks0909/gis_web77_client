@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="760" xmlns="view.data.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml">
+  <dataProvider>SYS_SEM.xml</dataProvider>
+  <mx:VBox width="760">
+    <mx:HBox percentWidth="100">
+      <mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Имя для входа в систему" width="140" />
+          <mx:TextInput id="LOGIN" editable="false" width="225" maxChars="80" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Статус" width="140" />
+          <mx:ComboBox id="STATUS" enabled="false" editable="false" width="140">
+            <mx:dataProvider>
+              <mx:Object CODE="B" DESCR="Заблокирован" label="Заблокирован" />
+              <mx:Object CODE="A" DESCR="Разблокирован" label="Разблокирован" />
+            </mx:dataProvider>
+          </mx:ComboBox>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Фамилия" width="140" />
+          <mx:TextInput id="LASTNAME" width="225" maxChars="80" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Имя" width="140" />
+          <mx:TextInput id="FIRSTNAME" width="225" maxChars="80" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Отчество" width="140" />
+          <mx:TextInput id="SECONDNAME" width="225" maxChars="80" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Электронная почта" width="140" />
+          <mx:TextInput id="MAIL" width="225" maxChars="2000" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+		  <mx:Text textAlign="right" text="Векторный режим отображения трубопроводов" width="345" />
+          <mx:RadioButton id="MAP_MODE_VECTOR" label="Векторный режим отображения трубопроводов" value="map_mode_vector" groupName="map_mode" selected="true"/>		  
+        </mx:HBox>
+ 		<mx:HBox percentWidth="100">
+		  <mx:Text textAlign="right" text="Растровый режим отображения трубопроводов" width="345" />
+          <mx:RadioButton id="MAP_MODE_RASTER" label="Растровый режим отображения трубопроводов" value="map_mode_raster" groupName="map_mode"/>
+        </mx:HBox>
+		<mx:HBox percentWidth="100">
+			<mx:Text textAlign="right" text="Показать координаты центра карты при старте приложения" width="345"/>
+			<mx:CheckBox id="SHOW_CENTER_MAP" width="20" height="20" selected="true"/>
+		</mx:HBox>
+		<mx:HBox percentWidth="100">
+		  <mx:Text textAlign="right" text="Режим отображения координат:" width="345" />	  
+	        </mx:HBox>
+		<mx:HBox percentWidth="100">
+		  <mx:Text textAlign="right" text="ГГ°ГГГГГГ" width="345" />
+	          <mx:RadioButton id="COORD_MODE_DECIMAL" label="ГГ°ГГГГГГ" value="coord_mode_decimal" groupName="coord_mode" selected="true"/>		  
+        	</mx:HBox>
+ 		<mx:HBox percentWidth="100">
+		  <mx:Text textAlign="right" text="ГГ°ММ'СС.СС''" width="345" />
+	          <mx:RadioButton id="COORD_MODE_GRAD" label="ГГ°ММ'СС.СС''" value="coord_mode_grad" groupName="coord_mode"/>
+        	</mx:HBox>
+      </mx:VBox>
+
+
+      <mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Дата создания/ авторизации в системе" width="140" />
+          <mx:DateField id="CREATED" editable="false" width="90" height="20" formatString="DD.MM.YYYY" />
+          <mx:DateField id="LOGONTIME" width="90" editable="false" height="20" formatString="DD.MM.YYYY" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Идентификатор в базе данных" width="140" />
+          <controls:NumberInput id="USER_ID" editable="false" width="225" maxChars="22" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Дата создания записи" width="140" />
+          <mx:DateField id="CTIME" width="90" editable="false" height="20" formatString="DD.MM.YYYY" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Кто создал" width="140" />
+          <mx:TextInput id="CUSER" editable="false" width="225" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Дата изменения записи" width="140" />
+          <mx:DateField id="MTIME" width="90" editable="false" height="20" formatString="DD.MM.YYYY" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Кто изменил" width="140" />
+          <mx:TextInput id="MUSER" editable="false" width="225" height="20" />
+        </mx:HBox>
+		<mx:HBox percentWidth="100">
+			<mx:Text textAlign="right" text="Показывать обзорную карту при старте приложения" width="345"/>
+			<mx:CheckBox id="SHOW_OVERVIEW_MAP" width="20" height="20" selected="false"/>
+		</mx:HBox>
+		<mx:HBox percentWidth="100">
+			<mx:Text textAlign="right" text="Включить режим получения информации по объектам кадастра на электронную почту" width="345"/>
+			<mx:CheckBox id="SEND_CADASTRE_EMAIL" width="20" height="20" selected="false"/>
+		</mx:HBox>
+		<mx:HBox percentWidth="100">
+			<mx:Text textAlign="right" text="Включить режим синхронизации окон карт, списков и т.д" width="345"/>
+			<mx:CheckBox id="USE_SYNCHRONIZATION" width="20" height="20" selected="false"/>
+		</mx:HBox>
+		<mx:HBox percentWidth="100">
+			<mx:Text textAlign="right" text="Показывать рубрикатор развернутым при старте приложения" width="345"/>
+			<mx:CheckBox id="SHOW_TREE" width="20" height="20" selected="true"/>
+		</mx:HBox>
+      </mx:VBox>
+    </mx:HBox>
+  </mx:VBox>
+  <validatorsArray>
+    <controls:DefaultStringValidator source="{LASTNAME}" property="text" enabled="false" requiredFieldError="Поле 'Фамилия' обязательно для заполнения." />
+    <controls:DefaultStringValidator source="{FIRSTNAME}" property="text" enabled="false" requiredFieldError="Поле 'Имя' обязательно для заполнения." />
+  </validatorsArray>
+</DATA_EDIT_FORM>

@@ -1,0 +1,54 @@
+﻿{
+  "code":200,
+  "version":"7.7.7.3",
+  "id":"MAPSERVICE",
+  "_comment":"Настройки рубрикатор",
+  "tree":{
+    "visible":true,
+    "isMaximized":true,
+    "treePercentWidth":30,
+    "trees":[{
+        "id":"PODS_EHZ_LIST",
+        "title":"ЭХЗ",
+        "templateUrl":"Public/Modules/Tree/pods_ehz_tree.xml",
+        "default":true,
+        "startupScenario":{         
+          "openLayers":[],
+          "filter":{
+            "type":"top",
+            "topDataSource":"top_cp_filter"
+          },          
+          "openTables":[
+            {
+              "title":"{descr}",
+              "gridId":"PODS_PI_CP_INSPECTION_INTENS_LIST",
+              "levelParams":"layerId=PODS_INSP_OTHER_Layers.xml#PODS_PI_CP_INSPECTION_INTENS;",
+              "query":
+              {
+                "source":"COMMON_TREE.xml#LAYER_STYLE_BASE",
+                "LAYER_ID":"PODS_PI_CP_INSPECTION_INTENS",
+                "FILE_NAME":"PODS_INSP_OTHER_STYLE.xml"
+              }
+            },
+            {
+              "title":"{descr}",
+              "gridId":"PODS_PI_CP_INSPECTION_KIP_LIST",
+              "levelParams":"layerId=PODS_INSP_OTHER_Layers.xml#PODS_PI_CP_INSPECTION_KIP;",
+              "query":
+              {
+                "source":"COMMON_TREE.xml#LAYER_STYLE_BASE",
+                "LAYER_ID":"PODS_PI_CP_INSPECTION_KIP",
+                "FILE_NAME":"PODS_INSP_OTHER_STYLE.xml"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "_comment":"Настройки панели свойств",
+  "ppanel":{
+    "showSystemInfo":false
+  },
+  "vectorlayers":["PODS_EQUIP_Layers.xml","PODS_INSP_Layers.xml","PODS_INSP_OTHER_Layers.xml","LIB_DOC_Layers.xml","COSMETIC_Layers.xml"]
+}

@@ -1,0 +1,87 @@
+﻿<root version="7.7.3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <data id="FREQUENCY_DISTRIBUTION_CALC" comment="Расчет плотности распределения">
+	<select>
+		<frequencyDistributionCalculation by_row="true">
+			<var name="QUERY" default="CAS_PODS_CAS_ILI_GEO.xml#CAS_ILI_KBD"/>
+			<var name="NEED_GROUP" default="false"/>
+			<var name="SIGMA"/>
+			<var name="VALUABLE_SIGMAS_COUNT" default="3"/>
+			<var name="SEGMENTS_COUNT_PER_SIGMA"/>
+			<var name="DISTANCE_TOLERANCE" default="0.000001"/>
+			<var name="GROUP_OFFSET" default="0"/>
+			<var name="GRAPH_OFFSET" default="0"/>
+			<var name="AXIS_OFFSET" default="0"/>
+			<var name="HEIGHT" default="0"/>
+			<var name="X_SCALE"/>
+		</frequencyDistributionCalculation>
+  </select>
+  </data>
+
+  <data id="BOUNDARY_CALC" comment="Пороговый анализ">
+	<select>
+		<boundaryCalculation by_row="true">
+			<var name="QUERY" default="CAS_MATH.xml#THICKNESS_CALC" />
+			<var name="NEED_GROUP" default="false"/>
+			<var name="BOUNDING_VALUE" />
+			<var name="CUT_TYPE" default="0"/>
+			<var name="DISTANCE_TOLERANCE" default="0.000001"/>
+			<var name="GROUP_OFFSET" default="0"/>
+			<var name="GRAPH_OFFSET" default="0"/>
+			<var name="AXIS_OFFSET" default="0"/>
+			<var name="HEIGHT" default="0"/>
+			<var name="X_SCALE"/>
+		</boundaryCalculation>
+  </select>
+  </data>
+  
+  <data id="GISTOGRAM_CALC" comment="Расчет гистограммы">
+	<select>
+		<gistogramCalculation by_row="true">
+			<var name="QUERY" default="CAS_PODS_CAS_ILI_GEO.xml#CAS_ILI_KBD"/>
+			<var name="NEED_GROUP" default="false"/>
+			<var name="SEGMENTS_COUNT" default="100"/>
+			<var name="DISTANCE_TOLERANCE" default="0.000001"/>
+			<var name="GROUP_OFFSET" default="0"/>
+			<var name="GRAPH_OFFSET" default="0"/>
+			<var name="AXIS_OFFSET" default="0"/>
+			<var name="HEIGHT"/>
+			<var name="X_SCALE"/>
+		</gistogramCalculation>
+  </select>
+  </data>
+  
+  <data id="CORRELATION_CALC" comment="Расчет корреляции">
+	<select>
+		<correlationCalculation by_row="true">
+			<var name="QUERY1"/>
+			<var name="QUERY2"/>
+			<var name="EXCLUDE_ZERO" default="false"/>
+			<var name="NEED_GROUP" default="false"/>
+			<var name="DISTANCE_TOLERANCE" default="0.000001"/>
+		</correlationCalculation>
+	  </select>
+  </data>
+  
+
+  <data id="REGRESSION_CALC" comment="Расчет параметров регрессионной модели">
+	  <select>
+		<regressionCalculation by_row="true">
+			<var name="CRITERION_QUERY" />
+			<var name="EXCLUDE_ZERO" default="false"/>
+			<var name="HIGH_ACCURACY" default="false"/>
+			<var name="DISTANCE_TOLERANCE" default="0.000001"/>
+		</regressionCalculation>
+	  </select>
+  </data>
+  
+    <data id="GRAPHICS_SUM_CALC" comment="Суммирование графиков (Для расчета регрессионной модели)">
+	  <select>
+		<graphicsSumCalculation by_row="true">
+			<var name="DISTANCE_TOLERANCE" default="0.000001"/>
+		</graphicsSumCalculation>
+	  </select>
+  </data>
+
+  
+</root>

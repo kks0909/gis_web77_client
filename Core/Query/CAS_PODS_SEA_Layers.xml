@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.5.0" descr="Подводные трубопроводы">
+  <dataProvider type="style" source="PODS_SEA_STYLE.xml" />
+  <layer id="PODS_FAIRING" visible="false" type="common" topology="point" table="FAIRING_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="10" labelField="LABEL" fitMap="false" descr="Обтекатели" dataType="vector" cover="false" comment="PODS_FAIRING" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_FAIRING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_FAIRING" />
+    <dataProvider type="spatial" source="CAS_PODS_SEA_GEO.xml#CAS_PODS_FAIRING" />
+  </layer>
+  <layer id="PODS_STRAKE" visible="false" type="common" topology="point" table="STRAKE_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="20" labelField="LABEL" fitMap="false" descr="Обшивки райзеров" dataType="vector" cover="false" comment="PODS_STRAKE" classField="TYPE"  >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STRAKE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STRAKE" />
+    <dataProvider type="spatial" source="CAS_PODS_SEA_GEO.xml#CAS_PODS_STRAKE" />
+  </layer>
+  <layer id="PODS_COLLAR" visible="false" type="common" topology="point" table="COLLAR_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="30" labelField="LABEL" fitMap="false" descr="Переходные муфты подводных скважин" dataType="vector" cover="false" comment="PODS_COLLAR" classField="TYPE"  >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_COLLAR" /> 
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_COLLAR" />
+    <dataProvider type="spatial" source="CAS_PODS_SEA_GEO.xml#CAS_PODS_COLLAR" />
+  </layer>
+  <layer id="PODS_SUBSEA_SLED_ASSEMBLY" visible="false" type="common" topology="point" table="SUBSEA_SLED_ASSEMBLY_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="40" labelField="LABEL" fitMap="false" descr="Подводные переходные устройства между трубопроводами" dataType="vector" cover="false" comment="PODS_SUBSEA_SLED_ASSEMBLY" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_SUBSEA_SLED_ASSEMBLY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_SUBSEA_SLED_ASSEMBLY" />
+    <dataProvider type="spatial" source="CAS_PODS_SEA_GEO.xml#CAS_PODS_SUBSEA_SLED_ASSEMBLY" />
+  </layer>
+  <layer id="PODS_OFFSHORE_RISER" visible="false" type="common" topology="point" table="OFFSHORE_RISER_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="50" labelField="LABEL" fitMap="false" descr="Подъёмные трубопроводы - райзеры" dataType="vector" cover="false" comment="PODS_OFFSHORE_RISER" classField="TYPE" >
+   <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_OFFSHORE_RISER" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_OFFSHORE_RISER" />
+    <dataProvider type="spatial" source="CAS_PODS_SEA_GEO.xml#CAS_PODS_OFFSHORE_RISER" />
+  </layer>
+  <layer id="PODS_STABILIZATION" visible="false" type="common" topology="point" table="STABILIZATION_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="60" labelField="LABEL" fitMap="false" descr="Стабилизирующие устройства подводных трубопроводов" dataType="vector" cover="false" comment="PODS_STABILIZATION" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STABILIZATION" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STABILIZATION" />
+    <dataProvider type="spatial" source="CAS_PODS_SEA_GEO.xml#CAS_PODS_STABILIZATION" />
+  </layer>
+  <layer id="PODS_TAPERED_STRESS_JOINT" visible="false" type="common" topology="point" table="TAPERED_STRESS_JOINT_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="70" labelField="LABEL" fitMap="false" descr="Трапецевидные стыки райзеров" dataType="vector" cover="false" comment="PODS_TAPERED_STRESS_JOINT" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_TAPERED_STRESS_JOINT" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_TAPERED_STRESS_JOINT" />
+    <dataProvider type="spatial" source="CAS_PODS_SEA_GEO.xml#CAS_PODS_TAPERED_STRESS_JOINT" />
+  </layer>
+  <layer id="PODS_COLLET_CONNECTOR" visible="false" type="common" topology="point " table="COLLET_CONNECTOR_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="80" labelField="LABEL" fitMap="false" descr="Цанговые муфты (соединители)" dataType="vector" cover="false" comment="PODS_COLLET_CONNECTOR" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_COLLET_CONNECTOR" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_COLLET_CONNECTOR" />
+    <dataProvider type="spatial" source="CAS_PODS_SEA_GEO.xml#CAS_PODS_COLLET_CONNECTOR" />
+  </layer>
+</root>

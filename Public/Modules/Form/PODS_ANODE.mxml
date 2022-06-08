@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns="view.data.*"
+                title="Аноды"
+                width="760"
+                ext_data_id="PODS_EXPORT.xml#PODS_ANODE"
+                excelTemplate="PODS_ANODE">
+	  <dataProvider>PODS_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	  <mx:VBox width="760">
+		    <mx:HBox percentWidth="100">
+			      <mx:VBox percentWidth="50">
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Описание" width="140"/>
+					          <mx:TextInput id="DESCRIPTION" width="225" maxChars="50" height="40"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Модель" width="140"/>
+					          <mx:TextInput id="MODEL" width="160" maxChars="32" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Тип анода" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="TYPE_CL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_ANODE_TYPE_CL"/>
+						            <mx:Button id="BTN_LIST_TYPE_CL" selectedField="PODS_ANODE_TYPE_CL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Компания-изготовитель" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="MANUFACTURER_CL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_ANODE_MANUFACTURER_CL"/>
+						            <mx:Button id="BTN_LIST_MANUFACTURER_CL" selectedField="PODS_ANODE_MANUFACTURER_CL"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Материал" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="MATERIAL_CL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_ANODE_MATERIAL_CL"/>
+						            <mx:Button id="BTN_LIST_MATERIAL_CL" selectedField="PODS_ANODE_MATERIAL_CL"
+                             enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Материал заполнения корпуса" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="PACKAGE_FILL_CL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_PACKAGE_FILL_CL"/>
+						            <mx:Button id="BTN_LIST_PACKAGE_FILL_CL" selectedField="PODS_PACKAGE_FILL_CL"
+                             enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Материал засыпки" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="BACK_FILL_MATERIAL_GCL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_BACK_FILL_MATERIAL_GCL"/>
+						            <mx:Button id="BTN_LIST_BACK_FILL_MATERIAL_GCL"
+                             selectedField="PODS_BACK_FILL_MATERIAL_GCL"
+                             enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Масса, кг" width="140"/>
+					          <controls:NumberInput id="ANODE_MASS" width="40" maxChars="22" height="20"/>
+					          <mx:Text textAlign="right" text="Гальванический анод" width="135"/>
+					          <mx:CheckBox id="GALVANIC_LF" width="20" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Длина, мм" width="140"/>
+					          <controls:NumberInput id="ANODE_LENGTH" width="40" maxChars="22" height="20"/>
+					          <mx:Text textAlign="right" text="Длина в корпусе, мм" width="130"/>
+					          <controls:NumberInput id="PACKAGE_LENGTH" width="40" maxChars="22" height="20"/>
+				        </mx:HBox>
+			      </mx:VBox>
+			      <mx:VBox percentWidth="50">
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Диаметр, мм" width="140"/>
+					          <controls:NumberInput id="ANODE_DIAMETER" width="40" maxChars="22" height="20"/>
+					          <mx:Text textAlign="right" text="Диаметр в корпусе, мм" width="130"/>
+					          <controls:NumberInput id="PACKAGE_DIAMETER" width="40" maxChars="22" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Глубина заложения, м" width="140"/>
+					          <controls:NumberInput id="DEPTH_OF_COVER" width="40" maxChars="22" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Дата установки/монтажа" width="140"/>
+					          <mx:DateField id="DATE_INSTALLED" width="96" height="20" formatString="DD.MM.YYYY"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Комментарии" width="140"/>
+					          <mx:TextInput id="COMMENTS" width="225" maxChars="255" height="40"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Перейти к анодному заземлению" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:Button id="BUTTON_GROUND_BED_EVENT_ID" selectedField="PODS_GROUND_BED" enabled="false"
+                             styleName="refObject"
+                             toolTip="Перейти к анодному заземлению, на котором установлен анод"
+                             width="16"
+                             height="16"/>
+						            <controls:NumberInput id="GROUND_BED_EVENT_ID" editable="false" width="85" maxChars="22" height="20"
+                                        visible="{CONFIG.SHOW_SYSTEM_INFO}"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Источник информации" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="SOURCE_GCL" enabled="false" editable="false" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_SOURCE_GCL"/>
+						            <mx:Button id="BTN_LIST_SOURCE_GCL" selectedField="PODS_SOURCE_GCL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Идентификатор объекта" width="140"/>
+					          <controls:NumberInput id="EVENT_ID" editable="false" width="85" maxChars="22" height="20"/>
+				        </mx:HBox>
+			      </mx:VBox>
+		    </mx:HBox>
+	  </mx:VBox>
+	  <validatorsArray>
+		    <controls:DefaultNumberValidator source="{ANODE_MASS}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="1"
+                                       precisionError="Значение в поле должно иметь не более 1 цифр после запятой"
+                                       maxValue="999.9"
+                                       exceedsMaxError="Значение в поле может иметь 3 цифр до запятой и 1 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{DEPTH_OF_COVER}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="4"
+                                       precisionError="Значение в поле должно иметь не более 4 цифр после запятой"
+                                       maxValue="99.9999"
+                                       exceedsMaxError="Значение в поле может иметь 2 цифр до запятой и 4 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{ANODE_DIAMETER}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="1"
+                                       precisionError="Значение в поле должно иметь не более 1 цифр после запятой"
+                                       maxValue="9999.9"
+                                       exceedsMaxError="Значение в поле может иметь 4 цифр до запятой и 1 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{ANODE_LENGTH}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="1"
+                                       precisionError="Значение в поле должно иметь не более 1 цифр после запятой"
+                                       maxValue="9999.9"
+                                       exceedsMaxError="Значение в поле может иметь 4 цифр до запятой и 1 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{PACKAGE_DIAMETER}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="4"
+                                       precisionError="Значение в поле должно иметь не более 4 цифр после запятой"
+                                       maxValue="9999.9999"
+                                       exceedsMaxError="Значение в поле может иметь 4 цифр до запятой и 4 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{PACKAGE_LENGTH}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="0"
+                                       precisionError="Значение в поле должно иметь не более 0 цифр после запятой"
+                                       maxValue="9999"
+                                       exceedsMaxError="Значение в поле может иметь 4 цифр до запятой и 0 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+	  </validatorsArray>
+</DATA_EDIT_FORM>

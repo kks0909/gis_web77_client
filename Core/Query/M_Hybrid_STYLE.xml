@@ -1,0 +1,1285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<kml version="7.7.3.0">
+  <Document>
+    <Style id="WEB50_M_1_ROADS_S" schema="WEB50" table="M_1_ROADS_S" descr="M1_ДОРОГИ_ПЛ" comment="WEB50.M_1_ROADS_S">
+    <zoomMin>27</zoomMin>
+    <zoomMax>13</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_1_TOWN_LP" schema="WEB50" table="M_1_TOWN_LP" descr="M1_НАСЕЛ_ПУНКТЫ_ЛИН_ТОЧ" comment="WEB50.M_1_TOWN_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>17</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_1_TOWN_S" schema="WEB50" table="M_1_TOWN_S" descr="M1_НАСЕЛ_ПУНКТЫ_ПЛ" comment="WEB50.M_1_TOWN_S">
+    <zoomMin>27</zoomMin>
+    <zoomMax>13</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial CYR</fontName>
+      <fontSize>8</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>1</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial CYR",256,8,0,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_1_PROM_LP" schema="WEB50" table="M_1_PROM_LP" descr="M1_ПРОМ_ОБЪЕКТЫ_ЛИН_ТОЧ" comment="WEB50.M_1_PROM_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>18</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_1_PROM_S" schema="WEB50" table="M_1_PROM_S" descr="M1_ПРОМ_ОБЪЕКТЫ_ПЛ" comment="WEB50.M_1_PROM_S">
+    <zoomMin>27</zoomMin>
+    <zoomMax>13</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_1_RAST_LP" schema="WEB50" table="M_1_RAST_LP" descr="M1_РАСТИТЕЛЬНОСТЬ_ЛИН_ТОЧ" comment="WEB50.M_1_RAST_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>17</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_1_TEXT" schema="WEB50" table="M_1_TEXT" descr="M1_ТЕКСТ_ПОДПИСИ" comment="WEB50.M_1_TEXT">
+    <zoomMin>27</zoomMin>
+    <zoomMax>16</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial CYR</fontName>
+      <fontSize>8</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>1</parallel>
+      <auto>1</auto>
+      <duplicate>1</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial CYR",256,8,0,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_10_ROADS_S" schema="WEB50" table="M_10_ROADS_S" descr="M10_ДОРОГИ_ПЛ" comment="WEB50.M_10_ROADS_S">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_10_TOWN_LP" schema="WEB50" table="M_10_TOWN_LP" descr="M10_НАСЕЛ_ПУНКТЫ_ЛИН_ТОЧ" comment="WEB50.M_10_TOWN_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_10_TOWN_S" schema="WEB50" table="M_10_TOWN_S" descr="M10_НАСЕЛ_ПУНКТЫ_ПЛ" comment="WEB50.M_10_TOWN_S">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial CYR</fontName>
+      <fontSize>8</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>1</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial CYR",256,8,0,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_10_PROM_LP" schema="WEB50" table="M_10_PROM_LP" descr="M10_ПРОМ_ОБЪЕКТЫ_ЛИН_ТОЧ" comment="WEB50.M_10_PROM_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>16</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_10_PROM_S" schema="WEB50" table="M_10_PROM_S" descr="M10_ПРОМ_ОБЪЕКТЫ_ПЛ" comment="WEB50.M_10_PROM_S">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_10_RAST_LP" schema="WEB50" table="M_10_RAST_LP" descr="M10_РАСТИТЕЛЬНОСТЬ_ЛИН_ТОЧ" comment="WEB50.M_10_RAST_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>13</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_10_TEXT" schema="WEB50" table="M_10_TEXT" descr="M10_ТЕКСТ_ПОДПИСИ" comment="WEB50.M_10_TEXT">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial CYR</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>1</parallel>
+      <auto>1</auto>
+      <duplicate>1</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial CYR",256,9,0,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_25_ROADS_S" schema="WEB50" table="M_25_ROADS_S" descr="M25_ДОРОГИ_ПЛ" comment="WEB50.M_25_ROADS_S">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_25_TOWN_LP" schema="WEB50" table="M_25_TOWN_LP" descr="M25_НАСЕЛ_ПУНКТЫ_ЛИН_ТОЧ" comment="WEB50.M_25_TOWN_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_25_TOWN_S" schema="WEB50" table="M_25_TOWN_S" descr="M25_НАСЕЛ_ПУНКТЫ_ПЛ" comment="WEB50.M_25_TOWN_S">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial CYR</fontName>
+      <fontSize>8</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>1</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial CYR",256,8,0,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_25_PROM_LP" schema="WEB50" table="M_25_PROM_LP" descr="M25_ПРОМ_ОБЪЕКТЫ_ЛИН_ТОЧ" comment="WEB50.M_25_PROM_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>13</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_25_PROM_S" schema="WEB50" table="M_25_PROM_S" descr="M25_ПРОМ_ОБЪЕКТЫ_ПЛ" comment="WEB50.M_25_PROM_S">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_25_RAST_LP" schema="WEB50" table="M_25_RAST_LP" descr="M25_РАСТИТЕЛЬНОСТЬ_ЛИН_ТОЧ" comment="WEB50.M_25_RAST_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>13</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_25_TEXT" schema="WEB50" table="M_25_TEXT" descr="M25_ТЕКСТ_ПОДПИСИ" comment="WEB50.M_25_TEXT">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial CYR</fontName>
+      <fontSize>7</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>1</parallel>
+      <auto>1</auto>
+      <duplicate>1</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial CYR",256,7,0,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_R_GAZPROM_OBSESTVA_DOCERNI" schema="WEB50" table="M_R_GAZPROM_OBSESTVA_DOCERNI" descr="ГАЗПРОМ_ОБЩЕСТВА_ДОЧЕРНИЕ" comment="WEB50.M_R_GAZPROM_OBSESTVA_DOCERNI">
+    <zoomMin>6</zoomMin>
+    <zoomMax>0</zoomMax>
+    <LabelStyle>
+      <color>FF008080</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>1</parallel>
+      <auto>0</auto>
+      <duplicate>1</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",256,9,32896,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_R_GAZPROM_OBSESTVA_POEMG" schema="WEB50" table="M_R_GAZPROM_OBSESTVA_POEMG" descr="ГАЗПРОМ_ОБЩЕСТВА_ПОЭМГ" comment="WEB50.M_R_GAZPROM_OBSESTVA_POEMG">
+    <zoomMin>27</zoomMin>
+    <zoomMax>0</zoomMax>
+    <LabelStyle>
+      <color>FF0000A0</color>
+      <fontName>Arial Cyr Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>1</italic>
+      <underline>0</underline>
+      <parallel>1</parallel>
+      <auto>0</auto>
+      <duplicate>1</duplicate>
+      <overlap>1</overlap>
+      <MIStyle>Font("Arial Cyr Cyr",258,9,160,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_R_GIDROGRAFIA_RF_1_OZERA_M" schema="WEB50" table="M_R_GIDROGRAFIA_RF_1_OZERA_M" descr="ГИДРОГРАФИЯ_РФ_1_ОЗЕРА_МОРЯ" comment="WEB50.M_R_GIDROGRAFIA_RF_1_OZERA_M">
+    <zoomMin>11</zoomMin>
+    <zoomMax>0</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>1</parallel>
+      <auto>0</auto>
+      <duplicate>1</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_R_GIDROGRAFIA_RF_1_REKI_LI" schema="WEB50" table="M_R_GIDROGRAFIA_RF_1_REKI_LI" descr="ГИДРОГРАФИЯ_РФ_1_РЕКИ_ЛИН" comment="WEB50.M_R_GIDROGRAFIA_RF_1_REKI_LI">
+    <zoomMin>11</zoomMin>
+    <zoomMax>8</zoomMax>
+    <LabelStyle>
+      <color>FF78B5F5</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>10</fontSize>
+      <bold>0</bold>
+      <italic>1</italic>
+      <underline>0</underline>
+      <parallel>1</parallel>
+      <auto>1</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",258,10,7910901,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_R_GIDROGRAFIA_RF_2_OZERA_M" schema="WEB50" table="M_R_GIDROGRAFIA_RF_2_OZERA_M" descr="ГИДРОГРАФИЯ_РФ_2_ОЗЕРА_МОРЯ" comment="WEB50.M_R_GIDROGRAFIA_RF_2_OZERA_M">
+    <zoomMin>11</zoomMin>
+    <zoomMax>8</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>1</parallel>
+      <auto>0</auto>
+      <duplicate>1</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_R_GIDROGRAFIA_RF_2_REKI_LI" schema="WEB50" table="M_R_GIDROGRAFIA_RF_2_REKI_LI" descr="ГИДРОГРАФИЯ_РФ_2_РЕКИ_ЛИН" comment="WEB50.M_R_GIDROGRAFIA_RF_2_REKI_LI">
+    <zoomMin>11</zoomMin>
+    <zoomMax>9</zoomMax>
+    <LabelStyle>
+      <color>FF78B5F5</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>8</fontSize>
+      <bold>0</bold>
+      <italic>1</italic>
+      <underline>0</underline>
+      <parallel>1</parallel>
+      <auto>1</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",258,8,7910901,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_R_DOROGI_AVTOMOBIL_NYE" schema="WEB50" table="M_R_DOROGI_AVTOMOBIL_NYE" descr="ДОРОГИ_АВТОМОБИЛЬНЫЕ" comment="WEB50.M_R_DOROGI_AVTOMOBIL_NYE">
+    <zoomMin>11</zoomMin>
+    <zoomMax>9</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>1</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_R_DOROGI_JELEZNYE" schema="WEB50" table="M_R_DOROGI_JELEZNYE" descr="ДОРОГИ_ЖЕЛЕЗНЫЕ" comment="WEB50.M_R_DOROGI_JELEZNYE">
+    <zoomMin>11</zoomMin>
+    <zoomMax>8</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>1</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_R_DOROGI_JELEZNYE_STANCII" schema="WEB50" table="M_R_DOROGI_JELEZNYE_STANCII" descr="ДОРОГИ_ЖЕЛЕЗНЫЕ_СТАНЦИИ" comment="WEB50.M_R_DOROGI_JELEZNYE_STANCII">
+    <zoomMin>11</zoomMin>
+    <zoomMax>9</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>D231</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>1</parallel>
+      <auto>1</auto>
+      <duplicate>1</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("D231",256,9,0,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_200_SWAMP" schema="WEB50" table="M_200_SWAMP" descr="M200_БОЛОТА" comment="WEB50.M_200_SWAMP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>11</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_200_GIDR_LP" schema="WEB50" table="M_200_GIDR_LP" descr="M200_ГИДРОГРАФИЯ_ЛИН_ТОЧ" comment="WEB50.M_200_GIDR_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>11</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_200_GIDR_S" schema="WEB50" table="M_200_GIDR_S" descr="M200_ГИДРОГРАФИЯ_ПЛ" comment="WEB50.M_200_GIDR_S">
+    <zoomMin>27</zoomMin>
+    <zoomMax>11</zoomMax>
+    <LabelStyle>
+      <color>FF0040C0</color>
+      <fontName>Arial CYR</fontName>
+      <fontSize>8</fontSize>
+      <bold>0</bold>
+      <italic>1</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>1</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial CYR",258,8,16576,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_200_LIMITS" schema="WEB50" table="M_200_LIMITS" descr="M200_ГРАНИЦЫ" comment="WEB50.M_200_LIMITS">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_200_ROADS" schema="WEB50" table="M_200_ROADS" descr="M200_ДОРОГИ" comment="WEB50.M_200_ROADS">
+    <zoomMin>27</zoomMin>
+    <zoomMax>11</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_200_TOWN" schema="WEB50" table="M_200_TOWN" descr="M200_НАСЕЛ_ПУНКТЫ" comment="WEB50.M_200_TOWN">
+    <zoomMin>27</zoomMin>
+    <zoomMax>11</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial CYR</fontName>
+      <fontSize>8</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>1</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial CYR",256,8,0,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_200_PROM" schema="WEB50" table="M_200_PROM" descr="M200_ПРОМ_ОБЪЕКТЫ" comment="WEB50.M_200_PROM">
+    <zoomMin>27</zoomMin>
+    <zoomMax>11</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_200_RAST_LP" schema="WEB50" table="M_200_RAST_LP" descr="M200_РАСТИТЕЛЬНОСТЬ_ЛИН_ТОЧ" comment="WEB50.M_200_RAST_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_200_TEXT" schema="WEB50" table="M_200_TEXT" descr="M200_ТЕКСТ_ПОДПИСИ" comment="WEB50.M_200_TEXT">
+    <zoomMin>15</zoomMin>
+    <zoomMax>11</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial CYR</fontName>
+      <fontSize>7</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>1</parallel>
+      <auto>1</auto>
+      <duplicate>1</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial CYR",256,7,0,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_R_NASEL_PUNKTY_GORODA_PROC" schema="WEB50" table="M_R_NASEL_PUNKTY_GORODA_PROC" descr="НАСЕЛ_ПУНКТЫ_ГОРОДА_ПРОЧИЕ" comment="WEB50.M_R_NASEL_PUNKTY_GORODA_PROC">
+    <zoomMin>11</zoomMin>
+    <zoomMax>7</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>8</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>1</parallel>
+      <auto>1</auto>
+      <duplicate>1</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",256,8,0,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_R_NASEL_PUNKTY_PROCIE" schema="WEB50" table="M_R_NASEL_PUNKTY_PROCIE" descr="НАСЕЛ_ПУНКТЫ_ПРОЧИЕ" comment="WEB50.M_R_NASEL_PUNKTY_PROCIE">
+    <zoomMin>11</zoomMin>
+    <zoomMax>9</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>8</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>1</parallel>
+      <auto>1</auto>
+      <duplicate>1</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",256,8,0,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_R_NASEL_PUNKTY_STOLICY" schema="WEB50" table="M_R_NASEL_PUNKTY_STOLICY" descr="НАСЕЛ_ПУНКТЫ_СТОЛИЦЫ" comment="WEB50.M_R_NASEL_PUNKTY_STOLICY">
+    <zoomMin>11</zoomMin>
+    <zoomMax>0</zoomMax>
+    <LabelStyle>
+      <color>FFC03000</color>
+      <fontName>Times New Roman CYR</fontName>
+      <fontSize>10</fontSize>
+      <bold>1</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>1</parallel>
+      <auto>1</auto>
+      <duplicate>1</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Times New Roman CYR",257,10,12595200,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_R_SOPRED_GOSUDARSTVA" schema="WEB50" table="M_R_SOPRED_GOSUDARSTVA" descr="СОПРЕД_ГОСУДАРСТВА" comment="WEB50.M_R_SOPRED_GOSUDARSTVA">
+    <zoomMin>11</zoomMin>
+    <zoomMax>0</zoomMax>
+    <LabelStyle>
+      <color>FF505050</color>
+      <fontName>Times New Roman CYR</fontName>
+      <fontSize>10</fontSize>
+      <bold>1</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>1</auto>
+      <duplicate>1</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Times New Roman CYR",257,10,5263440,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_R_SUB_EKTY_RF_ADM_CENTRY" schema="WEB50" table="M_R_SUB_EKTY_RF_ADM_CENTRY" descr="СУБЪЕКТЫ_РФ_АДМ_ЦЕНТРЫ" comment="WEB50.M_R_SUB_EKTY_RF_ADM_CENTRY">
+    <zoomMin>11</zoomMin>
+    <zoomMax>3</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Times New Roman CYR</fontName>
+      <fontSize>7</fontSize>
+      <bold>1</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>1</parallel>
+      <auto>1</auto>
+      <duplicate>1</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Times New Roman CYR",257,7,0,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_R_SUB_EKTY_RF_RAYONY_ADM_C" schema="WEB50" table="M_R_SUB_EKTY_RF_RAYONY_ADM_C" descr="СУБЪЕКТЫ_РФ_РАЙОНЫ_АДМ_ЦЕНТРЫ" comment="WEB50.M_R_SUB_EKTY_RF_RAYONY_ADM_C">
+    <zoomMin>11</zoomMin>
+    <zoomMax>7</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>8</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>1</underline>
+      <parallel>1</parallel>
+      <auto>1</auto>
+      <duplicate>1</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",260,8,0,16777168)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_1_ROADS_LP" schema="WEB50" table="M_1_ROADS_LP" descr="M1_ДОРОГИ_ЛИН_ТОЧ" comment="WEB50.M_1_ROADS_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>16</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_10_ROADS_LP" schema="WEB50" table="M_10_ROADS_LP" descr="M10_ДОРОГИ_ЛИН_ТОЧ" comment="WEB50.M_10_ROADS_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_25_ROADS_LP" schema="WEB50" table="M_25_ROADS_LP" descr="M25_ДОРОГИ_ЛИН_ТОЧ" comment="WEB50.M_25_ROADS_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_5_ROADS_LP" schema="WEB50" table="M_5_ROADS_LP" descr="M5_ДОРОГИ_ЛИН_ТОЧ" comment="WEB50.M_5_ROADS_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_5_TEXT" schema="WEB50" table="M_5_TEXT" descr="M5_ТЕКСТ_ПОДПИСИ" comment="WEB50.M_5_TEXT">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial CYR</fontName>
+      <fontSize>8</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>1</parallel>
+      <auto>1</auto>
+      <duplicate>1</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial CYR",256,8,0,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_1_GIDR_LP" schema="WEB50" table="M_1_GIDR_LP" descr="M1_ГИДРОГРАФИЯ_ЛИН_ТОЧ" comment="WEB50.M_1_GIDR_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>16</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_1_GIDR_S" schema="WEB50" table="M_1_GIDR_S" descr="M1_ГИДРОГРАФИЯ_ПЛ" comment="WEB50.M_1_GIDR_S">
+    <zoomMin>27</zoomMin>
+    <zoomMax>15</zoomMax>
+    <LabelStyle>
+      <color>FF0040C0</color>
+      <fontName>Arial CYR</fontName>
+      <fontSize>8</fontSize>
+      <bold>0</bold>
+      <italic>1</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial CYR",258,8,16576,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_10_GIDR_LP" schema="WEB50" table="M_10_GIDR_LP" descr="M10_ГИДРОГРАФИЯ_ЛИН_ТОЧ" comment="WEB50.M_10_GIDR_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_10_GIDR_S" schema="WEB50" table="M_10_GIDR_S" descr="M10_ГИДРОГРАФИЯ_ПЛ" comment="WEB50.M_10_GIDR_S">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF0040C0</color>
+      <fontName>Arial CYR</fontName>
+      <fontSize>8</fontSize>
+      <bold>0</bold>
+      <italic>1</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial CYR",258,8,16576,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_25_GIDR_LP" schema="WEB50" table="M_25_GIDR_LP" descr="M25_ГИДРОГРАФИЯ_ЛИН_ТОЧ" comment="WEB50.M_25_GIDR_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_25_GIDR_S" schema="WEB50" table="M_25_GIDR_S" descr="M25_ГИДРОГРАФИЯ_ПЛ" comment="WEB50.M_25_GIDR_S">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF0040C0</color>
+      <fontName>Arial CYR</fontName>
+      <fontSize>8</fontSize>
+      <bold>0</bold>
+      <italic>1</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial CYR",258,8,16576,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_5_GIDR_LP" schema="WEB50" table="M_5_GIDR_LP" descr="M5_ГИДРОГРАФИЯ_ЛИН_ТОЧ" comment="WEB50.M_5_GIDR_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_5_GIDR_S" schema="WEB50" table="M_5_GIDR_S" descr="M5_ГИДРОГРАФИЯ_ПЛ" comment="WEB50.M_5_GIDR_S">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF0040C0</color>
+      <fontName>Arial CYR</fontName>
+      <fontSize>8</fontSize>
+      <bold>0</bold>
+      <italic>1</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial CYR",258,8,16576,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_5_PROM_LP" schema="WEB50" table="M_5_PROM_LP" descr="M5_ПРОМ_ОБЪЕКТЫ_ЛИН_ТОЧ" comment="WEB50.M_5_PROM_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>13</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_5_PROM_S" schema="WEB50" table="M_5_PROM_S" descr="M5_ПРОМ_ОБЪЕКТЫ_ПЛ" comment="WEB50.M_5_PROM_S">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_5_RAST_LP" schema="WEB50" table="M_5_RAST_LP" descr="M5_РАСТИТЕЛЬНОСТЬ_ЛИН_ТОЧ" comment="WEB50.M_5_RAST_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>13</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_5_ROADS_S" schema="WEB50" table="M_5_ROADS_S" descr="M5_ДОРОГИ_ПЛ" comment="WEB50.M_5_ROADS_S">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_5_TOWN_LP" schema="WEB50" table="M_5_TOWN_LP" descr="M5_НАСЕЛ_ПУНКТЫ_ЛИН_ТОЧ" comment="WEB50.M_5_TOWN_LP">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial Cyr</fontName>
+      <fontSize>9</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>0</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+    <Style id="WEB50_M_5_TOWN_S" schema="WEB50" table="M_5_TOWN_S" descr="M5_НАСЕЛ_ПУНКТЫ_ПЛ" comment="WEB50.M_5_TOWN_S">
+    <zoomMin>16</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+      <color>FF000000</color>
+      <fontName>Arial CYR</fontName>
+      <fontSize>8</fontSize>
+      <bold>0</bold>
+      <italic>0</italic>
+      <underline>0</underline>
+      <parallel>0</parallel>
+      <auto>1</auto>
+      <duplicate>0</duplicate>
+      <overlap>0</overlap>
+      <MIStyle>Font("Arial CYR",256,8,0,16777215)</MIStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+  </Document>
+</kml>

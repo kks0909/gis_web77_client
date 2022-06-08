@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns="view.data.*"
+                title="Группы анодных заземлений"
+                width="760"
+                ext_data_id="PODS_EXPORT.xml#PODS_GROUND_BED"
+                excelTemplate="PODS_GROUND_BED">
+	  <dataProvider>PODS_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	  <mx:VBox width="760">
+		    <mx:HBox percentWidth="100">
+			      <mx:VBox percentWidth="50">
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Описание" width="140"/>
+					          <mx:TextInput id="DESCRIPTION" width="225" maxChars="50" height="40"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Наименование" width="140"/>
+					          <mx:TextInput id="NAME" width="160" maxChars="32" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Тип заземления" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="TYPE_CL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_GROUND_BED_TYPE_CL"/>
+						            <mx:Button id="BTN_LIST_TYPE_CL" selectedField="PODS_GROUND_BED_TYPE_CL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Материал" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="MATERIAL_CL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_GROUND_BED_MATERIAL_CL"/>
+						            <mx:Button id="BTN_LIST_MATERIAL_CL" selectedField="PODS_GROUND_BED_MATERIAL_CL"
+                             enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Тип установки" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="INSTALLATION_CL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_GROUND_BED_INSTALLATION_CL"/>
+						            <mx:Button id="BTN_LIST_INSTALLATION_CL" selectedField="PODS_GROUND_BED_INSTALLATION_CL"
+                             enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Материал засыпки" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="BACK_FILL_MATERIAL_GCL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_BACK_FILL_MATERIAL_GCL"/>
+						            <mx:Button id="BTN_LIST_BACK_FILL_MATERIAL_GCL"
+                             selectedField="PODS_BACK_FILL_MATERIAL_GCL"
+                             enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Типоразмер кабеля" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="POS_CABLE_GAUGE_GCL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_CABLE_GAUGE_GCL"/>
+						            <mx:Button id="BTN_LIST_POS_CABLE_GAUGE_GCL" selectedField="PODS_CABLE_GAUGE_GCL"
+                             enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Тип изоляции кабеля" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="POS_CABLE_INSULATION_TYPE_GCL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_CABLE_INSULATION_TYPE_GCL"/>
+						            <mx:Button id="BTN_LIST_POS_CABLE_INSULATION_TYPE_GCL"
+                             selectedField="PODS_CABLE_INSULATION_TYPE_GCL"
+                             enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Цвет изоляции кабеля" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="POS_CABLE_INSULATION_COLOR_GCL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_CABLE_INSULATION_COLOR_GCL"/>
+						            <mx:Button id="BTN_LIST_POS_CABLE_INSULATION_COLOR_GCL"
+                             selectedField="PODS_CABLE_INSULATION_COLOR_GCL"
+                             enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+			      </mx:VBox>
+			      <mx:VBox percentWidth="50">
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Количество анодов" width="140"/>
+					          <controls:NumberInput id="ANODES_QUANTITY" width="30" maxChars="4" height="20"/>
+					          <mx:Text textAlign="right" text="Дата установки" width="93"/>
+					          <mx:DateField id="DATE_INSTALLED" width="85" height="20" formatString="DD.MM.YYYY"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Расстояние между анодами, м" width="140"/>
+					          <controls:NumberInput id="ANODE_SPACING" width="42" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Глубина заложения, м" width="140"/>
+					          <controls:NumberInput id="DEPTH_OF_COVER" width="42" maxChars="6" height="20"/>
+					          <mx:Text textAlign="right" text="Горизонтальное расположение" width="140"/>
+					          <mx:CheckBox id="HORIZONTAL_LF" width="20" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Комментарии" width="140"/>
+					          <mx:TextInput id="COMMENTS" width="225" maxChars="255" height="40"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Перейти к корпусу УКЗ/УДЗ" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:Button id="BUTTON_RECTIFIER_ENCLOSURE_ID" selectedField="PODS_RECTIFIER_ENCLOSURE"
+                             enabled="false"
+                             styleName="refObject"
+                             toolTip="Перейти к корпусу УКЗ/УДЗ, с которой связано заземление"
+                             width="16"
+                             height="16"/>
+						            <mx:TextInput id="RECTIFIER_ENCLOSURE_ID" width="85" maxChars="16" height="20"
+                                visible="{CONFIG.SHOW_SYSTEM_INFO}"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Источник информации" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="SOURCE_GCL" enabled="false" editable="false" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_SOURCE_GCL"/>
+						            <mx:Button id="BTN_LIST_SOURCE_GCL" selectedField="PODS_SOURCE_GCL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Идентификатор объекта" width="140"/>
+					          <controls:NumberInput id="EVENT_ID" editable="false" width="85" maxChars="22" height="20"/>
+				        </mx:HBox>
+			      </mx:VBox>
+		    </mx:HBox>
+	  </mx:VBox>
+	  <validatorsArray>
+		    <controls:DefaultNumberValidator source="{ANODES_QUANTITY}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="0"
+                                       precisionError="Значение в поле должно иметь не более 0 цифр после запятой"
+                                       maxValue="9999"
+                                       exceedsMaxError="Значение в поле может иметь 4 цифр до запятой и 0 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{DEPTH_OF_COVER}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="2"
+                                       precisionError="Значение в поле должно иметь не более 2 цифр после запятой"
+                                       maxValue="9999.99"
+                                       exceedsMaxError="Значение в поле может иметь 4 цифр до запятой и 2 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+	  </validatorsArray>
+</DATA_EDIT_FORM>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.5.0" descr="Диагностика">
+  <dataProvider type="style" source="PODS_INSP_STYLE.xml" />
+  <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml" />
+  <layer id="PODS_ILI_INSPECTION_RANGE" visible="true" type="common" topology="line" table="ILI_INSPECTION_RANGE_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="10" labelField="LABEL" fitMap="false" descr="Участки ВТД, пройденные снарядом-дефектоскопом" dataType="vector" cover="false" comment="PODS_ILI_INSPECTION_RANGE" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ILI_INSPECTION_RANGE" />
+    <dataProvider type="spatial" source="CAS_PODS_PI_CP_GEO.xml#CAS_PODS_ILI_INSPECTION_RANGE" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_ILI_INSPECTION_RANGE" />
+  </layer>
+  <layer id="PODS_PI_CP_INSPECTION" visible="true" type="common" topology="line" table="PI_CP_INSPECTION_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="20" labelField="LABEL" fitMap="false" descr="Перечень обследований состояния ЭХЗ" dataType="vector" cover="false" comment="PODS_PI_CP_INSPECTION" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PI_CP_INSPECTION" />
+    <dataProvider type="spatial" source="CAS_PODS_PI_CP_GEO.xml#CAS_PODS_PI_CP_INSPECTION" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION" />
+  </layer>
+  <layer id="PODS_PHYSICAL_INSPECTION" visible="false" type="common" topology="line" table="PHYSICAL_INSPECTION_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="30" labelField="LABEL" fitMap="false" descr="Перечень наружных обследований" dataType="vector" cover="false" comment="PODS_PHYSICAL_INSPECTION" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PHYSICAL_INSPECTION" />
+    <dataProvider type="spatial" source="CAS_PODS_PI_CP_GEO.xml#CAS_PODS_PHYSICAL_INSPECTION" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_PHYSICAL_INSPECTION" />
+  </layer>
+</root>

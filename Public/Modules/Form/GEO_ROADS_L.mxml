@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns="view.data.*"
+                title="ОТ_Вспомогательные дороги"
+                width="760"
+				hideButtons="Excel"
+                ext_data_id="IUST_EXPORT.xml#GEO_ROADS_L"
+                excelTemplate="GEO_ROADS_L">
+	  <dataProvider>IUST_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	  <mx:VBox width="760">	    
+			<mx:HBox percentWidth="100">
+				  <mx:VBox percentWidth="100">
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Тип объекта (топокод)" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="TOPOCODE" width="600" height="20"
+                               dataProvider="IUST_SEM_DICT.xml#GEO_ROADS_L_TOPOCODE"/>
+						            <mx:Button id="BTN_LIST_TOPOCODE" selectedField="GEO_ROADS_L_TOPOCODE" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>						   
+					          </mx:HBox>
+				        </mx:HBox>
+				  </mx:VBox>			
+			</mx:HBox>
+	  </mx:VBox>	  
+	  <mx:VBox width="760">	    
+			<mx:HBox percentWidth="100">      
+				  <mx:VBox percentWidth="50">
+				      <mx:HBox percentWidth="100">
+					      <mx:Text textAlign="right" text="Наименование" width="140"/>
+						  <mx:TextInput id="NAME" width="225" maxChars="100" height="40"/>
+				      </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Состояние" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="OBJSTATE" width="200" height="20"
+                               dataProvider="IUST_SEM_DICT.xml#GEO_ROADS_L_OBJSTATE"/>
+						            <mx:Button id="BTN_LIST_OBJSTATE" selectedField="GEO_ROADS_L_OBJSTATE" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>							   
+					          </mx:HBox>
+				        </mx:HBox>		
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Материал покрытия" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="COATINGMATERIAL" width="200" height="20"
+                               dataProvider="IUST_SEM_DICT.xml#GEO_ROADS_L_COATINGMATERIAL"/>
+						            <mx:Button id="BTN_LIST_COATINGMATERIAL" selectedField="GEO_ROADS_L_COATINGMATERIAL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>							   
+					          </mx:HBox>
+				        </mx:HBox>						
+					  <mx:HBox percentWidth="100">
+						  <mx:Text textAlign="right" text="Число путей /полос" width="140"/>
+					          <controls:NumberInput id="LANES" width="100" maxChars="30" height="20"/>
+					  </mx:HBox>
+				  </mx:VBox>
+				  <mx:VBox percentWidth="50">
+					  <mx:HBox percentWidth="100">
+						  <mx:Text textAlign="right" text="Период доступности" width="140"/>
+						  <mx:TextInput id="MOVEPERIOD" width="225" maxChars="100" height="40"/>
+					  </mx:HBox>
+					  <mx:HBox percentWidth="100">
+						  <mx:Text textAlign="right" text="Номер дороги" width="140"/>
+						  <mx:TextInput id="ROADNUM" width="225" maxChars="100" height="40"/>
+					  </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Идентификатор объекта" width="140"/>
+					          <mx:TextInput id="ID" editable="false" width="100" maxChars="70" height="20"/>
+				        </mx:HBox>						
+				  </mx:VBox>				  
+			</mx:HBox>
+	  </mx:VBox>	
+    <validatorsArray>
+		<controls:ComboBoxValidator source="{TOPOCODE}" property="selectedItem" enabled="false" required="true" notDefaultError="В списке 'Тип объекта (топокод)' нужно выбрать значение."/>
+    </validatorsArray>	  
+</DATA_EDIT_FORM>
+
+

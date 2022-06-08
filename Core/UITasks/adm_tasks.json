@@ -1,0 +1,36 @@
+﻿{
+  "code":200,
+  "version":"7.7.7.5",
+  "id":"MAPSERVICE",
+  "map":{
+    "_comment":"Флаг показа однократного сообщения об ошибке, что для этого значения не найдено значение справочника. Если выставлен флаг, то не показываем сообения. По умолчанию true",
+    "showErrorInGridDictionary":true,
+    "_comment":"Идентификатор запроса для получения превью для LIB_DOC",
+    "requestLibDoc":"LIB_DOC_SEM.xml#LIB_DOC",
+    "_comment":"Путь к файлу с подложками и описание векторных слоёв",
+    "rasterlayers":[],
+    "_comment":"canRaster - флаг, регулирующий, какие слои из модели будут в растровом режиме исключаться из отрисовки вектором.",
+    "canRaster":[]
+  },
+  "_comment":"Настройки рубрикатор",
+  "tree":{
+    "isMaximized":true,
+    "treePercentWidth":20,
+    "trees":[{
+        "id":"ADM_LIST",
+        "title":"Административные задачи",
+        "templateUrl":"Public/Modules/Tree/ADM_TREE.xml",
+        "default":true,
+        "startupScenario":{         
+          "openLayers":[]
+        }
+      }
+    ],
+    "filters":[]
+  },
+  "_comment":"Настройки панели свойств",
+  "ppanel":{
+    "showSystemInfo":true
+  },
+  "vectorlayers":["PODS_EQUIP_Layers.xml","PODS_SERV_Layers.xml","ADM_Layers.xml","COSMETIC_Layers.xml"]
+}

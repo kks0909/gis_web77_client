@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="415" xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml" title="Выберите файл для импорта">
+  <mx:VBox width="415">
+	<mx:HBox percentWidth="100">
+      <mx:Text textAlign="left" text="" width="2" />
+      <mx:Text textAlign="left" text="Внимание! В диалоге выбора файла необходимо выбрать файл с расширением .xml" width="100%" />
+    </mx:HBox>
+	<mx:HBox percentWidth="100">
+      <mx:Text textAlign="right" text="Выберите файл" width="150"/>
+      <controls:FileInput id="xml_file_name" width="250" height="20" saveOriginalFileName="false" fileFilterDescription="xml-файлы" fileFilterExtension="*.xml" uploadPath="UploadedFiles/" tabIndex="0"/>
+    </mx:HBox>
+
+	<mx:HBox percentWidth="100">
+		
+		<mx:Text textAlign="right" text="Трубопровод" width="80"/>
+		<mx:TextInput disabled="true" id="REF_ROUTE_ID" text="Объект лежит не на оси трубопровода" width="255" height="20" />
+        <mx:Button id="BUTTONGROUP_REF_ROUTE_ID__km_start__km_end__pipe__" selectedField="ROUTE_ID" enabled="false"
+				 styleName="refButton"
+				 label="Выбрать"
+				 width="55"
+				 height="20"/>
+        
+    </mx:HBox>
+	<mx:HBox percentWidth="100" visible="false">
+          <mx:TextInput id="pipe" text="0" width="400"/>
+    </mx:HBox>
+
+    <mx:HBox percentWidth="100">
+      <mx:Text textAlign="right" text="Нач./кон. километр, км" width="150"/>
+      <controls:NumberInput id="km_start" width="85" maxChars="20" height="20" tabIndex="2"/>
+      <mx:Text text="/"/>
+      <controls:NumberInput id="km_end" width="85" maxChars="20" height="20" tabIndex="3"/>
+    </mx:HBox>
+    <mx:HBox percentWidth="100">
+      <mx:Text textAlign="right" text="Дата обследования" width="150"/>
+      <mx:DateField id="date" width="100" height="20" formatString="DD.MM.YYYY" tabIndex="4"/>
+    </mx:HBox>
+    <mx:HBox percentWidth="100">
+      <mx:Text textAlign="right" text="Компания-производитель" width="150"/>
+      <mx:ComboBox id="company" width="250" height="20" labelField="DESCR" dataProvider="PODS_SEM_DICT.xml#PODS_ILI_TOOL_VENDOR_CL" tabIndex="5"/>
+    </mx:HBox>
+	<mx:HBox percentWidth="100">	  
+	  <mx:Text textAlign="right" text="Индексировать по коридору" width="150"/>
+	  <mx:CheckBox id="ps_idx" selected="false" tabIndex="7"/>
+	</mx:HBox>
+    <mx:HBox percentWidth="100">
+		<mx:CheckBox id="do_calc_inspection" selected="true" tabIndex="8"/>
+		<mx:Text textAlign="left" text="РАССЧИТЫВАТЬ ОТЧЕТ" width="150"/>
+	</mx:HBox>  
+   <!-- <mx:HBox>
+     <mx:Text textAlign="left" text="Внесение дополнительных сведений о дефектах(Excel-файл. Обязательно к заполнению):" width="350"/>
+  </mx:HBox> 
+  <mx:VBox>
+    <mx:Text textAlign="left" text="1. Открыть Excel-файл с расчетными показателями аномалий." width="350"/>
+  </mx:VBox>
+  <mx:VBox>
+    <mx:Text textAlign="left" text="2. Добавить строку-заголовок. Как правильно оформить заголовок и содержимое Excel-файла - см. Руководство пользователя." width="350"/>
+  </mx:VBox>
+  <mx:VBox>
+    <mx:Text textAlign="left" text="3. Выбрать содержимое Excel-файла. и скопировать в буфер обмена." width="350"/>
+  </mx:VBox>
+  <mx:VBox>
+    <mx:Text textAlign="left" text="4. Вставить содержимое буфера обмена в расположенную ниже форму." width="350"/>
+  </mx:VBox> 
+  <mx:HBox height="10">
+  </mx:HBox> 
+  <mx:VBox percentWidth="100">
+    <mx:TextInput id="ILI_DATA_ADV" text="" width="410" height="100" />
+  </mx:VBox>-->
+	<mx:HBox percentWidth="100">
+    <mx:CheckBox id="do_calc_cluster" selected="true" tabIndex="9"/>
+    <mx:Text textAlign="left" text="1. Группировка дефектов в кластеры." width="350"/>
+  </mx:HBox>
+  <mx:HBox percentWidth="100">
+    <mx:CheckBox id="do_calc_pressure" selected="false" tabIndex="10"/>
+    <mx:Text textAlign="left" text="2. Расчет точечных показателей в соответствии с СТО 112, 173, 292, 401, 595." width="350"/>
+  </mx:HBox>
+  <mx:HBox percentWidth="100">
+    <mx:CheckBox id="do_calc_sto" selected="false" tabIndex="11"/>
+    <mx:Text textAlign="left" text="3. Расчет линейных показателей в соответствии с СТО 095, 292, 401." width="350"/>
+  </mx:HBox>
+  <mx:HBox percentWidth="100">
+    <mx:CheckBox id="do_calc_sto_for_ehz" selected="false" tabIndex="12"/>
+    <mx:Text textAlign="left" text="4. Расчет линейных показателей в соответствии с инструкцией ВНИИГАЗ 2004." width="350"/>
+  </mx:HBox>
+  </mx:VBox>
+  <validatorsArray>
+    <controls:DefaultStringValidator source="{zip_file_name}" property="text" enabled="false" requiredFieldError="Поле 'Выберите файл' обязательно для заполнения."/>
+    <controls:DefaultStringValidator source="{ILI_DATA_ADV}" property="text" enabled="false" requiredFieldError="Отсутствуют данные в форме ввода дополнительных сведений о дефектах"/>
+  </validatorsArray>
+</DATA_EDIT_FORM>

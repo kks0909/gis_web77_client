@@ -1,0 +1,26 @@
+﻿<root version="postgres 7.7.6.0">
+ 
+    <data id="PODS_ILI_REPER" comment="PODS.ILI_DATA" schema="PODS" table="ILI_DATA">
+        <select>
+            <geoQuery idField="ID" geoField="X,Y">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <var name="ILI_INSP_FILTER" default="SELECT ILI_INSPECTION_ID FROM PODS.ILI_INSPECTION"/>
+                <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+                <query>
+                     SELECT * FROM
+                    (
+                    SELECT d.ILI_DATA_ID ID, d.ILI_INSPECTION_ID, c.X_COORD X, c.Y_COORD Y, d.FEATURE_DESCRIPTION "label", d.ANOMALY_TYPE_CL||CASE WHEN d.ref_event_id is not null THEN '_LNK'
+            ELSE '_NOTLNK'
+       end "type"
+                    FROM PODS.ILI_DATA d
+                    JOIN PODS.COORDINATE c ON c.COORDINATE_ID = d.COORDINATE_ID
+                    JOIN PODS.ILI_ANOMALY_TYPE_CL ia on d.anomaly_type_cl=ia.code AND ia.code in (1004,1003)
+                    WHERE c.LOCATION_ID != -1 ) d
+                    WHERE ILI_INSPECTION_ID IN ({ILI_INSP_FILTER}) AND {FILTER} ORDER BY Y desc, X
+                </query>
+            </geoQuery>
+        </select>
+    </data>
+
+</root>

@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="UTEService.asmx.cs" Class="ASL.UTEService" %>

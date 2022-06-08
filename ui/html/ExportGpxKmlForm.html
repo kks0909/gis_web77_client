@@ -1,0 +1,25 @@
+<form version="7.7.5.0" class="smallExportDialogForm">
+    <div class="labelField labelFieldGpx" name="descriptionText">
+        Выберите формат, в котором будет сохранен файл и нажмите 'Экспорт'. Файл будет загружен на ваш компьютер.<br>
+        По умолчанию будет применена кодировка UTF-8.
+    </div>
+    <div class="options optionsGpx">
+        <div class="option optionGpx ">
+            <input type="radio" name="inputRadio" id="radioGPX" />
+            <label for="radioGPX">GPX (Garmin MapSource)</label>
+            <div class="option checkboxGpx">
+                <input type="checkbox" name="encod" id="encodingANSI">
+                <label for="encodingANSI">Кодировка ANSI</label>
+            </div>
+        </div>
+        <div class="option optionGpx">
+            <input type="radio" name="inputRadio" id="radioKML">
+            <label for="radioKML">KML (Android, Google Earth)</label>
+        </div>
+    </div>
+
+    <div class="button buttonGpx">
+        <input type="button" class="map-dialog-button" name="export" value="Экспорт">
+        <input type="button" class="map-dialog-button" name="cancel" value="Отмена">
+    </div>
+</form>

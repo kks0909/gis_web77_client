@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.4.10" descr="Диагностика и ремонт дорожных переходов">
+  <data id="ROAD" comment="ROAD" schema="WEB50" table="ROAD">
+    <select>
+     <dbQuery>
+       <var name="FILTER" default="1=1"/>
+       <var name="ORDER_COLUMNS" default="ID"/>
+       <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM WEB50.SRV_DISTRICT_GCL"/>
+       <var name="ROUTE_TYPE_FILTER" default="SELECT code FROM web50.route_type_cl"/>
+       <var name="LINE_ID_FILTER" default="SELECT line_id FROM web50.line"/>
+       <var name="LOW_LIMIT" default="1"/>
+       <var name="HIGH_LIMIT" default="65536"/>
+       <var name="COLUMNS_FILTER" default="*"/>
+       <query>
+        SELECT {COLUMNS_FILTER} FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY id) RWN, id, road_id , description, type_cl, category_id, osm_id, "comments",type_cl||'-'||category_id "TYPE"
+          FROM WEB50.road WHERE {FILTER}) dd
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+      </query>
+     </dbQuery>
+    </select>
+  </data>
+  <data id="ROAD_CROSS" comment="ROAD_CROSS" schema="WEB50" table="ROAD_CROSS">
+    <select>
+     <dbQuery>
+       <var name="FILTER" default="1=1"/>
+       <var name="ORDER_COLUMNS" default="ID"/>
+       <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM WEB50.SRV_DISTRICT_GCL"/>
+       <var name="ROUTE_TYPE_FILTER" default="SELECT code FROM web50.route_type_cl"/>
+       <var name="LINE_ID_FILTER" default="SELECT line_id FROM web50.line"/>
+       <var name="LOW_LIMIT" default="1"/>
+       <var name="HIGH_LIMIT" default="65536"/>
+       <var name="COLUMNS_FILTER" default="*"/>
+       <query>
+        SELECT {COLUMNS_FILTER} FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY road_cross_id) RWN, road_cross_id ID, 
+          line_id, road_id, case_lf, 
+          station, station_road, 
+          road_length, pipe_category_id, pipe_diameter, pipe_thickness, 
+          case_length, case_diameter_gcl, case_thickness, 
+          date_installed, pi_cp_type, insp_date, insp_performed_by, 
+          insp_pipe_case_contact_lf, insp_result_case_necessity_lf, insp_result_case_length_repair, 
+          insp_result_road_accord_lf, insp_result_other_disorder, insp_result_condition, repair_date, repair_type, 
+          repair_performed_by, repair_complited_work, repair_result_condition, srv_district
+          FROM WEB50.road_cross WHERE {FILTER}) dd
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+      </query>
+     </dbQuery>
+    </select>
+  </data>
+</root>

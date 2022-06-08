@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DATA_GRID_FORM xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns="view.data.*" readOnly="true" percentWidth="100" percentHeight="100">
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	<mx:VBox percentWidth="100" percentHeight="100">
+		<DataGridWithScript id="DATA_GRID" percentWidth="100" percentHeight="100" styleName="dgInfoForm">
+			<columns>
+				<mx:DataGridColumn headerText="№" width="30" itemRenderer="view.controls.renderer.FirstGridItemRenderer" editable="false"/>
+				<mx:DataGridColumn headerText="Описание" dataField="DESCRIPTION" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Модель" dataField="MODEL" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Тип анода" dataField="TYPE_CL" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Компания-изготовитель" dataField="MANUFACTURER_CL" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Материал" dataField="MATERIAL_CL" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Материал заполнения" dataField="PACKAGE_FILL_CL" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Материал засыпки" dataField="BACK_FILL_MATERIAL" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Масса, кг" dataField="ANODE_MASS" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Гальванический анод" dataField="GALVANIC_LF" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Длина, мм" dataField="ANODE_LENGTH" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Длина в корпусе, мм" dataField="PACKAGE_LENGT" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Диаметр, мм" dataField="ANODE_DIAMETER" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Диаметр в корпусе, мм" dataField="PACKAGE_DIAMETER" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Глубина заложения до верха трубы, м" dataField="DEPTH_OF_COVER" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Дата установки/монтажа" dataField="DATE_INSTALLED" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Комментарии" dataField="COMMENTS" itemRenderer="view.controls.renderer.GridItemRenderer"/>		
+			</columns>
+			<selectScript>GAZPROM_SYS_SEM.xml#PODS_ANODE_LIST_FOR_GROUND_BED_DATA_GRID</selectScript>
+			<insertScript/>
+			<updateScript/>
+			<deleteScript/>
+		</DataGridWithScript>
+	</mx:VBox>
+</DATA_GRID_FORM>

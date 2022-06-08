@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.4.10" descr="Экомониторинг">
+  <dataProvider type="style" source="eco_STYLE.xml" />
+	<layer id="1_ZONI_BOLOT" comment="1_ZONI_BOLOT" schema="ECO" table="1_ZONI_BOLOT" descr="1.Зоны болот" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="" spacing="1_ZONI_BOLOT" cover="false" fitMap="false" order="1" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#1_ZONI_BOLOT" />
+		<dataProvider type="style" source="eco_STYLE.xml#1_ZONI_BOLOT" />
+		<dataProvider type="semantic" source="eco_sem.xml#1_ZONI_BOLOT" />
+		<dataProvider type="spatial" source="eco_geo.xml#1_ZONI_BOLOT" />
+	</layer>
+	<layer id="2_ZONI_EROZ" comment="2_ZONI_EROZ" schema="ECO" table="2_ZONI_EROZ" descr="2.Зоны эрозионных процессов на территориях, покрытых болотами" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="" spacing="2_ZONI_EROZ" cover="false" fitMap="false" order="2" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#2_ZONI_EROZ" />
+		<dataProvider type="style" source="eco_STYLE.xml#2_ZONI_EROZ" />
+		<dataProvider type="semantic" source="eco_sem.xml#2_ZONI_EROZ" />
+		<dataProvider type="spatial" source="eco_geo.xml#2_ZONI_EROZ" />
+	</layer>
+	<layer id="3_ZONI_RAZV" comment="3_ZONI_RAZV" schema="ECO" table="3_ZONI_RAZV" descr="3.Зоны развития геодинамических и связанных с ними гравитаций" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="" spacing="3_ZONI_RAZV" cover="false" fitMap="false" order="3" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#3_ZONI_RAZV" />
+		<dataProvider type="style" source="eco_STYLE.xml#3_ZONI_RAZV" />
+		<dataProvider type="semantic" source="eco_sem.xml#3_ZONI_RAZV" />
+		<dataProvider type="spatial" source="eco_geo.xml#3_ZONI_RAZV" />
+	</layer>
+	<layer id="4_ZONI_GEOD" comment="4_ZONI_GEOD" schema="ECO" table="4_ZONI_GEOD" descr="4.Зоны геодинамических и связанных с ними эрозионных процессов" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="" spacing="4_ZONI_GEOD" cover="false" fitMap="false" order="4" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#4_ZONI_GEOD" />
+		<dataProvider type="style" source="eco_STYLE.xml#4_ZONI_GEOD" />
+		<dataProvider type="semantic" source="eco_sem.xml#4_ZONI_GEOD" />
+		<dataProvider type="spatial" source="eco_geo.xml#4_ZONI_GEOD" />
+	</layer>
+	<layer id="5_ZONI_KOMP" comment="5_ZONI_KOMP" schema="ECO" table="5_ZONI_KOMP" descr="5.Зоны комплексной (антропогенной и природной) опасности" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="" spacing="5_ZONI_KOMP" cover="false" fitMap="false" order="5" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#5_ZONI_KOMP" />
+		<dataProvider type="style" source="eco_STYLE.xml#5_ZONI_KOMP" />
+		<dataProvider type="semantic" source="eco_sem.xml#5_ZONI_KOMP" />
+		<dataProvider type="spatial" source="eco_geo.xml#5_ZONI_KOMP" />
+	</layer>
+	<layer id="7_ZONI_VOZM" comment="7_ZONI_VOZM" schema="ECO" table="7_ZONI_VOZM" descr="7.Зоны возможной просадки грунтов под воздействием ряда причин" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="" spacing="7_ZONI_VOZM" cover="false" fitMap="false" order="6" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#7_ZONI_VOZM" />
+		<dataProvider type="style" source="eco_STYLE.xml#7_ZONI_VOZM" />
+		<dataProvider type="semantic" source="eco_sem.xml#7_ZONI_VOZM" />
+		<dataProvider type="spatial" source="eco_geo.xml#7_ZONI_VOZM" />
+	</layer>
+	<layer id="9_PREDPOLAG" comment="9_PREDPOLAG" schema="ECO" table="9_PREDPOLAG" descr="9.Предполагаемые разломы, активированные в настоящее время" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="" spacing="9_PREDPOLAG" cover="false" fitMap="false" order="7" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#9_PREDPOLAG" />
+		<dataProvider type="style" source="eco_STYLE.xml#9_PREDPOLAG" />
+		<dataProvider type="semantic" source="eco_sem.xml#9_PREDPOLAG" />
+		<dataProvider type="spatial" source="eco_geo.xml#9_PREDPOLAG" />
+	</layer>
+	<layer id="10_REPER" comment="10_REPER" schema="ECO" table="10_REPER" descr="10.Реперные точки контроля состояния береговой зоны" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="" spacing="10_REPER" cover="false" fitMap="false" order="8" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#10_REPER" />
+		<dataProvider type="style" source="eco_STYLE.xml#10_REPER" />
+		<dataProvider type="semantic" source="eco_sem.xml#10_REPER" />
+		<dataProvider type="spatial" source="eco_geo.xml#10_REPER" />
+	</layer>
+	<layer id="11_REPER" comment="11_REPER" schema="ECO" table="11_REPER" descr="11.Реперные точки контроля заиления" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="" spacing="11_REPER" cover="false" fitMap="false" order="9" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#11_REPER" />
+		<dataProvider type="style" source="eco_STYLE.xml#11_REPER" />
+		<dataProvider type="semantic" source="eco_sem.xml#11_REPER" />
+		<dataProvider type="spatial" source="eco_geo.xml#11_REPER" />
+	</layer>
+	<layer id="13_REPER" comment="13_REPER" schema="ECO" table="13_REPER" descr="13.Реперные точки в зоне возможного тектонического разлома" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="" spacing="13_REPER" cover="false" fitMap="false" order="10" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#13_REPER" />
+		<dataProvider type="style" source="eco_STYLE.xml#13_REPER" />
+		<dataProvider type="semantic" source="eco_sem.xml#13_REPER" />
+		<dataProvider type="spatial" source="eco_geo.xml#13_REPER" />
+	</layer>
+	<layer id="14_REPER" comment="14_REPER" schema="ECO" table="14_REPER" descr="14.Реперные точки на склонах" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="" spacing="14_REPER" cover="false" fitMap="false" order="11" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#14_REPER" />
+		<dataProvider type="style" source="eco_STYLE.xml#14_REPER" />
+		<dataProvider type="semantic" source="eco_sem.xml#14_REPER" />
+		<dataProvider type="spatial" source="eco_geo.xml#14_REPER" />
+	</layer>
+	<layer id="15_TORFORAZ" comment="15_TORFORAZ" schema="ECO" table="15_TORFORAZ" descr="15.Торфоразработки" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="" spacing="15_TORFORAZ" cover="false" fitMap="false" order="12" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#15_TORFORAZ" />
+		<dataProvider type="style" source="eco_STYLE.xml#15_TORFORAZ" />
+		<dataProvider type="semantic" source="eco_sem.xml#15_TORFORAZ" />
+		<dataProvider type="spatial" source="eco_geo.xml#15_TORFORAZ" />
+	</layer>
+	<layer id="16_PERESECH" comment="16_PERESECH" schema="ECO" table="16_PERESECH" descr="16.Пересечение с линейными объектами" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="" spacing="16_PERESECH" cover="false" fitMap="false" order="13" visible="true" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#16_PERESECH" />
+		<dataProvider type="style" source="eco_STYLE.xml#16_PERESECH" />
+		<dataProvider type="semantic" source="eco_sem.xml#16_PERESECH" />
+		<dataProvider type="spatial" source="eco_geo.xml#16_PERESECH" />
+	</layer>
+	<layer id="17_BEREGOV" comment="17_BEREGOV" schema="ECO" table="17_BEREGOV" descr="17.Береговые эрозионно-аккумулятивные процессы" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="" spacing="17_BEREGOV" cover="false" fitMap="false" order="14" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#17_BEREGOV" />
+		<dataProvider type="style" source="eco_STYLE.xml#17_BEREGOV" />
+		<dataProvider type="semantic" source="eco_sem.xml#17_BEREGOV" />
+		<dataProvider type="spatial" source="eco_geo.xml#17_BEREGOV" />
+	</layer>
+	<layer id="18_ABRAZION" comment="18_ABRAZION" schema="ECO" table="18_ABRAZION" descr="18.Абразионные-аккумулятивные процессы береговой зоны" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="" spacing="18_ABRAZION" cover="false" fitMap="false" order="15" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#18_ABRAZION" />
+		<dataProvider type="style" source="eco_STYLE.xml#18_ABRAZION" />
+		<dataProvider type="semantic" source="eco_sem.xml#18_ABRAZION" />
+		<dataProvider type="spatial" source="eco_geo.xml#18_ABRAZION" />
+	</layer>
+	<layer id="19_MALIE_VOD" comment="19_MALIE_VOD" schema="ECO" table="19_MALIE_VOD" descr="19.Малые водотоки" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="" spacing="19_MALIE_VOD" cover="false" fitMap="false" order="16" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#19_MALIE_VOD" />
+		<dataProvider type="style" source="eco_STYLE.xml#19_MALIE_VOD" />
+		<dataProvider type="semantic" source="eco_sem.xml#19_MALIE_VOD" />
+		<dataProvider type="spatial" source="eco_geo.xml#19_MALIE_VOD" />
+	</layer>
+		<layer id="VIRUBKI_2020" comment="VIRUBKI_2020" schema="ECO" table="VIRUBKI_2020" descr="Вырубки 2020" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="TYPE" spacing="VIRUBKI_2020" cover="false" fitMap="false" order="17" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#VIRUBKI_2020" />
+		<dataProvider type="style" source="eco_STYLE.xml#VIRUBKI_2020" />
+		<dataProvider type="semantic" source="eco_sem.xml#VIRUBKI_2020" />
+		<dataProvider type="spatial" source="eco_geo.xml#VIRUBKI_2020" />
+	</layer>
+		<layer id="VIRUBKI_2019" comment="VIRUBKI_2019" schema="ECO" table="VIRUBKI_2019" descr="Вырубки 2019" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="TYPE" spacing="VIRUBKI_2019" cover="false" fitMap="false" order="18" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#VIRUBKI_2019" />
+		<dataProvider type="style" source="eco_STYLE.xml#VIRUBKI_2019" />
+		<dataProvider type="semantic" source="eco_sem.xml#VIRUBKI_2019" />
+		<dataProvider type="spatial" source="eco_geo.xml#VIRUBKI_2019" />
+	</layer>
+	<layer id="VIRUBKI_2018" comment="VIRUBKI_2018" schema="ECO" table="VIRUBKI_2018" descr="Вырубки 2018" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="TYPE" spacing="VIRUBKI_2018" cover="false" fitMap="false" order="19" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#VIRUBKI_2018" />
+		<dataProvider type="style" source="eco_STYLE.xml#VIRUBKI_2018" />
+		<dataProvider type="semantic" source="eco_sem.xml#VIRUBKI_2018" />
+		<dataProvider type="spatial" source="eco_geo.xml#VIRUBKI_2018" />
+	</layer>
+	<layer id="VIRUBKI_2017" comment="VIRUBKI_2017" schema="ECO" table="VIRUBKI_2017" descr="Вырубки 2017" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="TYPE" spacing="VIRUBKI_2017" cover="false" fitMap="false" order="20" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#VIRUBKI_2017" />
+		<dataProvider type="style" source="eco_STYLE.xml#VIRUBKI_2017" />
+		<dataProvider type="semantic" source="eco_sem.xml#VIRUBKI_2017" />
+		<dataProvider type="spatial" source="eco_geo.xml#VIRUBKI_2017" />
+	</layer>
+	<layer id="VIRUBKI_2016" comment="VIRUBKI_2016" schema="ECO" table="VIRUBKI_2016" descr="Вырубки 2016" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="TYPE" spacing="VIRUBKI_2016" cover="false" fitMap="false" order="21" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#VIRUBKI_2016" />
+		<dataProvider type="style" source="eco_STYLE.xml#VIRUBKI_2016" />
+		<dataProvider type="semantic" source="eco_sem.xml#VIRUBKI_2016" />
+		<dataProvider type="spatial" source="eco_geo.xml#VIRUBKI_2016" />
+	</layer>
+	<layer id="VIRUBKI_2015" comment="VIRUBKI_2015" schema="ECO" table="VIRUBKI_2015" descr="Вырубки 2015" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="TYPE" spacing="VIRUBKI_2015" cover="false" fitMap="false" order="22" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#VIRUBKI_2015" />
+		<dataProvider type="style" source="eco_STYLE.xml#VIRUBKI_2015" />
+		<dataProvider type="semantic" source="eco_sem.xml#VIRUBKI_2015" />
+		<dataProvider type="spatial" source="eco_geo.xml#VIRUBKI_2015" />
+	</layer>
+	<layer id="VIRUBKI_2014" comment="VIRUBKI_2014" schema="ECO" table="VIRUBKI_2014" descr="Вырубки 2014" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="TYPE" spacing="VIRUBKI_2014" cover="false" fitMap="false" order="23" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#VIRUBKI_2014" />
+		<dataProvider type="style" source="eco_STYLE.xml#VIRUBKI_2014" />
+		<dataProvider type="semantic" source="eco_sem.xml#VIRUBKI_2014" />
+		<dataProvider type="spatial" source="eco_geo.xml#VIRUBKI_2014" />
+	</layer>
+	<layer id="VIRUBKI_2013" comment="VIRUBKI_2013" schema="ECO" table="VIRUBKI_2013" descr="Вырубки 2013" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="TYPE" spacing="VIRUBKI_2013" cover="false" fitMap="false" order="24" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#VIRUBKI_2013" />
+		<dataProvider type="style" source="eco_STYLE.xml#VIRUBKI_2013" />
+		<dataProvider type="semantic" source="eco_sem.xml#VIRUBKI_2013" />
+		<dataProvider type="spatial" source="eco_geo.xml#VIRUBKI_2013" />
+	</layer>
+	<layer id="PODTOPL_2019" comment="PODTOPL_2019" schema="ECO" table="PODTOPL_2019" descr="Подтопления 2019" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="" spacing="PODTOPL_2019" cover="false" fitMap="false" order="25" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODTOPL_2019" />
+		<dataProvider type="style" source="eco_STYLE.xml#PODTOPL_2019" />
+		<dataProvider type="semantic" source="eco_sem.xml#PODTOPL_2019" />
+		<dataProvider type="spatial" source="eco_geo.xml#PODTOPL_2019" />
+	</layer>
+	<layer id="PODTOPL_2017" comment="PODTOPL_2017" schema="ECO" table="PODTOPL_2017" descr="Подтопления 2017" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="index" classField="" spacing="PODTOPL_2017" cover="false" fitMap="false" order="26" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODTOPL_2017" />
+		<dataProvider type="style" source="eco_STYLE.xml#PODTOPL_2017" />
+		<dataProvider type="semantic" source="eco_sem.xml#PODTOPL_2017" />
+		<dataProvider type="spatial" source="eco_geo.xml#PODTOPL_2017" />
+	</layer>
+	<layer id="200_METERS_Z" comment="200_METERS_Z" schema="ECO" table="200_METERS_Z" descr="200-метровые зоны" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="" classField="" spacing="200_METERS_Z" cover="false" fitMap="false" order="27" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#200_METERS_Z" />
+		<dataProvider type="style" source="eco_STYLE.xml#200_METERS_Z" />
+		<dataProvider type="semantic" source="eco_sem.xml#200_METERS_Z" />
+		<dataProvider type="spatial" source="eco_geo.xml#200_METERS_Z" />
+	</layer>
+	<layer id="10_KM_ZONE" comment="10_KM_ZONE" schema="ECO" table="10_KM_ZONE" descr="10-км зоны" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="" classField="" spacing="10_KM_ZONE" cover="false" fitMap="false" order="28" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#10_KM_ZONE" />
+		<dataProvider type="style" source="eco_STYLE.xml#10_KM_ZONE" />
+		<dataProvider type="semantic" source="eco_sem.xml#10_KM_ZONE" />
+		<dataProvider type="spatial" source="eco_geo.xml#10_KM_ZONE" />
+	</layer>
+	<layer id="CHECK_POINTS" comment="CHECK_POINTS" schema="ECO" table="CHECK_POINTS" descr="Контрольные пункты" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="km" classField="TYPE" spacing="CHECK_POINTS" cover="false" fitMap="false" order="29" visible="true" topology="point,line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#CHECK_POINTS" />
+		<dataProvider type="style" source="eco_STYLE.xml#CHECK_POINTS" />
+		<dataProvider type="semantic" source="eco_sem.xml#CHECK_POINTS" />
+		<dataProvider type="spatial" source="eco_geo.xml#CHECK_POINTS" />
+	</layer>
+
+</root>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_GRID_FORM xmlns="view.data.*" readOnly="true" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml" percentWidth="100" percentHeight="100" >
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	<mx:VBox percentWidth="100" percentHeight="100" >
+		<DataGridWithScript id="DATA_GRID" percentWidth="100" percentHeight="100" styleName="dgInfoForm">
+			<columns>
+				<mx:DataGridColumn headerText="№" width="30" itemRenderer="view.controls.renderer.FirstGridItemRenderer" editable="false"/>
+				<mx:DataGridColumn headerText="Назначение" dataField="NAME" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Описание" dataField="DESCRIPTION" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Тип прокладки" dataField="TYPE" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Материал" dataField="MATERIAL" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+			</columns>
+			<selectScript>GAZPROM_SYS_SEM.xml#PODS_BOND_LEAD_LIST_DATA_GRID</selectScript>
+			<insertScript></insertScript>
+			<updateScript></updateScript>
+			<deleteScript></deleteScript>
+		</DataGridWithScript>
+	</mx:VBox>
+</DATA_GRID_FORM>

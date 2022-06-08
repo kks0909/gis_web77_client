@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns="view.data.*"
+                title="Компрессорные станции"
+                width="760"
+                ext_data_id="PODS_EXPORT.xml#PODS_COMPRESSOR_STATION"
+                excelTemplate="PODS_COMPRESSOR_STATION">
+	  <dataProvider>PODS_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	  <mx:VBox width="760">
+		    <mx:HBox percentWidth="100">
+			      <mx:VBox percentWidth="50">
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Номер КС" width="140"/>
+					          <mx:TextInput id="STATION_NUMBER" width="50" maxChars="10" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Наименование" width="140"/>
+					          <mx:TextInput id="STATION_NAME" width="225" maxChars="32" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Тип компрессорной станции" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="PRIMARY_FUNCTION_CL" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_PRIMARY_FUNCTION_CL"/>
+						            <mx:Button id="BTN_LIST_PRIMARY_FUNCTION_CL" selectedField="PODS_PRIMARY_FUNCTION_CL"
+                             enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right"
+                        text="Максимальная суммарная установленная мощность приводов и двигателей"
+                        width="300"/>
+					          <controls:NumberInput id="TOTAL_HORSEPOWER" width="30" maxChars="4" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right"
+                        text="Количество поршневых двигателей, установленных в качестве приводов на ГПА"
+                        width="300"/>
+					          <controls:NumberInput id="NUMBER_OF_ENGINES" width="30" maxChars="2" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right"
+                        text="Количество газовых турбин/электродвигателей, установленных в качестве приводов на ГПА"
+                        width="300"/>
+					          <controls:NumberInput id="NUMBER_OF_TURBINES" width="30" maxChars="2" height="20"/>
+					          <controls:NumberInput id="NUMBER_OF_MOTORS" width="30" maxChars="2" height="20"/>
+				        </mx:HBox>
+			      </mx:VBox>
+			      <mx:VBox percentWidth="50">
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Разрешение на выбросы" width="140"/>
+					          <mx:CheckBox id="TITLE_V_APPLICABLE_LF" width="20" height="20"/>
+					          <mx:Text textAlign="right" text="Разрешение на работу SIP" width="140"/>
+					          <mx:CheckBox id="SIP_APPLICABLE_LF" width="20" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right" text="Дата подачи/получения разрешения на выбросы"
+                        width="140"/>
+					          <mx:DateField id="TITLE_V_SUBMITTED_DATE" width="96" height="20" formatString="DD.MM.YYYY"/>
+					          <mx:DateField id="TITLE_V_RECEIVED_DATE" width="96" height="20" formatString="DD.MM.YYYY"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right"
+                        text="Дата подачи/получения  разрешения на работу SIP-установки"
+                        width="140"/>
+					          <mx:DateField id="SIP_SUBMITTED_DATE" width="96" height="20" formatString="DD.MM.YYYY"/>
+					          <mx:DateField id="SIP_ISSUED_DATE" width="96" height="20" formatString="DD.MM.YYYY"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100">
+					          <mx:Text textAlign="right"
+                        text="Количество поршневых двигателей/газовых турбин, на собственные нужды"
+                        width="300"/>
+					          <controls:NumberInput id="ENGINES_USED_FOR_ELECTRICITY" width="30" maxChars="2" height="20"/>
+					          <controls:NumberInput id="TURBINES_USED_FOR_ELECTRICITY" width="30" maxChars="2" height="20"/>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Источник информации" width="140"/>
+					          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						            <mx:ComboBox id="SOURCE_GCL" enabled="false" editable="false" width="200" height="20"
+                               dataProvider="PODS_SEM_DICT.xml#PODS_SOURCE_GCL"/>
+						            <mx:Button id="BTN_LIST_SOURCE_GCL" selectedField="PODS_SOURCE_GCL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>
+					          </mx:HBox>
+				        </mx:HBox>
+				        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					          <mx:Text textAlign="right" text="Идентификатор объекта" width="140"/>
+					          <controls:NumberInput id="OFFLINE_ID" editable="false" width="85" maxChars="22" height="20"/>
+				        </mx:HBox>
+			      </mx:VBox>
+		    </mx:HBox>
+	  </mx:VBox>
+	  <validatorsArray>
+		    <controls:DefaultStringValidator source="{STATION_NAME}" property="text" enabled="false" minLength="1"
+                                       requiredFieldError="Поле 'Наименование' обязательно для заполнения."
+                                       tooShortError="Поле 'Наименование' обязательно для заполнения."/>
+		    <controls:DefaultNumberValidator source="{TOTAL_HORSEPOWER}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="0"
+                                       precisionError="Значение в поле должно иметь не более 0 цифр после запятой"
+                                       maxValue="9999"
+                                       exceedsMaxError="Значение в поле может иметь 4 цифр до запятой и 0 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{NUMBER_OF_ENGINES}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="0"
+                                       precisionError="Значение в поле должно иметь не более 0 цифр после запятой"
+                                       maxValue="99"
+                                       exceedsMaxError="Значение в поле может иметь 2 цифр до запятой и 0 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{NUMBER_OF_TURBINES}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="0"
+                                       precisionError="Значение в поле должно иметь не более 0 цифр после запятой"
+                                       maxValue="99"
+                                       exceedsMaxError="Значение в поле может иметь 2 цифр до запятой и 0 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{NUMBER_OF_MOTORS}" property="text" enabled="false" required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="0"
+                                       precisionError="Значение в поле должно иметь не более 0 цифр после запятой"
+                                       maxValue="99"
+                                       exceedsMaxError="Значение в поле может иметь 2 цифр до запятой и 0 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{ENGINES_USED_FOR_ELECTRICITY}" property="text" enabled="false"
+                                       required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="0"
+                                       precisionError="Значение в поле должно иметь не более 0 цифр после запятой"
+                                       maxValue="99"
+                                       exceedsMaxError="Значение в поле может иметь 2 цифр до запятой и 0 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+		    <controls:DefaultNumberValidator source="{TURBINES_USED_FOR_ELECTRICITY}" property="text" enabled="false"
+                                       required="false"
+                                       allowNegative="true"
+                                       minLength="0"
+                                       requiredFieldError="Поле обязательно для заполнения."
+                                       tooShortError="Поле обязательно для заполнения."
+                                       precision="0"
+                                       precisionError="Значение в поле должно иметь не более 0 цифр после запятой"
+                                       maxValue="99"
+                                       exceedsMaxError="Значение в поле может иметь 2 цифр до запятой и 0 после"
+                                       lowerThanMinError="Значение в поле не может быть меньше 0"
+                                       negativeError="Значение в поле не может быть меньше 0"/>
+	  </validatorsArray>
+</DATA_EDIT_FORM>

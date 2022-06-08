@@ -1,0 +1,8 @@
+[Unit]
+Description=Script Auto Run Mount
+After=multi-user.target
+[Service]
+Type=idle
+ExecStart=/home/websys53/gis_web77/Service/nas_auto_run_mount.sh
+[Install]
+WantedBy=multi-user.target

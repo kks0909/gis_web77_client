@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root xsi:noNamespaceSchemaLocation="sem.xsd" version="postgres 7.7.3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<data table="M_W_MIR_GORODA" schema="WEB50" id="WEB50_M_W_MIR_GORODA" comment="WEB50.M_W_MIR_GORODA">
+		<select>
+			<dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<var name="USER_ID" default="-1" type="Decimal"/>
+				<query> SELECT ID, название,страна FROM WEB50.M_W_MIR_GORODA d WHERE {FILTER}</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<var name="название" default="" type="String"/>
+				<var name="страна" default="" type="String"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.M_W_MIR_GORODA"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_MW_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_SEM"  />				
+				<query>            
+              INSERT INTO WEB50.M_W_MIR_GORODA(название,страна)
+              VALUES('{название}','{страна}')
+                          
+            </query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<var name="название" default="" type="String"/>
+				<var name="страна" default="" type="String"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<param name="ID" type="Int64"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_MW_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_SEM"  />				
+				<query>            
+              UPDATE WEB50.M_W_MIR_GORODA
+              SET название='{название}',страна='{страна}'
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_MW_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_SEM"  />					
+				<query>           
+              DELETE FROM WEB50.M_W_MIR_GORODA
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_W_MIR_GORODA_OSNOVNYE" schema="WEB50" id="WEB50_M_W_MIR_GORODA_OSNOVNYE" comment="WEB50.M_W_MIR_GORODA_OSNOVNYE">
+		<select>
+			<dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<query> SELECT ID, название,страна FROM WEB50.M_W_MIR_GORODA_OSNOVNYE d WHERE {FILTER}</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<var name="название" default="" type="String"/>
+				<var name="страна" default="" type="String"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.M_W_MIR_GORODA_OSNOVNYE"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_MW_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_SEM"  />				
+				<query>           
+              INSERT INTO WEB50.M_W_MIR_GORODA_OSNOVNYE(название,страна)
+              VALUES('{название}','{страна}')
+                          
+            </query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<var name="название" default="" type="String"/>
+				<var name="страна" default="" type="String"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<param name="ID" type="Int64"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_MW_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_SEM"  />					
+				<query>           
+              UPDATE WEB50.M_W_MIR_GORODA_OSNOVNYE
+              SET название='{название}',страна='{страна}' 
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_MW_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_SEM"  />				
+				<query>            
+              DELETE FROM WEB50.M_W_MIR_GORODA_OSNOVNYE
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_W_MIR_OKEAN" schema="WEB50" id="WEB50_M_W_MIR_OKEAN" comment="WEB50.M_W_MIR_OKEAN">
+		<select>
+			<dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<query> SELECT ID, название FROM WEB50.M_W_MIR_OKEAN d WHERE {FILTER}</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<var name="название" default="" type="String"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.M_W_MIR_OKEAN"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_MW_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_SEM"  />				
+				<query>           
+              INSERT INTO WEB50.M_W_MIR_OKEAN(название)
+              VALUES('{название}')
+                          
+            </query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<var name="название" default="" type="String"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<param name="ID" type="Int64"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_MW_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_SEM"  />					
+				<query>           
+              UPDATE WEB50.M_W_MIR_OKEAN
+              SET название='{название}' 
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_MW_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_SEM"  />				
+				<query>            
+              DELETE FROM WEB50.M_W_MIR_OKEAN
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_W_MIR_STOLITCY" schema="WEB50" id="WEB50_M_W_MIR_STOLITCY" comment="WEB50.M_W_MIR_STOLITCY">
+		<select>
+			<dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<query> SELECT ID, название,страна,кол_во_жителей FROM WEB50.M_W_MIR_STOLITCY d WHERE {FILTER}</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<var name="название" default="" type="String"/>
+				<var name="страна" default="" type="String"/>
+				<var name="кол_во_жителей" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.M_W_MIR_STOLITCY"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_MW_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_SEM"  />				
+				<query>           
+              INSERT INTO WEB50.M_W_MIR_STOLITCY(название,страна,кол_во_жителей)
+              VALUES('{название}','{страна}',{кол_во_жителей})
+                          
+            </query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<var name="название" default="" type="String"/>
+				<var name="страна" default="" type="String"/>
+				<var name="кол_во_жителей" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<param name="ID" type="Int64"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_MW_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_SEM"  />					
+				<query>            
+              UPDATE WEB50.M_W_MIR_STOLITCY
+              SET название='{название}',страна='{страна}',кол_во_жителей={кол_во_жителей} 
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_MW_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_SEM"  />				
+				<query>            
+              DELETE FROM WEB50.M_W_MIR_STOLITCY
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_W_MIR_STRANY" schema="WEB50" id="WEB50_M_W_MIR_STRANY" comment="WEB50.M_W_MIR_STRANY">
+		<select>
+			<dbQuery idField="ID">
+				<var name="FILTER" default="1=1"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<query> SELECT ID, страна,столица,континент,код_страны,код_FIPS,население_1994,код_цвета FROM WEB50.M_W_MIR_STRANY d WHERE {FILTER}</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<var name="страна" default="" type="String"/>
+				<var name="столица" default="" type="String"/>
+				<var name="континент" default="" type="String"/>
+				<var name="код_страны" default="" type="Decimal"/>
+				<var name="код_FIPS" default="" type="String"/>
+				<var name="население_1994" default="" type="Decimal"/>
+				<var name="код_цвета" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.M_W_MIR_STRANY"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_MW_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_SEM"  />				
+				<query>            
+              INSERT INTO WEB50.M_W_MIR_STRANY(страна,столица,континент,код_страны,код_FIPS,население_1994,код_цвета)
+              VALUES('{страна}','{столица}','{континент}',{код_страны},'{код_FIPS}',{население_1994},{код_цвета})
+                          
+            </query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<var name="страна" default="" type="String"/>
+				<var name="столица" default="" type="String"/>
+				<var name="континент" default="" type="String"/>
+				<var name="код_страны" default="" type="Decimal"/>
+				<var name="код_FIPS" default="" type="String"/>
+				<var name="население_1994" default="" type="Decimal"/>
+				<var name="код_цвета" default="" type="Decimal"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="USER_LOGIN" default="" type="String"/>
+				<param name="ID" type="Int64"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_MW_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_SEM"  />					
+				<query>            
+              UPDATE WEB50.M_W_MIR_STRANY
+              SET страна='{страна}',столица='{столица}',континент='{континент}',код_страны={код_страны},код_FIPS='{код_FIPS}',население_1994={население_1994},код_цвета={код_цвета} 
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Decimal"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_MW_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_SEM"  />				
+				<query>           
+              DELETE FROM WEB50.M_W_MIR_STRANY
+              WHERE ID = :ID            
+            </query>
+			</dbCommand>
+		</delete>
+	</data>
+</root>

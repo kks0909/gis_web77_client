@@ -1,0 +1,183 @@
+﻿<root version="postgres 7.7.3.0">
+  <data id="WEB50_M_W_MIR_GORODA" comment="WEB50.M_W_MIR_GORODA" schema="WEB50" table="M_W_MIR_GORODA">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID
+          ,all_in_one.НАЗВАНИЕ,all_in_one.СТРАНА
+          FROM (SELECT m.*
+          FROM WEB50.M_W_MIR_GORODA m) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_W_MIR_GORODA_CNT" comment="WEB50.M_W_MIR_GORODA" schema="WEB50" table="M_W_MIR_GORODA">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_W_MIR_GORODA m ) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_W_MIR_GORODA_OSNOVNYE" comment="WEB50.M_W_MIR_GORODA_OSNOVNYE" schema="WEB50" table="M_W_MIR_GORODA_OSNOVNYE">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID
+          ,all_in_one.НАЗВАНИЕ,all_in_one.СТРАНА
+          FROM (SELECT m.*
+          FROM WEB50.M_W_MIR_GORODA_OSNOVNYE m) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_W_MIR_GORODA_OSNOVNYE_CNT" comment="WEB50.M_W_MIR_GORODA_OSNOVNYE" schema="WEB50" table="M_W_MIR_GORODA_OSNOVNYE">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_W_MIR_GORODA_OSNOVNYE m ) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_W_MIR_OKEAN" comment="WEB50.M_W_MIR_OKEAN" schema="WEB50" table="M_W_MIR_OKEAN">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID
+          ,all_in_one.НАЗВАНИЕ
+          FROM (SELECT m.*
+          FROM WEB50.M_W_MIR_OKEAN m) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_W_MIR_OKEAN_CNT" comment="WEB50.M_W_MIR_OKEAN" schema="WEB50" table="M_W_MIR_OKEAN">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_W_MIR_OKEAN m ) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_W_MIR_STOLITCY" comment="WEB50.M_W_MIR_STOLITCY" schema="WEB50" table="M_W_MIR_STOLITCY">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID
+          ,all_in_one.НАЗВАНИЕ,all_in_one.СТРАНА,all_in_one.КОЛ_ВО_ЖИТЕЛЕЙ
+          FROM (SELECT m.*
+          FROM WEB50.M_W_MIR_STOLITCY m) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_W_MIR_STOLITCY_CNT" comment="WEB50.M_W_MIR_STOLITCY" schema="WEB50" table="M_W_MIR_STOLITCY">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_W_MIR_STOLITCY m ) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_W_MIR_STRANY" comment="WEB50.M_W_MIR_STRANY" schema="WEB50" table="M_W_MIR_STRANY">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <var name="LOW_LIMIT" default="1"/>
+        <var name="HIGH_LIMIT" default="50"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT *
+          FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN, all_in_one.ID
+          ,all_in_one.СТРАНА,all_in_one.СТОЛИЦА,all_in_one.КОНТИНЕНТ,all_in_one.КОД_СТРАНЫ,all_in_one.КОД_FIPS
+          ,all_in_one.НАСЕЛЕНИЕ_1994
+          FROM (SELECT m.*
+          FROM WEB50.M_W_MIR_STRANY m) all_in_one
+          WHERE {FILTER}) sorted
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WEB50_M_W_MIR_STRANY_CNT" comment="WEB50.M_W_MIR_STRANY" schema="WEB50" table="M_W_MIR_STRANY">
+    <select>
+      <dbQuery>
+        <var name="FILTER" default="1=1"/>
+        <var name="ORDER_COLUMNS" default="ID"/>
+        <param name="USER_ID" default="" type="Decimal"/>
+        <query>
+          SELECT COUNT(*) CNT
+          FROM (SELECT m.*
+          FROM WEB50.M_W_MIR_STRANY m ) all_in_one
+          WHERE {FILTER}
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+</root>

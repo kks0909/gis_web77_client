@@ -1,0 +1,17 @@
+<div id="postId_{post_id}" class="postWrapper">
+    <div id="postHeaderId_{post_id}" class="postHeader">
+        <!--<div class="postHeaderLeftColumn">{CATEGORY}</div>-->
+    </div>
+    <div id="postContentId_{post_id}" class="postContentWrapper">
+        <a href="#" onclick="if (typeof App.openFolderFromPosts=='function') App.openFolderFromPosts(['{DOC_ID}']); return false;" style="float: left; padding:5px;">
+            <img src="{image_file_name}" style="float: left; padding-right: 5px;">
+            {NAME}
+        </a>
+    </div>
+    <div id="postFooterId_{post_id}" class="postFooter">
+        <div class="postFooterLeftColumn">{bottom_text}</div>
+        <div class="postFooterRightColumn">
+            <!--<span>Отредактирован: {mtime}.</span>-->
+        </div>
+    </div>
+</div>

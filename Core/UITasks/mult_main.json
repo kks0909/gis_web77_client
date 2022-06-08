@@ -1,0 +1,331 @@
+﻿{
+  "code":200,
+  "version":"7.7.7.3",
+  "id":"MAPSERVICE",
+  "map":{
+    "_comment":"Подпись, выводимая на карту",
+    "label":{
+      "text":"КОММЕРЧЕСКАЯ ТАЙНА","font":"Times New Roman", "font_size": "12",
+      "left":"","right":"10","top":"","bottom":"10"
+    },
+     "_comment":"Перечень элементов управления карты (кнопок и т.д.) на карте, которые должны быть скрыты. Перечислять через ,. Выбирать из списка ниже",
+    "_comment":"Блок Инструменты/мерения MeasureChooser",
+    "_comment":"MeasureLine измерение длин",
+    "_comment":"MeasureArea измерение площадей",
+    "_comment":"MeasurePipeLength измерение расстояния по оси",
+    "_comment":"MeasurePipeDirection точки по зад.направлению",
+    "_comment":"BufferZoneAll построить буфер для слоя",
+    "_comment":"Блок Печать/экспорт ExportImageChooser",
+    "_comment":"ExportImage экспорт",
+    "_comment":"PrintImage печать",
+    "_comment":"Блок Поделиться ShareChooser",
+    "_comment":"LinkMap ссылка",
+    "_comment":"SendMail - отправить письмо",
+    "_comment":"Блок Вид карты MapViewChooser",
+    "_comment":"ClearCosmetic очистить косметический слой",
+    "_comment":"FullMap показать всю карту",
+    "_comment":"PrevView вернуться к пред. карте",
+    "_comment":"NextView отменить возврат пред. карте",
+    "_comment":"Wms карта по масштабам",
+    "_comment":"PrevSite ссылка на пред. версию сайта",
+    "_comment":"ZoomSlider слайдер масштабов",
+    "_comment":"ZoomBox кнопки лупы",
+    "_comment":"MapInfo функционал клика на карте",
+    "_comment":"MapCentering  центрирование по координатам",
+    "_comment":"DSP надпись ком.тайна",
+    "_comment":"MapCenterPoint прицел в центре карты",
+    "_comment":"блок редактирования EditGeometryChooser",
+    "_comment":"EditGeometryControl редактирование",
+    "_comment":"MoveGeometry перемещение",
+    "_comment":"CopyPasteGeometry копирование/вставка",
+    "_comment":"LinkGeometry привязка",
+    "_comment":"AddObject рисование нового объекта",
+    "_comment":"DeleteBufferObject Удаление части объекта",
+    "_comment":"OverviewMap обзорная карта",
+    "_comment":"NavigateRoute навигация",
+    "hideButtons":[],
+    "_comment":"Начальное положение карты",
+    "position":{},
+    "_comment":"Максимальный масштаб отображения карты/схемы, задается в уровнях пирамид",
+    "MAP_Num_Zoom_Levels":21,
+    "_comment":"Минимальный масштаб центровки на карте, от 0 до MAP_Num_Zoom_Levels",
+    "MAP_Centering_Min_Zoom":18,
+    "_comment":"Шаг матрицы разрежения объектов на карте по Х",
+    "MAP_Matrix_DX":10,
+    "_comment":"Шаг матрицы разрежения объектов на карте по Y",
+    "MAP_Matrix_DY":10,
+    "_comment":"Максимальное отношение длины подписи (в пикселах) к длине объекта (в пикселах), при котором подпись выводится",
+    "MAP_Label_Len_Ratio":1.5,
+    "_comment":"Максимально допустимое расстояние от конца подписи до линии (в пикселах)",
+    "MAP_Label_Cut_Tolerance":15,
+    "_comment":"Процент обрезки подписей в случае режима MAP_Label_Draw_Type='cut'",
+    "MAP_Label_Cut_Ratio":0.1,
+    "_comment":"Минимальное отношение длины видимого линейного объекта к ширине экрана",
+    "MAP_Len_Ratio":0.001,
+    "_comment":"Коэффициент при расчете размера шрифта подписи",
+    "MAP_Label_Font_Ratio":0.7131,
+    "_comment":"Часть высоты карты, через которую повторяется подпись протяженного линейного объекта",
+    "MAP_Label_Repeat_Ratio":0.8,
+    "_comment":"Флаг указывает, будет ли добавлен в js-карту данный эффект при перемещении, зуммировании карты",
+    "MAP_Use_Kinetic":false,
+    "_comment":"Возможность пользователю указывать масштаб и приводить к нему карту(на центровке по координатам). По умолчанию false",
+    "map_scale_adv":true,
+    "_comment":"Идентификатор запроса для получения превью для LIB_DOC",
+    "requestLibDoc":"LIB_DOC_SEM.xml#LIB_DOC",
+    "_comment":"Путь к файлу с подложками и описание векторных слоёв",
+    "rasterlayers":["rasterlayers.json","pods_equip_rasterlayers.json"],
+    "_comment":"canRaster - флаг, регулирующий, какие слои из модели будут в растровом режиме исключаться из отрисовки вектором.",
+    "canRaster":["PODS_EQUIP_Layers.xml:pods_equip_rasterlayers.json"],
+    "_comment":"Настройки обзорной карты",
+    "overview_map":{
+      "height":100,
+      "width":150,
+      "urls":[{
+        "url":"{SERVER}/tiletrees/Default/",
+        "extension":".png",
+        "useInterimTilesOnError":true,
+        "notInterimTilesOnErrorLevels":[1,2,3,4,5,6,7,8,9]
+        },{
+        "url":"{SERVER}/tiletrees/PodsRaster/",
+        "extension":".png",
+        "useInterimTilesOnError":true,
+        "notInterimTilesOnErrorLevels":[1,2,3,4,5,6,7,8,9]
+        }
+      ]
+    } 
+  },
+
+  "_comment":"Флаг показа однократного сообщения об ошибке, что для этого значения не найдено значение справочника. Если выставлен флаг, то не показываем сообения. По умолчанию true",
+  "showErrorInGridDictionary":true,
+  "search_engine":{
+    "show":true,
+    "input":{
+      "width":"179px"
+    },
+  "results":20,
+  "sorting":"asc",
+    "requests":["search_engine.xml#search_idx_gas","search_engine.xml#search_idx_common"],    
+    "filter":"search_engine_filter",
+    "filters":[
+    {
+        "id": "categories",
+        "name": "Категории",
+        "type": "boolean",
+        "fieldName": "CATEGORY_ID",
+        "values":[
+          {
+            "id": "MAP", 
+            "name": "Объекты карты",
+            "selected": true
+          },
+          {
+            "id": "GAS", 
+            "name": "Объекты окружения",
+            "selected": true
+          },
+          {
+            "id": "EQUIPMENT", 
+            "name": "Газовое оборудование",
+            "selected": true
+          },
+          {
+            "id": "INSPECTION", 
+            "name": "Дефекты",
+            "selected": false
+          },
+          {
+            "id": "DOCUMENT", 
+            "name": "Документы",
+            "selected": false
+          },
+          {
+            "id": "ILI_INSP", 
+            "name": "Обследования ВТД",
+            "selected": true
+          },
+          {
+            "id": "CP_INSP", 
+            "name": "Обследования ЭХЗ",
+            "selected": true
+          }
+        ]       
+      },
+      {
+        "id": "search_date_filter",
+        "name": "Фильтрация по дате",
+        "type": "date",
+        "beginDateField": "BEGIN_DATE",
+        "endDateField": "END_DATE"
+      },      
+      {
+        "id": "top_filter_id",
+        "disabled": false,
+        "name": "Фильтр верхнего уровня",
+        "type": "enum",
+        "source": "search_engine_filter.json"
+      }      
+    ],
+    "templates":{
+      "NOT_FOUND": {
+        "html": "ui/html/search/NotFoundSnippetTemplate.html",
+        "title": "Категория 'Не найдено'"
+      },
+      "COORDS": {
+        "html": "ui/html/search/CoordsSnippetTemplate.html",
+        "icon": "/ui/images/sight.png",
+        "title": "Категория 'Координаты'",
+        "priority": 0 
+      },
+      "MAP": {
+        "html": "ui/html/search/MapSnippetTemplate.html",
+        "icon": "/ui/images/map.png",
+        "title": "Категория 'Объекты карты'",
+        "priority": 7
+      },
+      "GAS": {
+        "html": "ui/html/search/GasSnippetTemplate.html",
+        "icon": "/ui/images/gas.png",
+        "title": "Категория 'Объекты окружения'",
+        "priority": 5
+      },
+      "EQUIPMENT": {
+        "html": "ui/html/search/EquipmentSnippetTemplate.html",
+        "icon": "/ui/images/equipment.png",
+        "title": "Категория 'Газовое оборудование'",
+        "priority": 4
+      },
+      "INSPECTION": {
+        "html": "ui/html/search/InspectionSnippetTemplate.html",
+        "icon": "/ui/images/equipment.png",
+        "title": "Категория 'Дефекты'",
+        "priority": 6
+      },
+      "DOCUMENT": {
+        "html": "ui/html/search/DocumentSnippetTemplate.html",
+        "icon": "/ui/images/document.png",
+        "title": "Категория 'Документы'",
+        "priority": 1
+      },
+      "ILI_INSP": {
+        "html": "ui/html/search/IliSnippetTemplate.html",
+        "icon": "/ui/images/ili_insp.png",
+        "title": "Категория 'Обследования ВТД'",
+        "priority": 2,
+        "scenario": {         
+            "openLayers":["PODS_ILI_DATA","PODS_ILI_DATA_FEATURE"],
+            "filter":{
+              "type":"top",
+              "topDataSource":"TOP_FILTER_ILI",
+              "middleDataSource":"middle_ili_filter"
+            },          
+            "openTables":[
+              {
+                "title":"Данные ВТД. Дефекты",
+                "gridId":"PODS_ILI_DATA_LIST",
+                "levelParams":"layerId=PODS_INSP_Layers.xml#PODS_ILI_DATA;"
+              },
+              {
+                "title":"Данные ВТД. Особенности трассы",
+                "gridId":"PODS_ILI_DATA_FEATURE_LIST",
+                "levelParams":"layerId=PODS_INSP_Layers.xml#PODS_ILI_DATA_FEATURE;"
+              }
+            ]
+        }
+      },
+      "CP_INSP": {
+        "html": "ui/html/search/CpSnippetTemplate.html",
+        "icon": "/ui/images/cp_insp.png",
+        "title": "Категория 'Обследования ЭХЗ'",
+        "priority": 3,
+        "scenario": {}
+      }
+    },
+    "scripts":{
+      "_comment":"здесь происходит связывание TABLE_NAME и ID сценария из startupScenatio",
+      "ILI_INSPECTION":"PODS_ILI_LIST"
+    }   
+  },
+  "_comment":"Настройки рубрикатор",
+  "tree":{
+    "isMaximized":true,
+    "treePercentWidth":20,
+    "trees":[{
+        "id":"PODS_EQUIP_LIST",
+        "title":"Основное оборудование",
+        "templateUrl":"Public/Modules/Tree/PODS_EQUIP_TREE.xml",
+        "default":true,
+        "startupScenario":{         
+          "openLayers":[],
+          "filter":{
+            "type":"top",
+            "topDataSource":"WEB50_TOP_FILTER"
+          }
+        }
+      },{
+        "id":"PODS_ILI_LIST",
+        "title":"Диагностика ВТД",
+        "templateUrl":"Public/Modules/Tree/PODS_ILI_TREE.xml",
+        "default":false,
+        "startupScenario":{         
+          "openLayers":["PODS_ILI_DATA","PODS_ILI_DATA_FEATURE"],
+          "filter":{
+            "type":"top",
+            "topDataSource":"TOP_FILTER_ILI",
+            "middleDataSource":"middle_ili_filter"
+          },          
+          "openTables":[
+            {
+              "title":"{descr}",
+              "gridId":"PODS_ILI_DATA_LIST",
+              "levelParams":"layerId=PODS_INSP_Layers.xml#PODS_ILI_DATA;",
+              "query":
+              {
+                "source":"COMMON_TREE.xml#LAYER_STYLE_BASE",
+                "LAYER_ID":"PODS_ILI_DATA",
+                "FILE_NAME":"PODS_INSP_STYLE.xml"
+              }
+            },
+            {
+              "title":"{descr}",
+              "gridId":"PODS_ILI_DATA_FEATURE_LIST",
+              "levelParams":"layerId=PODS_INSP_Layers.xml#PODS_ILI_DATA_FEATURE;",
+              "query":
+              {
+                "source":"COMMON_TREE.xml#LAYER_STYLE_BASE",
+                "LAYER_ID":"PODS_ILI_DATA_FEATURE",
+                "FILE_NAME":"PODS_INSP_STYLE.xml"
+              }
+            }
+          ]
+        }
+      },{
+        "id":"POI_LIST",
+        "title":"Спутниковый мониторинг",
+        "templateUrl":"Public/Modules/Tree/POI_TREE.xml",
+        "topFilterId":"",
+        "default":false,
+        "startupScenario":{
+          "openLayers":["WEB50_POI_POINT","WEB50_POI_TRACK","WEB50_POI_DEBRIS"]
+        }
+      }
+    ]
+  },
+  "_comment":"Настройки видеоплеера",
+  "video":{
+    "x":5,
+    "y":460,
+    "width":440,
+    "height":280
+  },
+  "_comment":"Настройки панели свойств",
+  "ppanel":{
+    "showSystemInfo":false
+  },
+  "_comment":"Настройки кнопки быстрого открытия задачи",
+  "open_task":{
+    "url": "/tech_schema_js.html?task=map_tech_schema&mdl=tech_schema_js.html",
+    "text": "Техсхема",
+    "target": "_self"
+  },
+  "vectorlayers":["PODS_EQUIP_Layers.xml","PODS_INSP_Layers.xml","LIB_DOC_Layers.xml","POI_Layers.xml","COSMETIC_Layers.xml"]
+}

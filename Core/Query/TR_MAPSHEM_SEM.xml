@@ -1,0 +1,679 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.4.7" xsi:noNamespaceSchemaLocation="sem.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<data id="TR_MAPSHEM_COUNTY" comment="FLOW_CHART.TR_MAPSHEM_COUNTY" schema="FLOW_CHART" table="TR_MAPSHEM_COUNTY">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>SELECT a.UPD, a.лпу, a.ID FROM FLOW_CHART.TR_MAPSHEM_COUNTY a WHERE {FILTER}</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="ЛПУ" default="" type="String" />
+        <param name="UPD" default="" type="Decimal" />
+        <param name="ID" type="Decimal" direction="Output" />
+        <query>
+          BEGIN
+	  INSERT INTO FLOW_CHART.TR_MAPSHEM_COUNTY(UPD, лпу) VALUES (:UPD, :ЛПУ) RETURNING ID INTO :ID;
+          END;
+        </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="ЛПУ" default="" type="String" />
+        <param name="UPD" default="" type="Decimal" />
+        <param name="ID" type="Decimal" />
+        <query>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_COUNTY
+          SET 
+	   лпу=:ЛПУ
+           ,UDP=:UDP
+          WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Decimal" />
+        <query>
+          BEGIN
+          DELETE FROM FLOW_CHART.TR_MAPSHEM_COUNTY
+          WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="TR_MAPSHEM_GIS" comment="FLOW_CHART.TR_MAPSHEM_GIS" schema="FLOW_CHART" table="TR_MAPSHEM_GIS">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>SELECT a.ID, a.гис, a.газопровод, a.км,a.оборудование, a.кол_шт, a.dу_мм, a.рразр_кгс_см2, a.расход_газа_млнм3_сут_max, a.расход_газа_млнм3_сут_min
+                    , a.местонахождение, a.год_ввода_эксплуатацию, a.год_модернизации, a.примечание
+                 FROM FLOW_CHART.TR_MAPSHEM_GIS a
+                WHERE {FILTER}</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="ГИС" default="" type="String" />
+        <param name="ГАЗОПРОВОД" default="" type="String" />
+        <param name="КМ" default="" type="String" />
+        <param name="ОБОРУДОВАНИЕ" default="" type="String" />
+        <param name="КОЛ_ШТ" default="" type="Decimal" />
+        <param name="DУ_ММ" default="" type="String" />
+        <param name="РРАЗР_КГС_СМ2" default="" type="String" />
+        <param name="РАСХОД_ГАЗА_МЛНМ3_СУТ_MAX" default="" type="Decimal" />
+        <param name="РАСХОД_ГАЗА_МЛНМ3_СУТ_MIN" default="" type="Decimal" />
+        <param name="МЕСТОНАХОЖДЕНИЕ" default="" type="String" />
+        <param name="ГОД_ВВОДА_ЭКСПЛУАТАЦИЮ" default="" type="DateTime" />
+        <param name="ГОД_МОДЕРНИЗАЦИИ" default="" type="DateTime" />
+        <param name="ПРИМЕЧАНИЕ" default="" type="String" />
+        <param name="ID" type="Decimal" direction="Output" />
+        <query>
+          BEGIN
+          INSERT INTO FLOW_CHART.TR_MAPSHEM_GRS (гис,газопровод,км,оборудование,кол_шт,dу_мм,рразр_кгс_см2,расход_газа_млнм3_сут_max,расход_газа_млнм3_сут_min
+          ,местонахождение,год_ввода_эксплуатацию,год_модернизации,примечание)
+          VALUES(:ГИС,:ГАЗОПРОВОД,:КМ,:ОБОРУДОВАНИЕ,:КОЛ_ШТ,:DУ_ММ,:РРАЗР_КГС_СМ2,:РАСХОД_ГАЗА_МЛНМ3_СУТ_MAX,:РАСХОД_ГАЗА_МЛНМ3_СУТ_MIN
+          ,:МЕСТОНАХОЖДЕНИЕ,:ГОД_ВВОДА_ЭКСПЛУАТАЦИЮ,:ГОД_МОДЕРНИЗАЦИИ,:ПРИМЕЧАНИЕ)
+          RETURNING ID INTO :ID;
+          END;
+        </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="ГИС" default="" type="String" />
+        <param name="ГАЗОПРОВОД" default="" type="String" />
+        <param name="КМ" default="" type="String" />
+        <param name="ОБОРУДОВАНИЕ" default="" type="String" />
+        <param name="КОЛ_ШТ" default="" type="Decimal" />
+        <param name="DУ_ММ" default="" type="String" />
+        <param name="РРАЗР_КГС_СМ2" default="" type="String" />
+        <param name="РАСХОД_ГАЗА_МЛНМ3_СУТ_MAX" default="" type="Decimal" />
+        <param name="РАСХОД_ГАЗА_МЛНМ3_СУТ_MIN" default="" type="Decimal" />
+        <param name="МЕСТОНАХОЖДЕНИЕ" default="" type="String" />
+        <param name="ГОД_ВВОДА_ЭКСПЛУАТАЦИЮ" default="" type="DateTime" />
+        <param name="ГОД_МОДЕРНИЗАЦИИ" default="" type="DateTime" />
+        <param name="ПРИМЕЧАНИЕ" default="" type="String" />
+        <param name="ID" type="Decimal" />
+        <query>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_GRS
+          SET ГИС=:ГИС
+          ,ГАЗОПРОВОД=:ГАЗОПРОВОД
+          ,КМ=:КМ
+          ,ОБОРУДОВАНИЕ=:ОБОРУДОВАНИЕ
+          ,КОЛ_ШТ=:КОЛ_ШТ
+          ,DУ_ММ=:DУ_ММ
+          ,РРАЗР_КГС_СМ2=:РРАЗР_КГС_СМ2
+          ,РАСХОД_ГАЗА_МЛНМ3_СУТ_MAX=:РАСХОД_ГАЗА_МЛНМ3_СУТ_MAX
+          ,РАСХОД_ГАЗА_МЛНМ3_СУТ_MIN=:РАСХОД_ГАЗА_МЛНМ3_СУТ_MIN
+          ,МЕСТОНАХОЖДЕНИЕ=:МЕСТОНАХОЖДЕНИЕ
+          ,ГОД_ВВОДА_ЭКСПЛУАТАЦИЮ=:ГОД_ВВОДА_ЭКСПЛУАТАЦИЮ
+          ,ГОД_МОДЕРНИЗАЦИИ=:ГОД_МОДЕРНИЗАЦИИ
+          ,ПРИМЕЧАНИЕ=:ПРИМЕЧАНИЕ
+          WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Decimal" />
+        <query>
+          BEGIN
+          DELETE FROM FLOW_CHART.TR_MAPSHEM_GIS
+          WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="TR_MAPSHEM_GRS" comment="FLOW_CHART.TR_MAPSHEM_GRS" schema="FLOW_CHART" table="TR_MAPSHEM_GRS">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>SELECT a.id, a.грс, a.тип_грс, a.год_ввода, a.на_балансе, a.форма_обслуживания, a.кол_операторов,    a.рвх_пр_мпа, a.рвх_факт_мпа, a.рвых_пр_мпа,  a.рвых_факт_мпа, a.qпр_тыс_м3_час
+              , a.qфакт_тыс_м3_час, a.газопровод, a.км, a.длина_км, a.dxs_мм,  a.год_ввода_отвода, a.год_реконстр_грс, a.схема_грс
+              FROM FLOW_CHART.TR_MAPSHEM_GRS a
+              WHERE {FILTER}</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="ГРС" default="" type="String" />
+        <param name="ТИП_ГРС" default="" type="String" />
+        <param name="ГОД_ВВОДА" default="" type="DateTime" />
+        <param name="НА_БАЛАНСЕ" default="" type="String" />
+        <param name="ФОРМА_ОБСЛУЖИВАНИЯ" default="" type="String" />
+        <param name="КОЛ_ОПЕРАТОРОВ" default="" type="Decimal" />
+        <param name="РВХ_ПР_МПА" default="" type="Decimal" />
+        <param name="РВХ_ФАКТ_МПА" default="" type="Decimal" />
+        <param name="РВЫХ_ПР_МПА" default="" type="Decimal" />
+        <param name="РВЫХ_ФАКТ_МПА" default="" type="Decimal" />
+        <param name="QПР_ТЫС_М3_ЧАС" default="" type="Decimal" />
+        <param name="QФАКТ_ТЫС_М3_ЧАС" default="" type="Decimal" />
+        <param name="ГАЗОПРОВОД" default="" type="String" />
+        <param name="КМ" default="" type="String" />
+        <param name="ДЛИНА_КМ" default="" type="Decimal" />
+        <param name="DXS_ММ" default="" type="String" />
+        <param name="ГОД_ВВОДА_ОТВОДА" default="" type="DateTime" />
+        <param name="ГОД_РЕКОНСТР_ГРС" default="" type="DateTime" />
+        <param name="СХЕМА_ГРС" default="" type="String" />
+        <param name="ID" type="Decimal" direction="Output" />
+        <query>
+          BEGIN
+          INSERT INTO FLOW_CHART.TR_MAPSHEM_GRS (грс, тип_грс, год_ввода, на_балансе, форма_обслуживания, кол_операторов,    рвх_пр_мпа, рвх_факт_мпа, рвых_пр_мпа,  рвых_факт_мпа, qпр_тыс_м3_час
+          , qфакт_тыс_м3_час, газопровод, км, длина_км, dxs_мм,  год_ввода_отвода, год_реконстр_грс, схема_грс)
+          VALUES(:ГРС,:ТИП_ГРС,:ГОД_ВВОДА,:НА_БАЛАНСЕ,:ФОРМА_ОБСЛУЖИВАНИЯ,:КОЛ_ОПЕРАТОРОВ,:РВХ_ПР_МПА,:РВХ_ФАКТ_МПА,:РВЫХ_ПР_МПА,: РВЫХ_ФАКТ_МПА,:QПР_ТЫС_М3_ЧАС
+          ,:QФАКТ_ТЫС_М3_ЧАС,:ГАЗОПРОВОД,:КМ,:ДЛИНА_КМ,:DXS_ММ,: ГОД_ВВОДА_ОТВОДА,:ГОД_РЕКОНСТР_ГРС,:СХЕМА_ГРС)
+          RETURNING ID INTO :ID;
+          END;
+        </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="ГРС" default="" type="String" />
+        <param name="ТИП_ГРС" default="" type="String" />
+        <param name="ГОД_ВВОДА" default="" type="DateTime" />
+        <param name="НА_БАЛАНСЕ" default="" type="String" />
+        <param name="ФОРМА_ОБСЛУЖИВАНИЯ" default="" type="String" />
+        <param name="КОЛ_ОПЕРАТОРОВ" default="" type="Decimal" />
+        <param name="РВХ_ПР_МПА" default="" type="Decimal" />
+        <param name="РВХ_ФАКТ_МПА" default="" type="Decimal" />
+        <param name="РВЫХ_ПР_МПА" default="" type="Decimal" />
+        <param name="РВЫХ_ФАКТ_МПА" default="" type="Decimal" />
+        <param name="QПР_ТЫС_М3_ЧАС" default="" type="Decimal" />
+        <param name="QФАКТ_ТЫС_М3_ЧАС" default="" type="Decimal" />
+        <param name="ГАЗОПРОВОД" default="" type="String" />
+        <param name="КМ" default="" type="String" />
+        <param name="ДЛИНА_КМ" default="" type="Decimal" />
+        <param name="DXS_ММ" default="" type="String" />
+        <param name="ГОД_ВВОДА_ОТВОДА" default="" type="DateTime" />
+        <param name="ГОД_РЕКОНСТР_ГРС" default="" type="DateTime" />
+        <param name="СХЕМА_ГРС" default="" type="String" />
+        <param name="ID" type="Decimal"/>
+        <query>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_GRS
+          SET ГРС = :ГРС
+          ,ТИП_ГРС = :ТИП_ГРС
+          ,ГОД_ВВОДА = :ГОД_ВВОДА
+          ,НА_БАЛАНСЕ = :НА_БАЛАНСЕ
+          ,ФОРМА_ОБСЛУЖИВАНИЯ = :ФОРМА_ОБСЛУЖИВАНИЯ
+          ,КОЛ_ОПЕРАТОРОВ = :КОЛ_ОПЕРАТОРОВ
+          ,РВХ_ПР_МПА = :РВХ_ПР_МПА
+          ,РВХ_ФАКТ_МПА = :РВХ_ФАКТ_МПА
+          ,РВЫХ_ПР_МПА = :РВЫХ_ПР_МПА
+          ,РВЫХ_ФАКТ_МПА = :РВЫХ_ФАКТ_МПА
+          ,QПР_ТЫС_М3_ЧАС = :ПР_ТЫС_М3_ЧАС
+          ,QФАКТ_ТЫС_М3_ЧАС = :ФАКТ_ТЫС_М3_ЧАС
+          ,ГАЗОПРОВОД = :ГАЗОПРОВОД
+          ,КМ = :КМ
+          ,ДЛИНА_КМ = :ДЛИНА_КМ
+          ,DXS_ММ = :DXS_ММ
+          ,ГОД_ВВОДА_ОТВОДА = :ГОД_ВВОДА_ОТВОДА
+          ,ГОД_РЕКОНСТР_ГРС = :ГОД_РЕКОНСТР_ГРС
+          ,СХЕМА_ГРС = :СХЕМА_ГРС
+          WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Decimal" />
+        <query>
+          BEGIN
+          DELETE FROM FLOW_CHART.TR_MAPSHEM_GRS
+          WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="TR_MAPSHEM_PTG" comment="FLOW_CHART.TR_MAPSHEM_PTG" schema="FLOW_CHART" table="TR_MAPSHEM_PTG">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>SELECT a.id, a.название, a.лпу, a.начало_экспл, a.протяженность, a.схема_кц, a.upd  FROM FLOW_CHART.TR_MAPSHEM_PTG a WHERE {FILTER}</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="НАЗВАНИЕ" default="" type="String" />
+        <param name="ЛПУ" default="" type="String" />
+        <param name="НАЧАЛО_ЭКСПЛ" default="" type="String" />
+        <param name="ПРОТЯЖЕННОСТЬ" default="" type="Decimal" />
+        <param name="СХЕМА_КЦ" default="" type="String" />
+        <param name="UPD" default="" type="Decimal" />
+        <param name="ID" type="Decimal" direction="Output" />
+        <query>
+          BEGIN
+          INSERT INTO FLOW_CHART.TR_MAPSHEM_PTG(название, лпу, начало_экспл, протяженность, схема_кц, upd)
+                 VALUES(:НАЗВАНИЕ, :ЛПУ, :НАЧАЛО_ЭКСПЛ, :ПРОТЯЖЕННОСТЬ, :СХЕМА_КЦ, :UPD)
+                 RETURNING ID INTO :ID;
+          END;
+        </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="НАЗВАНИЕ" default="" type="String" />
+        <param name="ЛПУ" default="" type="String" />
+        <param name="НАЧАЛО_ЭКСПЛ" default="" type="String" />
+        <param name="ПРОТЯЖЕННОСТЬ" default="" type="Decimal" />
+        <param name="СХЕМА_КЦ" default="" type="String" />
+        <param name="UPD" default="" type="Decimal" />
+        <param name="ID" type="Decimal" />
+        <query>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_PTG
+             SET НАЗВАНИЕ = :НАЗВАНИЕ
+                ,ЛПУ = :ЛПУ
+                ,НАЧАЛО_ЭКСПЛ = :НАЧАЛО_ЭКСПЛ
+                ,ПРОТЯЖЕННОСТЬ = :ПРОТЯЖЕННОСТЬ
+                ,СХЕМА_КЦ = :СХЕМА_КЦ
+                ,UPD = :UPD
+           WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </update>    
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Decimal" />
+        <query>
+          BEGIN
+          DELETE FROM FLOW_CHART.TR_MAPSHEM_PTG
+          WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="TR_MAPSHEM_ROAD" comment="FLOW_CHART.TR_MAPSHEM_ROAD" schema="FLOW_CHART" table="TR_MAPSHEM_ROAD">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>SELECT a.id, a.mif_text,  a.км, a.тип, a.направление  FROM FLOW_CHART.TR_MAPSHEM_ROAD a WHERE {FILTER}</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="MIF_TEXT" default="" type="String" />
+        <param name="КМ" default="" type="Decimal" />
+        <param name="ТИП" default="" type="String" />
+        <param name="НАПРАВЛЕНИЕ" default="" type="String" />
+        <param name="ID" type="Decimal" direction="Output" />
+        <query>
+          BEGIN
+          INSERT INTO FLOW_CHART.TR_MAPSHEM_ROAD(mif_text,км,тип,направление)
+                 VALUES(:MIF_TEXT,:КМ,:ТИП,:НАПРАВЛЕНИЕ)
+                 RETURNING ID INTO :ID;
+          END;
+        </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="MIF_TEXT" default="" type="String" />
+        <param name="КМ" default="" type="Decimal" />
+        <param name="ТИП" default="" type="String" />
+        <param name="НАПРАВЛЕНИЕ" default="" type="String" />
+        <param name="ID" type="Decimal" />
+        <query>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_ROAD
+            SET MIF_TEXT = :MIF_TEXT
+               ,КМ = :КМ
+               ,ТИП = :ТИП
+               ,НАПРАВЛЕНИЕ = :НАПРАВЛЕНИЕ
+           WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Decimal" />
+        <query>
+          BEGIN
+          DELETE FROM FLOW_CHART.TR_MAPSHEM_ROAD
+          WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="TR_MAPSHEM_TEXT" comment="FLOW_CHART.TR_MAPSHEM_TEXT" schema="FLOW_CHART" table="TR_MAPSHEM_TEXT">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>SELECT a.ID, a.mif_text, a.upd  FROM FLOW_CHART.TR_MAPSHEM_TEXT a WHERE {FILTER}</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="MIF_TEXT" default="" type="String" />
+        <param name="UPD" default="" type="Decimal" />
+        <param name="ID" type="Decimal" direction="Output" />
+        <query>
+          BEGIN
+          INSERT INTO FLOW_CHART.TR_MAPSHEM_TEXT(MIF_TEXT,UPD)
+                 VALUES(:MIF_TEXT,:UPD)
+                 RETURNING ID INTO :ID;
+          END;
+        </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="MIF_TEXT" default="" type="String" />
+        <param name="UPD" default="" type="Decimal" />
+        <param name="ID" type="Decimal"/>
+        <query>
+          BEGIN
+          UPDATE FLOW_CHART.TR_MAPSHEM_TEXT
+             SET MIF_TEXT = :MIF_TEXT
+                ,UPD = :UPD
+           WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Decimal" />
+        <query>
+          BEGIN
+          DELETE FROM FLOW_CHART.TR_MAPSHEM_TEXT
+          WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="TR_MAPSHEM_WATERWAY" comment="FLOW_CHART.TR_MAPSHEM_WATERWAY" schema="FLOW_CHART" table="TR_MAPSHEM_WATERWAY">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>SELECT a.ID, a.mif_text, a.upd FROM FLOW_CHART.TR_MAPSHEM_WATERWAY a WHERE {FILTER}</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="MIF_TEXT" default="" type="String" />
+        <param name="UPD" default="" type="Decimal" />
+        <param name="ID" type="Decimal" direction="Output" />
+        <query>
+          BEGIN
+            INSERT INTO FLOW_CHART.TR_MAPSHEM_WATERWAY(MIF_TEXT,UPD)
+                   VALUES(:MIF_TEXT,:UPD)
+                   RETURNING ID INTO :ID;
+          END;
+        </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="MIF_TEXT" default="" type="String" />
+        <param name="UPD" default="" type="Decimal" />
+        <param name="ID" type="Decimal"/>
+        <query>
+          BEGIN
+            UPDATE FLOW_CHART.TR_MAPSHEM_WATERWAY
+               SET MIF_TEXT = :MIF_TEXT
+                  ,UPD = :UPD
+             WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Decimal" />
+        <query>
+          BEGIN
+          DELETE FROM FLOW_CHART.TR_MAPSHEM_WATERWAY
+          WHERE ID = :ID;
+          END;
+        </query>
+      </dbCommand>
+    </delete>
+  </data>
+<data id="KAP_REMONT_PLAN" comment="FLOW_CHART.KAP_REMONT_PLAN" schema="FLOW_CHART" table="KAP_REMONT_PLAN">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>SELECT  id, line_description, object_name, station_begin, station_end, object_plan_description, type_id, category_id, method_id, effect_id, invent_number, object_code_xyz, plan_string_id, object_ozp, route_condition_id, period_mtr, work_description, "comments", to_timestamp(to_char(date_begin,'DD.MM.YYYY'),'DD.MM.YYYY') "date_begin", to_timestamp(to_char(date_end,'DD.MM.YYYY'),'DD.MM.YYYY') "date_end", work_period_hour, pit_gas, store_gas, discharge_gas, allow_paper_number, transport_gas_val_winter, transport_gas_val_summer, transport_gas_val_oth_season, calc_gas_val_winter, calc_gas_val_summer, calc_gas_val_oth_season, calc_gas_val_work, srv_district_list, order_id
+FROM flow_chart.kap_remont_plan WHERE {FILTER}
+</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="ID" type="Decimal" direction="Output" />
+        <param name="LINE_DESCRIPTION" default="" type="String" />
+        <param name="OBJECT_NAME" default="" type="String" />
+        <param name="STATION_BEGIN" default="" type="Decimal" />
+        <param name="STATION_END" default="" type="Decimal" />
+        <param name=" OBJECT_PLAN_DESCRIPTION" default="" type="String" />
+        <param name="TYPE_ID" default="" type="String" />
+        <param name="CATEGORY_ID" default="" type="String" />
+        <param name="METHOD_ID" default="" type="String" />
+        <param name="EFFECT_ID" default="" type="String" />
+        <param name="INVENT_NUMBER" default="" type="String" />
+        <param name="OBJECT_CODE_XYZ" default="" type="String" />
+        <param name="PLAN_STRING_ID" default="" type="String" />
+        <param name="OBJECT_OZP" default="" type="String" />
+        <param name="ROUTE_CONDITION_ID" default="" type="String" />
+        <param name="PERIOD_MTR" default="" type="String" />
+        <param name="WORK_DESCRIPTION" default="" type="String" />
+        <param name="COMMENTS" default="" type="String" />
+        <param name="DATE_BEGIN" default="" type="DateTime" />
+        <param name="DATE_END" default="" type="DateTime" />
+        <param name="WORK_PERIOD_HOUR" default="" type="Decimal" />
+        <param name="PIT_GAS" default="" type="Decimal" />
+        <param name="STORE_GAS" default="" type="Decimal" />
+        <param name="DISCHARGE_GAS" default="" type="Decimal" />
+        <param name="ALLOW_PAPER_NUMBER" default="" type="String" />
+        <param name="TRANSPORT_GAS_VAL_WINTER" default="" type="Decimal" />
+        <param name="TRANSPORT_GAS_VAL_SUMMER" default="" type="Decimal" />
+        <param name="TRANSPORT_GAS_VAL_OTH_SEASON" default="" type="Decimal" />
+        <param name="CALC_GAS_VAL_WINTER" default="" type="Decimal" />
+        <param name="CALC_GAS_VAL_SUMMER" default="" type="Decimal" />
+        <param name="CALC_GAS_VAL_OTH_SEASON" default="" type="Decimal" />
+        <param name="CALC_GAS_VAL_WORK" default="" type="Int64" />
+        <param name="SRV_DISTRICT_LIST" default="" type="String" />
+        <param name="ORDER_ID" default="" type="Decimal" />
+        
+       <query>
+          INSERT INTO FLOW_CHART.KAP_REMONT_PLAN(line_description, object_name, station_begin, station_end, object_plan_description, type_id, category_id, method_id, effect_id, invent_number, object_code_xyz, plan_string_id, object_ozp, route_condition_id, period_mtr, work_description, "comments", date_begin, date_end, work_period_hour, pit_gas, store_gas, discharge_gas, allow_paper_number, transport_gas_val_winter, transport_gas_val_summer, transport_gas_val_oth_season, calc_gas_val_winter, calc_gas_val_summer, calc_gas_val_oth_season, calc_gas_val_work, srv_district_list, order_id)
+VALUES( :LINE_DESCRIPTION, :OBJECT_NAME, :STATION_BEGIN, :STATION_END, :OBJECT_PLAN_DESCRIPTION, :TYPE_ID, :CATEGORY_ID, :METHOD_ID, :EFFECT_ID, :INVENT_NUMBER, :OBJECT_CODE_XYZ, :PLAN_STRING_ID, :OBJECT_OZP, :ROUTE_CONDITION_ID, :PERIOD_MTR, :WORK_DESCRIPTION, :COMMENTS, :DATE_BEGIN, :DATE_END, :WORK_PERIOD_HOUR, :PIT_GAS, :STORE_GAS, :DISCHARGE_GAS, :ALLOW_PAPER_NUMBER, :TRANSPORT_GAS_VAL_WINTER, :TRANSPORT_GAS_VAL_SUMMER, :TRANSPORT_GAS_VAL_OTH_SEASON, :CALC_GAS_VAL_WINTER, :CALC_GAS_VAL_SUMMER, :CALC_GAS_VAL_OTH_SEASON, :CALC_GAS_VAL_WORK, :SRV_DISTRICT_LIST, :ORDER_ID) 
+        </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="ID" type="Decimal" direction="Output" />
+        <param name="LINE_DESCRIPTION" default="" type="String" />
+        <param name="OBJECT_NAME" default="" type="String" />
+        <param name="STATION_BEGIN" default="" type="Decimal" />
+        <param name="STATION_END" default="" type="Decimal" />
+        <param name=" OBJECT_PLAN_DESCRIPTION" default="" type="String" />
+        <param name="TYPE_ID" default="" type="String" />
+        <param name="CATEGORY_ID" default="" type="String" />
+        <param name="METHOD_ID" default="" type="String" />
+        <param name="EFFECT_ID" default="" type="String" />
+        <param name="INVENT_NUMBER" default="" type="String" />
+        <param name="OBJECT_CODE_XYZ" default="" type="String" />
+        <param name="PLAN_STRING_ID" default="" type="String" />
+        <param name="OBJECT_OZP" default="" type="String" />
+        <param name="ROUTE_CONDITION_ID" default="" type="String" />
+        <param name="PERIOD_MTR" default="" type="String" />
+        <param name="WORK_DESCRIPTION" default="" type="String" />
+        <param name="COMMENTS" default="" type="String" />
+        <param name="DATE_BEGIN" default="" type="DateTime" />
+        <param name="DATE_END" default="" type="DateTime" />
+        <param name="WORK_PERIOD_HOUR" default="" type="Decimal" />
+        <param name="PIT_GAS" default="" type="Decimal" />
+        <param name="STORE_GAS" default="" type="Decimal" />
+        <param name="DISCHARGE_GAS" default="" type="Decimal" />
+        <param name="ALLOW_PAPER_NUMBER" default="" type="String" />
+        <param name="TRANSPORT_GAS_VAL_WINTER" default="" type="Decimal" />
+        <param name="TRANSPORT_GAS_VAL_SUMMER" default="" type="Decimal" />
+        <param name="TRANSPORT_GAS_VAL_OTH_SEASON" default="" type="Decimal" />
+        <param name="CALC_GAS_VAL_WINTER" default="" type="Decimal" />
+        <param name="CALC_GAS_VAL_SUMMER" default="" type="Decimal" />
+        <param name="CALC_GAS_VAL_OTH_SEASON" default="" type="Decimal" />
+        <param name="CALC_GAS_VAL_WORK" default="" type="Int64" />
+        <param name="SRV_DISTRICT_LIST" default="" type="String" />
+        <param name="ORDER_ID" default="" type="Decimal" />
+        <query>
+          UPDATE FLOW_CHART.KAP_REMONT_PLAN
+          SET line_description=:LINE_DESCRIPTION,
+           object_name=:OBJECT_NAME, 
+	   station_begin=:STATION_BEGIN,
+           station_end=:STATION_END, 
+	   object_plan_description=:OBJECT_PLAN_DESCRIPTION, 
+           type_id=:TYPE_ID, 
+	   category_id=:CATEGORY_ID, 
+	   method_id=:METHOD_ID, 
+	   effect_id=:EFFECT_ID, 
+	   invent_number=:INVENT_NUMBER, 
+           object_code_xyz=:OBJECT_CODE_XYZ, 
+           plan_string_id=:PLAN_STRING_ID, 
+           object_ozp=:OBJECT_OZP, 
+           route_condition_id=:ROUTE_CONDITION_ID, 
+  	   period_mtr=:PERIOD_MTR, 
+	   work_description=:WORK_DESCRIPTION, 
+	   "comments"=:COMMENTS, 
+	   date_begin=:DATE_BEGIN, 
+	   date_end=:DATE_END, 
+	   work_period_hour=:WORK_PERIOD_HOUR,  
+	   pit_gas=:PIT_GAS, 
+	   store_gas=:STORE_GAS, 
+	   discharge_gas=:DISCHARGE_GAS,      
+	   allow_paper_number=:ALLOW_PAPER_NUMBER, 
+	   transport_gas_val_winter=:TRANSPORT_GAS_VAL_WINTER, 
+	   transport_gas_val_summer=:TRANSPORT_GAS_VAL_SUMMER, 
+	   transport_gas_val_oth_season=:TRANSPORT_GAS_VAL_OTH_SEASON, 
+	   calc_gas_val_winter=:CALC_GAS_VAL_WINTER, 
+	   calc_gas_val_summer=:CALC_GAS_VAL_SUMMER, 
+	   calc_gas_val_oth_season=:CALC_GAS_VAL_OTH_SEASON, 
+	   calc_gas_val_work=:CALC_GAS_VAL_WORK, 
+	   srv_district_list=:SRV_DISTRICT_LIST, 
+	   order_id=:ORDER_ID 
+	  WHERE id=:ID
+        </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Decimal" />
+        <query>
+          DELETE FROM FLOW_CHART.KAP_REMONT_PLAN WHERE ID = :ID
+        </query>
+      </dbCommand>
+    </delete>
+  </data>
+
+	   <data id="WKB_TR_MAPSHEM_ROUTE_PART" comment="FLOW_CHART.WKB_TR_MAPSHEM_ROUTE_PART" schema="FLOW_CHART" table="WKB_TR_MAPSHEM_ROUTE_PART">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+WITH route_part_info as (
+select * from (
+select sb.station station_begin,se.station station_end,sb.route_id,c.*,
+rank() over (partition by sb.route_id,sb.station,se.station order by ii.begin_date desc) n
+ from pods.event_range e,pods.station_point sb,pods.station_point se,pods.sto_ili_inspection_calc c,
+ pods.ili_inspection ii
+where e.event_id=c.event_id
+and c.type_cl like 'Оценка состояния по межконструкционным участкам'
+and e.station_id_begin=sb.station_id
+and e.station_id_end=se.station_id
+and ii.ili_inspection_id=c.ili_inspection_id) d where  n=1),
+route_part_info_otv as (
+select * from (
+select sb.station station_begin,se.station station_end,sb.route_id,c.*,
+rank() over (partition by sb.route_id,sb.station,se.station order by ii.begin_date desc) n
+ from pods.event_range e,pods.station_point sb,pods.station_point se,pods.sto_ili_inspection_calc c,
+ pods.ili_inspection ii,pods.route r
+where e.event_id=c.event_id
+and c.type_cl like 'Оценка состояния по линейному event-объекту'
+and e.station_id_begin=sb.station_id
+and e.station_id_end=se.station_id
+and ii.ili_inspection_id=c.ili_inspection_id and r.route_id=sb.route_id and r.type_cl not like '%10' ) d where  n=1)
+     SELECT 
+	 id,
+	 sto_292_2007_condition,
+	 sto_292_2007_value,
+	  station_begin,
+  station_end,
+  line_id,
+  code,
+  route_id,
+  ili_inspection_id,
+  description,
+  description route_type_description,
+  begin_date
+  from 
+(select 
+  r.id,
+   CASE WHEN coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.03 THEN 'Хорошее'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.06 AND coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.03 THEN 'Удовлетворительно'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.3 AND coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.06 THEN 'Критическое'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.3 THEN 'Требует немедленного ремонта'
+     ELSE    'Неизвестно' END sto_292_2007_condition,
+  round(coalesce(i.STO_292_2007_VALUE_CONDITION,0),3) sto_292_2007_value,
+  r.station_begin,
+  r.station_end,
+  l.line_id,
+  t.code,
+  r.route_id,
+  ii.ili_inspection_id,
+  l.description,
+  t.description route_type_description,
+  ii.begin_date
+ from flow_chart.wkb_tr_mapshem_route_part r
+ join route_part_info i on i.route_id=r.route_id and abs(i.station_begin-r.station_begin)&lt;1 and abs(i.station_end-r.station_end)&lt;1 and r.station_begin&gt;-1
+join pods.route rt on rt.route_id=r.route_id
+join pods.line l on l.line_id=rt.line_id
+join pods.route_type_cl t on rt.type_cl=t.code
+join pods.ili_inspection ii on ii.ili_inspection_id=i.ili_inspection_id
+union ALL
+select 
+  r.id,
+   CASE WHEN coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.03 THEN 'Хорошее'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.06 AND coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.03 THEN 'Удовлетворительно'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &lt;= 0.3 AND coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.06 THEN 'Критическое'
+     WHEN    coalesce(i.STO_292_2007_VALUE_CONDITION,0) &gt; 0.3 THEN 'Требует немедленного ремонта'
+     ELSE    'Неизвестно' END sto_292_2007_condition,
+  round(coalesce(i.STO_292_2007_VALUE_CONDITION,0),3) sto_292_2007_value,
+  r.station_begin,
+  r.station_end,
+  l.line_id,
+  t.code,
+  r.route_id,
+  ii.ili_inspection_id,
+  l.description,
+  t.description route_type_description,
+  ii.begin_date
+ from flow_chart.wkb_tr_mapshem_route_part r
+  join route_part_info_otv i on i.route_id=r.route_id and r.station_begin=-1
+  join pods.route rt on rt.route_id=r.route_id
+join pods.line l on l.line_id=rt.line_id
+join pods.route_type_cl t on rt.type_cl=t.code
+join pods.ili_inspection ii on ii.ili_inspection_id=i.ili_inspection_id) all_in_one WHERE {FILTER}
+</query>
+      </dbQuery>
+    </select>
+  </data>
+</root>

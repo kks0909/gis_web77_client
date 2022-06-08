@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Файл описания слоёв "Журналы оперативных данных" -->
+<root version="7.7.7.4" descr="МГ: Журналы оперативных данных" name="PODS_HIST">
+  <dataProvider type="style" source="PODS_HIST_STYLE.xml" />
+  <layer id="PODS_CHEMICAL_INJECTION_LOG" comment="PODS.CHEMICAL_INJECTION_LOG" descr="Журнал добавления в грунт химических реагентов" topology="point,line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1310" visible="false" labelField="DESCRIPTION" classField="" schema="PODS" table="CHEMICAL_INJECTION_LOG">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_CHEMICAL_INJECTION_LOG" />
+    <dataProvider type="style" source="PODS_HIST_STYLE.xml#PODS_CHEMICAL_INJECTION_LOG"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_CHEMICAL_INJECTION_LOG"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_CHEMICAL_INJECTION_LOG"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_CHEMICAL_INJECTION_LOG"/>
+  </layer>
+  <layer id="PODS_CUSTOMER_INTERRUPT" comment="PODS.CUSTOMER_INTERRUPT" descr="Журнал отключения потребителей" topology="point,line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="910" visible="false" labelField="DESCRIPTION" classField="" schema="PODS" table="CUSTOMER_INTERRUPT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_CUSTOMER_INTERRUPT" />
+    <dataProvider type="style" source="PODS_HIST_STYLE.xml#PODS_CUSTOMER_INTERRUPT"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_CUSTOMER_INTERRUPT"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_CUSTOMER_INTERRUPT"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_CUSTOMER_INTERRUPT"/>
+  </layer>
+  <layer id="PODS_GRANDFATHER_PRESSURE" comment="PODS.GRANDFATHER_PRESSURE" descr="Журнал изменений рабочего давления" topology="point,line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1260" visible="false" labelField="DESCRIPTION" classField="" schema="PODS" table="GRANDFATHER_PRESSURE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_GRANDFATHER_PRESSURE" />
+    <dataProvider type="style" source="PODS_HIST_STYLE.xml#PODS_GRANDFATHER_PRESSURE"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_GRANDFATHER_PRESSURE"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_GRANDFATHER_PRESSURE"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_GRANDFATHER_PRESSURE"/>
+  </layer>
+  <layer id="PODS_LEAK_HISTORY" comment="PODS.LEAK_HISTORY" descr="Журнал регистрации аварийных заявок" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="0" visible="true" topology="point" labelField="DESCRIPTION" classField="" schema="PODS" table="LEAK_HISTORY">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_LEAK_HISTORY" />
+    <dataProvider type="style" source="PODS_HIST_STYLE.xml#PODS_LEAK_HISTORY"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_LEAK_HISTORY"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_LEAK_HISTORY"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_LEAK_HISTORY"/>
+  </layer>
+  <layer id="PODS_PIPE_OPERATING_HISTORY" comment="PODS.PIPE_OPERATING_HISTORY" descr="Оперативный журнал трубопровода" topology="point,line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1280" visible="false" labelField="DESCRIPTION" classField="" schema="PODS" table="PIPE_OPERATING_HISTORY">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PIPE_OPERATING_HISTORY" />
+    <dataProvider type="style" source="PODS_HIST_STYLE.xml#PODS_PIPE_OPERATING_HISTORY"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PIPE_OPERATING_HISTORY"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PIPE_OPERATING_HISTORY"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PIPE_OPERATING_HISTORY"/>
+  </layer>
+</root>

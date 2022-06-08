@@ -1,0 +1,85 @@
+﻿<root version="postgres 7.7.7.4">
+    <data table="VALVE" schema="SUTSTPA" id="SUTSTPA_КРАН" comment="VALVE">
+        <select>
+            <dbQuery idField="ID">
+                <var name="FILTER" default="1=1"/>
+                <query>
+select 
+v.id,
+ROW_NUMBER() OVER (ORDER BY v.lpu,v.les,v.pipe,v.station)  RWN,
+v.lpu,
+v.les,
+v.pipe,
+v.station,
+v.tech_num,
+v.serial_num,
+v.nom_diam_id,
+(select 'Требуется' from sutstpa.service_cond_viol viol where viol.valve_id=v.id and viol.type_cl='утечка во внешнюю среду' limit 1) leak_is,
+null date_leak_repair,
+case when (/*LEAK_DESCR   SHUTTER_TIGHT_DESCR*/v.CONT_MEAS_5_IS=1 or v.CONT_MEAS_6_IS=1 or v.ADD_IS_4=0) then 'Требуется' else null end ground_flage_is,
+null /*дата устранения - см. выше*/ date_ground_flage_repair,
+(select min(e.date_plan) from sutstpa.service_epb e where e.valve_id=v.id limit 1) /*min v.DATE_EPB1_PLAN,v.DATE_EPB2_PLAN*/ DATE_EPB_PLAN,
+null /*Конец следующего календарного года, после планируемой даты проведения*/ date_end_year,
+case when (v.PLATE_IS=0 or v.INF_1_IS=1 or v.INF_2_IS=1 or v.INF_3_IS=1 or v.INF_4_IS=1 or v.INF_5_IS=1 or v.INF_6_IS=1 or v.CONT_MEAS_7_IS=1 or v.ADD_IS_2=0 or v.ADD_IS_3=0) 
+then 'Требуется' else null end inf_is,
+null date_inf_repair,
+case when v.exec_doc_is=0  then 'Требуется' else null end  exec_doc_is,
+null DATE_EXEC_PLAN,
+(select 'Требуется' from sutstpa.mismatch_exec_doc d where d.valve_id=v.id and v.exec_doc_is=1  limit 1) /*Привести техническую документацию*/ exec_doc_repair,
+null DATE_EXEC_CORR_PLAN,
+(select 'Требуется' from sutstpa.mismatch_infoteh d where d.valve_id=v.id and v.infoteh_is=1  limit 1) infoteh_is,
+null date_infoteh_repair,
+null executive_person
+from sutstpa.valve v where v.CONT_MEAS_5_IS=1 or v.CONT_MEAS_6_IS=1 or v.ADD_IS_4=0 or v.PLATE_IS=0 or v.INF_1_IS=1 or v.INF_2_IS=1 or v.INF_3_IS=1 or v.INF_4_IS=1 or v.INF_5_IS=1 
+or v.INF_6_IS=1 or v.CONT_MEAS_7_IS=1 or v.ADD_IS_2=0 or v.ADD_IS_3=0 order by RWN          </query>
+      </dbQuery>
+    </select>
+  </data>  
+    <data table="STRUCTURE" schema="SUTSTPA" id="SUTSTPA_КРАНОВЫЙ_УЗЕЛ" comment="STRUCTURE">
+        <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <query>
+select
+s.id,
+ROW_NUMBER() OVER (ORDER BY s.lpu,s.les,s.pipe,s.station)  RWN,
+s.lpu,
+s.les,
+s.pipe,
+s.station,
+(select 'Требуется' from sutstpa.service_cond_viol viol,sutstpa.valve v where viol.valve_id=v.id and v.struct_id=s.id and viol.type_cl='утечка во внешнюю среду' limit 1) leak_is,
+(select 'Требуется' from sutstpa.valve v where v.struct_id=s.id and (v.CONT_MEAS_2_IS=1 or v.CONT_MEAS_3_IS=1 or v.CONT_MEAS_4_IS=1) limit 1) cont_meas_is,
+s.date_rso_plan date_to_repair,
+case when (s.SIGN_2_IS=1 or s.SIGN_3_IS=1 or s.SIGN_4_IS=1 or s.SIGN_5_IS=1 or s.SIGN_6_IS=1 
+or s.TERRITORY_1_IS=0 or s.TERRITORY_2_IS=0 or s.TERRITORY_3_IS=0 or s.TERRITORY_4_IS=0
+or s.BARRIER_1_IS=1 or s.BARRIER_2_IS=1 or s.BARRIER_3_IS=1 or s.BARRIER_4_IS=1 or s.BARRIER_5_IS=1 or s.ORDER_2_IS=0 or s.ORDER_5_IS=0
+or exists (select 1 from sutstpa.valve v where v.struct_id=s.id and (v.TECH_NUM_IS=0 or v.EXT_CORR_1_IS=0 or v.EXT_CORR_2_IS=0 or v.EXT_CORR_3_IS=0 or v.GROUND_1_IS=0 or v.GROUND_2_IS=0 
+or v.GROUND_3_IS=0 or v.GROUND_4_IS=0 or v.GROUND_5_IS=0 or v.COLOR_1_IS=1 or v.COLOR_2_IS=1 or v.COLOR_3_IS=1 or v.COLOR_4_IS=1 or v.COLOR_5_IS=1 or v.COLOR_6_IS=1 or v.ORDER_6_IS=0)))
+then 'Требуется' else null end include_is,
+case when s.SIGN_2_IS=1 or s.SIGN_3_IS=1 or s.SIGN_4_IS=1 or s.SIGN_5_IS=1 or s.SIGN_6_IS=1 
+or s.TERRITORY_1_IS=0 or s.TERRITORY_2_IS=0 or s.TERRITORY_3_IS=0 or s.TERRITORY_4_IS=0
+or s.BARRIER_1_IS=1 or s.BARRIER_2_IS=1 or s.BARRIER_3_IS=1 or s.BARRIER_4_IS=1 or s.BARRIER_5_IS=1 or s.ORDER_2_IS=0 or s.ORDER_5_IS=0
+or exists (select 1 from sutstpa.valve v where v.struct_id=s.id and (v.TECH_NUM_IS=0 or v.EXT_CORR_1_IS=0 or v.EXT_CORR_2_IS=0 or v.EXT_CORR_3_IS=0 or v.GROUND_1_IS=0 or v.GROUND_2_IS=0 
+or v.GROUND_3_IS=0 or v.GROUND_4_IS=0 or v.GROUND_5_IS=0 or v.COLOR_1_IS=1 or v.COLOR_2_IS=1 or v.COLOR_3_IS=1 or v.COLOR_4_IS=1 or v.COLOR_5_IS=1 or v.COLOR_6_IS=1 or v.ORDER_6_IS=0))
+then 'Требуется' else null end repair_is,
+s.DATE_RSO_PLAN,
+case when s.ORDER_1_IS=0 or s.ORDER_3_IS=0 then 'Требуется' else null end order_is,
+null /*срок устранения крановый узел*/ date_to_order,
+(select 'Требуется' from sutstpa.mismatch_exec_doc d,sutstpa.valve v where d.valve_id=v.id and v.struct_id=s.id limit 1) /*восстановление испдокументации*/ exec_doc_reload_is,
+(select 'Требуется' from sutstpa.mismatch_exec_doc d,sutstpa.valve v where d.valve_id=v.id and v.struct_id=s.id limit 1) /*приведение в соотв испдокументации*/ exec_doc_corr_is,
+(select min(e.date_plan) from sutstpa.service_epb e,sutstpa.valve v where e.valve_id=v.id and v.struct_id=s.id limit 1) /*min v.DATE_EPB1_PLAN,v.DATE_EPB2_PLAN*/ DATE_EPB_PLAN,
+(select 'Требуется' from sutstpa.vent_pipe vp where vp.struct_id=s.id and (vp.HEIGHT_IS=0 or vp.COLOR_IS=1 or vp.ROOF_IS=1 or vp.PEDESTAL_IS=1 or vp.VERT_IS=1) limit 1) vent_pipe_is,
+s.DATE_RSO_PLAN date_vent_pipe,
+null /*ответственный*/ executive_person
+ from sutstpa.structure s where s.SIGN_4_IS=1 or s.TERRITORY_4_IS=0 or s.ORDER_2_IS=0 or s.ORDER_5_IS=0 or s.ORDER_3_IS=0 or s.SIGN_5_IS=1 or s.TERRITORY_1_IS=0 
+or s.TERRITORY_3_IS=0 or s.TERRITORY_2_IS=0 or s.BARRIER_2_IS=1 or s.ORDER_1_IS=0 or s.BARRIER_1_IS=1 or s.BARRIER_4_IS=1 or s.BARRIER_3_IS=1 or s.BARRIER_5_IS=1 or s.ORDER_4_IS=0
+or s.SIGN_3_IS=1 or s.SIGN_6_IS=1 or s.SIGN_2_IS=1 or exists (select 1 from sutstpa.vent_pipe vv where vv.struct_id=s.id and (vv.COLOR_IS=1 or vv.PEDESTAL_IS=1 or vv.VERT_IS=1 
+or vv.HEIGHT_IS=0 or vv.ROOF_IS=1)) or exists (select 1 from sutstpa.valve v where v.struct_id=s.id and (v.TECH_NUM_IS=0 or v.EXT_CORR_1_IS=0 or v.EXT_CORR_2_IS=0 or v.EXT_CORR_3_IS=0 or v.GROUND_1_IS=0 or v.GROUND_2_IS=0 
+or v.GROUND_3_IS=0 or v.GROUND_4_IS=0 or v.GROUND_5_IS=0 or v.COLOR_1_IS=1 or v.COLOR_2_IS=1 or v.COLOR_3_IS=1 or v.COLOR_4_IS=1 or v.COLOR_5_IS=1 or v.COLOR_6_IS=1 or v.ORDER_6_IS=0)) 
+order by RWN          
+          </query>
+      </dbQuery>
+    </select>
+  </data> 
+</root>

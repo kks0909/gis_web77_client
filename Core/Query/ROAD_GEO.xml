@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.4.10" descr="Диагностика и ремонт дорожных переходов">
+    <data id="ROAD" comment="ROAD" schema="WEB50" table="ROAD">
+        <select>
+            <geoQuery idField="ID" geoField="WKB_GEOMETRY">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <query>
+                    SELECT id ID, description "LABEL", type_cl||'-'||category_id "TYPE", WKB_GEOMETRY  FROM
+                    web50.road 
+                    WHERE {FILTER} ORDER BY ID
+                </query>
+            </geoQuery>
+        </select>
+        <insert>
+            <geoCommand>
+                <param name="ID" type="Int64" direction="Input"/>               
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="POLICY" default="POLICY.xml#INSERT_KADASTR_GEO" />                   
+                <object>
+                    UPDATE web50.road SET WKB_GEOMETRY=:WKB WHERE ID = :ID
+                </object>
+            </geoCommand>
+        </insert>
+        <update>
+            <geoCommand>
+                <param name="ID" type="Int64" direction="Input"/>
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="POLICY" default="POLICY.xml#UPDATE_KADASTR_GEO" />               
+                <object>
+                    UPDATE web50.road  SET WKB_GEOMETRY=:WKB WHERE ID = :ID
+                </object>
+            </geoCommand>
+        </update>
+        <delete>
+            <dbCommand>
+                <param name="ID" type="Int64" direction="Input"/>
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="POLICY" default="POLICY.xml#DELETE_KADASTR_GEO" />               
+                <query>
+                    UPDATE web50.road  SET WKB_GEOMETRY=NULL WHERE ID = :ID
+                </query>
+            </dbCommand>
+        </delete>
+    </data>
+    <data id="ROAD_CROSS" comment="ROAD_CROSS" schema="WEB50" table="ROAD_CROSS">
+        <select>
+            <geoQuery idField="ID" geoField="WKB_GEOMETRY">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <query>
+                    select * from (SELECT road_cross_id ID, line_id, road_id, station "LABEL", insp_result_condition "TYPE", WKB_GEOMETRY  FROM
+                    web50.road_cross ) d 
+                    WHERE {FILTER} ORDER BY ID
+                </query>
+            </geoQuery>
+        </select>
+        <insert>
+            <geoCommand>
+                <param name="ID" type="Int64" direction="Input"/>               
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="POLICY" default="POLICY.xml#INSERT_KADASTR_GEO" />                   
+                <object>
+                    UPDATE web50.road_cross SET WKB_GEOMETRY=:WKB WHERE road_cross_id = :ID
+                </object>
+            </geoCommand>
+        </insert>
+        <update>
+            <geoCommand>
+                <param name="ID" type="Int64" direction="Input"/>
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="POLICY" default="POLICY.xml#UPDATE_KADASTR_GEO" />               
+                <object>
+                    UPDATE web50.road_cross  SET WKB_GEOMETRY=:WKB WHERE road_cross_id = :ID
+                </object>
+            </geoCommand>
+        </update>
+        <delete>
+            <dbCommand>
+                <param name="ID" type="Int64" direction="Input"/>
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="POLICY" default="POLICY.xml#DELETE_KADASTR_GEO" />               
+                <query>
+                    UPDATE web50.road  SET WKB_GEOMETRY=NULL WHERE road_cross_id = :ID
+                </query>
+            </dbCommand>
+        </delete>
+    </data>
+</root>

@@ -1,0 +1,855 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<kml version="7.7.7.3">
+  <Document>
+    <Style table="свеча" schema="sutstpa" id="SUTSTPA_СВЕЧА" comment="свеча" descr="свеча" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/VENT_PIPE_ST.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+       </Style>	
+	   <Style table="свеча" schema="sutstpa" id="SUTSTPA_СВЕЧА" comment="свеча" descr="Неисправностей нет" topology="1" short_name="">
+      <value>GREEN</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+     <IconStyle>
+        <Icon>
+          <href>Public/assets/VENT_PIPE_ST_GREEN.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style>	
+	   <Style table="свеча" schema="sutstpa" id="SUTSTPA_СВЕЧА" comment="свеча" descr="Неисправностей от 1 до 2" topology="1" short_name="">
+      <value>YELLOW</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+       <IconStyle>
+        <Icon>
+          <href>Public/assets/VENT_PIPE_ST_YELLOW.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style>	
+	   <Style table="свеча" schema="sutstpa" id="SUTSTPA_СВЕЧА" comment="свеча" descr="Неисправностей более 3" topology="1" short_name="">
+      <value>RED</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+     <IconStyle>
+        <Icon>
+          <href>Public/assets/VENT_PIPE_ST_RED.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style>	
+	   
+	<Style table="свеча" schema="sutstpa" id="SUTSTPA_СВЕЧА" comment="свеча" descr="Неисправностей нет" topology="3" short_name="">
+      <value>1</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+       <LineStyle>
+         <color>FF83FF7A</color>
+         <width>1</width>
+         <pattern>
+            <join>round</join>
+            <caps>round</caps>
+         </pattern>
+      </LineStyle>
+    <PolyStyle>
+        <color>FF83FF7A</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+      </Style>	
+	<Style table="свеча" schema="sutstpa" id="SUTSTPA_СВЕЧА" comment="свеча" descr="Неисправностей от 1 до 2" topology="3" short_name="">
+      <value>2</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+       <LineStyle>
+         <color>FFFFF570</color>
+         <width>1</width>
+         <pattern>
+            <join>round</join>
+            <caps>round</caps>
+         </pattern>
+      </LineStyle>
+    <PolyStyle>
+        <color>FFFFF570</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+      </Style>	
+	<Style table="свеча" schema="sutstpa" id="SUTSTPA_СВЕЧА" comment="свеча" descr="Неисправностей более 3" topology="3" short_name="">
+      <value>3</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+       <LineStyle>
+         <color>FFFF463E</color>
+         <width>1</width>
+         <pattern>
+            <join>round</join>
+            <caps>round</caps>
+         </pattern>
+      </LineStyle>
+    <PolyStyle>
+        <color>FFFF463E</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+      </Style>	
+
+	<Style table="кран" schema="sutstpa" id="SUTSTPA_КРАН" comment="кран" descr="кран" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+     <IconStyle>
+        <Icon>
+          <href>Public/assets/VALVE_ST.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style>	
+	  <Style table="кран" schema="sutstpa" id="SUTSTPA_КРАН" comment="кран" descr="Неисправностей от 0 до 5" topology="1" short_name="">
+      <value>GREEN</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+          <IconStyle>
+        <Icon>
+          <href>Public/assets/VALVE_ST_GREEN.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style>	
+	<Style table="кран" schema="sutstpa" id="SUTSTPA_КРАН" comment="кран" descr="Неисправностей от 5 до 10" topology="1" short_name="">
+      <value>YELLOW</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+     <IconStyle>
+        <Icon>
+          <href>Public/assets/VALVE_ST_YELLOW.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style>	
+	<Style table="кран" schema="sutstpa" id="SUTSTPA_КРАН" comment="кран" descr="Неисправностей более 10" topology="1" short_name="">
+      <value>RED</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+     <IconStyle>
+        <Icon>
+          <href>Public/assets/VALVE_ST_RED.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style>	
+	  
+	<Style table="кран" schema="sutstpa" id="SUTSTPA_КРАН" comment="кран" descr="Неисправностей от 0 до 5" topology="3" short_name="">
+      <value>1</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+       <LineStyle>
+         <color>FF83FF7A</color>
+         <width>1</width>
+         <pattern>
+            <join>round</join>
+            <caps>round</caps>
+         </pattern>
+      </LineStyle>
+    <PolyStyle>
+        <color>FF83FF7A</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+      </Style>	
+	<Style table="кран" schema="sutstpa" id="SUTSTPA_КРАН" comment="кран" descr="Неисправностей от 5 до 10" topology="3" short_name="">
+      <value>2</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+       <LineStyle>
+         <color>FFFFF570</color>
+         <width>1</width>
+         <pattern>
+            <join>round</join>
+            <caps>round</caps>
+         </pattern>
+      </LineStyle>
+    <PolyStyle>
+        <color>FFFFF570</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+      </Style>	
+	<Style table="кран" schema="sutstpa" id="SUTSTPA_КРАН" comment="кран" descr="Неисправностей более 10" topology="3" short_name="">
+      <value>3</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+       <LineStyle>
+         <color>FFFF463E</color>
+         <width>1</width>
+         <pattern>
+            <join>round</join>
+            <caps>round</caps>
+         </pattern>
+      </LineStyle>
+    <PolyStyle>
+        <color>FFFF463E</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+      </Style>	
+
+	<Style table="крановый_узел" schema="sutstpa" id="SUTSTPA_КРАНОВЫЙ_УЗЕЛ" comment="крановый_узел" descr="Крановый узел" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>      
+      <LineStyle>
+        <color>FFA36066</color>
+        <width>3</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>88FFE0E8</color>
+        <fill>1</fill>
+        <outline>2</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>	
+	<Style table="крановый_узел" schema="sutstpa" id="SUTSTPA_КРАНОВЫЙ_УЗЕЛ" comment="крановый_узел" descr="Неисправностей от 0 до 5" topology="3" short_name="">
+      <value>GREEN</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+       <LineStyle>
+         <color>FF83FF7A</color>
+         <width>1</width>
+         <pattern>
+            <join>round</join>
+            <caps>round</caps>
+         </pattern>
+      </LineStyle>
+    <PolyStyle>
+        <color>FF83FF7A</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+      </Style>	
+	<Style table="крановый_узел" schema="sutstpa" id="SUTSTPA_КРАНОВЫЙ_УЗЕЛ" comment="крановый_узел" descr="Неисправностей от 5 до 15" topology="3" short_name="">
+      <value>YELLOW</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+       <LineStyle>
+         <color>FFFFF570</color>
+         <width>1</width>
+         <pattern>
+            <join>round</join>
+            <caps>round</caps>
+         </pattern>
+      </LineStyle>
+    <PolyStyle>
+        <color>FFFFF570</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+      </Style>	
+	<Style table="крановый_узел" schema="sutstpa" id="SUTSTPA_КРАНОВЫЙ_УЗЕЛ" comment="крановый_узел" descr="Неисправностей более 15" topology="3" short_name="">
+      <value>RED</value>
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+       <LineStyle>
+         <color>FFFF463E</color>
+         <width>1</width>
+         <pattern>
+            <join>round</join>
+            <caps>round</caps>
+         </pattern>
+      </LineStyle>
+    <PolyStyle>
+        <color>FFFF463E</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+      </Style>	
+
+    <Style table="kran_svod" schema="sutstpa" id="SUTSTPA_KRAN_SVOD" comment="kran_svod" descr="Анализ техсостояния ТПА" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/kran_svod.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style>  
+  <Style table="kran_usel_svod" schema="sutstpa" id="SUTSTPA_KRAN_USEL_SVOD" comment="kran_usel_svod" descr="Анализ техсостояния крановых узлов" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/kran_svod.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style>  
+      <Style table="service_maintenance" schema="sutstpa" id="SUTSTPA_SERVICE_MAINTENANCE" comment="service_maintenance" descr="Технические обслуживания" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/kran_svod.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style>  
+      <Style table="service_epb" schema="sutstpa" id="SUTSTPA_SERVICE_EPB" comment="service_epb" descr="Экспертизы промбезопасности" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/kran_svod.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style>  
+      <Style table="service_cond_viol" schema="sutstpa" id="SUTSTPA_SERVICE_COND_VIOL" comment="service_cond_viol" descr="Выявленные нарушения" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/kran_svod.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style>  
+      <Style table="service_repair" schema="sutstpa" id="SUTSTPA_SERVICE_REPAIR" comment="service_repair" descr="Ремонтные работы" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/kran_svod.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style>  
+      <Style table="mismatch_exec_doc_format" schema="sutstpa" id="SUTSTPA_MISMATCH_EXEC_DOC_FORMAT" comment="mismatch_exec_doc_format" descr="Паспорта исполнительной документации" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/kran_svod.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style>  
+      <Style table="mismatch_exec_doc" schema="sutstpa" id="SUTSTPA_MISMATCH_EXEC_DOC" comment="mismatch_exec_doc" descr="Различия с исп. документации" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/kran_svod.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style>  
+      <Style table="mismatch_infoteh" schema="sutstpa" id="SUTSTPA_MISMATCH_INFOTEH" comment="mismatch_infoteh" descr="Различий с ССД Инфотех" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/kran_svod.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style>  
+      <Style table="notif_message" schema="sutstpa" id="SUTSTPA_NOTIF_MESSAGE" comment="notif_message" descr="Напоминания" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/kran_svod.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style>  
+      <Style table="notif_person" schema="sutstpa" id="SUTSTPA_NOTIF_PERSON" comment="notif_person" descr="Исполнители" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/kran_svod.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style> 
+      <Style table="valve_validate" schema="sutstpa" id="SUTSTPA_VALVE_VALIDATE" comment="valve_validate" descr="Краны, полевые данные" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/kran_svod.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style>  
+      <Style table="structure_validate" schema="sutstpa" id="SUTSTPA_STRUCTURE_VALIDATE" comment="structure_validate" descr="Крановые площадки, полевые данные" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/kran_svod.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style>  
+      <Style table="vent_pipe_validate" schema="sutstpa" id="SUTSTPA_VENT_PIPE_VALIDATE" comment="vent_pipe_validate" descr="Свечи, полевые данные" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/kran_svod.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style> 
+      <Style table="sprav_ntd" schema="sutstpa" id="SUTSTPA_SPRAV_NTD" comment="sprav_ntd" descr="SPRAV_NTD" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/kran_svod.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style> 
+      <Style table="sprav_climatic_type_id" schema="sutstpa" id="SUTSTPA_SPRAV_CLIMATIC_TYPE_ID" comment="sprav_climatic_type_id" descr="Климатическое исполнение крана" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/kran_svod.png</href>
+          <form>bitmap</form>
+          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+      </Style> 
+ 
+<Style table="SUTSTPA_SPRAV_DIAMETER_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_DIAMETER_GCL" comment="SUTSTPA_SPRAV_DIAMETER_GCL" descr="Номинальный диаметр" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_EXECUTION_TYPE_ID_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_EXECUTION_TYPE_ID_GCL" comment="SUTSTPA_SPRAV_EXECUTION_TYPE_ID_GCL" descr="Исполнение ТПА" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_FUNC_TYPE_ID_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_FUNC_TYPE_ID_GCL" comment="SUTSTPA_SPRAV_FUNC_TYPE_ID_GCL" descr="Функция ТПА" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_INF_COR_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_INF_COR_GCL" comment="SUTSTPA_SPRAV_INF_COR_GCL" descr="Тип правки в ССД Инфотех" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_INSTALL_TYPE_ID_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_INSTALL_TYPE_ID_GCL" comment="SUTSTPA_SPRAV_INSTALL_TYPE_ID_GCL" descr="Тип установки ТПА" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_LES_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_LES_GCL" comment="SUTSTPA_SPRAV_LES_GCL" descr="Справочник ЛЭС" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_LPU_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_LPU_GCL" comment="SUTSTPA_SPRAV_LPU_GCL" descr="Справочник ЛПУ" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_MATERIAL_ID_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_MATERIAL_ID_GCL" comment="SUTSTPA_SPRAV_MATERIAL_ID_GCL" descr="Материал ТПА" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_NOM_PRESSURE_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_NOM_PRESSURE_GCL" comment="SUTSTPA_SPRAV_NOM_PRESSURE_GCL" descr="Номинальное давление" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_NTD_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_NTD_GCL" comment="SUTSTPA_SPRAV_NTD_GCL" descr="Весовые коэффициенты" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_OPER_LABEL_TYPE_ID_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_OPER_LABEL_TYPE_ID_GCL" comment="SUTSTPA_SPRAV_OPER_LABEL_TYPE_ID_GCL" descr="Тип маркировки привода ТПА" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_OPER_MANUF_ID_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_OPER_MANUF_ID_GCL" comment="SUTSTPA_SPRAV_OPER_MANUF_ID_GCL" descr="Производитель привода ТПА" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_PIPE_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_PIPE_GCL" comment="SUTSTPA_SPRAV_PIPE_GCL" descr="Справочник газопроводов" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_SERVICE_ACTION_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_SERVICE_ACTION_GCL" comment="SUTSTPA_SPRAV_SERVICE_ACTION_GCL" descr="Типы действий" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_SERVICE_COND_VIOL_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_SERVICE_COND_VIOL_GCL" comment="SUTSTPA_SPRAV_SERVICE_COND_VIOL_GCL" descr="Типы выявленных нарушений" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_SERVICE_EPB_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_SERVICE_EPB_GCL" comment="SUTSTPA_SPRAV_SERVICE_EPB_GCL" descr="Типы ЭПБ" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_SERVICE_MAINT_1_RESULT_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_SERVICE_MAINT_1_RESULT_GCL" comment="SUTSTPA_SPRAV_SERVICE_MAINT_1_RESULT_GCL" descr="Результат ТО1" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_SERVICE_MAINT_2_RESULT_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_SERVICE_MAINT_2_RESULT_GCL" comment="SUTSTPA_SPRAV_SERVICE_MAINT_2_RESULT_GCL" descr="Результат ТО2" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_SERVICE_MAINT_CORRECTION_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_SERVICE_MAINT_CORRECTION_GCL" comment="SUTSTPA_SPRAV_SERVICE_MAINT_CORRECTION_GCL" descr="Тип обслуживания" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_SERVICE_MAINT_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_SERVICE_MAINT_GCL" comment="SUTSTPA_SPRAV_SERVICE_MAINT_GCL" descr="Вид ТО" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_SERVICE_REPAIR_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_SERVICE_REPAIR_GCL" comment="SUTSTPA_SPRAV_SERVICE_REPAIR_GCL" descr="Вид ремонта" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_TPA_CONSTR_TYPE_ID_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_TPA_CONSTR_TYPE_ID_GCL" comment="SUTSTPA_SPRAV_TPA_CONSTR_TYPE_ID_GCL" descr="Маркировка ТПА" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_TPA_FIGURE_TYPE_ID_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_TPA_FIGURE_TYPE_ID_GCL" comment="SUTSTPA_SPRAV_TPA_FIGURE_TYPE_ID_GCL" descr="Маркировка ТПА по фигуре" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_VALVE_JOIN_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_VALVE_JOIN_GCL" comment="SUTSTPA_SPRAV_VALVE_JOIN_GCL" descr="Тип присоединения" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_VALVE_MANUF_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_VALVE_MANUF_GCL" comment="SUTSTPA_SPRAV_VALVE_MANUF_GCL" descr="Производитель ТПА" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_VALVE_MATERIAL_TYPE_CL_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_VALVE_MATERIAL_TYPE_CL_GCL" comment="SUTSTPA_SPRAV_VALVE_MATERIAL_TYPE_CL_GCL" descr="Материал ТПА" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_VALVE_OP_TYPE_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_VALVE_OP_TYPE_GCL" comment="SUTSTPA_SPRAV_VALVE_OP_TYPE_GCL" descr="Тип привода" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_VALVE_TPA_NAME_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_VALVE_TPA_NAME_GCL" comment="SUTSTPA_SPRAV_VALVE_TPA_NAME_GCL" descr="Наименование ТПА" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_SPRAV_VALVE_TYPE_GCL" schema="sutstpa" id="SUTSTPA_SPRAV_VALVE_TYPE_GCL" comment="SUTSTPA_SPRAV_VALVE_TYPE_GCL" descr="Тип ТПА" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_MISMATCH_INF_DATA" schema="sutstpa" id="SUTSTPA_MISMATCH_INF_DATA" comment="SUTSTPA_MISMATCH_INF_DATA" descr="Данные Инфотех" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+<Style table="SUTSTPA_MISMATCH_EXEC_DATA" schema="sutstpa" id="SUTSTPA_MISMATCH_EXEC_DATA" comment="SUTSTPA_MISMATCH_EXEC_DATA" descr="Данные исп. документации" topology="1" short_name="">
+<IconStyle>
+<Icon>
+ <href>Public/assets/kran_svod.png</href>
+ <form>bitmap</form>
+<size>32</size>
+</Icon>
+<color>FF000000</color>
+<outline>0</outline>
+</IconStyle>
+</Style>
+  </Document>
+</kml>

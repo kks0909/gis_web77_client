@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<kml version="7.7.3.0">
+	  <Document>
+
+					
+	
+	
+    
+				
+		    <!-- Конец ВТД-->
+		
+		    <Style table="BRANCH_CONNECT" schema="PODS" id="PODS_BRANCH_CONNECT"
+             comment="PODS.BRANCH_CONNECT"
+             descr="Накладки усиливающие">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/BRANCH_CONNECT.png</href>
+					          <form>bitmap</form>
+					          <size>22</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="CONCRETE_SLAB" schema="PODS" id="PODS_CONCRETE_SLAB"
+             comment="PODS.CONCRETE_SLAB"
+             descr="Фундаменты и основания">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/CONCRETE_SLAB.png</href>
+					          <form>bitmap</form>
+					          <size>19</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="DRAG_REDUCING_AGENT" schema="PODS" id="PODS_DRAG_REDUCING_AGENT"
+             comment="PODS.DRAG_REDUCING_AGENT"
+             descr="Узлы ввода антифрикционных присадок">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/DRAG_REDUCING_AGENT.png</href>
+					          <form>bitmap</form>
+					          <size>32</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="DRIP" schema="PODS" id="PODS_DRIP" comment="PODS.DRIP"
+             descr="Конденсатосборники">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/DRIP.png</href>
+					          <form>bitmap</form>
+					          <size>21</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="DRIP_RISER" schema="PODS" id="PODS_DRIP_RISER" comment="PODS.DRIP_RISER"
+             descr="Дренажные трубки конденсатосборников">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/DRIP_RISER.png</href>
+					          <form>bitmap</form>
+					          <size>16</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="FABRICATION" schema="PODS" id="PODS_FABRICATION"
+             comment="PODS.FABRICATION"
+             descr="Узлы заводского изготовления">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/FABRICATION.png</href>
+					          <form>bitmap</form>
+					          <size>23</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="FLEXIBLE_JOINT" schema="PODS" id="PODS_FLEXIBLE_JOINT"
+             comment="PODS.FLEXIBLE_JOINT"
+             descr="Гибкие вставки">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/FLEXIBLE_JOINT.png</href>
+					          <form>bitmap</form>
+					          <size>22</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="INJECTOR" schema="PODS" id="PODS_INJECTOR" comment="PODS.INJECTOR"
+             descr="Инжекторы">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/INJECTOR.png</href>
+					          <form>bitmap</form>
+					          <size>32</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="STRAIGHTENING_VANES" schema="PODS" id="PODS_STRAIGHTENING_VANES"
+             comment="PODS.STRAIGHTENING_VANES"
+             descr="Струевыпрямители">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/STRAIGHTENING_VANES.png</href>
+					          <form>bitmap</form>
+					          <size>25</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="TAP" schema="PODS" id="PODS_TAP" comment="PODS.TAP"
+             descr="Прямые врезки (ответвления)">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/TAP.png</href>
+					          <form>bitmap</form>
+					          <size>17</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="WELLHEAD_ASSEMBLY" schema="PODS" id="PODS_WELLHEAD_ASSEMBLY"
+             comment="PODS.WELLHEAD_ASSEMBLY"
+             descr="Оборудование скважин">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+				        <Icon>
+					          <href>Public/assets/WELLHEAD_ASSEMBLY.png</href>
+					          <form>bitmap</form>
+					          <size>21</size>
+				        </Icon>
+				        <color>FF000000</color>
+				        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		</Document>
+</kml>

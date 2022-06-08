@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.7.7" descr="СУ ТС ТПА">
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml" />
+	<layer id="SUTSTPA_СВЕЧА" comment="СВЕЧА" schema="sutstpa" table="VENT_PIPE" descr="СВЕЧА" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" 
+		   dataType="vector" type="common" labelField="" classField="" spacing="СВЕЧА" cover="false" fitMap="false" order="1" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_СВЕЧА" />
+		<dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_СВЕЧА" />
+		<dataProvider type="semantic" source="SUTSTPA_SEM.xml#SUTSTPA_СВЕЧА" />
+		<dataProvider type="spatial" source="SUTSTPA_GEO.xml#SUTSTPA_СВЕЧА" />
+	</layer>
+	<layer id="SUTSTPA_КРАН" comment="КРАН" schema="sutstpa" table="VALVE" descr="КРАН" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN"
+		   dataType="vector" type="common" labelField="name_id" classField="type_id" spacing="КРАН" cover="false" fitMap="true" order="2" visible="true" topology="point">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_КРАН" />
+		<dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_КРАН" />
+		<dataProvider type="semantic" source="SUTSTPA_SEM.xml#SUTSTPA_КРАН" />
+		<dataProvider type="spatial" source="SUTSTPA_GEO.xml#SUTSTPA_КРАН" />
+	</layer>
+	<layer id="SUTSTPA_КРАНОВЫЙ_УЗЕЛ" comment="КРАНОВЫЙ_УЗЕЛ" schema="sutstpa" table="STRUCTURE" descr="КРАНОВЫЙ_УЗЕЛ" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" labelField="station" classField="" spacing="КРАНОВЫЙ_УЗЕЛ" cover="false" fitMap="true" order="3" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_КРАНОВЫЙ_УЗЕЛ" />
+		<dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_КРАНОВЫЙ_УЗЕЛ" />
+		<dataProvider type="semantic" source="SUTSTPA_SEM.xml#SUTSTPA_КРАНОВЫЙ_УЗЕЛ" />
+		<dataProvider type="spatial" source="SUTSTPA_GEO.xml#SUTSTPA_КРАНОВЫЙ_УЗЕЛ" />
+	</layer>
+	<layer id="SUTSTPA_KRAN_SVOD" comment="KRAN_SVOD" schema="sutstpa" table="KRAN_SVOD" descr="Анализ техсостояния ТПА" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" labelField="station" classField="" spacing="KRAN_SVOD" cover="false" fitMap="false" order="3" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_KRAN_SVOD" />
+		<dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_KRAN_SVOD" />
+		<dataProvider type="semantic" source="SUTSTPA_SEM.xml#SUTSTPA_KRAN_SVOD" />
+	</layer>	
+	<layer id="SUTSTPA_KRAN_USEL_SVOD" comment="KRAN_USEL_SVOD" schema="sutstpa" table="KRAN_USEL_SVOD" descr="Анализ техсостояния крановых площадок" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" labelField="station" classField="" spacing="KRAN_SVOD" cover="false" fitMap="false" order="3" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_KRAN_USEL_SVOD" />
+		<dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_KRAN_USEL_SVOD" />
+		<dataProvider type="semantic" source="SUTSTPA_SEM.xml#SUTSTPA_KRAN_USEL_SVOD" />
+	</layer>
+	<layer id="SUTSTPA_SERVICE_MAINTENANCE_VALVE" comment="SERVICE_MAINTENANCE" schema="sutstpa" table="SERVICE_MAINTENANCE" descr="Технические обслуживания" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" labelField="station" classField="" spacing="SERVICE_MAINTENANCE" cover="false" fitMap="false" order="3" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SERVICE_MAINTENANCE_VALVE" />
+		<dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SERVICE_MAINTENANCE_VALVE" />
+		<dataProvider type="semantic" source="SUTSTPA_SEM.xml#SUTSTPA_SERVICE_MAINTENANCE_VALVE" />
+	</layer>
+	<layer id="SUTSTPA_SERVICE_MAINTENANCE" comment="SERVICE_MAINTENANCE" schema="sutstpa" table="SERVICE_MAINTENANCE" descr="Технические обслуживания" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" labelField="station" classField="" spacing="SERVICE_MAINTENANCE" cover="false" fitMap="false" order="3" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SERVICE_MAINTENANCE" />
+		<dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SERVICE_MAINTENANCE" />
+		<dataProvider type="semantic" source="SUTSTPA_SEM.xml#SUTSTPA_SERVICE_MAINTENANCE" />
+	</layer>
+	<layer id="SUTSTPA_SERVICE_EPB" comment="SERVICE_EPB" schema="sutstpa" table="SERVICE_EPB" descr="Экспертизы промбезопасности" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" labelField="station" classField="" spacing="SERVICE_EPB" cover="false" fitMap="false" order="3" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SERVICE_EPB" />
+		<dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SERVICE_EPB" />
+		<dataProvider type="semantic" source="SUTSTPA_SEM.xml#SUTSTPA_SERVICE_EPB" />
+	</layer>
+	<layer id="SUTSTPA_SERVICE_COND_VIOL" comment="SERVICE_COND_VIOL" schema="sutstpa" table="SERVICE_COND_VIOL" descr="Выявленные нарушения" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" labelField="station" classField="" spacing="SERVICE_COND_VIOL" cover="false" fitMap="false" order="3" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SERVICE_COND_VIOL" />
+		<dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SERVICE_COND_VIOL" />
+		<dataProvider type="semantic" source="SUTSTPA_SEM.xml#SUTSTPA_SERVICE_COND_VIOL" />
+	</layer>
+	<layer id="SUTSTPA_SERVICE_REPAIR" comment="SERVICE_REPAIR" schema="sutstpa" table="SERVICE_REPAIR" descr="Ремонтные работы" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" labelField="station" classField="" spacing="SERVICE_REPAIR" cover="false" fitMap="false" order="3" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SERVICE_REPAIR" />
+		<dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SERVICE_REPAIR" />
+		<dataProvider type="semantic" source="SUTSTPA_SEM.xml#SUTSTPA_SERVICE_REPAIR" />
+	</layer>
+	<layer id="SUTSTPA_MISMATCH_EXEC_DOC_FORMAT" comment="MISMATCH_EXEC_DOC_FORMAT" schema="sutstpa" table="MISMATCH_EXEC_DOC_FORMAT" descr="Паспорта исполнительной документации" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" labelField="station" classField="" spacing="MISMATCH_EXEC_DOC_FORMAT" cover="false" fitMap="false" order="3" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_MISMATCH_EXEC_DOC_FORMAT" />
+		<dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_MISMATCH_EXEC_DOC_FORMAT" />
+		<dataProvider type="semantic" source="SUTSTPA_SEM.xml#SUTSTPA_MISMATCH_EXEC_DOC_FORMAT" />
+	</layer>
+	<layer id="SUTSTPA_MISMATCH_EXEC_DOC" comment="MISMATCH_EXEC_DOC" schema="sutstpa" table="MISMATCH_EXEC_DOC" descr="Различия с паспортом исполнительной документации" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" labelField="station" classField="" spacing="MISMATCH_EXEC_DOC" cover="false" fitMap="false" order="3" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_MISMATCH_EXEC_DOC" />
+		<dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_MISMATCH_EXEC_DOC" />
+		<dataProvider type="semantic" source="SUTSTPA_SEM.xml#SUTSTPA_MISMATCH_EXEC_DOC" />
+	</layer>
+	<layer id="SUTSTPA_MISMATCH_INFOTEH" comment="MISMATCH_INFOTEH" schema="sutstpa" table="MISMATCH_INFOTEH" descr="Различия с паспортом ССД Инфотех" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" labelField="station" classField="" spacing="MISMATCH_INFOTEH" cover="false" fitMap="false" order="3" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_MISMATCH_INFOTEH" />
+		<dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_MISMATCH_INFOTEH" />
+		<dataProvider type="semantic" source="SUTSTPA_SEM.xml#SUTSTPA_MISMATCH_INFOTEH" />
+	</layer>
+	<layer id="SUTSTPA_NOTIF_MESSAGE" comment="NOTIF_MESSAGE" schema="sutstpa" table="NOTIF_MESSAGE" descr="Напоминания" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" labelField="station" classField="" spacing="NOTIF_MESSAGE" cover="false" fitMap="false" order="3" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_NOTIF_MESSAGE" />
+		<dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_NOTIF_MESSAGE" />
+		<dataProvider type="semantic" source="SUTSTPA_SEM.xml#SUTSTPA_NOTIF_MESSAGE" />
+	</layer>
+	<layer id="SUTSTPA_NOTIF_PERSON" comment="NOTIF_PERSON" schema="sutstpa" table="NOTIF_PERSON" descr="Исполнители" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" labelField="station" classField="" spacing="NOTIF_PERSON" cover="false" fitMap="false" order="3" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_NOTIF_PERSON" />
+		<dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_NOTIF_PERSON" />
+		<dataProvider type="semantic" source="SUTSTPA_SEM.xml#SUTSTPA_NOTIF_PERSON" />
+	</layer>
+	<layer id="SUTSTPA_SPRAV_CLIMATIC_TYPE_ID" comment="SPRAV_CLIMATIC_TYPE_ID" schema="sutstpa" table="SPRAV_CLIMATIC_TYPE_ID" descr="Климатическое исполнение крана" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" labelField="station" classField="" spacing="SPRAV_CLIMATIC_TYPE_ID" cover="false" fitMap="false" order="3" visible="true" topology="polygon">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_CLIMATIC_TYPE_ID" />
+		<dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_CLIMATIC_TYPE_ID" />
+		<dataProvider type="semantic" source="SUTSTPA_SEM.xml#SUTSTPA_SPRAV_CLIMATIC_TYPE_ID" />
+	</layer>
+<layer id="SUTSTPA_SPRAV_DIAMETER_GCL" comment="SUTSTPA_SPRAV_DIAMETER_GCL" schema="sutstpa" table="SPRAV_DIAMETER_GCL" descr="SUTSTPA_SPRAV_DIAMETER_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_DIAMETER_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_DIAMETER_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_DIAMETER_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_EXECUTION_TYPE_ID_GCL" comment="SUTSTPA_SPRAV_EXECUTION_TYPE_ID_GCL" schema="sutstpa" table="SPRAV_EXECUTION_TYPE_ID_GCL" descr="SUTSTPA_SPRAV_EXECUTION_TYPE_ID_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_EXECUTION_TYPE_ID_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_EXECUTION_TYPE_ID_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_EXECUTION_TYPE_ID_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_FUNC_TYPE_ID_GCL" comment="SUTSTPA_SPRAV_FUNC_TYPE_ID_GCL" schema="sutstpa" table="SPRAV_FUNC_TYPE_ID_GCL" descr="SUTSTPA_SPRAV_FUNC_TYPE_ID_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_FUNC_TYPE_ID_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_FUNC_TYPE_ID_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_FUNC_TYPE_ID_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_INF_COR_GCL" comment="SUTSTPA_SPRAV_INF_COR_GCL" schema="sutstpa" table="SPRAV_INF_COR_GCL" descr="SUTSTPA_SPRAV_INF_COR_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_INF_COR_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_INF_COR_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_INF_COR_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_INSTALL_TYPE_ID_GCL" comment="SUTSTPA_SPRAV_INSTALL_TYPE_ID_GCL" schema="sutstpa" table="SPRAV_INSTALL_TYPE_ID_GCL" descr="SUTSTPA_SPRAV_INSTALL_TYPE_ID_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_INSTALL_TYPE_ID_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_INSTALL_TYPE_ID_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_INSTALL_TYPE_ID_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_LES_GCL" comment="SUTSTPA_SPRAV_LES_GCL" schema="sutstpa" table="SPRAV_LES_GCL" descr="SUTSTPA_SPRAV_LES_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_LES_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_LES_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_LES_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_LPU_GCL" comment="SUTSTPA_SPRAV_LPU_GCL" schema="sutstpa" table="SPRAV_LPU_GCL" descr="SUTSTPA_SPRAV_LPU_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_LPU_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_LPU_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_LPU_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_MATERIAL_ID_GCL" comment="SUTSTPA_SPRAV_MATERIAL_ID_GCL" schema="sutstpa" table="SPRAV_MATERIAL_ID_GCL" descr="SUTSTPA_SPRAV_MATERIAL_ID_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_MATERIAL_ID_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_MATERIAL_ID_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_MATERIAL_ID_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_NOM_PRESSURE_GCL" comment="SUTSTPA_SPRAV_NOM_PRESSURE_GCL" schema="sutstpa" table="SPRAV_NOM_PRESSURE_GCL" descr="SUTSTPA_SPRAV_NOM_PRESSURE_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_NOM_PRESSURE_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_NOM_PRESSURE_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_NOM_PRESSURE_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_NTD_GCL" comment="SUTSTPA_SPRAV_NTD_GCL" schema="sutstpa" table="SPRAV_NTD_GCL" descr="SUTSTPA_SPRAV_NTD_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_NTD_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_NTD_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_NTD_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_OPER_LABEL_TYPE_ID_GCL" comment="SUTSTPA_SPRAV_OPER_LABEL_TYPE_ID_GCL" schema="sutstpa" table="SPRAV_OPER_LABEL_TYPE_ID_GCL" descr="SUTSTPA_SPRAV_OPER_LABEL_TYPE_ID_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_OPER_LABEL_TYPE_ID_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_OPER_LABEL_TYPE_ID_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_OPER_LABEL_TYPE_ID_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_OPER_MANUF_ID_GCL" comment="SUTSTPA_SPRAV_OPER_MANUF_ID_GCL" schema="sutstpa" table="SPRAV_OPER_MANUF_ID_GCL" descr="SUTSTPA_SPRAV_OPER_MANUF_ID_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_OPER_MANUF_ID_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_OPER_MANUF_ID_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_OPER_MANUF_ID_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_PIPE_GCL" comment="SUTSTPA_SPRAV_PIPE_GCL" schema="sutstpa" table="SPRAV_PIPE_GCL" descr="SUTSTPA_SPRAV_PIPE_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_PIPE_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_PIPE_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_PIPE_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_SERVICE_ACTION_GCL" comment="SUTSTPA_SPRAV_SERVICE_ACTION_GCL" schema="sutstpa" table="SPRAV_SERVICE_ACTION_GCL" descr="SUTSTPA_SPRAV_SERVICE_ACTION_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_SERVICE_ACTION_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_SERVICE_ACTION_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_SERVICE_ACTION_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_SERVICE_COND_VIOL_GCL" comment="SUTSTPA_SPRAV_SERVICE_COND_VIOL_GCL" schema="sutstpa" table="SPRAV_SERVICE_COND_VIOL_GCL" descr="SUTSTPA_SPRAV_SERVICE_COND_VIOL_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_SERVICE_COND_VIOL_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_SERVICE_COND_VIOL_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_SERVICE_COND_VIOL_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_SERVICE_EPB_GCL" comment="SUTSTPA_SPRAV_SERVICE_EPB_GCL" schema="sutstpa" table="SPRAV_SERVICE_EPB_GCL" descr="SUTSTPA_SPRAV_SERVICE_EPB_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_SERVICE_EPB_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_SERVICE_EPB_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_SERVICE_EPB_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_SERVICE_MAINT_1_RESULT_GCL" comment="SUTSTPA_SPRAV_SERVICE_MAINT_1_RESULT_GCL" schema="sutstpa" table="SPRAV_SERVICE_MAINT_1_RESULT_GCL" descr="SUTSTPA_SPRAV_SERVICE_MAINT_1_RESULT_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_SERVICE_MAINT_1_RESULT_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_SERVICE_MAINT_1_RESULT_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_SERVICE_MAINT_1_RESULT_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_SERVICE_MAINT_2_RESULT_GCL" comment="SUTSTPA_SPRAV_SERVICE_MAINT_2_RESULT_GCL" schema="sutstpa" table="SPRAV_SERVICE_MAINT_2_RESULT_GCL" descr="SUTSTPA_SPRAV_SERVICE_MAINT_2_RESULT_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_SERVICE_MAINT_2_RESULT_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_SERVICE_MAINT_2_RESULT_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_SERVICE_MAINT_2_RESULT_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_SERVICE_MAINT_CORRECTION_GCL" comment="SUTSTPA_SPRAV_SERVICE_MAINT_CORRECTION_GCL" schema="sutstpa" table="SPRAV_SERVICE_MAINT_CORRECTION_GCL" descr="SUTSTPA_SPRAV_SERVICE_MAINT_CORRECTION_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_SERVICE_MAINT_CORRECTION_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_SERVICE_MAINT_CORRECTION_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_SERVICE_MAINT_CORRECTION_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_SERVICE_MAINT_GCL" comment="SUTSTPA_SPRAV_SERVICE_MAINT_GCL" schema="sutstpa" table="SPRAV_SERVICE_MAINT_GCL" descr="SUTSTPA_SPRAV_SERVICE_MAINT_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_SERVICE_MAINT_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_SERVICE_MAINT_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_SERVICE_MAINT_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_SERVICE_REPAIR_GCL" comment="SUTSTPA_SPRAV_SERVICE_REPAIR_GCL" schema="sutstpa" table="SPRAV_SERVICE_REPAIR_GCL" descr="SUTSTPA_SPRAV_SERVICE_REPAIR_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_SERVICE_REPAIR_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_SERVICE_REPAIR_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_SERVICE_REPAIR_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_TPA_CONSTR_TYPE_ID_GCL" comment="SUTSTPA_SPRAV_TPA_CONSTR_TYPE_ID_GCL" schema="sutstpa" table="SPRAV_TPA_CONSTR_TYPE_ID_GCL" descr="SUTSTPA_SPRAV_TPA_CONSTR_TYPE_ID_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_TPA_CONSTR_TYPE_ID_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_TPA_CONSTR_TYPE_ID_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_TPA_CONSTR_TYPE_ID_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_TPA_FIGURE_TYPE_ID_GCL" comment="SUTSTPA_SPRAV_TPA_FIGURE_TYPE_ID_GCL" schema="sutstpa" table="SPRAV_TPA_FIGURE_TYPE_ID_GCL" descr="SUTSTPA_SPRAV_TPA_FIGURE_TYPE_ID_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_TPA_FIGURE_TYPE_ID_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_TPA_FIGURE_TYPE_ID_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_TPA_FIGURE_TYPE_ID_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_VALVE_JOIN_GCL" comment="SUTSTPA_SPRAV_VALVE_JOIN_GCL" schema="sutstpa" table="SPRAV_VALVE_JOIN_GCL" descr="SUTSTPA_SPRAV_VALVE_JOIN_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_VALVE_JOIN_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_VALVE_JOIN_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_VALVE_JOIN_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_VALVE_MANUF_GCL" comment="SUTSTPA_SPRAV_VALVE_MANUF_GCL" schema="sutstpa" table="SPRAV_VALVE_MANUF_GCL" descr="SUTSTPA_SPRAV_VALVE_MANUF_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_VALVE_MANUF_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_VALVE_MANUF_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_VALVE_MANUF_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_VALVE_MATERIAL_TYPE_CL_GCL" comment="SUTSTPA_SPRAV_VALVE_MATERIAL_TYPE_CL_GCL" schema="sutstpa" table="SPRAV_VALVE_MATERIAL_TYPE_CL_GCL" descr="SUTSTPA_SPRAV_VALVE_MATERIAL_TYPE_CL_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_VALVE_MATERIAL_TYPE_CL_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_VALVE_MATERIAL_TYPE_CL_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_VALVE_MATERIAL_TYPE_CL_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_VALVE_OP_TYPE_GCL" comment="SUTSTPA_SPRAV_VALVE_OP_TYPE_GCL" schema="sutstpa" table="SPRAV_VALVE_OP_TYPE_GCL" descr="SUTSTPA_SPRAV_VALVE_OP_TYPE_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_VALVE_OP_TYPE_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_VALVE_OP_TYPE_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_VALVE_OP_TYPE_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_VALVE_TPA_NAME_GCL" comment="SUTSTPA_SPRAV_VALVE_TPA_NAME_GCL" schema="sutstpa" table="SPRAV_VALVE_TPA_NAME_GCL" descr="SUTSTPA_SPRAV_VALVE_TPA_NAME_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_VALVE_TPA_NAME_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_VALVE_TPA_NAME_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_VALVE_TPA_NAME_GCL" />
+ </layer>
+<layer id="SUTSTPA_SPRAV_VALVE_TYPE_GCL" comment="SUTSTPA_SPRAV_VALVE_TYPE_GCL" schema="sutstpa" table="SPRAV_VALVE_TYPE_GCL" descr="SUTSTPA_SPRAV_VALVE_TYPE_GCL" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_SPRAV_VALVE_TYPE_GCL" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_SPRAV_VALVE_TYPE_GCL" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_VALVE_TYPE_GCL" />
+ </layer>
+<layer id="SUTSTPA_MISMATCH_INF_DATA" comment="SUTSTPA_MISMATCH_INF_DATA" schema="sutstpa" table="MISMATCH_INF_DATA" descr="SUTSTPA_MISMATCH_INF_DATA" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_MISMATCH_INF_DATA" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_MISMATCH_INF_DATA" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM.xml#SUTSTPA_MISMATCH_INF_DATA" />
+ </layer>
+<layer id="SUTSTPA_MISMATCH_EXEC_DATA" comment="SUTSTPA_MISMATCH_EXEC_DATA" schema="sutstpa" table="MISMATCH_EXEC_DATA" descr="SUTSTPA_MISMATCH_EXEC_DATA" >
+  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#SUTSTPA_MISMATCH_EXEC_DATA" />
+  <dataProvider type="style" source="SUTSTPA_STYLE.xml#SUTSTPA_MISMATCH_EXEC_DATA" />
+  <dataProvider type="semantic" source="SUTSTPA_SEM.xml#SUTSTPA_MISMATCH_EXEC_DATA" />
+ </layer>
+</root>

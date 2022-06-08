@@ -1,0 +1,1074 @@
+﻿<root version="7.7.3.0">
+	<data id="GTS_PIPELINE_L_TOPOCODE" comment="GTS_PIPELINE_L_TOPOCODE" schema="GDAL" table="GTS_PIPELINE_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GTS_PIPELINE_L" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="GTS_OBJECTS_P_TOPOCODE" comment="GTS_OBJECTS_P_TOPOCODE" schema="GDAL" table="GTS_OBJECTS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GTS_OBJECTS_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_BUILDINGS_A_TOPOCODE" comment="AMBIT_BUILDINGS_A_TOPOCODE" schema="GDAL" table="AMBIT_BUILDINGS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="AMBIT_BUILDINGS_A" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="AMBIT_BUILDINGS_A_MANUFACTURE" comment="AMBIT_BUILDINGS_A_MANUFACTURE" schema="GDAL" table="AMBIT_BUILDINGS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="manufacture" />
+				<var name="LAYER_ID" default="AMBIT_BUILDINGS_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_BUILDINGS_A_MATERIAL" comment="AMBIT_BUILDINGS_A_MATERIAL" schema="GDAL" table="AMBIT_BUILDINGS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="material" />
+				<var name="LAYER_ID" default="AMBIT_BUILDINGS_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_BUILDINGS_A_BUILDINGPURPOSE" comment="AMBIT_BUILDINGS_A_BUILDINGPURPOSE" schema="GDAL" table="AMBIT_BUILDINGS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="buildingpurpose" />
+				<var name="LAYER_ID" default="AMBIT_BUILDINGS_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_BUILDINGS_A_MATERIALGROUP" comment="AMBIT_BUILDINGS_A_MATERIALGROUP" schema="GDAL" table="AMBIT_BUILDINGS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="materialgroup" />
+				<var name="LAYER_ID" default="AMBIT_BUILDINGS_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_PIPELINE_P_TOPOCODE" comment="AMBIT_INDUSTRY_PIPELINE_P_TOPOCODE" schema="GDAL" table="AMBIT_INDUSTRY_PIPELINE_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_PIPELINE_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_PIPELINE_P_PIPELINING" comment="AMBIT_INDUSTRY_PIPELINE_P_PIPELINING" schema="GDAL" table="AMBIT_INDUSTRY_PIPELINE_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="pipelining" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_PIPELINE_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_PIPELINE_P_PRODUCTTRANS" comment="AMBIT_INDUSTRY_PIPELINE_P_PRODUCTTRANS" schema="GDAL" table="AMBIT_INDUSTRY_PIPELINE_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="producttrans" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_PIPELINE_P" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_COMM_P_VOLTAGE" comment="AMBIT_INDUSTRY_COMM_P_VOLTAGE" schema="GDAL" table="AMBIT_INDUSTRY_COMM_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="voltage" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_COMM_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_COMM_P_TOPOCODE" comment="AMBIT_INDUSTRY_COMM_P_TOPOCODE" schema="GDAL" table="AMBIT_INDUSTRY_COMM_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_COMM_P" />
+			</xmlQuery>
+		</select>
+	</data>		
+	<data id="AMBIT_INDUSTRY_PIPE_UNITS_P_VALVETYPE" comment="AMBIT_INDUSTRY_PIPE_UNITS_P_VALVETYPE" schema="GDAL" table="AMBIT_INDUSTRY_PIPE_UNITS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="valvetype" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_PIPE_UNITS_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_PIPE_UNITS_P_INSTPLACE" comment="AMBIT_INDUSTRY_PIPE_UNITS_P_INSTPLACE" schema="GDAL" table="AMBIT_INDUSTRY_PIPE_UNITS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="instplace" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_PIPE_UNITS_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_PIPE_UNITS_P_PIPEDIAMETER" comment="AMBIT_INDUSTRY_PIPE_UNITS_P_PIPEDIAMETER" schema="GDAL" table="AMBIT_INDUSTRY_PIPE_UNITS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="pipediameter" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_PIPE_UNITS_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_PIPE_UNITS_P_DRIVETYPE" comment="AMBIT_INDUSTRY_PIPE_UNITS_P_DRIVETYPE" schema="GDAL" table="AMBIT_INDUSTRY_PIPE_UNITS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="drivetype" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_PIPE_UNITS_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_PIPE_UNITS_P_TOPOCODE" comment="AMBIT_INDUSTRY_PIPE_UNITS_P_TOPOCODE" schema="GDAL" table="AMBIT_INDUSTRY_PIPE_UNITS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_PIPE_UNITS_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_PROTECT_P_TOPOCODE" comment="AMBIT_INDUSTRY_PROTECT_P_TOPOCODE" schema="GDAL" table="AMBIT_INDUSTRY_PROTECT_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_PROTECT_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_FILTERS_P_DIAMETER" comment="AMBIT_INDUSTRY_FILTERS_P_DIAMETER" schema="GDAL" table="AMBIT_INDUSTRY_FILTERS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="diameter" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_FILTERS_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_FILTERS_P_TOPOCODE" comment="AMBIT_INDUSTRY_FILTERS_P_TOPOCODE" schema="GDAL" table="AMBIT_INDUSTRY_FILTERS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_FILTERS_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_FILTERS_P_DEVICETYPE" comment="AMBIT_INDUSTRY_FILTERS_P_DEVICETYPE" schema="GDAL" table="AMBIT_INDUSTRY_FILTERS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="devicetype" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_FILTERS_P" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_CAPACITIES_P_DIAMETER" comment="AMBIT_INDUSTRY_CAPACITIES_P_DIAMETER" schema="GDAL" table="AMBIT_INDUSTRY_CAPACITIES_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="diameter" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_CAPACITIES_P" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_CAPACITIES_P_TOPOCODE" comment="AMBIT_INDUSTRY_CAPACITIES_P_TOPOCODE" schema="GDAL" table="AMBIT_INDUSTRY_CAPACITIES_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_CAPACITIES_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_CAPACITIES_P_CAPACITIEFORM" comment="AMBIT_INDUSTRY_CAPACITIES_P_CAPACITIEFORM" schema="GDAL" table="AMBIT_INDUSTRY_CAPACITIES_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="capacitieform" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_CAPACITIES_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_CAPACITIES_P_PRODUCTSTORAGE" comment="AMBIT_INDUSTRY_CAPACITIES_P_PRODUCTSTORAGE" schema="GDAL" table="AMBIT_INDUSTRY_CAPACITIES_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="productstorage" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_CAPACITIES_P" />
+			</xmlQuery>
+		</select>
+	</data>		
+	<data id="AMBIT_INDUSTRY_ICS_P_TOPOCODE" comment="AMBIT_INDUSTRY_ICS_P_TOPOCODE" schema="GDAL" table="AMBIT_INDUSTRY_ICS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_ICS_P" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="GEO_BOUNDARIES_P_TOPOCODE" comment="GEO_BOUNDARIES_P_TOPOCODE" schema="GDAL" table="GEO_BOUNDARIES_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_BOUNDARIES_P" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="GEO_BOUNDARIES_P_BOUNDTYPE" comment="GEO_BOUNDARIES_P_BOUNDTYPE" schema="GDAL" table="GEO_BOUNDARIES_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="boundtype" />
+				<var name="LAYER_ID" default="GEO_BOUNDARIES_P" />
+			</xmlQuery>
+		</select>
+	</data>		
+	<data id="GEO_HYDRAULICSTRUCT_P_OBJSTATE" comment="GEO_HYDRAULICSTRUCT_P_OBJSTATE" schema="GDAL" table="GEO_HYDRAULICSTRUCT_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objstate" />
+				<var name="LAYER_ID" default="GEO_HYDRAULICSTRUCT_P" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="GEO_HYDRAULICSTRUCT_P_OBJMATERIAL" comment="GEO_HYDRAULICSTRUCT_P_OBJMATERIAL" schema="GDAL" table="GEO_HYDRAULICSTRUCT_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objmaterial" />
+				<var name="LAYER_ID" default="GEO_HYDRAULICSTRUCT_P" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="GEO_HYDRAULICSTRUCT_P_TOPOCODE" comment="GEO_HYDRAULICSTRUCT_P_TOPOCODE" schema="GDAL" table="GEO_HYDRAULICSTRUCT_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_HYDRAULICSTRUCT_P" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="GEO_HYDROGRAPHY_P_NAVIGABLE" comment="GEO_HYDROGRAPHY_P_NAVIGABLE" schema="GDAL" table="GEO_HYDROGRAPHY_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="navigable" />
+				<var name="LAYER_ID" default="GEO_HYDROGRAPHY_P" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="GEO_HYDROGRAPHY_P_TOPOCODE" comment="GEO_HYDROGRAPHY_P_TOPOCODE" schema="GDAL" table="GEO_HYDROGRAPHY_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_HYDROGRAPHY_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_INDUCTRIALOBJ_P_OBJSTATE" comment="GEO_INDUCTRIALOBJ_P_OBJSTATE" schema="GDAL" table="GEO_INDUCTRIALOBJ_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objstate" />
+				<var name="LAYER_ID" default="GEO_INDUCTRIALOBJ_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_INDUCTRIALOBJ_P_OBJMATERIAL" comment="GEO_INDUCTRIALOBJ_P_OBJMATERIAL" schema="GDAL" table="GEO_INDUCTRIALOBJ_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objmaterial" />
+				<var name="LAYER_ID" default="GEO_INDUCTRIALOBJ_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_INDUCTRIALOBJ_P_TOPOCODE" comment="GEO_INDUCTRIALOBJ_P_TOPOCODE" schema="GDAL" table="GEO_INDUCTRIALOBJ_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_INDUCTRIALOBJ_P" />
+			</xmlQuery>
+		</select>
+	</data>		
+	<data id="GEO_ROADSTRUCTURES_P_OBJSTATE" comment="GEO_ROADSTRUCTURES_P_OBJSTATE" schema="GDAL" table="GEO_ROADSTRUCTURES_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objstate" />
+				<var name="LAYER_ID" default="GEO_ROADSTRUCTURES_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_ROADSTRUCTURES_P_OBJMATERIAL" comment="GEO_ROADSTRUCTURES_P_OBJMATERIAL" schema="GDAL" table="GEO_ROADSTRUCTURES_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objmaterial" />
+				<var name="LAYER_ID" default="GEO_ROADSTRUCTURES_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_ROADSTRUCTURES_P_TOPOCODE" comment="GEO_ROADSTRUCTURES_P_TOPOCODE" schema="GDAL" table="GEO_ROADSTRUCTURES_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_ROADSTRUCTURES_P" />
+			</xmlQuery>
+		</select>
+	</data>		
+	<data id="GEO_ROADS_P_TOPOCODE" comment="GEO_ROADS_P_TOPOCODE" schema="GDAL" table="GEO_ROADS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_ROADS_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_ROADS_P_OBJSTATE" comment="GEO_ROADS_P_OBJSTATE" schema="GDAL" table="GEO_ROADS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objstate" />
+				<var name="LAYER_ID" default="GEO_ROADS_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_ROADS_P_COATINGMATERIAL" comment="GEO_ROADS_P_COATINGMATERIAL" schema="GDAL" table="GEO_ROADS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="coatingmaterial" />
+				<var name="LAYER_ID" default="GEO_ROADS_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_RELIEF_P_ORIGIN" comment="GEO_RELIEF_P_ORIGIN" schema="GDAL" table="GEO_RELIEF_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="origin" />
+				<var name="LAYER_ID" default="GEO_RELIEF_P" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="GEO_RELIEF_P_TOPOCODE" comment="GEO_RELIEF_P_TOPOCODE" schema="GDAL" table="GEO_RELIEF_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_RELIEF_P" />
+			</xmlQuery>
+		</select>
+	</data>		
+	<data id="GEO_HYDROGRAPHYREL_P_GROUNDTYPE" comment="GEO_HYDROGRAPHYREL_P_GROUNDTYPE" schema="GDAL" table="GEO_HYDROGRAPHYREL_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="groundtype" />
+				<var name="LAYER_ID" default="GEO_HYDROGRAPHYREL_P" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="GEO_HYDROGRAPHYREL_P_SHORELINETYPE" comment="GEO_HYDROGRAPHYREL_P_SHORELINETYPE" schema="GDAL" table="GEO_HYDROGRAPHYREL_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="shorelinetype" />
+				<var name="LAYER_ID" default="GEO_HYDROGRAPHYREL_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_HYDROGRAPHYREL_P_TOPOCODE" comment="GEO_HYDROGRAPHYREL_P_TOPOCODE" schema="GDAL" table="GEO_HYDROGRAPHYREL_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_HYDROGRAPHYREL_P" />
+			</xmlQuery>
+		</select>
+	</data>		
+	<data id="GEO_SETTLEMENTS_P_BELONGTERRITORY" comment="GEO_SETTLEMENTS_P_BELONGTERRITORY" schema="GDAL" table="GEO_SETTLEMENTS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="belongterritory" />
+				<var name="LAYER_ID" default="GEO_SETTLEMENTS_P" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="GEO_SETTLEMENTS_P_ADMINISTRATUNIT" comment="GEO_SETTLEMENTS_P_ADMINISTRATUNIT" schema="GDAL" table="GEO_SETTLEMENTS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="administratunit" />
+				<var name="LAYER_ID" default="GEO_SETTLEMENTS_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_SETTLEMENTS_P_OBJSTATE" comment="GEO_SETTLEMENTS_P_OBJSTATE" schema="GDAL" table="GEO_SETTLEMENTS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objstate" />
+				<var name="LAYER_ID" default="GEO_SETTLEMENTS_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_SETTLEMENTS_P_OBJMATERIAL" comment="GEO_SETTLEMENTS_P_OBJMATERIAL" schema="GDAL" table="GEO_SETTLEMENTS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objmaterial" />
+				<var name="LAYER_ID" default="GEO_SETTLEMENTS_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_SETTLEMENTS_P_SETTLEMENTUNIT" comment="GEO_SETTLEMENTS_P_SETTLEMENTUNIT" schema="GDAL" table="GEO_SETTLEMENTS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="settlementunit" />
+				<var name="LAYER_ID" default="GEO_SETTLEMENTS_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_SETTLEMENTS_P_SETTLEMENTTYPE" comment="GEO_SETTLEMENTS_P_SETTLEMENTTYPE" schema="GDAL" table="GEO_SETTLEMENTS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="settlementtype" />
+				<var name="LAYER_ID" default="GEO_SETTLEMENTS_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_SETTLEMENTS_P_TOPOCODE" comment="GEO_SETTLEMENTS_P_TOPOCODE" schema="GDAL" table="GEO_SETTLEMENTS_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_SETTLEMENTS_P" />
+			</xmlQuery>
+		</select>
+	</data>		
+	<data id="GEO_VEGETATION_P_VEGETATIONTYPE" comment="GEO_VEGETATION_P_VEGETATIONTYPE" schema="GDAL" table="GEO_VEGETATION_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="vegetationtype" />
+				<var name="LAYER_ID" default="GEO_VEGETATION_P" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="GEO_VEGETATION_P_PASSABILITY" comment="GEO_VEGETATION_P_PASSABILITY" schema="GDAL" table="GEO_VEGETATION_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="passability" />
+				<var name="LAYER_ID" default="GEO_VEGETATION_P" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_VEGETATION_P_TOPOCODE" comment="GEO_VEGETATION_P_TOPOCODE" schema="GDAL" table="GEO_VEGETATION_P">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_VEGETATION_P" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_PIPELINE_L_TOPOCODE" comment="AMBIT_INDUSTRY_PIPELINE_L_TOPOCODE" schema="GDAL" table="AMBIT_INDUSTRY_PIPELINE_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_PIPELINE_L" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_PIPELINE_L_PIPELINING" comment="AMBIT_INDUSTRY_PIPELINE_L_PIPELINING" schema="GDAL" table="AMBIT_INDUSTRY_PIPELINE_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="pipelining" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_PIPELINE_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_PIPELINE_L_PRODUCTTRANS" comment="AMBIT_INDUSTRY_PIPELINE_L_PRODUCTTRANS" schema="GDAL" table="AMBIT_INDUSTRY_PIPELINE_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="producttrans" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_PIPELINE_L" />
+			</xmlQuery>
+		</select>
+	</data>		
+	<data id="GEO_ROADSTRUCTURES_L_OBJSTATE" comment="GEO_ROADSTRUCTURES_L_OBJSTATE" schema="GDAL" table="GEO_ROADSTRUCTURES_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objstate" />
+				<var name="LAYER_ID" default="GEO_ROADSTRUCTURES_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_ROADSTRUCTURES_L_OBJMATERIAL" comment="GEO_ROADSTRUCTURES_L_OBJMATERIAL" schema="GDAL" table="GEO_ROADSTRUCTURES_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objmaterial" />
+				<var name="LAYER_ID" default="GEO_ROADSTRUCTURES_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_ROADSTRUCTURES_L_TOPOCODE" comment="GEO_ROADSTRUCTURES_L_TOPOCODE" schema="GDAL" table="GEO_ROADSTRUCTURES_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_ROADSTRUCTURES_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_COMM_L_VOLTAGE" comment="AMBIT_INDUSTRY_COMM_L_VOLTAGE" schema="GDAL" table="AMBIT_INDUSTRY_COMM_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="voltage" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_COMM_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_COMM_L_TOPOCODE" comment="AMBIT_INDUSTRY_COMM_L_TOPOCODE" schema="GDAL" table="AMBIT_INDUSTRY_COMM_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_COMM_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_ROADS_L_ELECTRICITY" comment="AMBIT_ROADS_L_ELECTRICITY" schema="GDAL" table="AMBIT_ROADS_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="electricity" />
+				<var name="LAYER_ID" default="AMBIT_ROADS_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_ROADS_L_ROADSTATUS" comment="AMBIT_ROADS_L_ROADSTATUS" schema="GDAL" table="AMBIT_ROADS_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="roadstatus" />
+				<var name="LAYER_ID" default="AMBIT_ROADS_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_ROADS_L_TOPOCODE" comment="AMBIT_ROADS_L_TOPOCODE" schema="GDAL" table="AMBIT_ROADS_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="AMBIT_ROADS_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_INDUCTRIALOBJ_L_OBJSTATE" comment="GEO_INDUCTRIALOBJ_L_OBJSTATE" schema="GDAL" table="GEO_INDUCTRIALOBJ_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objstate" />
+				<var name="LAYER_ID" default="GEO_INDUCTRIALOBJ_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_INDUCTRIALOBJ_L_OBJMATERIAL" comment="GEO_INDUCTRIALOBJ_L_OBJMATERIAL" schema="GDAL" table="GEO_INDUCTRIALOBJ_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objmaterial" />
+				<var name="LAYER_ID" default="GEO_INDUCTRIALOBJ_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_INDUCTRIALOBJ_L_TOPOCODE" comment="GEO_INDUCTRIALOBJ_L_TOPOCODE" schema="GDAL" table="GEO_INDUCTRIALOBJ_L">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_INDUCTRIALOBJ_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_HYDRAULICSTRUCT_L_OBJSTATE" comment="GEO_HYDRAULICSTRUCT_L_OBJSTATE" schema="GDAL" table="GEO_HYDRAULICSTRUCT_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objstate" />
+				<var name="LAYER_ID" default="GEO_HYDRAULICSTRUCT_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_HYDRAULICSTRUCT_L_OBJMATERIAL" comment="GEO_HYDRAULICSTRUCT_L_OBJMATERIAL" schema="GDAL" table="GEO_HYDRAULICSTRUCT_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objmaterial" />
+				<var name="LAYER_ID" default="GEO_HYDRAULICSTRUCT_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_HYDRAULICSTRUCT_L_TOPOCODE" comment="GEO_HYDRAULICSTRUCT_L_TOPOCODE" schema="GDAL" table="GEO_HYDRAULICSTRUCT_L">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_HYDRAULICSTRUCT_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_HYDRO_L_TOPOCODE" comment="AMBIT_HYDRO_L_TOPOCODE" schema="GDAL" table="AMBIT_HYDRO_L">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="AMBIT_HYDRO_L" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="AMBIT_HYDRO_L_WATERCOURSETYPE" comment="AMBIT_HYDRO_L_WATERCOURSETYPE" schema="GDAL" table="AMBIT_HYDRO_L">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="watercoursetype" />
+				<var name="LAYER_ID" default="AMBIT_HYDRO_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_HYDROGRAPHY_L_NAVIGABLE" comment="GEO_HYDROGRAPHY_L_NAVIGABLE" schema="GDAL" table="GEO_HYDROGRAPHY_L">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="navigable" />
+				<var name="LAYER_ID" default="GEO_HYDROGRAPHY_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_HYDROGRAPHY_L_TOPOCODE" comment="GEO_HYDROGRAPHY_L_TOPOCODE" schema="GDAL" table="GEO_HYDROGRAPHY_L">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_HYDROGRAPHY_L" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="GEO_ROADS_L_TOPOCODE" comment="GEO_ROADS_L_TOPOCODE" schema="GDAL" table="GEO_ROADS_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_ROADS_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_ROADS_L_OBJSTATE" comment="GEO_ROADS_L_OBJSTATE" schema="GDAL" table="GEO_ROADS_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objstate" />
+				<var name="LAYER_ID" default="GEO_ROADS_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_ROADS_L_COATINGMATERIAL" comment="GEO_ROADS_L_COATINGMATERIAL" schema="GDAL" table="GEO_ROADS_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="coatingmaterial" />
+				<var name="LAYER_ID" default="GEO_ROADS_L" />
+			</xmlQuery>
+		</select>
+	</data>		
+	<data id="GEO_BOUNDARIES_L_TOPOCODE" comment="GEO_BOUNDARIES_L_TOPOCODE" schema="GDAL" table="GEO_BOUNDARIES_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_BOUNDARIES_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_BOUNDARIES_L_BOUNDTYPE" comment="GEO_BOUNDARIES_L_BOUNDTYPE" schema="GDAL" table="GEO_BOUNDARIES_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="boundtype" />
+				<var name="LAYER_ID" default="GEO_BOUNDARIES_L" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="GEO_VEGETATION_L_VEGETATIONTYPE" comment="GEO_VEGETATION_L_VEGETATIONTYPE" schema="GDAL" table="GEO_VEGETATION_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="vegetationtype" />
+				<var name="LAYER_ID" default="GEO_VEGETATION_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_VEGETATION_L_PASSABILITY" comment="GEO_VEGETATION_L_PASSABILITY" schema="GDAL" table="GEO_VEGETATION_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="passability" />
+				<var name="LAYER_ID" default="GEO_VEGETATION_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_VEGETATION_L_TOPOCODE" comment="GEO_VEGETATION_L_TOPOCODE" schema="GDAL" table="GEO_VEGETATION_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_VEGETATION_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_HYDROGRAPHYREL_L_GROUNDTYPE" comment="GEO_HYDROGRAPHYREL_L_GROUNDTYPE" schema="GDAL" table="GEO_HYDROGRAPHYREL_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="groundtype" />
+				<var name="LAYER_ID" default="GEO_HYDROGRAPHYREL_L" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="GEO_HYDROGRAPHYREL_L_SHORELINETYPE" comment="GEO_HYDROGRAPHYREL_L_SHORELINETYPE" schema="GDAL" table="GEO_HYDROGRAPHYREL_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="shorelinetype" />
+				<var name="LAYER_ID" default="GEO_HYDROGRAPHYREL_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_HYDROGRAPHYREL_L_TOPOCODE" comment="GEO_HYDROGRAPHYREL_L_TOPOCODE" schema="GDAL" table="GEO_HYDROGRAPHYREL_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_HYDROGRAPHYREL_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_RELIEF_L_ORIGIN" comment="GEO_RELIEF_L_ORIGIN" schema="GDAL" table="GEO_RELIEF_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="origin" />
+				<var name="LAYER_ID" default="GEO_RELIEF_L" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_RELIEF_L_TOPOCODE" comment="GEO_RELIEF_L_TOPOCODE" schema="GDAL" table="GEO_RELIEF_L">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_RELIEF_L" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_PIPE_UNITS_A_VALVETYPE" comment="AMBIT_INDUSTRY_PIPE_UNITS_A_VALVETYPE" schema="GDAL" table="AMBIT_INDUSTRY_PIPE_UNITS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="valvetype" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_PIPE_UNITS_A" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="AMBIT_INDUSTRY_PIPE_UNITS_A_INSTPLACE" comment="AMBIT_INDUSTRY_PIPE_UNITS_A_INSTPLACE" schema="GDAL" table="AMBIT_INDUSTRY_PIPE_UNITS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="instplace" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_PIPE_UNITS_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_PIPE_UNITS_A_PIPEDIAMETER" comment="AMBIT_INDUSTRY_PIPE_UNITS_A_PIPEDIAMETER" schema="GDAL" table="AMBIT_INDUSTRY_PIPE_UNITS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="pipediameter" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_PIPE_UNITS_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_PIPE_UNITS_A_DRIVETYPE" comment="AMBIT_INDUSTRY_PIPE_UNITS_A_DRIVETYPE" schema="GDAL" table="AMBIT_INDUSTRY_PIPE_UNITS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="drivetype" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_PIPE_UNITS_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_PIPE_UNITS_A_TOPOCODE" comment="AMBIT_INDUSTRY_PIPE_UNITS_A_TOPOCODE" schema="GDAL" table="AMBIT_INDUSTRY_PIPE_UNITS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_PIPE_UNITS_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_OILSTATIONS_A_STTYPE" comment="AMBIT_INDUSTRY_OILSTATIONS_A_STTYPE" schema="GDAL" table="AMBIT_INDUSTRY_OILSTATIONS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="sttype" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_OILSTATIONS_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_INDUSTRY_OILSTATIONS_A_TOPOCODE" comment="AMBIT_INDUSTRY_OILSTATIONS_A_TOPOCODE" schema="GDAL" table="AMBIT_INDUSTRY_OILSTATIONS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="AMBIT_INDUSTRY_OILSTATIONS_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_PLATFORMS_A_TOPOCODE" comment="AMBIT_PLATFORMS_A_TOPOCODE" schema="GDAL" table="AMBIT_PLATFORMS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="AMBIT_PLATFORMS_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_PLATFORMS_A_PLATFORMTYPE" comment="AMBIT_PLATFORMS_A_PLATFORMTYPE" schema="GDAL" table="AMBIT_PLATFORMS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="platformtype" />
+				<var name="LAYER_ID" default="AMBIT_PLATFORMS_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_ROADSTRUCTURES_A_OBJSTATE" comment="GEO_ROADSTRUCTURES_A_OBJSTATE" schema="GDAL" table="GEO_ROADSTRUCTURES_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objstate" />
+				<var name="LAYER_ID" default="GEO_ROADSTRUCTURES_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_ROADSTRUCTURES_A_OBJMATERIAL" comment="GEO_ROADSTRUCTURES_A_OBJMATERIAL" schema="GDAL" table="GEO_ROADSTRUCTURES_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objmaterial" />
+				<var name="LAYER_ID" default="GEO_ROADSTRUCTURES_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_ROADSTRUCTURES_A_TOPOCODE" comment="GEO_ROADSTRUCTURES_A_TOPOCODE" schema="GDAL" table="GEO_ROADSTRUCTURES_A">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_ROADSTRUCTURES_A" />
+			</xmlQuery>
+		</select>
+	</data>		
+	<data id="GEO_HYDRAULICSTRUCT_A_OBJSTATE" comment="GEO_HYDRAULICSTRUCT_A_OBJSTATE" schema="GDAL" table="GEO_HYDRAULICSTRUCT_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objstate" />
+				<var name="LAYER_ID" default="GEO_HYDRAULICSTRUCT_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_HYDRAULICSTRUCT_A_OBJMATERIAL" comment="GEO_HYDRAULICSTRUCT_A_OBJMATERIAL" schema="GDAL" table="GEO_HYDRAULICSTRUCT_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objmaterial" />
+				<var name="LAYER_ID" default="GEO_HYDRAULICSTRUCT_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_HYDRAULICSTRUCT_A_TOPOCODE" comment="GEO_HYDRAULICSTRUCT_A_TOPOCODE" schema="GDAL" table="GEO_HYDRAULICSTRUCT_A">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_HYDRAULICSTRUCT_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_INDUCTRIALOBJ_A_OBJSTATE" comment="GEO_INDUCTRIALOBJ_A_OBJSTATE" schema="GDAL" table="GEO_INDUCTRIALOBJ_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objstate" />
+				<var name="LAYER_ID" default="GEO_INDUCTRIALOBJ_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_INDUCTRIALOBJ_A_OBJMATERIAL" comment="GEO_INDUCTRIALOBJ_A_OBJMATERIAL" schema="GDAL" table="GEO_INDUCTRIALOBJ_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objmaterial" />
+				<var name="LAYER_ID" default="GEO_INDUCTRIALOBJ_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_INDUCTRIALOBJ_A_TOPOCODE" comment="GEO_INDUCTRIALOBJ_A_TOPOCODE" schema="GDAL" table="GEO_INDUCTRIALOBJ_A">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_INDUCTRIALOBJ_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_SETTLEMENTS_A_BELONGTERRITORY" comment="GEO_SETTLEMENTS_A_BELONGTERRITORY" schema="GDAL" table="GEO_SETTLEMENTS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="belongterritory" />
+				<var name="LAYER_ID" default="GEO_SETTLEMENTS_A" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="GEO_SETTLEMENTS_A_ADMINISTRATUNIT" comment="GEO_SETTLEMENTS_A_ADMINISTRATUNIT" schema="GDAL" table="GEO_SETTLEMENTS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="administratunit" />
+				<var name="LAYER_ID" default="GEO_SETTLEMENTS_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_SETTLEMENTS_A_OBJSTATE" comment="GEO_SETTLEMENTS_A_OBJSTATE" schema="GDAL" table="GEO_SETTLEMENTS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objstate" />
+				<var name="LAYER_ID" default="GEO_SETTLEMENTS_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_SETTLEMENTS_A_OBJMATERIAL" comment="GEO_SETTLEMENTS_A_OBJMATERIAL" schema="GDAL" table="GEO_SETTLEMENTS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="objmaterial" />
+				<var name="LAYER_ID" default="GEO_SETTLEMENTS_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_SETTLEMENTS_A_SETTLEMENTUNIT" comment="GEO_SETTLEMENTS_A_SETTLEMENTUNIT" schema="GDAL" table="GEO_SETTLEMENTS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="settlementunit" />
+				<var name="LAYER_ID" default="GEO_SETTLEMENTS_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_SETTLEMENTS_A_SETTLEMENTTYPE" comment="GEO_SETTLEMENTS_A_SETTLEMENTTYPE" schema="GDAL" table="GEO_SETTLEMENTS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="settlementtype" />
+				<var name="LAYER_ID" default="GEO_SETTLEMENTS_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_SETTLEMENTS_A_TOPOCODE" comment="GEO_SETTLEMENTS_A_TOPOCODE" schema="GDAL" table="GEO_SETTLEMENTS_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_SETTLEMENTS_A" />
+			</xmlQuery>
+		</select>
+	</data>		
+	<data id="GEO_HYDROGRAPHYREL_A_GROUNDTYPE" comment="GEO_HYDROGRAPHYREL_A_GROUNDTYPE" schema="GDAL" table="GEO_HYDROGRAPHYREL_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="groundtype" />
+				<var name="LAYER_ID" default="GEO_HYDROGRAPHYREL_A" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="GEO_HYDROGRAPHYREL_A_SHORELINETYPE" comment="GEO_HYDROGRAPHYREL_A_SHORELINETYPE" schema="GDAL" table="GEO_HYDROGRAPHYREL_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="shorelinetype" />
+				<var name="LAYER_ID" default="GEO_HYDROGRAPHYREL_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_HYDROGRAPHYREL_A_TOPOCODE" comment="GEO_HYDROGRAPHYREL_A_TOPOCODE" schema="GDAL" table="GEO_HYDROGRAPHYREL_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_HYDROGRAPHYREL_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_SOIL_A_TOPOCODE" comment="GEO_SOIL_A_TOPOCODE" schema="GDAL" table="GEO_SOIL_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_SOIL_A" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="GEO_SOIL_A_PASSABILITY" comment="GEO_SOIL_A_PASSABILITY" schema="GDAL" table="GEO_SOIL_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="passability" />
+				<var name="LAYER_ID" default="GEO_SOIL_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_HYDRO_A_TOPOCODE" comment="AMBIT_HYDRO_A_TOPOCODE" schema="GDAL" table="AMBIT_HYDRO_A">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="AMBIT_HYDRO_A" />
+			</xmlQuery>
+		</select>
+	</data>
+	<data id="AMBIT_HYDRO_A_WATERCOURSETYPE" comment="AMBIT_HYDRO_A_WATERCOURSETYPE" schema="GDAL" table="AMBIT_HYDRO_A">
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="watercoursetype" />
+				<var name="LAYER_ID" default="AMBIT_HYDRO_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_RELIEF_A_ORIGIN" comment="GEO_RELIEF_A_ORIGIN" schema="GDAL" table="GEO_RELIEF_A">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="origin" />
+				<var name="LAYER_ID" default="GEO_RELIEF_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_RELIEF_A_TOPOCODE" comment="GEO_RELIEF_A_TOPOCODE" schema="GDAL" table="GEO_RELIEF_A">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_RELIEF_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_VEGETATION_FOREST_A_TOPOCODE" comment="AMBIT_VEGETATION_FOREST_A_TOPOCODE" schema="GDAL" table="AMBIT_VEGETATION_FOREST_A">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="AMBIT_VEGETATION_FOREST_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_VEGETATION_FOREST_A_VEGTYPE" comment="AMBIT_VEGETATION_FOREST_A_VEGTYPE" schema="GDAL" table="AMBIT_VEGETATION_FOREST_A">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="vegtype" />
+				<var name="LAYER_ID" default="AMBIT_VEGETATION_FOREST_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_VEGETATION_FIELDS_A_TOPOCODE" comment="AMBIT_VEGETATION_FIELDS_A_TOPOCODE" schema="GDAL" table="AMBIT_VEGETATION_FIELDS_A">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="AMBIT_VEGETATION_FIELDS_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="AMBIT_VEGETATION_FIELDS_A_CROP" comment="AMBIT_VEGETATION_FIELDS_A_CROP" schema="GDAL" table="AMBIT_VEGETATION_FIELDS_A">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="crop" />
+				<var name="LAYER_ID" default="AMBIT_VEGETATION_FIELDS_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_VEGETATION_A_VEGETATIONTYPE" comment="GEO_VEGETATION_A_VEGETATIONTYPE" schema="GDAL" table="GEO_VEGETATION_A">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="vegetationtype" />
+				<var name="LAYER_ID" default="GEO_VEGETATION_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_VEGETATION_A_PASSABILITY" comment="GEO_VEGETATION_A_PASSABILITY" schema="GDAL" table="GEO_VEGETATION_A">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="passability" />
+				<var name="LAYER_ID" default="GEO_VEGETATION_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_VEGETATION_A_TOPOCODE" comment="GEO_VEGETATION_A_TOPOCODE" schema="GDAL" table="GEO_VEGETATION_A">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_VEGETATION_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_BOUNDARIES_A_TOPOCODE" comment="GEO_BOUNDARIES_A_TOPOCODE" schema="GDAL" table="GEO_BOUNDARIES_A">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="topocode" />
+				<var name="LAYER_ID" default="GEO_BOUNDARIES_A" />
+			</xmlQuery>
+		</select>
+	</data>	
+	<data id="GEO_BOUNDARIES_A_BOUNDTYPE" comment="GEO_BOUNDARIES_A_BOUNDTYPE" schema="GDAL" table="GEO_BOUNDARIES_A">	
+		<select>
+			<xmlQuery source="IUST_DATA_DICT.xml" xpath="//table[@id='{LAYER_ID}']/edittypes/edittype[@name='{DICT_NAME}']/widgetv2config/data">
+				<var name="DICT_NAME" default="boundtype" />
+				<var name="LAYER_ID" default="GEO_BOUNDARIES_A" />
+			</xmlQuery>
+		</select>
+	</data>		
+</root>

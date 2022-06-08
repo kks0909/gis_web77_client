@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="760" xmlns="view.data.*" title="Сведения о выполненном ремонте" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml" initialId="LIST_ID">
+  <dataProvider>STO_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+   </panel:buttons>
+  <mx:VBox width="760">
+    <mx:HBox percentWidth="100">
+      <mx:VBox percentWidth="50">
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Описание ремонта" width="140"/>
+	  <mx:TextInput id="DESCRIPTION" width="160" maxChars="32" height="20"/>
+        </mx:HBox>
+	<mx:HBox percentWidth="100">
+		<mx:Text textAlign="right" text="Тип ремонтируемой трубы" width="140"/>
+		<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+		<mx:ComboBox id="PIPE_CONSTRUCTION_TYPE_CL" width="200" height="20"
+		dataProvider="STO_SEM.xml#PODS_STO_PIPE_CONSTRUCTION_CL"/>
+		<mx:Button id="BTN_LIST_PIPE_CONSTRUCTION_TYPE_CL" selectedField="PIPE_CONSTRUCTION_TYPE_CL" enabled="false"
+		styleName="refList"
+		toolTip="Перейти к редактированию справочника"
+		width="16"
+		height="16"/>
+		</mx:HBox>
+	</mx:HBox>
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Категория ремонтируемой трубы" width="140"/>
+	  <mx:TextInput id="PIPE_CATEGORY" width="160" maxChars="32" height="20"/>
+        </mx:HBox>
+	<mx:HBox percentWidth="100">
+        	<mx:Text textAlign="right" text="Объем ремонтируемой трубы" width="140"/>
+        	<mx:TextInput id="PIPE_VALUE" width="160" maxChars="32" height="20"/>
+        </mx:HBox>
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Комментарии" width="140"/>
+	  <mx:TextInput id="COMMENTS" width="160" maxChars="32" height="20"/>
+        </mx:HBox>
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Диаметр/Толщина стенки установленной трубы, мм" width="140"/>
+	  <mx:TextInput id="REPAIR_DIAMETER" width="50" maxChars="32" height="20"/>
+	  <mx:TextInput id="REPAIR_THICKNESS" width="50" maxChars="32" height="20"/>
+        </mx:HBox>
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Длина/Ширина отремонтированного участка, мм" width="140"/>
+	  <mx:TextInput id="LENGTH" width="50" maxChars="32" height="20"/>
+	  <mx:TextInput id="WIDTH" width="50" maxChars="32" height="20"/>
+        </mx:HBox>
+	
+</mx:VBox>
+      <mx:VBox percentWidth="50">
+	<mx:HBox percentWidth="100">
+		<mx:Text textAlign="right" text="Тип ремонта" width="140"/>
+		<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+		<mx:ComboBox id="REPAIR_TYPE_CL" width="200" height="20"
+		dataProvider="STO_SEM.xml#PODS_STO_REPAIR_TYPE_CL"/>
+		<mx:Button id="BTN_LIST_REPAIR_TYPE_CL" selectedField="REPAIR_TYPE_CL" enabled="false"
+		styleName="refList"
+		toolTip="Перейти к редактированию справочника"
+		width="16"
+		height="16"/>
+		</mx:HBox>
+	</mx:HBox>
+	<mx:HBox percentWidth="100">
+		<mx:Text textAlign="right" text="Метод ремонта" width="140"/>
+		<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+		<mx:ComboBox id="REPAIR_METHOD_CL" width="200" height="20"
+		dataProvider="STO_SEM.xml#PODS_STO_REPAIR_METHOD_CL"/>
+		<mx:Button id="BTN_LIST_REPAIR_METHOD_CL" selectedField="REPAIR_METHOD_CL" enabled="false"
+		styleName="refList"
+		toolTip="Перейти к редактированию справочника"
+		width="16"
+		height="16"/>
+		</mx:HBox>
+	</mx:HBox>
+<mx:HBox percentWidth="100">
+        	<mx:Text textAlign="right" text="Исполнитель ремонта" width="140"/>
+        	<mx:TextInput id="PERSON_EXECUTIVE" width="160" maxChars="32" height="20"/>
+        </mx:HBox>
+ 	<mx:HBox percentWidth="100">	
+            		<mx:Text textAlign="right" text="Дата создания/ Кто создал" width="140"/>
+            		<mx:DateField id="CTIME" editable="false" width="96" height="20" formatString="DD.MM.YYYY"/>
+            		<mx:TextInput id="CUSER" editable="false" width="96" height="20" maxChars="80"/>
+         	</mx:HBox>
+		<mx:HBox percentWidth="100">
+            		<mx:Text textAlign="right" text="Дата изменения/ Кто изменил" width="140"/>
+            		<mx:DateField id="MTIME" editable="false" width="96" height="20" formatString="DD.MM.YYYY"/>
+            		<mx:TextInput id="MUSER" editable="false" width="96" height="20" maxChars="80"/>
+         	</mx:HBox>
+        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="ID" width="140" />
+          <controls:NumberInput id="ID" editable="false" width="160" maxChars="22" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Ведомость ремонтов" width="140" />
+          <controls:NumberInput id="SHEET_ID" editable="false" width="160" maxChars="22" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Идентификатор дефекта" width="140" />
+          <controls:NumberInput id="ILI_DATA_ID" editable="false" width="160" maxChars="22" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Идентификатор группы дефектов" width="140" />
+          <controls:NumberInput id="ILI_CLUSTER_ID" editable="false" width="160" maxChars="22" height="20" />
+        </mx:HBox>
+
+      </mx:VBox>
+    </mx:HBox>
+  </mx:VBox>
+ <validatorsArray>
+    <controls:DefaultStringValidator source="{DESCRIPTION}" property="text" minLength="1" requiredFieldError="Поле обязательно для заполнения." tooShortError="Поле обязательно для заполнения." />
+ </validatorsArray>   
+</DATA_EDIT_FORM>

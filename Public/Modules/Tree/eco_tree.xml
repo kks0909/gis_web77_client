@@ -1,0 +1,238 @@
+﻿<dataset name="Экомониторинг" version="7.7.4.10">
+	<group comment="Команды" >
+	<invoke id="gridToolModule" type="global" event_name="FULL_GRID_EVENT_ID_MODULE"
+				 tooltip="Показать списком"
+				 icon="Public/assets/GRID.png">   
+			<!-- Общие параметры-->
+			<!-- имя функции открытия, если пустое, то всегда в новом окне -->
+			<var name="functionName" value=""/>
+			<!-- доп параметры открытия окна из windowsTemplates.xml -->
+			<var name="windowTemplateId" value="gridWindow"/>
+			<!-- Задача -->
+			<var name="task" value="GRID"/>
+			<var name="mdl" value="Public/SWF/Grid_55.swf"/>
+			<!-- Необходимо ли в команды передавать фильтр верхнего уровня -->
+			<var name="needTopFilter" value="true"/>
+			<!-- Флаг указывает, всегда ли открывать в новом окне или можно использовать команды синхронизации -->
+			<var name="useSynchCommands" value="false"/>
+			<!-- шаблон грида -->
+			<var name="gridId" value=""/>
+			<!-- заголовок грида -->
+			<var name="title" value=""/>
+			<!-- полный идентификатор слоя -->
+			<var name="layerId" value=""/>
+		</invoke>		
+<invoke id="createNewObject" type="global" event_name="createObjectFromTree" tooltip="Добавить запись" icon="Public/assets/addObject.png">
+			<var name="classId" value="DEFAULT_GRID" />
+		</invoke>
+		<invoke id="checkBoxTool" type="global" event_name="checkBoxEvent" tooltip="Вкл/Выкл видимость слоя">
+			<var layerParams="" />
+		</invoke>
+   </group>
+
+	<tree toolbarStyle="toolbarStyle" toolbarButtonStyle="mapIcon" max_items="20">
+		<level format="1.Зоны болот" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#1_ZONI_BOLOT" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="1_ZONI_BOLOT" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="1_ZONI_BOLOT_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="1_ZONI_BOLOT"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=1_ZONI_BOLOT;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=1_ZONI_BOLOT;" />
+		</level>
+		<level format="2.Зоны эрозионных процессов на территориях, покрытых болотами" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#2_ZONI_EROZ" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="2_ZONI_EROZ" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="2_ZONI_EROZ_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="2_ZONI_EROZ"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=2_ZONI_EROZ;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=2_ZONI_EROZ;" />
+		</level>
+		<level format="3.Зоны развития геодинамических и связанных с ними гравитаций" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#3_ZONI_RAZV" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="3_ZONI_RAZV" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="3_ZONI_RAZV_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="3_ZONI_RAZV"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=3_ZONI_RAZV;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=3_ZONI_RAZV;" />
+		</level>
+		<level format="4.Зоны геодинамических и связанных с ними эрозионных процессов" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#4_ZONI_GEOD" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="4_ZONI_GEOD" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="4_ZONI_GEOD_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="4_ZONI_GEOD"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=4_ZONI_GEOD;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=4_ZONI_GEOD;" />
+		</level>
+		<level format="5.Зоны комплексной (антропогенной и природной) опасности" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#5_ZONI_KOMP" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="5_ZONI_KOMP" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="5_ZONI_KOMP_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="5_ZONI_KOMP"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=5_ZONI_KOMP;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=5_ZONI_KOMP;" />
+		</level>
+		<level format="7.Зоны возможной просадки грунтов под воздействием ряда причин" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#7_ZONI_VOZM" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="7_ZONI_VOZM" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="7_ZONI_VOZM_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="7_ZONI_VOZM"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=7_ZONI_VOZM;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=7_ZONI_VOZM;" />
+		</level>
+		<level format="9.Предполагаемые разломы, активированные в настоящее время" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#9_PREDPOLAG" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="9_PREDPOLAG" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="9_PREDPOLAG_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="9_PREDPOLAG"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=9_PREDPOLAG;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=9_PREDPOLAG;" />
+		</level>
+		<level format="10.Реперные точки контроля состояния береговой зоны" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#10_REPER" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="10_REPER" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="10_REPER_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="10_REPER"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=10_REPER;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=10_REPER;" />
+		</level>
+		<level format="11.Реперные точки контроля заиления" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#11_REPER" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="11_REPER" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="11_REPER_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="11_REPER"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=11_REPER;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=11_REPER;" />
+		</level>
+		<level format="13.Реперные точки в зоне возможного тектонического разлома" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#13_REPER" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="13_REPER" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="13_REPER_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="13_REPER"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=13_REPER;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=13_REPER;" />
+		</level>
+		<level format="14.Реперные точки на склонах" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#14_REPER" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="14_REPER" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="14_REPER_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="14_REPER"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=14_REPER;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=14_REPER;" />
+		</level>
+		<level format="15.Торфоразработки" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#15_TORFORAZ" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="15_TORFORAZ" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="15_TORFORAZ_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="15_TORFORAZ"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=15_TORFORAZ;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=15_TORFORAZ;" />
+		</level>
+		<level format="16.Пересечение с линейными объектами" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#16_PERESECH" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="16_PERESECH" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="16_PERESECH_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="16_PERESECH"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=16_PERESECH;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=16_PERESECH;" />
+		</level>
+		<level format="17.Береговые эрозионно-аккумулятивные процессы" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#17_BEREGOV" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="17_BEREGOV" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="17_BEREGOV_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="17_BEREGOV"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=17_BEREGOV;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=17_BEREGOV;" />
+		</level>
+		<level format="18.Абразионные-аккумулятивные процессы береговой зоны" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#18_ABRAZION" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="18_ABRAZION" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="18_ABRAZION_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="18_ABRAZION"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=18_ABRAZION;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=18_ABRAZION;" />
+		</level>
+		<level format="19.Малые водотоки" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#19_MALIE_VOD" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="19_MALIE_VOD" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="19_MALIE_VOD_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="19_MALIE_VOD"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=19_MALIE_VOD;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=19_MALIE_VOD;" />
+		</level>
+				<level format="Вырубки 2020" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#VIRUBKI_2020" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="VIRUBKI_2020" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="VIRUBKI_2020_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="VIRUBKI_2020"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=VIRUBKI_2020;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=VIRUBKI_2020;" />
+		</level>
+				<level format="Вырубки 2019" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#VIRUBKI_2019" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="VIRUBKI_2019" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="VIRUBKI_2019_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="VIRUBKI_2019"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=VIRUBKI_2019;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=VIRUBKI_2019;" />
+		</level>
+		<level format="Вырубки 2018" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#VIRUBKI_2018" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="VIRUBKI_2018" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="VIRUBKI_2018_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="VIRUBKI_2018"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=VIRUBKI_2018;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=VIRUBKI_2018;" />
+		</level>
+		<level format="Вырубки 2017" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#VIRUBKI_2017" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="VIRUBKI_2017" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="VIRUBKI_2017_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="VIRUBKI_2017"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=VIRUBKI_2017;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=VIRUBKI_2017;" />
+		</level>
+		<level format="Вырубки 2016" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#VIRUBKI_2016" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="VIRUBKI_2016" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="VIRUBKI_2016_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="VIRUBKI_2016"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=VIRUBKI_2016;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=VIRUBKI_2016;" />
+		</level>
+		<level format="Вырубки 2015" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#VIRUBKI_2015" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="VIRUBKI_2015" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="VIRUBKI_2015_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="VIRUBKI_2015"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=VIRUBKI_2015;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=VIRUBKI_2015;" />
+		</level>
+		<level format="Вырубки 2014" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#VIRUBKI_2014" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="VIRUBKI_2014" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="VIRUBKI_2014_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="VIRUBKI_2014"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=VIRUBKI_2014;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=VIRUBKI_2014;" />
+		</level>
+		<level format="Вырубки 2013" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#VIRUBKI_2013" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="VIRUBKI_2013" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="VIRUBKI_2013_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="VIRUBKI_2013"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=VIRUBKI_2013;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=VIRUBKI_2013;" />
+		</level>
+				<level format="Подтопления 2019" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#PODTOPL_2019" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODTOPL_2019" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODTOPL_2019_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="PODTOPL_2019"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=PODTOPL_2019;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODTOPL_2019;" />
+		</level>
+		<level format="Подтопления 2017" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#PODTOPL_2017" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODTOPL_2017" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODTOPL_2017_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="PODTOPL_2017"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=PODTOPL_2017;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODTOPL_2017;" />
+		</level>
+		<level format="200-метровые зоны " icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#200_METERS_Z" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="200_METERS_Z" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="200_METERS_Z_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="200_METERS_Z"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=200_METERS_Z;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=200_METERS_Z;" />
+		</level>
+		<level format="10-км зоны" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#10_KM_ZONE" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="10_KM_ZONE" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="10_KM_ZONE_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="10_KM_ZONE"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=10_KM_ZONE;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=10_KM_ZONE;" />
+		</level>
+		<level format="Контрольные пункты" icon="OPENSCALE" levelParams="layerId=eco_Layers.xml#CHECK_POINTS" max_items="20">
+			<query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="CHECK_POINTS" FILE_NAME="eco_STYLE.xml" >  </query>
+			<!-- <context_menu run_invoke="gridToolModule" title="{descr}" gridId="CHECK_POINTS_LIST"/> -->
+			<!--  <context_menu run_invoke="createNewObject" classId="CHECK_POINTS"/> -->
+			<on_check run_invoke="checkBoxTool" layerParams="layerId=CHECK_POINTS;" />
+			<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=CHECK_POINTS;" />
+		</level>
+    </tree>  
+</dataset>

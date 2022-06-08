@@ -1,0 +1,32 @@
+﻿{
+	"code":200,
+	"version":"7.7.7.0",
+	"id":"posts",
+	"map":{
+		"rasterlayers":[]
+	},
+	"tree":{
+	    "visible": false,
+	    "isMaximized":true,
+	    "treePercentWidth":30,
+	    "trees":[{
+	        "id":"PODS_LINE_LIST",
+	        "title":"Лента документов",
+	        "templateUrl":"Public/Modules/Tree/pods_sto_tree.xml",
+	        "default":true,
+	        "startupScenario":{      
+	          "openLayers":[],
+	          "filter":{
+	            "type":"top",
+	            "topDataSource":"top_line_filter",
+	            "middleDataSource":"middle_line_filter"
+	          }
+	        }
+	      }
+	    ]
+  	},
+  	"ppanel":{
+    	"showSystemInfo":false
+  	},
+  	"vectorlayers":[]
+}

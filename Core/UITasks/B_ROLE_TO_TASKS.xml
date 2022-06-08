@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<data version="7.7.7.3">
+  <role id="1" name="USER">
+    <tasks>
+     <group descr="Карты" order="1">
+    		<task name="MULT_MAIN" mdl="main_js.html" descr="Карта" order="1" type="user" default="true"  mask="12" />
+    		<task name="pods_ehz" mdl="main_js.html" descr="Обследования ЭХЗ" order="2" type="user"  />
+    		<task name="KADASTR" mdl="main_js.html" descr="Карта МДР" order="10" type="user" />
+    		<task name="MULT_MAIN_IUST" mdl="main_js.html" descr="Карта ИУС Т" order="11" type="user" />
+    		<task name="main_eco" mdl="main_js.html" descr="Экомониторинг" order="12" type="user" />
+    </group>
+	  <group descr="Технологические схемы" order="2">
+       <task name="map_tech_schema" mdl="tech_schema_js.html" descr="Технологическая схема" order="6" type="user" />
+       <task name="map_tech_schema_vtd" mdl="tech_schema_js.html" descr="Тех.схема со сведениями по дефектности" order="7" type="user" />
+       <task name="map_tech_schema_kpg" mdl="tech_schema_js.html" descr="Тех.схема с КПГ" order="8" type="user" />
+       <task name="sto_shurf_schema" mdl="shurf_schema_js.html" descr="Cхема шурфовок" order="13" type="" />
+       <task name="sto_forecast" mdl="tech_schema_js.html" descr="Cхема ВТД" order="14" type="user" />
+       <task name="pods_sto" mdl="main_js.html" descr="Планирование шурфов" order="2" type="user"  />
+      </group>
+  	  <group descr="Диагностика переходов" order="3">
+  	    <task name="road" mdl="main_js.html" descr="Дорожные переходы" order="9" type="user" />
+  		  <task name="waterway" mdl="main_js.html" descr="Водные переходы" order="18" type="user" />
+      </group>
+	    <group descr="Прочие задачи" order="4">
+		    <task name="ADM_LIB_DOC" mdl="main_js.html" descr="Файловый архив" order="6" type="user" />
+      </group>
+      <group descr="СУ ТС ТПА" order="5">
+        <task name="main_sutstpa" mdl="main_js.html" descr="Конфигуратор" order="1" type="user" />        
+        <task name="main_sutstpa_11" mdl="main_js.html" descr="Сверка с ССД ИНФОТЕХ" order="2" type="user" />
+        <task name="main_sutstpa_12" mdl="main_js.html" descr="Сверка с исполнительной документацией" order="3" type="user" />
+        <task name="main_sutstpa_8" mdl="main_js.html" descr="Анализ чек-листа кранов" order="5" type="user" />
+        <task name="main_sutstpa_9" mdl="main_js.html" descr="Анализ чек-листа крановых площадок" order="6" type="user" />
+        <task name="main_sutstpa_10" mdl="main_js.html" descr="Анализ чек-листа опасности свечей" order="7" type="user" />
+        <task name="main_sutstpa_1" mdl="main_js.html" descr="Паспорт крана" order="8" type="user" />
+        <task name="main_sutstpa_3" mdl="main_js.html" descr="Паспорт привода крана" order="9" type="user" />
+        <task name="main_sutstpa_4" mdl="main_js.html" descr="Контроль сроков РСО" order="10" type="user" />
+        <task name="main_sutstpa_5" mdl="main_js.html" descr="Контроль сроков ЭПБ" order="11" type="user" />
+      </group>
+      <group descr="Помощь" order="6">
+        <task name="CMN_HELP" mdl="Public/Help/help/index.html" descr="Справка_JS" order="1" type="user" newWnd="true" auth="false" />
+      	<task name="CMN_VIDEO" mdl="Public/Help/video/index.html" descr="Видеоинструкции" order="2" type="user" newWnd="true" auth="false" />
+      	<task name="CMN_HISTORY" mdl="Public/Help/History/index.html" descr="История изменений" order="3" type="user" newWnd="true" auth="false" />
+        <task name="CMN_CONTACTS" mdl="Public/Help/Contacts/index.html" descr="Контакты" order="4" type="user" newWnd="true" auth="false" />
+      </group>
+      <group descr="Настройки" order="7">
+        <task name="USER_OFFICE" descr="Настройки пользователя" order="1001" type="user" />
+        <task name="TASK_OFFICE" descr="Настройки текущей задачи " order="1002" type="user" />
+      </group>
+	     <task name="cas_ehz_kip" mdl="main_js.html" descr="ПКА. Замеры по КИПам" order="3" type=""  />
+	     <task name="cas_ehz_intens" mdl="main_js.html" descr="ПКА. Интенсивы" order="5" type=""  />
+      <task name="CAS" mdl="Public/SWF/Cas_55.swf" descr="Профиль МГ(FLASH)" order="10002" type="" />
+      <task name="CAS_JS" mdl="cas_js.html" descr="Профиль МГ(JS)" order="10002" type="" />
+  	  <task name="m_1" mdl="main_js.html" descr="Карта водного перехода" order="20" type="" />
+  	  <task name="cas_waterway" mdl="main_js.html" descr="Продольный профиль газопровода водного перехода" order="21" type=""  />
+  	  <task name="posts" mdl="docList.html" descr="Лента документов" order="22" type="" />
+      <task name="ILI_WIDGET" mdl="main_js.html" descr="Карта" order="2" type="" />
+  	  <task name="MAIN_WIDGET" mdl="main_js.html" descr="Карта" order="3" type="" />
+  	  <task name="sutstpa_map" mdl="main_js.html" descr="Карта СУ ТС ТПА" order="19" type="" />
+  	  <task name="sutstpavalidate_map" mdl="main_js.html" descr="Карта Загрузчик-валидатор" order="20" type="" />
+    </tasks>
+  </role>
+  <role id="1045" name="EDITOR">
+    <tasks>
+      <group descr="Карты" order="1">
+  		<task name="MULT_MAIN" mdl="main_js.html" descr="Карта" order="1" type="user" default="true" />
+  		<task name="pods_ehz" mdl="main_js.html" descr="Обследования ЭХЗ" order="2" type="user"  />
+  		<task name="KADASTR" mdl="main_js.html" descr="Карта МДР" order="10" type="user" />
+  		<task name="MULT_MAIN_IUST" mdl="main_js.html" descr="Карта ИУС Т" order="11" type="user" />
+  		<task name="main_eco" mdl="main_js.html" descr="Экомониторинг" order="12" type="user" />
+	   </group>
+  	 <group descr="Технологические схемы" order="2">
+    		<task name="map_tech_schema" mdl="tech_schema_js.html" descr="Технологическая схема" order="6" type="user" />
+    		<task name="map_tech_schema_vtd" mdl="tech_schema_js.html" descr="Тех.схема со сведениями по дефектности" order="7" type="user" />
+    		<task name="map_tech_schema_kpg" mdl="tech_schema_js.html" descr="Тех.схема с КПГ" order="8" type="user" />
+    		<task name="sto_shurf_schema" mdl="shurf_schema_js.html" descr="Cхема шурфовок" order="13" type="" />
+    		<task name="sto_forecast" mdl="tech_schema_js.html" descr="Cхема ВТД" order="14" type="user" />
+  	    <task name="pods_sto" mdl="main_js.html" descr="Планирование шурфов" order="2" type="user"  />
+      </group>
+	    <group descr="Диагностика переходов" order="3">
+       <task name="road" mdl="main_js.html" descr="Диагностика и ремонт дорожных переходов" order="9" type="user" />
+       <task name="waterway" mdl="main_js.html" descr="Водные переходы" order="18" type="user" />  
+      </group>
+	   <group descr="Прочие задачи" order="4">
+       <task name="ADM_LIB_DOC" mdl="main_js.html" descr="Файловый архив" order="6" type="user" />
+	   </group>
+      <group descr="СУ ТС ТПА" order="4">
+    	<task name="sutstpa_edit" mdl="main_js.html" descr="Редактирование справочников" order="1" type="user" />
+    	<task name="sutstpavalidate" mdl="main_js.html" descr="Загрузчик-валидатор" order="2" type="user" /> 
+        <task name="main_sutstpa" mdl="main_js.html" descr="Конфигуратор" order="3" type="user" />        
+        <task name="main_sutstpa_11" mdl="main_js.html" descr="Сверка с ССД ИНФОТЕХ" order="4" type="user" />
+        <task name="main_sutstpa_12" mdl="main_js.html" descr="Сверка с исполнительной документацией" order="5" type="user" />
+        <task name="main_sutstpa_8" mdl="main_js.html" descr="Анализ чек-листа кранов" order="6" type="user" />
+        <task name="main_sutstpa_9" mdl="main_js.html" descr="Анализ чек-листа крановых площадок" order="7" type="user" />
+        <task name="main_sutstpa_10" mdl="main_js.html" descr="Анализ чек-листа опасности свечей" order="8" type="user" />
+        <task name="main_sutstpa_1" mdl="main_js.html" descr="Паспорт крана" order="9" type="user" />
+        <task name="main_sutstpa_3" mdl="main_js.html" descr="Паспорт привода крана" order="10" type="user" />
+        <task name="main_sutstpa_4" mdl="main_js.html" descr="Контроль сроков РСО" order="11" type="user" />
+        <task name="main_sutstpa_5" mdl="main_js.html" descr="Контроль сроков ЭПБ" order="12" type="user" />
+      </group>
+      <group descr="Помощь" order="5">
+        <task name="CMN_HELP" mdl="Public/Help/help/index.html" descr="Справка_JS" order="1" type="user" newWnd="true" auth="false" />
+      	<task name="CMN_VIDEO" mdl="Public/Help/video/index.html" descr="Видеоинструкции" order="2" type="user" newWnd="true" auth="false" />
+      	<task name="CMN_HISTORY" mdl="Public/Help/History/index.html" descr="История изменений" order="3" type="user" newWnd="true" auth="false" />
+        <task name="CMN_CONTACTS" mdl="Public/Help/Contacts/index.html" descr="Контакты" order="4" type="user" newWnd="true" auth="false" />
+      </group>      
+      <group descr="Настройки" order="7">
+        <task name="USER_OFFICE" descr="Настройки пользователя" order="1001" type="user" />
+        <task name="TASK_OFFICE" descr="Настройки текущей задачи " order="1002" type="user" />
+      </group>
+      <task name="CAS_JS" mdl="cas_js.html" descr="Профиль МГ(JS)" order="10002" type="" />
+      <task name="CAS" mdl="Public/SWF/Cas_55.swf" descr="Профиль МГ(FLASH)" order="10002" type="" />
+      <task name="cas_ehz_kip" mdl="main_js.html" descr="ПКА. Замеры по КИПам" order="3" type=""  />
+      <task name="cas_ehz_intens" mdl="main_js.html" descr="ПКА. Интенсивы" order="5" type=""  />
+	  <task name="m_1" mdl="main_js.html" descr="Карта водного перехода" order="20" type="" />
+      <task name="cas_waterway" mdl="main_js.html" descr="Продольный профиль газопровода водного перехода" order="21" type=""  />
+      <task name="posts" mdl="docList.html" descr="Лента документов" order="22" type="" />
+      <task name="ILI_WIDGET" mdl="main_js.html" descr="Карта" order="2" type="" />
+      <task name="MAIN_WIDGET" mdl="main_js.html" descr="Карта" order="3" type="" />
+      <task name="sutstpa_map" mdl="main_js.html" descr="Карта СУ ТС ТПА" order="19" type="" />
+      <task name="sutstpavalidate_map" mdl="main_js.html" descr="Карта Загрузчик-валидатор" order="20" type="" />
+	  </tasks>
+  </role>
+  <role id="0" name="ADMIN">
+    <tasks>
+      <task name="ADM_TASKS" mdl="main_js.html" descr="Административные задачи. Рубрикатор" order="1" type="main" default="true" />
+      <task name="ilicorr" mdl="main_js.html" descr="ВТД, коррекция геопривязки" order="12" type="main" />
+      <task name="adm_controller" mdl="main_js.html" descr="Управление валидацией данных" order="13" type="main" />
+      <task name="ADM_LIB_DOC" mdl="main_js.html" descr="Файловый архив" order="3" type="main" />
+      <group descr="Помощь" order="4">
+        <task name="CMN_HELP_ADMIN" mdl="Public/Help/help_admin/index.html" descr="Справка" order="1" type="user" newWnd="true" auth="false" />
+        <task name="CMN_HISTORY" mdl="Public/Help/History/index.html" descr="История изменений" order="2" type="user" newWnd="true" auth="false" />
+        <task name="CMN_CONTACTS" mdl="Public/Help/Contacts/index.html" descr="Контакты" order="3" type="user" newWnd="true" auth="false" />
+      </group>
+      <group descr="Настройки" order="7">
+        <task name="USER_OFFICE" descr="Настройки пользователя" order="1001" type="user" />
+        <task name="TASK_OFFICE" descr=" Настройки текущей задачи " order="1002" type="user" />
+      </group>
+      <task name="posts" mdl="docList.html" descr="Лента документов" order="4" type="" />
+     </tasks>
+  </role>
+</data>

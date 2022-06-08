@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Файл описания слоёв "Карта МДР" -->
+<root version="7.7.7.4" descr="Карта МДР" name="KADASTR">
+  <dataProvider type="style" source="KADASTR_STYLE.xml" />
+  <layer id="WEB50_KADASTR_KVARTAL" comment="WEB50.KADASTR_KVARTAL" descr="Кадастровые кварталы" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="true" order="10" visible="true" topology="polygon" classField="" schema="WEB50" table="KADASTR_KVARTAL">
+	  <filter>
+		  <pattern> RAYON_NUM IN ({FILTER}) </pattern>
+		  <join>,</join>
+		  <field>RAYON_NUM</field>
+		  <replace>FILTER</replace>
+	  </filter>
+	  <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_KADASTR_KVARTAL" />
+    <dataProvider type="style" source="KADASTR_STYLE.xml#WEB50_KADASTR_KVARTAL" />
+    <dataProvider type="semantic" source="KADASTR_SEM.xml#WEB50_KADASTR_KVARTAL" />
+    <dataProvider type="spatial" source="KADASTR_GEO.xml#WEB50_KADASTR_KVARTAL" />
+  </layer>
+  <layer id="WEB50_KADASTR_PODS_MDR" comment="WEB50.KADASTR_PODS_MDR" descr="Зоны МДР" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="20" visible="true" topology="polygon"  classField="" schema="WEB50" table="KADASTR_PODS_MDR">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_KADASTR_PODS_MDR" />
+    <dataProvider type="style" source="KADASTR_STYLE.xml#WEB50_KADASTR_PODS_MDR" />
+    <dataProvider type="semantic" source="KADASTR_SEM.xml#WEB50_KADASTR_PODS_MDR" />
+    <dataProvider type="spatial" source="KADASTR_GEO.xml#WEB50_KADASTR_PODS_MDR" />
+  </layer>
+<layer id="WEB50_KADASTR_ALERT" comment="WEB50.KADASTR_ALERT" descr="Выявленные нарушения" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="20" visible="true" topology="polygon"  classField="" schema="WEB50" table="KADASTR_ALERT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_KADASTR_ALERT" />
+    <dataProvider type="style" source="KADASTR_STYLE.xml#WEB50_KADASTR_ALERT" />
+    <dataProvider type="semantic" source="KADASTR_SEM.xml#WEB50_KADASTR_ALERT" />
+    <dataProvider type="spatial" source="KADASTR_GEO.xml#WEB50_KADASTR_ALERT" />
+  </layer>
+<layer id="WEB50_KADASTR_GKS_WAY" comment="WEB50.KADASTR_GKS_WAY" descr="Маршруты патрулирования ГКС" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="20" visible="true" topology="line"  classField="" schema="WEB50" table="KADASTR_GKS_WAY">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_KADASTR_GKS_WAY" />
+    <dataProvider type="style" source="KADASTR_STYLE.xml#WEB50_KADASTR_GKS_WAY" />
+    <dataProvider type="semantic" source="KADASTR_SEM.xml#WEB50_KADASTR_GKS_WAY" />
+    <dataProvider type="spatial" source="KADASTR_GEO.xml#WEB50_KADASTR_GKS_WAY" />
+  </layer>
+<layer id="WEB50_KADASTR_ALERT_OBJECT" comment="WEB50.KADASTR_ALERT_OBJECT" descr="Перечень объектов нарушений" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="20" visible="true" topology="polygon"  classField="" schema="WEB50" table="KADASTR_ALERT_OBJECT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_KADASTR_ALERT_OBJECT" />
+    <dataProvider type="style" source="KADASTR_STYLE.xml#WEB50_KADASTR_ALERT_OBJECT" />
+    <dataProvider type="semantic" source="KADASTR_SEM.xml#WEB50_KADASTR_ALERT_OBJECT" />
+    <dataProvider type="spatial" source="KADASTR_GEO.xml#WEB50_KADASTR_ALERT_OBJECT" />
+  </layer>
+</root>

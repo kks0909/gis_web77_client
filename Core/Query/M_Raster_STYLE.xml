@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<kml version="7.7.3.0">
+<Document>
+  <!--
+  <Style id="WEB50_LIB_DOC" schema="DEFAULT" table="RASTER" descr="Растры" comment="Стиль для растрового слоя">
+    <zoomMin>27</zoomMin>
+    <zoomMax>12</zoomMax>
+    <LabelStyle>
+    </LabelStyle>
+    <MIStyle />
+    <IMGStyle />
+    <VRMLStyle />
+  </Style>
+  -->
+</Document>
+</kml>

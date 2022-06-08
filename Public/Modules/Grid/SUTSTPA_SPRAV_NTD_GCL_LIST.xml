@@ -1,0 +1,121 @@
+﻿<!--7.7.7.2-->
+
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="6"  headerVertSize="50"
+            id="SUTSTPA_SPRAV_NTD_GCL"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            labelColumn="LABEL"
+            layerId="SUTSTPA_SPRAV_NTD_GCL" propertyPanelName="SUTSTPA_SPRAV_NTD_GCL"
+            dataRequest="SUTSTPA_GRID.xml#SUTSTPA_SPRAV_NTD_GCL"
+            initialSortField="ID">
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/paste.png"
+        tooltip="Вставить данные из excel"
+        clickEvent="PasteFromExcelEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+<picPutton:GridButton source="../../ui/images/save.png"
+       tooltip="Сохранить изменения"
+       clickEvent="ApplyUpdatedCellEvent"
+       isEnabled="null" />
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="Идентификатор" dataField="ID" itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="false" filterComparisionType="number" width="40" /> 
+<columns:GridColumn headerText="Имя\nтаблицы" dataField="CHECK_TABLE"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="160"/>
+<columns:GridColumn headerText="Название\nколонки\n в таблице" dataField="CHECK_COLUMN"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="160"/>
+<columns:GridColumn headerText="Номер\nв документе" dataField="CHECK_NUM"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          hidden="true"
+                          filterComparisionType="string"
+                          width="160"/>
+<columns:GridColumn headerText="Категория" dataField="CATEGORY"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="160"/>
+<columns:GridColumn headerText="Название" dataField="REQUIRMENT"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="160"/>
+<columns:GridColumn headerText="Раздел НТД" dataField="STANDARD_SECTION"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          hidden="true"
+                          width="160"/>
+<columns:GridColumn headerText="Выдержка из НТД" dataField="STANDARD_CONTENT"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          hidden="true"
+                          width="160"/>
+<columns:GridColumn headerText="ссылка на НТД" dataField="STANDARD_NAME"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="160"/>
+<columns:GridColumn headerText="Резерв1" dataField="COMPLIANCE_YES"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          hidden="true"
+                          width="160"/>
+<columns:GridColumn headerText="Резерв2" dataField="COMPLIANCE_NO"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          hidden="true"
+                          width="160"/>
+<columns:GridColumn headerText="значение" dataField="KOEFF"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="160"/>
+<columns:GridColumn headerText="Необходимость\nинверсии" dataField="INVERT_IS"
+                           itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=SUTSTPA_SEM_DICT.xml#YESNO" filterComparisionType="array" 
+              		  filterRequestId="SUTSTPA_SEM_DICT.xml#YESNO"
+                          editable="true"
+                          hidden="true"
+                          filterRenderer="ru.corelight.view.controls.dynamicFilter.InListControl"
+                          width="50"/>
+<columns:GridColumn headerText="Сообщение\nесли нет значения" dataField="UNKNOWN_MESSAGE"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="160"/>
+  </grids:columns>
+</grids:Grid>

@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="LayersService.asmx.cs" Class="ASL.LayersService" %>

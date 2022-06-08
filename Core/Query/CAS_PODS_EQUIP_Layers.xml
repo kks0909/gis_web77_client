@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.5.0" descr="Основное оборудование">
+  <dataProvider type="style" source="PODS_EQUIP_STYLE.xml" />
+  <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml" />
+  <layer id="PODS_PIPE_LENGTH" visible="false" type="common" topology="line" table="PIPE_LENGTH_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="70" labelField="LABEL" fitMap="false" descr="Трубный журнал" dataType="vector" cover="false" comment="PODS_PIPE_LENGTH" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PIPE_LENGTH" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PIPE_LENGTH" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_PIPE_LENGTH" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_PIPE_LENGTH" />
+  </layer>
+  <layer id="PODS_EXTERNAL_COATING" visible="false" type="common" topology="line" table="EXTERNAL_COATING_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="20" labelField="LABEL" fitMap="false" descr="Внешнее покрытие труб" dataType="vector" cover="false" comment="PODS_EXTERNAL_COATING" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_EXTERNAL_COATING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_EXTERNAL_COATING" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_EXTERNAL_COATING" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_EXTERNAL_COATING" />
+  </layer>
+  <layer id="PODS_INTERNAL_COATING" visible="false" type="common" topology="line" table="INTERNAL_COATING_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="50" labelField="LABEL" fitMap="false" descr="Внутреннее покрытие труб" dataType="vector" cover="false" comment="PODS_INTERNAL_COATING" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_INTERNAL_COATING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_INTERNAL_COATING" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_INTERNAL_COATING" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_INTERNAL_COATING" />
+  </layer>
+  <layer id="PODS_PIPE_SEGMENT" visible="false" type="common" topology="line" table="PIPE_SEGMENT_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="60" labelField="LABEL" fitMap="false" descr="Материал/диаметр/допустимое давление трубопровода" dataType="vector" cover="false" comment="PODS_PIPE_SEGMENT" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PIPE_SEGMENT" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PIPE_SEGMENT" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_PIPE_SEGMENT" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_PIPE_SEGMENT" />
+  </layer>
+  <layer id="PODS_EXPOSURE" visible="false" type="common" topology="line" table="EXPOSURE_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="80" labelField="LABEL" fitMap="false" descr="Воздушные переходы" dataType="vector" cover="false" comment="PODS_EXPOSURE" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_EXPOSURE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_EXPOSURE" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_EXPOSURE" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_EXPOSURE" />
+  </layer>
+  <layer id="PODS_HORIZONTAL_DIRECTIONAL_DRILL" visible="false" type="common" topology="line" table="HORIZONTAL_DIRECTIONAL_DRILL_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="90" labelField="LABEL" fitMap="false" descr="Участки горизонтально/наклонно направленного бурения" dataType="vector" cover="false" comment="PODS_HORIZONTAL_DIRECTIONAL_DRILL" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_HORIZONTAL_DIRECTIONAL_DRILL" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_HORIZONTAL_DIRECTIONAL_DRILL" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_HORIZONTAL_DIRECTIONAL_DRILL" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_HORIZONTAL_DIRECTIONAL_DRILL" />
+  </layer>
+  <layer id="PODS_PROFILE" visible="false" type="common" topology="line" table="PROFILE_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="100" labelField="LABEL" fitMap="false" descr="Участки труб относительно уровня моря" dataType="vector" cover="false" comment="PODS_PROFILE" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PROFILE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PROFILE" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_PROFILE" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_PROFILE" />
+  </layer>
+  <layer id="PODS_VENT_PIPE" visible="true" type="common" topology="point" table="VENT_PIPE_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="10" labelField="LABEL" fitMap="false" descr="Выпускные свечи" dataType="vector" cover="false" comment="PODS_VENT_PIPE" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_VENT_PIPE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_VENT_PIPE" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_VENT_PIPE" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_VENT_PIPE" />
+  </layer>
+  <layer id="PODS_CASING" visible="false" type="common" topology="point,line" table="CASING_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="110" labelField="LABEL" fitMap="false" descr="Защитные кожухи (футляры)" dataType="vector" cover="false" comment="PODS_CASING" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_CASING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_CASING" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_CASING" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_CASING" />
+  </layer>
+  <layer id="PODS_VALVE" visible="true" type="common" topology="point" table="VALVE_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="30" labelField="LABEL" fitMap="false" descr="Запорно-регулирующая арматура" dataType="vector" cover="false" comment="PODS_VALVE" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_VALVE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_VALVE" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_VALVE" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_VALVE" />
+  </layer>
+  <layer id="PODS_EXTRUSION_OPENING" visible="false" type="common" topology="point" table="EXTRUSION_OPENING_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="140" labelField="LABEL" fitMap="false" descr="Подсоединения к распределителям" dataType="vector" cover="false" comment="PODS_EXTRUSION_OPENING" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_EXTRUSION_OPENING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_EXTRUSION_OPENING" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_EXTRUSION_OPENING" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_EXTRUSION_OPENING" />
+  </layer>
+  <layer id="PODS_EXTRUSION" visible="false" type="common" topology="point" table="EXTRUSION_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="150" labelField="LABEL" fitMap="false" descr="Распределители" dataType="vector" cover="false" comment="PODS_EXTRUSION" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_EXTRUSION" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_EXTRUSION" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_EXTRUSION" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_EXTRUSION" />
+  </layer>
+  <layer id="PODS_PRESSURE_CAP" visible="false" type="common" topology="point" table="PRESSURE_CAP_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="160" labelField="LABEL" fitMap="false" descr="Герметичные крышки" dataType="vector" cover="false" comment="PODS_PRESSURE_CAP" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PRESSURE_CAP" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PRESSURE_CAP" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_PRESSURE_CAP" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_PRESSURE_CAP" />
+  </layer>
+  <layer id="PODS_CLOSURE" visible="false" type="common" topology="point" table="CLOSURE_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="170" labelField="LABEL" fitMap="false" descr="Заглушки" dataType="vector" cover="false" comment="PODS_CLOSURE" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_CLOSURE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_CLOSURE" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_CLOSURE" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_CLOSURE" />
+  </layer>
+  <layer id="PODS_SLEEVE" visible="false" type="common" topology="point" table="SLEEVE_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="180" labelField="LABEL" fitMap="false" descr="Рукава, втулки, муфты, манжеты" dataType="vector" cover="false" comment="PODS_SLEEVE" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_SLEEVE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_SLEEVE" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_SLEEVE" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_SLEEVE" />
+  </layer>
+  <layer id="PODS_VESSEL" visible="false" type="common" topology="point" table="VESSEL_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="190" labelField="LABEL" fitMap="false" descr="Сосуды и аппараты высокого давления" dataType="vector" cover="false" comment="PODS_VESSEL" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_VESSEL" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_VESSEL" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_VESSEL" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_VESSEL" />
+  </layer>
+  <layer id="PODS_PIG_SIGNAL" visible="false" type="common" topology="point" table="PIG_SIGNAL_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="200" labelField="LABEL" fitMap="false" descr="Датчики прохождения очистных устройств" dataType="vector" cover="false" comment="PODS_PIG_SIGNAL" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PIG_SIGNAL" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PIG_SIGNAL" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_PIG_SIGNAL" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_PIG_SIGNAL" />
+  </layer>
+  <layer id="PODS_LAUNCHER_RECEIVER" visible="true" type="common" topology="point" table="LAUNCHER_RECEIVER_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="40" labelField="LABEL" fitMap="false" descr="ЗРА, Камеры приёма-запуска" dataType="vector" cover="false" comment="PODS_LAUNCHER_RECEIVER" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_LAUNCHER_RECEIVER" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_LAUNCHER_RECEIVER" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_LAUNCHER_RECEIVER" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_LAUNCHER_RECEIVER" />
+  </layer>
+  <layer id="PODS_MARKER" visible="true" type="common" topology="point" table="MARKER_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="210" labelField="LABEL" fitMap="false" descr="Указательные знаки и маркеры" dataType="vector" cover="false" comment="PODS_MARKER" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_MARKER" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_MARKER" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_MARKER" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_MARKER" />
+  </layer>
+  <layer id="PODS_ANODE" visible="false" type="common" topology="point" table="ANODE_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="220" labelField="LABEL" fitMap="false" descr="Аноды" dataType="vector" cover="false" comment="PODS_ANODE" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ANODE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ANODE" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_ANODE" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_ANODE" />
+  </layer>
+  <layer id="PODS_GROUND_BED" visible="false" type="common" topology="point" table="GROUND_BED_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="230" labelField="LABEL" fitMap="false" descr="Группы анодных заземлений" dataType="vector" cover="false" comment="PODS_GROUND_BED" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_GROUND_BED" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_GROUND_BED" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_GROUND_BED" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_GROUND_BED" />
+  </layer>
+  <layer id="PODS_TEST_LEAD" visible="true" type="common" topology="point" table="TEST_LEAD_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="240" labelField="LABEL" fitMap="false" descr="Контрольно-измерительные пункты" dataType="vector" cover="false" comment="PODS_TEST_LEAD" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_TEST_LEAD" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_TEST_LEAD" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_TEST_LEAD" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_TEST_LEAD" />
+  </layer>
+  <layer id="PODS_COUPON_SITE" visible="false" type="common" topology="point" table="COUPON_SITE_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="250" labelField="LABEL" fitMap="false" descr="Монтажные площадки контрольных пластин" dataType="vector" cover="false" comment="PODS_COUPON_SITE" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_COUPON_SITE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_COUPON_SITE" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_COUPON_SITE" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_COUPON_SITE" />
+  </layer>
+  <layer id="PODS_CHEMICAL_INJECTOR" visible="false" type="common" topology="point" table="CHEMICAL_INJECTOR_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="260" labelField="LABEL" fitMap="false" descr="Нагнетатели химических реагентов" dataType="vector" cover="false" comment="PODS_CHEMICAL_INJECTOR" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_CHEMICAL_INJECTOR" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_CHEMICAL_INJECTOR" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_CHEMICAL_INJECTOR" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_CHEMICAL_INJECTOR" />
+  </layer>
+  <layer id="PODS_BOND_LEAD" visible="false" type="common" topology="point" table="BOND_LEAD_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="270" labelField="LABEL" fitMap="false" descr="Соединительные провода и кабели" dataType="vector" cover="false" comment="PODS_BOND_LEAD" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_BOND_LEAD" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_BOND_LEAD" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_BOND_LEAD" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_BOND_LEAD" />
+  </layer>
+  <layer id="PODS_RECTIFIER" visible="false" type="common" topology="point" table="RECTIFIER_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="280" labelField="LABEL" fitMap="false" descr="Установки катодной/дренажной защиты" dataType="vector" cover="false" comment="PODS_RECTIFIER" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_RECTIFIER" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_RECTIFIER" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_RECTIFIER" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_RECTIFIER" />
+  </layer>
+  <layer id="PODS_JUNCTION_BOX" visible="false" type="common" topology="point" table="JUNCTION_BOX_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="290" labelField="LABEL" fitMap="false" descr="Электротехническая арматура" dataType="vector" cover="false" comment="PODS_JUNCTION_BOX" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_JUNCTION_BOX" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_JUNCTION_BOX" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_JUNCTION_BOX" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_JUNCTION_BOX" />
+  </layer>
+  <layer id="PODS_METER" visible="false" type="common" topology="point" table="METER_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="300" labelField="LABEL" fitMap="false" descr="Измерительные приборы и датчики" dataType="vector" cover="false" comment="PODS_METER" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_METER" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_METER" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_METER" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_METER" />
+  </layer>
+  <layer id="PODS_METER_STATION" visible="false" type="common" topology="point,line" table="METER_STATION_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="310" labelField="LABEL" fitMap="false" descr="Измерительные станции" dataType="vector" cover="false" comment="PODS_METER_STATION" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_METER_STATION" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_METER_STATION" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_METER_STATION" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_METER_STATION" />
+  </layer>
+  <layer id="PODS_INTERFACE_DETECTOR" visible="false" type="common" topology="point,line" table="INTERFACE_DETECTOR_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="320" labelField="LABEL" fitMap="false" descr="Сигнализаторы раздела сред" dataType="vector" cover="false" comment="PODS_INTERFACE_DETECTOR" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_INTERFACE_DETECTOR" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_INTERFACE_DETECTOR" />
+    <dataProvider type="spatial" source="CAS_PODS_EQUIP_GEO.xml#CAS_PODS_INTERFACE_DETECTOR" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_INTERFACE_DETECTOR" />
+  </layer>
+</root>

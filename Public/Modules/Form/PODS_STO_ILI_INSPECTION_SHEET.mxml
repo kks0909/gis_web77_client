@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="760" xmlns="view.data.*" title="Сведения о приемке отчета" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml">
+  <dataProvider>STO_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+   </panel:buttons>
+  <mx:VBox width="760">
+    <mx:HBox percentWidth="100">
+      <mx:VBox percentWidth="50">
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Номер/Дата предварительного отчета" width="140"/>
+	  <mx:TextInput id="INITIAL_REPORT_NUMBER" width="60" maxChars="32" height="20"/>
+	  <mx:DateField id="DATE_INITIAL_REPORT" editable="false" width="96" height="20" formatString="DD.MM.YYYY"/>
+        </mx:HBox>
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Номер/Дата окончательного отчета" width="140"/>
+	  <mx:TextInput id="FINAL_REPORT_NUMBER" width="60" maxChars="32" height="20"/>
+	  <mx:DateField id="DATE_FINAL_REPORT" editable="false" width="96" height="20" formatString="DD.MM.YYYY"/>
+        </mx:HBox>
+		             
+      </mx:VBox>
+      <mx:VBox percentWidth="50">
+<mx:HBox percentWidth="100">	
+            		<mx:Text textAlign="right" text="Дата начала/ Дата окончания приемки" width="140"/>
+            		<mx:DateField id="DATE_BEGIN_ACCEPTANCE" editable="false" width="96" height="20" formatString="DD.MM.YYYY"/>
+            		<mx:DateField id="DATE_END_ACCEPTANCE" editable="false" width="96" height="20" formatString="DD.MM.YYYY"/>
+         	</mx:HBox>
+ 	<mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Идентификатор отчета ВТД" width="140" />
+          <controls:NumberInput id="ILI_INSPECTION_ID" editable="false" width="225" maxChars="22" height="20" />
+        </mx:HBox>
+      </mx:VBox>
+    </mx:HBox>
+  </mx:VBox>
+  
+</DATA_EDIT_FORM>

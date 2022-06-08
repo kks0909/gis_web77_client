@@ -1,0 +1,30 @@
+﻿{
+  "code": 200,
+  "version":"7.7.5.0",
+  "descr": "Растровая трубопроводная сеть",
+  "name": "pods_equipraster_map",
+  "projection": "EPSG:900913",
+  "layers": [
+    {
+      "id": "RouteTiles",
+      "descr": "Трубопроводная сеть",
+      "visible": false,
+      "order":1,
+      "zoom_min":0,
+      "zoom_max":23,
+      "icon":"./ui/images/map_24x24.png",
+      "type":"OSMLayer",
+      "projection":"EPSG:900913",
+      "url":"{SERVER}/tiletrees/PodsRaster/",
+      "extension":".png",
+      "useInterimTilesOnError": true,
+      "notInterimTilesOnErrorLevels":[1,2,3,4,5,6,7,8,9],
+      "zoomLevels": 22,
+      "cadastreURL":"",
+      "proxy":"",
+      "opacity":1,
+      "showInfo":true,
+      "layers":["PODS_EQUIP"]
+    }
+  ]
+}

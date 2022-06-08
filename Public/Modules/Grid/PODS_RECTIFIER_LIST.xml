@@ -1,0 +1,113 @@
+﻿<!--7.7.6.8-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="6"  headerVertSize="50"
+            id="PODS_RECTIFIER_LIST"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelTemplateName="PODS_RECTIFIER_LIST"
+excelDataRequest="PODS_EXPORT.xml#PODS_RECTIFIER"
+            layerId="PODS_RECTIFIER" propertyPanelName="PODS_RECTIFIER"
+            dataRequest="PODS_GRID.xml#PODS_RECTIFIER"
+            totalRecordsRequest="PODS_GRID.xml#PODS_RECTIFIER_CNT"
+            initialSortField="SRV_DISTRICT_LBL,TYPE_CL,DESCRIPTION">
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/exportNAV.png"
+        tooltip="Экспорт/Импорт GPX,KML"
+        clickEvent="ru.corelight.business.events.ExportToGPXEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/createObject.png"
+        tooltip="Создать объект"
+        clickEvent="ru.corelight.business.events.CreateObjectEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../Public/assets/showOnMap.png"
+        tooltip="Показать на карте"
+        clickEvent="ru.corelight.business.events.ShowOnMapEvent"
+        isEnabled="length" />
+  <picPutton:GridButton source="../../Public/assets/excel.png"
+        tooltip="Экспортировать в Excel"
+        clickEvent="ru.corelight.business.events.ExportToExcelEvent"
+        selectedObjects="this" />
+    <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/paste.png"
+        tooltip="Вставить данные из excel"
+        clickEvent="PasteFromExcelEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+<picPutton:GridButton source="../../ui/images/save.png"
+       tooltip="Сохранить изменения"
+       clickEvent="ApplyUpdatedCellEvent"
+       isEnabled="null" />
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=showInfoEvent;toolTip=Показать информацию по объекту"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/photo.png;eventName=ShowCarouselEvent;toolTip=Показать документы по объекту;columns=LG_ATTACH"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/map.png;eventName=ru.corelight.business.events.ShowOnMapEvent;toolTip=Показать на карте;layerId=PODS_RECTIFIER"
+                          editable="true"/>
+      <columns:GridColumn headerText="Идентификатор" dataField="ID" itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="false" filterComparisionType="number" width="40" />                    
+      <columns:GridColumn headerText="ЛПУ" dataField="SRV_DISTRICT_ID"
+                          filterRequestId="PODS_POLICY.xml#PODS_LPU_GRID"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_POLICY.xml#PODS_LPU_GRID"
+                          filterComparisionType="array"
+                          hidden="true" editable="false"
+                          sortField="SRV_DISTRICT_LBL"
+                          width="60"/>
+      <columns:GridColumn headerText="Тип\nобъекта" dataField="TYPE_CL"
+                          filterRequestId="PODS_SEM_DICT.xml#PODS_RECTIFIER_TYPE_CL"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_SEM_DICT.xml#PODS_RECTIFIER_TYPE_CL"
+                          filterComparisionType="array"
+                          editable="true"
+                          sortField="TYPE_LBL"
+                          width="100"/>
+      <columns:GridColumn headerText="Описание" dataField="DESCRIPTION"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="160"/>
+      <columns:GridColumn headerText="I, А" dataField="AMP_RATING"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="40"/>
+      <columns:GridColumn headerText="Изготовитель" dataField="MANUFACTURER_CL"
+                          filterRequestId="PODS_SEM_DICT.xml#PODS_RECTIFIER_MANUFACTURER_CL"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_SEM_DICT.xml#PODS_RECTIFIER_MANUFACTURER_CL"
+                          filterComparisionType="array"
+                          hidden="true" editable="true"
+                          sortField="MANUFACTURER_LBL"
+                          width="100"/>
+      <columns:GridColumn headerText="Дата\nустановки" dataField="DATE_INSTALLED"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="date"
+                          width="50"/>
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

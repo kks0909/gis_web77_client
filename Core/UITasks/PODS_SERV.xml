@@ -1,0 +1,116 @@
+﻿<ROOT prevTask="close" version="7.0.3.2">
+  <hbox percentWidth="100" percentHeight="100">
+   <vbox percentWidth="100" percentHeight="100">
+      <panel id="MAPSERVICE" percentWidth="100" percentHeight="70" reload="false">
+        <settings>
+		<showSearch>address,km,grp_shrp</showSearch>
+	  <showPipeLineButton>true</showPipeLineButton>
+	  <layersUrl>baseRasterLayers.xml</layersUrl>
+	<label text="КОММЕРЧЕСКАЯ ТАЙНА" font="Times" font-size="12" left="" right="10" top="" bottom="10" />
+	  <!-- параметр, скрывающий кнопку экспорта карты в файл формата .png -->
+	  <hideButtons>ExportImage</hideButtons>
+	  <requestSource>SYS_SEM.xml</requestSource>
+          <!--Флаг установки блокировки на карту при перерисовке. true или false -->
+          <add key="MAP_Lock_Redraw" value="false"/>
+          <!--Радиус поиска векторных объектов на карте, в пикселях -->
+          <add key="MAP_Info_Radius" value="5"/>
+          <!--Минимальный масштаб центровки на карте, от 0 до MAP_Num_Zoom_Levels -->
+          <add key="MAP_Centering_Min_Zoom" value="18"/>
+          <!-- Шаг матрицы разрежения объектов на карте по Х -->
+          <add key="MAP_Matrix_DX" value="10"/>
+          <!-- Шаг матрицы разрежения объектов на карте по Y -->
+          <add key="MAP_Matrix_DY" value="10"/>
+          <!-- Максимальное отношение длины подписи (в пикселах) к длине объекта (в пикселах), при котором подпись выводится -->
+          <add key="MAP_Label_Len_Ratio" value = "1.5"/>
+          <!-- Минимальное отношение длины видимого линейного объекта к ширине экрана -->
+          <add key="MAP_Len_Ratio" value = "0.001"/>
+          <!-- Коэффициент при расчете размера шрифта подписи -->
+          <add key="MAP_Label_Font_Ratio" value = "0.7131"/>
+          <!-- часть высоты карты, через которую повторяется подпись протяженного линейного объекта -->
+          <add key="MAP_Label_Repeat_Ratio" value = "1.5"/>
+	  <!-- Максимально допустимое расстояние от конца подписи до линии (в пикселах) -->
+	  <add key="MAP_Label_Cut_Tolerance" value = "15"/>
+	  <!-- Процент обрезки подписей в случае режима MAP_Label_Draw_Type="cut" -->
+	  <add key="MAP_Label_Cut_Ratio" value = "0.1"/>
+	  <!-- Тип отрисовки подписей для линий (вдоль линии, обрезать) along, cut. Значение по умолчанию "cut" -->
+	  <add key="MAP_Label_Draw_Type" value = "cut"/>
+	  <!--  Смещение по x,y текста относительно подписи (в пикселах)  -->
+	  <add key="MAP_Label_Offset" value = "0"/>  
+          <!-- Ограничение на количество точек в треке -->
+          <add key="GPS_Track_Limit" value="1000000000"/>
+          <!--Максимальное количество объектов, которые можно выгрузить из грида в GPX-файл -->
+          <add key="Table_Max_Export" value="1000"/>
+	  <!--Флаг указывает, будет ли добавлен в js-карту данный эффект при перемещении, зуммировании карты -->
+          <add key="MAP_Use_Kinetic" value="false"/>
+          <Models>
+			<model name="COSMETIC" descr="Косметический слой" onTaskChanged="delete" onUserChanged="delete"/>
+            <model name="PODS_EQUIP" descr="МГ: Оборудование линейной части" onUserChanged="delete"/>
+            <model name="PODS_INSP" descr="МГ: Обследования диагностические" onUserChanged="delete"/>
+            <model name="PODS_SERV" descr="МГ: Служебная информация" onUserChanged="delete"/>
+            <model name="LIB_DOC" descr="Прикрепленные документы" onUserChanged="delete"/>
+          </Models>
+			<!--Обзорная карта-->
+			<overviewMap>
+				<height>100</height><!--высота-->
+				<width>150</width><!--ширина-->
+				<baseLayers>baseRasterLayers.xml</baseLayers><!--файл, где находится описание подложки. Будет браться -->
+				<showOverviewMap>true</showOverviewMap><!--флаг, указывающий, скрывать или показывать изначально обзорную карту-->
+			</overviewMap>
+			<!--Рубрикатор-->
+			<brokenImageSkin>Public/assets/NaN.png</brokenImageSkin>
+			<isMaximized>true</isMaximized>
+			<treePercentWidth>20</treePercentWidth>
+			<tree id="PODS_SERV_LIST" title="МГ: Служебная информация" default="true">
+				<startupScenario openLayers="">
+				<filter type="top" topDataSource="WEB50_TOP_FILTER" />
+				</startupScenario>
+				<templateUrl>Public/Modules/Tree/PODS_SERV_TREE.xml</templateUrl>
+				<brokenImageSkin>Public/assets/NaN.png</brokenImageSkin>
+				<iconWidth>16</iconWidth>
+				<iconHeight>16</iconHeight>
+			</tree>
+			
+			<!--end Рубрикатор-->
+
+			<!--start Видеорегистратор-->
+			<requestTrackPoints>LIB_DOC_GEO.xml#LIB_DOC_GEO_VIDEO</requestTrackPoints>
+			<title>Видеорегистратор</title>
+			<x>5</x>
+			<y>460</y>
+			<width>440</width>
+			<height>280</height>
+			<enableEmbed>true</enableEmbed>
+			<displayLayer>COSMETIC_Layers.xml#LIB_DOC_GEO_VIDEO_OBJECT</displayLayer>
+			<!--end Видеорегистратор-->
+
+
+
+		</settings>
+      </panel>
+      <hbox percentWidth="100" percentHeight="30">
+
+        <panel id="GRID" percentWidth="0" percentHeight="100">
+          <settings>
+            <rendererStyle>Public/css/default/gridStatus.css</rendererStyle>
+          </settings>
+        </panel>
+
+        <panel id="PROP" percentWidth="100" percentHeight="100">
+          <settings>
+            <title> </title>
+            <width>790</width>
+            <height>250</height>
+            <dataSource>SYS_PROP.xml#PROP_LIST</dataSource>
+            <!-- Флаг отображения системных свойств в формах -->
+            <add key="Show_System_Info" value="false" />
+          </settings>
+        </panel>
+      </hbox>
+    </vbox>
+  </hbox>
+  <functional id="DOCUMENT_PREVIEW" reload='true' percentWidth='0' percentHeight='0'>
+    <settings>
+      <requestLibDoc>LIB_DOC_SEM.xml#LIB_DOC</requestLibDoc>
+    </settings>
+  </functional>
+</ROOT>

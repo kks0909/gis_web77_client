@@ -1,0 +1,99 @@
+﻿<!--7.7.5.0-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="5" 
+id="WEB50_M_1_GIDR_LP_LIST" percentWidth="100" percentHeight="100" styleName="dgInfoForm" layerId="WEB50_M_1_GIDR_LP" propertyPanelName="WEB50_M_1_GIDR_LP" dataRequest="M_1_GRID.xml#WEB50_M_1_GIDR_LP" totalRecordsRequest="M_1_GRID.xml#WEB50_M_1_GIDR_LP_CNT" initialSortField="OBJ_CLS_ID">
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/exportNAV.png"
+        tooltip="Экспорт/Импорт GPX,KML"
+        clickEvent="ru.corelight.business.events.ExportToGPXEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/createObject.png"
+        tooltip="Создать объект"
+        clickEvent="ru.corelight.business.events.CreateObjectEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../Public/assets/showOnMap.png"
+        tooltip="Показать на карте"
+        clickEvent="ru.corelight.business.events.ShowOnMapEvent"
+        isEnabled="length" />
+  <picPutton:GridButton source="../../Public/assets/excel.png"
+        tooltip="Экспортировать в Excel"
+        clickEvent="ru.corelight.business.events.ExportToExcelEvent"
+        selectedObjects="this" />
+    <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/paste.png"
+        tooltip="Вставить данные из excel"
+        clickEvent="PasteFromExcelEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+<picPutton:GridButton source="../../ui/images/save.png"
+       tooltip="Сохранить изменения"
+       clickEvent="ApplyUpdatedCellEvent"
+       isEnabled="null" />
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+    <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+    <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="false"/>
+    <columns:GridColumn headerText="" width="10" sortable="false" itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/exportNAV.png;eventName=ru.corelight.business.events.ExportToGPXEvent;toolTip=Экспорт в GPX,KML" editable="true"/>
+    <columns:GridColumn headerText="" width="10" sortable="false" itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/map.png;eventName=ru.corelight.business.events.ShowOnMapEvent;toolTip=Показать на карте;layerId=WEB50_M_1_GIDR_LP" editable="true"/>
+    <columns:GridColumn headerText="" dataField="ID" itemRenderer="ru.corelight.view.renderer.NumberRenderer" editable="true" filterComparisionType="number" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Идентификатор класса" dataField="OBJ_CLS_ID" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Описание" dataField="DESCR" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Относительная высота" dataField="C1" itemRenderer="ru.corelight.view.renderer.NumberRenderer" editable="true" filterComparisionType="number" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Состояние" dataField="C3" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Абсолютная высота" dataField="C4" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Глубина" dataField="C7" itemRenderer="ru.corelight.view.renderer.NumberRenderer" editable="true" filterComparisionType="number" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Собственное название" dataField="C9" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Материал сооружения" dataField="C10" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Ширина объекта" dataField="C11" itemRenderer="ru.corelight.view.renderer.NumberRenderer" editable="true" filterComparisionType="number" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Признак судоходства" dataField="C32" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Качественная особенность воды" dataField="C33" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Характер грунта" dataField="C34" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Период наличия воды" dataField="C36" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Функциональное назначение" dataField="C47" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Материал покрытия" dataField="C55" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Вид растительности" dataField="C62" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Объем" dataField="C77" itemRenderer="ru.corelight.view.renderer.NumberRenderer" editable="true" filterComparisionType="number" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Площадь" dataField="C78" itemRenderer="ru.corelight.view.renderer.NumberRenderer" editable="true" filterComparisionType="number" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Разница между верхним и нижним уровнями воды" dataField="C83" itemRenderer="ru.corelight.view.renderer.NumberRenderer" editable="true" filterComparisionType="number" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Ширина по верху" dataField="C109" itemRenderer="ru.corelight.view.renderer.NumberRenderer" editable="true" filterComparisionType="number" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Дата" dataField="C120" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Высота" dataField="C150" itemRenderer="ru.corelight.view.renderer.NumberRenderer" editable="true" filterComparisionType="number" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Высота верха трубы" dataField="C151" itemRenderer="ru.corelight.view.renderer.NumberRenderer" editable="true" filterComparisionType="number" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Абсолютная высота выхода по низу трубы" dataField="C154" itemRenderer="ru.corelight.view.renderer.NumberRenderer" editable="true" filterComparisionType="number" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Урез воды средний для межени" dataField="C156" itemRenderer="ru.corelight.view.renderer.NumberRenderer" editable="true" filterComparisionType="number" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Урез воды на дату съемки" dataField="C157" itemRenderer="ru.corelight.view.renderer.NumberRenderer" editable="true" filterComparisionType="number" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Внутренний диаметр трубы под дорогой" dataField="C166" itemRenderer="ru.corelight.view.renderer.NumberRenderer" editable="true" filterComparisionType="number" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Глубина до дна" dataField="C171" itemRenderer="ru.corelight.view.renderer.NumberRenderer" editable="true" filterComparisionType="number" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Глубина до уровня воды" dataField="C173" itemRenderer="ru.corelight.view.renderer.NumberRenderer" editable="true" filterComparisionType="number" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Тип рифа" dataField="C188" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Тип водораспределительного устройства" dataField="C190" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Тип заградительных устройств" dataField="C195" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Тип водомерных постов" dataField="C199" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Ширина по низу" dataField="C208" itemRenderer="ru.corelight.view.renderer.NumberRenderer" editable="true" filterComparisionType="number" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Экологическое состояние" dataField="C210" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Назначение водоема" dataField="C211" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Тип загрязнения" dataField="C232" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Тип объекта" dataField="C233" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Толщина линии минимальная" dataField="C301" itemRenderer="ru.corelight.view.renderer.NumberRenderer" editable="true" filterComparisionType="number" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Толщина линии максимальная" dataField="C302" itemRenderer="ru.corelight.view.renderer.NumberRenderer" editable="true" filterComparisionType="number" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Тип отображения при печати" dataField="C303" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="Инв.№" dataField="C307" itemRenderer="ru.corelight.view.renderer.StringRenderer" editable="true" filterComparisionType="string" filterRenderer="ru.corelight.view.controls.dynamicFilter.MultiFilterControl"/>
+    <columns:GridColumn headerText="" width="20" sortable="false" editable="true" columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

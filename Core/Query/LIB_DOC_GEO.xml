@@ -1,0 +1,424 @@
+﻿<root version="postgres 7.7.3.0">
+  <data id="LIB_DOC" comment="WEB50.LIB_DOC" schema="WEB50" table="LIB_DOC" descr="Геокодированные документы">
+    <select>
+      <geoQuery idField="ID" geoField="X,Y" partField="">
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <var name="FILTER" default="1=1" />
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                   AND pr.SELECT_PERMITTED = '1')
+SELECT * FROM (
+        SELECT ld.DOC_ID ID
+        ,(lc."XMIN" + lc."XMAX") / 2 X
+        ,(lc."YMIN" + lc."YMAX") / 2 Y
+        /*,ld.DESCR LABEL*/
+        FROM WEB50.LIB_DOC ld
+             JOIN WEB50.LIB_COVERAGE lc
+               ON ld.GID = lc.GID 
+               AND ld.DOC_TYPE_ID != 0 
+       WHERE ld.DOC_TYPE_ID NOT IN (37,38,41) 
+         AND (((ld.status_id = 1
+                      OR (ld.cuser_id = :USER_ID
+                         AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))) d
+        WHERE {FILTER}  ORDER BY ID     
+        </query>
+      </geoQuery>
+    </select>
+    <insert>
+      <geoCommand>
+		<var name="ID" type="Int64" direction="Output" default="UPDATE WEB50.LIB_DOC SET GID = {ID} WHERE DOC_ID = {ID}" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#INSERT_LIB_DOC_GEO"  />	
+        <object>
+			INSERT INTO WEB50.LIB_COVERAGE(GID, WKB_GEOMETRY,"XMIN","XMAX","YMIN","YMAX",CTIME,CUSER_ID)
+			VALUES({ID}, :WKB, :XMIN, :XMAX, :YMIN, :YMAX, current_timestamp, :USER_ID)
+		</object>
+      </geoCommand>
+    </insert>
+    <update>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#UPDATE_LIB_DOC_GEO"  />		
+        <object>
+              UPDATE WEB50.LIB_COVERAGE
+              SET WKB_GEOMETRY=:WKB
+              ,"XMIN"=:XMIN
+              ,"XMAX"=:XMAX
+              ,"YMIN"=:YMIN
+              ,"YMAX"=:YMAX
+              ,MTIME=current_timestamp
+              ,MUSER_ID=:USER_ID
+              WHERE GID = :ID
+        </object>
+      </geoCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#DELETE_LIB_DOC_GEO"  />		
+        <query>
+		DO $$
+		BEGIN
+	      UPDATE WEB50.LIB_DOC
+	      SET GID = NULL
+	      ,MTIME=current_timestamp
+	      ,MUSER_ID={USER_ID}
+	      WHERE DOC_ID = {ID};
+	      DELETE
+	      FROM WEB50.LIB_COVERAGE
+	      WHERE GID = {ID};
+		END $$;
+        </query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="LIB_DOC_WRL" comment="WEB50.LIB_DOC" schema="WEB50" table="LIB_DOC" descr="Документы 3D-сцен">
+    <select>
+      <geoQuery idField="ID" geoField="X,Y" partField="">
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <var name="FILTER" default="1=1" />
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                   AND pr.SELECT_PERMITTED = '1')
+SELECT * FROM (
+        SELECT ld.DOC_ID ID
+        ,(lc."XMIN" + lc."XMAX") / 2 X
+        ,(lc."YMIN" + lc."YMAX") / 2 Y
+        /*,ld.DESCR LABEL*/
+        FROM WEB50.LIB_DOC ld
+             JOIN WEB50.LIB_COVERAGE lc
+               ON ld.GID = lc.GID 
+               AND ld.DOC_TYPE_ID != 0 
+       WHERE ld.DOC_TYPE_ID = 37
+         AND (((ld.status_id = 1
+                      OR (ld.cuser_id = :USER_ID
+                         AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))) d
+        WHERE {FILTER}    ORDER BY ID   
+        </query>
+      </geoQuery>
+    </select>
+    <insert>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <object>
+			DO $$
+			BEGIN
+				RAISE EXCEPTION 'Нельзя добавлять в систему 3D-сцены с геометрией. Обратитесь к администратору.';
+			END $$;
+		</object>
+      </geoCommand>
+    </insert>
+    <update>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />	
+        <object>
+			DO $$
+			BEGIN
+				RAISE EXCEPTION 'Нельзя редактировать геометрию 3D-сцены. Обратитесь к администратору.';
+			END $$;
+		</object>
+      </geoCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#DELETE_LIB_DOC_GEO"  />		
+        <query>
+				DO $$
+				BEGIN
+			      UPDATE WEB50.LIB_DOC
+			      SET GID = NULL
+			      ,MTIME=current_timestamp
+			      ,MUSER_ID={USER_ID}
+			      WHERE DOC_ID = {ID};
+
+			      DELETE
+			      FROM WEB50.LIB_COVERAGE
+			      WHERE GID = {ID};
+				END $$;
+        </query>
+      </dbCommand>
+    </delete>
+  </data>  
+  <data id="LIB_DOC_IMG" comment="WEB50.LIB_DOC" schema="WEB50" table="LIB_DOC" descr="Навигационные карты (IMG)">
+    <select>
+      <geoQuery idField="ID" geoField="X,Y" partField="">
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <var name="FILTER" default="1=1" />		
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID 
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                   AND pr.SELECT_PERMITTED = '1')
+SELECT * FROM (
+        SELECT ld.DOC_ID ID
+        ,(lc."XMIN" + lc."XMAX") / 2 X
+        ,(lc."YMIN" + lc."YMAX") / 2 Y
+        /*,ld.DESCR LABEL*/
+        FROM WEB50.LIB_DOC ld
+             JOIN WEB50.LIB_COVERAGE lc
+               ON ld.GID = lc.GID 
+               AND ld.DOC_TYPE_ID != 0 
+       WHERE ld.DOC_TYPE_ID = 38 
+         AND (((ld.status_id = 1
+                      OR (ld.cuser_id = :USER_ID
+                         AND ld.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM user_grants))
+                   OR EXISTS (SELECT 1 FROM admin_grants))) d
+        WHERE {FILTER}  ORDER BY ID      
+        </query>
+      </geoQuery>
+    </select>
+    <insert>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <object>
+			DO $$
+			BEGIN
+				RAISE EXCEPTION 'Нельзя добавлять в систему IMG-файлы с геометрией. Обратитесь к администратору.';
+			END $$;
+		</object>
+      </geoCommand>
+    </insert>
+    <update>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <object>
+			DO $$
+			BEGIN
+				RAISE EXCEPTION 'Нельзя редактировать геометрию IMG-файла. Обратитесь к администратору.';
+			END $$;
+		</object>
+      </geoCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#DELETE_LIB_DOC_GEO"  />		
+        <query>
+				DO $$
+				BEGIN
+			      UPDATE WEB50.LIB_DOC
+			      SET GID = NULL
+			      ,MTIME=current_timestamp
+			      ,MUSER_ID={USER_ID}
+			      WHERE DOC_ID = {ID};
+
+			      DELETE
+			      FROM WEB50.LIB_COVERAGE
+			      WHERE GID = {ID};
+				END $$;
+        </query>
+      </dbCommand>
+    </delete>
+  </data>    
+  <data id="LIB_DOC_GEO_VIDEO" comment="WEB50.LIB_DOC" schema="WEB50" table="LIB_DOC" descr="Данные видеомониторинга">
+    <select>
+      <geoQuery idField="ID" geoField="X,Y,TIME" partField="">
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <var name="FILTER" default="1=1" />
+        <query>
+WITH poi_admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID
+                   AND pr.CLASS_ID='WEB50_POI_TRACK_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     poi_user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID
+                   AND pr.CLASS_ID='WEB50_POI_TRACK_USER'
+                   AND pr.SELECT_PERMITTED = '1'),
+     doc_admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     doc_user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID = :USER_ID
+                   AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+                   AND pr.SELECT_PERMITTED = '1'),
+    links
+      AS (SELECT DISTINCT left_obj_id,right_obj_id
+            FROM (
+            SELECT ROW_NUMBER() OVER (PARTITION BY left_obj_id,right_obj_id ORDER BY g.gate_id) rwn,left_obj_id,right_obj_id
+              FROM (              
+            SELECT gate_id,left_obj_id,right_obj_id
+              FROM web50.lnk_gate 
+             WHERE lnk_type_id = 3
+               AND left_obj_id LIKE 'WEB50_LIB_DOC/%' AND right_obj_id LIKE 'WEB50_POI_TRACK/%'  
+            UNION ALL
+            SELECT gate_id,right_obj_id,left_obj_id
+              FROM web50.lnk_gate 
+             WHERE lnk_type_id = 3
+               AND right_obj_id LIKE  'WEB50_LIB_DOC/%' AND left_obj_id LIKE 'WEB50_POI_TRACK/%') g ) d
+            WHERE d.rwn = 1)                                      
+SELECT ID,X,Y,"TYPE","LABEL","TIME"      
+  FROM (SELECT d.DOC_ID ID, c.X X, c.Y Y, t.STATUS_ID "TYPE", t.name "LABEL",tp.COORD_SEQ,
+  extract(epoch from (tp.TIME_STAMP -   (SELECT MIN(TIME_STAMP) FROM web50.POI_TRACK_TO_POI_COORD WHERE TRACK_ID=t.TRACK_ID))) "TIME"
+          FROM web50.POI_TRACK t
+          JOIN web50.POI_TRACK_TO_POI_COORD tp 
+            ON tp.TRACK_ID = t.TRACK_ID
+          JOIN web50.POI_COORD c 
+            ON c.COORD_ID = tp.COORD_ID
+          JOIN links g
+            ON g.left_obj_id = 'WEB50_POI_TRACK/'||(t.track_id)::numeric
+               OR g.right_obj_id = 'WEB50_POI_TRACK/'||(t.track_id)::numeric
+          JOIN web50.lib_doc d
+            ON g.left_obj_id = 'WEB50_LIB_DOC/'||(d.doc_id)::numeric
+               OR g.right_obj_id = 'WEB50_LIB_DOC/'||(d.doc_id)::numeric
+          WHERE t.track_id = (select min(track_id) from web50.poi_track tt,web50.lnk_gate gg where (gg.right_obj_id='WEB50_LIB_DOC/'||(d.DOC_ID)::numeric and gg.left_obj_id = 'WEB50_POI_TRACK/'||(tt.track_id)::numeric) or
+               (gg.left_obj_id='WEB50_LIB_DOC/'||(d.DOC_ID)::numeric and gg.right_obj_id = 'WEB50_POI_TRACK/'||(tt.track_id)::numeric)) 
+            AND c.X IS NOT NULL 
+            AND c.Y IS NOT NULL 
+            AND (((t.status_id = 1
+                      OR (t.cuser_id = :USER_ID
+                         AND t.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM poi_user_grants))
+                 OR ((d.status_id = 1
+                      OR (d.cuser_id = :USER_ID
+                         AND d.status_id = 0 ))
+                    AND EXISTS (SELECT 1 FROM doc_user_grants))                    
+                 OR EXISTS (SELECT 1 FROM poi_admin_grants) 
+                 OR EXISTS (SELECT 1 FROM doc_admin_grants))) d
+WHERE {FILTER}  
+ORDER BY ID, COORD_SEQ    
+        </query>
+      </geoQuery>
+    </select>
+    <insert>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />		
+        <object>
+			DO $$
+			BEGIN
+				RAISE EXCEPTION 'Нельзя добавлять в систему файлы видеомониторинга с геометрией. Обратитесь к администратору.';
+			END $$;
+		</object>
+      </geoCommand>
+    </insert>
+    <update>
+      <geoCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />	
+        <object>
+			DO $$
+			BEGIN
+				RAISE EXCEPTION 'Нельзя редактировать геометрию файла видеомониторинга. Обратитесь к администратору.';
+			END $$;
+		</object>
+      </geoCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#DELETE_LIB_DOC_GEO"  />		
+        <query>
+		DO $$
+		BEGIN
+	      UPDATE WEB50.LIB_DOC
+	      SET GID = NULL
+	      ,MTIME=current_timestamp
+	      ,MUSER_ID={USER_ID}
+	      WHERE DOC_ID = {ID};
+
+	      DELETE
+	      FROM WEB50.LIB_COVERAGE
+	      WHERE GID = {ID};
+            
+		  DELETE
+          FROM web50.lnk_gate
+	      WHERE left_obj_id = 'WEB50_LIB_DOC/'||({ID})::numeric
+           OR right_obj_id = 'WEB50_LIB_DOC/'||({ID})::numeric;
+		END $$;			   
+        </query>
+      </dbCommand>
+    </delete>
+  </data>      
+</root>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.5.0" descr="Основные эксплуатационные данные">
+  <dataProvider type="style" source="PODS_EXP_STYLE.xml" />
+  <layer id="PODS_PRESSURE_MEASUREMENT" visible="false" type="common" topology="line" table="PRESSURE_MEASUREMENT_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="10" labelField="LABEL" fitMap="false" descr="Давление. Данные измерений" dataType="vector" cover="false" comment="PODS_PRESSURE_MEASUREMENT" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PRESSURE_MEASUREMENT" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PRESSURE_MEASUREMENT" />
+    <dataProvider type="spatial" source="CAS_PODS_EXP_GEO.xml#CAS_PODS_PRESSURE_MEASUREMENT" />
+  </layer>
+  <layer id="PODS_ODORANT_MEASUREMENT" visible="false" type="common" topology="line" table="ODORANT_MEASUREMENT_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="20" labelField="LABEL" fitMap="false" descr="Концентрация одоранта. Данные измерений" dataType="vector" cover="false" comment="PODS_ODORANT_MEASUREMENT" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ODORANT_MEASUREMENT" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ODORANT_MEASUREMENT" />
+    <dataProvider type="spatial" source="CAS_PODS_EXP_GEO.xml#CAS_PODS_ODORANT_MEASUREMENT" />
+  </layer>
+  <layer id="PODS_FLOW_MEASUREMENT" visible="false" type="common" topology="line" table="FLOW_MEASUREMENT_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="30" labelField="LABEL" fitMap="false" descr="Поток газа. Данные измерений" dataType="vector" cover="false" comment="PODS_FLOW_MEASUREMENT" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_FLOW_MEASUREMENT" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_FLOW_MEASUREMENT" />
+    <dataProvider type="spatial" source="CAS_PODS_EXP_GEO.xml#CAS_PODS_FLOW_MEASUREMENT" />
+  </layer>
+  <layer id="PODS_TEMPERATURE_MEASUREMENT" visible="false" type="common" topology="line" table="TEMPERATURE_MEASUREMENT_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="40" labelField="LABEL" fitMap="false" descr="Температура газа. Данные измерений" dataType="vector" cover="false" comment="PODS_TEMPERATURE_MEASUREMENT" classField="TYPE" >
+   <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_TEMPERATURE_MEASUREMENT" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_TEMPERATURE_MEASUREMENT" />
+    <dataProvider type="spatial" source="CAS_PODS_EXP_GEO.xml#CAS_PODS_TEMPERATURE_MEASUREMENT" />
+  </layer>
+  <layer id="PODS_TEST_PRESSURE" visible="false" type="common" topology="line" table="TEST_PRESSURE_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="50" labelField="LABEL" fitMap="false" descr="Гидравлические испытания" dataType="vector" cover="false" comment="PODS_TEST_PRESSURE" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_TEST_PRESSURE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_TEST_PRESSURE" />
+    <dataProvider type="spatial" source="CAS_PODS_EXP_GEO.xml#CAS_PODS_TEST_PRESSURE" />
+  </layer>
+  <layer id="PODS_FACILITY_RATING_VARIANCE" visible="false" type="common" topology="line" table="FACILITY_RATING_VARIANCE_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="60" labelField="LABEL" fitMap="false" descr="Журнал разрешений на изменение рабочих давлений" dataType="vector" cover="false" comment="PODS_FACILITY_RATING_VARIANCE" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_FACILITY_RATING_VARIANCE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_FACILITY_RATING_VARIANCE" />
+    <dataProvider type="spatial" source="CAS_PODS_EXP_GEO.xml#CAS_PODS_FACILITY_RATING_VARIANCE" />
+  </layer>
+  <layer id="PODS_FACILITY_RATING" visible="false" type="common" topology="line" table="FACILITY_RATING_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="70" labelField="LABEL" fitMap="false" descr="Значения рейтинга опасности объектов трубопровода" dataType="vector" cover="false" comment="PODS_FACILITY_RATING" classField="TYPE" >
+   <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_FACILITY_RATING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_FACILITY_RATING" />
+    <dataProvider type="spatial" source="CAS_PODS_EXP_GEO.xml#CAS_PODS_FACILITY_RATING" />
+  </layer>
+  <layer id="PODS_MAOP_RATING" visible="false" type="common" topology="line" table="MAOP_RATING_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="80" labelField="LABEL" fitMap="false" descr="Максимально разрешённые давления" dataType="vector" cover="false" comment="PODS_MAOP_RATING" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_MAOP_RATING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_MAOP_RATING" />
+    <dataProvider type="spatial" source="CAS_PODS_EXP_GEO.xml#CAS_PODS_MAOP_RATING" />
+  </layer>
+  <layer id="PODS_FACILITY_RANKING" visible="false" type="common" topology="line" table="FACILITY_RANKING_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="90" labelField="LABEL" fitMap="false" descr="Ранг уровня риска объектов трубопровода" dataType="vector" cover="false" comment="PODS_FACILITY_RANKING" classField="TYPE" >
+     <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_FACILITY_RANKING"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_FACILITY_RANKING" />
+    <dataProvider type="spatial" source="CAS_PODS_EXP_GEO.xml#CAS_PODS_FACILITY_RANKING" />
+  </layer>
+  <layer id="PODS_MAINTENANCE" visible="false" type="common" topology="point,line" table="MAINTENANCE_CAS" spacing="common" schema="CAS" projection="EPSG:5807" order="100" labelField="LABEL" fitMap="false" descr="Работы по техобслуживанию и ремонту" dataType="vector" cover="false" comment="PODS_MAINTENANCE" classField="TYPE" >
+   <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_MAINTENANCE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_MAINTENANCE" />
+    <dataProvider type="spatial" source="CAS_PODS_EXP_GEO.xml#CAS_PODS_MAINTENANCE" />
+  </layer>
+</root>

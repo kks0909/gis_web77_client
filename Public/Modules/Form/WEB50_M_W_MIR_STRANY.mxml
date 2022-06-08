@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns:mx="http://www.adobe.com/2006/mxml"
+                title="МИР_СТРАНЫ"
+                width="780">
+  <dataProvider>M_W_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="780">
+      <mx:HBox width="100%">
+         <mx:VBox width="50%">
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Страна" width="140"/>
+               <mx:TextInput id="СТРАНА" width="240" maxChars="50" height="20"/>
+            </mx:HBox>
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Континент" width="140"/>
+               <mx:TextInput id="КОНТИНЕНТ" width="120" maxChars="30" height="20"/>
+            </mx:HBox>
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Количество жителей в 1994 году" width="140"/>
+               <controls:NumberInput id="НАСЕЛЕНИЕ_1994" width="120" maxChars="12" height="20"/>
+            </mx:HBox>
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Столица" width="140"/>
+               <mx:TextInput id="СТОЛИЦА" width="120" maxChars="20" height="20"/>
+            </mx:HBox>
+         </mx:VBox>
+         <mx:VBox width="50%">
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Код по ОКСМ" width="140"/>
+               <controls:NumberInput id="КОД_СТРАНЫ" editable="false" width="30" maxChars="3" height="20"/>
+               <mx:Text textAlign="right" text="Код FIPS" width="140"/>
+               <mx:TextInput id="КОД_FIPS" width="30" maxChars="2" height="20"/>
+            </mx:HBox>
+            <mx:HBox width="100%">
+               <mx:Text textAlign="right" text="Цвет на карте (код)" width="140"/>
+               <controls:NumberInput id="КОД_ЦВЕТА" width="30" maxChars="12" height="20"/>
+            </mx:HBox>
+            <mx:HBox width="100%" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+               <mx:Text textAlign="right" text="Идентификатор объекта" width="140"/>
+               <controls:NumberInput id="ID" editable="false" width="85" maxChars="16" height="20"/>
+            </mx:HBox>
+         </mx:VBox>
+      </mx:HBox>
+  </mx:VBox>
+</DATA_EDIT_FORM>

@@ -1,0 +1,131 @@
+﻿<dataset name="ЭХЗ" version="7.7.3.0">
+  <group comment="Команды">
+ <invoke id="gridToolModule" type="global" event_name="FULL_GRID_EVENT_ID_MODULE"
+				  tooltip="Показать списком"
+				  icon="Public/assets/GRID.png">
+		<!-- Общие параметры-->
+		<!-- имя функции открытия, если пустое, то всегда в новом окне -->
+		<var name="functionName" value=""/>
+		<!-- доп параметры открытия окна из windowsTemplates.xml -->
+		<var name="windowTemplateId" value="gridWindow"/>
+		<!-- Задача -->
+		<var name="task" value="GRID"/>
+<var name="mdl" value="Public/SWF/Grid_55.swf"/>
+		<!-- Необходимо ли в команды передавать фильтр верхнего уровня -->
+		<var name="needTopFilter" value="true"/>
+		<!-- Флаг указывает, всегда ли открывать в новом окне или можно использовать команды синхронизации -->
+		<var name="useSynchCommands" value="false"/>
+		<!-- шаблон грида -->
+		<var name="gridId" value=""/>
+		<!-- заголовок грида -->
+		<var name="title" value=""/>
+		<!-- полный идентификатор слоя -->
+		<var name="layerId" value=""/>
+	</invoke>
+	  <invoke id="showFilterModule" type="global" event_name="FULL_GRID_ROUGH_FILTER_MODULE" tooltip="Показать списком" icon="Public/assets/GRID.png">
+		  <!-- Общие параметры-->
+		  <!-- имя функции открытия, если пустое, то всегда в новом окне -->
+		  <var name="functionName" value=""/>
+		  <!-- доп параметры открытия окна из windowsTemplates.xml -->
+		  <var name="windowTemplateId" value="gridWindow"/>
+		  <!-- Задача -->
+		  <var name="task" value="GRID"/>
+<var name="mdl" value="Public/SWF/Grid_55.swf"/>
+		  <!-- Необходимо ли в команды передавать фильтр верхнего уровня -->
+		  <var name="needTopFilter" value="true"/>
+		  <!-- Флаг указывает, всегда ли открывать в новом окне или можно использовать команды синхронизации -->
+		  <var name="useSynchCommands" value="false"/>
+
+		  <!-- шаблон грида -->
+		  <var name="gridId" value=""/>
+		  <!-- заголовок грида -->
+		  <var name="title" value=""/>
+		  <!-- полный идентификатор слоя -->
+		  <var name="layerId" value=""/>
+
+		  <!-- Параметры для среднего фильтра -->
+		  <var name="requestId" value="PODS_SEM_DICT.xml#PODS_PI_CP_INSPECTION" />
+		  <var name="variableName" value="PI_CP_EVENT_ID" />
+		  <var name="winTitle" value="Обследование ЭХЗ" />
+		  <var name="maxRecords" value="10" />
+	  </invoke>
+    <invoke id="showGrid" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="showFilter" type="global" event_name="FULL_GRID_ROUGH_FILTER" tooltip="Показать списком" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+      <var name="requestId" value="PODS_SEM_DICT.xml#PODS_PI_CP_INSPECTION" />
+      <var name="variableName" value="PI_CP_EVENT_ID" />
+      <var name="winTitle" value="Обследование ЭХЗ" />
+      <var name="maxRecords" value="10" />
+    </invoke>
+    <invoke id="createNewObject" type="global" event_name="createObjectFromTree" tooltip="Добавить запись" icon="Public/assets/addObject.png">
+      <var name="classId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="checkBoxTool" type="global" event_name="checkBoxEvent" tooltip="Вкл/Выкл видимость слоя">
+      <var layerParams="" />
+    </invoke>
+  </group>
+  <tree max_items="20" toolbarStyle="toolbarStyle" toolbarButtonStyle="toolbarButtonStyle">
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_OTHER_Layers.xml#PODS_PI_GROUND_BED_READING;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_PI_GROUND_BED_READING" FILE_NAME="PODS_INSP_STYLE.xml" />
+      <context_menu run_invoke="showFilterModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="createNewObject" classId="PODS_PI_GROUND_BED_READING"/>
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_PI_GROUND_BED_READING;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_PI_GROUND_BED_READING;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+      </level>
+    </level>
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_OTHER_Layers.xml#PODS_PI_ANODE_READING;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_PI_ANODE_READING" FILE_NAME="PODS_INSP_STYLE.xml" />
+      <context_menu run_invoke="showFilterModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="createNewObject" classId="PODS_PI_ANODE_READING"/>
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_PI_ANODE_READING;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_PI_ANODE_READING;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+      </level>
+    </level>
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_OTHER_Layers.xml#PODS_PI_CASING_READING;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_PI_CASING_READING" FILE_NAME="PODS_INSP_STYLE.xml" />
+      <context_menu run_invoke="showFilterModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="createNewObject" classId="PODS_PI_CASING_READING"/>
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_PI_CASING_READING;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_PI_CASING_READING;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+      </level>
+    </level>
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_OTHER_Layers.xml#PODS_PI_IC_COUPON_READING;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_PI_IC_COUPON_READING" FILE_NAME="PODS_INSP_STYLE.xml" />
+      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="createNewObject" classId="PODS_PI_IC_COUPON_READING"/>
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_PI_IC_COUPON_READING;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_PI_IC_COUPON_READING;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+      </level>
+    </level>
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_OTHER_Layers.xml#PODS_PI_BOND_READING;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_PI_BOND_READING" FILE_NAME="PODS_INSP_STYLE.xml" />
+      <context_menu run_invoke="showFilterModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="createNewObject" classId="PODS_PI_BOND_READING"/>
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_PI_BOND_READING;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_PI_BOND_READING;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+      </level>
+    </level>
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_INSP_Layers.xml#PODS_PI_CP_INSPECTION;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_PI_CP_INSPECTION" FILE_NAME="PODS_INSP_STYLE.xml" />
+      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="createNewObject" classId="PODS_PI_CP_INSPECTION"/>
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_PI_CP_INSPECTION;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_PI_CP_INSPECTION;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_INSP_STYLE.xml" />
+      </level>
+    </level>
+  </tree>
+</dataset>

@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns="view.data.*" width="760" ext_data_id="PODS_EXPORT.xml#PODS_STO_VALVE_DAMAGE_CORROSION" excelTemplate="PODS_STO_VALVE_DAMAGE_CORROSION" title="СТО Газпром 2-2.3-292-2007. Межккрановые участки. Поврежденность ЛЧ МГ от коррозии">
+	<dataProvider>PODS_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	<mx:VBox width="760">
+	<mx:HBox percentWidth="100">
+			      <mx:Text textAlign="right" text="Обследование" width="140"/>
+			      <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+				        <mx:ComboBox id="ILI_INSPECTION_ID" enabled="false" editable="false" width="585" height="20"
+                         dataProvider="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION"/>
+				        <mx:Button id="BUTTON_ILI_INSPECTION_ID" selectedField="PODS_ILI_INSPECTION"
+                       enabled="false"
+                       styleName="refObject"
+                       toolTip="Перейти к внутритрубному обследованию"
+                       width="16"
+                       height="16"/>
+			      </mx:HBox>
+		    </mx:HBox>
+		<mx:HBox percentWidth="100">
+			<mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Начальный км" width="140"/>
+          <mx:TextInput id="STATION_BEG" width="80" maxChars="16" height="20"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Конечный км" width="140"/>
+          <mx:TextInput id="STATION_END" width="80" maxChars="16" height="20"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Поврежденность ЛЧ МГ от коррозии" width="140"/>
+          <mx:TextInput id="STO_292_2007_DAMAGE_CORROSION" width="160" maxChars="32" height="20"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Поврежденность ЛЧ МГ, характеризующая наличие трещин" width="140"/>
+          <mx:TextInput id="STO_292_2007_DAMAGE_CRACK" width="160" maxChars="32" height="20"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Поврежденность ЛЧ МГ от механических повреждений" width="140"/>
+          <mx:TextInput id="STO_292_2007_DAMAGE_MECHANICAL" width="160" maxChars="32" height="20"/>
+        </mx:HBox>
+	<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Поврежденность ЛЧ МГ, связанная с наличием дефектов типа гофр и вмятин" width="140"/>
+          <mx:TextInput id="STO_292_2007_DAMAGE_DENT" width="160" maxChars="32" height="20"/>
+        </mx:HBox>
+
+      </mx:VBox>
+      <mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Поврежденность ЛЧ МГ, за время эксплуатации от действия переменных эксплуатационных нагрузок" width="140"/>
+          <mx:TextInput id="STO_292_2007_DAMAGE_DUTY_VAR" width="160" maxChars="32" height="20"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Показатель технического состояния труб" width="140"/>
+          <mx:TextInput id="STO_292_2007_VALUE_PIPE" width="160" maxChars="32" height="20"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Показатель технического состояния сварных соединений" width="140"/>
+          <mx:TextInput id="STO_292_2007_VALUE_WELD" width="160" maxChars="32" height="20"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Показатель технического состояния ЛЧ МГ по результатам ВТД" width="140"/>
+          <mx:TextInput id="STO_292_2007_VALUE_CONDITION" width="160" maxChars="32" height="20"/>
+        </mx:HBox>
+				<mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+					<mx:Text textAlign="right" text="Источник информации" width="140"/>
+					<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+						<mx:ComboBox id="SOURCE_GCL" enabled="false" editable="false" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_SOURCE_GCL"/>
+						<mx:Button id="BTN_LIST_SOURCE_GCL" selectedField="PODS_SOURCE_GCL" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16"/>
+					</mx:HBox>
+				</mx:HBox>
+				</mx:VBox>
+		</mx:HBox>
+	</mx:VBox>
+	
+</DATA_EDIT_FORM>

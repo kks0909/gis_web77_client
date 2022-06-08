@@ -1,0 +1,22 @@
+<root version="postgres 7.7.3.0">
+  <data id="WEB50_B_STATUS_REF" comment="WEB50.B_STATUS_REF" schema="PODS"
+         table="POI_POINT">
+      <select>
+         <dbQuery>
+            <query>
+  			select STATUS_ID CODE, DESCR from web50.b_status_ref
+		</query>
+         </dbQuery>
+      </select>
+  </data>
+   <data id="WEB50_B_USER_REF" comment="WEB50.B_USER_REF" schema="PODS"
+         table="POI_POINT">
+      <select>
+         <dbQuery>
+            <query>
+  			select USER_ID CODE, LOGIN DESCR from web50.b_user_private
+		</query>
+         </dbQuery>
+      </select>
+  </data>
+</root>

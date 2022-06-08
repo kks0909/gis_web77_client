@@ -1,0 +1,147 @@
+﻿<root version="postgres 7.7.4.0">
+	<data id="WEB50_KADASTR_KVARTAL" comment="WEB50.KADASTR_KVARTAL" schema="WEB50" table="KADASTR_KVARTAL">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="ORDER_COLUMNS" default="ID"/>
+				<var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<query>
+					SELECT {COLUMNS_FILTER} FROM (
+					SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN, ID, CAD_NUM, RAYON_NUM
+					FROM WEB50.KADASTR_KVARTAL WHERE {FILTER}) dd
+					WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+				</query>
+			</dbQuery>
+		</select>
+    </data>
+	<data id="WEB50_KADASTR_KVARTAL_CNT" comment="WEB50.KADASTR_KVARTAL_CNT" schema="WEB50" table="KADASTR_KVARTAL">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>				
+				<var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+				<query>
+					SELECT COUNT(*) CNT FROM WEB50.KADASTR_KVARTAL WHERE {FILTER}
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="WEB50_KADASTR_PODS_MDR" comment="WEB50.KADASTR_PODS_MDR" schema="WEB50" table="KADASTR_PODS_MDR">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="ORDER_COLUMNS" default="MDR_ID"/>
+				<var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<query>
+					SELECT {COLUMNS_FILTER} FROM (
+					SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN,ID, MDR_ID, OBJ_TYPE, DESCRIPTION, STATION_BEGIN, STATION_END
+					FROM (select MDR_ID ID, MDR_ID, OBJ_TYPE, DESCRIPTION, STATION_BEGIN, STATION_END from WEB50.KADASTR_PODS_MDR WHERE {FILTER}) dd) ff
+					WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="WEB50_KADASTR_PODS_MDR_CNT" comment="WEB50.KADASTR_PODS_MDR_CNT" schema="WEB50" table="KADASTR_PODS_MDR">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>				
+				<var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+				<query>
+					SELECT COUNT(*) CNT FROM WEB50.KADASTR_PODS_MDR WHERE {FILTER}
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+<data id="WEB50_KADASTR_ALERT" comment="WEB50.KADASTR_ALERT" schema="WEB50" table="KADASTR_ALERT">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="ORDER_COLUMNS" default="MDR_ID"/>
+				<var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<query>
+					SELECT {COLUMNS_FILTER} FROM (
+					SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN, ID, OBJ_TYPE, DESCRIPTION, STATION_BEGIN, STATION_END, CTIME, CUSER_ID, MTIME, MUSER_ID
+					FROM (select ID,  OBJ_TYPE, DESCRIPTION, STATION_BEGIN, STATION_END, CTIME, CUSER_ID, MTIME, MUSER_ID from WEB50.KADASTR_ALERT WHERE {FILTER}) dd) ff
+					WHERE RWN BETWEEN {LOW_LIMIT} AND {HIGH_LIMIT}
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="WEB50_KADASTR_ALERT_CNT" comment="WEB50.KADASTR_ALERT_CNT" schema="WEB50" table="KADASTR_ALERT">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>				
+				<var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+				<query>
+					SELECT COUNT(*) CNT FROM WEB50.KADASTR_ALERT WHERE {FILTER}
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+<data id="WEB50_KADASTR_GKS_WAY" comment="WEB50.KADASTR_GKS_WAY" schema="WEB50" table="KADASTR_GKS_WAY">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="ORDER_COLUMNS" default="MDR_ID"/>
+				<var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<query>
+					SELECT {COLUMNS_FILTER} FROM (
+					SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN,ID, TRACK_ID, OBJ_TYPE, DESCRIPTION, STATION_BEGIN, STATION_END,DATE_BEGIN,DATE_END, CTIME, CUSER_ID, MTIME, MUSER_ID
+					FROM (select TRACK_ID ID, TRACK_ID, OBJ_TYPE, DESCRIPTION, STATION_BEGIN, STATION_END, DATE_BEGIN, DATE_END, CTIME, CUSER_ID, MTIME, MUSER_ID from WEB50.KADASTR_GKS_WAY WHERE {FILTER}) dd) ff
+					WHERE RWN BETWEEN {LOW_LIMIT} AND {HIGH_LIMIT}
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="WEB50_KADASTR_GKS_WAY_CNT" comment="WEB50.KADASTR_GKS_WAY_CNT" schema="WEB50" table="KADASTR_GKS_WAY">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>				
+				<var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+				<query>
+					SELECT COUNT(*) CNT FROM WEB50.KADASTR_GKS_WAY WHERE {FILTER}
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+<data id="WEB50_KADASTR_ALERT_OBJECT" comment="WEB50.KADASTR_ALERT_OBJECT" schema="WEB50" table="KADASTR_ALERT_OBJECT">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>
+				<var name="ORDER_COLUMNS" default="MDR_ID"/>
+				<var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+				<var name="LOW_LIMIT" default="1"/>
+				<var name="HIGH_LIMIT" default="65536"/>
+				<var name="COLUMNS_FILTER" default="*"/>
+				<query>
+					SELECT {COLUMNS_FILTER} FROM (
+					SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN,ID, ALERT_ID, OBJ_TYPE, DESCRIPTION, OWNER_NAME, ADDRESS, SQUARE, CTIME, CUSER_ID, MTIME, MUSER_ID
+					FROM (select ID, ALERT_ID, OBJ_TYPE, DESCRIPTION, OWNER_NAME, ADDRESS, SQUARE, CTIME, CUSER_ID, MTIME, MUSER_ID from WEB50.KADASTR_ALERT_OBJECT WHERE {FILTER}) dd) ff
+					WHERE RWN BETWEEN {LOW_LIMIT} AND {HIGH_LIMIT}
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="WEB50_KADASTR_ALERT_OBJECT_CNT" comment="WEB50.KADASTR_ALERT_OBJECT_CNT" schema="WEB50" table="KADASTR_ALERT_OBJECT">
+		<select>
+			<dbQuery>
+				<var name="FILTER" default="1=1"/>				
+				<var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+				<query>
+					SELECT COUNT(*) CNT FROM WEB50.KADASTR_ALERT_OBJECT WHERE {FILTER}
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+</root>

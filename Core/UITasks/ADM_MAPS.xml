@@ -1,0 +1,16 @@
+﻿<ROOT prevTask="close" version="6.0.2.0">
+  <hbox percentWidth="100" percentHeight="100">
+	<panel id="ADM_MAPS" percentWidth="100" percentHeight="100" reload="true">
+		<settings>
+			<requestMaps>ADM_SEM.xml#WEB50_M_MAP</requestMaps>
+			<requestStyle>ADM_SEM.xml#EDIT_STYLE_XML</requestStyle>
+			<requestLayer>ADM_SEM.xml#EDIT_LAYER_XML</requestLayer>
+			<requestData>ADM_SEM.xml#EDIT_DATA_XML</requestData>
+			<dataTemplateSem>SQL_TEMPLATE_SEM.xml</dataTemplateSem>
+			<dataTemplateGeo>SQL_TEMPLATE_GEO.xml</dataTemplateGeo>
+			<dataTemplateGeo3D>SQL_TEMPLATE_GEO3D.xml</dataTemplateGeo3D>
+			<localStoragePath>C:\GIS_WEB54\RASTER\</localStoragePath>
+		</settings>
+	</panel>
+  </hbox>
+</ROOT>

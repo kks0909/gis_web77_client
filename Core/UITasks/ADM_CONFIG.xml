@@ -1,0 +1,9 @@
+﻿<ROOT prevTask="close" version="6.0.2.0">
+  <hbox percentWidth="100" percentHeight="100">
+	<panel id="ADM_LOG" percentWidth="100" percentHeight="100" reload="true">
+		<settings>
+			<requestConfig>ADM_SEM.xml#GET_CLIENT_SETTINGS</requestConfig>
+		</settings>
+	</panel>
+  </hbox>
+</ROOT>

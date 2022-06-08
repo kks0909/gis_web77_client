@@ -1,0 +1,24 @@
+<div version="7.7.2.2" id="searchId_{postId}" class="searchWrapper">
+    <div id="searchHeaderId_{postId}_title" class="searchHeader">
+        <div class="searchHeaderLeftColumn searchHeaderTitle" title="{title}">{title}</div>
+    </div>
+    <div id="searchHeaderId_{postId}_content" class="searchHeader searchHeaderContent">
+        <div class="searchHeaderLeftColumn">{content}</div>
+    </div>
+    <div id="searchContentId_{postId}" class="searchContentWrapper">
+        <a href="#" onclick="if (typeof App.openDocFile=='function') App.openDocFile('{filePath}','{postId}'); return false;" style="text-align: center;">
+            <img src="{imageSrc}">
+        </a>
+    </div>
+    <div id="searchFooterId_{postId}" class="postFooter">
+        <div class="searchFooterBox">
+            <div class="searchFooterBottomLeft">
+                <span><a href="#" onclick="if (typeof SearchEngineViewForm.prototype.getCurPostDocLink_ === 'function') SearchEngineViewForm.prototype.getCurPostDocLink_('{postId}');return false;"><img class="searchFileLinkButton" src="/web77/ui/images/tag.png">Ссылка на файл</a> | </span>
+                <span><a href="#" onclick="if (typeof SearchEngineViewForm.prototype.openDocFile_ === 'function') SearchEngineViewForm.prototype.openDocFile_('{content}','{postId}'); return false;"><img class="searchFileLoadButton" src="/web77/ui/images/save.png">Скачать файл</a></span>
+            </div>
+            <div class="searchFooterBottomRight">
+                <span>{categoryId}</span>
+            </div>
+        </div>
+    </div>
+</div>

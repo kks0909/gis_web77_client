@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.3.0" descr="АФС (растровые снимки)" name="M_Raster">
+  <dataProvider type="style" source="M_Raster_STYLE.xml" />
+  <!--
+  <layer id="RASTR_*" descr="Растр *" comment="Растр *" order="2000" visible="true" topology="polygon" projection="EPSG:4326" zoomMin="27" zoomMax="12" dataType="raster" type="common" cover="false" boundary="POLYGON ((45.0710963959292 44.2314704821588, 45.0956613402678 44.1627913140562, 45.2860032448701 44.197850266022, 45.2616454493614 44.2665694472509, 45.0710963959292 44.2314704821588))">
+    <dataProvider type="style" source="M_Raster_STYLE.xml#WEB50_LIB_DOC" />
+    <data>
+      <file source="C:\GIS_GOTS_WEB50\LOCAL_STORAGE\*.tif"/>
+    </data>
+  </layer>
+  -->
+</root>

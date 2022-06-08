@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div version="7.7.2.2" class="map-centering-main-div">
+    <div class="map-centering-div " style="margin-left: -5px;">
+        <div class="map-centering-div map-centering-label" style="width: 97px;">Широта (WGS-84)<br/> ГГ°ГГГГГГ</div>
+        <input class="" type="text" id="mapCenteringY"/>
+        <div class="map-centering-div">ГГ°ММ'СС.СС''</div>
+        <input type="text" style="width: 95px;" id="mapCenteringYG"/>
+    </div>
+    <div class="map-centering-div" style="margin-left: -5px;">
+        <div class="map-centering-div map-centering-label" style="width: 97px;">Долгота (WGS-84)<br/> ГГ°ГГГГГГ</div>
+        <input type="text" id="mapCenteringX" />
+        <div class="map-centering-div">ГГ°ММ'СС.СС''</div>
+        <input type="text" style="width: 95px;" id="mapCenteringXG"/>
+    </div>
+    <div class="map-centering-div map-centering-label">
+        <div class="map-centering-div" style="width: 71px; margin-left: -15px; vertical-align: top; margin-top: 27px;"> Масштаб </div>
+        <div style="display: inline-block; text-align: left;">
+            <div style="border: 1px #005E9A solid; height: 22px;padding-top: 5px;">
+                <input style="vertical-align: top;" type="radio" checked name="inputRadioResolution" id="inputRadioResolutionList" />
+                <label style="vertical-align: top;" for="inputRadioResolutionList">Из списка</label>
+                <span style="margin-left: 136px; vertical-align: top;"> 1 см = </span>
+                <!--<select id="mapCenteringResolutions"></select>-->
+                <div id="mapCenteringResolutions"></div>
+            </div>
+            <div  style="border: 1px #005E9A solid; margin-top: -1px; height: 38px;padding-top: 3px;" id="mapCenteringResolutionsCustomDiv">
+                <input style="vertical-align: top;" type="radio" name="inputRadioResolution" id="inputRadioResolutionCustom" />
+                <label style="vertical-align: top;" for="inputRadioResolutionCustom">Пользовательский</label>
+                <span style="margin-left: 92px;vertical-align: top;"> 1 см = </span>
+                <input class="" style="width: 71px; vertical-align: top;margin-top: -2px;" type="text" id="mapCenteringResolutionsCustom"/>
+                <span style="vertical-align: top;">см</span>
+                <br/>
+                <span>Допустимые значения от <label id="mapCenteringBeginSm"/> и до <label id="mapCenteringEndSm"/> сантиметров</span>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="map-centering-div">
+        Внимание! Координаты Широта/Долгота в системе координат WGS-84. Применяется в навигационных GPS-приемниках
+    </div>
+    <div class="map-centering-div" style="margin-left: 121px;">
+        <input type="button" class="map-dialog-button" id="mapCenteringApply" value="Перейти" />
+        <input type="button" class="map-dialog-button" id="mapCenteringCancel" value="Отмена" />
+    </div>
+</div>
+</body>
+</html>

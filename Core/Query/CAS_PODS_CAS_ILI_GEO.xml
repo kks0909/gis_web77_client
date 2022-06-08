@@ -1,0 +1,1807 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="postgres 7.7.7.7">
+<data id="CAS_ILI_PIPE_LENGTH" comment="Трубный журнал" schema="PODS" table="ILI_PIPE_LENGTH">
+    <select>
+		<geoQuery idField="ID" geoField="X, Y">
+			<var name="LABEL" default="Коэффициент безопасного давления"/>
+			<var name="LABEL_UNIT" default=""/>
+			<var name="HEIGHT" default="15"/>
+			<var name="TYPE" default="1D"/>
+			<var name="START_KM"/>
+			<var name="FINISH_KM"/>
+			<var name="LINE_ID"/>
+			<var name="Y_MAX" default="1"/>
+			<var name="Y_MIN" default="0"/>
+			<var name="FILTER" default="1=1"/>
+			<var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+			<var name="FILTERED_CLASS" default="PODS_ILI_DATA_LIST"/>
+			<var name="START_FILTER" default="CAS_PODS_CAS_ILI_GEO.xml#CAS_ILI_FIRST"/>
+			<query>
+select id.event_id  ID
+			  ,( (s.station_begin + (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000) -  {START_KM})  X
+			  ,0 Y       
+		   ,round(id.NOMINAL_WALL_THICKNESS/10) "TYPE"
+		   ,id.weld_number  "LABEL"
+	  FROM pods.ili_pipe_length id   
+		   JOIN pods.event_range er  
+			 ON er.event_id = id.event_id
+		   JOIN pods.station_point sp
+			 ON er.station_id_begin = sp.station_id
+			 		   JOIN pods.series s
+			 ON s.series_id = sp.series_id
+		   JOIN pods.location l
+			 ON l.location_id = sp.location_id
+	  WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+			  AND  sp.line_id = {LINE_ID}
+			  AND {FILTER}
+union all
+SELECT id.event_id  ID
+			  ,( (s.station_begin + (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000) -  {START_KM})  X
+			  ,0 Y       
+		   ,round(id.NOMINAL_WALL_THICKNESS/10) "TYPE"
+		   ,id.weld_number  "LABEL" 
+	  FROM pods.ili_pipe_length id   
+		   JOIN pods.event_range er  
+			 ON er.event_id = id.event_id
+		   JOIN pods.station_point sp
+			 ON er.station_id_end = sp.station_id
+			 		   JOIN pods.series s
+			 ON s.series_id = sp.series_id
+		   JOIN pods.location l
+			 ON l.location_id = sp.location_id
+	  WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+			  AND sp.line_id = {LINE_ID}
+			  AND {FILTER}
+        </query>
+		</geoQuery>
+	</select>
+</data> 
+<data id="CAS_ILI_KBD" comment="Коэффициент безопасного давления" schema="PODS" table="ILI_DATA">
+    <select>
+		<geoQuery idField="ID" geoField="X, Y">
+			<var name="LABEL" default="Коэффициент безопасного давления"/>
+			<var name="LABEL_UNIT" default=""/>
+			<var name="HEIGHT" default="15"/>
+			<var name="TYPE" default="2D"/>
+			<var name="START_KM"/>
+			<var name="FINISH_KM"/>
+			<var name="LINE_ID"/>
+			<var name="Y_MAX" default="1"/>
+			<var name="Y_MIN" default="0"/>
+			<var name="FILTER" default="1=1"/>
+			<var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+			<var name="FILTERED_CLASS" default="PODS_ILI_DATA_LIST"/>
+			<var name="START_FILTER" default="CAS_PODS_CAS_ILI_GEO.xml#CAS_ILI_FIRST"/>
+			<query>
+			  SELECT id.ili_data_id  ID
+			  ,( (s.station_begin + (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000) - {START_KM})  X
+			  ,(CASE WHEN coalesce(id.bpr_pig ,0) &lt;  {Y_MIN}
+					THEN {Y_MIN}
+					WHEN coalesce(id.bpr_pig ,0) &gt;  {Y_MAX}
+					THEN {Y_MAX}
+					ELSE coalesce(id.bpr_pig ,0)
+			   END  - {Y_MIN})  Y       
+		   ,id.ANOMALY_TYPE_CL "TYPE"
+	  FROM pods.ili_data id   
+		   JOIN pods.event_range er  
+			 ON er.event_id = id.event_id
+		   JOIN pods.station_point sp
+			 ON er.station_id_begin = sp.station_id
+		   JOIN pods.series s
+			 ON s.series_id = sp.series_id
+		   JOIN pods.location l
+			 ON l.location_id = sp.location_id
+		   JOIN pods.ili_anomaly_type_cl it
+			 ON id.anomaly_type_cl = it.code
+	  WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+			  /*AND sp.station locked BETWEEN {START_KM} AND {FINISH_KM} */
+			  AND sp.line_id = {LINE_ID}
+			  AND it.category_cl = 1
+			  AND {FILTER}
+        </query>
+		</geoQuery>
+	</select>
+</data>        
+<data id="CAS_ILI_DEPTH" comment="Глубина поражения дефектов" schema="PODS" table="ILI_DATA">
+    <select>
+		<geoQuery idField="ID" geoField="X, Y">
+			<var name="LABEL" default="Глубина поражения дефектов"/>
+			<var name="LABEL_UNIT" default="проц. толщины"/>
+			<var name="HEIGHT" default="15"/>
+			<var name="TYPE" default="2D"/>
+			<var name="START_KM"/>
+			<var name="FINISH_KM"/>
+			<var name="LINE_ID"/>
+			<var name="Y_MAX" default="100"/>
+			<var name="Y_MIN" default="0"/>
+			<var name="FILTER" default="1=1"/>
+			<var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+			<var name="FILTERED_CLASS" default="PODS_ILI_DATA_LIST"/>
+			<var name="START_FILTER" default="CAS_PODS_CAS_ILI_GEO.xml#CAS_ILI_FIRST"/>
+			<query>
+			  SELECT id.ili_data_id ID
+			  ,( (s.station_begin + (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000) - {START_KM})  X
+			  ,(CASE WHEN coalesce(id.average_depth ,0) &lt;  {Y_MIN}
+					THEN {Y_MIN}
+					WHEN coalesce(id.average_depth ,0) &gt;  {Y_MAX}
+					THEN {Y_MAX}
+					ELSE coalesce(id.average_depth ,0)
+			   END - {Y_MIN}) Y       
+		   ,id.ANOMALY_TYPE_CL "TYPE"
+	  FROM pods.ili_data id   
+		   JOIN pods.event_range er  
+			 ON er.event_id = id.event_id
+		   JOIN pods.station_point sp
+			 ON er.station_id_begin = sp.station_id
+		   JOIN pods.series s
+			 ON s.series_id = sp.series_id
+		   JOIN pods.location l
+			 ON l.location_id = sp.location_id
+		   JOIN pods.ili_anomaly_type_cl it
+			 ON id.anomaly_type_cl = it.code
+	  WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+			  /*AND sp.station locked BETWEEN {START_KM} AND {FINISH_KM} */
+			  AND sp.line_id = {LINE_ID}
+			  AND it.category_cl = 1
+        and id.average_depth between 1 and 40
+			  AND {FILTER}
+			</query>
+		</geoQuery>
+	</select>
+</data>
+<data id="CAS_ILI_FIRST" comment="Самый свежий отчет ВТД на лайне в пределах километража и доступа по ЛПУ " schema="PODS" table="ILI_DATA">
+    <select>
+		<dbQuery idField="ID">
+			<var name="START_KM"/>
+			<var name="FINISH_KM"/>
+			<var name="LINE_ID"/>
+			<var name="FILTER" default="1=1"/>
+			<var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+			<query>
+WITH all_data AS (
+SELECT id.ili_data_id id,ii.ili_inspection_id,ii.begin_date,r.route_id
+  FROM pods.ili_data id   
+       JOIN pods.event_range er  
+         ON er.event_id = id.event_id
+       JOIN pods.station_point sp
+         ON er.station_id_begin = sp.station_id
+       JOIN pods.series s
+         ON s.series_id = sp.series_id
+       JOIN pods.route r
+         ON s.route_id = r.route_id
+       JOIN pods.location l
+         ON l.location_id = sp.location_id
+       JOIN pods.ili_anomaly_type_cl it
+         ON id.anomaly_type_cl = it.code
+       JOIN pods.ili_inspection ii
+         ON id.ili_inspection_id = ii.ili_inspection_id
+      WHERE l.srv_district_gcl IN ({LPU_ACCESS_FILTER})
+              AND sp.station BETWEEN {START_KM} AND {FINISH_KM} 
+              AND r.line_id = {LINE_ID}        
+              AND it.category_cl = 1),
+ last_inspection AS (              
+SELECT DISTINCT FIRST_VALUE(ili_inspection_id) OVER (ORDER BY begin_date DESC) ili_inspection_id
+  FROM all_data),
+ for_filter AS (  
+SELECT ad.ID
+  FROM all_data ad
+ WHERE ad.ili_inspection_id = ANY (SELECT li.ili_inspection_id
+                                     FROM last_inspection li))
+SELECT *
+  FROM for_filter
+ WHERE {FILTER}
+     </query>
+		</dbQuery>
+	</select>
+</data>   
+
+<data id="CAS_PODS_ILI_CLUSTER" comment="Группы взаимодействующих дефектов" schema="PODS" table="ILI_CLUSTER">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="Группы взаимодействующих дефектов"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="15"/>
+   <var name="TYPE" default="2D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+			<var name="Y_MAX" default="10000"/>
+			<var name="Y_MIN" default="0"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_ILI_CLUSTER_LIST"/>
+   <query>
+     SELECT id.ili_cluster_id ID
+     ,( (s.station_begin + (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000) - {START_KM})  X
+     ,(CASE WHEN coalesce(id.effective_area ,0) &lt;  {Y_MIN}
+     THEN {Y_MIN}
+     WHEN coalesce(id.effective_area ,0) &gt;  {Y_MAX}
+     THEN {Y_MAX}
+     ELSE coalesce(id.effective_area ,0)
+      END  - {Y_MIN})  Y       
+     ,round(effective_area::NUMERIC,2) "LABEL"
+   FROM pods.ili_cluster id  
+     JOIN pods.event_range er  
+    ON er.event_id = id.event_id
+     JOIN pods.station_point sp
+    ON er.station_id_begin = sp.station_id
+     JOIN pods.series s
+    ON s.series_id = sp.series_id
+     JOIN pods.location l
+    ON l.location_id = sp.location_id
+   WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+     /*AND sp.station locked BETWEEN {START_KM} AND {FINISH_KM} */
+     AND sp.line_id = {LINE_ID}
+     AND {FILTER}
+        </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_REPAIR_METHOD" comment="Р Газпром 2-2.3-595-2011.  Методы ремонта" schema="PODS" table="STO_ILI_DATA_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="Р Газпром 2-2.3-595-2011.  Методы ремонта"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_REPAIR_METHOD_LIST"/>
+   <query>
+   with sto_ili_calc as (select * from pods.sto_ili_data_calc id where {FILTER})
+     SELECT id.ili_data_id ID
+     ,( (s.station_begin + (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000) - {START_KM})  X
+     ,0  Y
+     ,R_595_2011_REPAIR_METHOD "LABEL"
+     ,R_595_2011_REPAIR_METHOD "TYPE"
+     FROM sto_ili_calc id
+     JOIN pods.ili_data d
+     ON id.ili_data_id=d.ili_data_id
+     JOIN pods.event_range er
+     ON er.event_id = d.event_id
+     JOIN pods.station_point sp
+     ON er.station_id_begin = sp.station_id
+     JOIN pods.series s
+     ON s.series_id = sp.series_id
+     JOIN pods.location l
+     ON l.location_id = sp.location_id
+     WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+     /*AND sp.station locked BETWEEN {START_KM} AND {FINISH_KM} */
+     AND sp.line_id = {LINE_ID}
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_PERFORMANCE_EVAL" comment="СТО Газпром 2-2.3-112-2007. Оценка работоспособности" schema="PODS" table="STO_ILI_DATA_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="СТО Газпром 2-2.3-112-2007. Оценка работоспособности"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_PERFORMANCE_EVAL_LIST"/>
+   <query>
+      with sto_ili_calc as (select * from pods.sto_ili_data_calc id where {FILTER})
+     SELECT id.ili_data_id ID
+     ,( (s.station_begin + (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000) - {START_KM})  X
+     ,0  Y
+     ,sto_112_2007_performance_eval "LABEL"
+     ,sto_112_2007_performance_eval  "TYPE"
+     FROM pods.sto_ili_data_calc id
+     JOIN pods.ili_data d
+     ON id.ili_data_id=d.ili_data_id
+     JOIN pods.event_range er
+     ON er.event_id = d.event_id
+     JOIN pods.station_point sp
+     ON er.station_id_begin = sp.station_id
+     JOIN pods.series s
+     ON s.series_id = sp.series_id
+     JOIN pods.location l
+     ON l.location_id = sp.location_id
+     WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+     /*AND sp.station locked BETWEEN {START_KM} AND {FINISH_KM} */
+     AND sp.line_id = {LINE_ID}
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_DANGER_DEGREE" comment="СТО Газпром 2-2.3-173-2007. Степень опасности дефекта" schema="PODS" table="STO_ILI_DATA_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="СТО Газпром 2-2.3-173-2007. Степень опасности дефекта"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_DANGER_DEGREE_LIST"/>
+   <query>
+      with sto_ili_calc as (select * from pods.sto_ili_data_calc id where {FILTER})
+     SELECT id.ili_data_id ID
+     ,( (s.station_begin + (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000) - {START_KM})  X
+     ,0  Y
+     , STO_173_2007_DANGER_DEGREE "LABEL"
+     ,STO_173_2007_DANGER_DEGREE  "TYPE"
+     FROM pods.sto_ili_data_calc id
+     JOIN pods.ili_data d
+     ON id.ili_data_id=d.ili_data_id
+     JOIN pods.event_range er
+     ON er.event_id = d.event_id
+     JOIN pods.station_point sp
+     ON er.station_id_begin = sp.station_id
+     JOIN pods.series s
+     ON s.series_id = sp.series_id
+     JOIN pods.location l
+     ON l.location_id = sp.location_id
+     WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+     /*AND sp.station locked BETWEEN {START_KM} AND {FINISH_KM} */
+     AND sp.line_id = {LINE_ID}
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_DANGER_RANK" comment="СТО Газпром 2-2.3-292-2007. Ранги опасности дефектов" schema="PODS" table="STO_ILI_DATA_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="СТО Газпром 2-2.3-292-2007. Ранги опасности дефектов"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_DANGER_RANK_LIST"/>
+   <query>
+      with sto_ili_calc as (select * from pods.sto_ili_data_calc id where {FILTER})
+     SELECT id.ili_data_id ID
+     ,( (s.station_begin + (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000) - {START_KM})  X
+     ,0  Y
+     , round(id.STO_292_2007_DANGER_RANK,3) "LABEL",
+     CASE WHEN id.STO_292_2007_DANGER_RANK &lt;= 0.3 THEN 0
+     WHEN id.STO_292_2007_DANGER_RANK &lt;= 0.6 AND id.STO_292_2007_DANGER_RANK > 0.3 THEN 0.5
+     WHEN id.STO_292_2007_DANGER_RANK &lt;= 1 AND id.STO_292_2007_DANGER_RANK > 0.6 THEN 1
+     ELSE id.STO_292_2007_DANGER_RANK END "TYPE"
+     FROM pods.sto_ili_data_calc id
+     JOIN pods.ili_data d
+     ON id.ili_data_id=d.ili_data_id
+     JOIN pods.event_range er
+     ON er.event_id = d.event_id
+     JOIN pods.station_point sp
+     ON er.station_id_begin = sp.station_id
+     JOIN pods.series s
+     ON s.series_id = sp.series_id
+     JOIN pods.location l
+     ON l.location_id = sp.location_id
+     WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+     /*AND sp.station locked BETWEEN {START_KM} AND {FINISH_KM} */
+     AND sp.line_id = {LINE_ID}
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_FAIL_PROBABILITY" comment="СТО Газпром 2-2.3-401-2009. Вероятности отказов" schema="PODS" table="STO_ILI_DATA_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="СТО Газпром 2-2.3-401-2009. Вероятности отказов"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_FAIL_PROBABILITY_LIST"/>
+   <query>
+      with sto_ili_calc as (select * from pods.sto_ili_data_calc id where {FILTER})
+     SELECT id.ili_data_id ID
+     ,( (s.station_begin + (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000) - {START_KM})  X
+     ,0  Y
+     , round(id.STO_401_2009_FAIL_PROBABILITY,5) "LABEL",
+     CASE WHEN id.STO_401_2009_FAIL_PROBABILITY &lt;= 0.3 THEN 0
+     WHEN id.STO_401_2009_FAIL_PROBABILITY &lt;= 0.6 AND id.STO_401_2009_FAIL_PROBABILITY > 0.3 THEN 0.5
+     WHEN id.STO_401_2009_FAIL_PROBABILITY &lt;= 1 AND id.STO_401_2009_FAIL_PROBABILITY > 0.6 THEN 1
+     ELSE id.STO_401_2009_FAIL_PROBABILITY END "TYPE"
+     FROM pods.sto_ili_data_calc id
+     JOIN pods.ili_data d
+     ON id.ili_data_id=d.ili_data_id
+     JOIN pods.event_range er
+     ON er.event_id = d.event_id
+     JOIN pods.station_point sp
+     ON er.station_id_begin = sp.station_id
+     JOIN pods.series s
+     ON s.series_id = sp.series_id
+     JOIN pods.location l
+     ON l.location_id = sp.location_id
+     WHERE l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+     /*AND sp.station locked BETWEEN {START_KM} AND {FINISH_KM} */
+     AND sp.line_id = {LINE_ID}
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_100_VALUE_CONDITION" comment="СТО Газпром 2-2.3-292-2007. 100 м. участки. Показатель технического состояния труб" schema="PODS" table="STO_ILI_INSPECTION_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="СТО Газпром 2-2.3-292-2007. 100 м. участки. Показатель технического состояния труб"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_100_VALUE_CONDITION_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT round(v.STO_292_2007_VALUE_CONDITION,3) "LABEL",
+     CASE WHEN v.STO_292_2007_VALUE_CONDITION &lt;= 0.03 THEN 'Исправное'
+     WHEN v.STO_292_2007_VALUE_CONDITION &lt;= 0.06 AND v.STO_292_2007_VALUE_CONDITION &gt; 0.03 THEN 'Неисправное-работоспособное'
+     WHEN v.STO_292_2007_VALUE_CONDITION &lt;= 0.3 AND v.STO_292_2007_VALUE_CONDITION &gt; 0.06 THEN 'Неработоспособное-ремонтнопригодное'
+     WHEN v.STO_292_2007_VALUE_CONDITION &gt; 0.3 THEN 'Предельное'
+     ELSE 'не рассчитано' END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_ILI_INSPECTION_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+     UNION
+     SELECT round(v.STO_292_2007_VALUE_CONDITION,3) "LABEL",
+     CASE WHEN v.STO_292_2007_VALUE_CONDITION &lt;= 0.03 THEN 'Исправное'
+     WHEN v.STO_292_2007_VALUE_CONDITION &lt;= 0.06 AND v.STO_292_2007_VALUE_CONDITION &gt; 0.03 THEN 'Неисправное-работоспособное'
+     WHEN v.STO_292_2007_VALUE_CONDITION &lt;= 0.3 AND v.STO_292_2007_VALUE_CONDITION &gt; 0.06 THEN 'Неработоспособное-ремонтнопригодное'
+     WHEN v.STO_292_2007_VALUE_CONDITION &gt; 0.3 THEN 'Предельное'
+     ELSE 'не рассчитано' END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_ILI_INSPECTION_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id) mainQuery
+     ORDER BY ID, X
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_100_DANGER_DEG" comment="ВНИИГАЗ 2004. Инструкция. 100 м. участки. Противокоррозийная защита. Степень коррозионной опасности" schema="PODS" table="STO_EHZ_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="ВНИИГАЗ 2004. Инструкция. 100 м. участки. Противокоррозийная защита. Степень коррозионной опасности"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_100_DANGER_DEG_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT v.DANGER_DEG "LABEL",
+     v.DANGER_DEG "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_EHZ_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT v.DANGER_DEG "LABEL",
+     v.DANGER_DEG "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_EHZ_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_100_SEGMENT_CATEGORY" comment="ВНИИГАЗ 2004. Инструкция. 100 м. участки. Категория коррозийной опасности" schema="PODS" table="STO_EHZ_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="ВНИИГАЗ 2004. Инструкция. 100 м. участки. Категория коррозийной опасности"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_100_SEGMENT_CATEGORY_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT v.SEGMENT_CATEGORY "LABEL",
+     v.SEGMENT_CATEGORY "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_EHZ_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT v.SEGMENT_CATEGORY "LABEL",
+     v.SEGMENT_CATEGORY "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_EHZ_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_100_TIME_TO_CRIT_DEPTH" comment="ВНИИГАЗ 2004. Инструкция. 100 м. участки. Время до образования усредненного критического дефекта" schema="PODS" table="STO_EHZ_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="ВНИИГАЗ 2004. Инструкция. 100 м. участки. Время до образования усредненного критического дефекта"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_100_TIME_TO_CRIT_DEPTH_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT v.CORR_TIME_TO_CRITICAL_DEPTH "LABEL",
+     CASE WHEN v.CORR_TIME_TO_CRITICAL_DEPTH &lt;= 2 THEN 0
+     WHEN v.CORR_TIME_TO_CRITICAL_DEPTH &lt;= 4 AND v.CORR_TIME_TO_CRITICAL_DEPTH > 2 THEN 1
+     WHEN v.CORR_TIME_TO_CRITICAL_DEPTH > 4 THEN 2
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_EHZ_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT v.CORR_TIME_TO_CRITICAL_DEPTH "LABEL",
+     CASE WHEN v.CORR_TIME_TO_CRITICAL_DEPTH &lt;= 2 THEN 0
+     WHEN v.CORR_TIME_TO_CRITICAL_DEPTH &lt;= 4 AND v.CORR_TIME_TO_CRITICAL_DEPTH > 2 THEN 1
+     WHEN v.CORR_TIME_TO_CRITICAL_DEPTH > 4 THEN 2
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_EHZ_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_VALVE_VALUE_CONDITION" comment="СТО Газпром 2-2.3-292-2007. Межккрановые участки. Показатель технического состояния труб" schema="PODS" table="STO_ILI_INSPECTION_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="СТО Газпром 2-2.3-292-2007. Межккрановые участки. Показатель технического состояния труб"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_VALVE_VALUE_CONDITION_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT round(v.STO_292_2007_VALUE_CONDITION,3) "LABEL",
+     CASE WHEN v.STO_292_2007_VALUE_CONDITION &lt;= 0.03 THEN 'Исправное'
+     WHEN v.STO_292_2007_VALUE_CONDITION &lt;= 0.06 AND v.STO_292_2007_VALUE_CONDITION &gt; 0.03 THEN 'Неисправное-работоспособное'
+     WHEN v.STO_292_2007_VALUE_CONDITION &lt;= 0.3 AND v.STO_292_2007_VALUE_CONDITION &gt; 0.06 THEN 'Неработоспособное-ремонтнопригодное'
+     WHEN v.STO_292_2007_VALUE_CONDITION &gt; 0.3 THEN 'Предельное'
+     ELSE 'не рассчитано' END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_ILI_INSPECTION_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT round(v.STO_292_2007_VALUE_CONDITION,3) "LABEL",
+     CASE WHEN v.STO_292_2007_VALUE_CONDITION &lt;= 0.03 THEN 'Исправное'
+     WHEN v.STO_292_2007_VALUE_CONDITION &lt;= 0.06 AND v.STO_292_2007_VALUE_CONDITION &gt; 0.03 THEN 'Неисправное-работоспособное'
+     WHEN v.STO_292_2007_VALUE_CONDITION &lt;= 0.3 AND v.STO_292_2007_VALUE_CONDITION &gt; 0.06 THEN 'Неработоспособное-ремонтнопригодное'
+     WHEN v.STO_292_2007_VALUE_CONDITION &gt; 0.3 THEN 'Предельное'
+     ELSE 'не рассчитано' END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_ILI_INSPECTION_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_VALVE_DANGER_DEG" comment="ВНИИГАЗ 2004. Инструкция. Межккрановые участки. Противокоррозийная защита. Степень коррозионной опасности" schema="PODS" table="STO_EHZ_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="ВНИИГАЗ 2004. Инструкция. Межккрановые участки. Противокоррозийная защита. Степень коррозионной опасности"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_VALVE_DANGER_DEG_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT v.DANGER_DEG "LABEL",
+     v.DANGER_DEG "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_EHZ_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT v.DANGER_DEG "LABEL",
+     v.DANGER_DEG "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_EHZ_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_VALVE_SEGMENT_CATEGORY" comment="ВНИИГАЗ 2004. Инструкция. Межккрановые участки. Категория коррозийной опасности" schema="PODS" table="STO_EHZ_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="ВНИИГАЗ 2004. Инструкция. Межккрановые участки. Категория коррозийной опасности"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_VALVE_SEGMENT_CATEGORY_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT v.SEGMENT_CATEGORY "LABEL",
+     v.SEGMENT_CATEGORY "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_EHZ_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT v.SEGMENT_CATEGORY "LABEL",
+     v.SEGMENT_CATEGORY "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_EHZ_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_VALVE_TIME_TO_CRIT_DEPTH" comment="ВНИИГАЗ 2004. Инструкция.Межккрановые участки. Время до образования усредненного критического дефекта" schema="PODS" table="STO_EHZ_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="ВНИИГАЗ 2004. Инструкция.Межккрановые участки. Время до образования усредненного критического дефекта"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_VALVE_TIME_TO_CRIT_DEPTH_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT v.CORR_TIME_TO_CRITICAL_DEPTH "LABEL",
+     CASE WHEN v.CORR_TIME_TO_CRITICAL_DEPTH &lt;= 2 THEN 0
+     WHEN v.CORR_TIME_TO_CRITICAL_DEPTH &lt;= 4 AND v.CORR_TIME_TO_CRITICAL_DEPTH > 2 THEN 1
+     WHEN v.CORR_TIME_TO_CRITICAL_DEPTH > 4 THEN 2
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_EHZ_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT v.CORR_TIME_TO_CRITICAL_DEPTH "LABEL",
+     CASE WHEN v.CORR_TIME_TO_CRITICAL_DEPTH &lt;= 2 THEN 0
+     WHEN v.CORR_TIME_TO_CRITICAL_DEPTH &lt;= 4 AND v.CORR_TIME_TO_CRITICAL_DEPTH > 2 THEN 1
+     WHEN v.CORR_TIME_TO_CRITICAL_DEPTH > 4 THEN 2
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_EHZ_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_RANGE_VALUE_CONDITION" comment="СТО Газпром 2-2.3-292-2007. Межкамерные участки. Показатель технического состояния труб" schema="PODS" table="STO_ILI_INSPECTION_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="СТО Газпром 2-2.3-292-2007. Межкамерные участки. Показатель технического состояния труб"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_RANGE_VALUE_CONDITION_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT round(v.STO_292_2007_VALUE_CONDITION,3) "LABEL",
+     CASE WHEN v.STO_292_2007_VALUE_CONDITION &lt;= 0.03 THEN 'Исправное'
+     WHEN v.STO_292_2007_VALUE_CONDITION &lt;= 0.06 AND v.STO_292_2007_VALUE_CONDITION &gt; 0.03 THEN 'Неисправное-работоспособное'
+     WHEN v.STO_292_2007_VALUE_CONDITION &lt;= 0.3 AND v.STO_292_2007_VALUE_CONDITION &gt; 0.06 THEN 'Неработоспособное-ремонтнопригодное'
+     WHEN v.STO_292_2007_VALUE_CONDITION &gt; 0.3 THEN 'Предельное'
+     ELSE 'не рассчитано' END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_ILI_INSPECTION_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT round(v.STO_292_2007_VALUE_CONDITION,3) "LABEL",
+     CASE WHEN v.STO_292_2007_VALUE_CONDITION &lt;= 0.03 THEN 'Исправное'
+     WHEN v.STO_292_2007_VALUE_CONDITION &lt;= 0.06 AND v.STO_292_2007_VALUE_CONDITION &gt; 0.03 THEN 'Неисправное-работоспособное'
+     WHEN v.STO_292_2007_VALUE_CONDITION &lt;= 0.3 AND v.STO_292_2007_VALUE_CONDITION &gt; 0.06 THEN 'Неработоспособное-ремонтнопригодное'
+     WHEN v.STO_292_2007_VALUE_CONDITION &gt; 0.3 THEN 'Предельное'
+     ELSE 'не рассчитано' END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_ILI_INSPECTION_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_RANGE_TIME_LIMIT_EXPL" comment="СТО Газпром 2-2.3-401-2003. Межкамерные участки. Предельный срок эксплуатации ЛЧ МН до вывода в капитальный ремонт" schema="PODS" table="STO_ILI_INSPECTION_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="СТО Газпром 2-2.3-401-2003. Межкамерные участки. Предельный срок эксплуатации ЛЧ МН до вывода в капитальный ремонт"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_RANGE_TIME_LIMIT_EXPL_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT v.STO_401_2003_TIME_LIMIT_EXPL "LABEL",
+     CASE WHEN v.STO_401_2003_TIME_LIMIT_EXPL &lt;= 2 THEN 0
+     WHEN v.STO_401_2003_TIME_LIMIT_EXPL &lt;= 4 AND v.STO_401_2003_TIME_LIMIT_EXPL > 2 THEN 1
+     WHEN v.STO_401_2003_TIME_LIMIT_EXPL > 4 THEN 1
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_ILI_INSPECTION_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT v.STO_401_2003_TIME_LIMIT_EXPL "LABEL",
+     CASE WHEN v.STO_401_2003_TIME_LIMIT_EXPL &lt;= 2 THEN 0
+     WHEN v.STO_401_2003_TIME_LIMIT_EXPL &lt;= 4 AND v.STO_401_2003_TIME_LIMIT_EXPL > 2 THEN 1
+     WHEN v.STO_401_2003_TIME_LIMIT_EXPL > 4 THEN 1
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_ILI_INSPECTION_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_RANGE_OPTIM_TIM_BFR_ILI" comment="СТО Газпром 2-2.3-401-2003. Межкамерные участки. Оптимальное время до проведения ВТД, год" schema="PODS" table="STO_ILI_INSPECTION_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="СТО Газпром 2-2.3-401-2003. Межкамерные участки. Оптимальное время до проведения ВТД, год"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_RANGE_OPTIM_TIM_BFR_ILI_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT v.STO_401_2003_OPTIM_TIM_BFR_ILI "LABEL",
+     CASE WHEN v.STO_401_2003_OPTIM_TIM_BFR_ILI &lt;= 2 THEN 0
+     WHEN v.STO_401_2003_OPTIM_TIM_BFR_ILI &lt;= 4 AND v.STO_401_2003_OPTIM_TIM_BFR_ILI > 2 THEN 1
+     WHEN v.STO_401_2003_OPTIM_TIM_BFR_ILI > 4 THEN 2
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_ILI_INSPECTION_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT v.STO_401_2003_OPTIM_TIM_BFR_ILI "LABEL",
+     CASE WHEN v.STO_401_2003_OPTIM_TIM_BFR_ILI &lt;= 2 THEN 0
+     WHEN v.STO_401_2003_OPTIM_TIM_BFR_ILI &lt;= 4 AND v.STO_401_2003_OPTIM_TIM_BFR_ILI > 2 THEN 1
+     WHEN v.STO_401_2003_OPTIM_TIM_BFR_ILI > 4 THEN 2
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_ILI_INSPECTION_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_RANGE_MIN_UNIT_COST_YKM" comment="СТО Газпром 2-2.3-401-2003. Межкамерные участки. Минимум удельных затрат, млн. руб в год на 1 км" schema="PODS" table="STO_ILI_INSPECTION_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="СТО Газпром 2-2.3-401-2003. Межкамерные участки. Минимум удельных затрат, млн. руб в год на 1 км"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_RANGE_MIN_UNIT_COST_YKM_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT v.STO_401_2003_MIN_UNIT_COST_YKM "LABEL",
+     CASE WHEN v.STO_401_2003_MIN_UNIT_COST_YKM &lt;= 100 THEN 2
+     WHEN v.STO_401_2003_MIN_UNIT_COST_YKM &lt;= 1000 AND v.STO_401_2003_MIN_UNIT_COST_YKM > 100 THEN 1
+     WHEN v.STO_401_2003_MIN_UNIT_COST_YKM > 1000 THEN 0
+     ELSE 2 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_ILI_INSPECTION_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT v.STO_401_2003_MIN_UNIT_COST_YKM "LABEL",
+     CASE WHEN v.STO_401_2003_MIN_UNIT_COST_YKM &lt;= 100 THEN 2
+     WHEN v.STO_401_2003_MIN_UNIT_COST_YKM &lt;= 1000 AND v.STO_401_2003_MIN_UNIT_COST_YKM > 100 THEN 1
+     WHEN v.STO_401_2003_MIN_UNIT_COST_YKM > 1000 THEN 0
+     ELSE 2 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_ILI_INSPECTION_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_RANGE_FAILURE_PROBABLY" comment="СТО Газпром 2-2.3-401-2003. Межкамерные участки. Вероятность отказа линейного участка МГ  после ремонта" schema="PODS" table="STO_ILI_INSPECTION_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="СТО Газпром 2-2.3-401-2003. Межкамерные участки. Вероятность отказа линейного участка МГ  после ремонта"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_RANGE_FAILURE_PROBABLY_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT round(v.STO_401_2003_FAILURE_PROBABLY,4) "LABEL",
+     CASE WHEN v.STO_401_2003_FAILURE_PROBABLY &lt;= 0.3 THEN 0
+     WHEN v.STO_401_2003_FAILURE_PROBABLY &lt;= 0.6 THEN 0.5
+     WHEN v.STO_401_2003_FAILURE_PROBABLY &lt;= 1 THEN 1
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_ILI_INSPECTION_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT round(v.STO_401_2003_FAILURE_PROBABLY,4) "LABEL",
+     CASE WHEN v.STO_401_2003_FAILURE_PROBABLY &lt;= 0.3 THEN 0
+     WHEN v.STO_401_2003_FAILURE_PROBABLY &lt;= 0.6 THEN 0.5
+     WHEN v.STO_401_2003_FAILURE_PROBABLY &lt;= 1 THEN 1
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_ILI_INSPECTION_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_RANGE_OP_REP_PIPE_COUNT" comment="СТО Газпром 2-2.3-401-2003. Межкамерные участки. Оптимальное количество заменяемых труб, шт" schema="PODS" table="STO_ILI_INSPECTION_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="СТО Газпром 2-2.3-401-2003. Межкамерные участки. Оптимальное количество заменяемых труб, шт"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_RANGE_OP_REP_PIPE_COUNT_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT v.STO_401_2003_OP_REP_PIPE_COUNT "LABEL",
+     CASE WHEN v.STO_401_2003_OP_REP_PIPE_COUNT &lt;= 100 THEN 2
+     WHEN v.STO_401_2003_OP_REP_PIPE_COUNT &lt;= 150 AND v.STO_401_2003_OP_REP_PIPE_COUNT > 100 THEN 1
+     WHEN v.STO_401_2003_OP_REP_PIPE_COUNT > 150 THEN 0
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_ILI_INSPECTION_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT v.STO_401_2003_OP_REP_PIPE_COUNT "LABEL",
+     CASE WHEN v.STO_401_2003_OP_REP_PIPE_COUNT &lt;= 100 THEN 2
+     WHEN v.STO_401_2003_OP_REP_PIPE_COUNT &lt;= 150 AND v.STO_401_2003_OP_REP_PIPE_COUNT > 100 THEN 1
+     WHEN v.STO_401_2003_OP_REP_PIPE_COUNT > 150 THEN 0
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_ILI_INSPECTION_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_RANGE_MEAN_TIME_FAIL" comment="СТО Газпром 2-2.3-401-2003. Межкамерные участки. Время наработки на отказ после капитального ремонта, год" schema="PODS" table="STO_ILI_INSPECTION_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="СТО Газпром 2-2.3-401-2003. Межкамерные участки. Время наработки на отказ после капитального ремонта, год"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_RANGE_MEAN_TIME_FAIL_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT v.STO_401_2003_MEAN_TIME_FAIL "LABEL",
+     CASE WHEN v.STO_401_2003_MEAN_TIME_FAIL &lt;= 10 THEN 0
+     WHEN v.STO_401_2003_MEAN_TIME_FAIL &lt;= 15 AND v.STO_401_2003_MEAN_TIME_FAIL > 10 THEN 1
+     WHEN v.STO_401_2003_MEAN_TIME_FAIL > 15 THEN 2
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_ILI_INSPECTION_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT v.STO_401_2003_MEAN_TIME_FAIL "LABEL",
+     CASE WHEN v.STO_401_2003_MEAN_TIME_FAIL &lt;= 10 THEN 0
+     WHEN v.STO_401_2003_MEAN_TIME_FAIL &lt;= 15 AND v.STO_401_2003_MEAN_TIME_FAIL > 10 THEN 1
+     WHEN v.STO_401_2003_MEAN_TIME_FAIL > 15 THEN 2
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_ILI_INSPECTION_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_RANGE_PROJECTED_SCC" comment="СТО Газпром 2-2.3-095-2007. Межкамерные участки. Прогнозируемое число дефектов КРН" schema="PODS" table="STO_ILI_INSPECTION_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="СТО Газпром 2-2.3-095-2007. Межкамерные участки. Прогнозируемое число дефектов КРН"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_RANGE_PROJECTED_SCC_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT round(v.STO_095_2007_PROJECTED_SCC,4) "LABEL",
+     CASE WHEN v.STO_095_2007_PROJECTED_SCC &lt;= 0.3 THEN 0
+     WHEN v.STO_095_2007_PROJECTED_SCC &lt;= 0.6 AND v.STO_095_2007_PROJECTED_SCC > 0.3 THEN 0.5
+     WHEN v.STO_095_2007_PROJECTED_SCC &lt;= 1 AND v.STO_095_2007_PROJECTED_SCC > 0.6 THEN 1
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_ILI_INSPECTION_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT round(v.STO_095_2007_PROJECTED_SCC,4) "LABEL",
+     CASE WHEN v.STO_095_2007_PROJECTED_SCC &lt;= 0.3 THEN 0
+     WHEN v.STO_095_2007_PROJECTED_SCC &lt;= 0.6 AND v.STO_095_2007_PROJECTED_SCC > 0.3 THEN 0.5
+     WHEN v.STO_095_2007_PROJECTED_SCC &lt;= 1 AND v.STO_095_2007_PROJECTED_SCC > 0.6 THEN 1
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_ILI_INSPECTION_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_RANGE_NEXT_INSP_SCC" comment="СТО Газпром 2-2.3-095-2007.Межкамерные участки. Срок  до проведения повторной ВТД для обнаружения КРН" schema="PODS" table="STO_ILI_INSPECTION_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="СТО Газпром 2-2.3-095-2007.Межкамерные участки. Срок  до проведения повторной ВТД для обнаружения КРН"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_RANGE_NEXT_INSP_SCC_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT v.STO_095_2007_NEXT_INSP_SCC "LABEL",
+     CASE WHEN v.STO_095_2007_NEXT_INSP_SCC &lt;= 2 THEN 0
+     WHEN v.STO_095_2007_NEXT_INSP_SCC &lt;= 4 AND v.STO_095_2007_NEXT_INSP_SCC > 2 THEN 1
+     WHEN v.STO_095_2007_NEXT_INSP_SCC > 4 THEN 2
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_ILI_INSPECTION_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT v.STO_095_2007_NEXT_INSP_SCC "LABEL",
+     CASE WHEN v.STO_095_2007_NEXT_INSP_SCC &lt;= 2 THEN 0
+     WHEN v.STO_095_2007_NEXT_INSP_SCC &lt;= 4 AND v.STO_095_2007_NEXT_INSP_SCC > 2 THEN 1
+     WHEN v.STO_095_2007_NEXT_INSP_SCC > 4 THEN 2
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_ILI_INSPECTION_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_RANGE_PROJECTED_COR" comment="СТО Газпром 2-2.3-095-2007. Межкамерные участки. Прогнозируемое число коррозионных дефектов" schema="PODS" table="STO_ILI_INSPECTION_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="СТО Газпром 2-2.3-095-2007. Межкамерные участки. Прогнозируемое число коррозионных дефектов"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_RANGE_PROJECTED_COR_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT round(v.STO_095_2007_PROJECTED_COR,4) "LABEL",
+     CASE WHEN v.STO_095_2007_PROJECTED_COR &lt;= 0.3 THEN 0
+     WHEN v.STO_095_2007_PROJECTED_COR &lt;= 0.6 AND v.STO_095_2007_PROJECTED_COR > 0.3 THEN 0.5
+     WHEN v.STO_095_2007_PROJECTED_COR &lt;= 1 AND v.STO_095_2007_PROJECTED_COR > 0.6 THEN 1
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_ILI_INSPECTION_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT round(v.STO_095_2007_PROJECTED_COR,4) "LABEL",
+     CASE WHEN v.STO_095_2007_PROJECTED_COR &lt;= 0.3 THEN 0
+     WHEN v.STO_095_2007_PROJECTED_COR &lt;= 0.6 AND v.STO_095_2007_PROJECTED_COR > 0.3 THEN 0.5
+     WHEN v.STO_095_2007_PROJECTED_COR &lt;= 1 AND v.STO_095_2007_PROJECTED_COR > 0.6 THEN 1
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_ILI_INSPECTION_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_RANGE_NEXT_INSP" comment="СТО Газпром 2-2.3-095-2007. Межкамерные участки. Срок  до проведения повторной ВТД для обнаружения коррозионных дефектов" schema="PODS" table="STO_ILI_INSPECTION_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="СТО Газпром 2-2.3-095-2007. Межкамерные участки. Срок  до проведения повторной ВТД для обнаружения коррозионных дефектов"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_RANGE_NEXT_INSP_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT v.STO_095_2007_NEXT_INSP "LABEL",
+     CASE WHEN v.STO_095_2007_NEXT_INSP &lt;= 2 THEN 0
+     WHEN v.STO_095_2007_NEXT_INSP &lt;= 4 AND v.STO_095_2007_NEXT_INSP > 2 THEN 1
+     WHEN v.STO_095_2007_NEXT_INSP > 4 THEN 2
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_ILI_INSPECTION_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT v.STO_095_2007_NEXT_INSP "LABEL",
+     CASE WHEN v.STO_095_2007_NEXT_INSP &lt;= 2 THEN 0
+     WHEN v.STO_095_2007_NEXT_INSP &lt;= 4 AND v.STO_095_2007_NEXT_INSP > 2 THEN 1
+     WHEN v.STO_095_2007_NEXT_INSP > 4 THEN 2
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_ILI_INSPECTION_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X
+   </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_RANGE_DANGER_DEG" comment="ВНИИГАЗ 2004. Инструкция. Межкамерные участки. Противокоррозийная защита. Степень коррозионной опасности" schema="PODS" table="STO_EHZ_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="ВНИИГАЗ 2004. Инструкция. Межкамерные участки. Противокоррозийная защита. Степень коррозионной опасности"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_RANGE_DANGER_DEG_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT v.DANGER_DEG "LABEL",
+     v.DANGER_DEG "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_EHZ_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT v.DANGER_DEG "LABEL",
+     v.DANGER_DEG "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_EHZ_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_RANGE_SEGMENT_CATEGORY" comment="ВНИИГАЗ 2004. Инструкция. Межкамерные участки. Категория коррозийной опасности" schema="PODS" table="STO_EHZ_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="ВНИИГАЗ 2004. Инструкция. Межкамерные участки. Категория коррозийной опасности"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_RANGE_SEGMENT_CATEGORY_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT v.SEGMENT_CATEGORY "LABEL",
+     v.SEGMENT_CATEGORY "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_EHZ_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT v.SEGMENT_CATEGORY "LABEL",
+     v.SEGMENT_CATEGORY "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_EHZ_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X </query>
+  </geoQuery>
+ </select>
+</data>
+<data id="CAS_PODS_STO_RANGE_TIME_TO_CRIT_DEPTH" comment="ВНИИГАЗ 2004. Инструкция. Межкамерные участки. Время до образования усредненного критического дефекта" schema="PODS" table="STO_EHZ_CALC">
+    <select>
+  <geoQuery idField="ID" geoField="X, Y">
+   <var name="LABEL" default="ВНИИГАЗ 2004. Инструкция. Межкамерные участки. Время до образования усредненного критического дефекта"/>
+   <var name="LABEL_UNIT" default=""/>
+   <var name="HEIGHT" default="10"/>  
+   <var name="TYPE" default="1D"/>
+   <var name="START_KM"/>
+   <var name="FINISH_KM"/>
+   <var name="LINE_ID"/>
+   <var name="FILTER" default="1=1"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="FILTERED_CLASS" default="PODS_STO_RANGE_TIME_TO_CRIT_DEPTH_LIST"/>
+   <query>
+     WITH spline
+     AS (SELECT sp.station_id, s.station_begin, s.station_end, (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) measure
+     FROM          pods.line l
+     JOIN  pods.route r
+     ON r.line_id = l.line_id
+     AND r.type_cl =  CASE l.type_cl
+     WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+     WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+     WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+     WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+     END
+     JOIN   pods.series s
+     ON s.route_id = r.route_id
+     JOIN pods.station_point sp
+     ON s.series_id = sp.series_id
+     WHERE l.line_id ={LINE_ID}  AND EXISTS  (SELECT 1  FROM pods.location l  WHERE l.location_id = sp.location_id  AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})))
+     SELECT *  FROM (SELECT v.CORR_TIME_TO_CRITICAL_DEPTH "LABEL",
+     CASE WHEN v.CORR_TIME_TO_CRITICAL_DEPTH &lt;= 2 THEN 0
+     WHEN v.CORR_TIME_TO_CRITICAL_DEPTH &lt;= 4 AND v.CORR_TIME_TO_CRITICAL_DEPTH > 2 THEN 1
+     WHEN v.CORR_TIME_TO_CRITICAL_DEPTH > 4 THEN 2
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM       PODS.STO_EHZ_CALC v
+     JOIN  pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_begin = sp.station_id
+	 where {FILTER}
+     UNION
+     SELECT v.CORR_TIME_TO_CRITICAL_DEPTH "LABEL",
+     CASE WHEN v.CORR_TIME_TO_CRITICAL_DEPTH &lt;= 2 THEN 0
+     WHEN v.CORR_TIME_TO_CRITICAL_DEPTH &lt;= 4 AND v.CORR_TIME_TO_CRITICAL_DEPTH > 2 THEN 1
+     WHEN v.CORR_TIME_TO_CRITICAL_DEPTH > 4 THEN 2
+     ELSE 0 END "TYPE",
+     v.event_id ID,
+     (sp.station_begin + sp.measure / 1000 - {START_KM}) X,
+     0 Y
+     FROM PODS.STO_EHZ_CALC v
+     JOIN pods.event_range er
+     ON v.event_id = er.event_id
+     JOIN spline sp
+     ON er.station_id_end = sp.station_id
+	 where {FILTER})  mainQuery
+     ORDER BY ID, X
+   </query>
+  </geoQuery>
+ </select>
+</data>
+   
+</root>

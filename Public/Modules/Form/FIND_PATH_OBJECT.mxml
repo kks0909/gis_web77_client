@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM xmlns="view.data.*" readOnly="true" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml" percentWidth="100" percentHeight="100" title="Кратчайший путь">
+	<dataProvider></dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	<mx:VBox percentWidth="100" percentHeight="100" >
+		<DataGridWithScript id="DATA_GRID" percentWidth="100" percentHeight="100" styleName="dgInfoForm">
+			<columns>
+				<mx:DataGridColumn headerText="№" width="30" itemRenderer="view.controls.renderer.FirstGridItemRenderer" editable="false"/>
+				<mx:DataGridColumn headerText="Участок дороги" width="150" dataField="NAME" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Протяженность (км)" width="150" dataField="LENGTH" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Время" dataField="TIME" width="100" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Протяженность суммарная (км)" width="200" dataField="LENGTH_SUMM" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+				<mx:DataGridColumn headerText="Время суммарное" dataField="TIME_SUMM" itemRenderer="view.controls.renderer.GridItemRenderer"/>
+			</columns>
+			<selectScript></selectScript>
+			<insertScript></insertScript>
+			<updateScript></updateScript>
+			<deleteScript></deleteScript>
+		</DataGridWithScript>
+	</mx:VBox>
+</DATA_EDIT_FORM>

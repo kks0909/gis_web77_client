@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.7.4" descr="Обследования ЭХЗ, интенсивы">
+<dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml" />
+<dataProvider type="style" source="PODS_INSP_STYLE.xml" />
+  <layer id="ILI_PIPE_LENGTH" synonym="PODS_ILI_PIPE_LENGTH"   visible="false" type="common" topology="line" table="ILI_PIPE_LENGTH" spacing="none" schema="CAS" projection="EPSG:5807" order="10" labelField="LABEL" fitMap="false" descr="Трубный журнал ВТД" dataType="vector" cover="false" comment="CAS_ILI_PIPE_LENGTH" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#ILI_PIPE_LENGTH" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_ILI_PIPE_LENGTH" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#ILI_PIPE_LENGTH" />
+    <dataProvider type="spatial" source="CAS_PODS_CAS_ILI_GEO.xml#CAS_ILI_PIPE_LENGTH" />
+  </layer>
+<layer id="CAS_PODS_STO_REPAIR_METHOD" visible="false" type="common" topology="point" table="STO_ILI_DATA_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="10" labelField="LABEL" fitMap="false" descr="Р Газпром 595.  Методы ремонта" dataType="vector" cover="false" comment="PODS_STO_REPAIR_METHOD" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_REPAIR_METHOD" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_REPAIR_METHOD" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STO_REPAIR_METHOD" />
+    <dataProvider type="spatial" source="CAS_EHZ_GEO.xml#CAS_PODS_STO_REPAIR_METHOD" />
+  </layer>
+<layer id="CAS_PODS_STO_100_DANGER_DEG" visible="false" type="common" topology="line" table="STO_EHZ_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="20" labelField="LABEL" fitMap="false" descr="ВНИИГАЗ 2004. 100 м. Категория коррозийной опасности" dataType="vector" cover="false" comment="CAS_PODS_STO_100_DANGER_DEG" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#CAS_PODS_STO_100_DANGER_DEG" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_100_DANGER_DEG" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#CAS_PODS_STO_100_DANGER_DEG" />
+    <dataProvider type="spatial" source="CAS_EHZ_GEO.xml#CAS_PODS_STO_100_DANGER_DEG" />
+  </layer>
+<layer id="CAS_PODS_STO_VALVE_DANGER_DEG" visible="false" type="common" topology="line" table="STO_EHZ_CALC" spacing="none" schema="CAS" projection="EPSG:5807" order="30" labelField="LABEL" fitMap="false" descr="ВНИИГАЗ 2004. Участки между УКЗ. Категория коррозийной опасности" dataType="vector" cover="false" comment="CAS_PODS_STO_VALVE_DANGER_DEG" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#CAS_PODS_STO_VALVE_DANGER_DEG" />
+    <dataProvider type="style" source="PODS_INSP_STYLE.xml#PODS_STO_VALVE_DANGER_DEG" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#CAS_PODS_STO_VALVE_DANGER_DEG" />
+    <dataProvider type="spatial" source="CAS_EHZ_GEO.xml#CAS_PODS_STO_VALVE_DANGER_DEG" />
+  </layer>
+    <layer id="PI_UTZVKL" visible="false" type="common" topology="line" table="CAS_PI_UTZVKL" spacing="none" schema="CAS" projection="EPSG:5807" order="40" labelField="LABEL" fitMap="false" descr="Интенсивные измерения. UтзВкл" dataType="vector" cover="false" comment="PI_UTZVKL" classField="TYPE">
+    <dataProvider type="spatial" source="CAS_EHZ_GEO.xml#PI_UTZVKL" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION" />
+  </layer>
+    <layer id="PI_UTZVIKL" visible="false" type="common" topology="line" table="CAS_PI_UTZVIKL" spacing="none" schema="CAS" projection="EPSG:5807" order="50" labelField="LABEL" fitMap="false" descr="Интенсивные измерения. UтзВыкл" dataType="vector" cover="false" comment="PI_UTZVIKL" classField="TYPE">
+    <dataProvider type="spatial" source="CAS_EHZ_GEO.xml#PI_UTZVIKL" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION" />
+  </layer>
+    <layer id="PI_UPOL" visible="false" type="common" topology="line" table="CAS_PI_UPOL" spacing="none" schema="CAS" projection="EPSG:5807" order="60" labelField="LABEL" fitMap="false" descr="Интенсивные измерения. Uпол" dataType="vector" cover="false" comment="PI_UPOL" classField="TYPE">
+    <dataProvider type="spatial" source="CAS_EHZ_GEO.xml#PI_UPOL" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION" />
+  </layer>
+    <layer id="PI_GRADVKL_LEFT" visible="false" type="common" topology="line" table="CAS_PI_GRADVKL_LEFT" spacing="none" schema="CAS" projection="EPSG:5807" order="70" labelField="LABEL" fitMap="false" descr="Интенсивные измерения. Градиент включения левый" dataType="vector" cover="false" comment="PI_GRADVKL_LEFT" classField="TYPE">
+    <dataProvider type="spatial" source="CAS_EHZ_GEO.xml#PI_GRADVKL_LEFT" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION" />
+  </layer>
+    <layer id="PI_GRADVKL_RIGHT" visible="false" type="common" topology="line" table="CAS_PI_GRADVKL_RIGHT" spacing="none" schema="CAS" projection="EPSG:5807" order="80" labelField="LABEL" fitMap="false" descr="Интенсивные измерения. Градиент включения правый" dataType="vector" cover="false" comment="PI_GRADVKL_RIGHT" classField="TYPE">
+    <dataProvider type="spatial" source="CAS_EHZ_GEO.xml#PI_GRADVKL_RIGHT" />
+    <dataProvider type="style" source="PODS_INSP_OTHER_STYLE.xml#PODS_PI_CP_INSPECTION" />
+  </layer>
+  <layer id="CAS_PROFILE" comment="CAS.PROFILE" schema="PODS" table="ROUTE" descr="Профиль трубопровода" projection="EPSG:5807" dataType="vector" type="system" spacing="common" cover="false" fitMap="false" order="90" visible="true" topology="polygon" labelField="LABEL" classField="TYPE_CL" > 
+       <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#CAS_PROFILE" />
+    <dataProvider type="semantic" source="CAS_PODS_PROFILE_SEM.xml#CAS_PROFILE" />
+    <dataProvider type="spatial" source="CAS_PODS_PROFILE_GEO.xml#CAS_PROFILE" />
+  </layer>
+  <layer id="CAS_DEPTH_OF_COVER" comment="CAS.DEPTH_OF_COVER" schema="CAS" table="DEPTH_OF_COVER" descr="Глубины заложения трубопровода" projection="EPSG:5807" dataType="vector" type="system" spacing="common" cover="false" fitMap="false" order="100" visible="true" topology="line" labelField="LABEL" classField="TYPE_CL" >
+    <dataProvider type="spatial" source="CAS_PODS_PROFILE_GEO.xml#CAS_DEPTH_OF_COVER" />
+  </layer>
+</root>

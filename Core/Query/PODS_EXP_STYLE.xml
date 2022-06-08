@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<kml version="7.7.3.0">
+	  <Document>
+		<Style table="PRESSURE_MEASUREMENT" schema="PODS" id="PODS_PRESSURE_MEASUREMENT"
+             comment="PRESSURE_MEASUREMENT"
+             descr="Давление. Данные измерений">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+        <color>FFAB8565</color>
+        <width>12</width>
+			      </LineStyle>
+			      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="PRESSURE_MEASUREMENT" schema="PODS" id="PODS_PRESSURE_MEASUREMENT"
+             comment="PODS.PRESSURE_MEASUREMENT"
+             descr="Давление. Данные измерений">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+        <Icon>
+	          <href>Public/assets/PRESSURE_MEASUREMENT.png</href>
+	          <form>bitmap</form>
+	          <size>13</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="ODORANT_MEASUREMENT" schema="PODS" id="PODS_ODORANT_MEASUREMENT"
+             comment="ODORANT_MEASUREMENT"
+             descr="Концентрация одоранта. Данные измерений">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+        <color>FFAB8565</color>
+        <width>12</width>
+			      </LineStyle>
+			      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="ODORANT_MEASUREMENT" schema="PODS" id="PODS_ODORANT_MEASUREMENT"
+             comment="PODS.ODORANT_MEASUREMENT"
+             descr="Концентрация одоранта. Данные измерений">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+        <Icon>
+	          <href>Public/assets/ODORANT_MEASUREMENT.png</href>
+	          <form>bitmap</form>
+	          <size>26</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="FLOW_MEASUREMENT" schema="PODS" id="PODS_FLOW_MEASUREMENT"
+             comment="FLOW_MEASUREMENT"
+             descr="Поток газа. Данные измерений">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+        <color>FF45A4E5</color>
+        <width>12</width>
+			      </LineStyle>
+			      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="FLOW_MEASUREMENT" schema="PODS" id="PODS_FLOW_MEASUREMENT"
+             comment="PODS.FLOW_MEASUREMENT"
+             descr="Поток газа. Данные измерений">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+        <Icon>
+	          <href>Public/assets/FLOW_MEASUREMENT.png</href>
+	          <form>bitmap</form>
+	          <size>23</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="TEMPERATURE_MEASUREMENT" schema="PODS" id="PODS_TEMPERATURE_MEASUREMENT"
+             comment="TEMPERATURE_MEASUREMENT"
+             descr="Температура газа. Данные измерений">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+        <color>FFAB8565</color>
+        <width>12</width>
+			      </LineStyle>
+			      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="TEMPERATURE_MEASUREMENT" schema="PODS" id="PODS_TEMPERATURE_MEASUREMENT"
+             comment="PODS.TEMPERATURE_MEASUREMENT"
+             descr="Температура газа. Данные измерений">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+        <Icon>
+	          <href>Public/assets/TEMPERATURE_MEASUREMENT.png</href>
+	          <form>bitmap</form>
+	          <size>32</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="TEST_PRESSURE" schema="PODS" id="PODS_TEST_PRESSURE"
+             comment="TEST_PRESSURE"
+             descr="Гидравлические испытания">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+        <color>FFAB0080</color>
+        <width>12</width>
+			      </LineStyle>
+			      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="TEST_PRESSURE" schema="PODS" id="PODS_TEST_PRESSURE"
+             comment="PODS.TEST_PRESSURE"
+             descr="Гидравлические испытания">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+        <Icon>
+	          <href>Public/assets/TEST_PRESSURE.png</href>
+	          <form>bitmap</form>
+	          <size>24</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="FACILITY_RATING_VARIANCE" schema="PODS"
+             id="PODS_FACILITY_RATING_VARIANCE"
+             comment="FACILITY_RATING_VARIANCE"
+             descr="Журнал разрешений на изменение рабочих давлений">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+        <color>FFFC5684</color>
+        <width>12</width>
+			      </LineStyle>
+			      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="FACILITY_RATING_VARIANCE" schema="PODS"
+             id="PODS_FACILITY_RATING_VARIANCE"
+             comment="PODS.FACILITY_RATING_VARIANCE"
+             descr="Журнал разрешений на изменение рабочих давлений">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+        <Icon>
+	          <href>Public/assets/FACILITY_RATING_VARIANCE.png</href>
+	          <form>bitmap</form>
+	          <size>24</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="FACILITY_RATING" schema="PODS" id="PODS_FACILITY_RATING"
+             comment="FACILITY_RATING"
+             descr="Значения рейтинга опасности объектов трубопровода">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+        <color>FFFCDE74</color>
+        <width>12</width>
+			      </LineStyle>
+			      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="FACILITY_RATING" schema="PODS" id="PODS_FACILITY_RATING"
+             comment="PODS.FACILITY_RATING"
+             descr="Значения рейтинга опасности объектов трубопровода">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+        <Icon>
+	          <href>Public/assets/FACILITY_RATING.png</href>
+	          <form>bitmap</form>
+	          <size>37</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="MAOP_RATING" schema="PODS" id="PODS_MAOP_RATING" comment="MAOP_RATING"
+             descr="Максимально разрешённые давления">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+        <color>FFFCBA74</color>
+        <width>12</width>
+			      </LineStyle>
+			      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="MAOP_RATING" schema="PODS" id="PODS_MAOP_RATING"
+             comment="PODS.MAOP_RATING"
+             descr="Максимально разрешённые давления">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+        <Icon>
+	          <href>Public/assets/MAOP_RATING.png</href>
+	          <form>bitmap</form>
+	          <size>13</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="FACILITY_RANKING" schema="PODS" id="PODS_FACILITY_RANKING"
+             comment="FACILITY_RANKING"
+             descr="Ранг уровня риска объектов трубопровода">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+        <color>FF2A8CA4</color>
+        <width>12</width>
+			      </LineStyle>
+			      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="FACILITY_RANKING" schema="PODS" id="PODS_FACILITY_RANKING"
+             comment="PODS.FACILITY_RANKING"
+             descr="Ранг уровня риска объектов трубопровода">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+        <Icon>
+	          <href>Public/assets/FACILITY_RANKING.png</href>
+	          <form>bitmap</form>
+	          <size>27</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		    <Style table="MAINTENANCE" schema="PODS" id="PODS_MAINTENANCE" comment="MAINTENANCE"
+             descr="Работы по техобслуживанию и ремонту">
+			      <zoomMin>NAN</zoomMin>
+			      <zoomMax>NAN</zoomMax>
+			      <LineStyle>
+        <color>FF5082D4</color>
+        <width>12</width>
+			      </LineStyle>
+			      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <auto>1</auto>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+			      </LabelStyle>
+		    </Style>
+		    <Style table="MAINTENANCE" schema="PODS" id="PODS_MAINTENANCE"
+             comment="PODS.MAINTENANCE"
+             descr="Работы по техобслуживанию и ремонту">
+			      <zoomMin>NaN</zoomMin>
+			      <zoomMax>NaN</zoomMax>
+			      <IconStyle>
+        <Icon>
+	          <href>Public/assets/MAINTENANCE.png</href>
+	          <form>bitmap</form>
+	          <size>15</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+			      </IconStyle>
+		    </Style>
+		</Document>
+</kml>

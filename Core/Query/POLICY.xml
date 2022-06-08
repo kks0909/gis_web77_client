@@ -1,0 +1,1007 @@
+﻿<root version="postgres 7.7.7.0">
+	<data id="INSERT_PODS_SEM_DICT" comment="INSERT_PODS_SEM_DICT">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					WHERE u2r.USER_ID = {USER_ID}
+					AND ((EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='PODS_DATA'
+					AND pr.INSERT_PERMITTED = '1')
+					AND NOT EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'))
+					OR EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'
+					AND pr.INSERT_PERMITTED = '1'))
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="UPDATE_PODS_SEM_DICT" comment="UPDATE_PODS_SEM_DICT">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*)	c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					WHERE u2r.USER_ID = {USER_ID}
+					AND ((EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='PODS_DATA'
+					AND pr.UPDATE_PERMITTED = '1')
+					AND NOT EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'))
+					OR EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'
+					AND pr.UPDATE_PERMITTED = '1'))
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="DELETE_PODS_SEM_DICT" comment="DELETE_PODS_SEM_DICT">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					WHERE u2r.USER_ID = {USER_ID}
+					AND ((EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='PODS_DATA'
+					AND pr.DELETE_PERMITTED  = '1')
+					AND NOT EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'))
+					OR EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'
+					AND pr.DELETE_PERMITTED  = '1'))
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	
+	<data id="INSERT_PODS_SEM" comment="INSERT_PODS_SEM">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					WHERE u2r.USER_ID = {USER_ID}
+					AND ((EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='PODS_DATA'
+					AND pr.INSERT_PERMITTED = '1')
+					AND NOT EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'))
+					OR EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'
+					AND pr.INSERT_PERMITTED = '1'))
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="UPDATE_PODS_SEM" comment="UPDATE_PODS_SEM">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*)	c		
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					WHERE u2r.USER_ID = {USER_ID}
+					AND ((EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='PODS_DATA'
+					AND pr.UPDATE_PERMITTED = '1')
+					AND NOT EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'))
+					OR EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'
+					AND pr.UPDATE_PERMITTED = '1'))
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="DELETE_PODS_SEM" comment="DELETE_PODS_SEM">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					WHERE u2r.USER_ID = {USER_ID}
+					AND ((EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='PODS_DATA'
+					AND pr.DELETE_PERMITTED  = '1')
+					AND NOT EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'))
+					OR EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'
+					AND pr.DELETE_PERMITTED  = '1'))
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="INSERT_PODS_GEO" comment="INSERT_PODS_GEO">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					WHERE u2r.USER_ID = {USER_ID}
+					AND ((EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='PODS_DATA'
+					AND pr.INSERT_PERMITTED = '1')
+					AND NOT EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'))
+					OR EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'
+					AND pr.INSERT_PERMITTED = '1'))
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="UPDATE_PODS_GEO" comment="UPDATE_PODS_GEO">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					WHERE u2r.USER_ID = {USER_ID}
+					AND ((EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='PODS_DATA'
+					AND pr.UPDATE_PERMITTED = '1')
+					AND NOT EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'))
+					OR EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'
+					AND pr.UPDATE_PERMITTED = '1'))
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="DELETE_PODS_GEO" comment="DELETE_PODS_GEO">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					WHERE u2r.USER_ID = {USER_ID}
+					AND ((EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='PODS_DATA'
+					AND pr.DELETE_PERMITTED  = '1')
+					AND NOT EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'))
+					OR EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'
+					AND pr.DELETE_PERMITTED  = '1'))
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+
+	<data id="INSERT_M_GEO" comment="INSERT_M_GEO">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID} AND pr.CLASS_ID='{CLASS_ID}' AND pr.INSERT_PERMITTED = '1'
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="UPDATE_M_GEO" comment="UPDATE_M_GEO">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID} AND pr.CLASS_ID='{CLASS_ID}' AND pr.UPDATE_PERMITTED = '1'
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="DELETE_M_GEO" comment="DELETE_M_GEO">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c 
+					FROM WEB50.B_USER_TO_B_ROLE u2r 
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p ON u2r.ROLE_ID = r2p.ROLE_ID 
+					JOIN WEB50.B_POLICY_RULES pr ON r2p.POLICY_ID = pr.POLICY_ID 
+					WHERE u2r.USER_ID = {USER_ID} AND pr.CLASS_ID='WEB50_MW_MAP' AND pr.DELETE_PERMITTED = '1'
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+
+	<data id="INSERT_M_SEM" comment="INSERT_M_SEM">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID} AND pr.CLASS_ID='{CLASS_ID}' AND pr.INSERT_PERMITTED = '1'
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="UPDATE_M_SEM" comment="UPDATE_M_SEM">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID} AND pr.CLASS_ID='{CLASS_ID}' AND pr.UPDATE_PERMITTED = '1'
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="DELETE_M_SEM" comment="DELETE_M_SEM">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID} AND pr.CLASS_ID='WEB50_MW_MAP' AND pr.DELETE_PERMITTED = '1'
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+
+	<data id="INSERT_KADASTR_GEO" comment="INSERT_KADASTR_GEO">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID} AND pr.CLASS_ID='PODS_DATA' AND pr.INSERT_PERMITTED = '1'
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="UPDATE_KADASTR_GEO" comment="UPDATE_KADASTR_GEO">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID} AND pr.CLASS_ID='PODS_DATA' AND pr.UPDATE_PERMITTED = '1'
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="DELETE_KADASTR_GEO" comment="DELETE_KADASTR_GEO">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID} AND pr.CLASS_ID='PODS_DATA' AND pr.DELETE_PERMITTED = '1'
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+
+	<data id="INSERT_KADASTR_SEM" comment="INSERT_KADASTR_SEM">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID} AND pr.CLASS_ID='PODS_DATA' AND pr.INSERT_PERMITTED = '1'
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="UPDATE_KADASTR_SEM" comment="UPDATE_KADASTR_SEM">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID} AND pr.CLASS_ID='PODS_DATA' AND pr.UPDATE_PERMITTED = '1'
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="DELETE_KADASTR_SEM" comment="DELETE_KADASTR_SEM">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID} AND pr.CLASS_ID='PODS_DATA' AND pr.DELETE_PERMITTED = '1'
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+
+	<data id="INSERT_KADASTR_GKS_GEO" comment="INSERT_KADASTR_GKS_GEO">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+select count(*) from (
+SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_POI_TRACK_USER'
+					AND pr.INSERT_PERMITTED = '1'
+					
+union all SELECT 1 dd
+FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_POI_TRACK_ADMIN'
+					AND pr.INSERT_PERMITTED = '1') d
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="UPDATE_KADASTR_GKS_GEO" comment="UPDATE_KADASTR_GKS_GEO">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+select count(*) c  from (
+SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_POI_TRACK_USER'
+					AND pr.UPDATE_PERMITTED = '1'
+					AND EXISTS (SELECT 1
+					FROM WEB50.POI_TRACK t
+					WHERE t.track_id = {ID}
+					AND (t.status_id = 1
+					OR (t.cuser_id = {USER_ID}
+					AND t.status_id = 0 )))
+union all SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_POI_TRACK_ADMIN'
+					AND pr.UPDATE_PERMITTED = '1') d
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="DELETE_KADASTR_GKS_GEO" comment="DELETE_KADASTR_GKS_GEO">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+select count(*) c from (
+SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_POI_TRACK_USER'
+					AND pr.DELETE_PERMITTED = '1'
+					AND EXISTS (SELECT 1
+					FROM WEB50.POI_TRACK t
+					WHERE t.track_id = {ID}
+					AND (t.status_id = 1
+					OR (t.cuser_id = {USER_ID}
+					AND t.status_id = 0 )))
+union all SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_POI_TRACK_ADMIN'
+					AND pr.DELETE_PERMITTED = '1') d
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	
+	<data id="INSERT_LIB_DOC_GEO" comment="INSERT_LIB_DOC_GEO">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+select count(*) c from (
+SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+					AND pr.INSERT_PERMITTED = '1'
+union all SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+					AND pr.INSERT_PERMITTED = '1')	 d				
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="UPDATE_LIB_DOC_GEO" comment="UPDATE_LIB_DOC_GEO">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+select count(*) c from (
+SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+					AND pr.UPDATE_PERMITTED = '1'
+					AND EXISTS (SELECT 1
+					FROM WEB50.LIB_DOC t
+					WHERE t.doc_id = {ID}
+					AND (t.status_id = 1
+					OR (t.cuser_id = {USER_ID}
+					AND t.status_id = 0 )))
+union all SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+					AND pr.UPDATE_PERMITTED = '1') d
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="DELETE_LIB_DOC_GEO" comment="DELETE_LIB_DOC_GEO">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+select count(*) c from (
+SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+					AND pr.DELETE_PERMITTED = '1'
+					AND EXISTS (SELECT 1
+					FROM WEB50.LIB_DOC t
+					WHERE t.doc_id = {ID}
+					AND (t.status_id = 1
+					OR (t.cuser_id = {USER_ID}
+					AND t.status_id = 0 )))
+union all SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+					AND pr.DELETE_PERMITTED = '1') d
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+
+	<data id="INSERT_LIB_DOC_SEM" comment="INSERT_LIB_DOC_SEM">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+select count(*) c from (
+SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+					AND pr.INSERT_PERMITTED = '1'
+union all SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+					AND pr.INSERT_PERMITTED = '1')	d			
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="UPDATE_LIB_DOC_SEM" comment="UPDATE_LIB_DOC_SEM">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+select count(*) c from (
+SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+					AND pr.UPDATE_PERMITTED = '1'
+					AND EXISTS (SELECT 1
+					FROM WEB50.LIB_DOC t
+					WHERE t.doc_id = {ID}
+					AND (t.status_id = 1
+					OR (t.cuser_id = {USER_ID}
+					AND t.status_id = 0 )))
+union all SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+					AND pr.UPDATE_PERMITTED = '1')	d		
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="DELETE_LIB_DOC_SEM" comment="DELETE_LIB_DOC_SEM">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+select count(*) c from (
+SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_LIB_DOC_USER'
+					AND pr.DELETE_PERMITTED = '1'
+					AND EXISTS (SELECT 1
+					FROM WEB50.LIB_DOC t
+					WHERE t.doc_id = {ID}
+					AND (t.status_id = 1
+					OR (t.cuser_id = {USER_ID}
+					AND t.status_id = 0 )))
+union all SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_LIB_DOC_ADMIN'
+					AND pr.DELETE_PERMITTED = '1')	d		
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+
+	<data id="INSERT_WEB50_POI_POINT" comment="INSERT_WEB50_POI_POINT">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+select count(*) c from (
+SELECT 1 dd 
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_POI_POINT_USER'
+					AND pr.INSERT_PERMITTED = '1'
+union all SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_POI_POINT_ADMIN'
+					AND pr.INSERT_PERMITTED = '1') d
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="UPDATE_WEB50_POI_POINT" comment="UPDATE_WEB50_POI_POINT">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+select count(*) c from (
+SELECT 1 dd 
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_POI_POINT_USER'
+					AND pr.UPDATE_PERMITTED = '1'
+					AND EXISTS (SELECT 1
+					FROM WEB50.POI_POINT t
+					WHERE t.point_id = {ID}
+					AND (t.status_id = 1
+					OR (t.cuser_id = {USER_ID}
+					AND t.status_id = 0 )))
+union all SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_POI_POINT_ADMIN'
+					AND pr.UPDATE_PERMITTED = '1')	d			
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="DELETE_WEB50_POI_POINT" comment="DELETE_WEB50_POI_POINT">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+select count(*) c from (
+SELECT 1 dd 
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_POI_POINT_USER'
+					AND pr.DELETE_PERMITTED = '1'
+					AND EXISTS (SELECT 1
+					FROM WEB50.POI_POINT t
+					WHERE t.point_id = {ID}
+					AND (t.status_id = 1
+					OR (t.cuser_id = {USER_ID}
+					AND t.status_id = 0 )))
+union all SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_POI_POINT_ADMIN'
+					AND pr.DELETE_PERMITTED = '1')	d				
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+
+	<data id="INSERT_WEB50_POI_TRACK" comment="INSERT_WEB50_POI_TRACK">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+select count(*) c from (
+SELECT 1 dd 
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_POI_TRACK_USER'
+					AND pr.INSERT_PERMITTED = '1'
+union all SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_POI_TRACK_ADMIN'
+					AND pr.INSERT_PERMITTED = '1') d
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="UPDATE_WEB50_POI_TRACK" comment="UPDATE_WEB50_POI_TRACK">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+select count(*) c from (
+SELECT 1 dd 
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_POI_TRACK_USER'
+					AND pr.UPDATE_PERMITTED = '1'
+					AND EXISTS (SELECT 1
+					FROM WEB50.POI_TRACK t
+					WHERE t.track_id = {ID}
+					AND (t.status_id = 1
+					OR (t.cuser_id = {USER_ID}
+					AND t.status_id = 0 )))
+union all SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_POI_TRACK_ADMIN'
+					AND pr.UPDATE_PERMITTED::integer = 1) d		
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="DELETE_WEB50_POI_TRACK" comment="DELETE_WEB50_POI_TRACK">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+select count(*) c from (
+SELECT 1 dd 
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_POI_TRACK_USER'
+					AND pr.DELETE_PERMITTED = '1'
+					AND EXISTS (SELECT 1
+					FROM WEB50.POI_TRACK t
+					WHERE t.track_id = {ID}
+					AND (t.status_id = 1
+					OR (t.cuser_id = {USER_ID}
+					AND t.status_id = 0 )))
+union all SELECT 1 dd
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+					ON u2r.ROLE_ID = r2p.ROLE_ID
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE u2r.USER_ID = {USER_ID}
+					AND pr.CLASS_ID='WEB50_POI_TRACK_ADMIN'
+					AND pr.DELETE_PERMITTED = '1') d		
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	
+	<data id="INSERT_SUTSTPA" comment="INSERT_SUTSTPA">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					WHERE u2r.USER_ID = {USER_ID}
+					AND ((EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='SUTSTPA'
+					AND pr.INSERT_PERMITTED = '1')
+					AND NOT EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'))
+					OR EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'
+					AND pr.INSERT_PERMITTED = '1'))
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="UPDATE_SUTSTPA" comment="UPDATE_SUTSTPA">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*)	c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					WHERE u2r.USER_ID = {USER_ID}
+					AND ((EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='SUTSTPA'
+					AND pr.UPDATE_PERMITTED = '1')
+					AND NOT EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'))
+					OR EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'
+					AND pr.UPDATE_PERMITTED = '1'))
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+	<data id="DELETE_SUTSTPA" comment="DELETE_SUTSTPA">
+		<select>
+			<dbQuery idField="ID">
+				<query>
+					SELECT COUNT(*) c
+					FROM WEB50.B_USER_TO_B_ROLE u2r
+					WHERE u2r.USER_ID = {USER_ID}
+					AND ((EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='SUTSTPA'
+					AND pr.DELETE_PERMITTED  = '1')
+					AND NOT EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'))
+					OR EXISTS (SELECT 1
+					FROM WEB50.B_ROLE_TO_B_POLICY r2p
+					JOIN WEB50.B_POLICY_RULES pr
+					ON r2p.POLICY_ID = pr.POLICY_ID
+					WHERE r2p.role_id = u2r.role_id
+					AND pr.CLASS_ID='{CLASS_ID}'
+					AND pr.DELETE_PERMITTED  = '1'))
+				</query>
+			</dbQuery>
+		</select>
+	</data>
+</root>

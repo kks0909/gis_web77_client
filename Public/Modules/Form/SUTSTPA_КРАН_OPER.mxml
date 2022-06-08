@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns="view.data.*" xmlns:data="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns:mx="http://www.adobe.com/2006/mxml"
+                title="Краны"
+                width="760"
+                ext_data_id=""
+                excelTemplate="">
+  <dataProvider>SUTSTPA_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+    </panel:buttons>
+    <mx:HBox percentWidth="100">
+        <!--левая колонка полей-->  
+        <mx:VBox percentWidth="50">
+            <mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Изготовитель привода" width="140"/>
+                <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+                    <mx:ComboBox id="OPER_MANUF_ID" width="225" height="20" dataProvider="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_OPER_MANUF_ID_GCL"/>
+                    <mx:Button id="BTN_LIST_OPER_MANUF_ID" selectedField="SUTSTPA_SPRAV_OPER_MANUF_ID_GCL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16" height="16"/>                          
+                </mx:HBox>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Дата изготовления привода" width="140" />
+                <mx:DateField id="OPER_DATE_MANUF" width="96" height="20" formatString="DD.MM.YYYY" />
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Маркировка привода" width="140"/>
+                <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+                    <mx:ComboBox id="OPER_LABEL_TYPE_ID" width="225" height="20" dataProvider="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_OPER_LABEL_TYPE_ID_GCL"/>
+                    <mx:Button id="BTN_LIST_OPER_LABEL_TYPE_ID" selectedField="SUTSTPA_SPRAV_OPER_LABEL_TYPE_ID_GCL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16" height="16"/>                          
+                </mx:HBox>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Заводской номер привода" width="140" />
+                <controls:NumberInput id="OPER_SERIAL_NUMBER" editable="true" width="100" maxChars="22" height="20" />
+            </mx:HBox>
+           
+          </mx:VBox>
+          
+          <!--Правая колонка полей-->
+          <mx:VBox percentWidth="50">
+            <mx:HBox percentWidth="100">                
+                <mx:Text textAlign="right" text="Тип привода" width="140"/>
+                <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+                <mx:ComboBox id="OPER_TYPE_ID" width="225" height="20" dataProvider="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_VALVE_OP_TYPE_GCL"/>
+                <mx:Button id="BTN_LIST_OPER_TYPE_ID" selectedField="SUTSTPA_SPRAV_VALVE_OP_TYPE_GCL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16" height="16"/>                
+            </mx:HBox>
+          </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Год ввода в эксплуатацию привода" width="140" />
+                <mx:DateField id="OPER_DATE_WORK_BEGIN" width="96" height="20" formatString="DD.MM.YYYY" />
+            </mx:HBox>
+            
+          </mx:VBox>
+    </mx:HBox>
+</DATA_EDIT_FORM>

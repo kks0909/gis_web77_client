@@ -1,0 +1,1872 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.7.8" descr="Загрузчик-валидатор">
+
+    <data table="VALVE" schema="SUTSTPA" id="SUTSTPAVALIDATE_VALVE_CHECK" comment="VALVE">
+        <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <query>
+with sum_koef as (select n.check_table,sum(n.koeff) max_sum from sutstpa.sprav_ntd_gcl n where n.check_table is not null group by n.check_table),
+koef as (select (select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_4_IS') k_BARRIER_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_1_IS') k_ORDER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_4_IS') k_TERRITORY_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_1_IS') k_BARRIER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_5_IS') k_ORDER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_6_IS') k_ORDER_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PLATE_IS') k_PLATE_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_7_IS') k_CONT_MEAS_7_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_2_IS') k_INF_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_3_IS') k_INF_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_5_IS') k_BARRIER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_2_IS') k_SIGN_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_3_IS') k_SIGN_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_4_IS') k_SIGN_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_2_IS') k_ORDER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_5_IS') k_SIGN_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_6_IS') k_SIGN_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_1_IS') k_TERRITORY_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_2_IS') k_TERRITORY_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_3_IS') k_TERRITORY_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_2_IS') k_BARRIER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_3_IS') k_BARRIER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_3_IS') k_ORDER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_4_IS') k_order_4_is,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ROOF_IS') k_ROOF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='HEIGHT_IS') k_HEIGHT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_IS') k_COLOR_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_2_IS') k_CONT_MEAS_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_3_IS') k_CONT_MEAS_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_4_IS') k_CONT_MEAS_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_6_IS') k_CONT_MEAS_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_5_IS') k_CONT_MEAS_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_1_IS') k_EXT_CORR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_2_IS') k_EXT_CORR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_3_IS') k_EXT_CORR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_1_IS') k_GROUND_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_2_IS') k_GROUND_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_3_IS') k_GROUND_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_4_IS') k_GROUND_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_5_IS') k_GROUND_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_3_IS') k_COLOR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_1_IS') k_COLOR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_2_IS') k_COLOR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_4_IS') k_COLOR_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_5_IS') k_COLOR_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_6_IS') k_COLOR_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_1_IS') k_INF_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_4_IS') k_INF_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_5_IS') k_INF_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_6_IS') k_INF_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_NOM_DIAM_IS') k_INF_NOM_DIAM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_PRES_IS') k_INF_PRES_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_DATE_MANUF_IS') k_INF_DATE_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_MANUF_IS') k_INF_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TECH_NUM_IS') k_TECH_NUM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='VERT_IS') k_VERT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_1') k_ADD_IS_1,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_2') k_ADD_IS_2,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_3') k_ADD_IS_3,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_4') k_ADD_IS_4,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PEDESTAL_IS') k_PEDESTAL_IS),
+valve as (select id,struct_id,lpu,les,pipe,station,tech_num_is,plate_is,ext_corr_1_is,ext_corr_2_is,ext_corr_3_is,ground_1_is,ground_2_is,ground_3_is,ground_4_is,ground_5_is,color_1_is,color_2_is,color_3_is,color_4_is,color_5_is,color_6_is,inf_1_is,inf_2_is,inf_3_is,inf_4_is,
+inf_5_is,inf_6_is,order_6_is,cont_meas_2_is,cont_meas_3_is,cont_meas_4_is,cont_meas_5_is,cont_meas_6_is,cont_meas_7_is,add_is_1,add_is_2,add_is_3,add_is_4,operator1,operator2,operator3,operator4,operator5,operator6,type_id,name_id,tech_num,
+joint_id,nom_diam_id,nom_press_id,descr,serial_num,manuf_id,date_manuf,material_id,install_type_id,func_type_id,execution_type_id,oper_type_id,oper_manuf_id,oper_date_manuf,oper_label_type_id,oper_serial_number,oper_date_work_begin,electric_drive_descr,
+tpa_figure_type_id,tpa_constr_type_id,date_install,date_work_begin,lifetime,date_exp,climatic_type_id,invent_number,work_pressure_fact,work_temp_project,work_temp_fact,lubricant_value,hydrofluid_value,infoteh_is,
+exec_doc_is,electric_drive_ready_is,validate_is,date_insp,lg_attach,
+coalesce(ext_corr_1_is,0)*k_ext_corr_1_is+coalesce(ext_corr_2_is,0)*k_ext_corr_2_is+coalesce(ext_corr_3_is,0)*k_ext_corr_3_is+coalesce(ground_1_is,0)*k_ground_1_is+coalesce(ground_2_is,0)*k_ground_2_is+coalesce(ground_3_is,0)*k_ground_3_is
++coalesce(ground_4_is,0)*k_ground_4_is+coalesce(ground_5_is,0)*k_ground_5_is+abs(1-coalesce(color_1_is,1))*k_color_1_is+abs(1-coalesce(color_2_is,1))*k_color_2_is+abs(1-coalesce(color_3_is,1))*k_color_3_is
++abs(1-coalesce(color_4_is,1))*k_color_4_is+abs(1-coalesce(color_5_is,1))*k_color_5_is+abs(1-coalesce(color_6_is,1))*k_color_6_is+abs(1-coalesce(inf_1_is,1))*k_inf_1_is+abs(1-coalesce(inf_2_is,1))*k_inf_2_is
++abs(1-coalesce(inf_3_is,1))*k_inf_3_is+abs(1-coalesce(inf_4_is,1))*k_inf_4_is+abs(1-coalesce(inf_5_is,1))*k_inf_5_is+(cASE WHEN v.date_manuf is null THEN 1 else 0 end)*k_INF_DATE_MANUF_IS
++(cASE WHEN v.manuf_id is null THEN 1 else 0 end)*k_INF_MANUF_IS +coalesce(order_6_is,0)*k_order_6_is+abs(1-coalesce(cont_meas_2_is,1))*k_cont_meas_2_is+abs(1-coalesce(cont_meas_3_is,1))*k_cont_meas_3_is
++abs(1-coalesce(cont_meas_4_is,1))*k_cont_meas_4_is+abs(1-coalesce(cont_meas_5_is,1))*k_cont_meas_5_is+abs(1-coalesce(cont_meas_6_is,1))*k_cont_meas_6_is+abs(1-coalesce(cont_meas_7_is,1))*k_cont_meas_7_is
++coalesce(add_is_1,0)*k_add_is_1+coalesce(add_is_2,0)*k_add_is_2+coalesce(add_is_3,0)*k_add_is_3+coalesce(add_is_4,0)*k_add_is_4 rank
+FROM sutstpa.valve_validate v,koef k)
+                SELECT id,struct_id,lpu,les,pipe,station,tech_num_is,plate_is,ext_corr_1_is,ext_corr_2_is,ext_corr_3_is,ground_1_is,ground_2_is,ground_3_is,ground_4_is,ground_5_is,color_1_is,color_2_is,color_3_is,color_4_is,color_5_is,color_6_is,inf_1_is,inf_2_is,inf_3_is,inf_4_is,
+inf_5_is,inf_6_is,order_6_is,cont_meas_2_is,cont_meas_3_is,cont_meas_4_is,cont_meas_5_is,cont_meas_6_is,cont_meas_7_is,add_is_1,add_is_2,add_is_3,add_is_4,operator1,operator2,operator3,operator4,operator5,operator6,type_id,name_id,tech_num,
+joint_id,nom_diam_id,nom_press_id,descr,serial_num,manuf_id,date_manuf,material_id,install_type_id,func_type_id,execution_type_id,oper_type_id,oper_manuf_id,oper_date_manuf,oper_label_type_id,oper_serial_number,oper_date_work_begin,electric_drive_descr,
+tpa_figure_type_id,tpa_constr_type_id,date_install,date_work_begin,lifetime,date_exp,climatic_type_id,invent_number,work_pressure_fact,work_temp_project,work_temp_fact,lubricant_value,hydrofluid_value,infoteh_is,
+exec_doc_is,electric_drive_ready_is,validate_is,date_insp,lg_attach, rank,
+		   CASE when rank&lt;=sum_k.max_sum*0.15 then 'GREEN' 
+           		when rank&gt;sum_k.max_sum*0.15 and rank&lt;=sum_k.max_sum*0.5 then 'YELLOW'
+		 	when rank&gt;sum_k.max_sum*0.5 then 'RED' 
+		   end "TYPE" 					
+					FROM valve v, sum_koef sum_k where sum_k.check_table='sutstpa.valve' and {FILTER}
+                </query>
+            </dbQuery>
+        </select>
+        <update>
+            <dbCommand>
+						<var name="CLASS_ID" type="String" direction="Input" default="SUTSTPAVALIDATE_VALVE"/> 
+<var name="POLICY" default="POLICY.xml#UPDATE_SUTSTPA"/>
+<param name="LG_ATTACH" default="" type="String"/>
+<param name="LPU" default="" type="String"/>
+<param name="LES" default="" type="String"/>
+<param name="PIPE" default="" type="String"/>
+<param name="STATION" default="" type="Decimal"/>
+<param name="TYPE_ID" default="" type="String"/>
+<param name="OPER_TYPE_ID" default="" type="String"/>
+<param name="NAME_ID" default="" type="String"/>
+<param name="TECH_NUM" default="" type="String"/>
+<param name="TECH_NUM_IS" default="" type="Decimal"/>
+<param name="JOINT_ID" default="" type="String"/>
+<param name="PLATE_IS" default="" type="Decimal"/>
+<param name="NOM_DIAM_ID" default="" type="Decimal"/>
+<param name="NOM_PRESS_ID" default="" type="Decimal"/>
+<param name="DESCR" default="" type="String"/>
+<param name="SERIAL_NUM" default="" type="String"/>
+<param name="MANUF_ID" default="" type="String"/>
+<param name="EXT_CORR_1_IS" default="" type="Decimal"/>
+<param name="EXT_CORR_2_IS" default="" type="Decimal"/>
+<param name="EXT_CORR_3_IS" default="" type="Decimal"/>
+<param name="GROUND_1_IS" default="" type="Decimal"/>
+<param name="GROUND_2_IS" default="" type="Decimal"/>
+<param name="GROUND_3_IS" default="" type="Decimal"/>
+<param name="GROUND_4_IS" default="" type="Decimal"/>
+<param name="GROUND_5_IS" default="" type="Decimal"/>
+<param name="COLOR_1_IS" default="" type="Decimal"/>
+<param name="COLOR_2_IS" default="" type="Decimal"/>
+<param name="COLOR_3_IS" default="" type="Decimal"/>
+<param name="COLOR_4_IS" default="" type="Decimal"/>
+<param name="COLOR_5_IS" default="" type="Decimal"/>
+<param name="COLOR_6_IS" default="" type="Decimal"/>
+<param name="INF_1_IS" default="" type="Decimal"/>
+<param name="INF_2_IS" default="" type="Decimal"/>
+<param name="INF_3_IS" default="" type="Decimal"/>
+<param name="INF_4_IS" default="" type="Decimal"/>
+<param name="INF_5_IS" default="" type="Decimal"/>
+<param name="OPERATOR1" default="" type="Decimal"/>
+<param name="OPERATOR2" default="" type="Decimal"/>
+<param name="OPERATOR3" default="" type="Decimal"/>
+<param name="OPERATOR4" default="" type="Decimal"/>
+<param name="OPERATOR5" default="" type="Decimal"/>
+<param name="OPERATOR6" default="" type="Decimal"/>
+<param name="DATE_INSP" default="" type="DateTime"/>
+<param name="DATE_MANUF" default="" type="DateTime"/>
+<param name="STRUCT_ID" default="" type="Decimal"/>
+<param name="INF_6_IS" default="" type="Decimal"/>
+<param name="MATERIAL_ID" default="" type="String"/>
+<param name="INSTALL_TYPE_ID" default="" type="String"/>
+<param name="FUNC_TYPE_ID" default="" type="String"/>
+<param name="EXECUTION_TYPE_ID" default="" type="String"/>
+<param name="VALVE_MATERIAL_TYPE_CL" default="" type="String"/>
+<param name="ELECTRIC_DRIVE_DESCR" default="" type="String"/>
+<param name="ELECTRIC_DRIVE_READY_IS" default="0" type="Decimal"/>
+<param name="TPA_FIGURE_TYPE_ID" default="" type="String"/>
+<param name="TPA_CONSTR_TYPE_ID" default="" type="String"/>
+<param name="DATE_INSTALL" default="" type="DateTime"/>
+<param name="DATE_WORK_BEGIN" default="" type="DateTime"/>
+<param name="CLIMATIC_TYPE_ID" default="" type="String"/>
+<param name="INVENT_NUMBER" default="" type="String"/>
+<param name="LIFETIME" default="" type="Decimal"/>
+<param name="LUBRICANT_VALUE" default="" type="Decimal"/>
+<param name="HYDROFLUID_VALUE" default="" type="Decimal"/>
+<param name="WORK_PRESSURE_FACT" default="" type="Decimal"/>
+<param name="WORK_TEMP_PROJECT" default="" type="Decimal"/>
+<param name="WORK_TEMP_FACT" default="" type="Decimal"/>
+<param name="OPER_MANUF_ID" default="" type="String"/>
+<param name="OPER_DATE_MANUF" default="" type="DateTime"/>
+<param name="OPER_LABEL_TYPE_ID" default="" type="String"/>
+<param name="OPER_SERIAL_NUMBER" default="" type="String"/>
+<param name="OPER_MANUF_TYPE_ID" default="" type="String"/>
+<param name="OPER_DATE_WORK_BEGIN" default="" type="DateTime"/>
+<param name="ORDER_6_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_1_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_2_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_3_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_4_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_5_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_6_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_7_IS" default="" type="Decimal"/>
+<param name="INFOTEH_IS" default="0" type="Decimal"/>
+<param name="EXEC_DOC_IS" default="0" type="Decimal"/>
+<param name="ADD_IS_1" default="" type="Decimal"/>
+<param name="ADD_IS_2" default="" type="Decimal"/>
+<param name="ADD_IS_3" default="" type="Decimal"/>
+<param name="ADD_IS_4" default="" type="Decimal"/>
+<param name="VALIDATE_IS" default="0" type="Decimal"/>
+<param name="DATE_EXP" default="" type="DateTime"/>
+
+<var name="ID" type="Int64"/>
+                <query>
+                    UPDATE sutstpa.valve_validate
+                SET
+STRUCT_ID=:STRUCT_ID,				
+LPU=:LPU,
+LES=:LES,
+PIPE=:PIPE,
+STATION=:STATION,
+TECH_NUM_IS=:TECH_NUM_IS,
+PLATE_IS=:PLATE_IS,
+EXT_CORR_1_IS=:EXT_CORR_1_IS,
+EXT_CORR_2_IS=:EXT_CORR_2_IS,
+EXT_CORR_3_IS=:EXT_CORR_3_IS,
+GROUND_1_IS=:GROUND_1_IS,
+GROUND_2_IS=:GROUND_2_IS,
+GROUND_3_IS=:GROUND_3_IS,
+GROUND_4_IS=:GROUND_4_IS,
+GROUND_5_IS=:GROUND_5_IS,
+COLOR_1_IS=:COLOR_1_IS,
+COLOR_2_IS=:COLOR_2_IS,
+COLOR_3_IS=:COLOR_3_IS,
+COLOR_4_IS=:COLOR_4_IS,
+COLOR_5_IS=:COLOR_5_IS,
+COLOR_6_IS=:COLOR_6_IS,
+INF_1_IS=:INF_1_IS,
+INF_2_IS=:INF_2_IS,
+INF_3_IS=:INF_3_IS,
+INF_4_IS=:INF_4_IS,
+INF_5_IS=:INF_5_IS,
+INF_6_IS=:INF_6_IS,
+ORDER_6_IS=:ORDER_6_IS,
+CONT_MEAS_2_IS=:CONT_MEAS_2_IS,
+CONT_MEAS_3_IS=:CONT_MEAS_3_IS,
+CONT_MEAS_4_IS=:CONT_MEAS_4_IS,
+CONT_MEAS_5_IS=:CONT_MEAS_5_IS,
+CONT_MEAS_6_IS=:CONT_MEAS_6_IS,
+CONT_MEAS_7_IS=:CONT_MEAS_7_IS,
+ADD_IS_1=:ADD_IS_1,
+ADD_IS_2=:ADD_IS_2,
+ADD_IS_3=:ADD_IS_3,
+ADD_IS_4=:ADD_IS_4,
+OPERATOR1=:OPERATOR1,
+OPERATOR2=:OPERATOR2,
+OPERATOR3=:OPERATOR3,
+OPERATOR4=:OPERATOR4,
+OPERATOR5=:OPERATOR5,
+OPERATOR6=:OPERATOR6,
+TYPE_ID=:TYPE_ID,
+NAME_ID=:NAME_ID,
+TECH_NUM=:TECH_NUM,
+JOINT_ID=:JOINT_ID,
+NOM_DIAM_ID=:NOM_DIAM_ID,
+NOM_PRESS_ID=:NOM_PRESS_ID,
+DESCR=:DESCR,
+SERIAL_NUM=:SERIAL_NUM,
+MANUF_ID=:MANUF_ID,
+DATE_MANUF=:DATE_MANUF,
+MATERIAL_ID=:MATERIAL_ID,
+INSTALL_TYPE_ID=:INSTALL_TYPE_ID,
+FUNC_TYPE_ID=:FUNC_TYPE_ID,
+EXECUTION_TYPE_ID=:EXECUTION_TYPE_ID,
+OPER_TYPE_ID=:OPER_TYPE_ID,
+OPER_MANUF_ID=:OPER_MANUF_ID,
+OPER_DATE_MANUF=:OPER_DATE_MANUF,
+OPER_LABEL_TYPE_ID=:OPER_LABEL_TYPE_ID,
+OPER_SERIAL_NUMBER=:OPER_SERIAL_NUMBER,
+OPER_DATE_WORK_BEGIN=:OPER_DATE_WORK_BEGIN,
+ELECTRIC_DRIVE_DESCR=:ELECTRIC_DRIVE_DESCR,
+TPA_FIGURE_TYPE_ID=:TPA_FIGURE_TYPE_ID,
+TPA_CONSTR_TYPE_ID=:TPA_CONSTR_TYPE_ID,
+DATE_INSTALL=:DATE_INSTALL,
+DATE_WORK_BEGIN=:DATE_WORK_BEGIN,
+LIFETIME=:LIFETIME,
+DATE_EXP=:DATE_EXP,
+CLIMATIC_TYPE_ID=:CLIMATIC_TYPE_ID,
+INVENT_NUMBER=:INVENT_NUMBER,
+WORK_PRESSURE_FACT=:WORK_PRESSURE_FACT,
+WORK_TEMP_PROJECT=:WORK_TEMP_PROJECT,
+WORK_TEMP_FACT=:WORK_TEMP_FACT,
+LUBRICANT_VALUE=:LUBRICANT_VALUE,
+HYDROFLUID_VALUE=:HYDROFLUID_VALUE,
+INFOTEH_IS=:INFOTEH_IS,
+EXEC_DOC_IS=:EXEC_DOC_IS,
+ELECTRIC_DRIVE_READY_IS=:ELECTRIC_DRIVE_READY_IS,
+VALIDATE_IS=:VALIDATE_IS,
+DATE_INSP=:DATE_INSP,
+LG_ATTACH=:LG_ATTACH
+ where id=:ID;
+                </query>
+            </dbCommand>
+        </update>
+    </data>
+    <data table="VALVE" schema="SUTSTPA" id="SUTSTPAVALIDATE_VALVE_OPER" comment="VALVE">
+        <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <query>
+with sum_koef as (select n.check_table,sum(n.koeff) max_sum from sutstpa.sprav_ntd_gcl n where n.check_table is not null group by n.check_table),
+koef as (select (select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_4_IS') k_BARRIER_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_1_IS') k_ORDER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_4_IS') k_TERRITORY_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_1_IS') k_BARRIER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_5_IS') k_ORDER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_6_IS') k_ORDER_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PLATE_IS') k_PLATE_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_7_IS') k_CONT_MEAS_7_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_2_IS') k_INF_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_3_IS') k_INF_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_5_IS') k_BARRIER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_2_IS') k_SIGN_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_3_IS') k_SIGN_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_4_IS') k_SIGN_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_2_IS') k_ORDER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_5_IS') k_SIGN_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_6_IS') k_SIGN_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_1_IS') k_TERRITORY_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_2_IS') k_TERRITORY_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_3_IS') k_TERRITORY_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_2_IS') k_BARRIER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_3_IS') k_BARRIER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_3_IS') k_ORDER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_4_IS') k_order_4_is,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ROOF_IS') k_ROOF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='HEIGHT_IS') k_HEIGHT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_IS') k_COLOR_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_2_IS') k_CONT_MEAS_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_3_IS') k_CONT_MEAS_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_4_IS') k_CONT_MEAS_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_6_IS') k_CONT_MEAS_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_5_IS') k_CONT_MEAS_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_1_IS') k_EXT_CORR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_2_IS') k_EXT_CORR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_3_IS') k_EXT_CORR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_1_IS') k_GROUND_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_2_IS') k_GROUND_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_3_IS') k_GROUND_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_4_IS') k_GROUND_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_5_IS') k_GROUND_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_3_IS') k_COLOR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_1_IS') k_COLOR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_2_IS') k_COLOR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_4_IS') k_COLOR_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_5_IS') k_COLOR_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_6_IS') k_COLOR_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_1_IS') k_INF_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_4_IS') k_INF_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_5_IS') k_INF_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_6_IS') k_INF_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_NOM_DIAM_IS') k_INF_NOM_DIAM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_PRES_IS') k_INF_PRES_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_DATE_MANUF_IS') k_INF_DATE_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_MANUF_IS') k_INF_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TECH_NUM_IS') k_TECH_NUM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='VERT_IS') k_VERT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_1') k_ADD_IS_1,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_2') k_ADD_IS_2,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_3') k_ADD_IS_3,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_4') k_ADD_IS_4,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PEDESTAL_IS') k_PEDESTAL_IS),
+valve as (select id,struct_id,lpu,les,pipe,station,tech_num_is,plate_is,ext_corr_1_is,ext_corr_2_is,ext_corr_3_is,ground_1_is,ground_2_is,ground_3_is,ground_4_is,ground_5_is,color_1_is,color_2_is,color_3_is,color_4_is,color_5_is,color_6_is,inf_1_is,inf_2_is,inf_3_is,inf_4_is,
+inf_5_is,inf_6_is,order_6_is,cont_meas_2_is,cont_meas_3_is,cont_meas_4_is,cont_meas_5_is,cont_meas_6_is,cont_meas_7_is,add_is_1,add_is_2,add_is_3,add_is_4,operator1,operator2,operator3,operator4,operator5,operator6,type_id,name_id,tech_num,
+joint_id,nom_diam_id,nom_press_id,descr,serial_num,manuf_id,date_manuf,material_id,install_type_id,func_type_id,execution_type_id,oper_type_id,oper_manuf_id,oper_date_manuf,oper_label_type_id,oper_serial_number,oper_date_work_begin,electric_drive_descr,
+tpa_figure_type_id,tpa_constr_type_id,date_install,date_work_begin,lifetime,date_exp,climatic_type_id,invent_number,work_pressure_fact,work_temp_project,work_temp_fact,lubricant_value,hydrofluid_value,infoteh_is,
+exec_doc_is,electric_drive_ready_is,validate_is,date_insp,lg_attach,
+coalesce(ext_corr_1_is,0)*k_ext_corr_1_is+coalesce(ext_corr_2_is,0)*k_ext_corr_2_is+coalesce(ext_corr_3_is,0)*k_ext_corr_3_is+coalesce(ground_1_is,0)*k_ground_1_is+coalesce(ground_2_is,0)*k_ground_2_is+coalesce(ground_3_is,0)*k_ground_3_is
++coalesce(ground_4_is,0)*k_ground_4_is+coalesce(ground_5_is,0)*k_ground_5_is+abs(1-coalesce(color_1_is,1))*k_color_1_is+abs(1-coalesce(color_2_is,1))*k_color_2_is+abs(1-coalesce(color_3_is,1))*k_color_3_is
++abs(1-coalesce(color_4_is,1))*k_color_4_is+abs(1-coalesce(color_5_is,1))*k_color_5_is+abs(1-coalesce(color_6_is,1))*k_color_6_is+abs(1-coalesce(inf_1_is,1))*k_inf_1_is+abs(1-coalesce(inf_2_is,1))*k_inf_2_is
++abs(1-coalesce(inf_3_is,1))*k_inf_3_is+abs(1-coalesce(inf_4_is,1))*k_inf_4_is+abs(1-coalesce(inf_5_is,1))*k_inf_5_is+(cASE WHEN v.date_manuf is null THEN 1 else 0 end)*k_INF_DATE_MANUF_IS
++(cASE WHEN v.manuf_id is null THEN 1 else 0 end)*k_INF_MANUF_IS +coalesce(order_6_is,0)*k_order_6_is+abs(1-coalesce(cont_meas_2_is,1))*k_cont_meas_2_is+abs(1-coalesce(cont_meas_3_is,1))*k_cont_meas_3_is
++abs(1-coalesce(cont_meas_4_is,1))*k_cont_meas_4_is+abs(1-coalesce(cont_meas_5_is,1))*k_cont_meas_5_is+abs(1-coalesce(cont_meas_6_is,1))*k_cont_meas_6_is+abs(1-coalesce(cont_meas_7_is,1))*k_cont_meas_7_is
++coalesce(add_is_1,0)*k_add_is_1+coalesce(add_is_2,0)*k_add_is_2+coalesce(add_is_3,0)*k_add_is_3+coalesce(add_is_4,0)*k_add_is_4 rank
+FROM sutstpa.valve_validate v,koef k)
+                SELECT id,struct_id,lpu,les,pipe,station,tech_num_is,plate_is,ext_corr_1_is,ext_corr_2_is,ext_corr_3_is,ground_1_is,ground_2_is,ground_3_is,ground_4_is,ground_5_is,color_1_is,color_2_is,color_3_is,color_4_is,color_5_is,color_6_is,inf_1_is,inf_2_is,inf_3_is,inf_4_is,
+inf_5_is,inf_6_is,order_6_is,cont_meas_2_is,cont_meas_3_is,cont_meas_4_is,cont_meas_5_is,cont_meas_6_is,cont_meas_7_is,add_is_1,add_is_2,add_is_3,add_is_4,operator1,operator2,operator3,operator4,operator5,operator6,type_id,name_id,tech_num,
+joint_id,nom_diam_id,nom_press_id,descr,serial_num,manuf_id,date_manuf,material_id,install_type_id,func_type_id,execution_type_id,oper_type_id,oper_manuf_id,oper_date_manuf,oper_label_type_id,oper_serial_number,oper_date_work_begin,electric_drive_descr,
+tpa_figure_type_id,tpa_constr_type_id,date_install,date_work_begin,lifetime,date_exp,climatic_type_id,invent_number,work_pressure_fact,work_temp_project,work_temp_fact,lubricant_value,hydrofluid_value,infoteh_is,
+exec_doc_is,electric_drive_ready_is,validate_is,date_insp,lg_attach, rank,
+		   CASE when rank&lt;=sum_k.max_sum*0.15 then 'GREEN' 
+           		when rank&gt;sum_k.max_sum*0.15 and rank&lt;=sum_k.max_sum*0.5 then 'YELLOW'
+		 	when rank&gt;sum_k.max_sum*0.5 then 'RED' 
+		   end "TYPE" 					
+					FROM valve v, sum_koef sum_k where sum_k.check_table='sutstpa.valve' and {FILTER}
+                </query>
+            </dbQuery>
+        </select>
+        <update>
+            <dbCommand>
+						<var name="CLASS_ID" type="String" direction="Input" default="SUTSTPAVALIDATE_VALVE"/> 
+<var name="POLICY" default="POLICY.xml#UPDATE_SUTSTPA"/>
+<param name="LG_ATTACH" default="" type="String"/>
+<param name="LPU" default="" type="String"/>
+<param name="LES" default="" type="String"/>
+<param name="PIPE" default="" type="String"/>
+<param name="STATION" default="" type="Decimal"/>
+<param name="TYPE_ID" default="" type="String"/>
+<param name="OPER_TYPE_ID" default="" type="String"/>
+<param name="NAME_ID" default="" type="String"/>
+<param name="TECH_NUM" default="" type="String"/>
+<param name="TECH_NUM_IS" default="" type="Decimal"/>
+<param name="JOINT_ID" default="" type="String"/>
+<param name="PLATE_IS" default="" type="Decimal"/>
+<param name="NOM_DIAM_ID" default="" type="Decimal"/>
+<param name="NOM_PRESS_ID" default="" type="Decimal"/>
+<param name="DESCR" default="" type="String"/>
+<param name="SERIAL_NUM" default="" type="String"/>
+<param name="MANUF_ID" default="" type="String"/>
+<param name="EXT_CORR_1_IS" default="" type="Decimal"/>
+<param name="EXT_CORR_2_IS" default="" type="Decimal"/>
+<param name="EXT_CORR_3_IS" default="" type="Decimal"/>
+<param name="GROUND_1_IS" default="" type="Decimal"/>
+<param name="GROUND_2_IS" default="" type="Decimal"/>
+<param name="GROUND_3_IS" default="" type="Decimal"/>
+<param name="GROUND_4_IS" default="" type="Decimal"/>
+<param name="GROUND_5_IS" default="" type="Decimal"/>
+<param name="COLOR_1_IS" default="" type="Decimal"/>
+<param name="COLOR_2_IS" default="" type="Decimal"/>
+<param name="COLOR_3_IS" default="" type="Decimal"/>
+<param name="COLOR_4_IS" default="" type="Decimal"/>
+<param name="COLOR_5_IS" default="" type="Decimal"/>
+<param name="COLOR_6_IS" default="" type="Decimal"/>
+<param name="INF_1_IS" default="" type="Decimal"/>
+<param name="INF_2_IS" default="" type="Decimal"/>
+<param name="INF_3_IS" default="" type="Decimal"/>
+<param name="INF_4_IS" default="" type="Decimal"/>
+<param name="INF_5_IS" default="" type="Decimal"/>
+<param name="OPERATOR1" default="" type="Decimal"/>
+<param name="OPERATOR2" default="" type="Decimal"/>
+<param name="OPERATOR3" default="" type="Decimal"/>
+<param name="OPERATOR4" default="" type="Decimal"/>
+<param name="OPERATOR5" default="" type="Decimal"/>
+<param name="OPERATOR6" default="" type="Decimal"/>
+<param name="DATE_INSP" default="" type="DateTime"/>
+<param name="DATE_MANUF" default="" type="DateTime"/>
+<param name="STRUCT_ID" default="" type="Decimal"/>
+<param name="INF_6_IS" default="" type="Decimal"/>
+<param name="MATERIAL_ID" default="" type="String"/>
+<param name="INSTALL_TYPE_ID" default="" type="String"/>
+<param name="FUNC_TYPE_ID" default="" type="String"/>
+<param name="EXECUTION_TYPE_ID" default="" type="String"/>
+<param name="VALVE_MATERIAL_TYPE_CL" default="" type="String"/>
+<param name="ELECTRIC_DRIVE_DESCR" default="" type="String"/>
+<param name="ELECTRIC_DRIVE_READY_IS" default="0" type="Decimal"/>
+<param name="TPA_FIGURE_TYPE_ID" default="" type="String"/>
+<param name="TPA_CONSTR_TYPE_ID" default="" type="String"/>
+<param name="DATE_INSTALL" default="" type="DateTime"/>
+<param name="DATE_WORK_BEGIN" default="" type="DateTime"/>
+<param name="CLIMATIC_TYPE_ID" default="" type="String"/>
+<param name="INVENT_NUMBER" default="" type="String"/>
+<param name="LIFETIME" default="" type="Decimal"/>
+<param name="LUBRICANT_VALUE" default="" type="Decimal"/>
+<param name="HYDROFLUID_VALUE" default="" type="Decimal"/>
+<param name="WORK_PRESSURE_FACT" default="" type="Decimal"/>
+<param name="WORK_TEMP_PROJECT" default="" type="Decimal"/>
+<param name="WORK_TEMP_FACT" default="" type="Decimal"/>
+<param name="OPER_MANUF_ID" default="" type="String"/>
+<param name="OPER_DATE_MANUF" default="" type="DateTime"/>
+<param name="OPER_LABEL_TYPE_ID" default="" type="String"/>
+<param name="OPER_SERIAL_NUMBER" default="" type="String"/>
+<param name="OPER_MANUF_TYPE_ID" default="" type="String"/>
+<param name="OPER_DATE_WORK_BEGIN" default="" type="DateTime"/>
+<param name="ORDER_6_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_1_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_2_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_3_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_4_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_5_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_6_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_7_IS" default="" type="Decimal"/>
+<param name="INFOTEH_IS" default="" type="Decimal"/>
+<param name="EXEC_DOC_IS" default="" type="Decimal"/>
+<param name="ADD_IS_1" default="" type="Decimal"/>
+<param name="ADD_IS_2" default="" type="Decimal"/>
+<param name="ADD_IS_3" default="" type="Decimal"/>
+<param name="ADD_IS_4" default="" type="Decimal"/>
+<param name="VALIDATE_IS" default="0" type="Decimal"/>
+<param name="DATE_EXP" default="" type="DateTime"/>
+<var name="ID" type="Int64"/>
+                <query>
+                    UPDATE sutstpa.valve_validate
+                SET
+STRUCT_ID=:STRUCT_ID,				
+LPU=:LPU,
+LES=:LES,
+PIPE=:PIPE,
+STATION=:STATION,
+TECH_NUM_IS=:TECH_NUM_IS,
+PLATE_IS=:PLATE_IS,
+EXT_CORR_1_IS=:EXT_CORR_1_IS,
+EXT_CORR_2_IS=:EXT_CORR_2_IS,
+EXT_CORR_3_IS=:EXT_CORR_3_IS,
+GROUND_1_IS=:GROUND_1_IS,
+GROUND_2_IS=:GROUND_2_IS,
+GROUND_3_IS=:GROUND_3_IS,
+GROUND_4_IS=:GROUND_4_IS,
+GROUND_5_IS=:GROUND_5_IS,
+COLOR_1_IS=:COLOR_1_IS,
+COLOR_2_IS=:COLOR_2_IS,
+COLOR_3_IS=:COLOR_3_IS,
+COLOR_4_IS=:COLOR_4_IS,
+COLOR_5_IS=:COLOR_5_IS,
+COLOR_6_IS=:COLOR_6_IS,
+INF_1_IS=:INF_1_IS,
+INF_2_IS=:INF_2_IS,
+INF_3_IS=:INF_3_IS,
+INF_4_IS=:INF_4_IS,
+INF_5_IS=:INF_5_IS,
+INF_6_IS=:INF_6_IS,
+ORDER_6_IS=:ORDER_6_IS,
+CONT_MEAS_2_IS=:CONT_MEAS_2_IS,
+CONT_MEAS_3_IS=:CONT_MEAS_3_IS,
+CONT_MEAS_4_IS=:CONT_MEAS_4_IS,
+CONT_MEAS_5_IS=:CONT_MEAS_5_IS,
+CONT_MEAS_6_IS=:CONT_MEAS_6_IS,
+CONT_MEAS_7_IS=:CONT_MEAS_7_IS,
+ADD_IS_1=:ADD_IS_1,
+ADD_IS_2=:ADD_IS_2,
+ADD_IS_3=:ADD_IS_3,
+ADD_IS_4=:ADD_IS_4,
+OPERATOR1=:OPERATOR1,
+OPERATOR2=:OPERATOR2,
+OPERATOR3=:OPERATOR3,
+OPERATOR4=:OPERATOR4,
+OPERATOR5=:OPERATOR5,
+OPERATOR6=:OPERATOR6,
+TYPE_ID=:TYPE_ID,
+NAME_ID=:NAME_ID,
+TECH_NUM=:TECH_NUM,
+JOINT_ID=:JOINT_ID,
+NOM_DIAM_ID=:NOM_DIAM_ID,
+NOM_PRESS_ID=:NOM_PRESS_ID,
+DESCR=:DESCR,
+SERIAL_NUM=:SERIAL_NUM,
+MANUF_ID=:MANUF_ID,
+DATE_MANUF=:DATE_MANUF,
+MATERIAL_ID=:MATERIAL_ID,
+INSTALL_TYPE_ID=:INSTALL_TYPE_ID,
+FUNC_TYPE_ID=:FUNC_TYPE_ID,
+EXECUTION_TYPE_ID=:EXECUTION_TYPE_ID,
+OPER_TYPE_ID=:OPER_TYPE_ID,
+OPER_MANUF_ID=:OPER_MANUF_ID,
+OPER_DATE_MANUF=:OPER_DATE_MANUF,
+OPER_LABEL_TYPE_ID=:OPER_LABEL_TYPE_ID,
+OPER_SERIAL_NUMBER=:OPER_SERIAL_NUMBER,
+OPER_DATE_WORK_BEGIN=:OPER_DATE_WORK_BEGIN,
+ELECTRIC_DRIVE_DESCR=:ELECTRIC_DRIVE_DESCR,
+TPA_FIGURE_TYPE_ID=:TPA_FIGURE_TYPE_ID,
+TPA_CONSTR_TYPE_ID=:TPA_CONSTR_TYPE_ID,
+DATE_INSTALL=:DATE_INSTALL,
+DATE_WORK_BEGIN=:DATE_WORK_BEGIN,
+LIFETIME=:LIFETIME,
+DATE_EXP=:DATE_EXP,
+CLIMATIC_TYPE_ID=:CLIMATIC_TYPE_ID,
+INVENT_NUMBER=:INVENT_NUMBER,
+WORK_PRESSURE_FACT=:WORK_PRESSURE_FACT,
+WORK_TEMP_PROJECT=:WORK_TEMP_PROJECT,
+WORK_TEMP_FACT=:WORK_TEMP_FACT,
+LUBRICANT_VALUE=:LUBRICANT_VALUE,
+HYDROFLUID_VALUE=:HYDROFLUID_VALUE,
+INFOTEH_IS=:INFOTEH_IS,
+EXEC_DOC_IS=:EXEC_DOC_IS,
+ELECTRIC_DRIVE_READY_IS=:ELECTRIC_DRIVE_READY_IS,
+VALIDATE_IS=:VALIDATE_IS,
+DATE_INSP=:DATE_INSP,
+LG_ATTACH=:LG_ATTACH
+ where id=:ID;
+                </query>
+            </dbCommand>
+        </update>
+    </data>
+    <data table="VALVE" schema="SUTSTPA" id="SUTSTPAVALIDATE_VALVE" comment="VALVE">
+        <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <query>
+with sum_koef as (select n.check_table,sum(n.koeff) max_sum from sutstpa.sprav_ntd_gcl n where n.check_table is not null group by n.check_table),
+koef as (select (select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_4_IS') k_BARRIER_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_1_IS') k_ORDER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_4_IS') k_TERRITORY_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_1_IS') k_BARRIER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_5_IS') k_ORDER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_6_IS') k_ORDER_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PLATE_IS') k_PLATE_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_7_IS') k_CONT_MEAS_7_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_2_IS') k_INF_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_3_IS') k_INF_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_5_IS') k_BARRIER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_2_IS') k_SIGN_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_3_IS') k_SIGN_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_4_IS') k_SIGN_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_2_IS') k_ORDER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_5_IS') k_SIGN_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_6_IS') k_SIGN_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_1_IS') k_TERRITORY_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_2_IS') k_TERRITORY_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_3_IS') k_TERRITORY_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_2_IS') k_BARRIER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_3_IS') k_BARRIER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_3_IS') k_ORDER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_4_IS') k_order_4_is,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ROOF_IS') k_ROOF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='HEIGHT_IS') k_HEIGHT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_IS') k_COLOR_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_2_IS') k_CONT_MEAS_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_3_IS') k_CONT_MEAS_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_4_IS') k_CONT_MEAS_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_6_IS') k_CONT_MEAS_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_5_IS') k_CONT_MEAS_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_1_IS') k_EXT_CORR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_2_IS') k_EXT_CORR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_3_IS') k_EXT_CORR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_1_IS') k_GROUND_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_2_IS') k_GROUND_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_3_IS') k_GROUND_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_4_IS') k_GROUND_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_5_IS') k_GROUND_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_3_IS') k_COLOR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_1_IS') k_COLOR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_2_IS') k_COLOR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_4_IS') k_COLOR_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_5_IS') k_COLOR_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_6_IS') k_COLOR_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_1_IS') k_INF_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_4_IS') k_INF_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_5_IS') k_INF_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_6_IS') k_INF_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_NOM_DIAM_IS') k_INF_NOM_DIAM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_PRES_IS') k_INF_PRES_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_DATE_MANUF_IS') k_INF_DATE_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_MANUF_IS') k_INF_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TECH_NUM_IS') k_TECH_NUM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='VERT_IS') k_VERT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_1') k_ADD_IS_1,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_2') k_ADD_IS_2,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_3') k_ADD_IS_3,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_4') k_ADD_IS_4,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PEDESTAL_IS') k_PEDESTAL_IS),
+valve as (select id,struct_id,lpu,les,pipe,station,tech_num_is,plate_is,ext_corr_1_is,ext_corr_2_is,ext_corr_3_is,ground_1_is,ground_2_is,ground_3_is,ground_4_is,ground_5_is,color_1_is,color_2_is,color_3_is,color_4_is,color_5_is,color_6_is,inf_1_is,inf_2_is,inf_3_is,inf_4_is,
+inf_5_is,inf_6_is,order_6_is,cont_meas_2_is,cont_meas_3_is,cont_meas_4_is,cont_meas_5_is,cont_meas_6_is,cont_meas_7_is,add_is_1,add_is_2,add_is_3,add_is_4,operator1,operator2,operator3,operator4,operator5,operator6,type_id,name_id,tech_num,
+joint_id,nom_diam_id,nom_press_id,descr,serial_num,manuf_id,date_manuf,material_id,install_type_id,func_type_id,execution_type_id,oper_type_id,oper_manuf_id,oper_date_manuf,oper_label_type_id,oper_serial_number,oper_date_work_begin,electric_drive_descr,
+tpa_figure_type_id,tpa_constr_type_id,date_install,date_work_begin,lifetime,date_exp,climatic_type_id,invent_number,work_pressure_fact,work_temp_project,work_temp_fact,lubricant_value,hydrofluid_value,infoteh_is,
+exec_doc_is,electric_drive_ready_is,validate_is,date_insp,lg_attach,
+coalesce(ext_corr_1_is,0)*k_ext_corr_1_is+coalesce(ext_corr_2_is,0)*k_ext_corr_2_is+coalesce(ext_corr_3_is,0)*k_ext_corr_3_is+coalesce(ground_1_is,0)*k_ground_1_is+coalesce(ground_2_is,0)*k_ground_2_is+coalesce(ground_3_is,0)*k_ground_3_is
++coalesce(ground_4_is,0)*k_ground_4_is+coalesce(ground_5_is,0)*k_ground_5_is+abs(1-coalesce(color_1_is,1))*k_color_1_is+abs(1-coalesce(color_2_is,1))*k_color_2_is+abs(1-coalesce(color_3_is,1))*k_color_3_is
++abs(1-coalesce(color_4_is,1))*k_color_4_is+abs(1-coalesce(color_5_is,1))*k_color_5_is+abs(1-coalesce(color_6_is,1))*k_color_6_is+abs(1-coalesce(inf_1_is,1))*k_inf_1_is+abs(1-coalesce(inf_2_is,1))*k_inf_2_is
++abs(1-coalesce(inf_3_is,1))*k_inf_3_is+abs(1-coalesce(inf_4_is,1))*k_inf_4_is+abs(1-coalesce(inf_5_is,1))*k_inf_5_is+(cASE WHEN v.date_manuf is null THEN 1 else 0 end)*k_INF_DATE_MANUF_IS
++(cASE WHEN v.manuf_id is null THEN 1 else 0 end)*k_INF_MANUF_IS +coalesce(order_6_is,0)*k_order_6_is+abs(1-coalesce(cont_meas_2_is,1))*k_cont_meas_2_is+abs(1-coalesce(cont_meas_3_is,1))*k_cont_meas_3_is
++abs(1-coalesce(cont_meas_4_is,1))*k_cont_meas_4_is+abs(1-coalesce(cont_meas_5_is,1))*k_cont_meas_5_is+abs(1-coalesce(cont_meas_6_is,1))*k_cont_meas_6_is+abs(1-coalesce(cont_meas_7_is,1))*k_cont_meas_7_is
++coalesce(add_is_1,0)*k_add_is_1+coalesce(add_is_2,0)*k_add_is_2+coalesce(add_is_3,0)*k_add_is_3+coalesce(add_is_4,0)*k_add_is_4 rank
+FROM sutstpa.valve_validate v,koef k)
+                SELECT id,struct_id,lpu,les,pipe,station,tech_num_is,plate_is,ext_corr_1_is,ext_corr_2_is,ext_corr_3_is,ground_1_is,ground_2_is,ground_3_is,ground_4_is,ground_5_is,color_1_is,color_2_is,color_3_is,color_4_is,color_5_is,color_6_is,inf_1_is,inf_2_is,inf_3_is,inf_4_is,
+inf_5_is,inf_6_is,order_6_is,cont_meas_2_is,cont_meas_3_is,cont_meas_4_is,cont_meas_5_is,cont_meas_6_is,cont_meas_7_is,add_is_1,add_is_2,add_is_3,add_is_4,operator1,operator2,operator3,operator4,operator5,operator6,type_id,name_id,tech_num,
+joint_id,nom_diam_id,nom_press_id,descr,serial_num,manuf_id,date_manuf,material_id,install_type_id,func_type_id,execution_type_id,oper_type_id,oper_manuf_id,oper_date_manuf,oper_label_type_id,oper_serial_number,oper_date_work_begin,electric_drive_descr,
+tpa_figure_type_id,tpa_constr_type_id,date_install,date_work_begin,lifetime,date_exp,climatic_type_id,invent_number,work_pressure_fact,work_temp_project,work_temp_fact,lubricant_value,hydrofluid_value,infoteh_is,
+exec_doc_is,electric_drive_ready_is,validate_is,date_insp,lg_attach, rank,
+		   CASE when rank&lt;=sum_k.max_sum*0.15 then 'GREEN' 
+           		when rank&gt;sum_k.max_sum*0.15 and rank&lt;=sum_k.max_sum*0.5 then 'YELLOW'
+		 	when rank&gt;sum_k.max_sum*0.5 then 'RED' 
+		   end "TYPE" 					
+					FROM valve v, sum_koef sum_k where sum_k.check_table='sutstpa.valve' and {FILTER}
+                </query>
+            </dbQuery>
+        </select>
+        <insert>
+            <dbCommand>
+						<var name="CLASS_ID" type="String" direction="Input" default="SUTSTPAVALIDATE_VALVE"/> 
+<var name="POLICY" default="POLICY.xml#INSERT_SUTSTPA"/>
+<param name="LG_ATTACH" default="" type="String"/>
+<param name="LPU" default="" type="String"/>
+<param name="LES" default="" type="String"/>
+<param name="PIPE" default="" type="String"/>
+<param name="STATION" default="" type="Decimal"/>
+<param name="TYPE_ID" default="" type="String"/>
+<param name="OPER_TYPE_ID" default="" type="String"/>
+<param name="NAME_ID" default="" type="String"/>
+<param name="TECH_NUM" default="" type="String"/>
+<param name="TECH_NUM_IS" default="" type="Decimal"/>
+<param name="JOINT_ID" default="" type="String"/>
+<param name="PLATE_IS" default="" type="Decimal"/>
+<param name="NOM_DIAM_ID" default="" type="Decimal"/>
+<param name="NOM_PRESS_ID" default="" type="Decimal"/>
+<param name="DESCR" default="" type="String"/>
+<param name="SERIAL_NUM" default="" type="String"/>
+<param name="MANUF_ID" default="" type="String"/>
+<param name="EXT_CORR_1_IS" default="" type="Decimal"/>
+<param name="EXT_CORR_2_IS" default="" type="Decimal"/>
+<param name="EXT_CORR_3_IS" default="" type="Decimal"/>
+<param name="GROUND_1_IS" default="" type="Decimal"/>
+<param name="GROUND_2_IS" default="" type="Decimal"/>
+<param name="GROUND_3_IS" default="" type="Decimal"/>
+<param name="GROUND_4_IS" default="" type="Decimal"/>
+<param name="GROUND_5_IS" default="" type="Decimal"/>
+<param name="COLOR_1_IS" default="" type="Decimal"/>
+<param name="COLOR_2_IS" default="" type="Decimal"/>
+<param name="COLOR_3_IS" default="" type="Decimal"/>
+<param name="COLOR_4_IS" default="" type="Decimal"/>
+<param name="COLOR_5_IS" default="" type="Decimal"/>
+<param name="COLOR_6_IS" default="" type="Decimal"/>
+<param name="INF_1_IS" default="" type="Decimal"/>
+<param name="INF_2_IS" default="" type="Decimal"/>
+<param name="INF_3_IS" default="" type="Decimal"/>
+<param name="INF_4_IS" default="" type="Decimal"/>
+<param name="INF_5_IS" default="" type="Decimal"/>
+<param name="OPERATOR1" default="" type="Decimal"/>
+<param name="OPERATOR2" default="" type="Decimal"/>
+<param name="OPERATOR3" default="" type="Decimal"/>
+<param name="OPERATOR4" default="" type="Decimal"/>
+<param name="OPERATOR5" default="" type="Decimal"/>
+<param name="OPERATOR6" default="" type="Decimal"/>
+<param name="DATE_INSP" default="" type="DateTime"/>
+<param name="DATE_MANUF" default="" type="DateTime"/>
+<param name="STRUCT_ID" default="" type="Decimal"/>
+<param name="INF_6_IS" default="" type="Decimal"/>
+<param name="MATERIAL_ID" default="" type="String"/>
+<param name="INSTALL_TYPE_ID" default="" type="String"/>
+<param name="FUNC_TYPE_ID" default="" type="String"/>
+<param name="EXECUTION_TYPE_ID" default="" type="String"/>
+<param name="VALVE_MATERIAL_TYPE_CL" default="" type="String"/>
+<param name="ELECTRIC_DRIVE_DESCR" default="" type="String"/>
+<param name="ELECTRIC_DRIVE_READY_IS" default="0" type="Decimal"/>
+<param name="TPA_FIGURE_TYPE_ID" default="" type="String"/>
+<param name="TPA_CONSTR_TYPE_ID" default="" type="String"/>
+<param name="DATE_INSTALL" default="" type="DateTime"/>
+<param name="DATE_WORK_BEGIN" default="" type="DateTime"/>
+<param name="CLIMATIC_TYPE_ID" default="" type="String"/>
+<param name="INVENT_NUMBER" default="" type="String"/>
+<param name="LIFETIME" default="" type="Decimal"/>
+<param name="LUBRICANT_VALUE" default="" type="Decimal"/>
+<param name="HYDROFLUID_VALUE" default="" type="Decimal"/>
+<param name="WORK_PRESSURE_FACT" default="" type="Decimal"/>
+<param name="WORK_TEMP_PROJECT" default="" type="Decimal"/>
+<param name="WORK_TEMP_FACT" default="" type="Decimal"/>
+<param name="OPER_MANUF_ID" default="" type="String"/>
+<param name="OPER_DATE_MANUF" default="" type="DateTime"/>
+<param name="OPER_LABEL_TYPE_ID" default="" type="String"/>
+<param name="OPER_SERIAL_NUMBER" default="" type="String"/>
+<param name="OPER_MANUF_TYPE_ID" default="" type="String"/>
+<param name="OPER_DATE_WORK_BEGIN" default="" type="DateTime"/>
+<param name="ORDER_6_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_1_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_2_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_3_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_4_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_5_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_6_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_7_IS" default="" type="Decimal"/>
+<param name="INFOTEH_IS" default="0" type="Decimal"/>
+<param name="EXEC_DOC_IS" default="0" type="Decimal"/>
+<param name="ADD_IS_1" default="" type="Decimal"/>
+<param name="ADD_IS_2" default="" type="Decimal"/>
+<param name="ADD_IS_3" default="" type="Decimal"/>
+<param name="ADD_IS_4" default="" type="Decimal"/>
+<param name="VALIDATE_IS" default="0" type="Decimal"/>
+<param name="DATE_EXP" default="" type="DateTime"/>
+<var name="ID" type="Int64"/>
+<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id FROM sutstpa.valve_validate"/>
+            <query>
+                    INSERT INTO sutstpa.valve_validate
+(
+struct_id,
+lpu,
+les,
+pipe,
+station,
+tech_num_is,
+plate_is,
+ext_corr_1_is,
+ext_corr_2_is,
+ext_corr_3_is,
+ground_1_is,
+ground_2_is,
+ground_3_is,
+ground_4_is,
+ground_5_is,
+color_1_is,
+color_2_is,
+color_3_is,
+color_4_is,
+color_5_is,
+color_6_is,
+inf_1_is,
+inf_2_is,
+inf_3_is,
+inf_4_is,
+inf_5_is,
+inf_6_is,
+order_6_is,
+cont_meas_2_is,
+cont_meas_3_is,
+cont_meas_4_is,
+cont_meas_5_is,
+cont_meas_6_is,
+cont_meas_7_is,
+add_is_1,
+add_is_2,
+add_is_3,
+add_is_4,
+operator1,
+operator2,
+operator3,
+operator4,
+operator5,
+operator6,
+type_id,
+name_id,
+tech_num,
+joint_id,
+nom_diam_id,
+nom_press_id,
+descr,
+serial_num,
+manuf_id,
+date_manuf,
+material_id,
+install_type_id,
+func_type_id,
+execution_type_id,
+oper_type_id,
+oper_manuf_id,
+oper_date_manuf,
+oper_label_type_id,
+oper_serial_number,
+oper_date_work_begin,
+electric_drive_descr,
+tpa_figure_type_id,
+tpa_constr_type_id,
+date_install,
+date_work_begin,
+lifetime,
+date_exp,
+climatic_type_id,
+invent_number,
+work_pressure_fact,
+WORK_TEMP_PROJECT,
+work_temp_fact,
+lubricant_value,
+hydrofluid_value,
+infoteh_is,
+exec_doc_is,
+electric_drive_ready_is,
+validate_is,
+date_insp,
+lg_attach
+)
+VALUES(  
+:STRUCT_ID,
+:LPU,
+:LES,
+:PIPE,
+:STATION,
+:TECH_NUM_IS,
+:PLATE_IS,
+:EXT_CORR_1_IS,
+:EXT_CORR_2_IS,
+:EXT_CORR_3_IS,
+:GROUND_1_IS,
+:GROUND_2_IS,
+:GROUND_3_IS,
+:GROUND_4_IS,
+:GROUND_5_IS,
+:COLOR_1_IS,
+:COLOR_2_IS,
+:COLOR_3_IS,
+:COLOR_4_IS,
+:COLOR_5_IS,
+:COLOR_6_IS,
+:INF_1_IS,
+:INF_2_IS,
+:INF_3_IS,
+:INF_4_IS,
+:INF_5_IS,
+:INF_6_IS,
+:ORDER_6_IS,
+:CONT_MEAS_2_IS,
+:CONT_MEAS_3_IS,
+:CONT_MEAS_4_IS,
+:CONT_MEAS_5_IS,
+:CONT_MEAS_6_IS,
+:CONT_MEAS_7_IS,
+:ADD_IS_1,
+:ADD_IS_2,
+:ADD_IS_3,
+:ADD_IS_4,
+:OPERATOR1,
+:OPERATOR2,
+:OPERATOR3,
+:OPERATOR4,
+:OPERATOR5,
+:OPERATOR6,
+:TYPE_ID,
+:NAME_ID,
+:TECH_NUM,
+:JOINT_ID,
+:NOM_DIAM_ID,
+:NOM_PRESS_ID,
+:DESCR,
+:SERIAL_NUM,
+:MANUF_ID,
+:DATE_MANUF,
+:MATERIAL_ID,
+:INSTALL_TYPE_ID,
+:FUNC_TYPE_ID,
+:EXECUTION_TYPE_ID,
+:OPER_TYPE_ID,
+:OPER_MANUF_ID,
+:OPER_DATE_MANUF,
+:OPER_LABEL_TYPE_ID,
+:OPER_SERIAL_NUMBER,
+:OPER_DATE_WORK_BEGIN,
+:ELECTRIC_DRIVE_DESCR,
+:TPA_FIGURE_TYPE_ID,
+:TPA_CONSTR_TYPE_ID,
+:DATE_INSTALL,
+:DATE_WORK_BEGIN,
+:LIFETIME,
+:DATE_EXP,
+:CLIMATIC_TYPE_ID,
+:INVENT_NUMBER,
+:WORK_PRESSURE_FACT,
+:WORK_TEMP_PROJECT,
+:WORK_TEMP_FACT,
+:LUBRICANT_VALUE,
+:HYDROFLUID_VALUE,
+:INFOTEH_IS,
+:EXEC_DOC_IS,
+:ELECTRIC_DRIVE_READY_IS,
+:VALIDATE_IS,
+:DATE_INSP,
+:LG_ATTACH
+)
+            </query>
+            </dbCommand>
+        </insert>
+        <update>
+            <dbCommand>
+						<var name="CLASS_ID" type="String" direction="Input" default="SUTSTPAVALIDATE_VALVE"/> 
+<var name="POLICY" default="POLICY.xml#UPDATE_SUTSTPA"/>
+<param name="LG_ATTACH" default="" type="String"/>
+<param name="LPU" default="" type="String"/>
+<param name="LES" default="" type="String"/>
+<param name="PIPE" default="" type="String"/>
+<param name="STATION" default="" type="Decimal"/>
+<param name="TYPE_ID" default="" type="String"/>
+<param name="OPER_TYPE_ID" default="" type="String"/>
+<param name="NAME_ID" default="" type="String"/>
+<param name="TECH_NUM" default="" type="String"/>
+<param name="TECH_NUM_IS" default="" type="Decimal"/>
+<param name="JOINT_ID" default="" type="String"/>
+<param name="PLATE_IS" default="" type="Decimal"/>
+<param name="NOM_DIAM_ID" default="" type="Decimal"/>
+<param name="NOM_PRESS_ID" default="" type="Decimal"/>
+<param name="DESCR" default="" type="String"/>
+<param name="SERIAL_NUM" default="" type="String"/>
+<param name="MANUF_ID" default="" type="String"/>
+<param name="EXT_CORR_1_IS" default="" type="Decimal"/>
+<param name="EXT_CORR_2_IS" default="" type="Decimal"/>
+<param name="EXT_CORR_3_IS" default="" type="Decimal"/>
+<param name="GROUND_1_IS" default="" type="Decimal"/>
+<param name="GROUND_2_IS" default="" type="Decimal"/>
+<param name="GROUND_3_IS" default="" type="Decimal"/>
+<param name="GROUND_4_IS" default="" type="Decimal"/>
+<param name="GROUND_5_IS" default="" type="Decimal"/>
+<param name="COLOR_1_IS" default="" type="Decimal"/>
+<param name="COLOR_2_IS" default="" type="Decimal"/>
+<param name="COLOR_3_IS" default="" type="Decimal"/>
+<param name="COLOR_4_IS" default="" type="Decimal"/>
+<param name="COLOR_5_IS" default="" type="Decimal"/>
+<param name="COLOR_6_IS" default="" type="Decimal"/>
+<param name="INF_1_IS" default="" type="Decimal"/>
+<param name="INF_2_IS" default="" type="Decimal"/>
+<param name="INF_3_IS" default="" type="Decimal"/>
+<param name="INF_4_IS" default="" type="Decimal"/>
+<param name="INF_5_IS" default="" type="Decimal"/>
+<param name="OPERATOR1" default="" type="Decimal"/>
+<param name="OPERATOR2" default="" type="Decimal"/>
+<param name="OPERATOR3" default="" type="Decimal"/>
+<param name="OPERATOR4" default="" type="Decimal"/>
+<param name="OPERATOR5" default="" type="Decimal"/>
+<param name="OPERATOR6" default="" type="Decimal"/>
+<param name="DATE_INSP" default="" type="DateTime"/>
+<param name="DATE_MANUF" default="" type="DateTime"/>
+<param name="STRUCT_ID" default="" type="Decimal"/>
+<param name="INF_6_IS" default="" type="Decimal"/>
+<param name="MATERIAL_ID" default="" type="String"/>
+<param name="INSTALL_TYPE_ID" default="" type="String"/>
+<param name="FUNC_TYPE_ID" default="" type="String"/>
+<param name="EXECUTION_TYPE_ID" default="" type="String"/>
+<param name="VALVE_MATERIAL_TYPE_CL" default="" type="String"/>
+<param name="ELECTRIC_DRIVE_DESCR" default="" type="String"/>
+<param name="ELECTRIC_DRIVE_READY_IS" default="0" type="Decimal"/>
+<param name="TPA_FIGURE_TYPE_ID" default="" type="String"/>
+<param name="TPA_CONSTR_TYPE_ID" default="" type="String"/>
+<param name="DATE_INSTALL" default="" type="DateTime"/>
+<param name="DATE_WORK_BEGIN" default="" type="DateTime"/>
+<param name="CLIMATIC_TYPE_ID" default="" type="String"/>
+<param name="INVENT_NUMBER" default="" type="String"/>
+<param name="LIFETIME" default="" type="Decimal"/>
+<param name="LUBRICANT_VALUE" default="" type="Decimal"/>
+<param name="HYDROFLUID_VALUE" default="" type="Decimal"/>
+<param name="WORK_PRESSURE_FACT" default="" type="Decimal"/>
+<param name="WORK_TEMP_PROJECT" default="" type="Decimal"/>
+<param name="WORK_TEMP_FACT" default="" type="Decimal"/>
+<param name="OPER_MANUF_ID" default="" type="String"/>
+<param name="OPER_DATE_MANUF" default="" type="DateTime"/>
+<param name="OPER_LABEL_TYPE_ID" default="" type="String"/>
+<param name="OPER_SERIAL_NUMBER" default="" type="String"/>
+<param name="OPER_MANUF_TYPE_ID" default="" type="String"/>
+<param name="OPER_DATE_WORK_BEGIN" default="" type="DateTime"/>
+<param name="ORDER_6_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_1_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_2_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_3_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_4_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_5_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_6_IS" default="" type="Decimal"/>
+<param name="CONT_MEAS_7_IS" default="" type="Decimal"/>
+<param name="INFOTEH_IS" default="0" type="Decimal"/>
+<param name="EXEC_DOC_IS" default="0" type="Decimal"/>
+<param name="ADD_IS_1" default="" type="Decimal"/>
+<param name="ADD_IS_2" default="" type="Decimal"/>
+<param name="ADD_IS_3" default="" type="Decimal"/>
+<param name="ADD_IS_4" default="" type="Decimal"/>
+<param name="VALIDATE_IS" default="0" type="Decimal"/>
+<param name="DATE_EXP" default="" type="DateTime"/>
+<var name="ID" type="Int64"/>
+                <query>
+                    UPDATE sutstpa.valve_validate
+                SET
+STRUCT_ID=:STRUCT_ID,				
+LPU=:LPU,
+LES=:LES,
+PIPE=:PIPE,
+STATION=:STATION,
+TECH_NUM_IS=:TECH_NUM_IS,
+PLATE_IS=:PLATE_IS,
+EXT_CORR_1_IS=:EXT_CORR_1_IS,
+EXT_CORR_2_IS=:EXT_CORR_2_IS,
+EXT_CORR_3_IS=:EXT_CORR_3_IS,
+GROUND_1_IS=:GROUND_1_IS,
+GROUND_2_IS=:GROUND_2_IS,
+GROUND_3_IS=:GROUND_3_IS,
+GROUND_4_IS=:GROUND_4_IS,
+GROUND_5_IS=:GROUND_5_IS,
+COLOR_1_IS=:COLOR_1_IS,
+COLOR_2_IS=:COLOR_2_IS,
+COLOR_3_IS=:COLOR_3_IS,
+COLOR_4_IS=:COLOR_4_IS,
+COLOR_5_IS=:COLOR_5_IS,
+COLOR_6_IS=:COLOR_6_IS,
+INF_1_IS=:INF_1_IS,
+INF_2_IS=:INF_2_IS,
+INF_3_IS=:INF_3_IS,
+INF_4_IS=:INF_4_IS,
+INF_5_IS=:INF_5_IS,
+INF_6_IS=:INF_6_IS,
+ORDER_6_IS=:ORDER_6_IS,
+CONT_MEAS_2_IS=:CONT_MEAS_2_IS,
+CONT_MEAS_3_IS=:CONT_MEAS_3_IS,
+CONT_MEAS_4_IS=:CONT_MEAS_4_IS,
+CONT_MEAS_5_IS=:CONT_MEAS_5_IS,
+CONT_MEAS_6_IS=:CONT_MEAS_6_IS,
+CONT_MEAS_7_IS=:CONT_MEAS_7_IS,
+ADD_IS_1=:ADD_IS_1,
+ADD_IS_2=:ADD_IS_2,
+ADD_IS_3=:ADD_IS_3,
+ADD_IS_4=:ADD_IS_4,
+OPERATOR1=:OPERATOR1,
+OPERATOR2=:OPERATOR2,
+OPERATOR3=:OPERATOR3,
+OPERATOR4=:OPERATOR4,
+OPERATOR5=:OPERATOR5,
+OPERATOR6=:OPERATOR6,
+TYPE_ID=:TYPE_ID,
+NAME_ID=:NAME_ID,
+TECH_NUM=:TECH_NUM,
+JOINT_ID=:JOINT_ID,
+NOM_DIAM_ID=:NOM_DIAM_ID,
+NOM_PRESS_ID=:NOM_PRESS_ID,
+DESCR=:DESCR,
+SERIAL_NUM=:SERIAL_NUM,
+MANUF_ID=:MANUF_ID,
+DATE_MANUF=:DATE_MANUF,
+MATERIAL_ID=:MATERIAL_ID,
+INSTALL_TYPE_ID=:INSTALL_TYPE_ID,
+FUNC_TYPE_ID=:FUNC_TYPE_ID,
+EXECUTION_TYPE_ID=:EXECUTION_TYPE_ID,
+OPER_TYPE_ID=:OPER_TYPE_ID,
+OPER_MANUF_ID=:OPER_MANUF_ID,
+OPER_DATE_MANUF=:OPER_DATE_MANUF,
+OPER_LABEL_TYPE_ID=:OPER_LABEL_TYPE_ID,
+OPER_SERIAL_NUMBER=:OPER_SERIAL_NUMBER,
+OPER_DATE_WORK_BEGIN=:OPER_DATE_WORK_BEGIN,
+ELECTRIC_DRIVE_DESCR=:ELECTRIC_DRIVE_DESCR,
+TPA_FIGURE_TYPE_ID=:TPA_FIGURE_TYPE_ID,
+TPA_CONSTR_TYPE_ID=:TPA_CONSTR_TYPE_ID,
+DATE_INSTALL=:DATE_INSTALL,
+DATE_WORK_BEGIN=:DATE_WORK_BEGIN,
+LIFETIME=:LIFETIME,
+DATE_EXP=:DATE_EXP,
+CLIMATIC_TYPE_ID=:CLIMATIC_TYPE_ID,
+INVENT_NUMBER=:INVENT_NUMBER,
+WORK_PRESSURE_FACT=:WORK_PRESSURE_FACT,
+WORK_TEMP_PROJECT=:WORK_TEMP_PROJECT,
+WORK_TEMP_FACT=:WORK_TEMP_FACT,
+LUBRICANT_VALUE=:LUBRICANT_VALUE,
+HYDROFLUID_VALUE=:HYDROFLUID_VALUE,
+INFOTEH_IS=:INFOTEH_IS,
+EXEC_DOC_IS=:EXEC_DOC_IS,
+ELECTRIC_DRIVE_READY_IS=:ELECTRIC_DRIVE_READY_IS,
+VALIDATE_IS=:VALIDATE_IS,
+DATE_INSP=:DATE_INSP,
+LG_ATTACH=:LG_ATTACH
+ where id=:ID;
+                </query>
+            </dbCommand>
+        </update>
+        <delete>
+            <dbCommand>
+						<var name="CLASS_ID" type="String" direction="Input" default="SUTSTPAVALIDATE_VALVE"/> 
+<var name="POLICY" default="POLICY.xml#DELETE_SUTSTPA"/>
+                <param name="ID" type="Int64" direction="Input"/>
+                <query>
+					DELETE FROM sutstpa.valve_validate WHERE id=:ID
+                </query>
+            </dbCommand>
+        </delete>
+    </data>
+
+
+    <data table="VENT_PIPE_VALIDATE" schema="SUTSTPA" id="SUTSTPAVALIDATE_VENT_PIPE" comment="VENT_PIPE">
+        <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <query>
+with sum_koef as (select n.check_table,sum(n.koeff) max_sum from sutstpa.sprav_ntd_gcl n where n.check_table is not null group by n.check_table),
+koef as (select (select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_4_IS') k_BARRIER_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_1_IS') k_ORDER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_4_IS') k_TERRITORY_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_1_IS') k_BARRIER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_5_IS') k_ORDER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_6_IS') k_ORDER_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PLATE_IS') k_PLATE_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_7_IS') k_CONT_MEAS_7_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_2_IS') k_INF_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_3_IS') k_INF_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_5_IS') k_BARRIER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_2_IS') k_SIGN_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_3_IS') k_SIGN_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_4_IS') k_SIGN_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_2_IS') k_ORDER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_5_IS') k_SIGN_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_6_IS') k_SIGN_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_1_IS') k_TERRITORY_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_2_IS') k_TERRITORY_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_3_IS') k_TERRITORY_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_2_IS') k_BARRIER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_3_IS') k_BARRIER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_3_IS') k_ORDER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_4_IS') k_order_4_is,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ROOF_IS') k_ROOF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='HEIGHT_IS') k_HEIGHT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_IS') k_COLOR_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_2_IS') k_CONT_MEAS_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_3_IS') k_CONT_MEAS_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_4_IS') k_CONT_MEAS_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_6_IS') k_CONT_MEAS_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_5_IS') k_CONT_MEAS_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_1_IS') k_EXT_CORR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_2_IS') k_EXT_CORR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_3_IS') k_EXT_CORR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_1_IS') k_GROUND_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_2_IS') k_GROUND_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_3_IS') k_GROUND_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_4_IS') k_GROUND_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_5_IS') k_GROUND_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_3_IS') k_COLOR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_1_IS') k_COLOR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_2_IS') k_COLOR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_4_IS') k_COLOR_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_5_IS') k_COLOR_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_6_IS') k_COLOR_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_1_IS') k_INF_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_4_IS') k_INF_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_5_IS') k_INF_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_6_IS') k_INF_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_NOM_DIAM_IS') k_INF_NOM_DIAM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_PRES_IS') k_INF_PRES_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_DATE_MANUF_IS') k_INF_DATE_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_MANUF_IS') k_INF_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TECH_NUM_IS') k_TECH_NUM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='VERT_IS') k_VERT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_1') k_ADD_IS_1,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_2') k_ADD_IS_2,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_3') k_ADD_IS_3,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_4') k_ADD_IS_4,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PEDESTAL_IS') k_PEDESTAL_IS),
+vent_pipe as (SELECT id, lpu, les, pipe, station,to_char(date_insp,'DD.MM.YYYY') date_insp, height_is, color_is, roof_is, pedestal_is, vert_is, lg_attach, operator1, operator2, operator3,operator4,operator5,operator6,struct_id,validate_is,
+abs(1-coalesce(height_is,1))*k_height_is+abs(1-coalesce(color_is,1))*k_color_is+abs(1-coalesce(roof_is,1))*k_roof_is+abs(1-coalesce(pedestal_is,1))*k_pedestal_is+abs(1-coalesce(vert_is,1))*k_vert_is rank
+					FROM sutstpa.vent_pipe_validate v,koef k)
+                    SELECT id, lpu, les, pipe, station,date_insp, height_is, color_is, roof_is, pedestal_is, vert_is, lg_attach, operator1, operator2, operator3,operator4,operator5,operator6, rank,struct_id,validate_is,
+		   CASE when rank&lt;=sum_k.max_sum*0.15 then 'GREEN' 
+           		when rank&gt;sum_k.max_sum*0.15 and rank&lt;=sum_k.max_sum*0.5 then 'YELLOW'
+		 	when rank&gt;sum_k.max_sum*0.5 then 'RED'  
+					end "TYPE" 
+					FROM vent_pipe v, sum_koef sum_k where sum_k.check_table='sutstpa.vent_pipe' and {FILTER} 					
+                </query>
+            </dbQuery>
+        </select>
+        <insert>
+            <dbCommand>
+						<var name="CLASS_ID" type="String" direction="Input" default="SUTSTPAVALIDATE_VENT_PIPE"/> 
+<var name="POLICY" default="POLICY.xml#INSERT_SUTSTPA"/>
+				<param name="LG_ATTACH" default="" type="String"/>
+                <param name="LPU" default="" type="String"/>
+                <param name="LES" default="" type="String"/>
+                <param name="PIPE" default="" type="String"/>
+                <param name="STATION" default="" type="Decimal"/>
+                <param name="DATE_INSP" default="" type="DateTime"/>
+                <param name="HEIGHT_IS" default="" type="Decimal"/>
+                <param name="COLOR_IS" default="" type="Decimal"/>
+                <param name="ROOF_IS" default="" type="Decimal"/>
+                <param name="PEDESTAL_IS" default="" type="Decimal"/>
+                <param name="VERT_IS" default="" type="Decimal"/>
+                <param name="LG_ATTACH" default="" type="String"/>
+                <param name="OPERATOR1" default="" type="Decimal"/>
+                <param name="OPERATOR2" default="" type="Decimal"/>
+                <param name="OPERATOR3" default="" type="Decimal"/>
+				<param name="OPERATOR4" default="" type="Decimal"/>
+				<param name="OPERATOR5" default="" type="Decimal"/>
+				<param name="OPERATOR6" default="" type="Decimal"/>
+				<param name="VALIDATE_IS" default="0" type="Decimal"/>
+				<param name="STRUCT_ID" default="" type="Decimal"/>
+                <var name="ID" type="Int64" direction="Output" default="SELECT max(id) id FROM sutstpa.vent_pipe_validate"/>
+                <query>
+                    INSERT INTO sutstpa.vent_pipe_validate
+( lpu, les, pipe, station, date_insp, height_is, color_is, roof_is, pedestal_is, vert_is, lg_attach, operator1, operator2, operator3,operator4,operator5,operator6,validate_is,struct_id)
+VALUES(
+:LPU, 
+:LES, 
+:PIPE,
+:STATION,
+:DATE_INSP,
+:HEIGHT_IS,
+:COLOR_IS,
+:ROOF_IS,
+:PEDESTAL_IS,
+:VERT_IS,
+:LG_ATTACH,
+:OPERATOR1,
+:OPERATOR2,
+:OPERATOR3,
+:OPERATOR4,
+:OPERATOR5,
+:OPERATOR6,
+:VALIDATE_IS,
+:STRUCT_ID)
+                </query>
+            </dbCommand>
+        </insert>
+        <update>
+            <dbCommand>
+						<var name="CLASS_ID" type="String" direction="Input" default="SUTSTPAVALIDATE_VENT_PIPE"/> 
+<var name="POLICY" default="POLICY.xml#UPDATE_SUTSTPA"/>
+				<param name="LG_ATTACH" default="" type="String"/>
+                <param name="LPU" default="" type="String"/>
+                <param name="LES" default="" type="String"/>
+                <param name="PIPE" default="" type="String"/>
+                <param name="STATION" default="" type="Decimal"/>
+                <param name="DATE_INSP" default="" type="DateTime"/>
+                <param name="HEIGHT_IS" default="" type="Decimal"/>
+                <param name="COLOR_IS" default="" type="Decimal"/>
+                <param name="ROOF_IS" default="" type="Decimal"/>
+                <param name="PEDESTAL_IS" default="" type="Decimal"/>
+                <param name="VERT_IS" default="" type="Decimal"/>
+                <param name="LG_ATTACH" default="" type="String"/>
+                <param name="OPERATOR1" default="" type="Decimal"/>
+                <param name="OPERATOR2" default="" type="Decimal"/>
+                <param name="OPERATOR3" default="" type="Decimal"/>
+				<param name="OPERATOR4" default="" type="Decimal"/>
+				<param name="OPERATOR5" default="" type="Decimal"/>
+				<param name="OPERATOR6" default="" type="Decimal"/>
+				<param name="VALIDATE_IS" default="0" type="Decimal"/>
+				<param name="STRUCT_ID" default="" type="Decimal"/>
+                <var name="ID" type="Int64"/>
+                <query>
+                    UPDATE sutstpa.vent_pipe_validate
+SET 
+LPU=:LPU,
+LES=:LES,
+PIPE=:PIPE,
+STATION=:STATION,
+HEIGHT_IS=:HEIGHT_IS,
+COLOR_IS=:COLOR_IS,
+ROOF_IS=:ROOF_IS,
+PEDESTAL_IS=:PEDESTAL_IS,
+VERT_IS=:VERT_IS,
+OPERATOR1=:OPERATOR1,
+OPERATOR2=:OPERATOR2,
+OPERATOR3=:OPERATOR3,
+OPERATOR4=:OPERATOR4,
+OPERATOR5=:OPERATOR5,
+OPERATOR6=:OPERATOR6,
+DATE_INSP=:DATE_INSP,
+STRUCT_ID=:STRUCT_ID,
+VALIDATE_IS=:VALIDATE_IS,
+LG_ATTACH=:LG_ATTACH
+where id=:ID
+                </query>
+            </dbCommand>
+        </update>
+        <delete>
+            <dbCommand>
+						<var name="CLASS_ID" type="String" direction="Input" default="SUTSTPAVALIDATE_VENT_PIPE"/> 
+<var name="POLICY" default="POLICY.xml#DELETE_SUTSTPA"/>
+                <param name="ID" type="Int64" direction="Input"/>
+                <query>
+                    DELETE FROM sutstpa.vent_pipe_validate WHERE id=:ID
+                </query>
+            </dbCommand>
+        </delete>
+    </data>
+    <data table="STRUCTURE_VALIDATE" schema="SUTSTPA" id="SUTSTPAVALIDATE_STRUCTURE" comment="STRUCTURE">
+        <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <query>
+with sum_koef as (select n.check_table,sum(n.koeff) max_sum from sutstpa.sprav_ntd_gcl n where n.check_table is not null group by n.check_table),
+koef as (select (select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_4_IS') k_BARRIER_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_1_IS') k_ORDER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_4_IS') k_TERRITORY_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_1_IS') k_BARRIER_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_5_IS') k_ORDER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_6_IS') k_ORDER_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PLATE_IS') k_PLATE_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_7_IS') k_CONT_MEAS_7_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_2_IS') k_INF_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_3_IS') k_INF_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_5_IS') k_BARRIER_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_2_IS') k_SIGN_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_3_IS') k_SIGN_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_4_IS') k_SIGN_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_2_IS') k_ORDER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_5_IS') k_SIGN_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='SIGN_6_IS') k_SIGN_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_1_IS') k_TERRITORY_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_2_IS') k_TERRITORY_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TERRITORY_3_IS') k_TERRITORY_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_2_IS') k_BARRIER_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='BARRIER_3_IS') k_BARRIER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_3_IS') k_ORDER_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ORDER_4_IS') k_order_4_is,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ROOF_IS') k_ROOF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='HEIGHT_IS') k_HEIGHT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_IS') k_COLOR_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_2_IS') k_CONT_MEAS_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_3_IS') k_CONT_MEAS_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_4_IS') k_CONT_MEAS_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_6_IS') k_CONT_MEAS_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='CONT_MEAS_5_IS') k_CONT_MEAS_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_1_IS') k_EXT_CORR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_2_IS') k_EXT_CORR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='EXT_CORR_3_IS') k_EXT_CORR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_1_IS') k_GROUND_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_2_IS') k_GROUND_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_3_IS') k_GROUND_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_4_IS') k_GROUND_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='GROUND_5_IS') k_GROUND_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_3_IS') k_COLOR_3_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_1_IS') k_COLOR_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_2_IS') k_COLOR_2_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_4_IS') k_COLOR_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_5_IS') k_COLOR_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='COLOR_6_IS') k_COLOR_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_1_IS') k_INF_1_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_4_IS') k_INF_4_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_5_IS') k_INF_5_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_6_IS') k_INF_6_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_NOM_DIAM_IS') k_INF_NOM_DIAM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_PRES_IS') k_INF_PRES_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_DATE_MANUF_IS') k_INF_DATE_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='INF_MANUF_IS') k_INF_MANUF_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='TECH_NUM_IS') k_TECH_NUM_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='VERT_IS') k_VERT_IS,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_1') k_ADD_IS_1,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_2') k_ADD_IS_2,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_3') k_ADD_IS_3,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='ADD_IS_4') k_ADD_IS_4,
+(select k.koeff from sutstpa.sprav_ntd_gcl k where k.check_column='PEDESTAL_IS') k_PEDESTAL_IS),
+structure as (SELECT id, lpu, les, pipe, station,to_char(date_insp,'DD.MM.YYYY') date_insp, sign_2_is, sign_3_is, sign_4_is, sign_5_is, sign_6_is, territory_1_is, territory_2_is, territory_3_is, territory_4_is, 
+barrier_1_is, barrier_2_is, barrier_3_is, barrier_4_is, barrier_5_is, order_1_is, order_2_is, order_3_is, order_4_is, order_5_is, cont_meas_8_is, lg_attach, operator1, operator2, operator3, operator4, operator5, operator6, validate_is,
+add_pet_is_1, add_pet_is_2, add_pet_is_3, add_pet_is_4, corr_id,
+abs(1-coalesce(sign_2_is,1))*k_sign_2_is+abs(1-coalesce(sign_3_is,1))*k_sign_3_is+abs(1-coalesce(sign_4_is,1))*k_sign_4_is+abs(1-coalesce(sign_5_is,1))*k_sign_5_is+abs(1-coalesce(sign_6_is,1))*k_sign_6_is
++coalesce(territory_1_is,0)*k_territory_1_is+coalesce(territory_2_is,0)*k_territory_2_is+coalesce(territory_3_is,0)*k_territory_3_is+coalesce(territory_4_is,0)*k_territory_4_is+abs(1-coalesce(barrier_1_is,1))*k_barrier_1_is
++abs(1-coalesce(barrier_2_is,1))*k_barrier_2_is+abs(1-coalesce(barrier_3_is,1))*k_barrier_3_is+abs(1-coalesce(barrier_4_is,1))*k_barrier_4_is+abs(1-coalesce(barrier_5_is,1))*k_barrier_5_is+coalesce(order_1_is,0)*k_order_1_is
++coalesce(order_2_is,0)*k_order_2_is+coalesce(order_3_is,0)*k_order_3_is+coalesce(order_5_is,0)*k_order_5_is+coalesce(order_4_is,0)*k_order_4_is rank
+FROM sutstpa.structure_validate s,koef k)
+                    SELECT id, lpu, les, pipe, station, date_insp, sign_2_is, sign_3_is, sign_4_is, sign_5_is, sign_6_is, territory_1_is, territory_2_is, territory_3_is, territory_4_is, barrier_1_is, barrier_2_is, 
+					barrier_3_is, barrier_4_is, barrier_5_is, order_1_is, order_2_is, order_3_is, order_4_is, order_5_is,
+					cont_meas_8_is, lg_attach, operator1, operator2, operator3, operator4, operator5, operator6,rank,validate_is,
+add_pet_is_1, add_pet_is_2, add_pet_is_3, add_pet_is_4, corr_id,
+		   CASE when rank&lt;=sum_k.max_sum*0.15 then 'GREEN' 
+           		when rank&gt;sum_k.max_sum*0.15 and rank&lt;=sum_k.max_sum*0.5 then 'YELLOW'
+		 	when rank&gt;sum_k.max_sum*0.5 then 'RED'  
+					end "TYPE" 
+					FROM structure, sum_koef sum_k where sum_k.check_table='sutstpa.structure' and {FILTER} 
+                </query>
+            </dbQuery>
+        </select>
+        <insert>
+            <dbCommand>
+						<var name="CLASS_ID" type="String" direction="Input" default="SUTSTPAVALIDATE_STRUCTURE"/> 
+<var name="POLICY" default="POLICY.xml#INSERT_SUTSTPA"/>
+<param name="LG_ATTACH" default="" type="String"/>
+                <param name="LPU" default="" type="String"/>
+                <param name="LES" default="" type="String"/>
+                <param name="PIPE" default="" type="String"/>
+                <param name="STATION" default="" type="Decimal"/>
+                <param name="DATE_INSP" default="" type="DateTime"/>
+                <param name="SIGN_1_IS" default="" type="Decimal"/>
+                <param name="SIGN_2_IS" default="" type="Decimal"/>
+                <param name="SIGN_3_IS" default="" type="Decimal"/>
+                <param name="SIGN_4_IS" default="" type="Decimal"/>
+                <param name="SIGN_5_IS" default="" type="Decimal"/>
+                <param name="SIGN_6_IS" default="" type="Decimal"/>
+                <param name="TERRITORY_1_IS" default="" type="Decimal"/>
+                <param name="TERRITORY_2_IS" default="" type="Decimal"/>
+                <param name="TERRITORY_3_IS" default="" type="Decimal"/>
+                <param name="TERRITORY_4_IS" default="" type="Decimal"/>
+                <param name="BARRIER_1_IS" default="" type="Decimal"/>
+                <param name="BARRIER_2_IS" default="" type="Decimal"/>
+                <param name="BARRIER_3_IS" default="" type="Decimal"/>
+                <param name="BARRIER_4_IS" default="" type="Decimal"/>
+                <param name="BARRIER_5_IS" default="" type="Decimal"/>
+                <param name="ORDER_1_IS" default="" type="Decimal"/>
+                <param name="ORDER_2_IS" default="" type="Decimal"/>
+                <param name="ORDER_3_IS" default="" type="Decimal"/>
+                <param name="ORDER_6_IS" default="" type="Decimal"/>
+                <param name="ORDER_5_IS" default="" type="Decimal"/>
+                <param name="ORDER_4_IS" default="" type="Decimal"/>
+                <param name="CONT_MEAS_1_IS" default="" type="Decimal"/>
+                <param name="CONT_MEAS_2_IS" default="" type="Decimal"/>
+                <param name="CONT_MEAS_3_IS" default="" type="Decimal"/>
+                <param name="CONT_MEAS_4_IS" default="" type="Decimal"/>
+                <param name="CONT_MEAS_5_IS" default="" type="Decimal"/>
+                <param name="CONT_MEAS_6_IS" default="" type="Decimal"/>
+                <param name="CONT_MEAS_7_IS" default="" type="Decimal"/>
+                <param name="CONT_MEAS_8_IS" default="" type="Decimal"/>
+                <param name="OPERATOR1" default="" type="Decimal"/>
+                <param name="OPERATOR2" default="" type="Decimal"/>
+                <param name="OPERATOR3" default="" type="Decimal"/>
+				<param name="OPERATOR4" default="" type="Decimal"/>
+				<param name="OPERATOR5" default="" type="Decimal"/>
+				<param name="OPERATOR6" default="" type="Decimal"/>
+				<param name="VALIDATE_IS" default="0" type="Decimal"/>
+				<param name="ADD_PET_IS_1" default="" type="Decimal"/>
+				<param name="ADD_PET_IS_2" default="" type="Decimal"/>
+				<param name="ADD_PET_IS_3" default="" type="Decimal"/>
+				<param name="ADD_PET_IS_4" default="" type="Decimal"/>
+				<param name="CORR_ID" default="" type="String"/>
+                <var name="ID" type="Int64" direction="Output" default="SELECT max(id) id FROM sutstpa.structure_validate"/>
+                <query>
+                    INSERT INTO sutstpa.structure_validate
+    (lpu, les, pipe, station, date_insp, sign_2_is, sign_3_is, sign_4_is, sign_5_is, sign_6_is, territory_1_is, territory_2_is, territory_3_is, territory_4_is, barrier_1_is, barrier_2_is, barrier_3_is, barrier_4_is, barrier_5_is, order_1_is, order_2_is, order_3_is, order_4_is, order_5_is, 
+ cont_meas_8_is, lg_attach, operator1, operator2, operator3,operator4,operator5,operator6, validate_is, add_pet_is_1,
+ add_pet_is_2,
+ add_pet_is_3,
+ add_pet_is_4,
+ corr_id)
+    VALUES(
+	:LPU,
+	:LES,
+	:PIPE,
+	:STATION,
+	:DATE_INSP,
+	:SIGN_2_IS,
+	:SIGN_3_IS,
+	:SIGN_4_IS,
+	:SIGN_5_IS,
+	:SIGN_6_IS,
+	:TERRITORY_1_IS,
+	:TERRITORY_2_IS,
+	:TERRITORY_3_IS,
+	:TERRITORY_4_IS,
+	:BARRIER_1_IS,
+	:BARRIER_2_IS,
+	:BARRIER_3_IS,
+	:BARRIER_4_IS,
+	:BARRIER_5_IS,
+	:ORDER_1_IS,
+	:ORDER_2_IS,
+	:ORDER_3_IS,
+	:ORDER_4_IS,
+	:ORDER_5_IS,
+	:CONT_MEAS_8_IS,
+	:LG_ATTACH,
+	:OPERATOR1,
+	:OPERATOR2,
+	:OPERATOR3,
+	:OPERATOR4,
+	:OPERATOR5,
+	:OPERATOR6,
+	:VALIDATE_IS,
+:ADD_PET_IS_1,
+:ADD_PET_IS_2,
+:ADD_PET_IS_3,
+:ADD_PET_IS_4,
+:CORR_ID)
+                </query>
+            </dbCommand>
+        </insert>
+        <update>
+            <dbCommand>
+						<var name="CLASS_ID" type="String" direction="Input" default="SUTSTPAVALIDATE_STRUCTURE"/> 
+<var name="POLICY" default="POLICY.xml#UPDATE_SUTSTPA"/>
+				<param name="LG_ATTACH" default="" type="String"/>
+                <param name="LPU" default="" type="String"/>
+                <param name="LES" default="" type="String"/>
+                <param name="PIPE" default="" type="String"/>
+                <param name="STATION" default="" type="Decimal"/>
+                <param name="DATE_INSP" default="" type="DateTime"/>
+                <param name="SIGN_1_IS" default="" type="Decimal"/>
+                <param name="SIGN_2_IS" default="" type="Decimal"/>
+                <param name="SIGN_3_IS" default="" type="Decimal"/>
+                <param name="SIGN_4_IS" default="" type="Decimal"/>
+                <param name="SIGN_5_IS" default="" type="Decimal"/>
+                <param name="SIGN_6_IS" default="" type="Decimal"/>
+                <param name="TERRITORY_1_IS" default="" type="Decimal"/>
+                <param name="TERRITORY_2_IS" default="" type="Decimal"/>
+                <param name="TERRITORY_3_IS" default="" type="Decimal"/>
+                <param name="TERRITORY_4_IS" default="" type="Decimal"/>
+                <param name="BARRIER_1_IS" default="" type="Decimal"/>
+                <param name="BARRIER_2_IS" default="" type="Decimal"/>
+                <param name="BARRIER_3_IS" default="" type="Decimal"/>
+                <param name="BARRIER_4_IS" default="" type="Decimal"/>
+                <param name="BARRIER_5_IS" default="" type="Decimal"/>
+                <param name="ORDER_1_IS" default="" type="Decimal"/>
+                <param name="ORDER_2_IS" default="" type="Decimal"/>
+                <param name="ORDER_3_IS" default="" type="Decimal"/>
+                <param name="ORDER_6_IS" default="" type="Decimal"/>
+                <param name="ORDER_5_IS" default="" type="Decimal"/>
+                <param name="ORDER_4_IS" default="" type="Decimal"/>
+                <param name="CONT_MEAS_1_IS" default="" type="Decimal"/>
+                <param name="CONT_MEAS_2_IS" default="" type="Decimal"/>
+                <param name="CONT_MEAS_3_IS" default="" type="Decimal"/>
+                <param name="CONT_MEAS_4_IS" default="" type="Decimal"/>
+                <param name="CONT_MEAS_5_IS" default="" type="Decimal"/>
+                <param name="CONT_MEAS_6_IS" default="" type="Decimal"/>
+                <param name="CONT_MEAS_7_IS" default="" type="Decimal"/>
+                <param name="CONT_MEAS_8_IS" default="" type="Decimal"/>
+                <param name="OPERATOR1" default="" type="Decimal"/>
+                <param name="OPERATOR2" default="" type="Decimal"/>
+                <param name="OPERATOR3" default="" type="Decimal"/>
+				<param name="OPERATOR4" default="" type="Decimal"/>
+				<param name="OPERATOR5" default="" type="Decimal"/>
+				<param name="OPERATOR6" default="" type="Decimal"/>
+				<param name="VALIDATE_IS" default="0" type="Decimal"/>
+				<param name="ADD_PET_IS_1" default="" type="Decimal"/>
+				<param name="ADD_PET_IS_2" default="" type="Decimal"/>
+				<param name="ADD_PET_IS_3" default="" type="Decimal"/>
+				<param name="ADD_PET_IS_4" default="" type="Decimal"/>
+				<param name="CORR_ID" default="" type="String"/>
+                <var name="ID" type="Int64"/>
+                <query>
+                    UPDATE sutstpa.structure_validate
+SET 
+LPU=:LPU,
+LES=:LES,
+PIPE=:PIPE,
+STATION=:STATION,
+SIGN_2_IS=:SIGN_2_IS,
+SIGN_3_IS=:SIGN_3_IS,
+SIGN_4_IS=:SIGN_4_IS,
+SIGN_5_IS=:SIGN_5_IS,
+SIGN_6_IS=:SIGN_6_IS,
+TERRITORY_1_IS=:TERRITORY_1_IS,
+TERRITORY_2_IS=:TERRITORY_2_IS,
+TERRITORY_3_IS=:TERRITORY_3_IS,
+TERRITORY_4_IS=:TERRITORY_4_IS,
+BARRIER_1_IS=:BARRIER_1_IS,
+BARRIER_2_IS=:BARRIER_2_IS,
+BARRIER_3_IS=:BARRIER_3_IS,
+BARRIER_4_IS=:BARRIER_4_IS,
+BARRIER_5_IS=:BARRIER_5_IS,
+ORDER_1_IS=:ORDER_1_IS,
+ORDER_2_IS=:ORDER_2_IS,
+ORDER_3_IS=:ORDER_3_IS,
+ORDER_5_IS=:ORDER_5_IS,
+ORDER_4_IS=:ORDER_4_IS,
+CONT_MEAS_8_IS=:CONT_MEAS_8_IS,
+OPERATOR1=:OPERATOR1,
+OPERATOR2=:OPERATOR2,
+OPERATOR3=:OPERATOR3,
+OPERATOR4=:OPERATOR4,
+OPERATOR5=:OPERATOR5,
+OPERATOR6=:OPERATOR6,
+DATE_INSP=:DATE_INSP,
+VALIDATE_IS=:VALIDATE_IS,
+LG_ATTACH=:LG_ATTACH,
+ADD_PET_IS_1=:ADD_PET_IS_1,
+ADD_PET_IS_2=:ADD_PET_IS_2,
+ADD_PET_IS_3=:ADD_PET_IS_3,
+ADD_PET_IS_4=:ADD_PET_IS_4,
+CORR_ID=:CORR_ID
+where id=:ID;
+                </query>
+            </dbCommand>
+        </update>
+        <delete>
+            <dbCommand>
+<var name="CLASS_ID" type="String" direction="Input" default="SUTSTPAVALIDATE_STRUCTURE"/> 
+<var name="POLICY" default="POLICY.xml#DELETE_SUTSTPA"/>
+                <param name="ID" type="Int64" direction="Input"/>
+                <query>
+                    DELETE FROM sutstpa.structure_validate WHERE id=:ID
+                </query>
+            </dbCommand>
+        </delete>
+    </data>
+	    <data id="FROM_VALIDATE_TO_VALVE_INSERT" schema="SUTSTPA" table="SUTSTPAVALIDATE_VALVE" comment="VALVE">
+        <insert>
+            <dbCommand>
+			<var name="CLASS_ID" type="String" direction="Input" default="SUTSTPA_VALVE"/> 
+			<param name="USER_ID" default="-1" type="Int64"/>
+			<var name="POLICY" default="POLICY.xml#INSERT_SUTSTPA"/>
+                <query>
+                   DO $$ 
+DECLARE	
+cnt numeric; 
+BEGIN
+
+INSERT INTO sutstpa.valve
+(id, struct_id, lpu, les, pipe, station, tech_num_is, plate_is, ext_corr_1_is, ext_corr_2_is, ext_corr_3_is, 
+ground_1_is, ground_2_is, ground_3_is, ground_4_is, ground_5_is, color_1_is, color_2_is, 
+color_3_is, color_4_is, color_5_is, color_6_is, inf_1_is, inf_2_is, inf_3_is, inf_4_is, inf_5_is, inf_6_is, 
+order_6_is, cont_meas_2_is, cont_meas_3_is, cont_meas_4_is, cont_meas_5_is, cont_meas_6_is, cont_meas_7_is, 
+add_is_1, add_is_2, add_is_3, add_is_4, operator1, operator2, operator3, operator4, operator5, operator6, type_id, 
+name_id, tech_num, joint_id, nom_diam_id, nom_press_id, descr, serial_num, manuf_id, date_manuf, material_id, 
+install_type_id, func_type_id, execution_type_id, oper_type_id, oper_manuf_id, oper_date_manuf, 
+oper_label_type_id, oper_serial_number, oper_date_work_begin, electric_drive_descr, tpa_figure_type_id, 
+tpa_constr_type_id, date_install, date_work_begin, lifetime, date_exp, climatic_type_id, invent_number, 
+work_pressure_fact, work_temp_project, work_temp_fact, lubricant_value, hydrofluid_value, infoteh_is, 
+exec_doc_is, electric_drive_ready_descr,  date_insp, lg_attach, wkb_geometry)
+select 
+id, struct_id, lpu, les, pipe, station, tech_num_is, plate_is, ext_corr_1_is, ext_corr_2_is, ext_corr_3_is, 
+ground_1_is, ground_2_is, ground_3_is, ground_4_is, ground_5_is, color_1_is, color_2_is, 
+color_3_is, color_4_is, color_5_is, color_6_is, inf_1_is, inf_2_is, inf_3_is, inf_4_is, inf_5_is, inf_6_is, 
+order_6_is, cont_meas_2_is, cont_meas_3_is, cont_meas_4_is, cont_meas_5_is, cont_meas_6_is, cont_meas_7_is, 
+add_is_1, add_is_2, add_is_3, add_is_4, operator1, operator2, operator3, operator4, operator5, operator6, type_id, 
+name_id, tech_num, joint_id, nom_diam_id, nom_press_id, descr, serial_num, manuf_id, date_manuf, material_id, 
+install_type_id, func_type_id, execution_type_id, oper_type_id, oper_manuf_id, oper_date_manuf, 
+oper_label_type_id, oper_serial_number, oper_date_work_begin, electric_drive_descr, tpa_figure_type_id, 
+tpa_constr_type_id, date_install, date_work_begin, lifetime, date_exp, climatic_type_id, invent_number, 
+work_pressure_fact, work_temp_project, work_temp_fact, lubricant_value, hydrofluid_value, infoteh_is, 
+exec_doc_is, electric_drive_ready_is, date_insp, lg_attach, wkb_geometry from sutstpa.valve_validate v where v.validate_is=1 and not exists (select 1 from sutstpa.valve vv where vv.id=v.id);
+
+/*чистим таблицу sutstpa.lg_attach*/
+truncate table sutstpa.lg_attach;
+/*подставляем в инсерты ниже*/
+insert into sutstpa.lg_attach
+with atch as (select unnest(string_to_array(                  
+replace(replace(replace(v.lg_attach,'[{',''),'}]',''),'"',''),'},{')) str,id 
+from sutstpa.valve_validate v where length(v.lg_attach)>2 and  v.validate_is=1),
+str_lf_rg as (select left(t.str,position(',created' in t.str)-1) file_name,
+left(right(t.str,length(t.str)-position(',created' in t.str)),position(',mime' in right(t.str,length(t.str)-position(',created' in t.str)))-1) created,
+right(t.str,length(t.str)-position(',desc' in t.str)) descr,t.id from atch t)
+select RWN GATE_ID,null LEFT_OBJ_ID,
+'SUTSTPA_КРАН/'||id RIGHT_OBJ_ID,
+RWN DOC_ID, 
+null DOC_TYPE_ID,
+null PARENT_DOC_ID,
+replace(descr,'desc:','')||' '||file_name DESCR,
+null PARENT_NAME,
+		 to_date(replace(created,'created:',''),'YYYY-MM-DD')CTIME,
+		  :USER_ID CUSER_ID,null USERNAME,
+		  null MUSER_ID,null MTIME,
+		  null MUSER,
+		  null DOC_VERSION_ID,  
+		  replace(file_name,'path:.\/attachments\','/LIB_NAS/attachments') FILE_NAME,
+		  null STATUS_ID,null TYPE_NAME,null TYPE_DESCR,null STATUS_DESCR 
+   from (SELECT ROW_NUMBER() OVER (ORDER BY file_name) RWN,t.* from str_lf_rg t)  ff;
+
+/*устанавливаем префикс и правильный путь к файлам*/
+update sutstpa.lg_attach set file_name=replace(file_name,'/LIB_NAS/attachments/','/LIB_NAS/attachments/'/*||to_char(current_timestamp,'DDMMYYYY')*/);
+
+select count(*) into cnt from web50.lib_doc d, sutstpa.lg_attach a where a.file_name=d.descr and d.parent_doc_id=70;
+
+IF cnt=0 THEN 
+	/*заносим данные в таблицы субмодели lib_doc */
+	INSERT INTO WEB50.LIB_DOC(NAME,DESCR,PROVIDER,STATUS_ID,TIME_STAMP,DOC_TYPE_ID,PARENT_DOC_ID,CTIME,CUSER_ID) 
+	select a.descr,a.file_name,'ГСИ',1,ctime,1,70,ctime,CUSER_ID::numeric from sutstpa.lg_attach a 
+	where not exists (select 1 from web50.lib_doc dd where dd.descr=a.file_name and dd.parent_doc_id=70);
+	/*проставляем doc_id в таблице sutstpa.lg_attach */
+	update sutstpa.lg_attach a set doc_id=(select doc_id from web50.lib_doc d where a.file_name=d.descr and d.parent_doc_id=70);
+
+	INSERT INTO WEB50.LIB_DOC_VERSION (DOC_ID,   NEXT_DOC_VERSION_ID,MIME_TYPE_ID,STORAGE_ID,NAME,DESCR,VERSION_NUMBER,BODY,FILE_NAME,CTIME,CUSER_ID) 
+	select   d.doc_id,nULL,651,0,NULL,'1.0',1.0,NULL,d.descr,CURRENT_TIMESTAMP,CUSER_ID from web50.lib_doc d where d.parent_doc_id=70;
+	/*заполняем  gate*/
+	INSERT INTO web50.lnk_gate      (left_obj_id,right_obj_id,lnk_type_id,cuser_id,ctime)   SELECT 'WEB50_LIB_DOC/' || a.doc_id,a.right_obj_id,3,CUSER_ID::numeric,current_timestamp    FROM  sutstpa.lg_attach a;
+ end if;
+ delete from sutstpa.valve_validate v where v.validate_is=1 and exists (select 1 from sutstpa.valve vv where vv.id=v.id);
+END; 
+$$  LANGUAGE PLPGSQL;
+                </query>
+            </dbCommand>
+        </insert>
+		</data>
+
+		<data id="FROM_VALIDATE_TO_STRUCTURE_INSERT" schema="SUTSTPA" table="SUTSTPAVALIDATE_STRUCTURE" comment="STRUCTURE">
+        <insert>
+            <dbCommand>
+			<var name="CLASS_ID" type="String" direction="Input" default="SUTSTPA_STRUCTURE"/> 
+			<param name="USER_ID" default="-1" type="Int64"/>
+			<var name="POLICY" default="POLICY.xml#INSERT_SUTSTPA"/>
+                <query>
+              DO $$ 
+DECLARE	
+cnt numeric; 
+BEGIN
+
+INSERT INTO sutstpa.structure
+(id, lpu, les, pipe, station, sign_2_is, sign_3_is, sign_4_is, sign_5_is, sign_6_is, territory_1_is, territory_2_is, territory_3_is, territory_4_is, barrier_1_is, barrier_2_is, barrier_3_is, 
+barrier_4_is, barrier_5_is, order_1_is, order_2_is, order_3_is, order_4_is, order_5_is, cont_meas_8_is, operator1, operator2, operator3, operator4, operator5, operator6, date_insp, 
+lg_attach, wkb_geometry)
+select id, lpu, les, pipe, station, sign_2_is, sign_3_is, sign_4_is, sign_5_is, sign_6_is, territory_1_is, territory_2_is, territory_3_is, territory_4_is, barrier_1_is, barrier_2_is, barrier_3_is, 
+barrier_4_is, barrier_5_is, order_1_is, order_2_is, order_3_is, order_4_is, order_5_is, cont_meas_8_is, operator1, operator2, operator3, operator4, operator5, operator6, date_insp, 
+lg_attach, wkb_geometry from sutstpa.structure_validate s  
+where s.validate_is=1 and not exists (select 1 from sutstpa.structure vv where vv.id=s.id);
+
+/*чистим таблицу sutstpa.lg_attach*/
+truncate table sutstpa.lg_attach;
+/*подставляем в инсерты ниже*/
+insert into sutstpa.lg_attach
+with atch as (select unnest(string_to_array(                  
+replace(replace(replace(v.lg_attach,'[{',''),'}]',''),'"',''),'},{')) str,id 
+from sutstpa.structure_validate v where length(v.lg_attach)>2 and  v.validate_is=1),
+str_lf_rg as (select left(t.str,position(',created' in t.str)-1) file_name,
+left(right(t.str,length(t.str)-position(',created' in t.str)),position(',mime' in right(t.str,length(t.str)-position(',created' in t.str)))-1) created,
+right(t.str,length(t.str)-position(',desc' in t.str)) descr,t.id from atch t)
+select RWN GATE_ID,null LEFT_OBJ_ID,
+'SUTSTPA_КРАНОВЫЙ_УЗЕЛ/'||id RIGHT_OBJ_ID,
+RWN DOC_ID, 
+null DOC_TYPE_ID,
+null PARENT_DOC_ID,
+replace(descr,'desc:','')||' '||file_name DESCR,
+null PARENT_NAME,
+		 to_date(replace(created,'created:',''),'YYYY-MM-DD')CTIME,
+		  :USER_ID CUSER_ID,null USERNAME,
+		  null MUSER_ID,null MTIME,
+		  null MUSER,
+		  null DOC_VERSION_ID,  
+		  replace(file_name,'path:.\/attachments\','/LIB_NAS/attachments') FILE_NAME,
+		  null STATUS_ID,null TYPE_NAME,null TYPE_DESCR,null STATUS_DESCR 
+   from (SELECT ROW_NUMBER() OVER (ORDER BY file_name) RWN,t.* from str_lf_rg t)  ff;
+
+/*устанавливаем префикс и правильный путь к файлам*/
+update sutstpa.lg_attach set file_name=replace(file_name,'/LIB_NAS/attachments/','/LIB_NAS/attachments/'/*||to_char(current_timestamp,'DDMMYYYY')*/);
+
+select count(*) into cnt from web50.lib_doc d, sutstpa.lg_attach a where a.file_name=d.descr and d.parent_doc_id=70;
+
+IF cnt=0 THEN 
+	/*заносим данные в таблицы субмодели lib_doc */
+	INSERT INTO WEB50.LIB_DOC(NAME,DESCR,PROVIDER,STATUS_ID,TIME_STAMP,DOC_TYPE_ID,PARENT_DOC_ID,CTIME,CUSER_ID) 
+	select a.descr,a.file_name,'ГСИ',1,ctime,1,70,ctime,CUSER_ID::numeric from sutstpa.lg_attach a 
+	where not exists (select 1 from web50.lib_doc dd where dd.descr=a.file_name and dd.parent_doc_id=70);
+	/*проставляем doc_id в таблице sutstpa.lg_attach */
+	update sutstpa.lg_attach a set doc_id=(select doc_id from web50.lib_doc d where a.file_name=d.descr and d.parent_doc_id=70);
+
+	INSERT INTO WEB50.LIB_DOC_VERSION (DOC_ID,   NEXT_DOC_VERSION_ID,MIME_TYPE_ID,STORAGE_ID,NAME,DESCR,VERSION_NUMBER,BODY,FILE_NAME,CTIME,CUSER_ID) 
+	select   d.doc_id,nULL,651,0,NULL,'1.0',1.0,NULL,d.descr,CURRENT_TIMESTAMP,CUSER_ID from web50.lib_doc d where d.parent_doc_id=70;
+	/*заполняем  gate*/
+	INSERT INTO web50.lnk_gate      (left_obj_id,right_obj_id,lnk_type_id,cuser_id,ctime)   SELECT 'WEB50_LIB_DOC/' || a.doc_id,a.right_obj_id,3,CUSER_ID::numeric,current_timestamp    FROM  sutstpa.lg_attach a;
+ end if;
+ delete from sutstpa.structure_validate v where v.validate_is=1 and exists (select 1 from sutstpa.structure vv where vv.id=v.id);
+END; 
+$$  LANGUAGE PLPGSQL;
+                </query>
+            </dbCommand>
+        </insert>
+		</data>
+		
+<data id="FROM_VALIDATE_TO_VENT_PIPE_INSERT" schema="SUTSTPA" table="SUTSTPAVALIDATE_VENT_PIPE" comment="VENT_PIPE">
+        <insert>
+            <dbCommand>
+			<var name="CLASS_ID" type="String" direction="Input" default="SUTSTPA_VENT_PIPE"/> 
+			<param name="USER_ID" default="-1" type="Int64"/>
+			<var name="POLICY" default="POLICY.xml#INSERT_SUTSTPA"/>
+                <query>
+	DO $$ 
+DECLARE	
+cnt numeric; 
+BEGIN
+
+INSERT INTO sutstpa.vent_pipe
+(id, struct_id, lpu, les, pipe, station, height_is, color_is, roof_is, pedestal_is, vert_is, operator1, operator2, operator3, operator4, operator5, operator6, date_insp, 
+lg_attach, wkb_geometry)
+select id, struct_id, lpu, les, pipe, station, height_is, color_is, roof_is, pedestal_is, vert_is, operator1, operator2, operator3, operator4, operator5, operator6, date_insp, 
+lg_attach, wkb_geometry from sutstpa.vent_pipe_validate v where v.validate_is=1 and not exists (select 1 from sutstpa.vent_pipe vv where vv.id=v.id);
+
+/*чистим таблицу sutstpa.lg_attach*/
+truncate table sutstpa.lg_attach;
+/*подставляем в инсерты ниже*/
+insert into sutstpa.lg_attach
+with atch as (select unnest(string_to_array(                  
+replace(replace(replace(v.lg_attach,'[{',''),'}]',''),'"',''),'},{')) str,id 
+from sutstpa.vent_pipe_validate v where length(v.lg_attach)>2 and  v.validate_is=1),
+str_lf_rg as (select left(t.str,position(',created' in t.str)-1) file_name,
+left(right(t.str,length(t.str)-position(',created' in t.str)),position(',mime' in right(t.str,length(t.str)-position(',created' in t.str)))-1) created,
+right(t.str,length(t.str)-position(',desc' in t.str)) descr,t.id from atch t)
+select RWN GATE_ID,null LEFT_OBJ_ID,
+'SUTSTPA_СВЕЧА/'||id RIGHT_OBJ_ID,
+RWN DOC_ID, 
+null DOC_TYPE_ID,
+null PARENT_DOC_ID,
+replace(descr,'desc:','')||' '||file_name DESCR,
+null PARENT_NAME,
+		 to_date(replace(created,'created:',''),'YYYY-MM-DD')CTIME,
+		  :USER_ID CUSER_ID,null USERNAME,
+		  null MUSER_ID,null MTIME,
+		  null MUSER,
+		  null DOC_VERSION_ID,  
+		  replace(file_name,'path:.\/attachments\','/LIB_NAS/attachments') FILE_NAME,
+		  null STATUS_ID,null TYPE_NAME,null TYPE_DESCR,null STATUS_DESCR 
+   from (SELECT ROW_NUMBER() OVER (ORDER BY file_name) RWN,t.* from str_lf_rg t)  ff;
+
+/*устанавливаем префикс и правильный путь к файлам*/
+update sutstpa.lg_attach set file_name=replace(file_name,'/LIB_NAS/attachments/','/LIB_NAS/attachments/'/*||to_char(current_timestamp,'DDMMYYYY')*/);
+
+select count(*) into cnt from web50.lib_doc d, sutstpa.lg_attach a where a.file_name=d.descr and d.parent_doc_id=70;
+
+IF cnt=0 THEN 
+	/*заносим данные в таблицы субмодели lib_doc */
+	INSERT INTO WEB50.LIB_DOC(NAME,DESCR,PROVIDER,STATUS_ID,TIME_STAMP,DOC_TYPE_ID,PARENT_DOC_ID,CTIME,CUSER_ID) 
+	select a.descr,a.file_name,'ГСИ',1,ctime,1,70,ctime,CUSER_ID::nunmeric from sutstpa.lg_attach a 
+	where not exists (select 1 from web50.lib_doc dd where dd.descr=a.file_name and dd.parent_doc_id=70);
+	/*проставляем doc_id в таблице sutstpa.lg_attach */
+	update sutstpa.lg_attach a set doc_id=(select doc_id from web50.lib_doc d where a.file_name=d.descr and d.parent_doc_id=70);
+
+	INSERT INTO WEB50.LIB_DOC_VERSION (DOC_ID,   NEXT_DOC_VERSION_ID,MIME_TYPE_ID,STORAGE_ID,NAME,DESCR,VERSION_NUMBER,BODY,FILE_NAME,CTIME,CUSER_ID) 
+	select   d.doc_id,nULL,651,0,NULL,'1.0',1.0,NULL,d.descr,CURRENT_TIMESTAMP,CUSER_ID from web50.lib_doc d where d.parent_doc_id=70;
+	/*заполняем  gate*/
+	INSERT INTO web50.lnk_gate      (left_obj_id,right_obj_id,lnk_type_id,cuser_id,ctime)   SELECT 'WEB50_LIB_DOC/' || a.doc_id,a.right_obj_id,3,CUSER_ID::numeric,current_timestamp    FROM  sutstpa.lg_attach a;
+ end if;
+ delete from sutstpa.vent_pipe_validate v where v.validate_is=1 and exists (select 1 from sutstpa.vent_pipe vv where vv.id=v.id);
+END; 
+$$  LANGUAGE PLPGSQL;
+                </query>
+            </dbCommand>
+        </insert>
+		</data>	
+ <data id="STRUCTURE_VALIDATE_SPRAV" schema="SUTSTPA" table="SUTSTPAVALIDATE_STRUCTURE" comment="STRUCTURE">
+        <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <query>
+select v.id structure_id, v.lpu||', '||v.les||', '||v.pipe||', '||round(v.station,1)||' км.' "LABEL" 
+from sutstpa.structure_validate v
+                </query>
+            </dbQuery>
+        </select>
+</data>
+<data id="VALVE_VALIDATE_SPRAV" schema="SUTSTPA" table="SUTSTPAVALIDATE_VALVE" comment="VALVE">
+        <select>
+            <dbQuery idField="ID">
+                <param name="USER_ID" default="-1" type="Int64"/>
+                <var name="FILTER" default="1=1"/>
+                <query>
+ select v.id valve_id, spl.description||', '||spp.description||', '||round(v.station,1)||' км, Dn='||v.nom_diam_id||', '||SPN.description description, 
+v.lpu||', '||v.les||', '||v.pipe||', '||round(v.station,1)||' км.' "LABEL" 
+from sutstpa.valve_validate v
+     left join sutstpa.sprav_lpu_gcl spl on v.lpu=spl.code
+     left join sutstpa.sprav_valve_tpa_name_gcl spn  on spn.code=v.name_id
+     left join sutstpa.sprav_pipe_gcl spp on v.pipe=spp.code
+                </query>
+            </dbQuery>
+        </select>
+</data>
+
+</root>    

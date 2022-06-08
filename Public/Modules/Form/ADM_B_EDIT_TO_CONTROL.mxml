@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="760" xmlns="view.data.*" title="Изменения, ожидающие валидации контроллером" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml">
+  <dataProvider>GAZPROM_ADM_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="760">
+    <mx:HBox percentWidth="100">
+      <mx:VBox percentWidth="50">
+	<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Схема/ Таблица/ Поле ключа" width="140" />
+          <mx:TextInput id="OWNER" width="90" maxChars="80" height="20" editable="false"/>
+	  <mx:TextInput id="TABLE_NAME" width="90" maxChars="80" height="20" editable="false"/>
+	  <mx:TextInput id="KEY_FIELD" width="90" maxChars="80" height="20" editable="false"/>
+        </mx:HBox>
+	<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Значение ключа" width="140" />
+          <mx:TextInput id="KEY_VALUE" width="225" maxChars="80" height="20" editable="false"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Тип контролируемой операции" width="140" />
+          <mx:ComboBox id="OPERATION_TYPE" width="140" editable="false">
+            <mx:dataProvider>
+              <mx:Object CODE="D" DESCR="Удаление" label="Удалено" />
+              <mx:Object CODE="I" DESCR="Вставка" label="Добавлено" />
+	      <mx:Object CODE="E" DESCR="Редактирование" label="Изменено" />
+            </mx:dataProvider>
+          </mx:ComboBox>
+        </mx:HBox>
+	                
+      </mx:VBox>
+      <mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Кортеж новых данных" width="140" />
+          <mx:TextInput id="DATA_TO_CONTROL" editable="false" width="225" maxChars="254" height="40" />
+        </mx:HBox>
+	<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Кортеж старых данных" width="140" />
+          <mx:TextInput id="DATA_TO_RESTORE" editable="false" width="225" height="20" />
+        </mx:HBox>
+	<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Восстановление в таблице кортежа старых данных" width="140" />
+          <mx:TextInput id="COMMAND_TO_RESTORE" editable="false" width="225" height="20" />
+        </mx:HBox>
+<mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Идентификатор изменений" width="140" />
+          <controls:NumberInput id="ID" editable="false" width="225" maxChars="22" height="20" />
+        </mx:HBox>
+      </mx:VBox>
+    </mx:HBox>
+  </mx:VBox>
+  
+</DATA_EDIT_FORM>

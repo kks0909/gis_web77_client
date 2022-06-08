@@ -1,0 +1,11 @@
+﻿Инструкция для генерации статичных файлов геометрий для функционала постраничности. 
+0) Делаем в экселе 2 колонки(идентификатор слоя, вызов)
+1) В колонку идентификатор слоя вносим все идентификаторы слоёв из  Core/Query/PODS_EQUIP_Layers.xml
+2) Колонку "вызов" формируем как: 
+echo 'Генерируем НАЗВАНИЕ_СЛОЯ.xml'
+curl --data "getSchema=false&descrId=PODS_GEO.xml#НАЗВАНИЕ_СЛОЯ&toElements=false&descrType=select&data=<root><data FILE_NAME='НАЗВАНИЕ_СЛОЯ' DATA_ACTUAL_DATE='19000101' FILTER='8=8' /></root>" http://127.0.0.1/web55/DataService.asmx/ProcessQueryNew
+
+,где "НАЗВАНИЕ_СЛОЯ" - значение из колонки "идентификатор слоя"
+3) Вставляем значения из колонки "вызов" в Tasks/generate_geo_datas.sh
+Слои "PODS_ROUTE", "PODS_COMPRESSOR_STATION" пропускаем, для них вызовы уже сделаны
+

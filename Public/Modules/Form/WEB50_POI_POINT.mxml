@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="760" xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml" title="Точка интереса">
+  <dataProvider>POI_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/exportNAV.png"
+           tooltip="Экспорт в GPX, KML"
+           clickEvent="ExportGpxEvent" />
+     <picPutton:PanelButton source="../images/showOnMap.png"
+           tooltip="Показать на карте"
+           clickEvent="ShowOnMapEvent" />
+     <picPutton:PanelButton source="../images/find_path.png"
+           tooltip="Построение маршрута"
+           clickEvent="FindRouteEvent"/>
+     <picPutton:PanelButton source="../images/bufferZone.png"
+           tooltip="Построить буферную зону"
+           clickEvent="BufferCustomEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="760">
+    <mx:HBox percentWidth="100">
+      <mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Описание" width="140" />
+          <mx:TextInput id="DESCR" width="225" maxChars="250" height="40" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Название точки" width="140" />
+          <mx:TextInput id="NAME" width="225" maxChars="30" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Статус точки" width="140" />
+          <mx:HBox percentWidth="100" styleName="comboBoxUnit">
+            <mx:ComboBox id="STATUS_ID" width="200" height="20" dataProvider="SYS_SEM.xml#WEB50_B_STATUS_REF" />
+            <mx:Button id="BTN_LIST_STATUS_ID" selectedField="WEB50_B_STATUS_REF" enabled="false" styleName="refList" toolTip="Перейти к редактированию справочника" width="16" height="16" />
+          </mx:HBox>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Дата съёмки точки" width="140" />
+          <mx:DateField id="TIME_STAMP" width="97" height="20" formatString="DD.MM.YYYY" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Комментарии" width="140" />
+          <mx:TextInput id="COMMENTS" width="225" maxChars="250" height="40" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Условное обозначение" width="140" />
+          <mx:ComboBox width="228" id="SYMBOL">
+          <mx:dataProvider>
+<mx:Object CODE="" DESCR="AA default(no style)" label="AA, no style"/>          
+<mx:Object CODE="Anchor" DESCR="Anchor" label="Anchor"/>
+<mx:Object CODE="Bell" DESCR="Bell" />
+<mx:Object CODE="Diamond, Green" DESCR="Diamond, Green" />
+<mx:Object CODE="Diamond, Red" DESCR="Diamond, Red" />
+<mx:Object CODE="Diver Down Flag 1" DESCR="Diver Down Flag 1" />
+<mx:Object CODE="Diver Down Flag 2" DESCR="Diver Down Flag 2" />
+<mx:Object CODE="Bank" DESCR="Bank" />
+<mx:Object CODE="Fishing Area" DESCR="Fishing Area" />
+<mx:Object CODE="Gas Station" DESCR="Gas Station" />
+<mx:Object CODE="Horn" DESCR="Horn" />
+<mx:Object CODE="Residence" DESCR="Residence" />
+<mx:Object CODE="Restaurant" DESCR="Restaurant" />
+<mx:Object CODE="Light" DESCR="Light" />
+<mx:Object CODE="Bar" DESCR="Bar" />
+<mx:Object CODE="Skull and Crossbones" DESCR="Skull and Crossbones" />
+<mx:Object CODE="Square, Green" DESCR="Square, Green" />
+<mx:Object CODE="Square, Red" DESCR="Square, Red" />
+<mx:Object CODE="Buoy, White" DESCR="Buoy, White" />
+<mx:Object CODE="Waypoint" DESCR="Waypoint" />
+<mx:Object CODE="Shipwreck" DESCR="Shipwreck" />
+<mx:Object CODE="Man Overboard" DESCR="Man Overboard" />
+<mx:Object CODE="Navaid, Amber" DESCR="Navaid, Amber" />
+<mx:Object CODE="Navaid, Black" DESCR="Navaid, Black" />
+<mx:Object CODE="Navaid, Blue" DESCR="Navaid, Blue" />
+<mx:Object CODE="Navaid, Green" DESCR="Navaid, Green" />
+<mx:Object CODE="Navaid, Green/Red" DESCR="Navaid, Green/Red" />
+<mx:Object CODE="Navaid, Green/White" DESCR="Navaid, Green/White" />
+<mx:Object CODE="Navaid, Orange" DESCR="Navaid, Orange" />
+<mx:Object CODE="Navaid, Red" DESCR="Navaid, Red" />
+<mx:Object CODE="Navaid, Red/Green" DESCR="Navaid, Red/Green" />
+<mx:Object CODE="Navaid, Red/White" DESCR="Navaid, Red/White" />
+<mx:Object CODE="Navaid, Violet" DESCR="Navaid, Violet" />
+<mx:Object CODE="Navaid, White" DESCR="Navaid, White" />
+<mx:Object CODE="Navaid, White/Green" DESCR="Navaid, White/Green" />
+<mx:Object CODE="Navaid, White/Red" DESCR="Navaid, White/Red" />
+<mx:Object CODE="Dot, White" DESCR="Dot, White" />
+<mx:Object CODE="Radio Beacon" DESCR="Radio Beacon" />
+<mx:Object CODE="Boat Ramp" DESCR="Boat Ramp" />
+<mx:Object CODE="Campground" DESCR="Campground" />
+<mx:Object CODE="Restroom" DESCR="Restroom" />
+<mx:Object CODE="Shower" DESCR="Shower" />
+<mx:Object CODE="Drinking Water" DESCR="Drinking Water" />
+<mx:Object CODE="Telephone" DESCR="Telephone" />
+<mx:Object CODE="Medical Facility" DESCR="Medical Facility" />
+<mx:Object CODE="Information" DESCR="Information" />
+<mx:Object CODE="Parking Area" DESCR="Parking Area" />
+<mx:Object CODE="Park" DESCR="Park" />
+<mx:Object CODE="Picnic Area" DESCR="Picnic Area" />
+<mx:Object CODE="Scenic Area" DESCR="Scenic Area" />
+<mx:Object CODE="Skiing Area" DESCR="Skiing Area" />
+<mx:Object CODE="Swimming Area" DESCR="Swimming Area" />
+<mx:Object CODE="Dam" DESCR="Dam" />
+<mx:Object CODE="Controlled Area" DESCR="Controlled Area" />
+<mx:Object CODE="Danger Area" DESCR="Danger Area" />
+<mx:Object CODE="Restricted Area" DESCR="Restricted Area" />
+<mx:Object CODE="Ball Park" DESCR="Ball Park" />
+<mx:Object CODE="Car" DESCR="Car" />
+<mx:Object CODE="Hunting Area" DESCR="Hunting Area" />
+<mx:Object CODE="Shopping Center" DESCR="Shopping Center" />
+<mx:Object CODE="Lodging" DESCR="Lodging" />
+<mx:Object CODE="Mine" DESCR="Mine" />
+<mx:Object CODE="Trail Head" DESCR="Trail Head" />
+<mx:Object CODE="Truck Stop" DESCR="Truck Stop" />
+<mx:Object CODE="Exit" DESCR="Exit" />
+<mx:Object CODE="Flag" DESCR="Flag" />
+<mx:Object CODE="Circle with X" DESCR="Circle with X" />
+<mx:Object CODE="Mile Marker" DESCR="Mile Marker" />
+<mx:Object CODE="TracBack Point" DESCR="TracBack Point" />
+<mx:Object CODE="Golf Course" DESCR="Golf Course" />
+<mx:Object CODE="City (Small)" DESCR="City (Small)" />
+<mx:Object CODE="City (Medium)" DESCR="City (Medium)" />
+<mx:Object CODE="City (Large)" DESCR="City (Large)" />
+<mx:Object CODE="City (Capitol)" DESCR="City (Capitol)" />
+<mx:Object CODE="Amusement Park" DESCR="Amusement Park" />
+<mx:Object CODE="Bowling" DESCR="Bowling" />
+<mx:Object CODE="Car Rental" DESCR="Car Rental" />
+<mx:Object CODE="Car Repair" DESCR="Car Repair" />
+<mx:Object CODE="Fast Food" DESCR="Fast Food" />
+<mx:Object CODE="Fitness Center" DESCR="Fitness Center" />
+<mx:Object CODE="Movie Theater" DESCR="Movie Theater" />
+<mx:Object CODE="Museum" DESCR="Museum" />
+<mx:Object CODE="Pharmacy" DESCR="Pharmacy" />
+<mx:Object CODE="Pizza" DESCR="Pizza" />
+<mx:Object CODE="Post Office" DESCR="Post Office" />
+<mx:Object CODE="RV Park" DESCR="RV Park" />
+<mx:Object CODE="School" DESCR="School" />
+<mx:Object CODE="Stadium" DESCR="Stadium" />
+<mx:Object CODE="Department Store" DESCR="Department Store" />
+<mx:Object CODE="Zoo" DESCR="Zoo" />
+<mx:Object CODE="Convenience Store" DESCR="Convenience Store" />
+<mx:Object CODE="Live Theater" DESCR="Live Theater" />
+<mx:Object CODE="Scales" DESCR="Scales" />
+<mx:Object CODE="Toll Booth" DESCR="Toll Booth" />
+<mx:Object CODE="Bridge" DESCR="Bridge" />
+<mx:Object CODE="Building" DESCR="Building" />
+<mx:Object CODE="Cemetery" DESCR="Cemetery" />
+<mx:Object CODE="Church" DESCR="Church" />
+<mx:Object CODE="Civil" DESCR="Civil" />
+<mx:Object CODE="Crossing" DESCR="Crossing" />
+<mx:Object CODE="Ghost Town" DESCR="Ghost Town" />
+<mx:Object CODE="Levee" DESCR="Levee" />
+<mx:Object CODE="Military" DESCR="Military" />
+<mx:Object CODE="Oil Field" DESCR="Oil Field" />
+<mx:Object CODE="Tunnel" DESCR="Tunnel" />
+<mx:Object CODE="Beach" DESCR="Beach" />
+<mx:Object CODE="Forest" DESCR="Forest" />
+<mx:Object CODE="Summit" DESCR="Summit" />
+<mx:Object CODE="Airport" DESCR="Airport" />
+<mx:Object CODE="Heliport" DESCR="Heliport" />
+<mx:Object CODE="Private Field" DESCR="Private Field" />
+<mx:Object CODE="Soft Field" DESCR="Soft Field" />
+<mx:Object CODE="Tall Tower" DESCR="Tall Tower" />
+<mx:Object CODE="Short Tower" DESCR="Short Tower" />
+<mx:Object CODE="Glider Area" DESCR="Glider Area" />
+<mx:Object CODE="Ultralight Area" DESCR="Ultralight Area" />
+<mx:Object CODE="Parachute Area" DESCR="Parachute Area" />
+<mx:Object CODE="Seaplane Base" DESCR="Seaplane Base" />
+<mx:Object CODE="Geocache" DESCR="Geocache" />
+<mx:Object CODE="Geocache Found" DESCR="Geocache Found" />
+<mx:Object CODE="Contact, Afro" DESCR="Contact, Afro" />
+<mx:Object CODE="Contact, Alien" DESCR="Contact, Alien" />
+<mx:Object CODE="Contact, Ball Cap" DESCR="Contact, Ball Cap" />
+<mx:Object CODE="Contact, Big Ears" DESCR="Contact, Big Ears" />
+<mx:Object CODE="Contact, Biker" DESCR="Contact, Biker" />
+<mx:Object CODE="Contact, Bug" DESCR="Contact, Bug" />
+<mx:Object CODE="Contact, Cat" DESCR="Contact, Cat" />
+<mx:Object CODE="Contact, Dog" DESCR="Contact, Dog" />
+<mx:Object CODE="Contact, Dreadlocks" DESCR="Contact, Dreadlocks" />
+<mx:Object CODE="Contact, Female1" DESCR="Contact, Female1" />
+<mx:Object CODE="Contact, Female2" DESCR="Contact, Female2" />
+<mx:Object CODE="Contact, Female3" DESCR="Contact, Female3" />
+<mx:Object CODE="Contact, Goatee" DESCR="Contact, Goatee" />
+<mx:Object CODE="Contact, Kung-Fu" DESCR="Contact, Kung-Fu" />
+<mx:Object CODE="Contact, Pig" DESCR="Contact, Pig" />
+<mx:Object CODE="Contact, Pirate" DESCR="Contact, Pirate" />
+<mx:Object CODE="Contact, Ranger" DESCR="Contact, Ranger" />
+<mx:Object CODE="Contact, Smiley" DESCR="Contact, Smiley" />
+<mx:Object CODE="Contact, Spike" DESCR="Contact, Spike" />
+<mx:Object CODE="Contact, Sumo" DESCR="Contact, Sumo" />
+<mx:Object CODE="Water Hydrant" DESCR="Water Hydrant" />
+<mx:Object CODE="Flag, Red" DESCR="Flag, Red" />
+<mx:Object CODE="Flag, Blue" DESCR="Flag, Blue" />
+<mx:Object CODE="Flag, Green" DESCR="Flag, Green" />
+<mx:Object CODE="Pin, Red" DESCR="Pin, Red" />
+<mx:Object CODE="Pin, Blue" DESCR="Pin, Blue" />
+<mx:Object CODE="Pin, Green" DESCR="Pin, Green" />
+<mx:Object CODE="Block, Red" DESCR="Block, Red" />
+<mx:Object CODE="Block, Blue" DESCR="Block, Blue" />
+<mx:Object CODE="Block, Green" DESCR="Block, Green" />
+<mx:Object CODE="Bike Trail" DESCR="Bike Trail" />
+<mx:Object CODE="Fishing Hot Spot Facility" DESCR="Fishing Hot Spot Facility" />
+<mx:Object CODE="Police Station" DESCR="Police Station" />
+<mx:Object CODE="Ski Resort" DESCR="Ski Resort" />
+<mx:Object CODE="Ice Skating" DESCR="Ice Skating" />
+<mx:Object CODE="Wrecker" DESCR="Wrecker" />
+<mx:Object CODE="Anchor Prohibited" DESCR="Anchor Prohibited" />
+<mx:Object CODE="Beacon" DESCR="Beacon" />
+<mx:Object CODE="Coast Guard" DESCR="Coast Guard" />
+<mx:Object CODE="Reef" DESCR="Reef" />
+<mx:Object CODE="Weed Bed" DESCR="Weed Bed" />
+<mx:Object CODE="Dropoff" DESCR="Dropoff" />
+<mx:Object CODE="Dock" DESCR="Dock" />
+<mx:Object CODE="Marina" DESCR="Marina" />
+<mx:Object CODE="Bait and Tackle" DESCR="Bait and Tackle" />
+<mx:Object CODE="Stump" DESCR="Stump" />
+<mx:Object CODE="Circle, Red" DESCR="Circle, Red" />
+<mx:Object CODE="Circle, Green" DESCR="Circle, Green" />
+<mx:Object CODE="Circle, Blue" DESCR="Circle, Blue" />
+<mx:Object CODE="Diamond, Blue" DESCR="Diamond, Blue" />
+<mx:Object CODE="Oval, Red" DESCR="Oval, Red" />
+<mx:Object CODE="Oval, Green" DESCR="Oval, Green" />
+<mx:Object CODE="Oval, Blue" DESCR="Oval, Blue" />
+<mx:Object CODE="Rectangle, Red" DESCR="Rectangle, Red" />
+<mx:Object CODE="Rectangle, Green" DESCR="Rectangle, Green" />
+<mx:Object CODE="Rectangle, Blue" DESCR="Rectangle, Blue" />
+<mx:Object CODE="Square, Blue" DESCR="Square, Blue" />
+<mx:Object CODE="Letter A, Red" DESCR="Letter A, Red" />
+<mx:Object CODE="Letter A, Green" DESCR="Letter A, Green" />
+<mx:Object CODE="Letter A, Blue" DESCR="Letter A, Blue" />
+<mx:Object CODE="Letter B, Red" DESCR="Letter B, Red" />
+<mx:Object CODE="Letter B, Green" DESCR="Letter B, Green" />
+<mx:Object CODE="Letter B, Blue" DESCR="Letter B, Blue" />
+<mx:Object CODE="Letter C, Red" DESCR="Letter C, Red" />
+<mx:Object CODE="Letter C, Green" DESCR="Letter C, Green" />
+<mx:Object CODE="Letter C, Blue" DESCR="Letter C, Blue" />
+<mx:Object CODE="Letter D, Red" DESCR="Letter D, Red" />
+<mx:Object CODE="Letter D, Green" DESCR="Letter D, Green" />
+<mx:Object CODE="Letter D, Blue" DESCR="Letter D, Blue" />
+<mx:Object CODE="Number 0, Red" DESCR="Number 0, Red" />
+<mx:Object CODE="Number 0, Green" DESCR="Number 0, Green" />
+<mx:Object CODE="Number 0, Blue" DESCR="Number 0, Blue" />
+<mx:Object CODE="Number 1, Red" DESCR="Number 1, Red" />
+<mx:Object CODE="Number 1, Green" DESCR="Number 1, Green" />
+<mx:Object CODE="Number 1, Blue" DESCR="Number 1, Blue" />
+<mx:Object CODE="Number 2, Red" DESCR="Number 2, Red" />
+<mx:Object CODE="Number 2, Green" DESCR="Number 2, Green" />
+<mx:Object CODE="Number 2, Blue" DESCR="Number 2, Blue" />
+<mx:Object CODE="Number 3, Red" DESCR="Number 3, Red" />
+<mx:Object CODE="Number 3, Green" DESCR="Number 3, Green" />
+<mx:Object CODE="Number 3, Blue" DESCR="Number 3, Blue" />
+<mx:Object CODE="Number 4, Red" DESCR="Number 4, Red" />
+<mx:Object CODE="Number 4, Green" DESCR="Number 4, Green" />
+<mx:Object CODE="Number 4, Blue" DESCR="Number 4, Blue" />
+<mx:Object CODE="Number 5, Red" DESCR="Number 5, Red" />
+<mx:Object CODE="Number 5, Green" DESCR="Number 5, Green" />
+<mx:Object CODE="Number 5, Blue" DESCR="Number 5, Blue" />
+<mx:Object CODE="Number 6, Red" DESCR="Number 6, Red" />
+<mx:Object CODE="Number 6, Green" DESCR="Number 6, Green" />
+<mx:Object CODE="Number 6, Blue" DESCR="Number 6, Blue" />
+<mx:Object CODE="Number 7, Red" DESCR="Number 7, Red" />
+<mx:Object CODE="Number 7, Green" DESCR="Number 7, Green" />
+<mx:Object CODE="Number 7, Blue" DESCR="Number 7, Blue" />
+<mx:Object CODE="Number 8, Red" DESCR="Number 8, Red" />
+<mx:Object CODE="Number 8, Green" DESCR="Number 8, Green" />
+<mx:Object CODE="Number 8, Blue" DESCR="Number 8, Blue" />
+<mx:Object CODE="Number 9, Red" DESCR="Number 9, Red" />
+<mx:Object CODE="Number 9, Green" DESCR="Number 9, Green" />
+<mx:Object CODE="Number 9, Blue" DESCR="Number 9, Blue" />
+<mx:Object CODE="Triangle, Blue" DESCR="Triangle, Blue" />
+<mx:Object CODE="Triangle, Green" DESCR="Triangle, Green" />
+<mx:Object CODE="Triangle, Red" DESCR="Triangle, Red" />
+<mx:Object CODE="Contact, Blonde" DESCR="Contact, Blonde" />
+<mx:Object CODE="Contact, Clown" DESCR="Contact, Clown" />
+<mx:Object CODE="Contact, Glasses" DESCR="Contact, Glasses" />
+<mx:Object CODE="Contact, Panda" DESCR="Contact, Panda" />
+<mx:Object CODE="Multi-Cache" DESCR="Multi-Cache" />
+<mx:Object CODE="Letterbox Cache" DESCR="Letterbox Cache" />
+<mx:Object CODE="Puzzle Cache" DESCR="Puzzle Cache" />
+<mx:Object CODE="Library" DESCR="Library" />
+<mx:Object CODE="Ground Transportation" DESCR="Ground Transportation" />
+<mx:Object CODE="City Hall" DESCR="City Hall" />
+<mx:Object CODE="Winery" DESCR="Winery" />
+<mx:Object CODE="ATV" DESCR="ATV" />
+<mx:Object CODE="Big Game" DESCR="Big Game" />
+<mx:Object CODE="Blind" DESCR="Blind" />
+<mx:Object CODE="Blood Trail" DESCR="Blood Trail" />
+<mx:Object CODE="Cover" DESCR="Cover" />
+<mx:Object CODE="Covey" DESCR="Covey" />
+<mx:Object CODE="Food Source" DESCR="Food Source" />
+<mx:Object CODE="Furbearer" DESCR="Furbearer" />
+<mx:Object CODE="Lodge" DESCR="Lodge" />
+<mx:Object CODE="Small Game" DESCR="Small Game" />
+<mx:Object CODE="Animal Tracks" DESCR="Animal Tracks" />
+<mx:Object CODE="Treed Quarry" DESCR="Treed Quarry" />
+<mx:Object CODE="Tree Stand" DESCR="Tree Stand" />
+<mx:Object CODE="Truck" DESCR="Truck" />
+<mx:Object CODE="Upland Game" DESCR="Upland Game" />
+<mx:Object CODE="Waterfowl" DESCR="Waterfowl" />
+          </mx:dataProvider>
+          </mx:ComboBox>
+        </mx:HBox>
+      </mx:VBox>
+      <mx:VBox percentWidth="50">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Дата создания" width="140" />
+          <mx:DateField id="CTIME" width="90" editable="false" height="20" formatString="DD.MM.YYYY" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Кто создал" width="140" />
+          <mx:TextInput id="CUSER" editable="false" width="225" maxChars="80" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Дата изменения" width="140" />
+          <mx:DateField id="MTIME" width="90" editable="false" height="20" formatString="DD.MM.YYYY" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Кто изменил" width="140" />
+          <mx:TextInput id="MUSER" editable="false" width="225" maxChars="80" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Идентификатор точки" width="140" />
+          <controls:NumberInput id="POINT_ID" editable="false" width="225" maxChars="22" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Идентификатор координат точки" width="140" />
+          <controls:NumberInput id="COORD_ID" editable="false" width="225" maxChars="22" height="20" />
+        </mx:HBox>
+      </mx:VBox>
+    </mx:HBox>
+  </mx:VBox>
+  <validatorsArray>
+    <controls:DefaultStringValidator source="{NAME}" property="text" enabled="false" minLength="1" requiredFieldError="Поле 'Название точки' обязательно для заполнения." tooShortError="Поле 'Название точки' обязательно для заполнения." />
+    <controls:DefaultDateValidator source="{TIME_STAMP}" property="selectedDate" enabled="false" requiredFieldError="Поле 'Дата съёмки точки' обязательно для заполнения." />
+  </validatorsArray>
+</DATA_EDIT_FORM>

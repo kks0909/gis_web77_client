@@ -1,0 +1,127 @@
+{
+  "code":200,
+  "version":"7.7.7.5",
+  "id":"MAPSERVICE",
+    "canvas":{
+    "width": "100%",
+    "height": 3000
+  },
+  "map":{
+    "_comment": "Тип карты, если widget, то карта открывается в iframe",
+    "type":"widget",
+    "position":{
+      "width":"25%",
+      "height":"50%"
+    }
+  },
+  "chart":{
+    "position":{
+      "width":"25%",
+      "height":"50%"
+    }
+  },
+  "grid":{
+    "_comment": "Нужно ли показывать кнопки закрытия, сворачивания в гридах",
+    "titlebar":true,
+    "_comment": "Нужно ли показывать открывать гриды в одной вкладке с перезапрашиванием данных, либо в отдельных вкладках",
+    "duplicate": true,
+    "_comment": "Нужно ли открывать гриды с одной вкладкой с закрытием",
+    "singleTab": true,
+    "_comment": "Перечень кнопок быстрого доступа к гридам, которые расположены вверху карты",
+    "fast_buttons":[],
+    "_comment": "Возможность расширять размеры грида",
+    "resizable": true,
+    "_comment": "Возможность двигать грид",
+    "draggable": true,
+    "_comment": "Настройки панели свойств грида",
+    "ppanel":{
+      "_comment": "Расположение панели свойств внутри таба с гридами либо общий, как в карте local|global",
+      "position": "global"
+    },
+    "_comment": "Начальное положение грида",
+    "position":{
+      "width":"50%",
+      "height":"50%",
+      "left": 0,
+      "top": 0
+    }    
+  },
+  "_comment":"Настройки рубрикатор",
+  "tree":{
+    "isMaximized":true,
+    "treePercentWidth":20,
+    "visible": false,
+    "trees":[{
+        "id":"SUTSTPA_LIST",
+        "title":"СУ ТС ТПА",
+        "templateUrl":"Public/Modules/Tree/sutstpa_tree.xml",
+        "topFilterId":"lpuFilter",
+        "default":true        
+      }
+    ]
+  },
+  "startupScenario":{
+    "openLayers":[],
+    "openTables":[
+      {
+        "title":"Кран",
+        "gridId":"SUTSTPA_КРАН_LIST",
+        "levelParams":"layerId=SUTSTPA_Layers.xml#SUTSTPA_КРАН;",
+        "showDashboard": true,
+        "query":
+        {
+          "source":"COMMON_TREE.xml#LAYER_STYLE_BASE",
+          "LAYER_ID":"SUTSTPA_КРАН",
+          "FILE_NAME":"SUTSTPA_STYLE.xml"
+        }
+      }
+    ]
+  },
+  "_comment":"Настройки панели свойств",
+  "ppanel":{
+    "showSystemInfo":false
+  },
+  "vectorlayers":["SUTSTPA_Layers.xml"],
+  "charts": [
+    {
+      "title": "Факт/План(ЭПБ)",
+      "type": "bar_stack_wo_y",
+      "sql": "ANALYTIC_SEM.xml#ANALYTIC_EBP_1",
+      "params":{
+        "FILTER": "8=8",
+        "SCHEMA": "sutstpa",
+        "TABLE_NAME": "valve"
+      },
+      "dataset":[
+        {
+          "title": "План",
+          "color": "rgb(17,141,255)",
+          "column": "DATE_PLAN"
+        },
+        {
+          "title": "Факт",
+          "color": "rgb(18,35,158)",
+          "column": "DATE_FACT"
+        }
+      ],      
+      "layerName": "SUTSTPA_КРАН",
+      "position": {
+        "left": "1%",
+        "top": "1%",
+        "width": "74%",
+        "height": "30%"
+      }
+    }         
+  ],
+  "_comment":"Настройки формы фильтра у дашборда",
+  "dashboard":{
+    "position": {
+      "width":"23%",
+        "height":"30%",
+        "left": "76%",
+        "top": "1%"
+    },
+        "resizable": false,
+    "draggable": false
+  }
+}

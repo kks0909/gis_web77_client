@@ -1,0 +1,377 @@
+﻿<root version="postgres 7.7.5.1">
+  <data id="WEB50_POI_POINT" comment="WEB50.POI_POINT" schema="WEB50" table="POI_POINT">
+    <select>
+      <dbQuery idField="ID">
+        <var name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <var name="USER_ID" direction="Input" default="select user_id from web50.b_user_private" />
+        <var name="FILTER" default="1=1" />
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID in ({USER_ID})
+                   AND pr.CLASS_ID='WEB50_POI_POINT_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID in ({USER_ID})
+                   AND pr.CLASS_ID='WEB50_POI_POINT_USER'
+                   AND pr.SELECT_PERMITTED = '1')    
+SELECT *
+            FROM (  
+              SELECT pp.POINT_ID AS ID  
+                     ,pp.NAME
+                     ,pp.DESCR
+                     ,pp.TIME_STAMP
+                     ,pp.COMMENTS
+                     ,pp.SYMBOL
+                     ,pp.COORD_ID
+                     ,pp.STATUS_ID
+                     ,pp.CTIME
+                     ,(SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = pp.CUSER_ID) AS CUSER
+                     ,(SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = pp.MUSER_ID) AS MUSER
+                     ,pp.MTIME
+                     ,pp.POINT_ID
+                FROM WEB50.POI_POINT pp
+               WHERE ((pp.status_id = 1
+                      OR (pp.cuser_id  in ({USER_ID})
+                         AND pp.status_id = 0 ))
+                 AND EXISTS (SELECT 1 FROM user_grants))
+                  OR EXISTS (SELECT 1 FROM admin_grants)) x01
+          WHERE {FILTER} 			
+      </query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(POINT_ID) id FROM WEB50.POI_POINT" /> />
+        <param name="NAME" type="String" direction="Input" />
+        <param name="DESCR" type="String" direction="Input" />
+        <param name="TIME_STAMP" type="DateTime" direction="Input" />
+        <param name="COMMENTS" type="String" direction="Input" />
+        <param name="SYMBOL" type="String" direction="Input" />
+        <param name="STATUS_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#INSERT_WEB50_POI_POINT"  />	
+        <query>
+	        INSERT INTO WEB50.POI_POINT( NAME,DESCR,TIME_STAMP,COMMENTS,SYMBOL,STATUS_ID,CTIME,CUSER_ID)
+	        VALUES(:NAME,:DESCR,:TIME_STAMP,:COMMENTS,:SYMBOL,:STATUS_ID,current_timestamp,:USER_ID)
+		</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="NAME" type="String" direction="Input" />
+        <param name="DESCR" type="String" direction="Input" />
+        <param name="TIME_STAMP" type="DateTime" direction="Input" />
+        <param name="COMMENTS" type="String" direction="Input" />
+        <param name="SYMBOL" type="String" direction="Input" />
+        <param name="COORD_ID" type="Int64" direction="Input" />
+        <param name="STATUS_ID" type="Int64" direction="Input" />
+        <param name="POINT_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#UPDATE_WEB50_POI_POINT"  />	
+        <query>
+			      UPDATE WEB50.POI_POINT
+			      SET
+				  NAME=case when :NAME is null then NAME else :NAME end,
+				  DESCR=case when :DESCR is null then DESCR else :DESCR end,
+				  TIME_STAMP=case when :TIME_STAMP is null then TIME_STAMP else :TIME_STAMP end,
+				  COMMENTS=case when :COMMENTS is null then COMMENTS else :COMMENTS end,
+				  SYMBOL=case when :SYMBOL is null then SYMBOL else :SYMBOL end,
+				  COORD_ID=case when :COORD_ID is null then COORD_ID else :COORD_ID end,
+				  STATUS_ID=case when :STATUS_ID is null then STATUS_ID else :STATUS_ID end,
+				  MTIME=current_timestamp,
+				  MUSER_ID=case when :USER_ID is null then MUSER_ID else :USER_ID end
+			      WHERE POINT_ID = :ID
+				  		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+		<var name="USER_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#DELETE_WEB50_POI_POINT"  />	
+        <query>
+		DO $$
+	    DECLARE 
+			v_coord_id BIGINT;
+	    BEGIN
+	        SELECT COORD_ID INTO v_coord_id FROM WEB50.POI_POINT WHERE POINT_ID={ID};
+	        DELETE FROM WEB50.POI_POINT WHERE POINT_ID = {ID};
+	        DELETE FROM WEB50.POI_COORD WHERE COORD_ID = v_coord_id;
+	    END $$;
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="WEB50_POI_TRACK" comment="WEB50.POI_TRACK" schema="WEB50" table="POI_TRACK">
+    <select>
+      <dbQuery idField="ID">
+        <var name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <var name="USER_ID" direction="Input" default="select user_id from web50.b_user_private" />
+        <var name="FILTER" default="1=1" />
+        <query>
+WITH admin_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID in ({USER_ID})
+                   AND pr.CLASS_ID='WEB50_POI_TRACK_ADMIN'
+                   AND pr.SELECT_PERMITTED = '1'),
+     user_grants 
+            AS (SELECT 1 dummy
+                  FROM WEB50.B_USER_TO_B_ROLE u2r
+                       JOIN WEB50.B_ROLE_TO_B_POLICY r2p
+                         ON u2r.ROLE_ID = r2p.ROLE_ID
+                       JOIN WEB50.B_POLICY_RULES pr
+                         ON r2p.POLICY_ID = pr.POLICY_ID 
+                 WHERE u2r.USER_ID in ({USER_ID})
+                   AND pr.CLASS_ID='WEB50_POI_TRACK_USER'
+                   AND pr.SELECT_PERMITTED = '1') 
+SELECT * 
+  FROM ( SELECT pt.TRACK_ID ID  
+                ,pt.NAME
+                ,pt.DESCR
+                ,pt.TYPE
+                ,pt.STATUS_ID
+                ,pt.CTIME
+                ,(SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = pt.CUSER_ID) AS CUSER
+                ,(SELECT LOGIN FROM WEB50.B_USER_PRIVATE WHERE USER_ID = pt.MUSER_ID) AS MUSER
+                ,pt.MTIME,pt.TRACK_ID
+            FROM WEB50.POI_TRACK pt 
+           WHERE ((pt.status_id = 1
+                      OR (pt.cuser_id  in ({USER_ID})
+                         AND pt.status_id = 0 ))
+                 AND EXISTS (SELECT 1 FROM user_grants))
+                  OR EXISTS (SELECT 1 FROM admin_grants)) d
+        WHERE {FILTER}          
+		    </query>
+        </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(TRACK_ID) id FROM WEB50.POI_TRACK" />
+        <param name="NAME" type="String" direction="Input" />
+        <param name="DESCR" type="String" direction="Input" />
+        <param name="TYPE" type="String" direction="Input" />
+        <param name="STATUS_ID" type="Int64" direction="Input" />
+        <param name="CTIME" type="DateTime" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#INSERT_WEB50_POI_TRACK"  />	
+        <query>
+            INSERT INTO WEB50.POI_TRACK(NAME,DESCR,TYPE,STATUS_ID,CTIME,CUSER_ID)
+            VALUES(:NAME,:DESCR,:TYPE,:STATUS_ID,coalesce(:CTIME,current_timestamp),:USER_ID)
+		</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Input" />
+        <param name="NAME" type="String" direction="Input" />
+        <param name="DESCR" type="String" direction="Input" />
+        <param name="TYPE" type="String" direction="Input" />
+        <param name="STATUS_ID" type="Int64" direction="Input" />
+        <param name="CTIME" type="DateTime" direction="Input" />
+        <param name="TRACK_ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#UPDATE_WEB50_POI_TRACK"  />	
+        <query>
+            UPDATE WEB50.POI_TRACK 
+            SET 
+			NAME=case when :NAME is null then NAME else :NAME end,
+			DESCR=case when :DESCR is null then DESCR else :DESCR end,
+			TYPE=case when :TYPE is null then TYPE else :TYPE end,
+			STATUS_ID=case when :STATUS_ID is null then STATUS_ID else :STATUS_ID end,
+			MTIME = current_timestamp,
+			MUSER_ID=case when :USER_ID is null then MUSER_ID else :USER_ID end
+            WHERE TRACK_ID = :ID
+		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+        <param name="USER_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#DELETE_WEB50_POI_TRACK"  />	
+        <query>
+			DO $$
+		        BEGIN  
+		          DELETE FROM WEB50.POI_TRACK_TO_POI_COORD WHERE TRACK_ID = {ID};
+		          DELETE FROM WEB50.POI_TRACK WHERE TRACK_ID = {ID};
+              /* удаляем связь с прикрепленным документом, если она была (когда к треку привязана видеозапись, например) */
+		          DELETE FROM WEB50.LNK_GATE
+		          WHERE left_obj_id = 'WEB50_POI_TRACK/'||('{ID}')::numeric
+		          OR right_obj_id = 'WEB50_POI_TRACK/'||('{ID}')::numeric;
+		        END $$;
+	</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="WEB50_POI_COORD_POINT" comment="WEB50.POI_COORD" schema="WEB50" table="POI_COORD">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <var name="FILTER" default="1=1" />
+        <query>
+		SELECT * FROM ( SELECT
+		pc.COORD_TYPE_ID
+		,pc.X
+		,pc.Y
+		,pc.Z
+		,pc.LAND_LEVEL
+		,pc.CTIME
+		,pc.CUSER_ID
+		, pc.MUSER_ID, pc.MTIME,pc.COORD_ID, pp.POINT_ID AS ID  FROM WEB50.POI_COORD pc
+		JOIN WEB50.POI_POINT pp ON pp.COORD_ID=pc.COORD_ID ) d
+		WHERE {FILTER}</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(COORD_ID) id FROM WEB50.POI_COORD"/>
+        <var name="COORD_TYPE_ID" type="Int64" direction="Input" />
+        <var name="X" type="Decimal" direction="Input" />
+        <var name="Y" type="Decimal" direction="Input" />
+        <var name="Z" type="Decimal" direction="Input" />
+        <var name="LAND_LEVEL" type="Decimal" direction="Input" />
+        <var name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#INSERT_WEB50_POI_POINT"  />	
+        <query>
+			DO $$
+			DECLARE
+			returnId integer;
+			BEGIN
+			INSERT INTO WEB50.POI_COORD(COORD_TYPE_ID,X,Y,Z,LAND_LEVEL,CTIME,CUSER_ID)
+			VALUES({COORD_TYPE_ID},{X},{Y},{Z},{LAND_LEVEL},current_timestamp,{USER_ID})
+			RETURNING COORD_ID INTO returnId;
+
+			UPDATE WEB50.POI_POINT SET COORD_ID=returnId WHERE POINT_ID={SYS_OBJ_ID};
+			END $$;
+		</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="COORD_TYPE_ID" type="Int64" direction="Input" />
+        <var name="X" type="Decimal" direction="Input" />
+        <var name="Y" type="Decimal" direction="Input" />
+        <var name="Z" type="Decimal" direction="Input" />
+        <var name="LAND_LEVEL" type="Decimal" direction="Input" />
+        <var name="COORD_ID" type="Int64" direction="Input" />
+        <var name="USER_ID" type="Int64" direction="Input" />
+        <var name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <var name="ID" type="Int64" direction="Input"/>
+		<var name="POLICY" default="POLICY.xml#UPDATE_WEB50_POI_POINT"  />	
+        <query>
+		DO $$
+         DECLARE
+			VAR_COORD_ID bigint;
+          BEGIN
+            if {COORD_ID} is not null then
+            UPDATE WEB50.POI_COORD 
+               SET  COORD_TYPE_ID = {COORD_TYPE_ID}
+                   ,X = {X}
+                   ,Y = {Y}
+                   ,Z = {Z}
+                   ,LAND_LEVEL = {LAND_LEVEL}
+                   ,MTIME = current_timestamp
+                   ,MUSER_ID = {USER_ID}
+             WHERE COORD_ID = {COORD_ID};
+             else
+              INSERT INTO web50.POI_COORD(X, Y,Z,LAND_LEVEL, COORD_TYPE_ID, CTIME, CUSER_ID) VALUES ({X}, {Y}, {Z},{LAND_LEVEL},2, current_timestamp, {USER_ID}) 
+			  RETURNING COORD_ID INTO VAR_COORD_ID;
+			UPDATE WEB50.POI_POINT SET COORD_ID=VAR_COORD_ID WHERE POINT_ID={SYS_OBJ_ID};
+			end if;
+        END $$;                
+  </query>
+      </dbCommand>
+    </update>
+  </data>
+  <data id="WEB50_POI_DEBRIS"  table="POI_DEBRIS" schema="WEB50" comment="WEB50.POI_DEBRIS">
+		<select>
+			<dbQuery idField="ID">
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="FILTER" default="1=1"/>
+				<var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+				<query>
+					SELECT ID,SRV_DISTRICT_ID,SRV_DISTRICT_ID SRV_DISTRICT_GCL,DESCRIPTION,STATION_BEGIN,STATION_END,SQUARE,
+CTIME,CUSER_ID,MTIME,MUSER_ID FROM WEB50.POI_DEBRIS WHERE {FILTER}
+				</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="SRV_DISTRICT_ID" default="" type="String"/>
+				<param name="DESCRIPTION" default="" type="String"/>
+				<param name="STATION_BEGIN" default="" type="Decimal"/>
+				<param name="STATION_END" default="" type="Decimal"/>
+				<param name="SQUARE" default="" type="Decimal"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.POI_DEBRIS"/>
+				<param name="CTIME" default="" type="DateTime"/>
+				<param name="CUSER_ID" default="" type="Decimal"/>					
+				<param name="MTIME" default="" type="DateTime"/>
+				<param name="MUSER_ID" default="-1" type="Int64"/>
+				<param name="WKB_GEOMETRY" default="-1" type="String"/>			
+				<param name="USER_ID" default="-1" type="Int64"/>	
+				<var name="POLICY" default="POLICY.xml#INSERT_KADASTR_SEM" />					
+				<query>
+ INSERT INTO WEB50.POI_DEBRIS(SRV_DISTRICT_ID,DESCRIPTION,STATION_BEGIN,STATION_END,CTIME, CUSER_ID, MTIME, MUSER_ID,SQUARE) VALUES(:SRV_DISTRICT_ID,:DESCRIPTION,:STATION_BEGIN,:STATION_END,current_timestamp,:USER_ID,NULL,NULL,:SQUARE)
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="SRV_DISTRICT_ID" default="" type="String"/>
+				<param name="DESCRIPTION" default="" type="String"/>
+				<param name="STATION_BEGIN" default="" type="Decimal"/>
+				<param name="STATION_END" default="" type="Decimal"/>
+				<param name="SQUARE" default="" type="Decimal"/>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="USER_ID" default="" type="Decimal"/>	
+				<var name="POLICY" default="POLICY.xml#UPDATE_KADASTR_SEM" />					
+				<query>
+             UPDATE WEB50.POI_DEBRIS 
+             SET 
+             SRV_DISTRICT_ID=case when :SRV_DISTRICT_ID is null then SRV_DISTRICT_ID else :SRV_DISTRICT_ID end,
+             DESCRIPTION=case when :DESCRIPTION is null then DESCRIPTION else :DESCRIPTION end,
+             STATION_BEGIN=case when :STATION_BEGIN is null then STATION_BEGIN else :STATION_BEGIN end,
+             STATION_END=case when :STATION_END is null then STATION_END else :STATION_END end,
+             SQUARE=case when :SQUARE is null then SQUARE else :SQUARE end,
+             MTIME=current_timestamp,
+             MUSER_ID=case when :USER_ID is null then USER_ID else :USER_ID end
+ WHERE ID = :ID
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<var name="ID" type="Int64" direction="Input"/>
+				<var name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#DELETE_KADASTR_SEM" />					
+				<query>
+				DO $$
+          			  DECLARE varDocId bigint;
+                  		BEGIN
+ 					DELETE FROM WEB50.POI_DEBRIS WHERE ID = {ID};
+					
+				 END $$; 
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+</root>

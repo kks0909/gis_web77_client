@@ -1,0 +1,106 @@
+﻿<!--7.7.6.0-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="6"
+            id="GEO_VEGETATION_L_LIST"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelTemplateName="GEO_VEGETATION_L_LIST"
+			excelDataRequest="IUST_EXPORT.xml#GEO_VEGETATION_L"
+            layerId="GEO_VEGETATION_L" propertyPanelName="GEO_VEGETATION_L"
+            dataRequest="IUST_GRID.xml#GEO_VEGETATION_L"
+            totalRecordsRequest="IUST_GRID.xml#GEO_VEGETATION_L_CNT"
+            initialSortField="ID">
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/exportNAV.png"
+        tooltip="Экспорт/Импорт GPX,KML"
+        clickEvent="ru.corelight.business.events.ExportToGPXEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/createObject.png"
+        tooltip="Создать объект"
+        clickEvent="ru.corelight.business.events.CreateObjectEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../Public/assets/showOnMap.png"
+        tooltip="Показать на карте"
+        clickEvent="ru.corelight.business.events.ShowOnMapEvent"
+        isEnabled="length" />
+
+    <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/paste.png"
+        tooltip="Вставить данные из excel"
+        clickEvent="PasteFromExcelEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+<picPutton:GridButton source="../../ui/images/save.png"
+       tooltip="Сохранить изменения"
+       clickEvent="ApplyUpdatedCellEvent"
+       isEnabled="null" />
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=showInfoEvent;toolTip=Показать информацию по объекту"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/photo.png;eventName=ShowCarouselEvent;toolTip=Показать документы по объекту;columns=LG_ATTACH"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/map.png;eventName=ru.corelight.business.events.ShowOnMapEvent;toolTip=Показать на карте;layerId=GEO_VEGETATION_L"
+                          editable="true"/>
+      
+      <columns:GridColumn headerText="Идентификатор" dataField="ID"  itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          hidden="true" editable="false" filterComparisionType="number" width="40" />                    
+	   <columns:GridColumn headerText="Тип объекта (топокод)" dataField="TOPOCODE" sortField="TOPOCODE_LBL" 
+						  itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=IUST_SEM_DICT.xml#GEO_VEGETATION_L_TOPOCODE" filterComparisionType="array" filterRequestId="IUST_SEM_DICT.xml#GEO_VEGETATION_L_TOPOCODE" 
+						  editable="true" 
+						  filterRenderer="ru.corelight.view.controls.dynamicFilter.InListControl"
+						  width="160"/>						  
+      <columns:GridColumn headerText="Наименование" dataField="NAME"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="160"/>	
+	   <columns:GridColumn headerText="Тип растительности" dataField="VEGETATIONTYPE" sortField="VEGETATIONTYPE_LBL" 
+						  itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=IUST_SEM_DICT.xml#GEO_VEGETATION_L_VEGETATIONTYPE" filterComparisionType="array" filterRequestId="IUST_SEM_DICT.xml#GEO_VEGETATION_L_VEGETATIONTYPE" 
+						  editable="true" 
+						  filterRenderer="ru.corelight.view.controls.dynamicFilter.InListControl"
+						  width="160"/>		
+	   <columns:GridColumn headerText="Проходимость" dataField="PASSABILITY" sortField="PASSABILITY_LBL" 
+						  itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=IUST_SEM_DICT.xml#GEO_VEGETATION_L_PASSABILITY" filterComparisionType="array" filterRequestId="IUST_SEM_DICT.xml#GEO_VEGETATION_L_PASSABILITY" 
+						  hidden="true" editable="true" 
+						  filterRenderer="ru.corelight.view.controls.dynamicFilter.InListControl"
+						  width="160"/>						  
+	  <columns:GridColumn headerText="Относительная высота (м)" dataField="RELHEIGHT"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="60"/>					  
+	  <columns:GridColumn headerText="Толщина деревьев (м)" dataField="TREETHICKNESS"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="60"/>
+	  <columns:GridColumn headerText="Расстояние между деревьями (м)" dataField="TREEDISTANCE"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="60"/>						  
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

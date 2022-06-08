@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Файл описания слоёв "Эксплуатационные данные" -->
+<root version="7.7.7.4" descr="МГ: Эксплуатационные данные" name="PODS_EXP">
+  <dataProvider type="style" source="PODS_EXP_STYLE.xml" />
+  <layer id="PODS_FACILITY_RANKING" comment="PODS.FACILITY_RANKING" descr="Ранг уровня риска объектов трубопровода" topology="point,line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1250" visible="false" labelField="DESCRIPTION" classField="" schema="PODS" table="FACILITY_RANKING">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_FACILITY_RANKING" />
+    <dataProvider type="style" source="PODS_EXP_STYLE.xml#PODS_FACILITY_RANKING"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_FACILITY_RANKING"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_FACILITY_RANKING"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_FACILITY_RANKING"/>
+  </layer>
+  <layer id="PODS_FACILITY_RATING" comment="PODS.FACILITY_RATING" descr="Значения рейтинга опасности объектов трубопровода" topology="point,line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1290" visible="false" labelField="DESCRIPTION" classField="" schema="PODS" table="FACILITY_RATING">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_FACILITY_RATING" />
+    <dataProvider type="style" source="PODS_EXP_STYLE.xml#PODS_FACILITY_RATING"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_FACILITY_RATING"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_FACILITY_RATING"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_FACILITY_RATING"/>
+  </layer>
+  <layer id="PODS_FACILITY_RATING_VARIANCE" comment="PODS.FACILITY_RATING_VARIANCE" descr="Журнал разрешений на изменение рабочих давлений" topology="point,line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1320" visible="false" labelField="DESCRIPTION" classField="" schema="PODS" table="FACILITY_RATING_VARIANCE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_FACILITY_RATING_VARIANCE" />
+    <dataProvider type="style" source="PODS_EXP_STYLE.xml#PODS_FACILITY_RATING_VARIANCE"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_FACILITY_RATING_VARIANCE"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_FACILITY_RATING_VARIANCE"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_FACILITY_RATING_VARIANCE"/>
+  </layer>
+  <layer id="PODS_FLOW_MEASUREMENT" comment="PODS.FLOW_MEASUREMENT" descr="Поток газа. Данные измерений" topology="point,line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="960" visible="false" labelField="DESCRIPTION" classField="" schema="PODS" table="FLOW_MEASUREMENT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_FLOW_MEASUREMENT" />
+    <dataProvider type="style" source="PODS_EXP_STYLE.xml#PODS_FLOW_MEASUREMENT"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_FLOW_MEASUREMENT"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_FLOW_MEASUREMENT"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_FLOW_MEASUREMENT"/>
+  </layer>
+  <layer id="PODS_MAINTENANCE" comment="PODS.MAINTENANCE" descr="Работы по техобслуживанию и ремонту" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="510" visible="false" topology="point,line" labelField="DESCRIPTION" classField="" schema="PODS" table="MAINTENANCE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_MAINTENANCE" />
+    <dataProvider type="style" source="PODS_EXP_STYLE.xml#PODS_MAINTENANCE"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_MAINTENANCE"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_MAINTENANCE"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_MAINTENANCE"/>
+  </layer>
+  <layer id="PODS_MAOP_RATING" comment="PODS.MAOP_RATING" descr="Максимально разрешённые давления" topology="point,line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1270" visible="false" labelField="DESCRIPTION" classField="" schema="PODS" table="MAOP_RATING">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_MAOP_RATING" />
+    <dataProvider type="style" source="PODS_EXP_STYLE.xml#PODS_MAOP_RATING"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_MAOP_RATING"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_MAOP_RATING"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_MAOP_RATING"/>
+  </layer>
+  <layer id="PODS_ODORANT_MEASUREMENT" comment="PODS.ODORANT_MEASUREMENT" descr="Концентрация одоранта. Данные измерений" topology="point,line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1300" visible="false" classField="TYPE_CL" schema="PODS" table="ODORANT_MEASUREMENT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ODORANT_MEASUREMENT" />
+    <dataProvider type="style" source="PODS_EXP_STYLE.xml#PODS_ODORANT_MEASUREMENT"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ODORANT_MEASUREMENT"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_ODORANT_MEASUREMENT"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_ODORANT_MEASUREMENT"/>
+  </layer>
+  <layer id="PODS_PRESSURE_MEASUREMENT" comment="PODS.PRESSURE_MEASUREMENT" descr="Давление. Данные измерений" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="840" visible="false" topology="point,line" classField="" schema="PODS" table="PRESSURE_MEASUREMENT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PRESSURE_MEASUREMENT" />
+    <dataProvider type="style" source="PODS_EXP_STYLE.xml#PODS_PRESSURE_MEASUREMENT"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PRESSURE_MEASUREMENT"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PRESSURE_MEASUREMENT"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PRESSURE_MEASUREMENT"/>
+  </layer>
+  <layer id="PODS_TEMPERATURE_MEASUREMENT" comment="PODS.TEMPERATURE_MEASUREMENT" descr="Температура газа. Данные измерений" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="890" visible="false" topology="point,line" classField="" schema="PODS" table="TEMPERATURE_MEASUREMENT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_TEMPERATURE_MEASUREMENT" />
+    <dataProvider type="style" source="PODS_EXP_STYLE.xml#PODS_TEMPERATURE_MEASUREMENT"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_TEMPERATURE_MEASUREMENT"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_TEMPERATURE_MEASUREMENT"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_TEMPERATURE_MEASUREMENT"/>
+  </layer>
+  <layer id="PODS_TEST_PRESSURE" comment="PODS.TEST_PRESSURE" descr="Гидравлические испытания" topology="point,line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="900" visible="false" labelField="DESCRIPTION" classField="" schema="PODS" table="TEST_PRESSURE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_TEST_PRESSURE" />
+    <dataProvider type="style" source="PODS_EXP_STYLE.xml#PODS_TEST_PRESSURE"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_TEST_PRESSURE"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_TEST_PRESSURE"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_TEST_PRESSURE"/>
+  </layer>
+</root>

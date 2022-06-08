@@ -1,0 +1,91 @@
+﻿<root version="postgres 7.7.7.0">
+  <data id="PODS_ILI_REPER" comment="PODS.ILI_DATA" schema="PODS" table="ILI_DATA">
+    <select>
+ <dbQuery>
+   <var name="FILTER" default="1=1"/>
+   <var name="ORDER_COLUMNS" default="ID"/>
+  <var name="ILI_INSP_FILTER" default="SELECT ILI_INSPECTION_ID FROM PODS.ILI_INSPECTION"/>
+   <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+   <var name="LOW_LIMIT" default="1"/>
+   <var name="HIGH_LIMIT" default="65536"/><var name="COLUMNS_FILTER" default="*"/>
+   <query>
+ WITH report_info AS (SELECT i.ili_inspection_id
+    ,ln.line_id   
+    ,r.type_cl ROUTE_TYPE_CL
+	,r.route_id ROUTE_ID
+    ,CASE WHEN sp.line_id = 0 THEN 'Отчет не рассчитан. ' ELSE  rt.description END ||' '
+    ||CASE WHEN sp.line_id = 0 THEN ir.DESCRIPTION ELSE ln.description END
+    ||' ('||s.station_begin||' - ' ||s.station_end||'), ' || to_char(i.begin_date,'DD.MM.YY') ||', ' ||iv.description ILI_INSPECTION_LBL
+    FROM pods.ili_inspection i 
+     JOIN pods.ili_inspection_range ir
+   ON i.ili_inspection_id = ir.ili_inspection_id 
+     JOIN pods.event_range er
+   ON er.event_id = ir.event_id
+     JOIN pods.ili_tool_vendor_cl iv
+   ON i.tool_vendor_cl = iv.code
+     JOIN pods.station_point sp
+   ON sp.station_id = er.station_id_begin
+     JOIN pods.series s
+   ON s.series_id = sp.series_id
+     JOIN pods.route r
+   ON r.route_id = s.route_id
+     JOIN pods.route_type_cl rt
+   ON r.type_cl = rt.code
+     JOIN pods.line ln
+   ON ln.line_id = r.line_id
+     JOIN pods.line_type_cl lt
+   ON ln.type_cl = lt.code)     
+     SELECT {COLUMNS_FILTER} FROM (
+     SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS} ) RWN 
+   ,all_in_one.ID,all_in_one.STATION
+  ,all_in_one.WELD_NUMBER,all_in_one.ABSOLUTE_ODOMETER,all_in_one.ANOMALY_TYPE_CL,all_in_one.ANOMALY_EXTENSION_CL,all_in_one.LENGTH
+  ,all_in_one.WIDTH,all_in_one.AVERAGE_DEPTH,all_in_one.ORIENTATION_DEG,all_in_one.NOMINAL_WALL_THICKNESS
+  ,all_in_one.DESCRIPTION,all_in_one.control_point_lf, all_in_one.CALIBRATED_MEASURE
+  ,all_in_one.FEATURE_DESCRIPTION,all_in_one.ILI_INSPECTION_ID,all_in_one.ROUTE_ID,all_in_one.lnk_type
+  FROM (
+  SELECT f.ILI_DATA_ID ID
+   ,info.ILI_INSPECTION_LBL
+   ,info.ROUTE_ID
+   ,ss.STATION  
+   ,f.WELD_NUMBER  
+   ,f.ABSOLUTE_ODOMETER  
+   ,f.ANOMALY_TYPE_CL  
+   ,f.ANOMALY_EXTENSION_CL  
+   ,f.LENGTH  
+   ,f.WIDTH  
+   ,f.AVERAGE_DEPTH  
+   ,f.ORIENTATION_DEG  
+   ,f.MEASURED_WALL_THICKNESS  
+   ,f.NOMINAL_WALL_THICKNESS  
+   ,f.CALIBRATED_MEASURE  
+   ,f.OVALITY  
+   ,f.SEAM_ORIENTATION  
+   ,f.MILEPOST  
+   ,f.DESCRIPTION  
+   ,f.FEATURE_DESCRIPTION  
+   ,f.DATE_COLLECTED  
+   ,f.US_WELD_NUMBER  
+   ,f.ILI_DATA_ID  
+   ,f.ILI_INSPECTION_ID
+   ,f.control_point_lf
+   ,ref1.DESCRIPTION ANOMALY_TYPE_LBL
+   ,ref2.DESCRIPTION ANOMALY_EXTENSION_LBL
+   ,CASE WHEN f.ref_event_id is not null THEN 'ПРИВЯЗАН'
+            ELSE 'НЕ_ПРИВЯЗАН'
+       end lnk_type 
+   FROM PODS.ILI_DATA f
+  JOIN report_info info 
+    ON info.ili_inspection_id = f.ili_inspection_id  
+  left join pods.event_Range e on e.event_id=f.event_id
+  left join pods.station_point ss on ss.station_id=e.station_id_begin
+   LEFT OUTER JOIN PODS.ILI_ANOMALY_TYPE_CL ref1 
+     ON f.ANOMALY_TYPE_CL = ref1.CODE
+   LEFT OUTER JOIN PODS.ANOMALY_EXTENSION_CL ref2 
+     ON f.ANOMALY_EXTENSION_CL = ref2.CODE 
+  WHERE ref1.code in (1004,1003)
+     ) all_in_one WHERE ILI_INSPECTION_ID IN ({ILI_INSP_FILTER}) AND {FILTER}) sorted
+     WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}    </query>
+ </dbQuery>
+    </select>
+  </data>
+</root>

@@ -1,0 +1,44 @@
+<form class="smallExportDialogForm">
+    <div class="options choice">
+        <div class="labelField labelFieldGpx">
+            1. Выберите нужный функционал:<br/>
+        </div>
+        <ul class="optionChoice">
+            <li class="li">
+                <input type="radio" name="choice" checked id="radioExport" />
+                <label for="radioExport">Экспорт</label>
+            </li>
+            <li class="li">
+                <input type="radio" name="choice" id="radioImport" />
+                <label for="radioImport">Импорт</label>
+            </li>
+        </ul>
+    </div>
+    <div class="options optionsGpx">
+        <div class="labelField labelFieldGpx">
+            2. Выберите формат файла и кодировку:
+        </div>
+        <ul class="optionChoice">
+            <li class="li">
+                <input type="radio" name="inputRadio" checked id="radioGPX" />
+                <label for="radioGPX">GPX <p class="p">(Garmin MapSource)</p></label>
+            </li>
+            <li class="li">
+                <input type="radio" name="inputRadio" id="radioKML" />
+                <label for="radioKML">KML <p class="p">(Android, Google Earth)</p></label>
+            </li>
+        </ul>
+        <div class="option checkboxGpx">
+            <input type="checkbox" name="encode" id="encodingANSI">
+            <label for="encodingANSI">Кодировка ANSI</label>
+        </div>
+    </div>
+    <div class="labelField labelFieldGpx">
+        <p style="text-align: center;margin-top: 5px;">По умолчанию будет применена кодировка UTF-8.</p>
+        3. Далее Вам будет предложен выбор файла.
+    </div>
+    <div class="button buttonGpx">
+        <input type="button" class="map-dialog-button" name="export" id="dialogButton" value="Экспорт" >
+        <input type="button" class="map-dialog-button" name="cancel" value="Отмена">
+    </div>
+</form>

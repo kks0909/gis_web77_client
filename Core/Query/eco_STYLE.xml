@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<kml version="7.7.4.10">
+  <Document>
+    <Style table="1_ZONI_BOLOT" schema="ECO" id="1_ZONI_BOLOT" comment="1_ZONI_BOLOT" descr="1.Зоны болот" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF0dfef6</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>CC0dfef6</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="2_ZONI_EROZ" schema="ECO" id="2_ZONI_EROZ" comment="2_ZONI_EROZ" descr="2.Зоны эрозионных процессов на территориях, покрытых болотами" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF3cc66</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>CC33cc66</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="3_ZONI_RAZV" schema="ECO" id="3_ZONI_RAZV" comment="3_ZONI_RAZV" descr="3.Зоны развития геодинамических и связанных с ними гравитаций" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF822816</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FF822816</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="4_ZONI_GEOD" schema="ECO" id="4_ZONI_GEOD" comment="4_ZONI_GEOD" descr="4.Зоны геодинамических и связанных с ними эрозионных процессов" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF33cc66</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FF822816</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="5_ZONI_KOMP" schema="ECO" id="5_ZONI_KOMP" comment="5_ZONI_KOMP" descr="5.Зоны комплексной (антропогенной и природной) опасности" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFff0033</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FFff0033</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="7_ZONI_VOZM" schema="ECO" id="7_ZONI_VOZM" comment="7_ZONI_VOZM" descr="7.Зоны возможной просадки грунтов под воздействием ряда причин" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF7c7c7c</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FF7c7c7c</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="9_PREDPOLAG" schema="ECO" id="9_PREDPOLAG" comment="9_PREDPOLAG" descr="9.Предполагаемые разломы, активированные в настоящее время" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF8b6123</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FF8b6123</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="10_REPER" schema="ECO" id="10_REPER" comment="10_REPER" descr="10.Реперные точки контроля состояния береговой зоны" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <!-- форма объекта, если это не картинка. Допустимые значения: square|circle|triangle|star|cross|x -->
+          <form>square</form>
+          <!-- размер в пикселах. Положительное число. 16 по умолчанию -->
+		  <size>7</size>
+        </Icon>
+        <!-- цвет заливки, если не картинка. По-умолчанию черная непрозрачная. -->
+        <color>FF07e145</color>
+        <outline>0</outline>
+      </IconStyle>
+    </Style>
+    <Style table="11_REPER" schema="ECO" id="11_REPER" comment="11_REPER" descr="11.Реперные точки контроля заиления" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <!-- форма объекта, если это не картинка. Допустимые значения: square|circle|triangle|star|cross|x -->
+          <form>square</form>
+          <!-- размер в пикселах. Положительное число. 16 по умолчанию -->
+		  <size>7</size>
+        </Icon>
+        <!-- цвет заливки, если не картинка. По-умолчанию черная непрозрачная. -->
+        <color>FF028be6</color>
+        <outline>0</outline>
+      </IconStyle>
+    </Style>
+    <Style table="13_REPER" schema="ECO" id="13_REPER" comment="13_REPER" descr="13.Реперные точки в зоне возможного тектонического разлома" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <!-- форма объекта, если это не картинка. Допустимые значения: square|circle|triangle|star|cross|x -->
+          <form>square</form>
+          <!-- размер в пикселах. Положительное число. 16 по умолчанию -->
+		  <size>7</size>
+        </Icon>
+        <!-- цвет заливки, если не картинка. По-умолчанию черная непрозрачная. -->
+        <color>FFee0003</color>
+        <outline>0</outline>
+      </IconStyle>
+    </Style>
+    <Style table="14_REPER" schema="ECO" id="14_REPER" comment="14_REPER" descr="14.Реперные точки на склонах" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <!-- форма объекта, если это не картинка. Допустимые значения: square|circle|triangle|star|cross|x -->
+          <form>square</form>
+          <!-- размер в пикселах. Положительное число. 16 по умолчанию -->
+		  <size>7</size>
+        </Icon>
+        <!-- цвет заливки, если не картинка. По-умолчанию черная непрозрачная. -->
+        <color>FF822816</color>
+        <outline>0</outline>
+      </IconStyle>
+    </Style>
+    <Style table="15_TORFORAZ" schema="ECO" id="15_TORFORAZ" comment="15_TORFORAZ" descr="15.Торфоразработки" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <!-- форма объекта, если это не картинка. Допустимые значения: square|circle|triangle|star|cross|x -->
+          <form>square</form>
+          <!-- размер в пикселах. Положительное число. 16 по умолчанию -->
+		  <size>7</size>
+        </Icon>
+        <!-- цвет заливки, если не картинка. По-умолчанию черная непрозрачная. -->
+        <color>FFa7a7a7</color>
+        <outline>0</outline>
+      </IconStyle>
+    </Style>
+    <Style table="16_PERESECH" schema="ECO" id="16_PERESECH" comment="16_PERESECH" descr="16.Пересечение с линейными объектами" topology="2" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FFFFFFFF</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Style table="17_BEREGOV" schema="ECO" id="17_BEREGOV" comment="17_BEREGOV" descr="17.Береговые эрозионно-аккумулятивные процессы" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF74bded</color>
+        <width>2</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FFeface5</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="18_ABRAZION" schema="ECO" id="18_ABRAZION" comment="18_ABRAZION" descr="18.Абразионные-аккумулятивные процессы береговой зоны" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF172eff</color>
+        <width>2</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FF55d8ff</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="19_MALIE_VOD" schema="ECO" id="19_MALIE_VOD" comment="19_MALIE_VOD" descr="19.Малые водотоки" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <!-- форма объекта, если это не картинка. Допустимые значения: square|circle|triangle|star|cross|x -->
+          <form>square</form>
+          <!-- размер в пикселах. Положительное число. 16 по умолчанию -->
+		  <size>7</size>
+        </Icon>
+        <!-- цвет заливки, если не картинка. По-умолчанию черная непрозрачная. -->
+        <color>FF172eff</color>
+        <outline>0</outline>
+      </IconStyle>
+    </Style>
+	    <Style table="VIRUBKI_2020" schema="ECO" id="VIRUBKI_2020" comment="VIRUBKI_2020" descr="Вырубки 2020" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>80f5ea08</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+	    <Style table="VIRUBKI_2019" schema="ECO" id="VIRUBKI_2019" comment="VIRUBKI_2019" descr="Вырубки 2019" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>80b58844</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="VIRUBKI_2018" schema="ECO" id="VIRUBKI_2018" comment="VIRUBKI_2018" descr="Вырубки 2018" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FF9cf255</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="VIRUBKI_2017" schema="ECO" id="VIRUBKI_2017" comment="VIRUBKI_2017" descr="Вырубки 2017" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFf74904</color>
+        <width>2</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FFa80035</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="VIRUBKI_2016" schema="ECO" id="VIRUBKI_2016" comment="VIRUBKI_2016" descr="Вырубки 2016" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFf74904</color>
+        <width>2</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FFf72d04</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="VIRUBKI_2015" schema="ECO" id="VIRUBKI_2015" comment="VIRUBKI_2015" descr="Вырубки 2015" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFf74904</color>
+        <width>2</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FF85550c</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="VIRUBKI_2014" schema="ECO" id="VIRUBKI_2014" comment="VIRUBKI_2014" descr="Вырубки 2014" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFf74904</color>
+        <width>2</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FFb58844</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="VIRUBKI_2013" schema="ECO" id="VIRUBKI_2013" comment="VIRUBKI_2013" descr="Вырубки 2013" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFf74904</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FFf5ea08</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+	    <Style table="PODTOPL_2019" schema="ECO" id="PODTOPL_2019" comment="PODTOPL_2019" descr="Подтопления 2019" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <!-- форма объекта, если это не картинка. Допустимые значения: square|circle|triangle|star|cross|x -->
+          <form>square</form>
+          <!-- размер в пикселах. Положительное число. 16 по умолчанию -->
+		  <size>8</size>
+        </Icon>
+        <!-- цвет заливки, если не картинка. По-умолчанию черная непрозрачная. -->
+        <color>FF0000ff</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>
+    <Style table="PODTOPL_2017" schema="ECO" id="PODTOPL_2017" comment="PODTOPL_2017" descr="Подтопления 2017" topology="1" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <!-- форма объекта, если это не картинка. Допустимые значения: square|circle|triangle|star|cross|x -->
+          <form>square</form>
+          <!-- размер в пикселах. Положительное число. 16 по умолчанию -->
+		  <size>8</size>
+        </Icon>
+        <!-- цвет заливки, если не картинка. По-умолчанию черная непрозрачная. -->
+        <color>FF000000</color>
+        <outline>1</outline>
+      </IconStyle>
+    </Style>
+    <Style table="200_METERS_Z" schema="ECO" id="200_METERS_Z" comment="200_METERS_Z" descr="200-метровые зоны" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+	<pattern>
+          <dasharray>15 10 5 10</dasharray>
+          <join>bevel</join>
+	  <caps>square</caps>
+        </pattern>
+        <color>FFefa441</color>
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FFefa441</color>
+        <fill>0</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <Style table="10_KM_ZONE" schema="ECO" id="10_KM_ZONE" comment="10_KM_ZONE" descr="10-км зоны" topology="3" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+	<pattern>
+          <dasharray>15 10 5 10</dasharray>
+          <join>bevel</join>
+	  <caps>square</caps>
+        </pattern>
+        <color>FFf74904</color>
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>FFf74904</color>
+        <fill>0</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+	<Style table="CHECK_POINTS" schema="ECO" id="CHECK_POINTS" comment="CHECK_POINTS" descr="Контрольные пункты" topology="2" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Style table="CHECK_POINTS" schema="ECO" id="CHECK_POINTS" comment="Road" descr="Река" topology="2" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+	  <value>Road</value>
+      <LineStyle>
+        <color>FF3033de</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+	<Style table="CHECK_POINTS" schema="ECO" id="CHECK_POINTS" comment="River" descr="Дорога" topology="2" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+	  <value>River</value>
+      <LineStyle>
+        <color>FFe20e3c</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+	<Style table="CHECK_POINTS" schema="ECO" id="CHECK_POINTS" comment="Fork" descr="Развилка" topology="2" short_name="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+	  <value>Fork</value>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+
+</Document>
+</kml>

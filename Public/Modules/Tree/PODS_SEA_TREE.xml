@@ -1,0 +1,157 @@
+﻿<dataset name="МГ: Подводные трубопроводы" version="7.7.3.0">
+  <group comment="Команды">
+ <invoke id="gridToolModule" type="global" event_name="FULL_GRID_EVENT_ID_MODULE"
+				  tooltip="Показать списком"
+				  icon="Public/assets/GRID.png">
+	<!-- Общие параметры-->
+	<!-- имя функции открытия, если пустое, то всегда в новом окне -->
+	<var name="functionName" value=""/>
+	<!-- доп параметры открытия окна из windowsTemplates.xml -->
+	<var name="windowTemplateId" value="gridWindow"/>
+	<!-- Задача -->
+	<var name="task" value="GRID"/>
+<var name="mdl" value="Public/SWF/Grid_55.swf"/>
+	<!-- Необходимо ли в команды передавать фильтр верхнего уровня -->
+	<var name="needTopFilter" value="true"/>
+	<!-- Флаг указывает, всегда ли открывать в новом окне или можно использовать команды синхронизации -->
+	<var name="useSynchCommands" value="false"/>
+	<!-- шаблон грида -->
+	<var name="gridId" value=""/>
+	<!-- заголовок грида -->
+	<var name="title" value=""/>
+	<!-- полный идентификатор слоя -->
+	<var name="layerId" value=""/>
+</invoke>
+    <invoke id="showGrid" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="exportToExcel" type="global" event_name="exportToExcelFromTree" tooltip="Экспорт в Excel" icon="Public/assets/excel.png">
+      <var name="dataRequestId" value="" />
+</invoke>
+<invoke id="createNewObject" type="global" event_name="createObjectFromTree" tooltip="Добавить запись" icon="Public/assets/addObject.png">
+      <var name="classId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="checkBoxTool" type="global" event_name="checkBoxEvent" tooltip="Вкл/Выкл видимость слоя">
+      <var layerParams="" />
+    </invoke>
+  </group>
+  <tree max_items="20" toolbarStyle="toolbarStyle" toolbarButtonStyle="mapIcon">
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_SEA_Layers.xml#PODS_FAIRING;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_FAIRING" FILE_NAME="PODS_SEA_STYLE.xml" />
+      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_FAIRING" />
+<context_menu run_invoke="createNewObject" classId="PODS_FAIRING"/>
+
+
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_FAIRING;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_FAIRING;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_SEA_STYLE.xml" />
+      </level>
+    </level>
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_SEA_Layers.xml#PODS_STRAKE;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STRAKE" FILE_NAME="PODS_SEA_STYLE.xml" />
+      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_STRAKE" />
+<context_menu run_invoke="createNewObject" classId="PODS_STRAKE"/>
+
+
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STRAKE;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STRAKE;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_SEA_STYLE.xml" />
+      </level>
+    </level>
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_SEA_Layers.xml#PODS_COLLAR;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_COLLAR" FILE_NAME="PODS_SEA_STYLE.xml" />
+      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_COLLAR" />
+<context_menu run_invoke="createNewObject" classId="PODS_COLLAR"/>
+
+
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_COLLAR;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_COLLAR;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_SEA_STYLE.xml" />
+      </level>
+    </level>
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_SEA_Layers.xml#PODS_UMBILICAL;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_UMBILICAL" FILE_NAME="PODS_SEA_STYLE.xml" />
+      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_UMBILICAL" />
+<context_menu run_invoke="createNewObject" classId="PODS_UMBILICAL"/>
+
+
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_UMBILICAL;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_UMBILICAL;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_SEA_STYLE.xml" />
+      </level>
+    </level>
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_SEA_Layers.xml#PODS_SUBSEA_SLED_ASSEMBLY;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_SUBSEA_SLED_ASSEMBLY" FILE_NAME="PODS_SEA_STYLE.xml" />
+      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_SUBSEA_SLED_ASSEMBLY" />
+<context_menu run_invoke="createNewObject" classId="PODS_SUBSEA_SLED_ASSEMBLY"/>
+
+
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_SUBSEA_SLED_ASSEMBLY;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_SUBSEA_SLED_ASSEMBLY;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_SEA_STYLE.xml" />
+      </level>
+    </level>
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_SEA_Layers.xml#PODS_OFFSHORE_RISER;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_OFFSHORE_RISER" FILE_NAME="PODS_SEA_STYLE.xml" />
+      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_OFFSHORE_RISER" />
+<context_menu run_invoke="createNewObject" classId="PODS_OFFSHORE_RISER"/>
+
+
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_OFFSHORE_RISER;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_OFFSHORE_RISER;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_SEA_STYLE.xml" />
+      </level>
+    </level>
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_SEA_Layers.xml#PODS_STABILIZATION;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_STABILIZATION" FILE_NAME="PODS_SEA_STYLE.xml" />
+      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_STABILIZATION" />
+<context_menu run_invoke="createNewObject" classId="PODS_STABILIZATION"/>
+
+
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_STABILIZATION;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_STABILIZATION;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_SEA_STYLE.xml" />
+      </level>
+    </level>
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_SEA_Layers.xml#PODS_TAPERED_STRESS_JOINT;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_TAPERED_STRESS_JOINT" FILE_NAME="PODS_SEA_STYLE.xml" />
+      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_TAPERED_STRESS_JOINT" />
+<context_menu run_invoke="createNewObject" classId="PODS_TAPERED_STRESS_JOINT"/>
+
+
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_TAPERED_STRESS_JOINT;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_TAPERED_STRESS_JOINT;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_SEA_STYLE.xml" />
+      </level>
+    </level>
+    <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_SEA_Layers.xml#PODS_COLLET_CONNECTOR;">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_COLLET_CONNECTOR" FILE_NAME="PODS_SEA_STYLE.xml" />
+      <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+      <context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_COLLET_CONNECTOR" />
+<context_menu run_invoke="createNewObject" classId="PODS_COLLET_CONNECTOR"/>
+
+
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_COLLET_CONNECTOR;" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_COLLET_CONNECTOR;" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_SEA_STYLE.xml" />
+      </level>
+    </level>
+  </tree>
+</dataset>

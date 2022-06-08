@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<kml version="7.7.3.0">
+  <Document>
+    <Style id="SELECT_OFFLINE" comment="Подстветка вдольтрассовых объектов">
+	<zoomMin>NAN</zoomMin>
+	<zoomMax>NAN</zoomMax>
+	<IconStyle>
+		<Icon>
+			<form>circle</form>
+			<size>4</size>
+		</Icon>
+		<color>FFFF0000</color>
+		<outline>1</outline>
+	</IconStyle>
+	<LineStyle>
+		<color>FF000000</color>
+		<width>1</width>
+	</LineStyle>
+    </Style>
+    <Style id="SELECT_ROUTE" comment="Подсветка участков">
+      <!-- value></value -->
+      <zoomMin>NAN</zoomMin>
+      <zoomMax>NAN</zoomMax>
+      <LineStyle>
+        <color>FF18FF38</color>
+        <width>3</width>
+      </LineStyle>
+    </Style>
+    <Style id="SELECT_SITE" comment="Посветка SITE">
+	<!-- value></value -->
+	<zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FFFF0000</color>
+        <width>2</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FFFFFFFF</color>
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>00000000</color>
+        <fill>1</fill>
+        <outline>1</outline>
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+  </Document>
+</kml>

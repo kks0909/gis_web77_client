@@ -1,0 +1,53 @@
+<!-- Диагностика и ремонт водных переходов -->
+<dataset name=" " version="7.7.6.0">
+  <group comment="Команды">
+	<!-- Вызов без сообщения о чистке карты и грида-->
+	  <invoke id="gridToolModuleWoFilter" type="global" event_name="FULL_GRID_EVENT_ID_MODULE"
+				  tooltip="Показать списком"
+				  icon="Public/assets/GRID.png">
+		  <!-- Общие параметры-->
+		  <!-- имя функции открытия, если пустое, то всегда в новом окне -->
+		  <var name="functionName" value=""/>
+		  <!-- доп параметры открытия окна из windowsTemplates.xml -->
+		  <var name="windowTemplateId" value="gridWindow"/>
+		  <!-- Задача -->
+		  <var name="task" value="GRID"/>
+		  <!-- Необходимо ли в команды передавать фильтр верхнего уровня -->
+		  <var name="needTopFilter" value="true"/>
+		  <!-- Флаг указывает, всегда ли открывать в новом окне или можно использовать команды синхронизации -->
+		  <var name="useSynchCommands" value="false"/>
+		  <!-- шаблон грида -->
+		  <var name="gridId" value=""/>
+		  <!-- заголовок грида -->
+		  <var name="title" value=""/>
+		  <!-- полный идентификатор слоя -->
+		  <var name="layerId" value=""/>
+	  </invoke>
+	<invoke id="createNewObject" type="global" event_name="createObjectFromTree" tooltip="Добавить запись" icon="Public/assets/addObject.png">
+      <var name="classId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="checkBoxTool" type="global" event_name="checkBoxEvent" tooltip="Вкл/Выкл видимость слоя">
+      <var layerParams="" />
+    </invoke>
+  </group>
+	<tree max_items="20" toolbarStyle="toolbarStyle" toolbarButtonStyle="mapIcon">       
+	    <level format="Реки" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=WATERWAY_Layers.xml#WATERWAY;">
+		    <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WATERWAY" FILE_NAME="WATERWAY_STYLE.xml" />
+		    <context_menu run_invoke="gridToolModuleWoFilter" title="{descr}" gridId="WATERWAY" />		    
+		    <on_check run_invoke="checkBoxTool" layerParams="layerId=WATERWAY;" />
+	      	<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WATERWAY;" />
+	      	<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="WATERWAY_STYLE.xml" />
+        </level>
+   		</level>
+	    <level format="Водные переходы" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=WATERWAY_Layers.xml#WATERWAY_CROSS;">
+		    <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WATERWAY_CROSS" FILE_NAME="WATERWAY_STYLE.xml" />
+		    <context_menu run_invoke="gridToolModuleWoFilter" title="{descr}" gridId="WATERWAY_CROSS" />
+		    <on_check run_invoke="checkBoxTool" layerParams="layerId=WATERWAY_CROSS;" />
+	      	<on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WATERWAY_CROSS;" />
+	      	<level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="WATERWAY_STYLE.xml" />
+        </level>
+   		</level>
+ </tree>
+</dataset>

@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root version="6.1.6.0">
+	<layer id="MixedTiles" type="gis.map.layer.OSMMultiLayer">
+		<name>Карта</name>
+		<isBaseLayer>true</isBaseLayer>
+		<visible>true</visible>
+		<projection>EPSG:900913</projection>
+		<proxy></proxy>
+		<properties>
+			<showInfo>true</showInfo>
+			<layers>M_100;M_200;M_1K;M_R;M_W</layers>
+			<zoomLevels>22</zoomLevels>
+		</properties>
+		<urls>
+			<url extension=".png" useInterimTilesOnError="true">{SERVER}/tiletrees/Default/</url>
+		</urls>
+		
+	</layer>
+	<layer id="RosMap" type="gis.map.layer.RosLayer">
+ 		<name>Карта по масштабам</name>
+ 		<url>WmsServicePage.aspx/WmsOperation</url>
+ 		<isBaseLayer>true</isBaseLayer>
+ 		<visible>true</visible>
+ 		<projection>EPSG:900913</projection>
+ 		<properties>
+ 		<showInfo>true</showInfo>
+ 		<layers>M_100;M_200;M_1K;M_R;M_W</layers>
+ 		</properties>
+ 	</layer>
+		<layer id="KADASTR" type="gis.map.layer.OSMMultiLayer">
+		<name>Росреестр (Кадастр)</name>
+		<isBaseLayer>true</isBaseLayer>
+		<visible>true</visible>
+		<projection>EPSG:900913</projection>
+		<proxy></proxy>
+		<properties>
+			<showInfo>true</showInfo>
+			<layers>M_100;M_200;M_1K;M_R;M_W</layers>
+			<zoomLevels>19</zoomLevels>
+		</properties>
+		<urls>
+			
+			<url extension=".png">{SERVER}/tiletrees/RosReestrWms/</url>
+		</urls>
+	</layer>
+	<layer id="OSMapnikLayer" type="gis.map.layer.OSMMultiLayer">
+		<name>OpenStreetMap</name>
+		<isBaseLayer>true</isBaseLayer>
+		<visible>true</visible>
+		<projection>EPSG:900913</projection>
+		<proxy></proxy>
+		<properties>
+			<showInfo>true</showInfo>
+			<layers>M_100;M_200;M_1K;M_R;M_W</layers>
+			<zoomLevels>19</zoomLevels>
+		</properties>
+		<urls>
+			<url extension=".png">{SERVER}/tiletrees/OsmWms/</url>
+			
+		</urls>
+	</layer>
+	
+	<extlayer id="KADASTR_INT" type="gis.map.layer.ExtMultiLayer">
+		<name>Росреестр (Кадастр) с бланками (Требуется интернет)</name>
+		<layer id="MixedTiles_Default" type="gis.map.layer.OSMMultiLayer">
+			<name>Карта</name>
+			<isBaseLayer>true</isBaseLayer>
+			<visible>true</visible>
+			<projection>EPSG:900913</projection>
+			<proxy></proxy>
+			<properties>
+				<showInfo>true</showInfo>
+				<layers>M_1;M_5;M_10;M_25;M_100;M_200;M_1K;M_R;M_W</layers>
+				<zoomLevels>19</zoomLevels>
+			</properties>
+			<urls>
+				<url extension=".png" opacity="0.5" useInterimTilesOnError="true">{SERVER}/tiletrees/Default/</url>
+			</urls>
+		</layer>
+		<layer id="KADASTR_INTERNAL" type="gis.map.layer.WMSCadastre">
+			<name>Росреестр (Кадастр) с бланками (Требуется интернет)</name>
+			<url>http://pkk5.rosreestr.ru/arcgis/services/Cadastre/CadastreWMS/MapServer/WMSServer?</url>
+			<restURL>http://pkk5.rosreestr.ru/arcgis/rest/services/Cadastre/Cadastre/MapServer/export?</restURL>
+			<zouitURL>http://pkk5.rosreestr.ru/arcgis/rest/services/Cadastre/ZONES/MapServer/export?layers=show:4</zouitURL>
+			<properties>
+				<showInfo>true</showInfo>
+				<layers>CADASTRE</layers>
+				<zoomLevels>19</zoomLevels>
+			</properties>
+			<layers>4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19</layers>
+			<styles>default,default,default,default,default,default,default,default,default,default,default,default,default,default,default,default</styles>
+			<isBaseLayer>false</isBaseLayer>
+			<visible>false</visible>
+			<projection>EPSG:900913</projection>
+			<proxy></proxy>
+		</layer>
+		
+	</extlayer>
+</root>

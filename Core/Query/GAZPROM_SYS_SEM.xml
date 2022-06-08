@@ -1,0 +1,4123 @@
+﻿<root version="postgres 7.7.7.3">
+  <data id="GET_CAS_INSPECTION_DESCR" comment="Запрос на получение названия и даты обследования по идентификатору обследования">
+     <select>
+      <dbQuery idField="ID">
+        <var name="ID" type="Int64" direction="Input" />
+        <query>
+          select r.comments || ' км., '|| to_char(ii.begin_date,'DD.MM.YYYY') as DESCR from pods.ili_inspection ii,
+    pods.ili_inspection_range r,
+    pods.event_range e,
+          pods.station_point s where 
+      ii.ili_inspection_id=r.ili_inspection_id and r.event_id=e.event_id and e.station_id_begin=s.station_id and 
+      exists (select 1 from PODS.STO_EHZ_CALC v where v.ili_inspection_id=r.ili_inspection_id)
+      and s.route_id IN
+      (select si.route_id from pods.event_range ei, pods.station_point si where ei.event_id={ID} and ei.station_id_begin=si.station_id)
+      order by ii.begin_date desc limit 1
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+
+  <data id="GET_CAS_FILTER" comment="Запрос на получение содержимого тега по идентификатору">
+    <select>
+      <xmlQuery source="{file}" xpath="//layer[@id='{data_id}']">
+		  <var name="file"/>
+		  <var name="data_id"/>
+	  </xmlQuery>
+    </select>
+  </data>
+  <data id="GET_IUST_DICT" comment="Запрос на получение справочников для ИУСТ">
+    <select>
+      <xmlQuery source="IUST_SEM_DICT.xml" xpath="//data[@id='{data_id}']/select/data">
+		  <var name="file"/>
+		  <var name="data_id"/>
+	  </xmlQuery>
+    </select>
+  </data>
+  <!-- Запросы для работы со вкладками "Группы" (отдельно для EVENT_ID, OFFLINE_ID) -->
+  <data id="PODS_OBJECT_EVENT_ID" comment="Запрос для получения EVENT_ID объекта (учитывает объекты, у которых ПК не EVENT_ID)">
+    <select>
+      <dbQuery idField="ID">
+        <var name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <var name="SYS_CLASS_ID" type="String" direction="Input" />
+        <var name="DB_SCHEMA_ID" type="String" default="DB_SCHEMA_ID"/>
+        <var name="DB_TABLE_ID" type="String" default="DB_TABLE_ID"/>
+        <query>
+			SELECT  CASE '{SYS_CLASS_ID}'
+			WHEN 'PODS_ILI_DATA' THEN (SELECT EVENT_ID FROM PODS.ILI_DATA WHERE ILI_DATA_ID= {SYS_OBJ_ID})
+			WHEN 'PODS_ILI_INSPECTION_RANGE' THEN (SELECT EVENT_ID FROM PODS.ILI_INSPECTION_RANGE WHERE ILI_INSPECTION_RANGE_ID={SYS_OBJ_ID})
+			ELSE (SELECT tbl.EVENT_ID FROM {DB_SCHEMA_ID}.{DB_TABLE_ID} tbl JOIN PODS.EVENT_RANGE er on er.EVENT_ID={SYS_OBJ_ID} AND er.CURRENT_INDICATOR_LF='Y' WHERE tbl.EVENT_ID={SYS_OBJ_ID})
+			END
+			AS EVENT_ID
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="PODS_OBJECT_OFFLINE_ID" comment="Запрос для получения OFFLINE_ID объекта, если у него есть проекция в OFFLINE_CROSS_REF">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+			SELECT ocr.OFFLINE_ID FROM PODS.OFFLINE_CROSS_REF ocr WHERE ocr.OFFLINE_ID=:SYS_OBJ_ID
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="PODS_GROUP_LIST_CHILD_GROUPS_EVENT" comment="Запрос для получения списка дочерних групп объекта с EVENT_ID, вставки связи объекта как родительского для группы, удаления группы и всех связей на нее">
+    <select>
+      <dbQuery idField="ID">
+        <param name="EVENT_ID" type="Int64" direction="Input" />
+        <query>
+			SELECT eg.GROUP_NAME,eg.EVENT_GROUP_ID FROM PODS.EVENT_GROUP_CROSS_REF egcr
+			JOIN PODS.EVENT_GROUP eg on egcr.EVENT_GROUP_ID=eg.EVENT_GROUP_ID
+			JOIN PODS.EVENT_RANGE er on er.EVENT_ID=:EVENT_ID AND er.CURRENT_INDICATOR_LF='Y'
+			WHERE egcr.EVENT_ID=:EVENT_ID AND egcr.DESCRIPTION = '1'
+			ORDER BY eg.GROUP_NAME
+		</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+        <param name="EVENT_ID" type="Int64" direction="Input" />
+        <param name="EVENT_GROUP_ID" type="Int64" direction="Input" />
+        <query>			
+			INSERT INTO PODS.EVENT_GROUP_CROSS_REF (EVENT_ID,EVENT_GROUP_ID,EVENT_GUID,EVENT_GROUP_GUID,DESCRIPTION,COMMENTS)
+			VALUES(:EVENT_ID,:EVENT_GROUP_ID,NULL,NULL,'1',NULL)
+		</query>
+      </dbCommand>
+    </insert>
+    <delete>
+      <dbCommand>
+        <var name="EVENT_GROUP_ID" type="Int64" direction="Input" />
+        <query>	
+			DO $$
+			BEGIN
+			DELETE FROM PODS.EVENT_GROUP_CROSS_REF WHERE EVENT_GROUP_ID = {EVENT_GROUP_ID};
+			DELETE FROM PODS.EVENT_GROUP WHERE EVENT_GROUP_ID = {EVENT_GROUP_ID};
+			END $$;
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="PODS_GROUP_LIST_PARENT_GROUPS_EVENT" comment="Запрос для получения списка родительских групп объекта с EVENT_ID, вставки связи объекта как дочернего для группы, удаления связи объекта на группу">
+    <select>
+      <dbQuery idField="ID">
+        <param name="EVENT_ID" type="Int64" direction="Input" />
+        <query>
+			SELECT eg.GROUP_NAME,eg.EVENT_GROUP_ID FROM PODS.EVENT_GROUP_CROSS_REF egcr
+			JOIN PODS.EVENT_GROUP eg on egcr.EVENT_GROUP_ID=eg.EVENT_GROUP_ID
+			JOIN PODS.EVENT_GROUP_CROSS_REF egcr2 ON eg.EVENT_GROUP_ID=egcr2.EVENT_GROUP_ID
+			JOIN PODS.EVENT_RANGE er2 ON egcr2.EVENT_ID = er2.EVENT_ID AND egcr2.DESCRIPTION = '1' AND er2.CURRENT_INDICATOR_LF='Y'
+			WHERE egcr.EVENT_ID=:EVENT_ID AND egcr.DESCRIPTION = '0'
+			ORDER BY eg.GROUP_NAME
+		</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+        <param name="EVENT_ID" type="Int64" direction="Input" />
+        <param name="EVENT_GROUP_ID" type="Int64" direction="Input" />
+        <query>
+			INSERT INTO PODS.EVENT_GROUP_CROSS_REF (EVENT_ID,EVENT_GROUP_ID,EVENT_GUID,EVENT_GROUP_GUID,DESCRIPTION,COMMENTS)
+			VALUES(:EVENT_ID,:EVENT_GROUP_ID,NULL,NULL,'0',NULL)
+		</query>
+      </dbCommand>
+    </insert>
+    <delete>
+      <dbCommand>
+        <param name="EVENT_ID" type="Int64" direction="Input" />
+        <param name="EVENT_GROUP_ID" type="Int64" direction="Input" />
+        <query>
+			DELETE FROM PODS.EVENT_GROUP_CROSS_REF WHERE EVENT_ID=:EVENT_ID AND EVENT_GROUP_ID = :EVENT_GROUP_ID
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="PODS_GROUP_LIST_CHILD_GROUPS_OFFLINE" comment="Запрос для получения списка дочерних групп объекта с OFFLINE_ID, вставки связи объекта как родительского для группы, удаления группы и всех связей на нее">
+    <select>
+      <dbQuery idField="ID">
+        <param name="OFFLINE_ID" type="Int64" direction="Input" />
+        <query>
+			SELECT eg.GROUP_NAME,eg.EVENT_GROUP_ID  FROM PODS.EVENT_GROUP_CROSS_REF egcr
+			JOIN PODS.EVENT_GROUP eg on egcr.EVENT_GROUP_ID=eg.EVENT_GROUP_ID
+			JOIN PODS.EVENT_RANGE er on er.EVENT_ID=egcr.EVENT_ID AND er.CURRENT_INDICATOR_LF='Y'
+			JOIN PODS.OFFLINE_CROSS_REF ocr on egcr.EVENT_ID=ocr.EVENT_ID
+			WHERE ocr.OFFLINE_ID=:OFFLINE_ID AND egcr.DESCRIPTION = '1'
+			ORDER BY eg.GROUP_NAME
+		</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+        <param name="OFFLINE_ID" type="Int64" direction="Input" />
+        <param name="EVENT_GROUP_ID" type="Int64" direction="Input" />
+        <query>
+			INSERT INTO PODS.EVENT_GROUP_CROSS_REF (EVENT_ID,EVENT_GROUP_ID,EVENT_GUID,EVENT_GROUP_GUID,DESCRIPTION,COMMENTS)
+			VALUES((SELECT EVENT_ID FROM PODS.OFFLINE_CROSS_REF WHERE OFFLINE_ID=:OFFLINE_ID),:EVENT_GROUP_ID,NULL,NULL,'1',NULL)
+		</query>
+      </dbCommand>
+    </insert>
+    <delete>
+      <dbCommand>
+        <var name="EVENT_GROUP_ID" type="Int64" direction="Input" />
+        <query>
+		DO $$
+			BEGIN
+			DELETE FROM PODS.EVENT_GROUP_CROSS_REF WHERE EVENT_GROUP_ID = {EVENT_GROUP_ID};
+			DELETE FROM PODS.EVENT_GROUP WHERE EVENT_GROUP_ID = {EVENT_GROUP_ID};
+			END $$;
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="PODS_GROUP_LIST_PARENT_GROUPS_OFFLINE" comment="Запрос для получения списка родительских групп объекта с OFFLINE_IDвставки связи объекта как дочернего для группы, удаления связи объекта на группу">
+    <select>
+      <dbQuery idField="ID">
+        <param name="OFFLINE_ID" type="Int64" direction="Input" />
+        <query>
+			SELECT eg.GROUP_NAME,eg.EVENT_GROUP_ID  FROM PODS.EVENT_GROUP_CROSS_REF egcr
+			JOIN PODS.EVENT_GROUP eg on egcr.EVENT_GROUP_ID=eg.EVENT_GROUP_ID
+			JOIN PODS.OFFLINE_CROSS_REF ocr on egcr.EVENT_ID=ocr.EVENT_ID
+			JOIN PODS.EVENT_GROUP_CROSS_REF egcr2 ON eg.EVENT_GROUP_ID=egcr2.EVENT_GROUP_ID
+			JOIN PODS.EVENT_RANGE er2 ON egcr2.EVENT_ID = er2.EVENT_ID AND egcr2.DESCRIPTION = '1' AND er2.CURRENT_INDICATOR_LF='Y'
+			WHERE ocr.OFFLINE_ID=:OFFLINE_ID AND egcr.DESCRIPTION = '0'
+			ORDER BY eg.GROUP_NAME
+		</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+        <param name="OFFLINE_ID" type="Int64" direction="Input" />
+        <param name="EVENT_GROUP_ID" type="Int64" direction="Input" />
+        <query>
+			INSERT INTO PODS.EVENT_GROUP_CROSS_REF (EVENT_ID,EVENT_GROUP_ID,EVENT_GUID,EVENT_GROUP_GUID,DESCRIPTION,COMMENTS)
+			VALUES((SELECT EVENT_ID FROM PODS.OFFLINE_CROSS_REF WHERE OFFLINE_ID=:OFFLINE_ID),:EVENT_GROUP_ID,NULL,NULL,'0',NULL)
+		</query>
+      </dbCommand>
+    </insert>
+    <delete>
+      <dbCommand>
+        <param name="OFFLINE_ID" type="Int64" direction="Input" />
+        <param name="EVENT_GROUP_ID" type="Int64" direction="Input" />
+        <query>
+			DELETE FROM PODS.EVENT_GROUP_CROSS_REF
+			WHERE EVENT_ID=(SELECT EVENT_ID FROM PODS.OFFLINE_CROSS_REF WHERE OFFLINE_ID=:OFFLINE_ID) AND EVENT_GROUP_ID = :EVENT_GROUP_ID
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="PODS_GROUP_LIST_OBJECTS_IN_GROUP_EVENT" comment="Запрос для получения списка дочерних объектов группы по ее EVENT_GROUP_ID для EVENT_ID">
+    <select>
+      <dbQuery idField="ID">
+        <param name="EVENT_GROUP_ID" type="Int64" direction="Input" />
+        <query>
+			SELECT egcr.EVENT_ID AS ID,egcr.COMMENTS AS DESCR,pt.TABLE_NAME AS TABLE_NAME,pt.DESCRIPTION AS TABLE_DESCR FROM PODS.EVENT_GROUP_CROSS_REF egcr
+			JOIN PODS.EVENT_GROUP eg ON egcr.EVENT_GROUP_ID = eg.EVENT_GROUP_ID
+			JOIN PODS.EVENT_RANGE er ON egcr.EVENT_ID = er.EVENT_ID AND er.CURRENT_INDICATOR_LF='Y'
+			JOIN PODS.FEATURE_TABLE pt ON pt.FEATURE_ID = er.FEATURE_ID
+			WHERE eg.EVENT_GROUP_ID = :EVENT_GROUP_ID AND egcr.DESCRIPTION = '0' AND er.CURRENT_INDICATOR_LF='Y'
+			UNION ALL
+			SELECT oe.OFFLINE_ID AS ID,egcr.COMMENTS AS DESCR,oft.TABLE_NAME AS TABLE_NAME,oft.DESCRIPTION AS TABLE_DESCR FROM PODS.EVENT_GROUP_CROSS_REF egcr
+			JOIN PODS.EVENT_GROUP eg ON egcr.EVENT_GROUP_ID = eg.EVENT_GROUP_ID
+			JOIN PODS.EVENT_RANGE er ON egcr.EVENT_ID = er.EVENT_ID AND er.CURRENT_INDICATOR_LF='Y'
+			JOIN PODS.OFFLINE_CROSS_REF ocr ON egcr.EVENT_ID = ocr.EVENT_ID
+			JOIN PODS.OFFLINE_EVENT oe ON oe.OFFLINE_ID = ocr.OFFLINE_ID
+			JOIN PODS.OFFLINE_FEATURE oft ON oft.FEATURE_ID = oe.FEATURE_ID
+			WHERE eg.EVENT_GROUP_ID = :EVENT_GROUP_ID AND egcr.DESCRIPTION = '0' AND er.CURRENT_INDICATOR_LF='Y'
+			ORDER BY 2, 3
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="PODS_GROUP_LIST_OBJECTS_IN_GROUP_OFFLINE" comment="Запрос для получения списка дочерних объектов группы по ее EVENT_GROUP_ID для OFFLINE_ID">
+    <select>
+      <dbQuery idField="ID">
+        <param name="EVENT_GROUP_ID" type="Int64" direction="Input" />
+        <query>
+			SELECT egcr.EVENT_ID AS ID,egcr.COMMENTS AS DESCR,pt.TABLE_NAME AS TABLE_NAME,pt.DESCRIPTION AS TABLE_DESCR FROM PODS.EVENT_GROUP_CROSS_REF egcr
+			JOIN PODS.EVENT_GROUP eg ON egcr.EVENT_GROUP_ID = eg.EVENT_GROUP_ID
+			JOIN PODS.EVENT_RANGE er ON egcr.EVENT_ID = er.EVENT_ID AND er.CURRENT_INDICATOR_LF='Y'
+			JOIN PODS.FEATURE_TABLE pt ON pt.FEATURE_ID = er.FEATURE_ID
+			WHERE eg.EVENT_GROUP_ID = :EVENT_GROUP_ID AND egcr.DESCRIPTION = '0' AND er.CURRENT_INDICATOR_LF='Y'
+			UNION ALL
+			SELECT oe.OFFLINE_ID AS ID,egcr.COMMENTS AS DESCR,oft.TABLE_NAME AS TABLE_NAME,oft.DESCRIPTION AS TABLE_DESCR FROM PODS.EVENT_GROUP_CROSS_REF egcr
+			JOIN PODS.EVENT_GROUP eg ON egcr.EVENT_GROUP_ID = eg.EVENT_GROUP_ID
+			JOIN PODS.EVENT_RANGE er ON egcr.EVENT_ID = er.EVENT_ID AND er.CURRENT_INDICATOR_LF='Y'
+			JOIN PODS.OFFLINE_CROSS_REF ocr ON egcr.EVENT_ID = ocr.EVENT_ID
+			JOIN PODS.OFFLINE_EVENT oe ON oe.OFFLINE_ID = ocr.OFFLINE_ID
+			JOIN PODS.OFFLINE_FEATURE oft ON oft.FEATURE_ID = oe.FEATURE_ID
+			WHERE eg.EVENT_GROUP_ID = :EVENT_GROUP_ID AND egcr.DESCRIPTION = '0' AND er.CURRENT_INDICATOR_LF='Y'
+			ORDER BY 2, 3
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="PODS_GROUP_LIST_GROUP_PARENT_OBJECT" comment="Запрос для получения родительского для группы объекта по ее EVENT_GROUP_ID, удаления из группы">
+    <select>
+      <dbQuery idField="ID">
+        <param name="EVENT_GROUP_ID" type="Int64" direction="Input" />
+        <query>
+			SELECT * FROM (
+			SELECT egcr.EVENT_ID AS ID,egcr.COMMENTS AS DESCR,pt.TABLE_NAME AS TABLE_NAME,pt.DESCRIPTION AS TABLE_DESCR FROM PODS.EVENT_GROUP_CROSS_REF egcr
+			JOIN PODS.EVENT_RANGE er ON egcr.EVENT_ID = er.EVENT_ID AND er.CURRENT_INDICATOR_LF='Y'
+			JOIN PODS.FEATURE_TABLE pt ON pt.FEATURE_ID = er.FEATURE_ID
+			WHERE egcr.EVENT_GROUP_ID = :EVENT_GROUP_ID AND egcr.DESCRIPTION = '1' AND er.CURRENT_INDICATOR_LF='Y'
+			UNION ALL
+			SELECT oe.OFFLINE_ID AS ID,egcr.COMMENTS AS DESCR,oft.TABLE_NAME AS TABLE_NAME,oft.DESCRIPTION AS TABLE_DESCR FROM PODS.EVENT_GROUP_CROSS_REF egcr
+			JOIN PODS.EVENT_RANGE er ON egcr.EVENT_ID = er.EVENT_ID AND er.CURRENT_INDICATOR_LF='Y'
+			JOIN PODS.OFFLINE_CROSS_REF ocr ON egcr.EVENT_ID = ocr.EVENT_ID
+			JOIN PODS.OFFLINE_EVENT oe ON oe.OFFLINE_ID = ocr.OFFLINE_ID
+			JOIN PODS.OFFLINE_FEATURE oft ON oft.FEATURE_ID = oe.FEATURE_ID
+			WHERE egcr.EVENT_GROUP_ID = :EVENT_GROUP_ID AND egcr.DESCRIPTION = '1' AND er.CURRENT_INDICATOR_LF='Y'
+			ORDER BY 1, 2
+			) d LIMIT 1
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запросы для редактирования и создания группы -->
+  <data id="PODS_EVENT_GROUP" comment="PODS.EVENT_GROUP" schema="PODS" table="EVENT_GROUP">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+			SELECT
+			GROUP_NAME
+			,PARENT_EVENT_GROUP_ID
+			,EVENT_GROUP_ID
+			FROM PODS.EVENT_GROUP WHERE EVENT_GROUP_ID = :SYS_OBJ_ID
+		</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output"  default="SELECT max(EVENT_GROUP_ID) id FROM PODS.EVENT_GROUP" />
+        <param name="GROUP_NAME" type="String" direction="Input" />
+        <param name="PARENT_EVENT_GROUP_ID" type="Int64" direction="Input" />
+        <query>
+			INSERT INTO PODS.EVENT_GROUP(
+			GROUP_NAME
+			,PARENT_EVENT_GROUP_ID
+			)
+			VALUES(
+			:GROUP_NAME
+			,:PARENT_EVENT_GROUP_ID
+			)
+		</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="GROUP_NAME" type="String" direction="Input" />
+        <param name="PARENT_EVENT_GROUP_ID" type="Int64" direction="Input" />
+        <param name="EVENT_GROUP_ID" type="Int64" direction="Input" />
+        <query>			
+			UPDATE PODS.EVENT_GROUP
+			SET
+			GROUP_NAME = :GROUP_NAME
+			,PARENT_EVENT_GROUP_ID = :PARENT_EVENT_GROUP_ID
+			WHERE EVENT_GROUP_ID = :EVENT_GROUP_ID		
+		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запрос для получения списка всех групп из PODS.EVENT_GROUP (нужен для формы выбора группы, в которую включать объект) -->
+  <data id="PODS_EVENT_GROUPS_LIST" comment="PODS.EVENT_GROUP" schema="PODS" table="EVENT_GROUP">
+    <select>
+      <dbQuery idField="ID">
+        <query>SELECT EVENT_GROUP_ID AS CODE, GROUP_NAME AS DESCR FROM PODS.EVENT_GROUP ORDER BY DESCR</query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запросы для работы со вкладкой "комментарии" -->
+  <data id="PODS_COMMENT_LIST" comment="Запрос для получения списка комментариев и удаления комментария">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <param name="DB_TABLE_ID" type="String" direction="Input" />
+        <query>SELECT a.COMMENTS_ID,a.TABLE_ID,a.ID,a.COMMENTS,a.COMMENT_BY,a.CREATE_DATE FROM PODS.COMMENTS a JOIN PODS.PODS_TABLE b ON a.TABLE_ID=b.TABLE_ID WHERE a.ID=(:SYS_OBJ_ID)::text and b.TABLE_NAME=:DB_TABLE_ID
+		</query>
+      </dbQuery>
+    </select>
+    <delete>
+      <dbCommand>
+        <param name="COMMENTS_ID" type="Int64" direction="Input" />
+        <query>
+		DELETE FROM PODS.COMMENTS WHERE COMMENTS_ID=:COMMENTS_ID
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="PODS_COMMENTS" comment="PODS.COMMENTS" schema="PODS" table="COMMENTS">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+		  SELECT
+		  ID
+		  ,COMMENTS
+		  ,COMMENT_DATE
+		  ,CURRENT_INDICATOR_LF
+		  ,EFFECTIVE_FROM_DATE
+		  ,EFFECTIVE_TO_DATE
+		  ,TABLE_ID
+		  ,CREATE_DATE
+		  ,PODS_USER
+		  ,COMMENT_BY
+		  ,COMMENTS_ID
+		  FROM PODS.COMMENTS WHERE COMMENTS_ID=:SYS_OBJ_ID
+	  </query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(COMMENTS_ID) id FROM PODS.COMMENTS" />
+        <param name="OBJECT_ID" type="String" direction="Input" />
+        <param name="COMMENTS" type="String" direction="Input" />
+        <param name="TABLE_ID" type="String" direction="Input" />
+        <param name="USER_LOGIN" type="String" direction="Input" />
+        <query>
+		  INSERT INTO PODS.COMMENTS(
+		  ID
+		  ,COMMENTS
+		  ,COMMENT_DATE
+		  ,CURRENT_INDICATOR_LF
+		  ,EFFECTIVE_FROM_DATE
+		  ,EFFECTIVE_TO_DATE
+		  ,TABLE_ID
+		  ,CREATE_DATE
+		  ,PODS_USER
+		  ,COMMENT_BY
+		  )
+		  VALUES(
+		  :OBJECT_ID
+		  ,:COMMENTS
+		  ,current_timestamp
+		  ,'Y'
+		  ,current_timestamp
+		  ,NULL
+		  ,(SELECT TABLE_ID FROM PODS.PODS_TABLE WHERE TABLE_NAME=:TABLE_ID)
+		  ,current_timestamp
+		  ,:USER_LOGIN
+		  ,:USER_LOGIN
+		  )
+	  </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <param name="COMMENTS" type="String" direction="Input" />
+        <param name="USER_LOGIN" type="String" direction="Input" />
+        <query>
+		  UPDATE PODS.COMMENTS
+		  SET
+		  COMMENTS = :COMMENTS
+		  ,COMMENT_BY = :USER_LOGIN
+		  ,COMMENT_DATE = current_timestamp
+		  ,CURRENT_INDICATOR_LF = 'Y'
+		  ,PODS_USER = :USER_LOGIN
+		  WHERE COMMENTS_ID = :SYS_OBJ_ID
+	  </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+		DELETE FROM PODS.COMMENTS WHERE COMMENTS_ID=:SYS_OBJ_ID
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запросы для работы со вкладкой "Состав коридора" для PIPE_SYSTEM_CL -->
+  <data id="PODS_PIPE_COR_LIST" comment="Запрос для получения списка line для коридора и удаления line из коридора">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+			SELECT psb.PIPE_SYSTEM_ID, psb.KM_BEGIN, psb.KM_END, l.LINE_ID, l.DESCRIPTION, 'LINE' AS TABLE_NAME,
+			ltc.DESCRIPTION AS TYPE_CL_DESCR, lstc.DESCRIPTION AS LINE_SYSTEM_TYPE_CL_DESCR, osg.DESCRIPTION AS OPERATING_STATUS_GCL_DESCR
+			FROM PODS.PIPE_SYSTEM_BOUNDARY psb
+			JOIN PODS.LINE l ON l.LINE_ID = psb.LINE_ID
+			JOIN PODS.LINE_TYPE_CL ltc ON ltc.CODE = l.TYPE_CL
+			JOIN PODS.LINE_SYSTEM_TYPE_CL lstc ON lstc.CODE = l.SYSTEM_TYPE_CL
+			JOIN PODS.OPERATING_STATUS_GCL osg ON osg.CODE = l.OPERATING_STATUS_GCL
+			WHERE psb.PIPE_SYSTEM_ID = :SYS_OBJ_ID
+			ORDER BY KM_BEGIN, KM_END, LINE_ID
+		</query>
+      </dbQuery>
+    </select>
+    <delete>
+      <dbCommand>
+        <param name="PIPE_SYSTEM_ID" type="Decimal" direction="Input" />
+        <param name="LINE_ID" type="Int64" direction="Input" />
+        <param name="KM_BEGIN" type="Decimal" direction="Input" />
+        <param name="KM_END" type="Decimal" direction="Input" />
+        <query>
+			DELETE FROM PODS.PIPE_SYSTEM_BOUNDARY
+			WHERE PIPE_SYSTEM_ID = :PIPE_SYSTEM_ID AND LINE_ID = :LINE_ID AND KM_BEGIN = :KM_BEGIN AND KM_END = :KM_END
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запросы для работы со вкладкой "интеграция" -->
+  <data id="INFO_SYSTEMS" comment="Запрос на получения списка систем интеграции">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYS_OBJ_ID" type="String" direction="Input" />
+        <param name="DB_TABLE_ID" type="String" direction="Input" />
+        <param name="DB_SCHEMA_ID" type="String" direction="Input" />
+        <query>
+			SELECT SYSTEM_ID,SYSTEM_DESCR FROM GIS_INTEGRATION50.SYSTEM_REF 
+			WHERE SYSTEM_ID IN (SELECT DISTINCT SYSTEM_ID FROM gis_integration50.gate 
+			WHERE KEY_VALUES=:SYS_OBJ_ID and TABLE_NAME=:DB_TABLE_ID and OWNER=:DB_SCHEMA_ID) 
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="INFO_OBJECTS" comment="Запрос на получение объектов интеграции по выбранной системе и объекту">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYSTEM_ID" type="String" direction="Input" />
+        <param name="SYS_OBJ_ID" type="String" direction="Input" />
+        <param name="DB_TABLE_ID" type="String" direction="Input" />
+        <param name="DB_SCHEMA_ID" type="String" direction="Input" />
+        <query>
+			SELECT OWNER,TABLE_NAME,KEY_FIELDS,KEY_VALUES,SYSTEM_ID,OBJ_ID,OBJ_DESCR FROM gis_integration50.gate 
+			WHERE SYSTEM_ID=:SYSTEM_ID AND KEY_VALUES=:SYS_OBJ_ID and TABLE_NAME=:DB_TABLE_ID and OWNER=:DB_SCHEMA_ID 
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="INFO_PROPERTIES" comment="Запрос для получения скрипта выбранного объекта интеграции">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYSTEM_ID" type="String" direction="Input" />
+        <param name="SYS_OBJ_ID" type="String" direction="Input" />
+        <param name="DB_TABLE_ID" type="String" direction="Input" />
+        <param name="DB_SCHEMA_ID" type="String" direction="Input" />
+        <query>
+			SELECT SQL_QUERY FROM gis_integration50.gate 
+			WHERE SYSTEM_ID=:SYSTEM_ID AND KEY_VALUES=:SYS_OBJ_ID and TABLE_NAME=:DB_TABLE_ID and OWNER=:DB_SCHEMA_ID 
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запросы для работы со вкладкой "координатная привязка" -->
+  <data id="PODS_COORD_LIST" comment="PODS.COORD_LIST" schema="PODS" table="COORD_LIST">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+            SELECT * FROM
+            (SELECT e.EVENT_ID ID
+            ,C.HORIZ_INDICATOR_LF
+            ,C.X_COORD
+            ,C.Y_COORD
+            ,C.VERT_INDICATOR_LF
+            ,C.Z_COORD
+            ,C.VALIDITY_TOLERANCE
+            ,C.CURRENT_INDICATOR_LF
+            ,C.TYPE_CL
+            ,C.COORDINATE_ID
+            ,C.ACCURACY_CL
+            ,C.EFFECTIVE_FROM_DATE
+            ,C.EFFECTIVE_TO_DATE
+            ,C.COORDINATE_SOURCE_ID
+            ,C.ORIGINAL_COORDINATE_ID
+            ,C.PREVIOUS_COORDINATE_ID
+            ,C.LOCATION_ID
+            ,C.CREATE_DATE
+            ,C.PODS_USER
+            ,L.SRV_DISTRICT_GCL
+            ,L.DEPTH_OF_COVER
+            FROM PODS.COORDINATE C, PODS.LOCATION L, PODS.EVENT_RANGE E, PODS.STATION_POINT SP
+            WHERE E.station_id_begin=SP.station_id AND SP.location_id=C.location_id and C.LOCATION_ID=L.LOCATION_ID AND C.COORDINATE_ID != -1) d
+            WHERE {FILTER}
+          </query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="HORIZ_INDICATOR_LF" type="String" direction="Input" default="Y" />
+        <var name="X_COORD" default="NULL" type="Decimal"/>
+        <var name="Y_COORD" default="NULL" type="Decimal"/>
+        <var name="VERT_INDICATOR_LF" type="String" direction="Input" default="N" />
+        <var name="Z_COORD" default="NULL" type="Decimal"/>
+        <var name="VALIDITY_TOLERANCE" default="NULL" type="Decimal"/>
+        <var name="CURRENT_INDICATOR_LF" type="String" direction="Input" default="Y" />
+        <var name="TYPE_CL" type="String" direction="Input" default="UNKNOWN" />
+  		<var name="ACCURACY_CL" type="String" direction="Input" default="UNKNOWN" />
+        <var name="EFFECTIVE_FROM_DATE" default="" type="DateTime"/>
+        <var name="EFFECTIVE_TO_DATE" default="" type="DateTime"/>
+        <var name="SRV_DISTRICT_GCL" default="NULL" type="Decimal"/>
+        <var name="DEPTH_OF_COVER" default="NULL" type="Decimal"/>
+        <var name="ID" type="Int64" />
+		<query>
+         DO $$
+		BEGIN
+		update pods.coordinate set 
+		HORIZ_INDICATOR_LF='{HORIZ_INDICATOR_LF}'
+		,X_COORD={X_COORD}
+		,Y_COORD={Y_COORD}
+		,VERT_INDICATOR_LF='{VERT_INDICATOR_LF}'
+		,Z_COORD={Z_COORD}
+		,VALIDITY_TOLERANCE={VALIDITY_TOLERANCE}
+		,CURRENT_INDICATOR_LF='{CURRENT_INDICATOR_LF}'
+		,TYPE_CL='{TYPE_CL}'
+		,ACCURACY_CL='{ACCURACY_CL}'
+		,EFFECTIVE_FROM_DATE='{EFFECTIVE_FROM_DATE}'
+		,EFFECTIVE_TO_DATE='{EFFECTIVE_TO_DATE}'
+		where coordinate_id in (select coordinate_id from pods.coordinate cc,pods.station_point sp, pods.event_Range e where e.event_id={ID} and e.station_id_begin=sp.station_id and sp.location_id=cc.location_id);
+		update pods.location set
+		srv_district_gcl={SRV_DISTRICT_GCL}
+		,DEPTH_OF_COVER={DEPTH_OF_COVER} where location_id in (select location_id from pods.station_point sp, pods.event_Range e where e.event_id={ID} and e.station_id_begin=sp.station_id);
+		END $$;
+		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" />
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запросы для работы со вкладкой "координатная привязка" для ILI_DATA -->
+  <data id="PODS_COORD_ILI_LIST" comment="PODS.COORD_ILI_LIST" schema="PODS" table="COORD_ILI_LIST">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+            SELECT * FROM
+            (SELECT D.ILI_DATA_ID ID
+            ,C.HORIZ_INDICATOR_LF
+            ,C.X_COORD
+            ,C.Y_COORD
+            ,C.VERT_INDICATOR_LF
+            ,C.Z_COORD
+            ,C.VALIDITY_TOLERANCE
+            ,C.CURRENT_INDICATOR_LF
+            ,C.TYPE_CL
+            ,C.COORDINATE_ID
+            ,C.ACCURACY_CL
+            ,C.EFFECTIVE_FROM_DATE
+            ,C.EFFECTIVE_TO_DATE
+            ,C.COORDINATE_SOURCE_ID
+            ,C.ORIGINAL_COORDINATE_ID
+            ,C.PREVIOUS_COORDINATE_ID
+            ,C.LOCATION_ID
+            ,C.CREATE_DATE
+            ,C.PODS_USER
+            ,L.SRV_DISTRICT_GCL
+            ,L.DEPTH_OF_COVER
+            FROM PODS.COORDINATE C, PODS.LOCATION L, PODS.EVENT_RANGE E, PODS.STATION_POINT SP, PODS.ILI_DATA D
+            WHERE E.station_id_begin=SP.station_id AND SP.location_id=C.location_id and C.LOCATION_ID=L.LOCATION_ID and E.event_id= D.event_id AND C.COORDINATE_ID != -1) d
+            WHERE {FILTER}
+          </query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+      </dbCommand>
+    </delete>
+  </data>
+  
+    <!-- Запросы для работы со вкладкой "координатная привязка" для ILI_CLUSTER -->
+  <data id="PODS_COORD_LIST_ILI_CL" comment="PODS.COORD_ILI_CLUSTER_LIST" schema="PODS" table="COORD_ILI_CLUSTER_LIST">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+            SELECT * FROM
+            (SELECT D.ILI_CLUSTER_ID ID
+            ,C.HORIZ_INDICATOR_LF
+            ,C.X_COORD
+            ,C.Y_COORD
+            ,C.VERT_INDICATOR_LF
+            ,C.Z_COORD
+            ,C.VALIDITY_TOLERANCE
+            ,C.CURRENT_INDICATOR_LF
+            ,C.TYPE_CL
+            ,C.COORDINATE_ID
+            ,C.ACCURACY_CL
+            ,C.EFFECTIVE_FROM_DATE
+            ,C.EFFECTIVE_TO_DATE
+            ,C.COORDINATE_SOURCE_ID
+            ,C.ORIGINAL_COORDINATE_ID
+            ,C.PREVIOUS_COORDINATE_ID
+            ,C.LOCATION_ID
+            ,C.CREATE_DATE
+            ,C.PODS_USER
+            ,L.SRV_DISTRICT_GCL
+            ,L.DEPTH_OF_COVER
+            FROM PODS.COORDINATE C, PODS.LOCATION L, PODS.EVENT_RANGE E, PODS.STATION_POINT SP, PODS.ILI_CLUSTER D
+            WHERE E.station_id_begin=SP.station_id AND SP.location_id=C.location_id and C.LOCATION_ID=L.LOCATION_ID and E.event_id= D.event_id AND C.COORDINATE_ID != -1) d
+            WHERE {FILTER}
+          </query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запросы для работы со вкладкой "Линейная/коридорная привязка" для EVENT_RANGE   -->
+  <data id="PODS_PS_LC_EVENT_RANGE" comment="PODS.EVENT_RANGE" schema="PODS" table="EVENT_RANGE">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+        SELECT * FROM (
+        SELECT E.EVENT_ID ID,
+        E.EVENT_ID,
+        E.SLACK_LENGTH,
+        E.LENGTH,
+        E.EFFECTIVE_FROM_DATE,
+        E.EFFECTIVE_TO_DATE,
+        E.CURRENT_INDICATOR_LF,
+        E.VALIDITY_TOLERANCE,
+        E.POSITIONING_TYPE_CL,
+        E.FEATURE_ID,
+        E.PODS_USER,
+        E.CREATE_DATE,
+        L.DESCRIPTION LINE_DESCRIPTION,
+        R.DESCRIPTION ROUTE_DESCRIPTION,
+        ROUND(SP1.STATION,2) STATION_BEG,
+        ROUND(SP2.STATION,2) STATION_END,
+        ROUND(SP1.MEASURE,2) MEASURE_BEG,
+        ROUND(SP2.MEASURE,2) MEASURE_END,
+        P.DESCRIPTION PIPE_SYSTEM_DESCRIPTION,
+        ROUND(O.KM_START,2) KM_START,
+        ROUND(O.KM_END,2) KM_END,
+        ROUND(O.DISTANCE,2) DISTANCE,
+        ROUND(O.LINE_COORD_START,2) LINE_COORD_START,
+        ROUND(O.LINE_COORD_END,2) LINE_COORD_END,
+        L.LINE_ID,
+        R.ROUTE_ID,
+        P.PIPE_SYSTEM_ID
+        FROM PODS.EVENT_RANGE E JOIN PODS.STATION_POINT SP1 ON E.STATION_ID_BEGIN=SP1.STATION_ID
+        JOIN PODS.STATION_POINT SP2 ON E.STATION_ID_END=SP2.STATION_ID
+        JOIN PODS.ROUTE R ON SP1.ROUTE_ID=R.ROUTE_ID
+        JOIN PODS.LINE L ON SP1.LINE_ID=L.LINE_ID
+        LEFT OUTER JOIN WEB50.PS_INDEX_OBJ O ON E.EVENT_ID=O.KEY_VALUES::numeric AND O.TEMPLATE_ID=1
+        LEFT OUTER JOIN PODS.PIPE_SYSTEM_CL P ON P.PIPE_SYSTEM_ID=O.PIPE_SYSTEM_ID) d
+        WHERE {FILTER}
+      </query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="ID" type="Int64" />
+        <var name="EVENT_ID" type="Int64" />
+        <var name="SLACK_LENGTH" type="Decimal" />
+        <var name="LENGTH" type="Decimal" />
+        <var name="EFFECTIVE_FROM_DATE" type="DateTime" />
+        <var name="EFFECTIVE_TO_DATE" type="DateTime" />
+        <var name="CURRENT_INDICATOR_LF" type="String" />
+        <var name="VALIDITY_TOLERANCE" type="Decimal" />
+        <var name="POSITIONING_TYPE_CL" type="String" />
+        <var name="FEATURE_ID" type="String" />
+        <var name="PODS_USER" type="String" />
+        <var name="CREATE_DATE" type="DateTime" />
+        <var name="LINE_DESCRIPTION" type="String" />
+        <var name="ROUTE_DESCRIPTION" type="String" />
+        <var name="STATION_BEG" type="Decimal" />
+        <var name="STATION_END" type="Decimal" />
+        <var name="MEASURE_BEG" type="Decimal" />
+        <var name="MEASURE_END" type="Decimal" />
+        <var name="PIPE_SYSTEM_DESCRIPTION" type="String" />
+        <var name="KM_START" type="Decimal" />
+        <var name="KM_END" type="Decimal" />
+        <var name="DISTANCE" type="Decimal" />
+        <var name="LINE_COORD_START" type="Decimal" />
+        <var name="LINE_COORD_END" type="Decimal" />
+        <var name="LINE_ID" type="Int64" />
+        <var name="ROUTE_ID" type="Int64" />
+        <var name="PIPE_SYSTEM_ID" type="Int64" />
+        <query>
+		DO $$
+        BEGIN
+
+        UPDATE PODS.EVENT_RANGE
+        SET SLACK_LENGTH = {SLACK_LENGTH}
+        ,LENGTH = {LENGTH}
+        ,EFFECTIVE_FROM_DATE = '{EFFECTIVE_FROM_DATE}'
+        ,EFFECTIVE_TO_DATE = '{EFFECTIVE_TO_DATE}'
+        ,CURRENT_INDICATOR_LF = '{CURRENT_INDICATOR_LF}'
+        ,VALIDITY_TOLERANCE = {VALIDITY_TOLERANCE}
+        ,POSITIONING_TYPE_CL = '{POSITIONING_TYPE_CL}'
+        ,FEATURE_ID = '{FEATURE_ID}'
+        ,PODS_USER = '{PODS_USER}'
+        ,CREATE_DATE = '{CREATE_DATE}'
+        WHERE EVENT_ID = {ID};
+
+        UPDATE PODS.STATION_POINT
+        SET LINE_ID = {LINE_ID}
+        ,ROUTE_ID = {ROUTE_ID}
+        ,STATION = {STATION_BEG}
+        ,MEASURE = {MEASURE_BEG}
+        WHERE STATION_ID = (SELECT STATION_ID_BEGIN FROM PODS.EVENT_RANGE WHERE EVENT_ID = {ID});
+
+        UPDATE PODS.STATION_POINT
+        SET LINE_ID = {LINE_ID}
+        ,ROUTE_ID = {ROUTE_ID}
+        ,STATION = {STATION_END}
+        ,MEASURE = {MEASURE_END}
+        WHERE STATION_ID = (SELECT STATION_ID_END FROM PODS.EVENT_RANGE WHERE EVENT_ID = {ID});
+
+        UPDATE WEB50.PS_INDEX_OBJ
+        SET KM_START = {KM_START}
+        ,KM_END = {KM_END}
+        ,DISTANCE = {DISTANCE}
+        ,LINE_COORD_START = {LINE_COORD_START}
+        ,LINE_COORD_END = {LINE_COORD_END}
+        WHERE PIPE_SYSTEM_ID = {PIPE_SYSTEM_ID}
+        AND TEMPLATE_ID = 1
+        AND KEY_VALUES = CAST({ID} AS VARCHAR(250));
+        END $$;
+      </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" />
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запросы для работы со вкладкой "Линейная/коридорная привязка" для GEOGRPHIC_ENTITY   -->
+  <data id="PODS_PS_GEOGRAPHIC_ENTITY" comment="PODS.GEOGRPHIC_ENTITY" schema="PODS" table="GEOGRPHIC_ENTITY">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+        SELECT * FROM (
+        SELECT E.ENTITY_ID ID
+        ,E.ENTITY_ID
+        ,E.NAME
+        ,E.DESCRIPTION
+        ,E.TYPE_CL
+        ,PS.DESCRIPTION PIPE_SYSTEM_DESCRIPTION
+        ,PS.PIPE_SYSTEM_ID
+        ,ROUND(O.KM_START,2) KM_START
+        ,ROUND(O.KM_END,2) KM_END
+        ,ROUND(O.DISTANCE,2) DISTANCE
+        ,ROUND(O.LINE_COORD_START,2) LINE_COORD_START
+        ,ROUND(O.LINE_COORD_END,2) LINE_COORD_END
+        FROM PODS.GEOGRAPHIC_ENTITY E
+        LEFT OUTER JOIN WEB50.PS_INDEX_OBJ O
+        ON KEY_VALUES = CAST (ENTITY_ID AS VARCHAR(20))
+        AND O.TEMPLATE_ID = 3
+        LEFT OUTER JOIN PODS.PIPE_SYSTEM_CL PS
+        ON PS.PIPE_SYSTEM_ID = O.PIPE_SYSTEM_ID
+        ) d
+        WHERE {FILTER}
+      </query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="ID" type="Int64" />
+        <var name="DESCRIPTION" type="String" />
+        <var name="NAME" type="String" />
+        <var name="TYPE_CL" type="String" />
+        <var name="PIPE_SYSTEM_ID" type="Int64" />
+        <var name="KM_START" type="Decimal" />
+        <var name="KM_END" type="Decimal" />
+        <var name="DISTANCE" type="Decimal" />
+        <var name="LINE_COORD_START" type="Decimal" />
+        <var name="LINE_COORD_END" type="Decimal" />
+        <query>
+		DO $$
+        BEGIN
+
+        UPDATE PODS.GEOGRAPHIC_ENTITY E
+        SET DESCRIPTION = '{DESCRIPTION}'
+        ,NAME = '{NAME}'
+        ,TYPE_CL = '{TYPE_CL}'
+        WHERE ENTITY_ID = {ID};
+
+        UPDATE WEB50.PS_INDEX_OBJ
+        SET KM_START = {KM_START}
+        ,KM_END = {KM_END}
+        ,DISTANCE = {DISTANCE}
+        ,LINE_COORD_START = {LINE_COORD_START}
+        ,LINE_COORD_END = {LINE_COORD_END}
+        WHERE PIPE_SYSTEM_ID = {PIPE_SYSTEM_ID}
+        AND TEMPLATE_ID = 3
+        AND KEY_VALUES = CAST({ID} AS VARCHAR(250));
+
+        END $$;
+      </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" />
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запросы для работы со вкладкой "Линейная/коридорная привязка" для OFFLINE_EVENT   -->
+  <data id="PODS_PS_OFFLINE_EVENT" comment="PODS.OFFLINE_EVENT" schema="PODS" table="OFFLINE_EVENT">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+        SELECT * FROM (
+        SELECT OE.OFFLINE_ID ID
+        ,OE.OFFLINE_ID
+        ,OE.FEATURE_ID
+        ,OE.DESCRIPTION
+        ,OE.EFFECTIVE_FROM_DATE
+        ,OE.EFFECTIVE_TO_DATE
+        ,OE.CURRENT_INDICATOR_LF
+        ,OE.CREATE_DATE
+        ,OE.PODS_USER
+        ,PS.DESCRIPTION PIPE_SYSTEM_DESCRIPTION
+        ,PS.PIPE_SYSTEM_ID
+        ,ROUND(O.KM_START,2) KM_START
+        ,ROUND(O.KM_END,2) KM_END
+        ,ROUND(O.DISTANCE,2) DISTANCE
+        ,ROUND(O.LINE_COORD_START,2) LINE_COORD_START
+        ,ROUND(O.LINE_COORD_END,2) LINE_COORD_END
+        FROM PODS.OFFLINE_EVENT OE
+        LEFT OUTER JOIN WEB50.PS_INDEX_OBJ O
+        ON KEY_VALUES = CAST (OFFLINE_ID AS VARCHAR(20))
+        AND O.TEMPLATE_ID = 2
+        LEFT OUTER JOIN PODS.PIPE_SYSTEM_CL PS
+        ON PS.PIPE_SYSTEM_ID = O.PIPE_SYSTEM_ID )d
+        WHERE {FILTER}
+      </query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="ID" type="Int64" />
+        <var name="DESCRIPTION" type="String" />
+        <var name="FEATURE_ID" type="String" />
+        <var name="EFFECTIVE_FROM_DATE" type="DateTime" />
+        <var name="EFFECTIVE_TO_DATE" type="DateTime" />
+        <var name="CURRENT_INDICATOR_LF" type="String" />
+        <var name="CREATE_DATE" type="DateTime" />
+        <var name="PODS_USER" type="String" />
+        <var name="PIPE_SYSTEM_ID" type="Int64" />
+        <var name="KM_START" type="Decimal" />
+        <var name="KM_END" type="Decimal" />
+        <var name="DISTANCE" type="Decimal" />
+        <var name="LINE_COORD_START" type="Decimal" />
+        <var name="LINE_COORD_END" type="Decimal" />
+        <query>
+		DO $$
+        BEGIN
+
+        UPDATE PODS.OFFLINE_EVENT E
+        SET DESCRIPTION = '{DESCRIPTION}'
+        ,FEATURE_ID = '{FEATURE_ID}'
+        ,EFFECTIVE_FROM_DATE = '{EFFECTIVE_FROM_DATE}'
+        ,EFFECTIVE_TO_DATE = '{EFFECTIVE_TO_DATE}'
+        ,CURRENT_INDICATOR_LF = '{CURRENT_INDICATOR_LF}'
+        ,CREATE_DATE = '{CREATE_DATE}'
+        ,PODS_USER = '{PODS_USER}'
+        WHERE OFFLINE_ID = {ID};
+
+        UPDATE WEB50.PS_INDEX_OBJ
+        SET KM_START = {KM_START}
+        ,KM_END = {KM_END}
+        ,DISTANCE = {DISTANCE}
+        ,LINE_COORD_START = {LINE_COORD_START}
+        ,LINE_COORD_END = {LINE_COORD_END}
+        WHERE PIPE_SYSTEM_ID = {PIPE_SYSTEM_ID}
+        AND TEMPLATE_ID = 2
+        AND KEY_VALUES = CAST({ID} AS VARCHAR(250));
+
+        END $$;
+      </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" />
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запросы для работы со вкладкой "Линейная/коридорная привязка" для SITE   -->
+  <data id="PODS_PS_SITE" comment="PODS.SITE" schema="PODS" table="SITE">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+        SELECT * FROM (
+        SELECT S.SITE_ID ID
+        ,S.SITE_ID
+        ,PS.DESCRIPTION PIPE_SYSTEM_DESCRIPTION
+        ,PS.PIPE_SYSTEM_ID
+        ,ROUND(O.KM_START,2) KM_START
+        ,ROUND(O.KM_END,2) KM_END
+        ,ROUND(O.DISTANCE,2) DISTANCE
+        ,ROUND(O.LINE_COORD_START,2) LINE_COORD_START
+        ,ROUND(O.LINE_COORD_END,2) LINE_COORD_END
+        FROM PODS.SITE S
+        JOIN WEB50.PS_INDEX_OBJ O
+        ON KEY_VALUES = CAST (SITE_ID AS VARCHAR(20))
+        AND O.TEMPLATE_ID = 6
+        JOIN PODS.PIPE_SYSTEM_CL PS
+        ON PS.PIPE_SYSTEM_ID = O.PIPE_SYSTEM_ID
+        ) d
+        WHERE {FILTER}
+      </query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="ID" type="Int64" />
+        <param name="PIPE_SYSTEM_ID" type="Int64" />
+        <param name="KM_START" type="Decimal" />
+        <param name="KM_END" type="Decimal" />
+        <param name="DISTANCE" type="Decimal" />
+        <param name="LINE_COORD_START" type="Decimal" />
+        <param name="LINE_COORD_END" type="Decimal" />
+        <query>
+        UPDATE WEB50.PS_INDEX_OBJ
+        SET KM_START = :KM_START
+        ,KM_END = :KM_END
+        ,DISTANCE = :DISTANCE
+        ,LINE_COORD_START = :LINE_COORD_START
+        ,LINE_COORD_END = :LINE_COORD_END
+        WHERE PIPE_SYSTEM_ID = :PIPE_SYSTEM_ID
+        AND TEMPLATE_ID = 6
+        AND KEY_VALUES = CAST(:ID AS VARCHAR(250))
+      </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" />
+      </dbCommand>
+    </delete>
+  </data>
+  
+  <!-- Запросы для работы со вкладкой "Линейная/коридорная привязка" для ILI_CLUSTER -->
+  <data id="PODS_PS_LC_EVENT_RANGE_ILI_C" comment="PODS.EVENT_RANGE_ILI_CLUSTER" schema="PODS" table="EVENT_RANGE">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+        SELECT * FROM (
+        SELECT D.ILI_CLUSTER_ID ID,
+        E.EVENT_ID,
+        E.SLACK_LENGTH,
+        E.LENGTH,
+        E.EFFECTIVE_FROM_DATE,
+        E.EFFECTIVE_TO_DATE,
+        E.CURRENT_INDICATOR_LF,
+        E.VALIDITY_TOLERANCE,
+        E.POSITIONING_TYPE_CL,
+        E.FEATURE_ID,
+        E.PODS_USER,
+        E.CREATE_DATE,
+        L.DESCRIPTION LINE_DESCRIPTION,
+        R.DESCRIPTION ROUTE_DESCRIPTION,
+        ROUND(SP1.STATION,2) STATION_BEG,
+        ROUND(SP2.STATION,2) STATION_END,
+        ROUND(SP1.MEASURE,2) MEASURE_BEG,
+        ROUND(SP2.MEASURE,2) MEASURE_END,
+        P.DESCRIPTION PIPE_SYSTEM_DESCRIPTION,
+        ROUND(O.KM_START,2) KM_START,
+        ROUND(O.KM_END,2) KM_END,
+        ROUND(O.DISTANCE,2) DISTANCE,
+        ROUND(O.LINE_COORD_START,2) LINE_COORD_START,
+        ROUND(O.LINE_COORD_END,2) LINE_COORD_END,
+        L.LINE_ID,
+        R.ROUTE_ID,
+        P.PIPE_SYSTEM_ID
+        FROM PODS.EVENT_RANGE E JOIN PODS.STATION_POINT SP1 ON E.STATION_ID_BEGIN=SP1.STATION_ID
+        JOIN PODS.STATION_POINT SP2 ON E.STATION_ID_END=SP2.STATION_ID
+        JOIN PODS.ROUTE R ON SP1.ROUTE_ID=R.ROUTE_ID
+        JOIN PODS.LINE L ON SP1.LINE_ID=L.LINE_ID
+        JOIN PODS.ILI_CLUSTER D ON E.EVENT_ID=D.EVENT_ID
+        LEFT OUTER JOIN WEB50.PS_INDEX_OBJ O ON E.EVENT_ID=O.KEY_VALUES::numeric AND O.TEMPLATE_ID=1
+        LEFT OUTER JOIN PODS.PIPE_SYSTEM_CL P ON P.PIPE_SYSTEM_ID=O.PIPE_SYSTEM_ID) d
+        WHERE {FILTER}
+      </query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="ID" type="Int64" />
+        <var name="EVENT_ID" type="Int64" />
+        <var name="SLACK_LENGTH" type="Decimal" />
+        <var name="LENGTH" type="Decimal" />
+        <var name="EFFECTIVE_FROM_DATE" type="DateTime" />
+        <var name="EFFECTIVE_TO_DATE" type="DateTime" />
+        <var name="CURRENT_INDICATOR_LF" type="String" />
+        <var name="VALIDITY_TOLERANCE" type="Decimal" />
+        <var name="POSITIONING_TYPE_CL" type="String" />
+        <var name="FEATURE_ID" type="String" />
+        <var name="PODS_USER" type="String" />
+        <var name="CREATE_DATE" type="DateTime" />
+        <var name="LINE_DESCRIPTION" type="String" />
+        <var name="ROUTE_DESCRIPTION" type="String" />
+        <var name="STATION_BEG" type="Decimal" />
+        <var name="STATION_END" type="Decimal" />
+        <var name="MEASURE_BEG" type="Decimal" />
+        <var name="MEASURE_END" type="Decimal" />
+        <var name="PIPE_SYSTEM_DESCRIPTION" type="String" />
+        <var name="KM_START" type="Decimal" />
+        <var name="KM_END" type="Decimal" />
+        <var name="DISTANCE" type="Decimal" />
+        <var name="LINE_COORD_START" type="Decimal" />
+        <var name="LINE_COORD_END" type="Decimal" />
+        <var name="LINE_ID" type="Int64" />
+        <var name="ROUTE_ID" type="Int64" />
+        <var name="PIPE_SYSTEM_ID" type="Int64" />
+        <query>
+		DO $$
+        BEGIN
+
+        UPDATE PODS.EVENT_RANGE
+        SET SLACK_LENGTH = {SLACK_LENGTH}
+        ,LENGTH = {LENGTH}
+        ,EFFECTIVE_FROM_DATE = '{EFFECTIVE_FROM_DATE}'
+        ,EFFECTIVE_TO_DATE = '{EFFECTIVE_TO_DATE}'
+        ,CURRENT_INDICATOR_LF = '{CURRENT_INDICATOR_LF}'
+        ,VALIDITY_TOLERANCE = {VALIDITY_TOLERANCE}
+        ,POSITIONING_TYPE_CL = '{POSITIONING_TYPE_CL}'
+        ,FEATURE_ID = '{FEATURE_ID}'
+        ,PODS_USER = '{PODS_USER}'
+        ,CREATE_DATE = '{CREATE_DATE}'
+        WHERE EVENT_ID = {EVENT_ID};
+
+        UPDATE PODS.STATION_POINT
+        SET LINE_ID = {LINE_ID}
+        ,ROUTE_ID = {ROUTE_ID}
+        ,STATION = {STATION_BEG}
+        ,MEASURE = {MEASURE_BEG}
+        WHERE STATION_ID = (SELECT STATION_ID_BEGIN FROM PODS.EVENT_RANGE WHERE EVENT_ID = {EVENT_ID});
+
+        UPDATE PODS.STATION_POINT
+        SET LINE_ID = {LINE_ID}
+        ,ROUTE_ID = {ROUTE_ID}
+        ,STATION = {STATION_END}
+        ,MEASURE = {MEASURE_END}
+        WHERE STATION_ID = (SELECT STATION_ID_END FROM PODS.EVENT_RANGE WHERE EVENT_ID = {EVENT_ID});
+
+        UPDATE WEB50.PS_INDEX_OBJ
+        SET KM_START = {KM_START}
+        ,KM_END = {KM_END}
+        ,DISTANCE = {DISTANCE}
+        ,LINE_COORD_START = {LINE_COORD_START}
+        ,LINE_COORD_END = {LINE_COORD_END}
+        WHERE PIPE_SYSTEM_ID = {PIPE_SYSTEM_ID}
+        AND TEMPLATE_ID = 1
+        AND KEY_VALUES = CAST({EVENT_ID} AS VARCHAR(250));
+        END $$;
+      </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" />
+      </dbCommand>
+    </delete>
+  </data>  
+  
+  <!-- Запросы для работы со вкладкой "Линейная/коридорная привязка" для ILI_DATA -->
+  <data id="PODS_PS_LC_EVENT_RANGE_ILI" comment="PODS.EVENT_RANGE" schema="PODS" table="EVENT_RANGE">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+        SELECT * FROM (
+        SELECT D.ILI_DATA_ID ID,
+        E.EVENT_ID,
+        E.SLACK_LENGTH,
+        E.LENGTH,
+        E.EFFECTIVE_FROM_DATE,
+        E.EFFECTIVE_TO_DATE,
+        E.CURRENT_INDICATOR_LF,
+        E.VALIDITY_TOLERANCE,
+        E.POSITIONING_TYPE_CL,
+        E.FEATURE_ID,
+        E.PODS_USER,
+        E.CREATE_DATE,
+        L.DESCRIPTION LINE_DESCRIPTION,
+        R.DESCRIPTION ROUTE_DESCRIPTION,
+        ROUND(SP1.STATION,2) STATION_BEG,
+        ROUND(SP2.STATION,2) STATION_END,
+        ROUND(SP1.MEASURE,2) MEASURE_BEG,
+        ROUND(SP2.MEASURE,2) MEASURE_END,
+        P.DESCRIPTION PIPE_SYSTEM_DESCRIPTION,
+        ROUND(O.KM_START,2) KM_START,
+        ROUND(O.KM_END,2) KM_END,
+        ROUND(O.DISTANCE,2) DISTANCE,
+        ROUND(O.LINE_COORD_START,2) LINE_COORD_START,
+        ROUND(O.LINE_COORD_END,2) LINE_COORD_END,
+        L.LINE_ID,
+        R.ROUTE_ID,
+        P.PIPE_SYSTEM_ID
+        FROM PODS.EVENT_RANGE E JOIN PODS.STATION_POINT SP1 ON E.STATION_ID_BEGIN=SP1.STATION_ID
+        JOIN PODS.STATION_POINT SP2 ON E.STATION_ID_END=SP2.STATION_ID
+        JOIN PODS.ROUTE R ON SP1.ROUTE_ID=R.ROUTE_ID
+        JOIN PODS.LINE L ON SP1.LINE_ID=L.LINE_ID
+        JOIN PODS.ILI_DATA D ON E.EVENT_ID=D.EVENT_ID
+        LEFT OUTER JOIN WEB50.PS_INDEX_OBJ O ON E.EVENT_ID=O.KEY_VALUES::numeric AND O.TEMPLATE_ID=1
+        LEFT OUTER JOIN PODS.PIPE_SYSTEM_CL P ON P.PIPE_SYSTEM_ID=O.PIPE_SYSTEM_ID) d
+        WHERE {FILTER}
+      </query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="ID" type="Int64" direction="Output" />
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="ID" type="Int64" />
+        <var name="EVENT_ID" type="Int64" />
+        <var name="SLACK_LENGTH" type="Decimal" />
+        <var name="LENGTH" type="Decimal" />
+        <var name="EFFECTIVE_FROM_DATE" type="DateTime" />
+        <var name="EFFECTIVE_TO_DATE" type="DateTime" />
+        <var name="CURRENT_INDICATOR_LF" type="String" />
+        <var name="VALIDITY_TOLERANCE" type="Decimal" />
+        <var name="POSITIONING_TYPE_CL" type="String" />
+        <var name="FEATURE_ID" type="String" />
+        <var name="PODS_USER" type="String" />
+        <var name="CREATE_DATE" type="DateTime" />
+        <var name="LINE_DESCRIPTION" type="String" />
+        <var name="ROUTE_DESCRIPTION" type="String" />
+        <var name="STATION_BEG" type="Decimal" />
+        <var name="STATION_END" type="Decimal" />
+        <var name="MEASURE_BEG" type="Decimal" />
+        <var name="MEASURE_END" type="Decimal" />
+        <var name="PIPE_SYSTEM_DESCRIPTION" type="String" />
+        <var name="KM_START" type="Decimal" />
+        <var name="KM_END" type="Decimal" />
+        <var name="DISTANCE" type="Decimal" />
+        <var name="LINE_COORD_START" type="Decimal" />
+        <var name="LINE_COORD_END" type="Decimal" />
+        <var name="LINE_ID" type="Int64" />
+        <var name="ROUTE_ID" type="Int64" />
+        <var name="PIPE_SYSTEM_ID" type="Int64" />
+        <query>
+		DO $$
+        BEGIN
+
+        UPDATE PODS.EVENT_RANGE
+        SET SLACK_LENGTH = {SLACK_LENGTH}
+        ,LENGTH = {LENGTH}
+        ,EFFECTIVE_FROM_DATE = '{EFFECTIVE_FROM_DATE}'
+        ,EFFECTIVE_TO_DATE = '{EFFECTIVE_TO_DATE}'
+        ,CURRENT_INDICATOR_LF = '{CURRENT_INDICATOR_LF}'
+        ,VALIDITY_TOLERANCE = {VALIDITY_TOLERANCE}
+        ,POSITIONING_TYPE_CL = '{POSITIONING_TYPE_CL}'
+        ,FEATURE_ID = '{FEATURE_ID}'
+        ,PODS_USER = '{PODS_USER}'
+        ,CREATE_DATE = '{CREATE_DATE}'
+        WHERE EVENT_ID = {EVENT_ID};
+
+        UPDATE PODS.STATION_POINT
+        SET LINE_ID = {LINE_ID}
+        ,ROUTE_ID = {ROUTE_ID}
+        ,STATION = {STATION_BEG}
+        ,MEASURE = {MEASURE_BEG}
+        WHERE STATION_ID = (SELECT STATION_ID_BEGIN FROM PODS.EVENT_RANGE WHERE EVENT_ID = {EVENT_ID});
+
+        UPDATE PODS.STATION_POINT
+        SET LINE_ID = {LINE_ID}
+        ,ROUTE_ID = {ROUTE_ID}
+        ,STATION = {STATION_END}
+        ,MEASURE = {MEASURE_END}
+        WHERE STATION_ID = (SELECT STATION_ID_END FROM PODS.EVENT_RANGE WHERE EVENT_ID = {EVENT_ID});
+
+        UPDATE WEB50.PS_INDEX_OBJ
+        SET KM_START = {KM_START}
+        ,KM_END = {KM_END}
+        ,DISTANCE = {DISTANCE}
+        ,LINE_COORD_START = {LINE_COORD_START}
+        ,LINE_COORD_END = {LINE_COORD_END}
+        WHERE PIPE_SYSTEM_ID = {PIPE_SYSTEM_ID}
+        AND TEMPLATE_ID = 1
+        AND KEY_VALUES = CAST({EVENT_ID} AS VARCHAR(250));
+        END $$;
+      </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="Int64" />
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запросы для работы со вкладкой "Внешнее покрытие" для ROUTE -->
+  <data id="PODS_EXTERNAL_COATING_ROUTE" comment="PODS.EXTERNAL_COATING" schema="PODS" table="EXTERNAL_COATING">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+		  SELECT * FROM (
+		  SELECT r.ROUTE_ID ID
+		  ,ec.DESCRIPTION
+		  ,ec.PRODUCT_NAME
+		  ,ec.TYPE_SCL||'@'||ec.SUBTYPE_SCL TYPE_SCL
+		  ,ec.COATING_MATERIAL_GCL
+		  ,ec.COATING_MANUFACTURER_GCL
+		  ,ec.DATE_APPLIED
+		  ,ec.WHERE_COATING_APPLIED_GCL
+		  ,ec.COATING_APPLICATOR_GCL
+		  ,ec.SOURCE_GCL
+		  ,ec.COMMENTS
+		  ,ec.EVENT_ID
+		  FROM PODS.EXTERNAL_COATING ec
+		  JOIN PODS.EVENT_RANGE er
+		  ON er.EVENT_ID = ec.EVENT_ID
+		  JOIN PODS.STATION_POINT sp
+		  ON sp.STATION_ID = er.STATION_ID_BEGIN
+		  JOIN PODS.ROUTE r
+		  ON r.ROUTE_ID = sp.ROUTE_ID
+		  WHERE er.FEATURE_ID = 'EXTERNAL_COATING'
+		  ) d
+		  WHERE {FILTER}
+	  </query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="SYS_OBJ_ID" type="Int64" />
+        <var name="EVENT_GUID" default="" type="String" />
+        <var name="TYPE_SCL" default="UNKNOWN" type="String" />
+        <var name="SUBTYPE_SCL" default="NONE" type="String" />
+        <var name="COATING_MATERIAL_GCL" default="UNKNOWN" type="String" />
+        <var name="COATING_MANUFACTURER_GCL" default="UNKNOWN" type="String" />
+        <var name="PRODUCT_NAME" default="" type="String" />
+        <var name="COATING_APPLICATOR_GCL" default="UNKNOWN" type="String" />
+        <var name="WHERE_COATING_APPLIED_GCL" default="UNKNOWN" type="String" />
+        <var name="DATE_APPLIED" default="" type="DateTime" />
+        <var name="DESCRIPTION" default="" type="String" />
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String" />
+        <var name="COMMENTS" default="" type="String" />
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(EVENT_ID) id FROM PODS.EVENT_RANGE"/>
+        <var name="USER_LOGIN" type="String" direction="Input" />
+        <query>
+		DO $$
+		DECLARE
+		returnId integer;
+		i RECORD;
+		 BEGIN
+FOR i IN (WITH T AS 
+ (SELECT   P.STATION_ID ID
+                FROM PODS.STATION_POINT P
+               WHERE P.ROUTE_ID = {SYS_OBJ_ID}
+            ORDER BY P.MEASURE LIMIT 1),
+           F AS
+           (SELECT   P.STATION_ID ID
+                FROM PODS.STATION_POINT P
+               WHERE P.ROUTE_ID = {SYS_OBJ_ID}
+            ORDER BY P.MEASURE DESC LIMIT 1)
+      SELECT 'EXTERNAL_COATING' A, F.ID ID_1, T.ID ID_2,'{USER_LOGIN}' US,
+             'Y' Y, 'UNKNOWN' U FROM F, T )
+LOOP
+   INSERT INTO PODS.EVENT_RANGE
+               (FEATURE_ID, STATION_ID_BEGIN, STATION_ID_END, PODS_USER,
+                CREATE_DATE, EFFECTIVE_FROM_DATE, CURRENT_INDICATOR_LF,
+                POSITIONING_TYPE_CL)
+ VALUES (I.A, I.ID_1,I.ID_2,I.US,current_timestamp,current_timestamp,I.Y,I.U)
+  RETURNING  EVENT_ID   INTO returnId;
+
+  INSERT INTO PODS.EXTERNAL_COATING(DESCRIPTION,PRODUCT_NAME,TYPE_SCL,SUBTYPE_SCL,COATING_MATERIAL_GCL,COATING_MANUFACTURER_GCL,DATE_APPLIED,WHERE_COATING_APPLIED_GCL,COATING_APPLICATOR_GCL,SOURCE_GCL,COMMENTS,EVENT_ID)
+		  VALUES ('{DESCRIPTION}','{PRODUCT_NAME}',
+		  SUBSTR('{TYPE_SCL}',0,strpos('{TYPE_SCL}','@')-1),
+		  SUBSTR( '{TYPE_SCL}', strpos('{TYPE_SCL}','@')+1),
+		  '{COATING_MATERIAL_GCL}','{COATING_MANUFACTURER_GCL}','{DATE_APPLIED}','{WHERE_COATING_APPLIED_GCL}','{COATING_APPLICATOR_GCL}','{SOURCE_GCL}','{COMMENTS}',returnId);
+  RETURN;
+END LOOP;
+END $$;
+	  </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="EVENT_GUID" default="" type="String" />
+        <param name="TYPE_SCL" default="UNKNOWN" type="String" />
+        <param name="SUBTYPE_SCL" default="NONE" type="String" />
+        <param name="COATING_MATERIAL_GCL" default="UNKNOWN" type="String" />
+        <param name="COATING_MANUFACTURER_GCL" default="UNKNOWN" type="String" />
+        <param name="PRODUCT_NAME" default="" type="String" />
+        <param name="COATING_APPLICATOR_GCL" default="UNKNOWN" type="String" />
+        <param name="WHERE_COATING_APPLIED_GCL" default="UNKNOWN" type="String" />
+        <param name="DATE_APPLIED" default="" type="DateTime" />
+        <param name="DESCRIPTION" default="" type="String" />
+        <param name="SOURCE_GCL" default="UNKNOWN" type="String" />
+        <param name="COMMENTS" default="" type="String" />
+        <param name="EVENT_ID" type="Int64" />
+        <query>
+              UPDATE PODS.EXTERNAL_COATING
+              SET
+              DESCRIPTION = :DESCRIPTION
+              ,PRODUCT_NAME = :PRODUCT_NAME
+              ,TYPE_SCL = SUBSTR(:TYPE_SCL,0,strpos(:TYPE_SCL,'@')-1)
+              ,SUBTYPE_SCL = SUBSTR( :TYPE_SCL, strpos(:TYPE_SCL,'@')+1)
+              ,COATING_MATERIAL_GCL = :COATING_MATERIAL_GCL
+              ,COATING_MANUFACTURER_GCL = :COATING_MANUFACTURER_GCL
+              ,DATE_APPLIED = :DATE_APPLIED
+              ,WHERE_COATING_APPLIED_GCL = :WHERE_COATING_APPLIED_GCL
+              ,COATING_APPLICATOR_GCL = :COATING_APPLICATOR_GCL
+              ,SOURCE_GCL = :SOURCE_GCL
+              ,COMMENTS = :COMMENTS
+              WHERE EVENT_ID = :EVENT_ID;
+          </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="EVENT_ID" type="Int64" />
+        <query>
+		DO $$
+            BEGIN
+            UPDATE PODS.EVENT_RANGE
+            SET CURRENT_INDICATOR_LF='N'
+            WHERE EVENT_ID = {EVENT_ID};
+            
+            DELETE FROM PODS.EXTERNAL_COATING
+            WHERE EVENT_ID = {EVENT_ID};
+            END $$;
+          </query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запросы для работы со вкладкой "Внутреннее покрытие" для ROUTE -->
+  <data id="PODS_INTERNAL_COATING_ROUTE" comment="PODS.INTERNAL_COATING" schema="PODS" table="INTERNAL_COATING">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+		  SELECT * FROM
+		  (SELECT
+		  ic.DESCRIPTION
+		  ,ic.TYPE_SCL||'@'||ic.SUBTYPE_SCL TYPE_SCL
+		  ,ic.COATING_MANUFACTURER_CL
+		  ,ic.COATING_MATERIAL_GCL
+		  ,ic.PRODUCT_NAME
+		  ,ic.DATE_APPLIED
+		  ,ic.SOURCE_GCL
+		  ,ic.COMMENTS
+		  ,ic.EVENT_ID
+		  ,r.ROUTE_ID ID
+		  FROM PODS.INTERNAL_COATING ic
+		  JOIN PODS.EVENT_RANGE er
+		  ON er.EVENT_ID = ic.EVENT_ID
+		  JOIN PODS.STATION_POINT sp
+		  ON sp.STATION_ID = er.STATION_ID_BEGIN
+		  JOIN PODS.ROUTE r
+		  ON r.ROUTE_ID = sp.ROUTE_ID
+		  WHERE er.FEATURE_ID = 'INTERNAL_COATING'
+		  ) d
+		  WHERE {FILTER}
+	  </query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="SYS_OBJ_ID" type="Int64" />
+        <var name="EVENT_GUID" default="" type="String" />
+        <var name="TYPE_SCL" default="UNKNOWN" type="String" />
+        <var name="SUBTYPE_SCL" default="NONE" type="String" />
+        <var name="COATING_MATERIAL_GCL" default="UNKNOWN" type="String" />
+        <var name="COATING_MANUFACTURER_CL" default="UNKNOWN" type="String" />
+        <var name="PRODUCT_NAME" default="" type="String" />
+        <var name="DATE_APPLIED" default="" type="DateTime" />
+        <var name="DESCRIPTION" default="" type="String" />
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String" />
+        <var name="COMMENTS" default="" type="String" />
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(EVENT_ID) id FROM PODS.EVENT_RANGE"/>
+        <var name="USER_LOGIN" type="String" direction="Input" />
+        <query>
+		DO $$
+		DECLARE
+		returnId integer;
+		i RECORD;
+		   BEGIN
+FOR i IN (WITH T AS 
+ (SELECT   P.STATION_ID ID
+                FROM PODS.STATION_POINT P
+               WHERE P.ROUTE_ID = {SYS_OBJ_ID} 
+            ORDER BY P.MEASURE LIMIT 1),
+           F AS
+           (SELECT   P.STATION_ID ID
+                FROM PODS.STATION_POINT P
+               WHERE P.ROUTE_ID = {SYS_OBJ_ID}
+            ORDER BY P.MEASURE DESC LIMIT 1)
+      SELECT 'INTERNAL_COATING' A, F.ID ID_1, T.ID ID_2,'{USER_LOGIN}' US,
+             'Y' Y, 'UNKNOWN' U FROM F, T )
+LOOP
+   INSERT INTO PODS.EVENT_RANGE
+               (FEATURE_ID, STATION_ID_BEGIN, STATION_ID_END, PODS_USER,
+                CREATE_DATE, EFFECTIVE_FROM_DATE, CURRENT_INDICATOR_LF,
+                POSITIONING_TYPE_CL)
+ VALUES (I.A, I.ID_1,I.ID_2,I.US,current_timestamp,current_timestamp,I.Y,I.U)
+  RETURNING  EVENT_ID   INTO returnId;
+
+		  INSERT INTO PODS.INTERNAL_COATING(DESCRIPTION,PRODUCT_NAME,TYPE_SCL,SUBTYPE_SCL,COATING_MATERIAL_GCL,COATING_MANUFACTURER_CL,DATE_APPLIED,SOURCE_GCL,COMMENTS,EVENT_ID)
+		  VALUES ('{DESCRIPTION}','{PRODUCT_NAME}',
+		  SUBSTR('{TYPE_SCL}',0,strpos('{TYPE_SCL}','@')-1),
+		  SUBSTR('{TYPE_SCL}', strpos('{TYPE_SCL}','@')+1),
+		  '{COATING_MATERIAL_GCL}','{COATING_MANUFACTURER_CL}','{DATE_APPLIED}','{SOURCE_GCL}','{COMMENTS}',returnId);
+	RETURN;
+END LOOP;
+END $$;
+	  </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="EVENT_GUID" default="" type="String" />
+        <param name="TYPE_SCL" default="UNKNOWN" type="String" />
+        <param name="SUBTYPE_SCL" default="NONE" type="String" />
+        <param name="COATING_MATERIAL_GCL" default="UNKNOWN" type="String" />
+        <param name="COATING_MANUFACTURER_CL" default="UNKNOWN" type="String" />
+        <param name="PRODUCT_NAME" default="" type="String" />
+        <param name="DATE_APPLIED" default="" type="DateTime" />
+        <param name="DESCRIPTION" default="" type="String" />
+        <param name="SOURCE_GCL" default="UNKNOWN" type="String" />
+        <param name="COMMENTS" default="" type="String" />
+        <param name="EVENT_ID" type="Int64" />
+        <query>
+              UPDATE PODS.INTERNAL_COATING
+              SET DESCRIPTION = :DESCRIPTION
+              ,TYPE_SCL = SUBSTR(:TYPE_SCL,0,strpos(:TYPE_SCL,'@')-1)
+              ,SUBTYPE_SCL = SUBSTR( :TYPE_SCL, strpos(:TYPE_SCL,'@')+1)
+              ,COATING_MANUFACTURER_CL = :COATING_MANUFACTURER_CL
+              ,COATING_MATERIAL_GCL = :COATING_MATERIAL_GCL
+              ,PRODUCT_NAME = :PRODUCT_NAME
+              ,DATE_APPLIED = :DATE_APPLIED
+              ,SOURCE_GCL = :SOURCE_GCL
+              ,COMMENTS = :COMMENTS
+              WHERE EVENT_ID = :EVENT_ID
+          </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="EVENT_ID" type="Int64" />
+        <query>
+		DO $$
+            BEGIN
+              UPDATE PODS.EVENT_RANGE
+              SET CURRENT_INDICATOR_LF='N'
+              WHERE EVENT_ID = {EVENT_ID};
+              
+              DELETE FROM PODS.INTERNAL_COATING
+              WHERE EVENT_ID = {EVENT_ID};
+            END $$;
+          </query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запросы для работы со вкладкой "Секции труб" для ROUTE -->
+  <data id="PODS_PIPE_SEGMENT_ROUTE" comment="PODS.PIPE_SEGMENT" schema="PODS" table="PIPE_SEGMENT">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+		  SELECT * FROM
+		  (SELECT spb.ROUTE_ID ID
+		  ,ec.PIPE_GRADE_GCL
+		  ,ec.MATERIAL_CL
+		  ,ec.MANUFACTURER_CL
+		  ,ec.PIPE_MILL_LOCATION_GCL
+		  ,ec.DATE_MANUFACTURED
+		  ,ec.MILL_TEST_PRESSURE
+		  ,ec.DESCRIPTION
+		  ,ec.SMYS_GCL
+		  ,ec.PIPE_LONG_SEAM_GCL
+		  ,ec.NOMINAL_DIAMETER_GCL
+		  ,ec.NOMINAL_WALL_THICKNESS_GCL
+		  ,ec.PIPE_SPECIFICATION_GCL
+		  ,ec.DATE_INSTALLED
+		  ,ec.SOURCE_GCL
+		  ,ec.COMMENTS
+		  ,ec.EVENT_ID
+		  FROM PODS.PIPE_SEGMENT ec
+		  JOIN PODS.EVENT_RANGE e
+		  ON e.EVENT_ID = ec.EVENT_ID
+		  JOIN PODS.STATION_POINT spb
+		  ON e.STATION_ID_BEGIN = spb.STATION_ID
+		  WHERE e.FEATURE_ID = 'PIPE_SEGMENT'
+		  AND e.CURRENT_INDICATOR_LF = 'Y') d
+		  WHERE {FILTER}
+	  </query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="SYS_OBJ_ID" type="Int64" />
+        <var name="EVENT_GUID" default="" type="String" />
+        <var name="MANUFACTURER_CL" default="UNKNOWN" type="String" />
+        <var name="DATE_MANUFACTURED" default="" type="DateTime" />
+        <var name="PIPE_MILL_LOCATION_GCL" default="UNKNOWN" type="String" />
+        <var name="MILL_TEST_PRESSURE" default="" type="Decimal" />
+        <var name="MATERIAL_CL" default="UNKNOWN" type="String" />
+        <var name="PIPE_SPECIFICATION_GCL" default="UNKNOWN" type="String" />
+        <var name="PIPE_GRADE_GCL" default="UNKNOWN" type="String" />
+        <var name="SMYS_GCL" default="0" type="Decimal" />
+        <var name="NOMINAL_DIAMETER_GCL" default="0" type="Decimal" />
+        <var name="NOMINAL_WALL_THICKNESS_GCL" default="0" type="Decimal" />
+        <var name="PIPE_LONG_SEAM_GCL" default="UNKNOWN" type="String" />
+        <var name="DATE_INSTALLED" default="" type="DateTime" />
+        <var name="DESCRIPTION" default="" type="String" />
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String" />
+        <var name="COMMENTS" default="" type="String" />
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(EVENT_ID) id FROM PODS.EVENT_RANGE"/>
+        <var name="USER_LOGIN" type="String" direction="Input" />
+        <query>
+		DO $$
+		DECLARE
+		returnId integer;
+          BEGIN
+          INSERT INTO PODS.EVENT_RANGE (FEATURE_ID,STATION_ID_BEGIN,STATION_ID_END,PODS_USER,CREATE_DATE,EFFECTIVE_FROM_DATE,CURRENT_INDICATOR_LF,POSITIONING_TYPE_CL)
+          VALUES('PIPE_SEGMENT',
+          (SELECT MIN(p.STATION_ID) station_id 
+             FROM pods.station_point p
+                  JOIN pods.series s
+                    ON s.series_id = p.series_id 
+            WHERE s.ROUTE_ID = {SYS_OBJ_ID} 
+              AND p.MEASURE = (SELECT MIN(p2.measure)
+                                 FROM pods.station_point p2
+                                WHERE p2.series_id = p.series_id)),
+          (SELECT MIN(p.STATION_ID) station_id 
+             FROM pods.station_point p
+                  JOIN pods.series s
+                    ON s.series_id = p.series_id 
+            WHERE s.ROUTE_ID = {SYS_OBJ_ID} 
+              AND p.MEASURE = (SELECT MAX(p2.measure)
+                                 FROM pods.station_point p2
+                                WHERE p2.series_id = p.series_id)),
+          '{USER_LOGIN}',current_timestamp,current_timestamp,'Y','UNKNOWN')
+          RETURNING EVENT_ID INTO returnId;
+
+          INSERT INTO PODS.PIPE_SEGMENT(
+          PIPE_GRADE_GCL,MATERIAL_CL,MANUFACTURER_CL,PIPE_MILL_LOCATION_GCL,DATE_MANUFACTURED,MILL_TEST_PRESSURE,DESCRIPTION,SMYS_GCL
+          ,PIPE_LONG_SEAM_GCL,NOMINAL_DIAMETER_GCL,NOMINAL_WALL_THICKNESS_GCL,PIPE_SPECIFICATION_GCL,DATE_INSTALLED,SOURCE_GCL,COMMENTS,EVENT_ID)
+          VALUES('{PIPE_GRADE_GCL}','{MATERIAL_CL}','{MANUFACTURER_CL}','{PIPE_MILL_LOCATION_GCL}','{DATE_MANUFACTURED}',{MILL_TEST_PRESSURE},'{DESCRIPTION}',{SMYS_GCL},'{PIPE_LONG_SEAM_GCL}',{NOMINAL_DIAMETER_GCL},{NOMINAL_WALL_THICKNESS_GCL},'{PIPE_SPECIFICATION_GCL}','{DATE_INSTALLED}','{SOURCE_GCL}','{COMMENTS}',returnId);
+          END $$;
+	  </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="EVENT_GUID" default="" type="String" />
+        <param name="MANUFACTURER_CL" default="UNKNOWN" type="String" />
+        <param name="DATE_MANUFACTURED" default="" type="DateTime" />
+        <param name="PIPE_MILL_LOCATION_GCL" default="UNKNOWN" type="String" />
+        <param name="MILL_TEST_PRESSURE" default="" type="Decimal" />
+        <param name="MATERIAL_CL" default="UNKNOWN" type="String" />
+        <param name="PIPE_SPECIFICATION_GCL" default="UNKNOWN" type="String" />
+        <param name="PIPE_GRADE_GCL" default="UNKNOWN" type="String" />
+        <param name="SMYS_GCL" default="0" type="Decimal" />
+        <param name="NOMINAL_DIAMETER_GCL" default="0" type="Decimal" />
+        <param name="NOMINAL_WALL_THICKNESS_GCL" default="0" type="Decimal" />
+        <param name="PIPE_LONG_SEAM_GCL" default="UNKNOWN" type="String" />
+        <param name="DATE_INSTALLED" default="" type="DateTime" />
+        <param name="DESCRIPTION" default="" type="String" />
+        <param name="SOURCE_GCL" default="UNKNOWN" type="String" />
+        <param name="COMMENTS" default="" type="String" />
+        <param name="EVENT_ID" type="Int64" />
+        <query>
+              UPDATE PODS.PIPE_SEGMENT
+              SET
+              PIPE_GRADE_GCL = :PIPE_GRADE_GCL
+              ,MATERIAL_CL = :MATERIAL_CL
+              ,MANUFACTURER_CL = :MANUFACTURER_CL
+              ,PIPE_MILL_LOCATION_GCL = :PIPE_MILL_LOCATION_GCL
+              ,DATE_MANUFACTURED = :DATE_MANUFACTURED
+              ,MILL_TEST_PRESSURE = :MILL_TEST_PRESSURE
+              ,DESCRIPTION = :DESCRIPTION
+              ,SMYS_GCL = :SMYS_GCL
+              ,PIPE_LONG_SEAM_GCL = :PIPE_LONG_SEAM_GCL
+              ,NOMINAL_DIAMETER_GCL = :NOMINAL_DIAMETER_GCL
+              ,NOMINAL_WALL_THICKNESS_GCL = :NOMINAL_WALL_THICKNESS_GCL
+              ,PIPE_SPECIFICATION_GCL = :PIPE_SPECIFICATION_GCL
+              ,DATE_INSTALLED = :DATE_INSTALLED
+              ,SOURCE_GCL = :SOURCE_GCL
+              ,COMMENTS = :COMMENTS
+              WHERE EVENT_ID = :EVENT_ID
+          </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="EVENT_ID" type="Int64" />
+        <query>
+		DO $$
+            BEGIN
+              UPDATE PODS.EVENT_RANGE
+              SET CURRENT_INDICATOR_LF='N'
+              WHERE EVENT_ID = {EVENT_ID};
+              
+              DELETE FROM PODS.PIPE_SEGMENT
+              WHERE EVENT_ID = {EVENT_ID};
+            END $$;
+          </query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запросы для работы со вкладкой "Наряд-заказ" для PODS.MAINTENANCE -->
+  <data id="PODS_WORK_ORDER" comment="PODS.WORK_ORDER" schema="PODS" table="WORK_ORDER">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+			SELECT * FROM 
+			(SELECT m.EVENT_ID ID, t.* FROM PODS.WORK_ORDER t JOIN PODS.MAINTENANCE m ON m.WORK_ORDER_ID=t.WORK_ORDER_ID) d 
+			WHERE {FILTER}
+		</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="SYS_OBJ_ID" type="Int64" />
+        <var name="WORK_ORDER_GUID" default="" type="String" />
+        <var name="WORK_ORDER_NUMBER" default="" type="String" />
+        <var name="COMPANY_GCL" default="UNKNOWN" type="String" />
+        <var name="TYPE_CL" default="UNKNOWN" type="String" />
+        <var name="DESCRIPTION" default="" type="String" />
+        <var name="AFE" default="" type="String" />
+        <var name="STARTING_DATE" default="" type="DateTime" />
+        <var name="ENDING_DATE" default="" type="DateTime" />
+        <var name="ORDERED_DATE" default="" type="DateTime" />
+        <var name="PLANNED_START_DATE" default="" type="DateTime" />
+        <var name="PLANNED_END_DATE" default="" type="DateTime" />
+        <var name="VENDOR_COMPANY_GCL" default="UNKNOWN" type="String" />
+        <var name="VENDOR_WORK_NUMBER" default="" type="String" />
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String" />
+        <var name="COMMENTS" default="UNKNOWN" type="String" />
+        <var name="ID" direction="Output" type="Int64" default="SELECT max(WORK_ORDER_ID) id FROM PODS.WORK_ORDER"/>
+        <query>
+		DO $$
+			DECLARE
+			returnId integer;
+			BEGIN
+			INSERT INTO PODS.WORK_ORDER(WORK_ORDER_GUID,WORK_ORDER_NUMBER,COMPANY_GCL,TYPE_CL,DESCRIPTION,AFE,STARTING_DATE,ENDING_DATE,ORDERED_DATE,PLANNED_START_DATE,PLANNED_END_DATE,VENDOR_COMPANY_GCL,VENDOR_WORK_NUMBER,SOURCE_GCL,COMMENTS)
+			VALUES('{WORK_ORDER_GUID}','{WORK_ORDER_NUMBER}','{COMPANY_GCL}','{TYPE_CL}','{DESCRIPTION}','{AFE}','{STARTING_DATE}','{ENDING_DATE}','{ORDERED_DATE}','{PLANNED_START_DATE}','{PLANNED_END_DATE}','{VENDOR_COMPANY_GCL}','{VENDOR_WORK_NUMBER}','{SOURCE_GCL}','{COMMENTS}')
+			RETURNING WORK_ORDER_ID INTO returnId;
+			UPDATE PODS.MAINTENANCE
+			SET WORK_ORDER_ID = returnId
+			WHERE EVENT_ID = {SYS_OBJ_ID};
+			END $$;
+		</query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="WORK_ORDER_GUID" default="" type="String" />
+        <param name="WORK_ORDER_NUMBER" default="" type="String" />
+        <param name="COMPANY_GCL" default="UNKNOWN" type="String" />
+        <param name="TYPE_CL" default="UNKNOWN" type="String" />
+        <param name="DESCRIPTION" default="" type="String" />
+        <param name="AFE" default="" type="String" />
+        <param name="STARTING_DATE" default="" type="DateTime" />
+        <param name="ENDING_DATE" default="" type="DateTime" />
+        <param name="ORDERED_DATE" default="" type="DateTime" />
+        <param name="PLANNED_START_DATE" default="" type="DateTime" />
+        <param name="PLANNED_END_DATE" default="" type="DateTime" />
+        <param name="VENDOR_COMPANY_GCL" default="UNKNOWN" type="String" />
+        <param name="VENDOR_WORK_NUMBER" default="" type="String" />
+        <param name="SOURCE_GCL" default="UNKNOWN" type="String" />
+        <param name="COMMENTS" default="UNKNOWN" type="String" />
+        <param name="WORK_ORDER_ID" type="Int64" />
+        <query>
+			UPDATE PODS.WORK_ORDER
+			SET WORK_ORDER_GUID=:WORK_ORDER_GUID,WORK_ORDER_NUMBER=:WORK_ORDER_NUMBER,COMPANY_GCL=:COMPANY_GCL,TYPE_CL=:TYPE_CL,DESCRIPTION=:DESCRIPTION,AFE=:AFE,STARTING_DATE=:STARTING_DATE,ENDING_DATE=:ENDING_DATE,ORDERED_DATE=:ORDERED_DATE,PLANNED_START_DATE=:PLANNED_START_DATE,PLANNED_END_DATE=:PLANNED_END_DATE,VENDOR_COMPANY_GCL=:VENDOR_COMPANY_GCL,VENDOR_WORK_NUMBER=:VENDOR_WORK_NUMBER,SOURCE_GCL=:SOURCE_GCL,COMMENTS=:COMMENTS
+			WHERE WORK_ORDER_ID = :WORK_ORDER_ID
+		</query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="WORK_ORDER_ID" type="Int64" />
+        <query>
+		DO $$
+			BEGIN
+			UPDATE PODS.MAINTENANCE
+			SET WORK_ORDER_ID = NULL
+			WHERE WORK_ORDER_ID = {WORK_ORDER_ID};
+			DELETE FROM PODS.WORK_ORDER
+			WHERE WORK_ORDER_ID = {WORK_ORDER_ID};
+			END $$;
+		</query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запросы для поиска с фильтруемым comboBox -->
+  <data id="FIND_REGION_FILTER" comment="Запрос на перечень субъектов РФ. Нужен в форме поиска по адресу с фильруемым comboBox">
+    <select>
+      <dbQuery idField="ZONE_ID">
+        <query>
+          SELECT a."субъект_ид" ZONE_ID, a."название_государства",a."название_1" DESCR, a.ID, a."XMIN", a."YMIN", a."XMAX", a."YMAX"
+          FROM WEB50.M_R_SUB_EKTY_RF a
+          WHERE a."название_1" IS NOT NULL
+          ORDER BY DESCR
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="FIND_SETTLEMENT_FILTER" comment="Запрос на перечень населенных пунктов из указанного региона. Нужен в форме поиска по адресу с фильруемым comboBox">
+    <select>
+      <dbQuery idField="ZONE_ID">
+        <var name="REGION_ID" default=""/>
+        <query>
+            WITH all_towns AS (
+            SELECT   mns.ID ZONE_ID, mns."название" DESCR, mns."субъект_ид"
+            FROM WEB50.M_R_NASEL_PUNKTY_STOLICY mns
+            UNION ALL
+            SELECT   mng.ID ZONE_ID, mng."название" DESCR, mng."субъект_ид"
+            FROM WEB50.M_R_NASEL_PUNKTY_GORODA_PROC mng
+            UNION ALL
+            SELECT   mnp.ID ZONE_ID, mnp."название" DESCR, mnp."субъект_ид"
+            FROM WEB50.M_R_NASEL_PUNKTY_PROCIE mnp
+            )
+            SELECT * FROM all_towns WHERE "субъект_ид" = {REGION_ID} AND DESCR IS NOT NULL
+          ORDER BY DESCR
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="FIND_SETTLEMENT_GEOMETRY_FILTER" comment="Запрос на получение геометрии указанного населенного пункта. Нужен в форме поиска по адресу с фильруемым comboBox">
+    <select>
+      <geoQuery idField="ZONE_ID" geoField="WKB_GEOMETRY">
+		<var name="TOWN_ID" default="-99999999"/>		  
+        <query>
+          WITH all_towns AS (
+          SELECT   mns.ID ZONE_ID, mns."XMAX", mns."XMIN", mns."YMAX", mns."YMIN", mns.WKB_GEOMETRY
+          FROM WEB50.M_R_NASEL_PUNKTY_STOLICY mns
+          UNION ALL
+          SELECT   mng.ID ZONE_ID, mng."XMAX", mng."XMIN", mng."YMAX", mng."YMIN", mng.WKB_GEOMETRY
+          FROM WEB50.M_R_NASEL_PUNKTY_GORODA_PROC mng
+          UNION ALL
+          SELECT   mnp.ID ZONE_ID, mnp."XMAX", mnp."XMIN", mnp."YMAX", mnp."YMIN", mnp.WKB_GEOMETRY
+          FROM WEB50.M_R_NASEL_PUNKTY_PROCIE mnp
+          )
+          SELECT * FROM all_towns
+          WHERE ZONE_ID = {TOWN_ID}
+          ORDER BY ZONE_ID
+        </query>
+      </geoQuery>
+    </select>
+  </data>
+  <data id="FIND_PIPE_LIST_START_END_FILTER" comment="Запрос для поиска трубопроводов с начальной/конечной дистанцией с ограничениями по типу и длине. Нужен для поиска через фильтруемый comboBox">
+    <select>
+      <dbQuery idField="ID">
+        <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+          SELECT l.line_id LINE_ID, rtp.description||' '||l.description descr
+          ,CASE WHEN MIN(s.STATION_BEGIN) &gt; MIN(s.STATION_END)
+          THEN Max(sp.station)
+          ELSE MIN(sp.station)
+          END KM_START
+          ,CASE WHEN MAX(s.STATION_END) &lt; MAX(s.station_begin)
+          THEN Min(sp.station)
+          ELSE MAX(sp.station)
+          END KM_END
+          FROM pods.line l
+          JOIN pods.route r
+          ON l.line_id = r.line_id
+          AND l.type_cl = CASE r.type_cl
+          WHEN 'ROUTE_TYPE_10' THEN 'LINE_TYPE_01'
+          WHEN 'ROUTE_TYPE_11' THEN 'LINE_TYPE_02'
+          WHEN 'ROUTE_TYPE_12' THEN 'LINE_TYPE_03'
+          WHEN 'ROUTE_TYPE_04' THEN 'LINE_TYPE_04'
+          END
+          JOIN pods.series s
+          ON s.route_id = r.route_id
+          JOIN pods.route_type_cl rtp
+          ON r.type_cl = rtp.code
+          JOIN pods.station_point sp
+          ON sp.series_id = s.series_id
+          JOIN pods.location lc
+          ON lc.location_id = sp.location_id
+          WHERE  (l.type_cl IN ('LINE_TYPE_01','LINE_TYPE_02','LINE_TYPE_03')
+          OR (l.type_cl = 'LINE_TYPE_04'
+          AND ABS(s.station_begin - s.station_end) &gt;= 0.5 ))
+          AND sp.type_cl IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+          AND lc.srv_district_gcl IN ({LPU_ACCESS_FILTER})
+          GROUP BY l.line_id, l.description,rtp.description
+          ORDER BY lower(rtp.description||' '||l.description)
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="FIND_GRP_SHRP_FILTER" comment="Запрос для поиска объектов. Возвращает описание и координаты всех ГРС (поиск через фильтруемый comboBox)">
+    <select>
+      <dbQuery idField="ID">
+        <query>
+          SELECT DISTINCT c.X_COORD,c.Y_COORD,c.Z_COORD, dp.OFFLINE_ID CODE, dp.DESCRIPTION DESCR
+          FROM PODS.COORDINATE c JOIN PODS.VERTEX v ON v.LOCATION_ID = c.LOCATION_ID
+          JOIN PODS.PART p ON v.PART_ID=p.PART_ID
+          JOIN PODS.OFFLINE_EVENT oe ON p.SHAPE_ID=oe.SHAPE_ID
+          JOIN PODS.DISTRIBUTION_PLANT dp ON oe.OFFLINE_ID=dp.OFFLINE_ID
+          WHERE dp.TYPE_CL = 'DP_TYPE_05' AND c.X_COORD IS NOT NULL AND c.Y_COORD IS NOT NULL
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запросы для поиска -->
+  <data id="FIND_SETTLEMENT" comment="Запрос для поиска адреса по населенным пунктам">
+    <select>
+	  <geoQuery idField="ZONE_ID" geoField="WKB_GEOMETRY">
+        <query>
+			WITH all_towns AS (
+			SELECT   mz.ZONE_ID ZONE_ID, mz.DESCR DESCR, mz."XMAX", mz."XMIN", mz."YMAX", mz."YMIN", mz.WKB_GEOMETRY
+			FROM WEB50.M_1_ZONE mz
+			UNION ALL
+			SELECT   mt.ZONE_ID ZONE_ID, mt.c9 DESCR, mt."XMAX", mt."XMIN", mt."YMAX", mt."YMIN", mt.WKB_GEOMETRY
+			FROM WEB50.M_10_TOWN_S mt
+			UNION ALL
+			SELECT   mns.ID ZONE_ID, mns.название DESCR, mns."XMAX", mns."XMIN", mns."YMAX", mns."YMIN", mns.WKB_GEOMETRY
+			FROM WEB50.M_R_NASEL_PUNKTY_STOLICY mns
+			UNION ALL
+			SELECT   mng.ID ZONE_ID, mng.название DESCR, mng."XMAX", mng."XMIN", mng."YMAX", mng."YMIN", mng.WKB_GEOMETRY
+			FROM WEB50.M_R_NASEL_PUNKTY_GORODA_PROC mng
+			UNION ALL
+			SELECT   mnp.ID ZONE_ID, mnp.название DESCR, mnp."XMAX", mnp."XMIN", mnp."YMAX", mnp."YMIN", mnp.WKB_GEOMETRY
+			FROM WEB50.M_R_NASEL_PUNKTY_PROCIE mnp
+			)
+			SELECT * FROM all_towns
+			WHERE UPPER (DESCR) LIKE UPPER ('{SETTLEMENT_NAME}%')
+			ORDER BY DESCR
+		</query>
+      </geoQuery>
+    </select>
+  </data>
+  <data id="FIND_STREET" comment="Запрос для поиска адреса по улице">
+    <select>
+      <geoQuery idField="ID" geoField="WKB_GEOMETRY">
+		<var name="STREET_NAME" default="-99999999"/>
+		<var name="ZONE_IDS" default="-99999999"/>
+        <query>
+			SELECT mrs.ID, mrs.ZONE_ID, mrs."XMIN", mrs."YMIN", mrs."XMAX", mrs."YMAX", mrs.WKB_GEOMETRY
+			FROM WEB50.M_1_ROADS_S mrs
+			WHERE UPPER (mrs.C238) LIKE UPPER('{STREET_NAME}%')
+			AND mrs.ZONE_ID IN ({ZONE_IDS})
+		    </query>
+	    </geoQuery>
+    </select>
+  </data>
+  <data id="FIND_HOUSE" comment="Запрос для поиска адреса по номеру дома и корпуса">
+    <select>
+      <geoQuery idField="ID" geoField="WKB_GEOMETRY">
+		<var name="STREET_NAME" default="-99999999"/>
+		<var name="HOUSE_NUM" default="-99999999"/>
+		<var name="ZONE_IDS" default="-99999999"/>
+        <query>
+			SELECT mts.ID, mts.DESCR, mts.ZONE_ID, mts."XMIN", mts."YMIN", mts."XMAX", mts."YMAX", mts.WKB_GEOMETRY
+			FROM WEB50.M_1_TOWN_S mts
+			WHERE UPPER(mts.C238) LIKE UPPER('{STREET_NAME}%')
+			AND mts.ZONE_ID IN ({ZONE_IDS}) AND mts.C235::text  LIKE UPPER('%{HOUSE_NUM}%') 
+		</query>
+	  </geoQuery>
+    </select>
+  </data>
+  <data id="FIND_TANK" comment="Запрос для поиска адреса по улице, номеру дома и номеру корпуса">
+    <select>
+      <geoQuery idField="ID" geoField="WKB_GEOMETRY">
+		<var name="STREET_NAME" default="-99999999"/>
+		<var name="HOUSE_NUM" default="-99999999"/>
+		<var name="TANK_NUM" default="-99999999"/>
+		<var name="ZONE_IDS" default="-99999999"/>
+        <query>
+			SELECT mts.ID,mts.DESCR,mts.ZONE_ID,mts."XMIN",mts."YMIN",mts."XMAX",mts."YMAX", mts.WKB_GEOMETRY
+			FROM WEB50.M_1_TOWN_S mts
+			WHERE UPPER(mts.C238) LIKE UPPER('{STREET_NAME}%')
+			AND mts.ZONE_ID IN ({ZONE_IDS}) AND mts.C235::text  LIKE UPPER('%{HOUSE_NUM}%')  AND mts.C237::text  LIKE UPPER('%{TANK_NUM}%')
+		</query>
+      </geoQuery>
+    </select>
+  </data>
+  <data id="FIND_LINE" comment="Запрос для поиска газопроводов">
+    <select>
+      <dbQuery idField="ID">
+        <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+			WITH long_lines
+  AS (SELECT r.line_id,s.series_id
+        FROM pods.route r
+             JOIN pods.series s
+               ON r.route_id = s.route_id
+      WHERE ABS(s.station_end-s.station_begin) &gt; 0.5)
+  SELECT LINE_ID, DESCRIPTION 
+    FROM pods.line l
+   WHERE EXISTS (SELECT 1 
+                   FROM long_lines ll
+                        JOIN pods.station_point sp
+                          ON ll.series_id = sp.series_id
+                        JOIN pods.location lc
+                          ON lc.location_id = sp.location_id   
+                  WHERE ll.line_id = l.line_id
+                     AND sp.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+                    AND lc.srv_district_gcl IN ({LPU_ACCESS_FILTER}))
+         AND UPPER (description) LIKE UPPER ('{PARAM1}%')
+ORDER BY UPPER (DESCRIPTION)
+
+		    </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="FIND_ROUTE_TYPE" comment="Запрос для получения типов труб">
+    <select>
+      <dbQuery idField="ID">
+		<var name="PARAM2" default="-99999999"/>
+        <query>
+SELECT rt.code
+      ,rt.description
+      ,CASE WHEN rt.CODE = 'UNKNOWN'
+                      THEN 1
+                      ELSE 0
+       END sorter 
+  FROM pods.route_type_cl rt
+ WHERE EXISTS (SELECT 1
+                 FROM pods.route r
+                WHERE r.type_cl = rt.code
+                  AND r.LINE_ID = {PARAM2}) 
+ ORDER BY sorter,lower(DESCRIPTION)
+		   </query>
+     </dbQuery>
+    </select>
+  </data>
+  <data id="FIND_ROUTE" comment="Запрос для поиска участков в газопроводах">
+    <select>
+      <dbQuery idField="ID">
+        <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+		<var name="PARAM3" default="-99999999"/>
+		<var name="PARAM8" default="-99999999"/>
+        <query>
+  SELECT r.ROUTE_ID,
+         r.LINE_ID,
+         l.DESCRIPTION,
+            l.DESCRIPTION || ' ('|| CAST (s.STATION_BEGIN AS VARCHAR (10))|| ' - '|| CAST (s.STATION_END AS VARCHAR (10))|| ')' DESCRIPTION_WITH_KM
+    FROM pods.line l
+         JOIN pods.route r
+           ON r.line_id = l.line_id
+         JOIN pods.series s
+           ON r.route_id = s.route_id
+   WHERE r.LINE_ID = {PARAM3} 
+     AND r.TYPE_CL = '{PARAM8}'
+     AND EXISTS (SELECT 1
+                   FROM pods.station_point sp
+                        JOIN pods.location lc
+                          ON lc.location_id = sp.location_id
+                  WHERE sp.series_id = s.series_id
+                    AND sp.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+                    AND lc.srv_district_gcl IN ({LPU_ACCESS_FILTER}))
+ORDER BY lower(l.DESCRIPTION), s.STATION_BEGIN, s.STATION_END
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="FIND_KM" comment="Запрос для поиска ближайшего начального километра (с допуском в 5 километров)">
+    <select>
+      <dbQuery idField="ID">
+		<var name="PARAM4" default="-99999999"/>
+		<var name="PARAM5" default="-99999999"/>
+        <query>
+			SELECT * FROM (SELECT LINE_ID,LOCATION_ID,ROUTE_ID FROM PODS.STATION_POINT WHERE ROUTE_ID = {PARAM4} AND LOCATION_ID&lt;&gt;-1 AND ABS(STATION-({PARAM5}))&lt;5 ORDER BY ABS(STATION-({PARAM5}))  ASC) d  LIMIT 1
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="FIND_KM_END" comment="Запрос для поиска ближайшего конечного километра (с допуском в 5 километров)">
+    <select>
+      <dbQuery idField="ID">
+		<var name="PARAM4" default="-99999999"/>
+		<var name="PARAM5" default="-99999999"/>
+        <query>
+			SELECT * FROM (SELECT LINE_ID,LOCATION_ID,ROUTE_ID FROM PODS.STATION_POINT WHERE LINE_ID = {PARAM4} AND LOCATION_ID&lt;&gt;-1 AND ABS(STATION-({PARAM5}))&lt;5 ORDER BY ABS(STATION-({PARAM5}))  ASC) d LIMIT 1
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="FIND_GRP_SHRP_TYPE" comment="Запрос для поиска типов объектов ГРП/ШРП">
+    <select>
+      <dbQuery idField="ID">
+        <query>
+			SELECT CODE,DESCRIPTION FROM PODS.DISTRIBUTION_PLANT_TYPE_CL WHERE CODE IN (SELECT DISTINCT TYPE_CL FROM PODS.DISTRIBUTION_PLANT d) ORDER BY DESCRIPTION 
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="FIND_GRP_SHRP" comment="Запрос для поиска объектов. Возвращает координаты одной ГРП/ШРП">
+    <select>
+      <dbQuery idField="ID">
+        <query>
+			WITH coords AS (SELECT c.X_COORD,c.Y_COORD,c.Z_COORD,dp.OFFLINE_ID
+			FROM PODS.COORDINATE c JOIN PODS.VERTEX v ON v.LOCATION_ID = c.LOCATION_ID
+			JOIN PODS.PART p ON v.PART_ID=p.PART_ID
+			JOIN PODS.OFFLINE_EVENT oe ON p.SHAPE_ID=oe.SHAPE_ID
+			JOIN PODS.DISTRIBUTION_PLANT dp ON oe.OFFLINE_ID=dp.OFFLINE_ID
+			WHERE (UPPER(dp.NAME) LIKE UPPER('{PARAM2}%') OR UPPER(dp.DESCRIPTION) LIKE UPPER('%{PARAM2}%')) AND dp.TYPE_CL LIKE '{PARAM3}' AND c.X_COORD IS NOT NULL AND c.Y_COORD IS NOT NULL )
+			SELECT X_COORD,Y_COORD,Z_COORD FROM coords c1
+			WHERE OFFLINE_ID = (SELECT MIN(OFFLINE_ID) FROM coords)
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="GET_COORDINATES_BY_ID" comment="Запрос получения координат точечных объектов по LOCATION_ID">
+    <select>
+      <dbQuery idField="ID">
+		<var name="PARAM31" default="-99999999"/>
+        <query>
+			SELECT LOCATION_ID,CURRENT_INDICATOR_LF,X_COORD,Y_COORD,Z_COORD FROM PODS.COORDINATE WHERE LOCATION_ID={PARAM31}
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="GET_ROUTE_COORDINATES_BY_ID" comment="Запрос получения всех координат от начального км до конечного км по ROUTE_ID">
+    <select>      
+      <dbQuery idField="ID">
+		<var name="PARAM4" default="-99999999"/>
+		<var name="PARAM5" default="-99999999"/>
+		<var name="PARAM6" default="-99999999"/>
+        <var name="PARAM7" default="1" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+        <query comment="На больших расстояниях дает видимую погрешность">
+WITH route_limits 
+     AS (SELECT sp.route_id,sp.series_id
+               ,CASE WHEN {PARAM5} &gt; MIN(sp.station)
+                       THEN {PARAM5}
+                     ELSE MIN(sp.station)
+                END km_start     
+               ,CASE WHEN {PARAM6} &lt; MAX(sp.station)
+                       THEN {PARAM6}
+                       ELSE MAX(sp.station) 
+                END  km_end
+               ,{PARAM7} signer 
+           FROM pods.series s
+                JOIN pods.station_point sp
+                  ON s.series_Id = sp.series_id
+                JOIN pods.location l
+                  ON l.location_id = sp.location_id  
+          WHERE s.route_id = {PARAM4}
+            AND sp.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+            AND l.srv_district_gcl IN ({LPU_ACCESS_FILTER})
+            GROUP BY sp.route_id,sp.series_id)
+SELECT * 
+  FROM (
+SELECT  r.ROUTE_ID ID
+      ,'ST_POINT_TYPE_01' "TYPE"
+      ,CASE WHEN sp2.station = sp1.station 
+            THEN c1.X_COORD
+            ELSE c1.X_COORD + (rl.km_start - sp1.station)/(sp2.station - sp1.station) * (c2.X_COORD - c1.X_COORD) 
+       END X_COORD
+      ,CASE WHEN sp2.station = sp1.station
+            THEN c1.Y_COORD
+            ELSE  c1.Y_COORD + (rl.km_start - sp1.station)/(sp2.station - sp1.station) * (c2.Y_COORD - c1.Y_COORD) 
+       END Y_COORD
+      ,'Y' CURRENT_INDICATOR_LF
+      ,r.SEQUENCE
+      ,rl.km_start STATION
+      ,CASE WHEN sp2.station = sp1.station
+            THEN sp1.measure
+            ELSE sp1.measure + (rl.km_start - sp1.station)/(sp2.station - sp1.station) * (sp2.measure - sp1.measure) 
+       END MEASURE
+            FROM pods.route r
+                 JOIN pods.series s
+                   ON s.route_id = r.route_id
+                 JOIN pods.station_point sp1 
+                   ON sp1.series_id = s.series_id
+                 JOIN pods.location lc1
+                   ON lc1.location_id = sp1.location_id  
+                 JOIN pods.coordinate c1 
+                   ON c1.location_id = lc1.location_id
+                 JOIN pods.station_point sp2 
+                   ON sp2.series_id = s.series_id
+                 JOIN pods.location lc2
+                   ON lc2.location_id = sp2.location_id  
+                 JOIN pods.coordinate c2 
+                   ON c2.location_id = lc2.location_id
+                 JOIN route_limits rl
+                   ON r.route_id = rl.route_id  
+            WHERE lc1.srv_district_gcl IN ({LPU_ACCESS_FILTER})
+              AND lc2.srv_district_gcl IN ({LPU_ACCESS_FILTER})
+              AND sp1.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+              AND sp2.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+              AND sp1.STATION_ID = (SELECT station_id
+                                     FROM pods.station_point spz
+                                    WHERE spz.series_id = rl.series_id 
+                                      AND spz.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+                                      AND spz.measure = (SELECT CASE rl.signer 
+                                                                    WHEN -1 THEN MIN(spm.measure)
+                                                                    ELSE MAX(spm.measure)  
+                                                                END       
+                                                           FROM pods.station_point spm
+                                                          WHERE spm.series_id = spz.series_id
+                                                            AND spm.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+                                                            AND spm.station &lt;= rl.km_start)
+                                      LIMIT 1)
+              AND sp2.STATION_ID = (SELECT station_id
+                                     FROM pods.station_point spz
+                                    WHERE spz.series_id = rl.series_id 
+                                      AND spz.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+                                      AND spz.measure = (SELECT CASE rl.signer 
+                                                                    WHEN -1 THEN MAX(spm.measure)
+                                                                    ELSE MIN(spm.measure)  
+                                                                END
+                                                           FROM pods.station_point spm
+                                                          WHERE spm.series_id = spz.series_id
+                                                            AND spm.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+                                                            AND spm.station &gt;= rl.km_start)
+                                      LIMIT 1 )
+UNION               
+SELECT sp.ROUTE_ID ID,sp.TYPE_CL "TYPE",c.X_COORD X_COORD,c.Y_COORD Y_COORD,c.CURRENT_INDICATOR_LF,r.SEQUENCE,sp.STATION,sp.MEASURE
+            FROM pods.route r
+                 JOIN pods.series s
+                   ON s.route_id = r.route_id
+                 JOIN pods.station_point sp 
+                   ON sp.series_id = s.series_id
+                 JOIN pods.location lc
+                   ON lc.location_id = sp.location_id  
+                 JOIN pods.coordinate c 
+                   ON c.location_id = sp.location_id
+                 JOIN route_limits rl
+                   ON r.route_id = rl.route_id  
+            WHERE lc.srv_district_gcl IN ({LPU_ACCESS_FILTER})
+              AND sp.STATION BETWEEN rl.km_start AND rl.km_end 
+              AND sp.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+              AND rl.km_start != rl.km_end
+UNION 
+SELECT  r.ROUTE_ID ID
+      ,'ST_POINT_TYPE_01' "TYPE"
+      ,CASE WHEN sp2.station = sp1.station 
+            THEN c1.X_COORD
+            ELSE c1.X_COORD + (rl.km_end - sp1.station)/(sp2.station - sp1.station) * (c2.X_COORD - c1.X_COORD) 
+       END X_COORD
+      ,CASE WHEN sp2.station = sp1.station
+            THEN c1.Y_COORD
+            ELSE  c1.Y_COORD + (rl.km_end - sp1.station)/(sp2.station - sp1.station) * (c2.Y_COORD - c1.Y_COORD) 
+       END Y_COORD
+      ,'Y' CURRENT_INDICATOR_LF
+      ,r.SEQUENCE
+      ,rl.km_end STATION
+      ,CASE WHEN sp2.station = sp1.station
+            THEN sp1.measure
+            ELSE sp1.measure + (rl.km_end - sp1.station)/(sp2.station - sp1.station) * (sp2.measure - sp1.measure) 
+       END MEASURE
+            FROM pods.route r
+                 JOIN pods.series s
+                   ON s.route_id = r.route_id
+                 JOIN pods.station_point sp1 
+                   ON sp1.series_id = s.series_id
+                 JOIN pods.location lc1
+                   ON lc1.location_id = sp1.location_id  
+                 JOIN pods.coordinate c1 
+                   ON c1.location_id = lc1.location_id
+                 JOIN pods.station_point sp2 
+                   ON sp2.series_id = s.series_id
+                 JOIN pods.location lc2
+                   ON lc2.location_id = sp2.location_id  
+                 JOIN pods.coordinate c2 
+                   ON c2.location_id = lc2.location_id
+                 JOIN route_limits rl
+                   ON r.route_id = rl.route_id  
+            WHERE lc1.srv_district_gcl IN ({LPU_ACCESS_FILTER})
+              AND lc2.srv_district_gcl IN ({LPU_ACCESS_FILTER})
+              AND sp1.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+              AND sp2.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+              AND sp1.STATION_ID = (SELECT station_id
+                                     FROM pods.station_point spz
+                                    WHERE spz.series_id = rl.series_id 
+                                      AND spz.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+                                      AND spz.measure = (SELECT CASE rl.signer 
+                                                                    WHEN -1 THEN MIN(spm.measure)
+                                                                    ELSE MAX(spm.measure)  
+                                                                END       
+                                                           FROM pods.station_point spm
+                                                          WHERE spm.series_id = spz.series_id
+                                                            AND spm.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+                                                            AND spm.station &lt;= rl.km_end )
+                                      LIMIT 1)
+              AND sp2.STATION_ID = (SELECT station_id
+                                     FROM pods.station_point spz
+                                    WHERE spz.series_id = rl.series_id 
+                                      AND spz.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+                                      AND spz.measure = (SELECT CASE rl.signer 
+                                                                    WHEN -1 THEN MAX(spm.measure)
+                                                                    ELSE MIN(spm.measure)  
+                                                                END
+                                                           FROM pods.station_point spm
+                                                          WHERE spm.series_id = spz.series_id
+                                                            AND spm.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+                                                            AND spm.station &gt;= rl.km_end)
+                                      LIMIT 1 )
+              AND rl.km_start != rl.km_end ) d
+ORDER BY  ID, SEQUENCE, MEASURE
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="FIND_PIPE_KM_BY_LINE" comment="Запрос получения координаты ближайшей точки трубопровода по километру и line_id">
+    <select>
+      <dbQuery idField="ID">
+		<var name="KM" type="Decimal" default="-99999999"/>
+		<var name="LINE_ID" type="Int64" default="-99999999"/>
+        <query>
+			WITH my_routes AS (SELECT r.ROUTE_ID
+			,r.LINE_ID, r.TYPE_CL
+			,CASE r.TYPE_CL
+			WHEN 'ROUTE_TYPE_10' THEN 'G0000001'
+			WHEN 'ROUTE_TYPE_11' THEN 'G0000002'
+			WHEN 'ROUTE_TYPE_12' THEN 'G0000002'
+			WHEN 'ROUTE_TYPE_04' THEN 'G0000003'
+			END OBJ_CLS_GROUP_ID
+			FROM PODS.ROUTE r
+			WHERE r.TYPE_CL IN ('ROUTE_TYPE_10','ROUTE_TYPE_11','ROUTE_TYPE_12','ROUTE_TYPE_04')
+			AND r.CURRENT_INDICATOR_LF = 'Y')
+			select * from (SELECT sp.ROUTE_ID, (sp.STATION-({KM})) DL, c.x_coord X, c.y_coord Y
+			FROM my_routes r, PODS.STATION_POINT sp, pods.coordinate c
+			WHERE sp.route_id = r.route_id and r.line_id={LINE_ID} and c.location_id = sp.location_id
+			AND ((r.OBJ_CLS_GROUP_ID = 'G0000003'
+			AND NOT EXISTS (SELECT 'x'
+			FROM my_routes
+			WHERE OBJ_CLS_GROUP_ID in ('G0000001','G0000002')))
+			OR (r.OBJ_CLS_GROUP_ID = 'G0000002'
+			AND NOT EXISTS (SELECT 'x'
+			FROM my_routes
+			WHERE OBJ_CLS_GROUP_ID = 'G0000001'))
+			OR r.OBJ_CLS_GROUP_ID = 'G0000001')
+			and ABS(sp.STATION-({KM})) &lt; 5
+			order by ABS(sp.STATION-({KM}))  ASC ) d LIMIT 1
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запросы для экспорта IMG-карт и 3D-сцен -->
+  <data id="EXPORT_IMG" comment="Запрос для построения списка IMG-карт">
+    <select>
+      <dbQuery idField="ID">
+        <query>
+		  SELECT ld.DOC_ID,ld.DOC_TYPE_ID,ld.STATUS_ID,ld.NAME,ld.DESCR,ldv.CTIME,ldv.DOC_VERSION_ID,ldv.FILE_NAME,ldtr.DESCR AS CATEGORY,usr.LOGIN AS USERNAME 
+		  FROM WEB50.LIB_DOC ld JOIN WEB50.LIB_DOC_VERSION ldv ON (ld.DOC_ID=ldv.DOC_ID AND ldv.NEXT_DOC_VERSION_ID IS NULL) JOIN WEB50.LIB_DOC_TYPE_REF ldtr ON ld.DOC_TYPE_ID = ldtr.DOC_TYPE_ID JOIN WEB50.B_USER_PRIVATE usr ON usr.USER_ID=ldv.CUSER_ID 
+		  WHERE ld.DOC_TYPE_ID=38 ORDER BY ldv.DOC_VERSION_ID
+	  </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="EXPORT_SCENE3D" comment="Запрос для построения списка 3D-сцен">
+    <select>
+      <dbQuery idField="ID">
+        <query>
+		  SELECT ld.DOC_ID,ld.DOC_TYPE_ID,ld.STATUS_ID,ld.NAME,ld.DESCR,ldv.CTIME,ldv.DOC_VERSION_ID,ldv.FILE_NAME,ldtr.DESCR AS CATEGORY,usr.LOGIN AS USERNAME 
+		  FROM WEB50.LIB_DOC ld JOIN WEB50.LIB_DOC_VERSION ldv ON (ld.DOC_ID=ldv.DOC_ID AND ldv.NEXT_DOC_VERSION_ID IS NULL) JOIN WEB50.LIB_DOC_TYPE_REF ldtr ON ld.DOC_TYPE_ID = ldtr.DOC_TYPE_ID JOIN WEB50.B_USER_PRIVATE usr ON usr.USER_ID=ldv.CUSER_ID 
+		  WHERE ld.DOC_TYPE_ID=37 ORDER BY ldv.DOC_VERSION_ID
+	  </query>
+      </dbQuery>
+    </select>
+  </data>
+
+  <!-- Запрос нужен для центровки по трубопроводу на карте -->
+  <data id="MG_PROFILE" comment="Запрос для получения профиля трубы по LINE_ID, KM_START, KM_END">
+    <select>
+      <dbQuery idField="ID">
+        <param name="LINE_ID" type="Int64" direction="Input" />
+        <param name="KM_START" type="Decimal" direction="Input" />
+        <param name="KM_END" type="Decimal" direction="Input" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+          SELECT sp.station STATION
+          ,sp.station_id STATION_ID
+          ,c.x_coord X_COORD
+          ,c.y_coord Y_COORD
+          ,s.station_begin + sp.measure/1000  ABS_MEASURE
+          FROM pods.line l
+          JOIN pods.route r
+          ON l.line_id = r.line_id
+          AND l.type_cl = CASE r.type_cl
+          WHEN 'ROUTE_TYPE_10' THEN 'LINE_TYPE_01'
+          WHEN 'ROUTE_TYPE_11' THEN 'LINE_TYPE_02'
+          WHEN 'ROUTE_TYPE_12' THEN 'LINE_TYPE_03'
+          WHEN 'ROUTE_TYPE_04' THEN 'LINE_TYPE_04'
+          END
+          JOIN pods.series s
+          ON s.route_id = r.route_id
+          JOIN pods.station_point sp
+          ON sp.series_id = s.series_id
+          JOIN pods.location lc
+          ON lc.location_id = sp.location_id
+          JOIN pods.coordinate c
+          ON c.location_id = lc.location_id
+          WHERE lc.srv_district_gcl IN ({LPU_ACCESS_FILTER})
+          AND l.line_id = :LINE_ID
+          AND sp.type_cl IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+          AND ABS(s.station_begin - s.station_end) &gt;= 0.9
+          AND sp.station BETWEEN  :KM_START AND :KM_END
+          ORDER BY R.sequence,sp.measure / 1000 + s.station_begin
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  
+  <!-- Запросы для нового ПКА -->
+  <!-- Запрос нужен для новой ПКА -->
+  <data id="NEW_CAS_MG_PROFILE" comment="Запрос для получения профиля трубы по LINE_ID, KM_START, KM_END">
+    <select>
+      <dbQuery idField="ID">
+		<param name="LINE_ID" type="Int64" direction="Input" />
+    <param name="KM_START" type="Decimal" direction="Input" />
+		<param name="KM_END" type="Decimal" direction="Input" />
+    <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+		select * from (
+select :KM_START ABS_MEASURE union all
+select :KM_END ) dd order by ABS_MEASURE  
+
+/* испрввлено 27.09.21 SELECT s.station_begin + sp.measure/1000  ABS_MEASURE
+  FROM pods.line l
+       JOIN pods.route r
+         ON l.line_id = r.line_id
+         AND l.type_cl = CASE r.type_cl
+                              WHEN 'ROUTE_TYPE_10' THEN 'LINE_TYPE_01'  
+                              WHEN 'ROUTE_TYPE_11' THEN 'LINE_TYPE_02'  
+                              WHEN 'ROUTE_TYPE_12' THEN 'LINE_TYPE_03'  
+                              WHEN 'ROUTE_TYPE_04' THEN 'LINE_TYPE_04'  
+                         END  
+       JOIN pods.series s
+         ON s.route_id = r.route_id
+       JOIN pods.station_point sp
+         ON sp.series_id = s.series_id
+       JOIN pods.location lc
+         ON lc.location_id = sp.location_id
+ WHERE lc.srv_district_gcl IN ({LPU_ACCESS_FILTER})
+   AND l.line_id = :LINE_ID
+   AND sp.type_cl IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+   AND ABS(s.station_begin - s.station_end) &gt;= 0.9
+   AND (sp.measure / 1000 + s.station_begin) BETWEEN  :KM_START AND :KM_END
+ ORDER BY s.station_begin,sp.measure / 1000 + s.station_begin	*/	</query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запрос нужен для новой ПКА и для центровки по трубопроводу на карте -->
+  <data id="PIPE_LIST_START_END" comment="Запрос для получения начальной/конечной дистанции для трубопровода по LINE_ID">
+    <select>
+      <dbQuery idField="ID">
+        <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+ SELECT l.line_id LINE_ID, l.line_id CODE, rtp.description||' '||l.description DESCR
+      ,CASE WHEN MIN(s.STATION_BEGIN) &gt; MIN(sp.station)
+              THEN MIN(s.STATION_BEGIN)
+            ELSE MIN(sp.station)   
+       END KM_START
+      ,CASE WHEN MAX(s.STATION_END) &lt; MAX(sp.station)
+              THEN MAX(s.STATION_END)
+            ELSE MAX(sp.station)    
+       END KM_END
+  FROM pods.line l
+       JOIN pods.route r
+         ON l.line_id = r.line_id
+         AND l.type_cl = CASE r.type_cl
+                              WHEN 'ROUTE_TYPE_10' THEN 'LINE_TYPE_01'  
+                              WHEN 'ROUTE_TYPE_11' THEN 'LINE_TYPE_02'  
+                              WHEN 'ROUTE_TYPE_12' THEN 'LINE_TYPE_03'  
+                              WHEN 'ROUTE_TYPE_04' THEN 'LINE_TYPE_04'  
+                         END  
+       JOIN pods.series s
+         ON s.route_id = r.route_id
+       JOIN pods.route_type_cl rtp
+         ON r.type_cl = rtp.code
+       JOIN pods.station_point sp
+         ON sp.series_id = s.series_id
+       JOIN pods.location lc
+         ON lc.location_id = sp.location_id      
+  WHERE  (l.type_cl IN ('LINE_TYPE_01','LINE_TYPE_02','LINE_TYPE_03')
+         OR (l.type_cl = 'LINE_TYPE_04'
+         AND ABS(s.station_begin - s.station_end) &gt;= 0.5 ))
+    AND sp.type_cl IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+    AND lc.srv_district_gcl IN ({LPU_ACCESS_FILTER})      
+GROUP BY l.line_id, l.description,rtp.description
+ORDER BY lower(rtp.description||' '||l.description)
+      	</query>
+      </dbQuery>
+    </select>
+  </data>
+
+  <!-- Запрос используется в 2-х местах - в форме выбора трубы для старой ПКА и в задаче администрирования ВТД (выбор трубы для привязки) -->
+  <data id="CAS_LIST_ROUTES" comment="Запрос для построения списка участков трубопроводов по LINE_ID и TYPE_CL">
+    <select>
+      <dbQuery idField="ID">
+        <param name="LINE_ID" type="Int64" direction="Input" />
+        <param name="CODE" type="String" direction="Input" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+SELECT r.route_id LINE_ID
+      ,r.route_id CODE
+      ,l.description || ' (' 
+        || CAST(CASE WHEN s.station_begin &gt;  MIN(sp.station)
+                       THEN s.station_begin
+                     ELSE MIN(sp.station)  
+                END AS VARCHAR(10)) || ' - ' 
+        || CAST(CASE WHEN s.station_end &lt; MAX(sp.station)
+                       THEN s.station_end 
+                     ELSE  MAX(sp.station)  
+                 END AS VARCHAR(10)) || ')' DESCR
+      ,CASE WHEN s.station_begin &gt;  MIN(sp.station)
+              THEN s.station_begin
+            ELSE MIN(sp.station)  
+       END НАЧАЛЬНЫЙ_КМ
+      ,CASE WHEN s.station_end &lt; MAX(sp.station)
+              THEN s.station_end 
+            ELSE  MAX(sp.station)  
+       END КОНЕЧНЫЙ_КМ
+  FROM pods.line l 
+       JOIN pods.route r
+         ON r.line_id = l.line_id 
+       JOIN pods.series s
+         ON s.route_id = r.route_id 
+       JOIN pods.station_point sp
+         ON sp.series_id = s.series_id
+       JOIN pods.location lc
+         ON lc.location_id = sp.location_id   
+WHERE l.line_id = :LINE_ID 
+  AND r.type_cl = :CODE
+  AND lc.srv_district_gcl IN ({LPU_ACCESS_FILTER})
+  AND sp.type_cl IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+GROUP BY r.route_id,l.description ,s.station_begin,s.station_end     
+ORDER BY LOWER(l.description),НАЧАЛЬНЫЙ_КМ,КОНЕЧНЫЙ_КМ          
+    		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запрос используется в 2-х местах - в форме выбора трубы для старой ПКА и в задаче администрирования ВТД (выбор трубы для привязки) -->
+  <data id="CAS_LIST_ROUTE_TYPE" comment="Запрос для построения списка типов трубопроводов">
+    <select>
+      <dbQuery idField="ID">
+        <param name="LINE_ID" type="Int64" direction="Input" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+            SELECT code,descr,sorter   FROM(
+SELECT DISTINCT rt.CODE
+      , rt.description DESCR
+      ,CASE WHEN rt.CODE = 'UNKNOWN'
+                      THEN 1
+                      ELSE 0
+       END sorter 
+  FROM pods.ROUTE_TYPE_CL rt
+WHERE EXISTS (SELECT 1
+                FROM pods.location lc
+                     JOIN pods.station_point sp
+                       ON sp.location_id = lc.location_id
+                     JOIN pods.series s
+                       ON sp.series_id = s.series_id  
+                     JOIN pods.route r
+                       ON s.route_id = r.route_id  
+               WHERE lc.srv_district_gcl IN ({LPU_ACCESS_FILTER})
+                 AND r.type_cl = rt.code 
+                 AND r.line_id = :LINE_ID)
+            ) d
+            ORDER BY sorter,LOWER(descr)
+		    </query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запрос используется в 3-х местах - в форме выбора трубы для старой ПКА и в задачах администрирования ВТД и ЭХЗ (выбор трубы для привязки) -->
+  <data id="CAS_ROUTE" comment="Запрос для построения списка участков трубопроводов">
+    <select>
+      <dbQuery idField="ID">
+        <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+          <query>
+SELECT l.line_id LINE_ID, l.line_id CODE, l.description DESCR 
+  FROM pods.line l 
+ WHERE l.line_id != 0
+   AND EXISTS (SELECT 1
+                  FROM pods.route r
+                       JOIN pods.series s
+                         ON s.route_id = r.route_id
+                       JOIN pods.station_point sp
+                         ON sp.series_id = s.series_id
+                       JOIN pods.location lc
+                         ON lc.location_id = sp.location_id     
+                 WHERE lc.srv_district_gcl IN ({LPU_ACCESS_FILTER})
+                   AND ABS(s.station_end-s.station_begin)  &gt; 0.5
+                   AND sp.type_cl IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03') 
+                   AND r.type_cl in ( 'ROUTE_TYPE_10','ROUTE_TYPE_04','ROUTE_TYPE_02','ROUTE_TYPE_11','ROUTE_TYPE_12')
+                   AND r.line_Id = l.line_Id) 
+ORDER BY LOWER(l.description)
+     	  </query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запрос используется в форме выбора трубы для старой и новой ПКА, в форме центровки по трубе, форме привязки -->
+  <data id="PIPE_LIST" comment="Запрос для построения списка трубопроводов без начальной/конечной дистанции">
+    <select>
+      <dbQuery idField="ID">
+        <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+SELECT l.line_id LINE_ID, l.line_id CODE, l.description DESCR
+   FROM pods.line l
+  WHERE EXISTS (SELECT 1
+                  FROM pods.route r
+                       JOIN pods.series s
+                         ON s.route_id = r.route_id
+                       JOIN pods.station_point sp
+                         ON sp.series_id = s.series_id
+                       JOIN pods.location lc
+                         ON lc.location_id = sp.location_id     
+                 WHERE lc.srv_district_gcl IN ({LPU_ACCESS_FILTER})
+                   AND sp.type_cl IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03') 
+                   AND r.line_Id = l.line_Id) 
+GROUP BY l.line_id, l.description 
+ORDER BY LOWER(l.description)
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запрос используется в форме выбора трубы для старой и новой ПКА, в форме центровки по трубе, форме привязки -->
+  <data id="PIPE_START_END" comment="Запрос для получения начальной/конечной дистанции для трубопровода по LINE_ID">
+    <select>
+      <dbQuery idField="ID">
+        <param name="LINE_ID" type="Int64" direction="Input" />
+        <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+        <query>
+SELECT CASE WHEN MIN(s.STATION_BEGIN) &gt; MIN(sp.station)
+              THEN MIN(s.STATION_BEGIN)
+            ELSE MIN(sp.station)   
+       END KM_START
+      ,CASE WHEN MAX(s.STATION_END) &lt; MAX(sp.station)
+              THEN MAX(s.STATION_END)
+            ELSE MAX(sp.station)    
+       END KM_END
+  FROM pods.route r 
+       JOIN pods.series s
+         ON s.route_id = r.route_id
+       JOIN pods.station_point sp
+         ON sp.series_id = s.series_id
+       JOIN pods.location lc
+         ON lc.location_id = sp.location_id   
+  WHERE r.line_id = :LINE_ID 
+    AND r.TYPE_CL = 'ROUTE_TYPE_10'
+    AND lc.srv_district_gcl IN ({LPU_ACCESS_FILTER})
+    AND sp.type_cl IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- запроссы для вызова ПКА из виджета. переписать после изменения логики, если понадобится -->
+  <data id="CAS_FIND_OBJ_ID" comment="Запрос для получения идентификатора объекта по идентификатору Инфотех">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYSTEM_ID" type="String" />
+        <param name="OBJ_ID" type="String" />
+		<var name="KM_BEGIN" type="String" default="''"/>
+		<var name="KM_END" type="String" default="''"/>
+        <query>
+		 SELECT DISTINCT 'MG' CAS_TYPE, g.obj_descr OBJ_NAME, {KM_BEGIN} KM_BEGIN, {KM_END} KM_END, r.line_id OBJ_ID from gis_integration50.gate g, pods.route r WHERE g.SYSTEM_ID = :SYSTEM_ID AND g.OBJ_ID = :OBJ_ID AND r.ROUTE_ID = g.KEY_VALUES::integer and g.key_fields='LINE_ID'
+	  </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="CAS_FIND_EXT_OBJ_ID" comment="Запрос для получения идентификатора объекта по идентификатору Инфотех">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYSTEM_ID" type="String" />
+        <param name="OBJ_ID" type="String" />
+        <var name="KM_BEGIN" type="String" default="''"/>
+        <var name="KM_END" type="String" default="''"/>		  
+        <query>
+          SELECT DISTINCT 'MG' CAS_TYPE, g.obj_descr OBJ_NAME, {KM_BEGIN} KM_BEGIN, {KM_END} KM_END, r.line_id OBJ_ID from gis_integration50.gate g, pods.route r WHERE g.SYSTEM_ID = :SYSTEM_ID AND g.OBJ_ID = :OBJ_ID AND r.LINE_ID = g.KEY_VALUES::integer AND r.type_cl = 'ROUTE_TYPE_10' and g.key_fields='LINE_ID'
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  
+  <!-- Запросы для привязки объектов -->
+  <data id="PODS_GET_BIND_ROUTE_ID" comment="PODS.EVENT_RANGE_BIND" schema="PODS" table="EVENT_RANGE_BIND" descr="Скрипт для получения ROUTE_ID привязанного объекта по его ID (должно быть EVENT_ID)">
+    <select>
+      <dbQuery idField="ID">
+		<param name="ID" type="Int64" direction="Input" />
+        <query>
+			SELECT GREATEST(sp1.ROUTE_ID,sp2.ROUTE_ID) ROUTE_ID FROM PODS.EVENT_RANGE er
+			JOIN PODS.STATION_POINT sp1 ON er.STATION_ID_BEGIN=sp1.STATION_ID
+			JOIN PODS.STATION_POINT sp2 ON er.STATION_ID_END=sp2.STATION_ID
+			WHERE er.EVENT_ID=:ID
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="PODS_EVENT_RANGE_BIND" comment="PODS.EVENT_RANGE_BIND" schema="PODS" table="EVENT_RANGE_BIND" descr="Скрипт привязки объекта к ROUTE.">
+    <update>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+        <var name="ADDITION_ID" type="Int64" direction="Input" />
+        <var name="POINT1_X" type="Decimal" direction="Input" />
+        <var name="POINT1_Y" type="Decimal" direction="Input" />
+        <var name="POINT2_X" type="Decimal" direction="Input" />
+        <var name="POINT2_Y" type="Decimal" direction="Input" />
+        <var name="COEFF1" type="Decimal" direction="Input" default="0" />
+        <var name="ADDITION_TYPE" type="String" direction="Input" default="ST_POINT_TYPE_02" />
+        <var name="NEW_POINT1_X" type="Decimal" direction="Input" />
+        <var name="NEW_POINT1_Y" type="Decimal" direction="Input" />
+        <var name="POINT3_X" type="Decimal" direction="Input" />
+        <var name="POINT3_Y" type="Decimal" direction="Input" />
+        <var name="POINT4_X" type="Decimal" direction="Input" />
+        <var name="POINT4_Y" type="Decimal" direction="Input" />
+        <var name="COEFF2" type="Decimal" direction="Input" default="0" />
+        <var name="NEW_POINT2_X" type="Decimal" direction="Input" />
+        <var name="NEW_POINT2_Y" type="Decimal" direction="Input" />
+        <query>
+		DO $$
+            DECLARE
+                VAR_LINE_ID     NUMERIC (16, 0);
+                VAR_SERIES      NUMERIC (16, 0);
+                VAR_SERIES_ID   NUMERIC (16, 0);
+                VAR_LINE_ID2     NUMERIC (16, 0);
+                VAR_SERIES2      NUMERIC (16, 0);
+                VAR_SERIES_ID2   NUMERIC (16, 0);
+                ST1             NUMERIC (16, 2);
+                ST2             NUMERIC (16, 2);
+                MSR1            NUMERIC (16, 2);
+                MSR2            NUMERIC (16, 2);
+                ST12             NUMERIC (16, 2);
+                ST22             NUMERIC (16, 2);
+                MSR12            NUMERIC (16, 2);
+                MSR22            NUMERIC (16, 2);
+
+                v_first_sp_id    NUMERIC (16, 0);
+                v_first_sp_measure   NUMERIC (16, 2);
+                v_last_sp_id     NUMERIC (16, 0);
+                v_last_sp_measure   NUMERIC (16, 2);
+                v_sign           INTEGER;
+    
+            BEGIN
+      
+            /* Получу данные о начальной и конечной точках в участке 
+             для контроля за выходом проекции за пределы участка */
+            SELECT MIN(station_id)
+                  ,MIN(measure)
+              INTO v_first_sp_id
+                  ,v_first_sp_measure    
+              FROM pods.station_point sp
+             WHERE sp.route_id = {ADDITION_ID}
+               AND sp.type_cl IN ('ST_POINT_TYPE_01','ST_POINT_TYPE_02','ST_POINT_TYPE_03')
+               AND sp.measure  = (SELECT MIN(measure)
+                                    FROM pods.station_point sp1
+                                   WHERE sp.route_id = sp1.route_id
+                                     AND location_id &gt; 0
+                                     AND type_cl IN ('ST_POINT_TYPE_01','ST_POINT_TYPE_02','ST_POINT_TYPE_03'));    
+            
+            SELECT MAX(station_id)
+                  ,MAX(measure)
+              INTO v_last_sp_id
+                  ,v_last_sp_measure    
+              FROM pods.station_point sp
+             WHERE sp.route_id = {ADDITION_ID}
+               AND sp.type_cl IN ('ST_POINT_TYPE_01','ST_POINT_TYPE_02','ST_POINT_TYPE_03')
+               AND sp.measure  = (SELECT MAX(measure)
+                                    FROM pods.station_point sp1
+                                   WHERE sp.route_id = sp1.route_id
+                                     AND location_id &gt; 0
+                                     AND type_cl IN ('ST_POINT_TYPE_01','ST_POINT_TYPE_02','ST_POINT_TYPE_03'));    
+
+            SELECT MIN (sp.STATION),
+                   MIN (sp.MEASURE),
+                   MIN (sp.LINE_ID),
+                   MIN (sp.SERIES),
+                   MIN (sp.SERIES_ID)
+              INTO ST1,
+                   MSR1,
+                   VAR_LINE_ID,
+                   VAR_SERIES,
+                   VAR_SERIES_ID
+              FROM pods.station_point sp
+                   JOIN pods.COORDINATE c
+                     ON sp.location_id = c.location_id
+             WHERE ROUND (c.X_COORD, 6) * 1000000000 + ROUND (c.Y_COORD, 6) =
+                      ROUND ({POINT1_X}, 6) * 1000000000 + ROUND ({POINT1_Y}, 6)
+               AND sp.route_id = {ADDITION_ID};
+
+            SELECT MIN (sp.STATION), MIN (sp.MEASURE)
+              INTO ST2, MSR2
+              FROM pods.station_point sp
+                   JOIN pods.COORDINATE c
+                     ON sp.location_id = c.location_id
+             WHERE ROUND (c.X_COORD, 6) * 1000000000 + ROUND (c.Y_COORD, 6) =
+                      ROUND ({POINT2_X}, 6) * 1000000000 + ROUND ({POINT2_Y}, 6)
+               AND sp.route_id = {ADDITION_ID};
+
+
+
+            IF {POINT3_X} IS NOT NULL AND {POINT4_X} IS NOT NULL
+            THEN
+            
+                SELECT MIN (sp.STATION),
+                       MIN (sp.MEASURE),
+                       MIN (sp.LINE_ID),
+                       MIN (sp.SERIES),
+                       MIN (sp.SERIES_ID)
+                  INTO ST12,
+                       MSR12,
+                       VAR_LINE_ID2,
+                       VAR_SERIES2,
+                       VAR_SERIES_ID2
+                  FROM pods.COORDINATE c
+                       JOIN pods.station_point sp
+                         ON sp.location_id = c.location_id
+                 WHERE ROUND (c.X_COORD, 6) * 1000000000 + ROUND (c.Y_COORD, 6) =
+                          ROUND ({POINT3_X}, 6) * 1000000000 + ROUND ({POINT3_Y}, 6)
+                   AND sp.route_id = {ADDITION_ID};
+
+                SELECT MIN (sp.STATION), MIN (sp.MEASURE)
+                  INTO ST22, MSR22
+                  FROM pods.COORDINATE c
+                       JOIN pods.station_point sp
+                         ON sp.location_id = c.location_id
+                 WHERE ROUND (c.X_COORD, 6) * 1000000000 + ROUND (c.Y_COORD, 6) =
+                          ROUND ({POINT4_X}, 6) * 1000000000 + ROUND ({POINT4_Y}, 6)
+                   AND sp.route_id = {ADDITION_ID};
+            END IF;
+
+
+
+            /* Вот тут, если точка по линейой дистанции уходит за границу участка,
+             то меняем у event-объекта на граничную точку */
+            IF LEAST (MSR1, MSR2) + ABS (MSR2 - MSR1) * {COEFF1} BETWEEN v_first_sp_measure AND v_last_sp_measure
+            THEN
+            
+                UPDATE PODS.STATION_POINT
+                   SET TYPE_CL='{ADDITION_TYPE}',
+                       LINE_ID = VAR_LINE_ID,
+                       SERIES = VAR_SERIES,
+                       SERIES_ID = VAR_SERIES_ID,
+                       ROUTE_ID = {ADDITION_ID},
+                       STATION = LEAST (ST1, ST2) + ABS (ST2 - ST1) * {COEFF1},
+                       MEASURE = LEAST (MSR1, MSR2) + ABS (MSR2 - MSR1) * {COEFF1}
+                WHERE STATION_ID = (SELECT STATION_ID_BEGIN
+                                      FROM PODS.EVENT_RANGE
+                                     WHERE EVENT_ID = {ID});
+
+                IF {NEW_POINT1_X} IS NOT NULL AND {NEW_POINT1_Y} IS NOT NULL
+                THEN
+                  UPDATE PODS.COORDINATE
+                     SET X_COORD = {NEW_POINT1_X}, Y_COORD = {NEW_POINT1_Y}
+                   WHERE LOCATION_ID = (SELECT sp.LOCATION_ID
+                                          FROM PODS.STATION_POINT sp
+                                               JOIN PODS.EVENT_RANGE er
+                                                 ON er.STATION_ID_BEGIN = sp.STATION_ID
+                                         WHERE er.EVENT_ID = {ID});
+                END IF;
+                
+            ELSIF LEAST (MSR1, MSR2) + ABS (MSR2 - MSR1) * {COEFF1} &lt; v_first_sp_measure
+            THEN 
+              UPDATE pods.event_range
+                 SET station_id_begin = v_first_sp_id
+               WHERE event_id = {ID}; 
+            
+            ELSIF LEAST (MSR1, MSR2) + ABS (MSR2 - MSR1) * {COEFF1} &gt; v_last_sp_measure    
+            THEN 
+
+              UPDATE pods.event_range
+                 SET station_id_end = v_last_sp_id
+               WHERE event_id = {ID}; 
+            
+            END IF;
+
+            /* Вот тут, если точка по линейной дистанции уходит за границу участка,
+             то меняем у event-объекта на граничную точку */
+            IF LEAST (MSR12, MSR22) + ABS (MSR22 - MSR12) * {COEFF2} BETWEEN v_first_sp_measure AND v_last_sp_measure
+            THEN
+                IF {POINT3_X} IS NOT NULL AND {POINT4_X} IS NOT NULL
+                THEN
+                  UPDATE PODS.STATION_POINT
+                     SET TYPE_CL='{ADDITION_TYPE}',
+                         LINE_ID = VAR_LINE_ID2,
+                         SERIES = VAR_SERIES2,
+                         SERIES_ID = VAR_SERIES_ID2,
+                         ROUTE_ID = {ADDITION_ID},
+                         STATION =   LEAST (ST12, ST22) + ABS (ST22 - ST12) * {COEFF2},
+                         MEASURE = LEAST (MSR12, MSR22) + ABS (MSR22 - MSR12) * {COEFF2}
+                   WHERE STATION_ID = (SELECT STATION_ID_END
+                                         FROM PODS.EVENT_RANGE
+                                        WHERE EVENT_ID = {ID});
+                END IF;
+
+                IF {NEW_POINT2_X} IS NOT NULL AND {NEW_POINT2_Y} IS NOT NULL
+                THEN
+                  UPDATE PODS.COORDINATE
+                     SET X_COORD = {NEW_POINT2_X}, Y_COORD = {NEW_POINT2_Y}
+                   WHERE LOCATION_ID = (SELECT sp.LOCATION_ID
+                                          FROM PODS.STATION_POINT sp
+                                               JOIN PODS.EVENT_RANGE er
+                                                 ON er.STATION_ID_END = sp.STATION_ID
+                                         WHERE er.EVENT_ID = {ID});
+                END IF;
+                
+            ELSIF LEAST (MSR12, MSR22) + ABS (MSR22 - MSR12) * {COEFF2} &lt; v_first_sp_measure
+            THEN 
+            
+              UPDATE pods.event_range
+                 SET station_id_begin = v_first_sp_id
+               WHERE event_id = {ID}; 
+            
+            ELSIF  LEAST (MSR12, MSR22) + ABS (MSR22 - MSR12) * {COEFF2} &gt; v_last_sp_measure  
+            THEN 
+
+              UPDATE pods.event_range
+                 SET station_id_end = v_last_sp_id
+               WHERE event_id = {ID}; 
+            
+            END IF;
+
+            /* Если EVENT_RANGE против направления оцифровки. переверну его */
+            
+            SELECT SIGN(spe.measure - spb.measure) 
+              INTO v_sign
+              FROM pods.event_range er
+                   JOIN pods.station_point spb
+                     ON spb.station_id = er.station_id_begin
+                   JOIN pods.station_point spe
+                     ON spe.station_id = er.station_id_end
+             WHERE event_id =  {ID};
+             
+            IF  v_sign &lt; 0 
+            THEN
+                UPDATE pods.event_range
+                   SET station_id_begin = station_id_end
+                      ,station_id_end = station_id_begin
+                 WHERE event_id = {ID};            
+            
+            END IF;
+
+
+            END $$;
+		    </query>
+      </dbCommand>
+    </update>
+  </data>
+  <!-- Проецирование объекта без указаной геометрии-->
+  <data id="PODS_EVENT_RANGE_BIND_WO_GEO" comment="PODS.EVENT_RANGE_BIND" schema="PODS" table="EVENT_RANGE_BIND" descr="Скрипт привязки объекта к LINE без геометрии.">
+    <update>
+      <dbCommand>
+        <var name="ID" type="Int64" direction="Input" />
+        <var name="LINE_ID" type="Int64" direction="Input" />
+		<var name="NAME" type="String" direction="Input" />
+        <var name="KM_START" type="Decimal" direction="Input" />
+        <var name="KM_END" type="Decimal" direction="Input" />
+        <var name="ADDITION_TYPE" type="String" direction="Input" default="ST_POINT_TYPE_02" />
+        <var name="PODS_USER" type="String" />
+        <query>
+
+DO $$
+DECLARE
+   
+   v_point1_x         bigint;
+   v_point1_y         bigint;
+   v_point2_x         bigint;
+   v_point2_y         bigint;
+   v_route1_id        bigint;
+   v_route2_id        bigint;
+   v_series1_id       bigint;
+   v_series2_id       bigint;
+   v_series1          bigint;
+   v_series2          bigint;
+   v_location1_id     bigint;
+   v_location2_id     bigint;
+   v_station_id_begin bigint;
+   v_station_id_end   bigint;
+   v_measure1         bigint;
+   v_measure2         bigint;
+   v_lpu1_id          bigint;
+   v_lpu2_id          bigint;
+   v_route_type       VARCHAR(30);
+   v_line_type_description     VARCHAR(30);
+   v_same_sequence_cnt bigint;
+   
+   v_prev_station_id bigint;
+   v_prev_station    bigint;
+   v_prev_measure    bigint;
+   v_next_station_id bigint;
+   v_next_station    bigint;
+   v_next_measure    bigint;
+   v_c1_x_coord      bigint;
+   v_c1_y_coord      bigint;
+   v_c2_x_coord      bigint;
+   v_c2_y_coord      bigint;
+   
+BEGIN
+ 
+  SELECT CASE TYPE_CL
+           WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'   
+           WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11' 
+           WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'   
+           WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+           ELSE 'NOT_SUPPORTED'   
+         END
+        ,lt.description 
+    INTO v_route_type     
+        ,v_line_type_description
+    FROM pods.line l
+         JOIN pods.line_type_cl lt
+           ON l.type_cl = lt.code
+   WHERE line_id = {LINE_ID}; 
+   
+   IF v_route_type = 'NOT_SUPPORTED'
+   THEN
+     RAISE EXCEPTION 'Попытка спроецировать объект на неподдерживаемый тип трубопровода: %', v_line_type_description;
+   END IF; 
+ 
+  SELECT COUNT(*)
+    INTO v_same_sequence_cnt
+    FROM (SELECT sequence
+            FROM pods.route
+           WHERE line_id = {LINE_ID}
+             AND type_cl = v_route_type
+          GROUP BY sequence
+       HAVING COUNT(*) &gt; 1) ex0; 
+
+   IF v_same_sequence_cnt &gt; 0 
+   THEN
+     RAISE EXCEPTION 'Попытка спроецировать объект на трубопровод с некорректным заполненим поля PODS.ROUTE.SEQUENCE';
+   END IF; 
+       
+   BEGIN
+
+     SELECT route_id,station_id,station,measure,x_coord,y_coord,srv_district_gcl,series,series_id
+       INTO v_route1_id,v_prev_station_id,v_prev_station,v_prev_measure,v_c1_x_coord,v_c1_y_coord,v_lpu1_id,v_series1,v_series1_id
+       FROM (SELECT ROW_NUMBER() OVER (ORDER BY spm.station DESC) rwn
+                   ,r.route_id,spm.station_id,spm.station,spm.measure,c.x_coord,c.y_coord,c.z_coord,l.srv_district_gcl,s.series,s.series_id
+               FROM pods.station_point spm
+                    JOIN pods.route r
+                      ON r.route_id = spm.route_id
+                    JOIN pods.series s
+                      ON spm.series_id = s.series_id   
+                    JOIN pods.coordinate c
+                      ON c.location_id = spm.location_id  
+                    JOIN pods.location l
+                      ON l.location_id = spm.location_id  
+              WHERE r.type_cl = v_route_type
+                AND spm.line_id = {LINE_ID}
+                 AND spm.station &lt;= {KM_START}
+                AND spm.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')) z
+     WHERE rwn = 1;
+
+     SELECT station_id,station,measure,x_coord,y_coord
+       INTO v_next_station_id,v_next_station,v_next_measure,v_c2_x_coord,v_c2_y_coord
+       FROM (SELECT ROW_NUMBER() OVER (ORDER BY spm.station ASC) rwn
+                   ,spm.station_id,spm.station,spm.measure,c.x_coord,c.y_coord,c.z_coord
+               FROM pods.station_point spm
+                    JOIN pods.route r
+                      ON r.route_id = spm.route_id
+                    JOIN pods.coordinate c
+                      ON c.location_id = spm.location_id  
+              WHERE r.type_cl = v_route_type
+                AND spm.line_id = {LINE_ID}
+                 AND spm.station &gt;= {KM_START}
+                AND spm.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')) z
+     WHERE rwn = 1;
+
+    v_point1_x := CASE WHEN v_next_station = v_prev_station 
+                         THEN v_c1_x_coord
+                       ELSE v_c1_x_coord + ({KM_START} - v_prev_station)/(v_next_station - v_prev_station) * (v_c2_x_coord - v_c1_x_coord) 
+                  END;
+
+    v_point1_y := CASE WHEN v_next_station = v_prev_station 
+                         THEN v_c1_y_coord
+                       ELSE v_c1_y_coord + ({KM_START} - v_prev_station)/(v_next_station - v_prev_station) * (v_c2_y_coord - v_c1_y_coord) 
+                  END;
+    v_measure1 := CASE WHEN v_next_station = v_prev_station 
+                         THEN v_prev_measure
+                       ELSE v_prev_measure + ({KM_START} - v_prev_station)/(v_next_station - v_prev_station) * (v_next_measure - v_prev_measure) 
+                  END;
+   
+
+   EXCEPTION
+     WHEN NO_DATA_FOUND THEN
+       RAISE EXCEPTION 'Указан начальный километр привязки вне пределов реального километража.';
+   END;
+
+
+   if {KM_END} is not null then
+   BEGIN
+
+     SELECT route_id,station_id,station,measure,x_coord,y_coord,srv_district_gcl,series,series_id
+       INTO v_route2_id,v_prev_station_id,v_prev_station,v_prev_measure,v_c1_x_coord,v_c1_y_coord,v_lpu2_id,v_series2,v_series2_id
+       FROM (SELECT ROW_NUMBER() OVER (ORDER BY spm.station DESC) rwn
+                   ,r.route_id,spm.station_id,spm.station,spm.measure,c.x_coord,c.y_coord,c.z_coord,l.srv_district_gcl,s.series,s.series_id
+               FROM pods.station_point spm
+                    JOIN pods.route r
+                      ON r.route_id = spm.route_id
+                    JOIN pods.series s
+                      ON spm.series_id = s.series_id   
+                    JOIN pods.coordinate c
+                      ON c.location_id = spm.location_id  
+                    JOIN pods.location l
+                      ON l.location_id = spm.location_id  
+              WHERE r.type_cl = v_route_type
+                AND spm.line_id = {LINE_ID}
+                 AND spm.station &lt;= {KM_END}
+                AND spm.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')) z
+     WHERE rwn = 1;
+
+     SELECT station_id,station,measure,x_coord,y_coord
+       INTO v_next_station_id,v_next_station,v_next_measure,v_c2_x_coord,v_c2_y_coord
+       FROM (SELECT ROW_NUMBER() OVER (ORDER BY spm.station ASC) rwn
+                   ,spm.station_id,spm.station,spm.measure,c.x_coord,c.y_coord,c.z_coord
+               FROM pods.station_point spm
+                    JOIN pods.route r
+                      ON r.route_id = spm.route_id
+                    JOIN pods.coordinate c
+                      ON c.location_id = spm.location_id  
+              WHERE r.type_cl = v_route_type
+                AND spm.line_id = {LINE_ID}
+                 AND spm.station &gt;= {KM_END}
+                AND spm.TYPE_CL IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')) z
+     WHERE rwn = 1;
+
+    v_point2_x := CASE WHEN v_next_station = v_prev_station 
+                         THEN v_c1_x_coord
+                       ELSE v_c1_x_coord + ({KM_END} - v_prev_station)/(v_next_station - v_prev_station) * (v_c2_x_coord - v_c1_x_coord) 
+                  END;
+
+    v_point2_y := CASE WHEN v_next_station = v_prev_station 
+                         THEN v_c1_y_coord
+                       ELSE v_c1_y_coord + ({KM_END} - v_prev_station)/(v_next_station - v_prev_station) * (v_c2_y_coord - v_c1_y_coord) 
+                  END;
+    v_measure2 := CASE WHEN v_next_station = v_prev_station 
+                         THEN v_prev_measure
+                       ELSE v_prev_measure + ({KM_END} - v_prev_station)/(v_next_station - v_prev_station) * (v_next_measure - v_prev_measure) 
+                  END;     
+   
+  INSERT INTO pods.location (srv_district_gcl)
+         VALUES(v_lpu2_id)
+         RETURNING location_id INTO v_location2_id;
+
+  INSERT INTO pods.coordinate (type_cl,location_id,x_coord,y_coord,horiz_indicator_lf
+                              ,vert_indicator_lf,current_indicator_lf,effective_from_date
+                              ,create_date,pods_user)
+         VALUES('USR',v_location2_id,v_point2_x,v_point2_y,'Y','N','Y'
+               ,current_timestamp,current_timestamp,'{PODS_USER}'); 
+
+  INSERT INTO pods.station_point (line_id,series,station,series_id,location_id
+                                 ,type_cl,route_id,measure,pods_user,create_date)         
+         VALUES({LINE_ID},v_series2,{KM_END},v_series2_id,v_location2_id
+               ,'{ADDITION_TYPE}',v_route2_id,v_measure2,'{PODS_USER}',current_timestamp)
+         RETURNING station_id INTO v_station_id_end;
+   EXCEPTION
+     WHEN NO_DATA_FOUND THEN
+       RAISE EXCEPTION 'Указан конечный километр привязки вне пределов реального километража.';
+  end;
+ end if;
+
+  /* Поскольку данный event-объект создавался без геометрии, то необходимо создать
+   ему записи в таблицах LOCATION,COORDINATE,STATION_POINT */
+  
+  INSERT INTO pods.location (srv_district_gcl)
+         VALUES(v_lpu1_id)
+         RETURNING location_id INTO v_location1_id;
+
+
+         
+  INSERT INTO pods.coordinate (type_cl,location_id,x_coord,y_coord,horiz_indicator_lf
+                              ,vert_indicator_lf,current_indicator_lf,effective_from_date
+                              ,create_date,pods_user)
+         VALUES('USR',v_location1_id,v_point1_x,v_point1_y,'Y','N','Y'
+               ,current_timestamp,current_timestamp,'{PODS_USER}');                            
+
+                           
+           
+  INSERT INTO pods.station_point (line_id,series,station,series_id,location_id
+                                 ,type_cl,route_id,measure,pods_user,create_date)         
+         VALUES({LINE_ID},v_series1,{KM_START},v_series1_id,v_location1_id
+               ,'{ADDITION_TYPE}',v_route1_id,v_measure1,'{PODS_USER}',current_timestamp)
+         RETURNING station_id INTO v_station_id_begin;
+
+
+
+   if {KM_END} is not null then
+  UPDATE pods.event_range
+     SET station_id_begin = v_station_id_begin
+        ,station_id_end = v_station_id_end
+        ,length = ABS(v_measure2-v_measure1)
+   WHERE event_id = {ID};        
+   else 
+  UPDATE pods.event_range
+     SET station_id_begin = v_station_id_begin
+        ,station_id_end = v_station_id_begin
+        ,length = 0
+   WHERE event_id = {ID};  
+ end if;
+
+END $$;
+
+
+        </query>
+      </dbCommand>
+    </update>
+  </data>
+  <data id="PODS_COORD_ROUTE_LIST_DATA_GRID" comment="Запрос для получения координат ROUTE (грид)">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+			SELECT ROUND(c.x_coord,8)  as X_COORD,
+			ROUND(c.y_coord,8) as Y_COORD,
+			ROUND(c.z_coord,8) as Z_COORD,
+			ROUND(l.depth_of_cover,2) as DEPTH_OF_COVER,
+			srv.description as DESCR,
+			ROUND(sp.measure,2) as MEASURE,
+			ROUND(sp.station,2) as STATION
+			FROM pods.coordinate c
+			JOIN pods.LOCATION l ON l.location_id = c.location_id
+			JOIN pods.station_point sp ON sp.location_id = l.location_id
+			JOIN pods.srv_district_gcl srv ON srv.srv_district_id=l.srv_district_gcl
+			WHERE sp.route_id = :SYS_OBJ_ID
+			AND sp.type_cl IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+			AND c.COORDINATE_ID != -1
+			ORDER BY sp.measure
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="PODS_COORD_LINE_EVENT_LIST_DATA_GRID" comment="Запрос для получения координат линейных Event (грид)">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+SELECT ROUND(c.x_coord,8)  as X_COORD,
+       ROUND(c.y_coord,8) as Y_COORD,
+       ROUND(c.z_coord,8) as Z_COORD,
+       ROUND(l.depth_of_cover,2) as DEPTH_OF_COVER,
+       srv.description as DESCR,
+       ROUND(sp.measure,2) as MEASURE,
+       ROUND(sp.station,2) as STATION, r.SEQUENCE
+       FROM PODS.EVENT_RANGE e
+            JOIN pods.STATION_POINT sp1 
+              ON sp1.STATION_ID = e.STATION_ID_BEGIN
+            JOIN pods.STATION_POINT sp2 
+              ON sp2.STATION_ID = e.STATION_ID_END
+            JOIN pods.route r1 
+              ON r1.route_id = sp1.route_id AND r1.line_id != 0
+            JOIN pods.route r2 
+              ON r2.route_id = sp2.route_id AND r2.line_id = r1.line_id
+            JOIN pods.route r 
+              ON r.route_id IN (r1.route_id, r2.route_id)
+                 OR (r.line_id = r1.line_id AND r.sequence &gt; r1.sequence AND r2.sequence &gt; r.sequence)
+            JOIN pods.series s
+              ON s.route_id = r.route_id     
+            JOIN pods.station_point sp 
+              ON sp.series_id = s.series_id 
+              AND sp.type_cl IN ('ST_POINT_TYPE_01','ST_POINT_TYPE_02','ST_POINT_TYPE_03')
+              AND (r.route_id!=r1.route_id OR sp.measure &gt;= sp1.measure)
+              AND (r.route_id!=r2.route_id OR sp.measure &lt;= sp2.measure)
+            JOIN PODS.LOCATION l 
+              ON sp.LOCATION_ID = l.LOCATION_ID
+            JOIN PODS.COORDINATE c 
+              ON c.LOCATION_ID = l.LOCATION_ID 
+              AND c.X_COORD != -1 
+              AND c.Y_COORD != -1 
+              AND c.TYPE_CL != 'ASG'
+            JOIN PODS.srv_district_gcl srv 
+              ON l.srv_district_gcl = srv.srv_district_id
+ WHERE e.event_id = :SYS_OBJ_ID
+ORDER BY r.SEQUENCE, MEASURE    </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="PODS_COORD_OFFL_SHAPE_LIST_DATA_GRID" comment="Запрос для получения координат PODS_COORD_OFFL_SHAPE_LIST (грид)">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+			select 'N' AS HOLE_FL, 1 AS PART_ID, 1 AS SEQUENCE_NO, ROUND(cc.X_COORD,8) as X_COORD, ROUND(cc.Y_COORD,8) as Y_COORD, ROUND(cc.Z_COORD,8) as Z_COORD
+			,1 PART_NO
+			,1 COORD_IN_PART
+			FROM pods.OFFLINE_EVENT ee
+			JOIN pods.COORDINATE cc on cc.LOCATION_ID = ee.LOCATION_ID
+			WHERE ee.OFFLINE_ID=:SYS_OBJ_ID AND ee.SHAPE_ID IS NULL
+			UNION  ALL
+			SELECT p.HOLE_FL, p.PART_ID, v.SEQUENCE_NO, ROUND(c.X_COORD,8) as X_COORD, ROUND(c.Y_COORD,8) as Y_COORD, ROUND(c.Z_COORD,8) as Z_COORD
+			,PNOT.PART_NO
+			,ROW_NUMBER() OVER (PARTITION BY p.PART_ID ORDER BY p.HOLE_FL,p.PART_ID) COORD_IN_PART
+			FROM PODS.OFFLINE_EVENT e
+			JOIN PODS.PART p on p.SHAPE_ID = e.SHAPE_ID
+			JOIN PODS.VERTEX v on v.PART_ID = p.PART_ID
+			JOIN PODS.COORDINATE c on c.LOCATION_ID = v.LOCATION_ID
+			JOIN (SELECT SHAPE_ID
+			,PART_ID
+			,ROW_NUMBER () OVER (PARTITION BY SHAPE_ID ORDER BY HOLE_FL,PART_ID) PART_NO
+			FROM PODS.PART p) PNOT
+			ON PNOT.SHAPE_ID = p.SHAPE_ID
+			AND PNOT.PART_ID = p.PART_ID
+			WHERE e.OFFLINE_ID=:SYS_OBJ_ID
+			AND c.COORDINATE_ID != -1
+			ORDER BY 7,8
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="PODS_COORD_SITE_SHAPE_LIST_DATA_GRID" comment="Запрос для получения координат PODS_COORD_SITE_SHAPE_LIST (грид)">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+			SELECT 'N' AS HOLE_FL, 1 AS PART_ID, 1 AS SEQUENCE_NO, ROUND(CC.X_COORD,8) AS X_COORD, ROUND(CC.Y_COORD,8) AS Y_COORD, ROUND(CC.Z_COORD,8) AS Z_COORD
+			,1 PART_NO
+			,1 COORD_IN_PART
+			FROM PODS.SITE EE
+			JOIN PODS.COORDINATE CC ON CC.LOCATION_ID = EE.LOCATION_ID
+			WHERE EE.SITE_ID=:SYS_OBJ_ID AND EE.SHAPE_ID IS NULL
+			UNION  ALL
+			SELECT p.HOLE_FL , p.PART_ID, V.SEQUENCE_NO, ROUND(C.X_COORD,8) AS X_COORD, ROUND(C.Y_COORD,8) AS Y_COORD, ROUND(C.Z_COORD,8) AS Z_COORD
+			,PNOT.PART_NO
+			,ROW_NUMBER() OVER (PARTITION BY p.PART_ID ORDER BY p.HOLE_FL,p.PART_ID) COORD_IN_PART
+			FROM PODS.SITE E
+			JOIN PODS.PART P ON p.SHAPE_ID = E.SHAPE_ID
+			JOIN PODS.VERTEX V ON V.PART_ID = p.PART_ID
+			JOIN PODS.COORDINATE C ON C.LOCATION_ID = V.LOCATION_ID
+			JOIN (SELECT SHAPE_ID
+			,PART_ID
+			,ROW_NUMBER () OVER (PARTITION BY SHAPE_ID ORDER BY HOLE_FL,PART_ID) PART_NO
+			FROM PODS.PART p) PNOT
+			ON PNOT.SHAPE_ID = p.SHAPE_ID
+			AND PNOT.PART_ID = p.PART_ID
+			WHERE E.SITE_ID=:SYS_OBJ_ID
+			ORDER BY 7,8
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="PODS_COORD_GE_SHAPE_LIST_DATA_GRID" comment="Запрос для получения координат PODS_COORD_GE_SHAPE_LIST (грид)">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+			SELECT v.SEQUENCE_NO, ROUND(c.X_COORD,8) as X_COORD, ROUND(c.Y_COORD,8) as Y_COORD, ROUND(c.Z_COORD,8) as Z_COORD
+			,PNOT.PART_NO
+			,ROW_NUMBER() OVER (PARTITION BY p.PART_ID ORDER BY p.HOLE_FL,p.PART_ID) COORD_IN_PART
+			FROM PODS.GEOGRAPHIC_ENTITY e
+			JOIN PODS.PART p on p.SHAPE_ID = e.SHAPE_ID
+			join PODS.VERTEX v on v.PART_ID = p.PART_ID
+			join PODS.COORDINATE c on c.LOCATION_ID = v.LOCATION_ID
+			JOIN (SELECT SHAPE_ID
+			,PART_ID
+			,ROW_NUMBER () OVER (PARTITION BY SHAPE_ID ORDER BY HOLE_FL,PART_ID) PART_NO
+			FROM PODS.PART p) PNOT
+			ON PNOT.SHAPE_ID = p.SHAPE_ID
+			AND PNOT.PART_ID = p.PART_ID
+			where e.ENTITY_ID=:SYS_OBJ_ID
+			order by 5,6
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="WKB_COORD_LIST_DATA_GRID" comment="Запрос для получения WKB координат по GID (грид)">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+			select SDO_UTIL.TO_WKTGEOMETRY(SDO_UTIL.FROM_WKBGEOMETRY(g.wkb_geometry)) AS WKB FROM PODS.SRV_DISTRICT_G g WHERE g.GID = :SYS_OBJ_ID
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="PODS_BOND_LEAD_LIST_DATA_GRID" comment="Запрос для получения координат BOND_LEAD (грид)">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+			SELECT a.NAME, a.DESCRIPTION, b.DESCRIPTION AS "TYPE", c.DESCRIPTION AS MATERIAL
+			FROM PODS.BOND_LEAD a JOIN PODS.BOND_LEAD_TYPE_CL b ON a.TYPE_CL=b.CODE
+			JOIN PODS.BOND_LEAD_MATERIAL_CL c ON a.MATERIAL_CL=c.CODE
+			WHERE a.REF_TEST_LEAD_EVENT_ID=:SYS_OBJ_ID
+		</query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запросы для вкладки PODS_CONTACT_GCL_ILI ("Контактное лицо") -->
+  <data id="PODS_CONTACT_GCL_ILI" comment="PODS.CONTACT_GCL" schema="PODS" table="CONTACT_GCL">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>SELECT * FROM (SELECT ic.ILI_INSPECTION_ID ID, cg.* FROM PODS.CONTACT_GCL cg JOIN PODS.INSPECTION_CONTACT ic ON ic.CONTACT_ID=cg.CONTACT_ID) d WHERE {FILTER}</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="TYPE_CL" default="" type="String" />
+        <var name="FIRST_NAME" default="" type="String" />
+        <var name="MIDDLE_NAME" default="" type="String" />
+        <var name="LAST_NAME" default="" type="String" />
+        <var name="TITLE" default="" type="String" />
+        <var name="COMPANY_GCL" default="" type="String" />
+        <var name="ADDRESS_ID" default="0" type="Decimal" />
+        <var name="WORK_NUMBER" default="" type="Decimal" />
+        <var name="FAX_NUMBER" default="" type="Decimal" />
+        <var name="MOBILE_NUMBER" default="" type="Decimal" />
+        <var name="HOME_NUMBER" default="" type="Decimal" />
+        <var name="REMARKS" default="" type="String" />
+        <var name="EFFECTIVE_FROM_DATE" default="" type="DateTime" />
+        <var name="EFFECTIVE_TO_DATE" default="" type="DateTime" />
+        <var name="E_MAIL" default="" type="String" />
+        <var name="ORG_UNIT" default="" type="String" />
+        <var name="ACTIVE_INDICATOR_LF" default="Y" type="String" />
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String" />
+        <var name="SYS_OBJ_ID" type="Int64" />
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(CONTACT_ID) id FROM PODS.CONTACT_GCL"/>
+        <query>
+			DO $$
+			DECLARE
+			returnId integer;
+		  BEGIN
+		  INSERT INTO PODS.CONTACT_GCL (CONTACT_GUID,TYPE_CL,FIRST_NAME,MIDDLE_NAME,LAST_NAME,TITLE,COMPANY_GCL,ADDRESS_ID,ADDRESS_GUID
+		  ,WORK_NUMBER,FAX_NUMBER,MOBILE_NUMBER,HOME_NUMBER,REMARKS,EFFECTIVE_FROM_DATE,EFFECTIVE_TO_DATE,E_MAIL,ORG_UNIT,ACTIVE_INDICATOR_LF,SOURCE_GCL)
+		  VALUES (NULL,'{TYPE_CL}','{FIRST_NAME}','{MIDDLE_NAME}','{LAST_NAME}','{TITLE}','{COMPANY_GCL}',{ADDRESS_ID},NULL,{WORK_NUMBER},{FAX_NUMBER},{MOBILE_NUMBER},{HOME_NUMBER},'{REMARKS}','{EFFECTIVE_FROM_DATE}','{EFFECTIVE_TO_DATE}','{E_MAIL}','{ORG_UNIT}','{ACTIVE_INDICATOR_LF}','{SOURCE_GCL}')
+		  RETURNING CONTACT_ID INTO returnId;
+		  INSERT INTO PODS.INSPECTION_CONTACT (ILI_INSPECTION_ID, CONTACT_ID)
+		  VALUES ({SYS_OBJ_ID}, returnId);
+		  END $$;
+	  </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="CONTACT_ID" default="" type="Decimal" />
+        <param name="TYPE_CL" default="" type="String" />
+        <param name="FIRST_NAME" default="" type="String" />
+        <param name="MIDDLE_NAME" default="" type="String" />
+        <param name="LAST_NAME" default="" type="String" />
+        <param name="TITLE" default="" type="String" />
+        <param name="COMPANY_GCL" default="" type="String" />
+        <param name="ADDRESS_ID" default="" type="Decimal" />
+        <param name="WORK_NUMBER" default="" type="Decimal" />
+        <param name="FAX_NUMBER" default="" type="Decimal" />
+        <param name="MOBILE_NUMBER" default="" type="Decimal" />
+        <param name="HOME_NUMBER" default="" type="Decimal" />
+        <param name="REMARKS" default="" type="String" />
+        <param name="EFFECTIVE_FROM_DATE" default="" type="DateTime" />
+        <param name="EFFECTIVE_TO_DATE" default="" type="DateTime" />
+        <param name="E_MAIL" default="" type="String" />
+        <param name="ORG_UNIT" default="" type="String" />
+        <param name="ACTIVE_INDICATOR_LF" default="Y" type="String" />
+        <param name="SOURCE_GCL" default="UNKNOWN" type="String" />
+        <param name="ID" type="Int64" />
+        <query>
+		  UPDATE PODS.CONTACT_GCL
+		  SET CONTACT_ID=:CONTACT_ID,TYPE_CL=:TYPE_CL,FIRST_NAME=:FIRST_NAME,MIDDLE_NAME=:MIDDLE_NAME,LAST_NAME=:LAST_NAME,TITLE=:TITLE,COMPANY_GCL=:COMPANY_GCL,ADDRESS_ID=:ADDRESS_ID
+		  ,WORK_NUMBER=:WORK_NUMBER,FAX_NUMBER=:FAX_NUMBER,MOBILE_NUMBER=:MOBILE_NUMBER,HOME_NUMBER=:HOME_NUMBER,REMARKS=:REMARKS,EFFECTIVE_FROM_DATE=:EFFECTIVE_FROM_DATE,EFFECTIVE_TO_DATE=:EFFECTIVE_TO_DATE,E_MAIL=:E_MAIL,ORG_UNIT=:ORG_UNIT,ACTIVE_INDICATOR_LF=:ACTIVE_INDICATOR_LF,SOURCE_GCL=:SOURCE_GCL
+		  WHERE CONTACT_ID = :CONTACT_ID
+	  </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="CONTACT_ID" type="Int64" />
+        <query>
+		  DELETE FROM PODS.INSPECTION_CONTACT
+		  WHERE CONTACT_ID = :CONTACT_ID
+	  </query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Запросы для вкладки PODS_GROUND_BED ("Заземление") -->
+  <data id="PODS_GROUND_BED_ANODE" comment="PODS.GROUND_BED" schema="PODS" table="GROUND_BED">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+		  SELECT * FROM
+		  (SELECT a.GROUND_BED_EVENT_ID ID, gb.* FROM PODS.GROUND_BED gb
+		  JOIN PODS.ANODE a ON a.GROUND_BED_EVENT_ID=gb.EVENT_ID) d
+		  WHERE {FILTER}
+	  </query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запросы для вкладки PODS_VALVE_OPERATOR ("Привод ЗРА") -->
+  <data id="PODS_VALVE_OPERATOR_VALVE" comment="PODS.VALVE_OPERATOR" schema="PODS" table="VALVE_OPERATOR">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+      SELECT * FROM
+      (SELECT vo.EVENT_ID ID,vo.EVENT_ID
+      ,vo.TYPE_SCL||'@'||vo.SUBTYPE_SCL TYPE_SCL
+      ,vo.SERIAL_NUMBER
+      ,vo.MANUFACTURER_CL
+      ,vo.DATE_MANUFACTURED
+      ,vo.DESCRIPTION
+      ,vo.SOURCE_GCL
+      ,vo.COMMENTS  FROM PODS.VALVE_OPERATOR vo) d
+      WHERE {FILTER}
+    </query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="DESCRIPTION" default="" type="String" />
+        <param name="TYPE_SCL" default="" type="String" />
+        <param name="MANUFACTURER_CL" default="" type="String" />
+        <param name="SERIAL_NUMBER" default="" type="String" />
+        <param name="DATE_MANUFACTURED" default="" type="DateTime" />
+        <param name="COMMENTS" default="" type="String" />
+        <param name="SOURCE_GCL" default="UNKNOWN" type="String" />
+        <param name="SYS_OBJ_ID" default="" type="Decimal" />
+        <param name="ID" direction="Output" type="Decimal" default="SELECT max(EVENT_ID) id FROM PODS.VALVE_OPERATOR"/>
+        <query>
+      INSERT INTO PODS.VALVE_OPERATOR(EVENT_ID,TYPE_SCL,SUBTYPE_SCL,SERIAL_NUMBER,MANUFACTURER_CL,DATE_MANUFACTURED,DESCRIPTION,SOURCE_GCL,COMMENTS)
+      VALUES(:SYS_OBJ_ID
+      ,SUBSTR(:TYPE_SCL,0,strpos(:TYPE_SCL,'@')-1)
+      ,SUBSTR( :TYPE_SCL, strpos(:TYPE_SCL,'@')+1)
+      ,:SERIAL_NUMBER,:MANUFACTURER_CL,:DATE_MANUFACTURED,:DESCRIPTION,:SOURCE_GCL,:COMMENTS)
+    </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="DESCRIPTION" default="" type="String" />
+        <param name="TYPE_SCL" default="" type="String" />
+        <param name="MANUFACTURER_CL" default="" type="String" />
+        <param name="SERIAL_NUMBER" default="" type="String" />
+        <param name="DATE_MANUFACTURED" default="" type="DateTime" />
+        <param name="COMMENTS" default="" type="String" />
+        <param name="SOURCE_GCL" default="UNKNOWN" type="String" />
+        <param name="SYS_OBJ_ID" default="" type="Decimal" />
+        <param name="ID" direction="Output" type="Decimal" />
+        <query>
+      UPDATE PODS.VALVE_OPERATOR
+      SET TYPE_SCL = SUBSTR(:TYPE_SCL,0,strpos(:TYPE_SCL,'@')-1)
+      ,SUBTYPE_SCL = SUBSTR( :TYPE_SCL, strpos(:TYPE_SCL,'@')+1)
+      ,SERIAL_NUMBER = :SERIAL_NUMBER
+      ,MANUFACTURER_CL = :MANUFACTURER_CL
+      ,DATE_MANUFACTURED = :DATE_MANUFACTURED
+      ,DESCRIPTION = :DESCRIPTION
+      ,SOURCE_GCL = :SOURCE_GCL
+      ,COMMENTS = :COMMENTS
+      WHERE EVENT_ID = :SYS_OBJ_ID
+    </query>
+      </dbCommand>
+    </update>
+  </data>
+  <!-- Запросы для вкладки PODS_HCA_IDENTIFIED_SITE_POPULATED_AREA ("Зоны опасных последствий") -->
+  <data id="PODS_HCA_IDENTIFIED_SITE_POPULATED_AREA" comment="PODS.HCA_IDENTIFIED_SITE" schema="PODS" table="HCA_IDENTIFIED_SITE">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+		  SELECT * FROM
+		  (SELECT his.OFFLINE_ID ID, his.* FROM PODS.HCA_IDENTIFIED_SITE his) d
+		  WHERE {FILTER}
+	  </query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <param name="HCA_IDENTIFIED_SITE_ID" direction="Output" type="Decimal" />
+        <param name="OFFLINE_ID" direction="Output" type="Decimal" />
+        <param name="TYPE_CL" default="" type="String" />
+        <param name="DESCRIPTION" default="" type="String" />
+        <param name="VISIBLE_EXTERNAL_SIGNAGE_LF" default="" type="String" />
+        <param name="FREQUENCY_OF_USE_CL" default="" type="String" />
+        <param name="OCCUPANTS_REDUCED_MOBILITY_LF" default="" type="String" />
+        <param name="OUTDOOR_GATHERING_LF" default="" type="String" />
+        <param name="SOURCE_GCL" default="UNKNOWN" type="String" />
+        <var name="SYS_OBJ_ID" default="" type="Decimal" />
+        <param name="ID" direction="Output" type="Decimal" default="SELECT {SYS_OBJ_ID} id"/>
+        <query>
+      INSERT INTO PODS.HCA_IDENTIFIED_SITE(HCA_IDENTIFIED_SITE_ID,OFFLINE_ID,TYPE_CL,DESCRIPTION
+      ,VISIBLE_EXTERNAL_SIGNAGE_LF,FREQUENCY_OF_USE_CL,OCCUPANTS_REDUCED_MOBILITY_LF,OUTDOOR_GATHERING_LF
+      ,SOURCE_GCL)
+      VALUES({SYS_OBJ_ID},{SYS_OBJ_ID},:TYPE_CL,:DESCRIPTION,:VISIBLE_EXTERNAL_SIGNAGE_LF
+      ,:FREQUENCY_OF_USE_CL,:OCCUPANTS_REDUCED_MOBILITY_LF,:OUTDOOR_GATHERING_LF
+      ,:SOURCE_GCL)
+    </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="HCA_IDENTIFIED_SITE_ID" direction="Output" type="Decimal" />
+        <param name="OFFLINE_ID" direction="Output" type="Decimal" />
+        <param name="TYPE_CL" default="" type="String" />
+        <param name="DESCRIPTION" default="" type="String" />
+        <param name="VISIBLE_EXTERNAL_SIGNAGE_LF" default="" type="String" />
+        <param name="FREQUENCY_OF_USE_CL" default="" type="String" />
+        <param name="OCCUPANTS_REDUCED_MOBILITY_LF" default="" type="String" />
+        <param name="OUTDOOR_GATHERING_LF" default="" type="String" />
+        <param name="SOURCE_GCL" default="UNKNOWN" type="String" />
+        <param name="SYS_OBJ_ID" default="" type="Decimal" />
+        <param name="ID" direction="Output" type="Decimal" default="SELECT {SYS_OBJ_ID} id"/>
+        <query>
+      UPDATE PODS.HCA_IDENTIFIED_SITE
+      SET TYPE_CL = :TYPE_CL
+      ,DESCRIPTION = :DESCRIPTION
+      ,VISIBLE_EXTERNAL_SIGNAGE_LF = :VISIBLE_EXTERNAL_SIGNAGE_LF
+      ,FREQUENCY_OF_USE_CL = :FREQUENCY_OF_USE_CL
+      ,OCCUPANTS_REDUCED_MOBILITY_LF = :OCCUPANTS_REDUCED_MOBILITY_LF
+      ,OUTDOOR_GATHERING_LF = :OUTDOOR_GATHERING_LF
+      ,SOURCE_GCL = :SOURCE_GCL
+      WHERE OFFLINE_ID = :SYS_OBJ_ID
+    </query>
+      </dbCommand>
+    </update>
+  </data>
+  <!-- Запросы для всплывающей формы редактирования и создания вкладки PODS_PIPE_SYSTEM_BOUNDARY_PIPE_COR ("Состав коридора") -->
+  <data id="PODS_PIPE_SYSTEM_BOUNDARY_PIPE_COR" comment="PODS.PIPE_SYSTEM_BOUNDARY" schema="PODS" table="PIPE_SYSTEM_BOUNDARY">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>
+                SELECT * FROM (SELECT PIPE_SYSTEM_ID||';'||LINE_ID||';'||KM_BEGIN||';'||KM_END ID, t.* FROM PODS.PIPE_SYSTEM_BOUNDARY t) d WHERE {FILTER}
+              </query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="PIPE_SYSTEM_ID" default="" type="Decimal" />
+        <var name="PIPE_SYSTEM_GUID" default="" type="String" />
+        <var name="LINE_ID" default="0" type="Decimal" />
+        <var name="KM_BEGIN" default="" type="Decimal" />
+        <var name="KM_END" default="" type="Decimal" />
+        <var name="EVENT_ID" default="" type="Decimal" />
+        <var name="EVENT_GUID" default="" type="String" />
+        <var name="TITLE_EVENT_INDICATOR_LF" default="" type="String" />
+        <var name="DESCRIPTION" default="" type="String" />
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String" />
+        <var name="COMMENTS" default="" type="String" />
+        <var name="ID" type="String" />
+        <query>
+		DO $$
+		  DECLARE 
+			var_tmp bigint;
+			returnId varchar;
+		  BEGIN
+		  SELECT COUNT(*) INTO var_tmp FROM PODS.PIPE_SYSTEM_BOUNDARY psb WHERE psb.TITLE_EVENT_INDICATOR_LF='Y' AND psb.PIPE_SYSTEM_ID = {PIPE_SYSTEM_ID};
+		  
+		  INSERT INTO PODS.PIPE_SYSTEM_BOUNDARY(PIPE_SYSTEM_ID,PIPE_SYSTEM_GUID,LINE_ID,KM_BEGIN,KM_END,EVENT_ID,EVENT_GUID,TITLE_EVENT_INDICATOR_LF,DESCRIPTION,SOURCE_GCL,COMMENTS)
+		  VALUES({PIPE_SYSTEM_ID},'{PIPE_SYSTEM_GUID}',{LINE_ID},{KM_BEGIN},{KM_END},{EVENT_ID},'{EVENT_GUID}','{TITLE_EVENT_INDICATOR_LF}','{DESCRIPTION}','{SOURCE_GCL}','{COMMENTS}')
+		  RETURNING PIPE_SYSTEM_ID||';'||LINE_ID||';'||KM_BEGIN||';'||KM_END INTO returnId;
+		  END $$;
+	  </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <var name="PIPE_SYSTEM_ID" default="" type="Decimal" />
+        <var name="PIPE_SYSTEM_GUID" default="" type="String" />
+        <var name="LINE_ID" default="0" type="Decimal" />
+        <var name="KM_BEGIN" default="" type="Decimal" />
+        <var name="KM_END" default="" type="Decimal" />
+        <var name="EVENT_ID" default="" type="Decimal" />
+        <var name="EVENT_GUID" default="" type="String" />
+        <var name="TITLE_EVENT_INDICATOR_LF" default="" type="String" />
+        <var name="DESCRIPTION" default="" type="String" />
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String" />
+        <var name="COMMENTS" default="" type="String" />
+        <var name="ID" type="String" />
+        <query>
+		DO $$
+		  DECLARE var_tmp bigint;
+		  BEGIN
+		  SELECT COUNT(*) INTO var_tmp FROM PODS.PIPE_SYSTEM_BOUNDARY psb WHERE psb.TITLE_EVENT_INDICATOR_LF='Y' AND psb.PIPE_SYSTEM_ID = {PIPE_SYSTEM_ID};
+		  
+		  UPDATE PODS.PIPE_SYSTEM_BOUNDARY
+		  SET PIPE_SYSTEM_ID={PIPE_SYSTEM_ID},PIPE_SYSTEM_GUID='{PIPE_SYSTEM_GUID}',LINE_ID={LINE_ID},KM_BEGIN={KM_BEGIN},KM_END={KM_END},EVENT_ID={EVENT_ID},EVENT_GUID='{EVENT_GUID}',TITLE_EVENT_INDICATOR_LF='{TITLE_EVENT_INDICATOR_LF}',DESCRIPTION='{DESCRIPTION}',SOURCE_GCL='{SOURCE_GCL}',COMMENTS='{COMMENTS}'
+		  WHERE PIPE_SYSTEM_ID||';'||LINE_ID||';'||KM_BEGIN||';'||KM_END = '{ID}';
+		  END $$;
+	  </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <param name="ID" type="String" />
+        <query>
+                  DELETE FROM PODS.PIPE_SYSTEM_BOUNDARY
+                  WHERE PIPE_SYSTEM_ID||';'||LINE_ID||';'||KM_BEGIN||';'||KM_END = :ID
+              </query>
+      </dbCommand>
+    </delete>
+  </data>
+  <!-- Список LINE без нулевой записи "Объект не лежит на оси трубопровода" для всплывающей формы редактирования и создания вкладки "Состав коридора" -->
+  <data id="PODS_LINE_WITHOUT_DEFAULT" comment="PODS.LINE" schema="PODS" table="LINE">
+    <select>
+      <dbQuery idField="ID">
+        <query>SELECT LINE_ID AS CODE, DESCRIPTION AS DESCR FROM PODS.LINE WHERE LINE_ID!=0 AND DESCRIPTION IS NOT NULL ORDER BY DESCR</query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- Запросы для виджетов -->
+  <data id="GPXEXPORT_FIND_EXT_OBJ_ID" comment="Поиск идентификатора объекта внешней системы для выгрузки в GPX" schema="-" table="-">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYSTEM_ID" type="String" />
+        <param name="OBJ_ID" type="String" />
+        <query>select OWNER||'_GEO.xml' SOURCE, OWNER||'_'||TABLE_NAME "CLASS", KEY_VALUES ID from gis_integration50.gate WHERE SYSTEM_ID = :SYSTEM_ID AND OBJ_ID = :OBJ_ID</query>
+      </dbQuery>
+    </select>
+  </data>
+<data id="FIND_INF_IDS" comment="Поиск идентификаторов объектов в Инфотехе" schema="-" table="-">
+    <select>
+      <dbQuery idField="ID">
+        <param name="CLS" type="String" />
+        <param name="OBJ_ID" type="String" />
+        <query>
+          SELECT g.TABLE_NAME CLS, g.KEY_VALUES ID, g.OBJ_ID OBJ_ID FROM gis_integration50.gate g WHERE g.TABLE_NAME=(CASE :CLS WHEN 'ROUTE' THEN 'LINE' ELSE :CLS END) AND g.KEY_VALUES = (CASE :CLS WHEN 'ROUTE' THEN (SELECT LINE_ID::text FROM PODS.ROUTE WHERE ROUTE_ID::TEXT=:OBJ_ID) ELSE :OBJ_ID END)
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="FIND_LAYER_EXT_ID" comment="Поиск идентификаторов объектов для обновления слоя" schema="-" table="-">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYSTEM_ID" type="String" />
+        <param name="OBJ_ID" type="String" />
+        <query>
+          SELECT g.OWNER "OWNER", g.TABLE_NAME CLS, g.KEY_FIELDS ID_FIELD, g.KEY_VALUES ID FROM gis_integration50.gate g WHERE g.SYSTEM_ID=:SYSTEM_ID AND g.OBJ_ID = :OBJ_ID
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="IMG_FIND_OBJ_ID" comment="Поиск идентификатора карты для выгрузки IMG" schema="-" table="-">
+    <select>
+      <dbQuery idField="ID">
+        <param name="OBJ_ID" type="String" />
+        <query>
+          SELECT ld.DOC_ID,
+          ld.DOC_TYPE_ID,
+          ld.STATUS_ID,
+          ld.NAME,
+          ld.DESCR,
+          ldv.CTIME,
+          ldv.DOC_VERSION_ID,
+          ldv.FILE_NAME,
+          ldtr.DESCR AS CATEGORY,
+          usr.LOGIN AS USERNAME
+          FROM WEB50.LIB_DOC ld
+          JOIN WEB50.LIB_DOC_VERSION ldv
+          ON (ld.DOC_ID = ldv.DOC_ID AND ldv.NEXT_DOC_VERSION_ID IS NULL)
+          JOIN WEB50.LIB_DOC_TYPE_REF ldtr
+          ON ld.DOC_TYPE_ID = ldtr.DOC_TYPE_ID
+          JOIN WEB50.B_USER_PRIVATE usr
+          ON usr.USER_ID = ldv.CUSER_ID
+          WHERE ld.DOC_TYPE_ID = 38
+          AND EXISTS (SELECT *
+          FROM WEB50.LNK_GATE lg
+          WHERE (LG.LEFT_OBJ_ID = 'WEB50_LIB_DOC/'||ld.DOC_ID AND LG.RIGHT_OBJ_ID = 'PODS_SRV_DISTRICT_GCL/'||:OBJ_ID)
+          OR (LG.RIGHT_OBJ_ID = 'WEB50_LIB_DOC/'||ld.DOC_ID AND LG.LEFT_OBJ_ID = 'PODS_SRV_DISTRICT_GCL/'||:OBJ_ID)
+          )
+          ORDER BY ldv.DOC_VERSION_ID
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="IMG_FIND_EXT_OBJ_ID" comment="Поиск идентификатора объекта внешней системы для вызова ПКА" schema="-" table="-">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYSTEM_ID" type="String" />
+        <param name="OBJ_ID" type="String" />
+        <query>SELECT ld.DOC_ID,
+         ld.DOC_TYPE_ID,
+         ld.STATUS_ID,
+         ld.NAME,
+         ld.DESCR,
+         ldv.CTIME,
+         ldv.DOC_VERSION_ID,
+         ldv.FILE_NAME,
+         ldtr.DESCR AS CATEGORY,
+         usr.LOGIN AS USERNAME
+    FROM WEB50.LIB_DOC ld
+         JOIN WEB50.LIB_DOC_VERSION ldv
+            ON (ld.DOC_ID = ldv.DOC_ID AND ldv.NEXT_DOC_VERSION_ID IS NULL)
+         JOIN WEB50.LIB_DOC_TYPE_REF ldtr
+            ON ld.DOC_TYPE_ID = ldtr.DOC_TYPE_ID
+         JOIN WEB50.B_USER_PRIVATE usr
+            ON usr.USER_ID = ldv.CUSER_ID
+   WHERE ld.DOC_TYPE_ID = 38
+     AND EXISTS (SELECT *
+                   FROM gis_integration50.gate g
+                        JOIN WEB50.LNK_GATE lg
+                          ON LG.LEFT_OBJ_ID = 'PODS_SRV_DISTRICT_GCL/'||g.KEY_VALUES
+                          OR LG.RIGHT_OBJ_ID = 'PODS_SRV_DISTRICT_GCL/'||g.KEY_VALUES
+                  WHERE g.SYSTEM_ID = :SYSTEM_ID
+                    AND g.TABLE_NAME = 'SRV_DISTRICT_GCL'
+                    AND g.OBJ_ID = :OBJ_ID
+                    AND KEY_FIELDS = 'SRV_DISTRICT_ID'
+                    AND (LG.LEFT_OBJ_ID = 'WEB50_LIB_DOC/'||ld.DOC_ID
+                         OR LG.RIGHT_OBJ_ID = 'WEB50_LIB_DOC/'||ld.DOC_ID)
+                    )
+ORDER BY ldv.DOC_VERSION_ID</query>
+      </dbQuery>
+    </select>
+  </data>
+
+  <data id="EXCELEXPORT_FIND_OBJ_ID" comment="Поиск идентификатора объекта для экспорта в Excel" schema="-" table="-">
+    <select>
+      <dbQuery idField="ID">
+        <param name="OBJ_ID" type="String" />
+        <query>
+          SELECT OWNER || '_' || TABLE_NAME "CLASS", OWNER || '_' || TABLE_NAME EXCEL_TEMPLATE, KEY_VALUES ID, 'PODS_EXPORT.xml#'|| OWNER || '_' || TABLE_NAME EXT_DATA_ID FROM gis_integration50.gate WHERE OBJ_ID = :OBJ_ID
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="EXCELEXPORT_FIND_EXT_OBJ_ID" comment="Поиск идентификатора объекта внешней системы для экспорта в Excel" schema="-" table="-">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYSTEM_ID" type="String" />
+        <param name="OBJ_ID" type="String" />
+        <query>
+          SELECT OWNER || '_' || TABLE_NAME "CLASS", OWNER || '_' || TABLE_NAME EXCEL_TEMPLATE, KEY_VALUES ID, 'PODS_EXPORT.xml#'|| OWNER || '_' || TABLE_NAME EXT_DATA_ID FROM gis_integration50.gate WHERE SYSTEM_ID = :SYSTEM_ID AND OBJ_ID = :OBJ_ID
+        </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="VRML_FIND_OBJ_ID" comment="Поиск идентификатора объекта внешней системы для вызова ПКА" schema="-" table="-">
+    <select>
+      <dbQuery idField="ID">
+        <param name="OBJ_ID" type="String" />
+        <query>SELECT ld.DOC_ID,
+          ld.DOC_TYPE_ID,
+          ld.STATUS_ID,
+          ld.NAME,
+          ld.DESCR,
+          ldv.CTIME,
+          ldv.DOC_VERSION_ID,
+          ldv.FILE_NAME,
+          ldtr.DESCR AS CATEGORY,
+          usr.LOGIN AS USERNAME
+          FROM WEB50.LIB_DOC ld
+          JOIN WEB50.LIB_DOC_VERSION ldv
+          ON (ld.DOC_ID = ldv.DOC_ID AND ldv.NEXT_DOC_VERSION_ID IS NULL)
+          JOIN WEB50.LIB_DOC_TYPE_REF ldtr
+          ON ld.DOC_TYPE_ID = ldtr.DOC_TYPE_ID
+          JOIN WEB50.B_USER_PRIVATE usr
+          ON usr.USER_ID = ldv.CUSER_ID
+          WHERE ld.DOC_TYPE_ID = 37
+          AND EXISTS (SELECT *
+          FROM WEB50.LNK_GATE lg
+          WHERE (LG.LEFT_OBJ_ID = 'WEB50_LIB_DOC/'||ld.DOC_ID AND LG.RIGHT_OBJ_ID = 'PODS_SRV_DISTRICT_GCL/'||:OBJ_ID)
+          OR (LG.RIGHT_OBJ_ID = 'WEB50_LIB_DOC/'||ld.DOC_ID AND LG.LEFT_OBJ_ID = 'PODS_SRV_DISTRICT_GCL/'||:OBJ_ID)
+          )
+          ORDER BY ldv.DOC_VERSION_ID</query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="VRML_FIND_EXT_OBJ_ID" comment="Поиск идентификатора объекта внешней системы для вызова ПКА" schema="-" table="-">
+    <select>
+      <dbQuery idField="ID">
+        <param name="SYSTEM_ID" type="String" />
+        <param name="OBJ_ID" type="String" />
+        <query>SELECT ld.DOC_ID,
+         ld.DOC_TYPE_ID,
+         ld.STATUS_ID,
+         ld.NAME,
+         ld.DESCR,
+         ldv.CTIME,
+         ldv.DOC_VERSION_ID,
+         ldv.FILE_NAME,
+         ldtr.DESCR AS CATEGORY,
+         usr.LOGIN AS USERNAME
+    FROM WEB50.LIB_DOC ld
+         JOIN WEB50.LIB_DOC_VERSION ldv
+            ON (ld.DOC_ID = ldv.DOC_ID AND ldv.NEXT_DOC_VERSION_ID IS NULL)
+         JOIN WEB50.LIB_DOC_TYPE_REF ldtr
+            ON ld.DOC_TYPE_ID = ldtr.DOC_TYPE_ID
+         JOIN WEB50.B_USER_PRIVATE usr
+            ON usr.USER_ID = ldv.CUSER_ID
+   WHERE ld.DOC_TYPE_ID = 37
+     AND EXISTS (SELECT *
+                   FROM gis_integration50.gate g
+                        JOIN WEB50.LNK_GATE lg
+                          ON LG.LEFT_OBJ_ID = 'PODS_SRV_DISTRICT_GCL/'||g.KEY_VALUES
+                          OR LG.RIGHT_OBJ_ID = 'PODS_SRV_DISTRICT_GCL/'||g.KEY_VALUES
+                  WHERE g.SYSTEM_ID = :SYSTEM_ID
+                    AND g.TABLE_NAME = 'SRV_DISTRICT_GCL'
+                    AND g.OBJ_ID = :OBJ_ID
+                    AND KEY_FIELDS = 'SRV_DISTRICT_ID'
+                    AND (LG.LEFT_OBJ_ID = 'WEB50_LIB_DOC/'||ld.DOC_ID
+                         OR LG.RIGHT_OBJ_ID = 'WEB50_LIB_DOC/'||ld.DOC_ID)
+                    )
+ORDER BY ldv.DOC_VERSION_ID</query>
+      </dbQuery>
+    </select>
+  </data>
+  <!-- вкладки -->
+  <data id="PODS_COUPON_LIST_FOR_COUPON_SITE_DATA_GRID" comment="PODS.COUPON_LIST_FOR_COUPON_SITE_DATA_GRID" schema="PODS" table="COUPON_LIST_FOR_COUPON_SITE_DATA_GRID">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+            SELECT * FROM (select t.COUPON_SITE_EVENT_ID ID, t.* from PODS.COUPON t) d WHERE {FILTER}
+          </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="PODS_ANODE_LIST_FOR_GROUND_BED_DATA_GRID" comment="PODS.ANODE_LIST_FOR_GROUND_BED_DATA_GRID" schema="PODS" table="ANODE_LIST_FOR_GROUND_BED_DATA_GRID">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+            SELECT * FROM (select t.GROUND_BED_EVENT_ID ID, t.* from PODS.ANODE t) d WHERE {FILTER}
+          </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="PODS_MAINTENANCE_FOR_LEAK_HISTORY_LIST_DATA_GRID" comment="PODS.ANODE_LIST_FOR_GROUND_BED_DATA_GRID" schema="PODS" table="ANODE_LIST_FOR_GROUND_BED_DATA_GRID">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <param name="SYS_OBJ_ID" type="Int64" direction="Input" />
+        <query>
+            SELECT * FROM (select lh.EVENT_ID ID, pm.* from pods.leak_history lh
+join pods.leak_history_event lhe on lh.leak_id = lhe.leak_id 
+join pods.maintenance pm on lhe.event_id = pm.event_id) d WHERE {FILTER}
+          </query>
+      </dbQuery>
+    </select>
+  </data>
+  <data id="PODS_RECTIFIER_ENCLOSURE_FOR_RECTIFIER" comment="PODS.RECTIFIER_ENCLOSURE_FOR_RECTIFIER" schema="PODS" table="RECTIFIER_ENCLOSURE_FOR_RECTIFIER">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>SELECT * FROM (SELECT a.EVENT_ID ID, t.* FROM PODS.RECTIFIER_ENCLOSURE t,PODS.RECTIFIER a where a.REF_RECT_ENCLOSURE_EVENT_ID=t.EVENT_ID) d WHERE {FILTER}</query>
+      </dbQuery>
+    </select>
+    <insert>
+      <dbCommand>
+        <var name="EVENT_GUID" default="" type="String" />
+		<var name="SYS_OBJ_ID" default="0" type="Int64" />
+        <var name="RECTIFIER_ENCLOSURE_ID" default="" type="String" />
+        <var name="TYPE_CL" default="UNKNOWN" type="String" />
+        <var name="MANUFACTURER_CL" default="UNKNOWN" type="String" />
+        <var name="POWER_BILLING_SOURCE_CL" default="UNKNOWN" type="String" />
+        <var name="DESCRIPTION" default="" type="String" />
+        <var name="NAME" default="" type="String" />
+        <var name="MODEL_NUMBER" default="" type="String" />
+        <var name="DATE_INSTALLED" default="" type="DateTime" />
+        <var name="NEG_CABLE_INSULATION_TYPE_GCL" default="UNKNOWN" type="String" />
+        <var name="NEG_CABLE_GAUGE_GCL" default="UNKNOWN" type="String" />
+        <var name="NEG_CABLE_INSULATION_COLOR_GCL" default="UNKNOWN" type="String" />
+        <var name="SOURCE_GCL" default="UNKNOWN" type="String" />
+        <var name="COMMENTS" default="" type="String" />
+        <var name="ID" type="Int64" direction="Output" default="SELECT max(EVENT_ID) id FROM PODS.EVENT_RANGE" />
+        <var name="PODS_USER" type="String" />
+        <query>
+					DO $$
+					DECLARE
+					returnId integer;
+        BEGIN
+        INSERT INTO PODS.EVENT_RANGE (EVENT_GUID,FEATURE_ID,STATION_ID_BEGIN,STATION_ID_END,PODS_USER,CREATE_DATE,EFFECTIVE_FROM_DATE,CURRENT_INDICATOR_LF,POSITIONING_TYPE_CL)
+        VALUES('{EVENT_GUID}','RCTF_ENCL',0,0,'{PODS_USER}',current_timestamp,current_timestamp,'Y','UNKNOWN')
+        RETURNING EVENT_ID INTO returnId;
+
+        INSERT INTO PODS.RECTIFIER_ENCLOSURE(EVENT_ID,EVENT_GUID,RECTIFIER_ENCLOSURE_ID,TYPE_CL,MANUFACTURER_CL,POWER_BILLING_SOURCE_CL,DESCRIPTION,NAME,MODEL_NUMBER,DATE_INSTALLED,NEG_CABLE_INSULATION_TYPE_GCL,NEG_CABLE_GAUGE_GCL,NEG_CABLE_INSULATION_COLOR_GCL,SOURCE_GCL,COMMENTS)
+        VALUES(returnId,'{EVENT_GUID}',returnId,'{TYPE_CL}','{MANUFACTURER_CL}','{POWER_BILLING_SOURCE_CL}','{DESCRIPTION}','{NAME}','{MODEL_NUMBER}','{DATE_INSTALLED}','{NEG_CABLE_INSULATION_TYPE_GCL}','{NEG_CABLE_GAUGE_GCL}','{NEG_CABLE_INSULATION_COLOR_GCL}','{SOURCE_GCL}','{COMMENTS}');
+
+        UPDATE PODS.RECTIFIER
+        SET REF_RECT_ENCLOSURE_EVENT_ID = returnId
+        WHERE EVENT_ID = {SYS_OBJ_ID};
+
+        END $$;
+      </query>
+      </dbCommand>
+    </insert>
+    <update>
+      <dbCommand>
+        <param name="EVENT_GUID" default="" type="String" />
+        <param name="RECTIFIER_ENCLOSURE_ID" default="" type="String" />
+        <param name="TYPE_CL" default="UNKNOWN" type="String" />
+        <param name="MANUFACTURER_CL" default="UNKNOWN" type="String" />
+        <param name="POWER_BILLING_SOURCE_CL" default="UNKNOWN" type="String" />
+        <param name="DESCRIPTION" default="" type="String" />
+        <param name="NAME" default="" type="String" />
+        <param name="MODEL_NUMBER" default="" type="String" />
+        <param name="DATE_INSTALLED" default="" type="DateTime" />
+        <param name="NEG_CABLE_INSULATION_TYPE_GCL" default="UNKNOWN" type="String" />
+        <param name="NEG_CABLE_GAUGE_GCL" default="UNKNOWN" type="String" />
+        <param name="NEG_CABLE_INSULATION_COLOR_GCL" default="UNKNOWN" type="String" />
+        <param name="SOURCE_GCL" default="UNKNOWN" type="String" />
+        <param name="COMMENTS" default="" type="String" />
+        <param name="ID" type="Int64" />
+        <query>
+                UPDATE PODS.RECTIFIER_ENCLOSURE
+                SET EVENT_GUID=:EVENT_GUID,RECTIFIER_ENCLOSURE_ID=:RECTIFIER_ENCLOSURE_ID,TYPE_CL=:TYPE_CL,MANUFACTURER_CL=:MANUFACTURER_CL,POWER_BILLING_SOURCE_CL=:POWER_BILLING_SOURCE_CL,DESCRIPTION=:DESCRIPTION,NAME=:NAME,MODEL_NUMBER=:MODEL_NUMBER,DATE_INSTALLED=:DATE_INSTALLED,NEG_CABLE_INSULATION_TYPE_GCL=:NEG_CABLE_INSULATION_TYPE_GCL,NEG_CABLE_GAUGE_GCL=:NEG_CABLE_GAUGE_GCL,NEG_CABLE_INSULATION_COLOR_GCL=:NEG_CABLE_INSULATION_COLOR_GCL,SOURCE_GCL=:SOURCE_GCL,COMMENTS=:COMMENTS 
+                WHERE EVENT_ID = :ID
+              </query>
+      </dbCommand>
+    </update>
+    <delete>
+      <dbCommand>
+        <var name="ID" type="Int64" />
+		<var name="SYS_OBJ_ID" type="Int64" />
+        <query>
+		DO $$
+        BEGIN
+        UPDATE PODS.EVENT_RANGE
+        SET CURRENT_INDICATOR_LF='N'
+        WHERE EVENT_ID = {ID};
+
+        UPDATE PODS.RECTIFIER
+        SET REF_RECT_ENCLOSURE_EVENT_ID = NULL
+        WHERE EVENT_ID = {SYS_OBJ_ID};
+        
+        DELETE FROM PODS.RECTIFIER_ENCLOSURE
+        WHERE EVENT_ID = {ID};
+
+        END $$;
+      </query>
+      </dbCommand>
+    </delete>
+  </data>
+  <data id="PODS_GROUND_BED_FOR_ANODE" comment="PODS.GROUND_BED_FOR_ANODE" schema="PODS" table="GROUND_BED_FOR_ANODE">
+    <select>
+      <dbQuery idField="ID">
+        <var name="FILTER" default="1=1" />
+        <query>SELECT * FROM (SELECT a.EVENT_ID ID, t.* FROM PODS.GROUND_BED t,PODS.ANODE a where a.GROUND_BED_EVENT_ID=t.EVENT_ID) d WHERE {FILTER}</query>
+      </dbQuery>
+    </select>
+    <update>
+      <dbCommand>
+        <param name="EVENT_GUID" default="" type="String" />
+        <param name="NAME" default="" type="String" />
+        <param name="INSTALLATION_CL" default="UNKNOWN" type="String" />
+        <param name="MATERIAL_CL" default="UNKNOWN" type="String" />
+        <param name="ANODES_QUANTITY" default="" type="Decimal" />
+        <param name="DEPTH_OF_COVER" default="" type="Decimal" />
+        <param name="DESCRIPTION" default="" type="String" />
+        <param name="TYPE_CL" default="UNKNOWN" type="String" />
+        <param name="DATE_INSTALLED" default="" type="DateTime" />
+        <param name="ANODE_SPACING" default="" type="Decimal" />
+        <param name="POS_CABLE_INSULATION_TYPE_GCL" default="UNKNOWN" type="String" />
+        <param name="POS_CABLE_GAUGE_GCL" default="UNKNOWN" type="String" />
+        <param name="POS_CABLE_INSULATION_COLOR_GCL" default="UNKNOWN" type="String" />
+        <param name="BACK_FILL_MATERIAL_GCL" default="UNKNOWN" type="String" />
+        <param name="RECTIFIER_ENCLOSURE_ID" default="" type="String" />
+        <param name="HORIZONTAL_LF" default="" type="String" />
+        <param name="SOURCE_GCL" default="UNKNOWN" type="String" />
+        <param name="COMMENTS" default="" type="String" />
+        <param name="ID" type="Int64" />
+        <query>
+      UPDATE PODS.GROUND_BED
+      SET EVENT_GUID=:EVENT_GUID,NAME=:NAME,INSTALLATION_CL=:INSTALLATION_CL,MATERIAL_CL=:MATERIAL_CL,ANODES_QUANTITY=:ANODES_QUANTITY,DEPTH_OF_COVER=:DEPTH_OF_COVER,DESCRIPTION=:DESCRIPTION,TYPE_CL=:TYPE_CL,DATE_INSTALLED=:DATE_INSTALLED,ANODE_SPACING=:ANODE_SPACING,POS_CABLE_INSULATION_TYPE_GCL=:POS_CABLE_INSULATION_TYPE_GCL,POS_CABLE_GAUGE_GCL=:POS_CABLE_GAUGE_GCL,POS_CABLE_INSULATION_COLOR_GCL=:POS_CABLE_INSULATION_COLOR_GCL,BACK_FILL_MATERIAL_GCL=:BACK_FILL_MATERIAL_GCL,RECTIFIER_ENCLOSURE_ID=:RECTIFIER_ENCLOSURE_ID,HORIZONTAL_LF=:HORIZONTAL_LF,SOURCE_GCL=:SOURCE_GCL,COMMENTS=:COMMENTS
+      WHERE EVENT_ID = :ID
+    </query>
+      </dbCommand>
+    </update>
+  </data>
+  <!-- ПОИСК ОБЪЕКТА НА КАРТЕ -->
+  <data id="FIND_EXT_OBJ_ID" comment="Поиск объекта для выделения" schema="-" table="-">
+    <select>
+      <dbQuery idField="ID">
+        <param name="OBJ_ID" type="String" />
+        <param name="SYSTEM_ID" type="String" />
+        <query>SELECT g.OWNER,g.TABLE_NAME,g.KEY_FIELDS,g.KEY_VALUES 
+  FROM gis_integration50.gate g 
+ WHERE g.SYSTEM_ID = :SYSTEM_ID 
+   AND g.OBJ_ID = :OBJ_ID
+UNION ALL
+SELECT g.OWNER,'ROUTE' TABLE_NAME,'ROUTE_ID' KEY_FIELDS,r.ROUTE_ID::text KEY_VALUES
+  FROM gis_integration50.gate g 
+       JOIN pods.line l
+         ON l.line_id::text = g.KEY_VALUES
+       JOIN pods.route r
+         ON r.line_id = l.line_id
+         AND CASE l.type_cl 
+               WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+               WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+               WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+               WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+               ELSE 'SKIP'
+             END = r.type_cl
+ WHERE g.SYSTEM_ID = :SYSTEM_ID 
+   AND g.OBJ_ID = :OBJ_ID
+   AND g.TABLE_NAME = 'LINE'   
+   AND g.OWNER = 'PODS'</query>
+      </dbQuery>
+    </select>
+  </data>
+<data id="CHANGE_MAP_FIND_OBJ_ID" comment="Поиск объекта при смене схемы" schema="-" table="-">
+    <select>
+      <dbQuery idField="ID">
+        <param name="FULL_OBJ_ID" type="String" />
+        <query>select SYSTEM_ID, OBJ_ID from gis_integration50.gate where owner||'_'||table_name||'/'||key_values = :FULL_OBJ_ID</query>
+      </dbQuery>
+    </select>
+  </data>
+
+
+	<!-- привязка объекта -->
+	<data id="ASMO_INSERT_LINK" comment="Привязка объекта" schema="-" table="-">
+		<insert>
+			<dbCommand>
+				<param name="OBJ_ID" type="String" />
+				<param name="SYSTEM_ID" type="String" />
+				<param name="SCHEMA" type="String" />
+				<param name="TABLE" type="String" />
+				<param name="ID" type="String" />
+				<query>
+						INSERT INTO gis_integration50.gate
+						VALUES(:SCHEMA,:TABLE,'ID',:ID,'105',:SYSTEM_ID,'1 Тип интеграции: АСМО с PODS 20/03/15',:OBJ_ID, NULL,'FALSE',NULL)
+				</query>
+			</dbCommand>
+		</insert>
+	</data>
+	
+</root>
+
+

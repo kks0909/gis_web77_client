@@ -1,0 +1,250 @@
+﻿<!--7.7.7.2-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="6"  headerVertSize="50"
+            id="PODS_ILI_DATA_LIST"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelTemplateName="PODS_ILI_DATA_LIST"
+            layerId="PODS_ILI_DATA" propertyPanelName="PODS_ILI_DATA"
+            dataRequest="PODS_GRID.xml#PODS_ILI_DATA"
+            totalRecordsRequest="PODS_GRID.xml#PODS_ILI_DATA_CNT"
+            initialSortField="ILI_INSPECTION_LBL,STATION,WELD_NUMBER">
+  <grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/exportNAV.png"
+        tooltip="Экспорт/Импорт GPX,KML"
+        clickEvent="ru.corelight.business.events.ExportToGPXEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/showOnMap.png"
+        tooltip="Показать на карте"
+        clickEvent="ru.corelight.business.events.ShowOnMapEvent"
+        isEnabled="length" />
+  <picPutton:GridButton source="../../Public/assets/excel.png"
+        tooltip="Экспортировать в Excel"
+        clickEvent="ru.corelight.business.events.ExportToExcelEvent"
+        selectedObjects="this" />
+    <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+<grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=showInfoEvent;toolTip=Показать информацию по объекту"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/photo.png;eventName=ShowCarouselEvent;toolTip=Показать документы по объекту;columns=LG_ATTACH"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/map.png;eventName=ru.corelight.business.events.ShowOnMapEvent;toolTip=Показать на карте;layerId=PODS_ILI_DATA"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/excel.png;eventName=ru.corelight.business.events.ExportToExcelEvent;toolTip=Выгрузить в Excel;templateName=PODS_ILI_DATA;ext_data_id=PODS_EXPORT.xml#PODS_ILI_DATA"
+                          editable="false"/>
+      
+      <columns:GridColumn headerText="Идентификатор" dataField="ID"  itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="false" filterComparisionType="number" width="40" />
+      <columns:GridColumn headerText="Обследование" dataField="ILI_INSPECTION_ID"
+                          filterRequestId="PODS_SEM_DICT.xml#PODS_ILI_INSPECTION"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_SEM_DICT.xml#PODS_ILI_INSPECTION"
+                          filterComparisionType="array"
+                          editable="false"
+                          sortField="ILI_INSPECTION_LBL"
+                          width="250"/>
+      <columns:GridColumn headerText="Км.\nустан." dataField="STATION"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="40"/>
+      <columns:GridColumn headerText="Номер\nшва" dataField="WELD_NUMBER"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"
+                          filterComparisionType="string"
+                          width="40"/>
+      <columns:GridColumn headerText="Одом.\nдист.\nм" dataField="ABSOLUTE_ODOMETER"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="45"/>
+      <columns:GridColumn headerText="Тип\nаномалии" dataField="ANOMALY_TYPE_CL"
+                          filterRequestId="PODS_SEM_DICT.xml#PODS_ILI_ANOMALY_TYPE_CL_ID"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_SEM_DICT.xml#PODS_ILI_ANOMALY_TYPE_CL_ID"
+                          filterComparisionType="array"
+                          editable="false"
+                          sortField="ANOMALY_TYPE_LBL"
+                          width="100"/>
+      <columns:GridColumn headerText="Группа аномалий" dataField="ANOMALY_EXTENSION_CL"
+                          filterRequestId="PODS_SEM_DICT.xml#PODS_ANOMALY_EXTENSION_CL"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_SEM_DICT.xml#PODS_ANOMALY_EXTENSION_CL"
+                          filterComparisionType="array"
+                          hidden="true" editable="false"
+                          sortField="ANOMALY_EXTENSION_LBL"
+                          width="120"/>
+      <columns:GridColumn headerText="Длина\nмм" dataField="LENGTH"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="35"/>
+      <columns:GridColumn headerText="Ширин.\nмм" dataField="WIDTH"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="35"/>
+      <columns:GridColumn headerText="Глуб.\n%" dataField="AVERAGE_DEPTH"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="false"
+                          filterComparisionType="number"
+                          width="35"/>
+      <columns:GridColumn headerText="КБД" dataField="BPR_PIG"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="false"
+                          filterComparisionType="number"
+                          width="30"/>
+      <columns:GridColumn headerText="Безоп.\nP,\nМПа" dataField="RPR_CALCULATED"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="false"
+                          filterComparisionType="number"
+                          width="45"/>
+      <columns:GridColumn headerText="Факт.\nкоэф.\nзап.\nпроч." dataField="BPR_CALCULATED"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="false"
+                          filterComparisionType="number"
+                          width="45"/>
+      <columns:GridColumn headerText="Разруш.\nP,\nМПа" dataField="BPR_VARIANCE"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="Норм.\nкоэф.\nзап.\nпроч." dataField="RPR_VARIANCE"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="false"
+                          filterComparisionType="number"
+                          width="35"/>
+      <columns:GridColumn headerText="Ориен.\nчас" dataField="ORIENTATION_DEG"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="false"
+                          filterComparisionType="number"
+                          width="30"/>
+      <columns:GridColumn headerText="Ном.\nтолщ.\nстенки\nмм" dataField="NOMINAL_WALL_THICKNESS"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="false"
+                          filterComparisionType="number"
+                          width="35"/>
+      <columns:GridColumn headerText="Описание" dataField="DESCRIPTION"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"
+                          filterComparisionType="string"
+                          width="160"/>
+      <columns:GridColumn headerText="Идентификация" dataField="FEATURE_DESCRIPTION"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          hidden="true" editable="false"
+                          filterComparisionType="string"
+                          width="120"/>
+    <columns:GridColumn headerText="СТО112 \nМетодика\nпроверки\nвзаимодейст." dataField="CLUSTER_COMMENT"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer" 
+                          hidden="true" editable="false"
+                          filterComparisionType="string"
+                          width="60"/>	   
+      <columns:GridColumn headerText="СТО595 \nМетод\nремонта" dataField="R_595_2011_REPAIR_METHOD"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer" 
+                          hidden="true" editable="false"
+                          filterComparisionType="string"
+                          width="100"/>	      
+      <columns:GridColumn headerText="СТО595 \nГлубина\nсошлиф.\nмм" dataField="R_595_2011_DEPTH_ABRASION"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          hidden="true" editable="false"
+                          filterComparisionType="number"
+                          width="40"/>		      
+      <columns:GridColumn headerText="СТО595 \nПлощадь\nсошлиф.\nкв,мм" dataField="R_595_2011_SQUARE_ABRASION"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          hidden="true" editable="false"
+                          filterComparisionType="number"
+                          width="50"/>
+					  
+      <columns:GridColumn headerText="СТО595 \nДлина\nкат./тр.\nмм" dataField="R_595_2011_LENGTH_PIPE_REPAIR"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          hidden="true" editable="false"
+                          filterComparisionType="number"
+                          width="40"/>	   
+      <columns:GridColumn headerText="СТО595 \nМетодика" dataField="R_595_2011_COMMENT"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer" 
+                          hidden="true" editable="false"
+                          filterComparisionType="string"
+                          width="150"/>	      
+      <columns:GridColumn headerText="СТО112 \nКоэф.\nзапаса" dataField="STO_112_2007_ASSURANCE_FACTOR"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          hidden="true" editable="false"
+                          filterComparisionType="number"
+                          width="40"/>	   
+      <columns:GridColumn headerText="СТО112 \nРазр.\nP,\nМПа" dataField="STO_112_2007_DESTRUCT_PRESSURE"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          hidden="true" editable="false"
+                          filterComparisionType="number"
+                          width="45"/>	   
+      <columns:GridColumn headerText="СТО112 \nДопуст.\nP,\nМПа" dataField="STO_112_2007_ALLOW_PRESSURE"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          hidden="true" editable="false"
+                          filterComparisionType="number"
+                          width="45"/>	   
+      <columns:GridColumn headerText="СТО112 \nОценка\nработоспособ." dataField="STO_112_2007_PERFORMANCE_EVAL"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer" 
+                          hidden="true" editable="false"
+                          filterComparisionType="string"
+                          width="70"/>	   
+      <columns:GridColumn headerText="СТО173 \nКрит\nP,\nМПа" dataField="STO_173_2007_CRITICAL_PRESSURE"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          hidden="true" editable="false"
+                          filterComparisionType="number"
+                          width="40"/>	   
+      <columns:GridColumn headerText="СТО173 \nСтепень\nопасности" dataField="STO_173_2007_DANGER_DEGREE"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer" 
+                          hidden="true" editable="false"
+                          filterComparisionType="string"
+                          width="60"/>  	   
+      <columns:GridColumn headerText="СТО173 \nБезопас\nP,\nМПа" dataField="STO_173_2007_SAFE_PRESSURE"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          hidden="true" editable="false"
+                          filterComparisionType="number"
+                          width="40"/>	   
+      <columns:GridColumn headerText="СТО292 \nТекущий\nранг\nопасн." dataField="STO_292_2007_DANGER_RANK"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          hidden="true" editable="false"
+                          filterComparisionType="number"
+                          width="40"/>	   
+      <columns:GridColumn headerText="СТО401 \nВероятность\nотказа" dataField="STO_401_2009_FAIL_PROBABILITY"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer?format=8"
+                          hidden="true" editable="false"
+                          filterComparisionType="number"
+                          width="60"/>	    
+      <columns:GridColumn headerText="Координата X\n(широта)" dataField="X_COORD"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer?format=8"
+                          hidden="true" editable="false"
+                          filterComparisionType="number"
+                          width="60"/>	
+      <columns:GridColumn headerText="Координата Y\n(долгота)" dataField="Y_COORD"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer?format=8"
+                          hidden="true" editable="false"
+                          filterComparisionType="number"
+                          width="60"/>	
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="false"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

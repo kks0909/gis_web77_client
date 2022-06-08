@@ -1,0 +1,1168 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<kml version="7.7.3.0">
+	<Document>
+		<Style id="WEB50_M_R_DOROGI_AVTOMOBIL_NYE" schema="WEB50" table="M_R_DOROGI_AVTOMOBIL_NYE" descr="ДОРОГИ_АВТОМОБИЛЬНЫЕ" comment="WEB50.M_R_DOROGI_AVTOMOBIL_NYE">
+	<zoomMin>11</zoomMin>
+	<zoomMax>9</zoomMax>
+	<LabelStyle>
+		<color>FF000000</color>
+		<fontName>Arial Cyr Cyr</fontName>
+		<fontSize>9</fontSize>
+		<bold>0</bold>
+		<italic>0</italic>
+		<underline>0</underline>
+		<parallel>1</parallel>
+		<auto>0</auto>
+		<duplicate>0</duplicate>
+		<overlap>0</overlap>
+		<MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+	</LabelStyle>
+	<MIStyle/>
+	<IMGStyle/>
+	<VRMLStyle/>
+</Style>
+<Style id="WEB50_M_R_DOROGI_JELEZNYE" schema="WEB50" table="M_R_DOROGI_JELEZNYE" descr="ДОРОГИ_ЖЕЛЕЗНЫЕ" comment="WEB50.M_R_DOROGI_JELEZNYE">
+	<zoomMin>11</zoomMin>
+	<zoomMax>8</zoomMax>
+	<LabelStyle>
+		<color>FF000000</color>
+		<fontName>Arial Cyr Cyr</fontName>
+		<fontSize>9</fontSize>
+		<bold>0</bold>
+		<italic>0</italic>
+		<underline>0</underline>
+		<parallel>1</parallel>
+		<auto>0</auto>
+		<duplicate>0</duplicate>
+		<overlap>0</overlap>
+		<MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+	</LabelStyle>
+	<MIStyle/>
+	<IMGStyle/>
+	<VRMLStyle/>
+</Style>
+<Style id="WEB50_M_R_DOROGI_JELEZNYE_STANCII" schema="WEB50" table="M_R_DOROGI_JELEZNYE_STANCII" descr="ДОРОГИ_ЖЕЛЕЗНЫЕ_СТАНЦИИ" comment="WEB50.M_R_DOROGI_JELEZNYE_STANCII">
+	<zoomMin>11</zoomMin>
+	<zoomMax>9</zoomMax>
+	<LabelStyle>
+		<color>FF000000</color>
+		<fontName>D231</fontName>
+		<fontSize>9</fontSize>
+		<bold>0</bold>
+		<italic>0</italic>
+		<underline>0</underline>
+		<parallel>1</parallel>
+		<auto>1</auto>
+		<duplicate>1</duplicate>
+		<overlap>0</overlap>
+		<MIStyle>Font("D231",256,9,0,16777215)</MIStyle>
+	</LabelStyle>
+	<MIStyle/>
+	<IMGStyle/>
+	<VRMLStyle/>
+</Style>
+<Style id="WEB50_M_R_GAZPROM_OBSESTVA_DOCERNI" schema="WEB50" table="M_R_GAZPROM_OBSESTVA_DOCERNI" descr="ГАЗПРОМ_ОБЩЕСТВА_ДОЧЕРНИЕ" comment="WEB50.M_R_GAZPROM_OBSESTVA_DOCERNI">
+	<zoomMin>6</zoomMin>
+	<zoomMax>0</zoomMax>
+	<LabelStyle>
+		<color>FF008080</color>
+		<fontName>Arial Cyr</fontName>
+		<fontSize>9</fontSize>
+		<bold>0</bold>
+		<italic>0</italic>
+		<underline>0</underline>
+		<parallel>1</parallel>
+		<auto>0</auto>
+		<duplicate>1</duplicate>
+		<overlap>0</overlap>
+		<MIStyle>Font("Arial Cyr",256,9,32896,16777215)</MIStyle>
+	</LabelStyle>
+	<MIStyle/>
+	<IMGStyle/>
+	<VRMLStyle/>
+</Style>
+<Style id="WEB50_M_R_GAZPROM_OBSESTVA_POEMG" schema="WEB50" table="M_R_GAZPROM_OBSESTVA_POEMG" descr="ГАЗПРОМ_ОБЩЕСТВА_ПОЭМГ" comment="WEB50.M_R_GAZPROM_OBSESTVA_POEMG">
+	<zoomMin>27</zoomMin>
+	<zoomMax>0</zoomMax>
+	<LabelStyle>
+		<color>FF0000A0</color>
+		<fontName>Arial Cyr Cyr</fontName>
+		<fontSize>9</fontSize>
+		<bold>0</bold>
+		<italic>1</italic>
+		<underline>0</underline>
+		<parallel>1</parallel>
+		<auto>0</auto>
+		<duplicate>1</duplicate>
+		<overlap>1</overlap>
+		<MIStyle>Font("Arial Cyr Cyr",258,9,160,16777215)</MIStyle>
+	</LabelStyle>
+	<MIStyle/>
+	<IMGStyle/>
+	<VRMLStyle/>
+</Style>
+<Style id="WEB50_M_R_GIDROGRAFIA_RF_1_OZERA_M" schema="WEB50" table="M_R_GIDROGRAFIA_RF_1_OZERA_M" descr="ГИДРОГРАФИЯ_РФ_1_ОЗЕРА_МОРЯ" comment="WEB50.M_R_GIDROGRAFIA_RF_1_OZERA_M">
+	<zoomMin>11</zoomMin>
+	<zoomMax>0</zoomMax>
+	<LabelStyle>
+		<color>FF000000</color>
+		<fontName>Arial Cyr Cyr</fontName>
+		<fontSize>9</fontSize>
+		<bold>0</bold>
+		<italic>0</italic>
+		<underline>0</underline>
+		<parallel>1</parallel>
+		<auto>0</auto>
+		<duplicate>1</duplicate>
+		<overlap>0</overlap>
+		<MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+	</LabelStyle>
+	<MIStyle/>
+	<IMGStyle/>
+	<VRMLStyle/>
+</Style>
+<Style id="WEB50_M_R_GIDROGRAFIA_RF_1_REKI_LI" schema="WEB50" table="M_R_GIDROGRAFIA_RF_1_REKI_LI" descr="ГИДРОГРАФИЯ_РФ_1_РЕКИ_ЛИН" comment="WEB50.M_R_GIDROGRAFIA_RF_1_REKI_LI">
+	<zoomMin>11</zoomMin>
+	<zoomMax>8</zoomMax>
+	<LabelStyle>
+		<color>FF78B5F5</color>
+		<fontName>Arial Cyr</fontName>
+		<fontSize>10</fontSize>
+		<bold>0</bold>
+		<italic>1</italic>
+		<underline>0</underline>
+		<parallel>1</parallel>
+		<auto>1</auto>
+		<duplicate>0</duplicate>
+		<overlap>0</overlap>
+		<MIStyle>Font("Arial Cyr",258,10,7910901,16777215)</MIStyle>
+	</LabelStyle>
+	<MIStyle/>
+	<IMGStyle/>
+	<VRMLStyle/>
+</Style>
+<Style id="WEB50_M_R_GIDROGRAFIA_RF_2_OZERA_M" schema="WEB50" table="M_R_GIDROGRAFIA_RF_2_OZERA_M" descr="ГИДРОГРАФИЯ_РФ_2_ОЗЕРА_МОРЯ" comment="WEB50.M_R_GIDROGRAFIA_RF_2_OZERA_M">
+	<zoomMin>11</zoomMin>
+	<zoomMax>8</zoomMax>
+	<LabelStyle>
+		<color>FF000000</color>
+		<fontName>Arial Cyr Cyr</fontName>
+		<fontSize>9</fontSize>
+		<bold>0</bold>
+		<italic>0</italic>
+		<underline>0</underline>
+		<parallel>1</parallel>
+		<auto>0</auto>
+		<duplicate>1</duplicate>
+		<overlap>0</overlap>
+		<MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+	</LabelStyle>
+	<MIStyle/>
+	<IMGStyle/>
+	<VRMLStyle/>
+</Style>
+<Style id="WEB50_M_R_GIDROGRAFIA_RF_2_REKI_LI" schema="WEB50" table="M_R_GIDROGRAFIA_RF_2_REKI_LI" descr="ГИДРОГРАФИЯ_РФ_2_РЕКИ_ЛИН" comment="WEB50.M_R_GIDROGRAFIA_RF_2_REKI_LI">
+	<zoomMin>11</zoomMin>
+	<zoomMax>9</zoomMax>
+	<LabelStyle>
+		<color>FF78B5F5</color>
+		<fontName>Arial Cyr</fontName>
+		<fontSize>8</fontSize>
+		<bold>0</bold>
+		<italic>1</italic>
+		<underline>0</underline>
+		<parallel>1</parallel>
+		<auto>1</auto>
+		<duplicate>0</duplicate>
+		<overlap>0</overlap>
+		<MIStyle>Font("Arial Cyr",258,8,7910901,16777215)</MIStyle>
+	</LabelStyle>
+	<MIStyle/>
+	<IMGStyle/>
+	<VRMLStyle/>
+</Style>
+<Style id="WEB50_M_R_NASEL_PUNKTY_GORODA_PROC" schema="WEB50" table="M_R_NASEL_PUNKTY_GORODA_PROC" descr="НАСЕЛ_ПУНКТЫ_ГОРОДА_ПРОЧИЕ" comment="WEB50.M_R_NASEL_PUNKTY_GORODA_PROC">
+	<zoomMin>11</zoomMin>
+	<zoomMax>7</zoomMax>
+	<LabelStyle>
+		<color>FF000000</color>
+		<fontName>Arial Cyr</fontName>
+		<fontSize>8</fontSize>
+		<bold>0</bold>
+		<italic>0</italic>
+		<underline>0</underline>
+		<parallel>1</parallel>
+		<auto>1</auto>
+		<duplicate>1</duplicate>
+		<overlap>0</overlap>
+		<MIStyle>Font("Arial Cyr",256,8,0,16777215)</MIStyle>
+	</LabelStyle>
+	<MIStyle/>
+	<IMGStyle/>
+	<VRMLStyle/>
+</Style>
+<Style id="WEB50_M_R_NASEL_PUNKTY_PROCIE" schema="WEB50" table="M_R_NASEL_PUNKTY_PROCIE" descr="НАСЕЛ_ПУНКТЫ_ПРОЧИЕ" comment="WEB50.M_R_NASEL_PUNKTY_PROCIE">
+	<zoomMin>11</zoomMin>
+	<zoomMax>9</zoomMax>
+	<LabelStyle>
+		<color>FF000000</color>
+		<fontName>Arial Cyr</fontName>
+		<fontSize>8</fontSize>
+		<bold>0</bold>
+		<italic>0</italic>
+		<underline>0</underline>
+		<parallel>1</parallel>
+		<auto>1</auto>
+		<duplicate>1</duplicate>
+		<overlap>0</overlap>
+		<MIStyle>Font("Arial Cyr",256,8,0,16777215)</MIStyle>
+	</LabelStyle>
+	<MIStyle/>
+	<IMGStyle/>
+	<VRMLStyle/>
+</Style>
+<Style id="WEB50_M_R_NASEL_PUNKTY_STOLICY" schema="WEB50" table="M_R_NASEL_PUNKTY_STOLICY" descr="НАСЕЛ_ПУНКТЫ_СТОЛИЦЫ" comment="WEB50.M_R_NASEL_PUNKTY_STOLICY">
+	<zoomMin>11</zoomMin>
+	<zoomMax>0</zoomMax>
+	<LabelStyle>
+		<color>FFC03000</color>
+		<fontName>Times New Roman CYR</fontName>
+		<fontSize>10</fontSize>
+		<bold>1</bold>
+		<italic>0</italic>
+		<underline>0</underline>
+		<parallel>1</parallel>
+		<auto>1</auto>
+		<duplicate>1</duplicate>
+		<overlap>0</overlap>
+		<MIStyle>Font("Times New Roman CYR",257,10,12595200,16777215)</MIStyle>
+	</LabelStyle>
+	<MIStyle/>
+	<IMGStyle/>
+	<VRMLStyle/>
+</Style>
+<Style id="WEB50_M_R_SOPRED_GOSUDARSTVA" schema="WEB50" table="M_R_SOPRED_GOSUDARSTVA" descr="СОПРЕД_ГОСУДАРСТВА" comment="WEB50.M_R_SOPRED_GOSUDARSTVA">
+	<zoomMin>11</zoomMin>
+	<zoomMax>0</zoomMax>
+	<LabelStyle>
+		<color>FF505050</color>
+		<fontName>Times New Roman CYR</fontName>
+		<fontSize>10</fontSize>
+		<bold>1</bold>
+		<italic>0</italic>
+		<underline>0</underline>
+		<parallel>0</parallel>
+		<auto>1</auto>
+		<duplicate>1</duplicate>
+		<overlap>0</overlap>
+		<MIStyle>Font("Times New Roman CYR",257,10,5263440,16777215)</MIStyle>
+	</LabelStyle>
+	<MIStyle/>
+	<IMGStyle/>
+	<VRMLStyle/>
+</Style>
+<Style id="WEB50_M_R_SUB_EKTY_RF" schema="WEB50" table="M_R_SUB_EKTY_RF" descr="СУБЪЕКТЫ_РФ" comment="WEB50.M_R_SUB_EKTY_RF">
+	<zoomMin>11</zoomMin>
+	<zoomMax>0</zoomMax>
+	<LabelStyle>
+		<color>FFA2B483</color>
+		<fontName>Times New Roman CYR</fontName>
+		<fontSize>8</fontSize>
+		<bold>1</bold>
+		<italic>0</italic>
+		<underline>0</underline>
+		<parallel>1</parallel>
+		<auto>1</auto>
+		<duplicate>1</duplicate>
+		<overlap>0</overlap>
+		<MIStyle>Font("Times New Roman CYR",1281,8,10663043,16777215)</MIStyle>
+	</LabelStyle>
+	<MIStyle/>
+	<IMGStyle/>
+	<VRMLStyle/>
+</Style>
+<Style id="WEB50_M_R_SUB_EKTY_RF_ADM_CENTRY" schema="WEB50" table="M_R_SUB_EKTY_RF_ADM_CENTRY" descr="СУБЪЕКТЫ_РФ_АДМ_ЦЕНТРЫ" comment="WEB50.M_R_SUB_EKTY_RF_ADM_CENTRY">
+	<zoomMin>11</zoomMin>
+	<zoomMax>3</zoomMax>
+	<LabelStyle>
+		<color>FF000000</color>
+		<fontName>Times New Roman CYR</fontName>
+		<fontSize>7</fontSize>
+		<bold>1</bold>
+		<italic>0</italic>
+		<underline>0</underline>
+		<parallel>1</parallel>
+		<auto>1</auto>
+		<duplicate>1</duplicate>
+		<overlap>0</overlap>
+		<MIStyle>Font("Times New Roman CYR",257,7,0,16777215)</MIStyle>
+	</LabelStyle>
+	<MIStyle/>
+	<IMGStyle/>
+	<VRMLStyle/>
+</Style>
+<Style id="WEB50_M_R_SUB_EKTY_RF_RAYONY" schema="WEB50" table="M_R_SUB_EKTY_RF_RAYONY" descr="СУБЪЕКТЫ_РФ_РАЙОНЫ" comment="WEB50.M_R_SUB_EKTY_RF_RAYONY">
+	<zoomMin>11</zoomMin>
+	<zoomMax>7</zoomMax>
+	<LabelStyle>
+		<color>FF96D2C4</color>
+		<fontName>Times New Roman CYR</fontName>
+		<fontSize>8</fontSize>
+		<bold>1</bold>
+		<italic>0</italic>
+		<underline>0</underline>
+		<parallel>1</parallel>
+		<auto>1</auto>
+		<duplicate>0</duplicate>
+		<overlap>0</overlap>
+		<MIStyle>Font("Times New Roman CYR",257,8,9884356,16777215)</MIStyle>
+	</LabelStyle>
+	<MIStyle/>
+	<IMGStyle/>
+	<VRMLStyle/>
+</Style>
+<Style id="WEB50_M_R_SUB_EKTY_RF_RAYONY_ADM_C" schema="WEB50" table="M_R_SUB_EKTY_RF_RAYONY_ADM_C" descr="СУБЪЕКТЫ_РФ_РАЙОНЫ_АДМ_ЦЕНТРЫ" comment="WEB50.M_R_SUB_EKTY_RF_RAYONY_ADM_C">
+	<zoomMin>11</zoomMin>
+	<zoomMax>7</zoomMax>
+	<LabelStyle>
+		<color>FF000000</color>
+		<fontName>Arial Cyr</fontName>
+		<fontSize>8</fontSize>
+		<bold>0</bold>
+		<italic>0</italic>
+		<underline>1</underline>
+		<parallel>1</parallel>
+		<auto>1</auto>
+		<duplicate>1</duplicate>
+		<overlap>0</overlap>
+		<MIStyle>Font("Arial Cyr",260,8,0,16777168)</MIStyle>
+	</LabelStyle>
+	<MIStyle/>
+	<IMGStyle/>
+	<VRMLStyle/>
+</Style>
+		
+		<Style table="M_R_DOROGI_AVTOMOBIL_NYE" schema="WEB50" id="WEB50_M_R_DOROGI_AVTOMOBIL_NYE" descr="ДОРОГИ_АВТОМОБИЛЬНЫЕ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>9</zoomMax>
+			<value>62143000</value>
+			<LineStyle>
+				<color>FFE0A014</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr Cyr</fontName>
+				<fontSize>9</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>0</auto>
+				<duplicate>0</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_DOROGI_AVTOMOBIL_NYE" schema="WEB50" id="WEB50_M_R_DOROGI_AVTOMOBIL_NYE" descr="ДОРОГИ_АВТОМОБИЛЬНЫЕ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>9</zoomMax>
+			<value>62</value>
+			<LineStyle>
+				<color>FFE0A014</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr Cyr</fontName>
+				<fontSize>9</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>0</auto>
+				<duplicate>0</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_DOROGI_AVTOMOBIL_NYE" schema="WEB50" id="WEB50_M_R_DOROGI_AVTOMOBIL_NYE" descr="ДОРОГИ_АВТОМОБИЛЬНЫЕ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>9</zoomMax>
+			<value>62151000</value>
+			<LineStyle>
+				<color>FFE0A014</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr Cyr</fontName>
+				<fontSize>9</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>0</auto>
+				<duplicate>0</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_DOROGI_AVTOMOBIL_NYE" schema="WEB50" id="WEB50_M_R_DOROGI_AVTOMOBIL_NYE" descr="ДОРОГИ_АВТОМОБИЛЬНЫЕ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>9</zoomMax>
+			<value>62110000</value>
+			<LineStyle>
+				<color>FFEA6060</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr Cyr</fontName>
+				<fontSize>9</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>0</auto>
+				<duplicate>0</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_DOROGI_AVTOMOBIL_NYE" schema="WEB50" id="WEB50_M_R_DOROGI_AVTOMOBIL_NYE" descr="ДОРОГИ_АВТОМОБИЛЬНЫЕ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>9</zoomMax>
+			<value>62160000</value>
+			<LineStyle>
+				<color>FFE0A014</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr Cyr</fontName>
+				<fontSize>9</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>0</auto>
+				<duplicate>0</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_DOROGI_AVTOMOBIL_NYE" schema="WEB50" id="WEB50_M_R_DOROGI_AVTOMOBIL_NYE" descr="ДОРОГИ_АВТОМОБИЛЬНЫЕ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>9</zoomMax>
+			<value>62132000</value>
+			<LineStyle>
+				<color>FFE0A014</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr Cyr</fontName>
+				<fontSize>9</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>0</auto>
+				<duplicate>0</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_DOROGI_AVTOMOBIL_NYE" schema="WEB50" id="WEB50_M_R_DOROGI_AVTOMOBIL_NYE" descr="ДОРОГИ_АВТОМОБИЛЬНЫЕ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>9</zoomMax>
+			<value>62142000</value>
+			<LineStyle>
+				<color>FFE0A014</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr Cyr</fontName>
+				<fontSize>9</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>0</auto>
+				<duplicate>0</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_DOROGI_AVTOMOBIL_NYE" schema="WEB50" id="WEB50_M_R_DOROGI_AVTOMOBIL_NYE" descr="ДОРОГИ_АВТОМОБИЛЬНЫЕ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>9</zoomMax>
+			<value>62131000</value>
+			<LineStyle>
+				<color>FFE0A014</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr Cyr</fontName>
+				<fontSize>9</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>0</auto>
+				<duplicate>0</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_DOROGI_AVTOMOBIL_NYE" schema="WEB50" id="WEB50_M_R_DOROGI_AVTOMOBIL_NYE" descr="ДОРОГИ_АВТОМОБИЛЬНЫЕ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>9</zoomMax>
+			<value>62141000</value>
+			<LineStyle>
+				<color>FFE0A014</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr Cyr</fontName>
+				<fontSize>9</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>0</auto>
+				<duplicate>0</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_DOROGI_AVTOMOBIL_NYE" schema="WEB50" id="WEB50_M_R_DOROGI_AVTOMOBIL_NYE" descr="ДОРОГИ_АВТОМОБИЛЬНЫЕ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>9</zoomMax>
+			<value>62121000</value>
+			<LineStyle>
+				<color>FFEA6060</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr Cyr</fontName>
+				<fontSize>9</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>0</auto>
+				<duplicate>0</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_DOROGI_AVTOMOBIL_NYE" schema="WEB50" id="WEB50_M_R_DOROGI_AVTOMOBIL_NYE" descr="ДОРОГИ_АВТОМОБИЛЬНЫЕ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>9</zoomMax>
+			<value>62144000</value>
+			<LineStyle>
+				<color>FFE0A014</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr Cyr</fontName>
+				<fontSize>9</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>0</auto>
+				<duplicate>0</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_DOROGI_JELEZNYE" schema="WEB50" id="WEB50_M_R_DOROGI_JELEZNYE" descr="ДОРОГИ_ЖЕЛЕЗНЫЕ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>8</zoomMax>
+			<value>61112100</value>
+			<LineStyle>
+				<color>FF777480</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr Cyr</fontName>
+				<fontSize>9</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>0</auto>
+				<duplicate>0</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_DOROGI_JELEZNYE" schema="WEB50" id="WEB50_M_R_DOROGI_JELEZNYE" descr="ДОРОГИ_ЖЕЛЕЗНЫЕ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>8</zoomMax>
+			<LineStyle>
+				<color>FF777480</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr Cyr</fontName>
+				<fontSize>9</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>0</auto>
+				<duplicate>0</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_DOROGI_JELEZNYE_STANCII" schema="WEB50" id="WEB50_M_R_DOROGI_JELEZNYE_STANCII" descr="ДОРОГИ_ЖЕЛЕЗНЫЕ_СТАНЦИИ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>9</zoomMax>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>D231</fontName>
+				<fontSize>9</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>1</auto>
+				<duplicate>1</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("D231",256,9,0,16777215)</MIStyle>
+			</LabelStyle>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/Points/err_16777215_326.png</href>
+					<form>bitmap</form>
+					<size>16</size>
+				</Icon>
+			</IconStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_GAZPROM_OBSESTVA_DOCERNI" schema="WEB50" id="WEB50_M_R_GAZPROM_OBSESTVA_DOCERNI" descr="ГАЗПРОМ_ОБЩЕСТВА_ДОЧЕРНИЕ">
+			<zoomMin>6</zoomMin>
+			<zoomMax>0</zoomMax>
+			<LabelStyle>
+				<color>FF008080</color>
+				<fontName>Arial Cyr</fontName>
+				<fontSize>9</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>0</auto>
+				<duplicate>1</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr",256,9,32896,16777215)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+			<PolyStyle/>
+		</Style>
+		<Style table="M_R_GAZPROM_OBSESTVA_POEMG" schema="WEB50" id="WEB50_M_R_GAZPROM_OBSESTVA_POEMG" descr="ГАЗПРОМ_ОБЩЕСТВА_ПОЭМГ">
+			<zoomMin>0</zoomMin>
+			<zoomMax>27</zoomMax>
+			<LabelStyle>
+				<color>FF0000A0</color>
+				<fontName>Arial Cyr Cyr</fontName>
+				<fontSize>9</fontSize>
+				<bold>0</bold>
+				<italic>1</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>0</auto>
+				<duplicate>1</duplicate>
+				<overlap>1</overlap>
+				<MIStyle>Font("Arial Cyr Cyr",258,9,160,16777215)</MIStyle>
+			</LabelStyle>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/Points/0_255_"GPR.bmp"20.png</href>
+					<form>bitmap</form>
+					<size>16</size>
+				</Icon>
+			</IconStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_GIDROGRAFIA_RF_1_OZERA_M" schema="WEB50" id="WEB50_M_R_GIDROGRAFIA_RF_1_OZERA_M" descr="ГИДРОГРАФИЯ_РФ_1_ОЗЕРА_МОРЯ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>0</zoomMax>
+			<LineStyle>
+				<color>FFC6C9F5</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr Cyr</fontName>
+				<fontSize>9</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>0</auto>
+				<duplicate>1</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+			<PolyStyle>
+				<color>FFB9D7FF</color>
+				<fill>1</fill>
+				<outline>1</outline>
+				<fillPattern>solid</fillPattern>
+			</PolyStyle>
+		</Style>
+		<Style table="M_R_GIDROGRAFIA_RF_1_REKI_LI" schema="WEB50" id="WEB50_M_R_GIDROGRAFIA_RF_1_REKI_LI" descr="ГИДРОГРАФИЯ_РФ_1_РЕКИ_ЛИН">
+			<zoomMin>11</zoomMin>
+			<zoomMax>8</zoomMax>
+			<LineStyle>
+				<color>FFC6C9F5</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF78B5F5</color>
+				<fontName>Arial Cyr</fontName>
+				<fontSize>10</fontSize>
+				<bold>0</bold>
+				<italic>1</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>1</auto>
+				<duplicate>0</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr",258,10,7910901,16777215)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_GIDROGRAFIA_RF_1_REKI_LI" schema="WEB50" id="WEB50_M_R_GIDROGRAFIA_RF_1_REKI_LI" descr="ГИДРОГРАФИЯ_РФ_1_РЕКИ_ЛИН">
+			<zoomMin>11</zoomMin>
+			<zoomMax>8</zoomMax>
+			<LineStyle>
+				<color>FFC6C9F5</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF78B5F5</color>
+				<fontName>Arial Cyr</fontName>
+				<fontSize>10</fontSize>
+				<bold>0</bold>
+				<italic>1</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>1</auto>
+				<duplicate>0</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr",258,10,7910901,16777215)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+			<PolyStyle>
+				<color>FFB9D7FF</color>
+				<fill>1</fill>
+				<outline>1</outline>
+				<fillPattern>solid</fillPattern>
+			</PolyStyle>
+		</Style>
+		<Style table="M_R_GIDROGRAFIA_RF_2_OZERA_M" schema="WEB50" id="WEB50_M_R_GIDROGRAFIA_RF_2_OZERA_M" descr="ГИДРОГРАФИЯ_РФ_2_ОЗЕРА_МОРЯ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>8</zoomMax>
+			<LineStyle>
+				<color>FFC6C9F5</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr Cyr</fontName>
+				<fontSize>9</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>0</auto>
+				<duplicate>1</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr Cyr",0,9,0)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+			<PolyStyle>
+				<color>FFB9D7FF</color>
+				<fill>1</fill>
+				<outline>1</outline>
+				<fillPattern>solid</fillPattern>
+			</PolyStyle>
+		</Style>
+		<Style table="M_R_GIDROGRAFIA_RF_2_REKI_LI" schema="WEB50" id="WEB50_M_R_GIDROGRAFIA_RF_2_REKI_LI" descr="ГИДРОГРАФИЯ_РФ_2_РЕКИ_ЛИН">
+			<zoomMin>11</zoomMin>
+			<zoomMax>9</zoomMax>
+			<LineStyle>
+				<color>FFC6C9F5</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF78B5F5</color>
+				<fontName>Arial Cyr</fontName>
+				<fontSize>8</fontSize>
+				<bold>0</bold>
+				<italic>1</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>1</auto>
+				<duplicate>0</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr",258,8,7910901,16777215)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_NASEL_PUNKTY_GORODA_PROC" schema="WEB50" id="WEB50_M_R_NASEL_PUNKTY_GORODA_PROC" descr="НАСЕЛ_ПУНКТЫ_ГОРОДА_ПРОЧИЕ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>7</zoomMax>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr</fontName>
+				<fontSize>8</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>1</auto>
+				<duplicate>1</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr",256,8,0,16777215)</MIStyle>
+			</LabelStyle>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/Points/err_10526975_348.png</href>
+					<form>bitmap</form>
+					<size>16</size>
+				</Icon>
+			</IconStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_NASEL_PUNKTY_PROCIE" schema="WEB50" id="WEB50_M_R_NASEL_PUNKTY_PROCIE" descr="НАСЕЛ_ПУНКТЫ_ПРОЧИЕ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>9</zoomMax>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr</fontName>
+				<fontSize>8</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>1</auto>
+				<duplicate>1</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr",256,8,0,16777215)</MIStyle>
+			</LabelStyle>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/Points/err_10526975_346.png</href>
+					<form>bitmap</form>
+					<size>16</size>
+				</Icon>
+			</IconStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_NASEL_PUNKTY_STOLICY" schema="WEB50" id="WEB50_M_R_NASEL_PUNKTY_STOLICY" descr="НАСЕЛ_ПУНКТЫ_СТОЛИЦЫ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>0</zoomMax>
+			<LineStyle>
+				<color>FFF1D397</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FFC03000</color>
+				<fontName>Times New Roman CYR</fontName>
+				<fontSize>10</fontSize>
+				<bold>1</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>1</auto>
+				<duplicate>1</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Times New Roman CYR",257,10,12595200,16777215)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+			<PolyStyle>
+				<color>FFFFEFB4</color>
+				<fill>1</fill>
+				<outline>1</outline>
+				<fillPattern>solid</fillPattern>
+			</PolyStyle>
+		</Style>
+		<Style table="M_R_SOPRED_GOSUDARSTVA" schema="WEB50" id="WEB50_M_R_SOPRED_GOSUDARSTVA" descr="СОПРЕД_ГОСУДАРСТВА">
+			<zoomMin>11</zoomMin>
+			<zoomMax>0</zoomMax>
+			<LineStyle>
+				<color>FFA2A283</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF505050</color>
+				<fontName>Times New Roman CYR</fontName>
+				<fontSize>10</fontSize>
+				<bold>1</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>0</parallel>
+				<auto>1</auto>
+				<duplicate>1</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Times New Roman CYR",257,10,5263440,16777215)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+			<PolyStyle>
+				<color>FFC3C3C3</color>
+				<fill>1</fill>
+				<outline>1</outline>
+				<fillPattern>solid</fillPattern>
+			</PolyStyle>
+		</Style>
+		<Style table="M_R_SUB_EKTY_RF" schema="WEB50" id="WEB50_M_R_SUB_EKTY_RF" descr="СУБЪЕКТЫ_РФ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>0</zoomMax>
+			<LineStyle>
+				<color>FFA2A283</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FFA2B483</color>
+				<fontName>Times New Roman CYR</fontName>
+				<fontSize>8</fontSize>
+				<bold>1</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>1</auto>
+				<duplicate>1</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Times New Roman CYR",1281,8,10663043,16777215)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+			<PolyStyle>
+				<color>FFFFFFD9</color>
+				<fill>1</fill>
+				<outline>1</outline>
+				<fillPattern>solid</fillPattern>
+			</PolyStyle>
+		</Style>
+		<Style table="M_R_SUB_EKTY_RF_ADM_CENTRY" schema="WEB50" id="WEB50_M_R_SUB_EKTY_RF_ADM_CENTRY" descr="СУБЪЕКТЫ_РФ_АДМ_ЦЕНТРЫ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>3</zoomMax>
+			<LineStyle>
+				<color>FFF1D397</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Times New Roman CYR</fontName>
+				<fontSize>7</fontSize>
+				<bold>1</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>1</auto>
+				<duplicate>1</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Times New Roman CYR",257,7,0,16777215)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+			<PolyStyle>
+				<color>FFFFEFB4</color>
+				<fill>1</fill>
+				<outline>1</outline>
+				<fillPattern>solid</fillPattern>
+			</PolyStyle>
+		</Style>
+		<Style table="M_R_SUB_EKTY_RF_ADM_CENTRY" schema="WEB50" id="WEB50_M_R_SUB_EKTY_RF_ADM_CENTRY" descr="СУБЪЕКТЫ_РФ_АДМ_ЦЕНТРЫ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>3</zoomMax>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Times New Roman CYR</fontName>
+				<fontSize>7</fontSize>
+				<bold>1</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>1</auto>
+				<duplicate>1</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Times New Roman CYR",257,7,0,16777215)</MIStyle>
+			</LabelStyle>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/Points/err_15848343_348.png</href>
+					<form>bitmap</form>
+					<size>16</size>
+				</Icon>
+			</IconStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+		<Style table="M_R_SUB_EKTY_RF_RAYONY" schema="WEB50" id="WEB50_M_R_SUB_EKTY_RF_RAYONY" descr="СУБЪЕКТЫ_РФ_РАЙОНЫ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>7</zoomMax>
+			<LineStyle>
+				<color>FFB4DDB4</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF96D2C4</color>
+				<fontName>Times New Roman CYR</fontName>
+				<fontSize>8</fontSize>
+				<bold>1</bold>
+				<italic>0</italic>
+				<underline>0</underline>
+				<parallel>1</parallel>
+				<auto>1</auto>
+				<duplicate>0</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Times New Roman CYR",257,8,9884356,16777215)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+			<PolyStyle>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<Style table="M_R_SUB_EKTY_RF_RAYONY_ADM_C" schema="WEB50" id="WEB50_M_R_SUB_EKTY_RF_RAYONY_ADM_C" descr="СУБЪЕКТЫ_РФ_РАЙОНЫ_АДМ_ЦЕНТРЫ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>7</zoomMax>
+			<LineStyle>
+				<color>FF808080</color>
+				<width>1</width>
+			</LineStyle>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr</fontName>
+				<fontSize>8</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>1</underline>
+				<parallel>1</parallel>
+				<auto>1</auto>
+				<duplicate>1</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr",260,8,0,16777168)</MIStyle>
+			</LabelStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+			<PolyStyle>
+				<color>FFA0A0FF</color>
+				<fill>1</fill>
+				<outline>1</outline>
+				<fillPattern>solid</fillPattern>
+			</PolyStyle>
+		</Style>
+		<Style table="M_R_SUB_EKTY_RF_RAYONY_ADM_C" schema="WEB50" id="WEB50_M_R_SUB_EKTY_RF_RAYONY_ADM_C" descr="СУБЪЕКТЫ_РФ_РАЙОНЫ_АДМ_ЦЕНТРЫ">
+			<zoomMin>11</zoomMin>
+			<zoomMax>7</zoomMax>
+			<LabelStyle>
+				<color>FF000000</color>
+				<fontName>Arial Cyr</fontName>
+				<fontSize>8</fontSize>
+				<bold>0</bold>
+				<italic>0</italic>
+				<underline>1</underline>
+				<parallel>1</parallel>
+				<auto>1</auto>
+				<duplicate>1</duplicate>
+				<overlap>0</overlap>
+				<MIStyle>Font("Arial Cyr",260,8,0,16777168)</MIStyle>
+			</LabelStyle>
+			<IconStyle>
+				<Icon>
+					<href>Public/assets/Points/err_10526975_346.png</href>
+					<form>bitmap</form>
+					<size>16</size>
+				</Icon>
+			</IconStyle>
+			<MIStyle/>
+			<IMGStyle/>
+			<VRMLStyle/>
+		</Style>
+	</Document>
+</kml>

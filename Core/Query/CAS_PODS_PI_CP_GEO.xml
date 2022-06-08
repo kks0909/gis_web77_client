@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root version="postgres 7.7.7.6">
+	<data table="ILI_INSPECTION_RANGE" schema="PODS" id="CAS_PODS_ILI_INSPECTION_RANGE" descr="Участки ВТД, пройденные снарядом-дефектоскопом" comment="PODS_ILI_INSPECTION_RANGE">
+		<select>
+			<geoQuery idField="ID" geoField="X, Y">
+				<var name="START_KM" type="Int64"/>
+				<var name="FINISH_KM" type="Int64"/>
+				<var name="LINE_ID" type="Int64" />
+				<var name="LABEL" default="Участки ВТД, пройденные\n снарядом-дефектоскопом" type="String"/>
+				<var name="LABEL_UNIT" default="Год проведения ВТД" type="String"/>
+				<var name="HEIGHT" default="36" type="Int64"/>
+				<var name="TYPE" default="interval" type="String"/>
+			  <var name="Y_STEPS" default="14"/>
+			  <var name="Y_MAX" default="2020"/>
+			  <var name="Y_MIN" default="2000"/>        
+				<var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+				<var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10"/>
+				<var name="FILTERED_CLASS" default="PODS_ILI_INSPECTION_RANGE_LIST"/>
+				<query>
+WITH virtual_point_generator 
+  AS (SELECT CEIL(least({START_KM},{FINISH_KM}) + row_number() over ()) X
+        FROM generate_series(1,round(abs({START_KM}-{FINISH_KM}))::INTEGER) ),
+  report_list 
+  AS (SELECT to_char(BEGIN_DATE,'YYYY, ')||tv.description "LABEL"
+            ,to_char(BEGIN_DATE,'YYYY') "TYPE", v.event_id ID
+            ,0 + CASE WHEN (to_char(BEGIN_DATE,'YYYY'))::NUMERIC &lt;= 2000
+                        THEN 2000
+                        ELSE (to_char(BEGIN_DATE,'YYYY'))::NUMERIC
+                 END   Y
+  FROM pods.ili_inspection i
+       JOIN pods.ili_tool_vendor_cl tv
+         ON i.tool_vendor_cl = tv.code
+       JOIN pods.ili_inspection_range v
+         ON i.ili_inspection_id = v.ili_inspection_id 
+       JOIN pods.event_range e
+         ON v.event_id = e.event_id
+       JOIN pods.station_point sp
+         ON e.station_id_begin = sp.station_id
+       JOIN pods.series s
+         ON s.series_id = sp.series_id  
+       JOIN pods.route r
+         ON s.route_id = r.route_id  
+ WHERE r.line_id = {LINE_ID}
+   AND EXISTS (SELECT 1
+                 FROM pods.station_point spb
+                      JOIN pods.location l
+                        ON l.location_id = spb.location_id
+                WHERE spb.series_id = s.series_id
+                  AND spb.measure &gt;= sp.measure 
+                  AND l.srv_district_gcl in ({LPU_ACCESS_FILTER})))                  
+(SELECT to_char(BEGIN_DATE,'YYYY, ')||tv.description "LABEL"
+       ,to_char(BEGIN_DATE,'YYYY') "TYPE", v.event_id ID
+       ,( s.station_begin + (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000 - {START_KM})  X
+       ,0 + CASE WHEN (to_char(BEGIN_DATE,'YYYY'))::NUMERIC &lt;= 2000
+                     THEN 2000
+                ELSE (to_char(BEGIN_DATE,'YYYY'))::NUMERIC
+           END   Y
+  FROM pods.ili_inspection i
+       JOIN pods.ili_tool_vendor_cl tv
+         ON i.tool_vendor_cl = tv.code
+       JOIN pods.ili_inspection_range v
+         ON i.ili_inspection_id = v.ili_inspection_id 
+       JOIN pods.event_range e
+         ON v.event_id = e.event_id
+       JOIN pods.station_point sp
+         ON e.station_id_begin = sp.station_id
+       JOIN pods.series s
+         ON s.series_id = sp.series_id  
+       JOIN pods.route r
+         ON s.route_id = r.route_id  
+ WHERE r.line_id = {LINE_ID}
+   AND EXISTS (SELECT 1
+                 FROM pods.station_point spb
+                      JOIN pods.location l
+                        ON l.location_id = spb.location_id
+                WHERE spb.series_id = s.series_id
+                  AND spb.measure &gt;= sp.measure 
+                  AND l.srv_district_gcl in ({LPU_ACCESS_FILTER})) 
+ UNION ALL
+ SELECT "LABEL","TYPE",ID,X,Y
+  FROM report_list
+       CROSS JOIN  virtual_point_generator     
+                 UNION ALL 
+   SELECT to_char(BEGIN_DATE,'YYYY, ')||tv.description "LABEL"
+         ,to_char(BEGIN_DATE,'YYYY') "TYPE", v.event_id ID
+         ,( s.station_begin + (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000 - {START_KM})  X
+       ,0 + CASE WHEN (to_char(BEGIN_DATE,'YYYY'))::NUMERIC &lt;= 2000
+                     THEN 2000
+                ELSE (to_char(BEGIN_DATE,'YYYY'))::NUMERIC
+            END Y
+  FROM pods.ili_inspection i
+       JOIN pods.ili_tool_vendor_cl tv
+         ON i.tool_vendor_cl = tv.code
+       JOIN pods.ili_inspection_range v
+         ON i.ili_inspection_id = v.ili_inspection_id 
+       JOIN pods.event_range e
+         ON v.event_id = e.event_id
+       JOIN pods.station_point sp
+         ON e.station_id_end = sp.station_id
+       JOIN pods.series s
+         ON s.series_id = sp.series_id  
+       JOIN pods.route r
+         ON s.route_id = r.route_id  
+ WHERE r.line_id = {LINE_ID}
+   AND EXISTS (SELECT 1
+                 FROM pods.station_point spe
+                      JOIN pods.location l
+                        ON l.location_id = spe.location_id
+                WHERE spe.series_id = s.series_id
+                  AND spe.measure &lt;= sp.measure 
+                  AND l.srv_district_gcl in ({LPU_ACCESS_FILTER})) 
+   )
+ORDER BY ID,X
+				</query>
+			</geoQuery>
+		</select>
+	</data>
+	<data table="PI_CP_INSPECTION" schema="PODS" id="CAS_PODS_PI_CP_INSPECTION" descr="Перечень обследований\n состояния ЭХЗ" comment="PODS_PI_CP_INSPECTION">
+		<select>
+			<geoQuery idField="ID" geoField="X, Y">
+				<var name="START_KM" type="Int64"/>
+				<var name="FINISH_KM" type="Int64"/>
+				<var name="LINE_ID" type="Int64"/>
+				<var name="LABEL" default="Перечень обследований\n состояния ЭХЗ" type="String"/>
+				<var name="LABEL_UNIT" default="Год обследования" type="String"/>
+				<var name="HEIGHT" default="36" type="Int64"/>
+				<var name="TYPE" default="interval" type="String"/>
+			  <var name="Y_STEPS" default="14"/>
+			  <var name="Y_MAX" default="2020"/>
+			  <var name="Y_MIN" default="2000"/>        
+				<var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+				<var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10"/>
+				<var name="FILTERED_CLASS" default="PODS_PI_CP_INSPECTION_LIST"/>
+				<query>
+WITH virtual_point_generator
+  AS (SELECT CEIL(least({START_KM},{FINISH_KM}) + row_number() over ()) X
+        FROM generate_series(1,round(abs({START_KM}-{FINISH_KM}))::INTEGER) ),
+     report_list
+  AS (SELECT v.comments || ' ' || v.description||' '||to_char(INSPECTION_DATE,'YYYY') "LABEL"
+       ,to_char(INSPECTION_DATE,'YYYY') "TYPE", v.event_id ID
+       ,0 + CASE WHEN (to_char(INSPECTION_DATE,'YYYY'))::NUMERIC &lt;= 2000
+                     THEN 2000
+                ELSE (to_char(INSPECTION_DATE,'YYYY'))::NUMERIC
+           END   Y
+  FROM pods.pi_cp_inspection v 
+       JOIN pods.event_range e
+         ON v.event_id = e.event_id
+       JOIN pods.station_point sp
+         ON e.station_id_begin = sp.station_id
+       JOIN pods.series s
+         ON s.series_id = sp.series_id
+       JOIN pods.route r
+         ON r.route_id = s.route_id   
+ WHERE r.line_id = {LINE_ID})         
+    (SELECT v.comments || ' ' || v.description||' '||to_char(INSPECTION_DATE,'YYYY') "LABEL"
+       ,to_char(INSPECTION_DATE,'YYYY') "TYPE", v.event_id ID
+       ,( s.station_begin + (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000 - {START_KM})  X
+       ,0 + CASE WHEN (to_char(INSPECTION_DATE,'YYYY'))::NUMERIC &lt;= 2000
+                     THEN 2000
+                ELSE (to_char(INSPECTION_DATE,'YYYY'))::NUMERIC
+           END   Y
+  FROM pods.pi_cp_inspection v 
+       JOIN pods.event_range e
+         ON v.event_id = e.event_id
+       JOIN pods.station_point sp
+         ON e.station_id_begin = sp.station_id
+       JOIN pods.series s
+         ON s.series_id = sp.series_id
+       JOIN pods.route r
+         ON r.route_id = s.route_id   
+ WHERE r.line_id = {LINE_ID}
+   AND EXISTS (SELECT 1
+                 FROM pods.station_point spb
+                      JOIN pods.location l
+                        ON l.location_id = spb.location_id
+                WHERE spb.series_id = s.series_id
+                  AND spb.measure &gt;= sp.measure 
+                  AND l.srv_district_gcl in ({LPU_ACCESS_FILTER}))
+ UNION ALL
+ SELECT "LABEL","TYPE",ID,X,Y
+  FROM report_list
+       CROSS JOIN  virtual_point_generator                     
+UNION ALL
+   SELECT v.comments || ' ' || v.description||' '||to_char(INSPECTION_DATE,'YYYY') "LABEL"
+         ,to_char(INSPECTION_DATE,'YYYY') "TYPE", v.event_id ID
+         ,( s.station_begin + (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000 - {START_KM}) X
+       ,0 + CASE WHEN (to_char(INSPECTION_DATE,'YYYY'))::NUMERIC &lt;= 2000
+                     THEN 2000
+                ELSE (to_char(INSPECTION_DATE,'YYYY'))::NUMERIC
+           END   Y
+  FROM pods.pi_cp_inspection v 
+       JOIN pods.event_range e
+         ON v.event_id = e.event_id
+       JOIN pods.station_point sp
+         ON e.station_id_end = sp.station_id
+       JOIN pods.series s
+         ON s.series_id = sp.series_id
+       JOIN pods.route r
+         ON r.route_id = s.route_id   
+ WHERE r.line_id = {LINE_ID}
+   AND EXISTS (SELECT 1
+                 FROM pods.station_point spe
+                      JOIN pods.location l
+                        ON l.location_id = spe.location_id
+                WHERE spe.series_id = s.series_id
+                  AND spe.measure &lt;= sp.measure 
+                  AND l.srv_district_gcl in ({LPU_ACCESS_FILTER})))
+ORDER BY ID,X
+        </query>
+			</geoQuery>
+		</select>
+	</data>
+	<data table="PHYSICAL_INSPECTION" schema="PODS" id="CAS_PODS_PHYSICAL_INSPECTION" descr="Перечень наружных обследований" comment="PODS_PHYSICAL_INSPECTION">
+		<select>
+			<geoQuery idField="ID" geoField="X, Y">
+				<var name="START_KM" type="Int64"/>
+				<var name="FINISH_KM" type="Int64"/>
+				<var name="LINE_ID" type="Int64"/>
+				<var name="LABEL" default="Перечень наружных обследований" type="String"/>
+				<var name="LABEL_UNIT" default="Год обследования" type="String"/>
+				<var name="HEIGHT" default="36" type="Int64"/>
+				<var name="TYPE" default="interval" type="String"/>
+			  <var name="Y_STEPS" default="14"/>
+			  <var name="Y_MAX" default="2020"/>
+			  <var name="Y_MIN" default="2000"/>        
+				<var name="LPU_ACCESS_FILTER" default="SELECT SRV_DISTRICT_ID FROM PODS.SRV_DISTRICT_GCL"/>
+				<var name="ROUTE_TYPE_FILTER" default="ROUTE_TYPE_10"/>
+				<var name="FILTERED_CLASS" default="PODS_PHYSICAL_INSPECTION_LIST"/>
+				<query>
+				(SELECT v.comments || ' ' || v.description "LABEL"
+       , v.CLASS_cl "TYPE", v.event_id ID
+       ,( s.station_begin + (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000 - {START_KM})  X
+       ,0 + CASE WHEN (to_char(INSPECTION_START_DATE,'YYYY'))::NUMERIC &lt;= 2000
+                     THEN 2000
+                ELSE (to_char(INSPECTION_START_DATE,'YYYY'))::NUMERIC
+           END   Y
+  FROM pods.series s, pods.physical_inspection v, pods.event_range e, pods.station_point sp, pods.location l
+ WHERE s.series_id = sp.series_id
+   AND v.event_id = e.event_id
+   AND e.station_id_begin = sp.station_id
+   AND ((sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/1000+s.station_begin) between {START_KM} and {FINISH_KM}
+   AND sp.line_id = {LINE_ID}
+   AND l.location_id = sp.location_id
+   AND l.srv_district_gcl in ({LPU_ACCESS_FILTER})
+UNION 
+   SELECT v.comments || ' ' || v.description "LABEL"
+         ,v.CLASS_cl "TYPE", v.event_id ID
+         ,( s.station_begin + (sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id)) / 1000 - {START_KM}) X
+       ,0 + CASE WHEN (to_char(INSPECTION_START_DATE,'YYYY'))::NUMERIC &lt;= 2000
+                     THEN 2000
+                ELSE (to_char(INSPECTION_START_DATE,'YYYY'))::NUMERIC
+           END   Y
+
+  FROM pods.series s, pods.physical_inspection v, pods.event_range e, pods.station_point sp, pods.location l
+ WHERE s.series_id = sp.series_id
+   AND v.event_id = e.event_id
+   AND e.station_id_end = sp.station_id
+   AND ((sp.measure  - (select min(measure) from pods.station_point ss where ss.route_id=s.route_id))/1000+s.station_begin) between {START_KM} and {FINISH_KM}
+   AND sp.line_id = {LINE_ID}
+   AND l.location_id = sp.location_id
+   AND l.srv_district_gcl in ({LPU_ACCESS_FILTER}))
+ORDER BY ID,X
+				</query>
+			</geoQuery>
+		</select>
+	</data>
+</root>

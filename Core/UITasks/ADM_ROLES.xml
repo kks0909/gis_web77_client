@@ -1,0 +1,16 @@
+﻿<ROOT prevTask="close" version="6.0.2.0">
+  <hbox percentWidth="100" percentHeight="100">
+	<panel id="ADM_ROLE" percentWidth="100" percentHeight="100" reload="true">
+		<settings>
+			<requestFilterByRole>ADM_SEM.xml#WEB50_B_ROLES</requestFilterByRole>
+			<requestRoles>ADM_SEM.xml#WEB50_B_ROLE</requestRoles>
+			<requestSetRoleToUser>ADM_SEM.xml#WEB50_USER_TO_ROLE</requestSetRoleToUser>
+			<requestRoleToTasks>ADM_SEM.xml#EDIT_ROLE_TASKS_XML</requestRoleToTasks>
+			<requestCreateRoleByLPU>GAZPROM_ADM_SEM.xml#CREATE_ROLE_BY_LPU</requestCreateRoleByLPU>
+			<showRolesByLPUButton>true</showRolesByLPUButton>
+      <!--Идентификатор шаблонной роли для формирования ролей по ЛПУ МГ (по-умолчанию 1, то есть роль USER) -->
+      <add key="Template_Role_Id" value="1"/>
+		</settings>
+	</panel>
+  </hbox>
+</ROOT>

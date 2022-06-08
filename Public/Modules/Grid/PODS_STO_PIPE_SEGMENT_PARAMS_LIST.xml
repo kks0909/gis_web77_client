@@ -1,0 +1,224 @@
+﻿<!--7.7.6.0-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="9" headerVertSize="50"
+  labelColumn="LABEL"  id="PODS_STO_PIPE_SEGMENT_PARAMS_LIST"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelTemplateName="PODS_STO_PIPE_SEGMENT_PARAMS_LIST"			
+            layerId="PODS_STO_PIPE_SEGMENT_PARAMS" propertyPanelName="PODS_STO_PIPE_SEGMENT_PARAMS"
+            dataRequest="PODS_GRID.xml#PODS_STO_PIPE_SEGMENT_PARAMS"
+            totalRecordsRequest="PODS_GRID.xml#PODS_STO_PIPE_SEGMENT_PARAMS_CNT"
+            initialSortField="SRV_DISTRICT_LBL,ROUTE_TYPE_LBL,LINE_ID_LBL,STATION_BEG,STATION_END">
+  <grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/exportNAV.png"
+        tooltip="Экспорт/Импорт в GPX,KML"
+        clickEvent="ru.corelight.business.events.ExportToGPXEvent"
+        isEnabled="true"  />
+  <picPutton:GridButton source="../../Public/assets/createObject.png"
+        tooltip="Создать объект"
+        clickEvent="ru.corelight.business.events.CreateObjectEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../Public/assets/showOnMap.png"
+        tooltip="Показать на карте"
+        clickEvent="ru.corelight.business.events.ShowOnMapEvent"
+        isEnabled="length" />
+  <picPutton:GridButton source="../../Public/assets/excel.png"
+        tooltip="Экспортировать в Excel"
+        clickEvent="ru.corelight.business.events.ExportToExcelEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />
+        <picPutton:GridButton source="../../ui/images/paste.png"
+        tooltip="Вставить данные из excel"
+        clickEvent="PasteFromExcelEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+<picPutton:GridButton source="../../ui/images/save.png"
+       tooltip="Сохранить изменения"
+       clickEvent="ApplyUpdatedCellEvent"
+       isEnabled="null" />
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+<grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+      <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=showInfoEvent;toolTip=Показать информацию по объекту"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/photo.png;eventName=ShowCarouselEvent;toolTip=Показать документы по объекту;columns=LG_ATTACH"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/map.png;eventName=ru.corelight.business.events.ShowOnMapEvent;toolTip=Показать на карте;layerId=PODS_STO_PIPE_SEGMENT_PARAMS"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/excel.png;eventName=ru.corelight.business.events.ExportToExcelEvent;toolTip=Выгрузить в Excel;templateName=PODS_STO_PIPE_SEGMENT_PARAMS;ext_data_id=PODS_EXPORT.xml#PODS_STO_PIPE_SEGMENT_PARAMS"  
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false" 
+			  itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/showOnCas.png;eventName=ru.corelight.business.events.ShowOnCASEvent;toolTip=Показать участок на диаграмме" 
+			  editable="true"/>
+      <columns:GridColumn headerText="Идентификатор" dataField="ID" itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="false" filterComparisionType="number" width="40" />  
+      <columns:GridColumn headerText="Нач.\nкм" dataField="STATION_BEG"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="40"/>
+      <columns:GridColumn headerText="Кон.\nкм" dataField="STATION_END"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="40"/>
+      <columns:GridColumn headerText="Категория\nучастка" dataField="DOT_CLASS_RATING_CL"
+                          filterRequestId="PODS_SEM_DICT.xml#PODS_DOT_CLASS_RATING_CL"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_SEM_DICT.xml#PODS_DOT_CLASS_RATING_CL"
+                          filterComparisionType="array"
+                          editable="true"
+                          sortField="DOT_CLASS_RATING_LBL"
+                          width="80"/>
+      <columns:GridColumn headerText="Ном.\nдиаметр,\nмм" dataField="NOMINAL_DIAMETER_GCL"
+                          filterRequestId="PODS_SEM_DICT.xml#PODS_NOMINAL_DIAMETER_GCL"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_SEM_DICT.xml#PODS_NOMINAL_DIAMETER_GCL"
+                          filterComparisionType="array"
+                          editable="true"
+                          sortField="NOMINAL_DIAMETER_LBL"
+                          width="50"/>
+      <columns:GridColumn headerText="Толщина\nстенки,\nмм" dataField="NOMINAL_WALL_THICKNESS_GCL"
+                          filterRequestId="PODS_SEM_DICT.xml#PODS_NOMINAL_WALL_THICKNESS_GCL"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_SEM_DICT.xml#PODS_NOMINAL_WALL_THICKNESS_GCL"
+                          filterComparisionType="array"
+                          editable="true"
+                          sortField="NOMINAL_WALL_THICKNESS_LBL"
+                          width="50"/>
+      <columns:GridColumn headerText="Тип трубы" dataField="PIPE_LONG_SEAM_GCL"
+                          filterRequestId="PODS_SEM_DICT.xml#PODS_PIPE_LONG_SEAM_GCL"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_SEM_DICT.xml#PODS_PIPE_LONG_SEAM_GCL"
+                          filterComparisionType="array"
+                          editable="true"
+                          sortField="PIPE_LONG_SEAM_LBL"
+                          width="50"/>
+      <columns:GridColumn headerText="Марка\nстали" dataField="PIPE_SEGMENT_MATERIAL_CL"
+                          filterRequestId="PODS_SEM_DICT.xml#PODS_PIPE_SEGMENT_MATERIAL_CL"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_SEM_DICT.xml#PODS_PIPE_SEGMENT_MATERIAL_CL"
+                          filterComparisionType="array"
+                          editable="true"
+                          sortField="PIPE_SEGMENT_MATERIAL_LBL"
+                          width="50"/>
+      <columns:GridColumn headerText="Завод-изготовитель" dataField="PIPE_SEGMENT_MANUFACTURER_CL"
+                          filterRequestId="PODS_SEM_DICT.xml#PODS_PIPE_SEGMENT_MANUFACTURER_CL"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_SEM_DICT.xml#PODS_PIPE_SEGMENT_MANUFACTURER_CL"
+                          filterComparisionType="array"
+                          hidden="true" editable="true"
+                          sortField="PIPE_SEGMENT_MANUFACTURER_LBL"
+                          width="90"/>
+      <columns:GridColumn headerText="Тип покрытия" dataField="TYPE_SCL"
+                          filterRequestId="PODS_SEM_DICT.xml#PODS_COATING_TYPE_SCL"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_SEM_DICT.xml#PODS_COATING_TYPE_SCL"
+                          filterComparisionType="array"
+                          hidden="true" editable="true"
+                          sortField="TYPE_LBL"
+                          width="70"/>	   
+      <columns:GridColumn headerText="Метод\nнанесения\nизоляции" dataField="WHERE_COATING_APPLIED_GCL"
+                          filterRequestId="PODS_SEM_DICT.xml#PODS_WHERE_COATING_APPLIED_GCL"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_SEM_DICT.xml#PODS_WHERE_COATING_APPLIED_GCL"
+                          filterComparisionType="array"
+                          hidden="true" editable="true"
+                          sortField="WHERE_COATING_APPLIED_LBL"
+                          width="50"/>	   	   
+      <columns:GridColumn headerText="Зав.\nдавление,\nМПа" dataField="TEST_PRESSURE"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="Раб.\nдавление,\nМПа" dataField="WORK_PRESSURE"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="Пр.\nдавление,\nМПа" dataField="PROJECT_PRESSURE"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="50"/>
+      <columns:GridColumn headerText="Дата ввода\nв экспл." dataField="DATE_BEGIN_EXPLOITATION"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="date"
+                          width="50"/>
+      <columns:GridColumn headerText="Дата\nпоследней\nВТД" dataField="DATE_LAST_ILI"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="date"
+                          width="50"/>
+      <columns:GridColumn headerText="ЛПУ" dataField="SRV_DISTRICT_ID"
+                          filterRequestId="PODS_POLICY.xml#PODS_LPU_GRID"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_POLICY.xml#PODS_LPU_GRID"
+                          filterComparisionType="array"
+                          editable="false"
+                          sortField="SRV_DISTRICT_LBL"
+                          width="80" hidden="true"/>
+      <columns:GridColumn headerText="Тип труб-да" dataField="ROUTE_TYPE_CL"
+                          filterRequestId="PODS_POLICY.xml#PODS_ROUTE_TYPE_GRID"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_POLICY.xml#PODS_ROUTE_TYPE_GRID"
+                          filterComparisionType="array"
+                          editable="false"
+                          sortField="ROUTE_TYPE_LBL"
+                          width="70" hidden="true"/>
+      <columns:GridColumn headerText="Трубопровод" dataField="LINE_ID"
+                          filterRequestId="PODS_POLICY.xml#PODS_LINE_GRID"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_POLICY.xml#PODS_LINE_GRID"
+                          filterComparisionType="array"
+                          editable="false"
+                          sortField="LINE_ID_LBL"
+                          width="100" hidden="true"/>						  
+      <columns:GridColumn headerText="СТО 401. Затр. на ликвидацию 1 отказа на 1 км, млн.руб" dataField="COST_REPAIR"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="60" hidden="true"/>
+      <columns:GridColumn headerText="СТО 401. Затр. зам. 1 тр., млн.руб" dataField="COST_REPLACE_PIPE"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="60" hidden="true"/>
+      <columns:GridColumn headerText="СТО 401. Затр. на ВТД на 1 км, млн.руб" dataField="COST_ILI_1_KM"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="60" hidden="true"/>
+      <columns:GridColumn headerText="СТО 401. Затр. на 1 шурф, млн.руб" dataField="COST_EXCAVATE"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="60" hidden="true"/>
+      <columns:GridColumn headerText="СТО 401. Затр. на кап.ремонт 1 км, млн.руб" dataField="COST_CAPITAL_REPAIR"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer" 
+                          editable="true"
+                          filterComparisionType="number"
+                          width="60" hidden="true"/>
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                          columnWidthMode="percent"/>
+      <columns:GridColumn headerText="Заголовок" dataField="LABEL"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"
+                          hidden="true"
+                          width="50"/>
+  </grids:columns>
+</grids:Grid>

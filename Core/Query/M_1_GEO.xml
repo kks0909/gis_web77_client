@@ -1,0 +1,916 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root version="postgres 7.7.6.0" >
+	<data table="M_1_GIDR_LP" schema="WEB50" id="WEB50_M_1_GIDR_LP" comment="WEB50.M_1_GIDR_LP">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<var name="FILTER" default="1=1"/>
+				<query>
+			SELECT d.ID, d.DESCR "LABEL", d."XMIN", d."XMAX", d."YMIN", d."YMAX", d.WKB_GEOMETRY, d.STYLE, d.obj_cls_id "TYPE"
+              FROM WEB50.M_1_GIDR_LP d
+              WHERE {FILTER}
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="2"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_GEO"  />
+				<object>             
+                  UPDATE WEB50.M_1_GIDR_LP SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="2"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_GEO"  />
+				<object>
+                  UPDATE WEB50.M_1_GIDR_LP SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param type="Decimal" name="USER_ID"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_GEO"  />
+				<query>
+              UPDATE WEB50.M_1_GIDR_LP SET WKB_GEOMETRY=NULL, "XMIN"=NULL, "XMAX"=NULL, "YMIN"=NULL, "YMAX"=NULL, STYLE=NULL WHERE ID = :ID              
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_1_GIDR_S" schema="WEB50" id="WEB50_M_1_GIDR_S" comment="WEB50.M_1_GIDR_S">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<var name="FILTER" default="1=1"/>
+				<query>
+			  SELECT d.ID, d.C9 "LABEL", d."XMIN", d."XMAX", d."YMIN", d."YMAX", d.WKB_GEOMETRY, d.STYLE, d.obj_cls_id "TYPE"
+              FROM WEB50.M_1_GIDR_S d
+              WHERE {FILTER}
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="3"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_GIDR_S SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="3"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_GIDR_S SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param type="Decimal" name="USER_ID"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_GEO"  />
+				<query>              
+                UPDATE WEB50.M_1_GIDR_S  SET WKB_GEOMETRY=NULL, "XMIN"=NULL, "XMAX"=NULL, "YMIN"=NULL, "YMAX"=NULL, STYLE=NULL WHERE ID = :ID              
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_1_GRUNT" schema="WEB50" id="WEB50_M_1_GRUNT" comment="WEB50.M_1_GRUNT">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<var name="FILTER" default="1=1"/>
+				<query>
+			  SELECT d.ID, d.DESCR "LABEL", d."XMIN", d."XMAX", d."YMIN", d."YMAX", d.WKB_GEOMETRY, d.STYLE, d.obj_cls_id "TYPE"
+              FROM WEB50.M_1_GRUNT d
+              WHERE {FILTER}
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="1"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_GRUNT SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END,  ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="1"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_GRUNT SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END,  ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param type="Decimal" name="USER_ID"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_GEO"  />
+				<query>             
+                UPDATE WEB50.M_1_GRUNT  SET WKB_GEOMETRY=NULL, "XMIN"=NULL, "XMAX"=NULL, "YMIN"=NULL, "YMAX"=NULL, STYLE=NULL WHERE ID = :ID              
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_1_LIMITS" schema="WEB50" id="WEB50_M_1_LIMITS" comment="WEB50.M_1_LIMITS">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<var name="FILTER" default="1=1"/>
+				<query>
+			  SELECT d.ID, d.DESCR "LABEL", d."XMIN", d."XMAX", d."YMIN", d."YMAX", d.WKB_GEOMETRY, d.STYLE, d.obj_cls_id "TYPE" 
+              FROM WEB50.M_1_LIMITS d
+              WHERE {FILTER}
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="1"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_LIMITS SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID               
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="1"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_LIMITS SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param type="Decimal" name="USER_ID"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_GEO"  />
+				<query>              
+                UPDATE WEB50.M_1_LIMITS  SET WKB_GEOMETRY=NULL, "XMIN"=NULL, "XMAX"=NULL, "YMIN"=NULL, "YMAX"=NULL, STYLE=NULL WHERE ID = :ID              
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_1_PROM_GAS" schema="WEB50" id="WEB50_M_1_PROM_GAS" comment="WEB50.M_1_PROM_GAS">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<var name="FILTER" default="1=1"/>
+				<query>
+			  SELECT d.ID, d.DESCR "LABEL", d."XMIN", d."XMAX", d."YMIN", d."YMAX", d.WKB_GEOMETRY, d.STYLE, d.obj_cls_id "TYPE" 
+              FROM WEB50.M_1_PROM_GAS d
+              WHERE {FILTER}
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="1"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_PROM_GAS SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="1"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_PROM_GAS SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param type="Decimal" name="USER_ID"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_GEO"  />				
+				<query>              
+                UPDATE WEB50.M_1_PROM_GAS  SET WKB_GEOMETRY=NULL, "XMIN"=NULL, "XMAX"=NULL, "YMIN"=NULL, "YMAX"=NULL, STYLE=NULL WHERE ID = :ID              
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_1_PROM_LP" schema="WEB50" id="WEB50_M_1_PROM_LP" comment="WEB50.M_1_PROM_LP">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<var name="FILTER" default="1=1"/>
+				<query>
+			  SELECT d.ID, d.DESCR "LABEL", d."XMIN", d."XMAX", d."YMIN", d."YMAX", d.WKB_GEOMETRY, d.STYLE, d.obj_cls_id "TYPE" 
+              FROM WEB50.M_1_PROM_LP d
+              WHERE {FILTER}
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="2"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_GEO"  />				
+				<object>                
+                  UPDATE WEB50.M_1_PROM_LP SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="2"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_GEO"  />				
+				<object>                
+                  UPDATE WEB50.M_1_PROM_LP SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param type="Decimal" name="USER_ID"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_GEO"  />				
+				<query>              
+                UPDATE WEB50.M_1_PROM_LP  SET WKB_GEOMETRY=NULL, "XMIN"=NULL, "XMAX"=NULL, "YMIN"=NULL, "YMAX"=NULL, STYLE=NULL WHERE ID = :ID              
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_1_PROM_S" schema="WEB50" id="WEB50_M_1_PROM_S" comment="WEB50.M_1_PROM_S">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<var name="FILTER" default="1=1"/>
+				<query>
+			  SELECT d.ID, d.DESCR "LABEL", d."XMIN", d."XMAX", d."YMIN", d."YMAX", d.WKB_GEOMETRY, d.STYLE, d.obj_cls_id "TYPE" 
+              FROM WEB50.M_1_PROM_S d
+              WHERE {FILTER}
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="3"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_GEO"  />				
+				<object>               
+                  UPDATE WEB50.M_1_PROM_S SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="3"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_GEO"  />				
+				<object>                
+                  UPDATE WEB50.M_1_PROM_S SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param type="Decimal" name="USER_ID"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_GEO"  />				
+				<query>              
+                UPDATE WEB50.M_1_PROM_S  SET WKB_GEOMETRY=NULL, "XMIN"=NULL, "XMAX"=NULL, "YMIN"=NULL, "YMAX"=NULL, STYLE=NULL WHERE ID = :ID              
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_1_RAST_LP" schema="WEB50" id="WEB50_M_1_RAST_LP" comment="WEB50.M_1_RAST_LP">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<var name="FILTER" default="1=1"/>
+				<query>SELECT d.ID, d.DESCR "LABEL", d."XMIN", d."XMAX", d."YMIN", d."YMAX", d.WKB_GEOMETRY, d.STYLE, d.obj_cls_id "TYPE" 
+              FROM WEB50.M_1_RAST_LP d
+              WHERE {FILTER}
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="2"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_RAST_LP SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="2"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_RAST_LP SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param type="Decimal" name="USER_ID"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_GEO"  />
+				<query>              
+                UPDATE WEB50.M_1_RAST_LP  SET WKB_GEOMETRY=NULL, "XMIN"=NULL, "XMAX"=NULL, "YMIN"=NULL, "YMAX"=NULL, STYLE=NULL WHERE ID = :ID              
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_1_RAST_S" schema="WEB50" id="WEB50_M_1_RAST_S" comment="WEB50.M_1_RAST_S">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<var name="FILTER" default="1=1"/>
+				<query>
+			  SELECT d.ID, d.DESCR "LABEL", d."XMIN", d."XMAX", d."YMIN", d."YMAX", d.WKB_GEOMETRY, d.STYLE, d.obj_cls_id "TYPE" 
+              FROM WEB50.M_1_RAST_S d
+              WHERE {FILTER}
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="3"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_RAST_S SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="3"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_GEO"  />				
+				<object>                
+                  UPDATE WEB50.M_1_RAST_S SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param type="Decimal" name="USER_ID"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_GEO"  />
+				<query>              
+                UPDATE WEB50.M_1_RAST_S  SET WKB_GEOMETRY=NULL, "XMIN"=NULL, "XMAX"=NULL, "YMIN"=NULL, "YMAX"=NULL, STYLE=NULL WHERE ID = :ID              
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_1_RELIEF" schema="WEB50" id="WEB50_M_1_RELIEF" comment="WEB50.M_1_RELIEF">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<var name="FILTER" default="1=1"/>
+				<query>SELECT d.ID, d.DESCR "LABEL", d."XMIN", d."XMAX", d."YMIN", d."YMAX", d.WKB_GEOMETRY, d.STYLE, d.obj_cls_id "TYPE" 
+              FROM WEB50.M_1_RELIEF d
+              WHERE {FILTER}
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="1"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_GEO"  />				
+				<object>                
+                  UPDATE WEB50.M_1_RELIEF SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="1"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_RELIEF SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID               
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param type="Decimal" name="USER_ID"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_GEO"  />
+				<query>              
+                UPDATE WEB50.M_1_RELIEF  SET WKB_GEOMETRY=NULL, "XMIN"=NULL, "XMAX"=NULL, "YMIN"=NULL, "YMAX"=NULL, STYLE=NULL WHERE ID = :ID
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_1_ROADS_LP" schema="WEB50" id="WEB50_M_1_ROADS_LP" comment="WEB50.M_1_ROADS_LP">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<var name="FILTER" default="1=1"/>
+				<query>
+			  SELECT d.ID, d.DESCR "LABEL", d."XMIN", d."XMAX", d."YMIN", d."YMAX", d.WKB_GEOMETRY, d.STYLE, d.obj_cls_id "TYPE" 
+              FROM WEB50.M_1_ROADS_LP d
+              WHERE {FILTER}
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="2"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_GEO"  />				
+				<object>                
+                  UPDATE WEB50.M_1_ROADS_LP SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="2"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_GEO"  />				
+				<object>                
+                  UPDATE WEB50.M_1_ROADS_LP SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param type="Decimal" name="USER_ID"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_GEO"  />
+				<query>              
+                UPDATE WEB50.M_1_ROADS_LP  SET WKB_GEOMETRY=NULL, "XMIN"=NULL, "XMAX"=NULL, "YMIN"=NULL, "YMAX"=NULL, STYLE=NULL WHERE ID = :ID              
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_1_ROADS_S" schema="WEB50" id="WEB50_M_1_ROADS_S" comment="WEB50.M_1_ROADS_S">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<var name="FILTER" default="1=1"/>
+				<query>
+			  SELECT d.ID, d.DESCR "LABEL", d."XMIN", d."XMAX", d."YMIN", d."YMAX", d.WKB_GEOMETRY, d.STYLE, d.obj_cls_id "TYPE" 
+              FROM WEB50.M_1_ROADS_S d
+              WHERE {FILTER}
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="3"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_ROADS_S SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="3"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_ROADS_S SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param type="Decimal" name="USER_ID"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_GEO"  />
+				<query>              
+                UPDATE WEB50.M_1_ROADS_S  SET WKB_GEOMETRY=NULL, "XMIN"=NULL, "XMAX"=NULL, "YMIN"=NULL, "YMAX"=NULL, STYLE=NULL WHERE ID = :ID              
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_1_SURVEY" schema="WEB50" id="WEB50_M_1_SURVEY" comment="WEB50.M_1_SURVEY">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<var name="FILTER" default="1=1"/>
+				<query>SELECT d.ID, d.DESCR "LABEL", d."XMIN", d."XMAX", d."YMIN", d."YMAX", d.WKB_GEOMETRY, d.STYLE, d.obj_cls_id "TYPE" 
+              FROM WEB50.M_1_SURVEY d
+              WHERE {FILTER}
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="1"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_GEO"  />
+				<object>               
+                  UPDATE WEB50.M_1_SURVEY SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="1"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_SURVEY SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param type="Decimal" name="USER_ID"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_GEO"  />
+				<query>              
+                UPDATE WEB50.M_1_SURVEY  SET WKB_GEOMETRY=NULL, "XMIN"=NULL, "XMAX"=NULL, "YMIN"=NULL, "YMAX"=NULL, STYLE=NULL WHERE ID = :ID              
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_1_SWAMP" schema="WEB50" id="WEB50_M_1_SWAMP" comment="WEB50.M_1_SWAMP">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<var name="FILTER" default="1=1"/>
+				<query>
+			  SELECT d.ID, d.DESCR "LABEL", d."XMIN", d."XMAX", d."YMIN", d."YMAX", d.WKB_GEOMETRY, d.STYLE, d.obj_cls_id "TYPE" 
+              FROM WEB50.M_1_SWAMP d
+              WHERE {FILTER}
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="1"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_SWAMP SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="1"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_SWAMP SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param type="Decimal" name="USER_ID"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_GEO"  />
+				<query>              
+                UPDATE WEB50.M_1_SWAMP  SET WKB_GEOMETRY=NULL, "XMIN"=NULL, "XMAX"=NULL, "YMIN"=NULL, "YMAX"=NULL, STYLE=NULL WHERE ID = :ID              
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_1_TEXT" schema="WEB50" id="WEB50_M_1_TEXT" comment="WEB50.M_1_TEXT">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<var name="FILTER" default="1=1"/>
+				<query>	
+			  SELECT d.ID, d.C9 "LABEL", d."XMIN", d."XMAX", d."YMIN", d."YMAX", d.WKB_GEOMETRY, d.STYLE, d.obj_cls_id "TYPE" 
+              FROM WEB50.M_1_TEXT d
+              WHERE {FILTER}
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="1"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_GEO"  />
+				<object>               
+                  UPDATE WEB50.M_1_TEXT SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="1"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_TEXT SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param type="Decimal" name="USER_ID"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_GEO"  />				
+				<query>             
+                UPDATE WEB50.M_1_TEXT  SET WKB_GEOMETRY=NULL, "XMIN"=NULL, "XMAX"=NULL, "YMIN"=NULL, "YMAX"=NULL, STYLE=NULL WHERE ID = :ID              
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_1_TOWN_LP" schema="WEB50" id="WEB50_M_1_TOWN_LP" comment="WEB50.M_1_TOWN_LP">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<var name="FILTER" default="1=1"/>
+				<query>
+			  SELECT d.ID, d.DESCR "LABEL", d."XMIN", d."XMAX", d."YMIN", d."YMAX", d.WKB_GEOMETRY, d.STYLE, d.obj_cls_id "TYPE" 
+              FROM WEB50.M_1_TOWN_LP d
+              WHERE {FILTER}
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="2"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_TOWN_LP SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="2"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_GEO"  />				
+				<object>                
+                  UPDATE WEB50.M_1_TOWN_LP SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param type="Decimal" name="USER_ID"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_GEO"  />
+				<query>              
+                UPDATE WEB50.M_1_TOWN_LP  SET WKB_GEOMETRY=NULL, "XMIN"=NULL, "XMAX"=NULL, "YMIN"=NULL, "YMAX"=NULL, STYLE=NULL WHERE ID = :ID              
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_1_TOWN_S" schema="WEB50" id="WEB50_M_1_TOWN_S" comment="WEB50.M_1_TOWN_S">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<var name="FILTER" default="1=1"/>
+				<query>
+			  SELECT d.ID, d.C9 "LABEL", d."XMIN", d."XMAX", d."YMIN", d."YMAX", d.WKB_GEOMETRY, d.STYLE, d.obj_cls_id "TYPE" 
+              FROM WEB50.M_1_TOWN_S d
+              WHERE {FILTER}
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="3"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_TOWN_S SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_M_1_ZONE_ID">
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="STYLE" type="String"/>
+				<param name="ZONE_ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="3"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_GEO"  />				
+				<object>               
+                  UPDATE WEB50.M_1_TOWN_S SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX, STYLE= CASE WHEN :TOPOLOGY = 2 THEN '&lt;MI_STYLE&gt;Line (1,2,0) &lt;/MI_STYLE&gt;' WHEN :TOPOLOGY = 3 THEN '&lt;MI_STYLE&gt;Pen (1,2,0) Brush (2,16777215,16777215)&lt;/MI_STYLE&gt;' ELSE '&lt;MI_STYLE&gt;Symbol (32,0,12)&lt;/MI_STYLE&gt;' END, ZONE_ID=:ZONE_ID WHERE ID = :ID                
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param type="Decimal" name="USER_ID"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_GEO"  />
+				<query>              
+                UPDATE WEB50.M_1_TOWN_S  SET WKB_GEOMETRY=NULL, "XMIN"=NULL, "XMAX"=NULL, "YMIN"=NULL, "YMAX"=NULL, STYLE=NULL WHERE ID = :ID              
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="M_1_ZONE" schema="WEB50" id="WEB50_M_1_ZONE" comment="WEB50.M_1_ZONE">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<var name="FILTER" default="1=1"/>
+				<query>
+				SELECT * FROM (SELECT d.ZONE_ID ID, d.ZONE_ID "LABEL", d."XMIN", d."XMAX", d."YMIN", d."YMAX", d.WKB_GEOMETRY
+                FROM WEB50.M_1_ZONE d
+                WHERE d.ZONE_ID IN (SELECT ZONE_ID FROM WEB50.M_1_ZONE_TO_SRV_DISTRICT)) d
+                WHERE {FILTER} ORDER BY ID
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand>
+				<param name="ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="1"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#INSERT_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_ZONE SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX
+		  WHERE ZONE_ID = :ID                
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand>
+				<param name="ID" type="Int64"/>
+				<param name="TOPOLOGY" type="Int64" direction="Input" default="1"/>
+				<param name="USER_ID" type="Decimal" default="-1"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#UPDATE_M_GEO"  />
+				<object>                
+                  UPDATE WEB50.M_1_ZONE SET WKB_GEOMETRY=:WKB, "XMIN"=:XMIN, "XMAX"=:XMAX, "YMIN"=:YMIN, "YMAX"=:YMAX
+		  WHERE ZONE_ID = :ID                
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64"/>
+				<param type="Decimal" name="USER_ID"/>
+				<param name="CLASS_ID" type="String" direction="Input" default="WEB50_M1_MAP" />
+				<var name="POLICY" default="POLICY.xml#DELETE_M_GEO"  />
+				<query>              
+                UPDATE WEB50.M_1_ZONE  SET WKB_GEOMETRY=NULL, "XMIN"=NULL, "XMAX"=NULL, "YMIN"=NULL, "YMAX"=NULL WHERE ZONE_ID = :ID              
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+</root>

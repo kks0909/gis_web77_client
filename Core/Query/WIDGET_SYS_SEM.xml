@@ -1,0 +1,348 @@
+﻿<root version="postgres 7.7.3.0">
+    <data id="FIND_PIPE_KM_BY_LINE" comment="Запрос получения координаты ближайшей точки трубопровода по километру и line_id">
+        <select>
+            <dbQuery idField="ID">
+				<var name="KM" type="Decimal" default="-99999999"/>
+				<var name="LINE_ID" type="Int64" default="-99999999"/>
+                <query>
+                    WITH my_routes AS (SELECT r.ROUTE_ID
+                    ,r.LINE_ID, r.TYPE_CL
+                    ,CASE r.TYPE_CL
+                    WHEN 'ROUTE_TYPE_10' THEN 'G0000001'
+                    WHEN 'ROUTE_TYPE_11' THEN 'G0000002'
+                    WHEN 'ROUTE_TYPE_12' THEN 'G0000002'
+                    WHEN 'ROUTE_TYPE_04' THEN 'G0000003'
+                    END OBJ_CLS_GROUP_ID
+                    FROM PODS.ROUTE r
+                    WHERE r.TYPE_CL IN ('ROUTE_TYPE_10','ROUTE_TYPE_11','ROUTE_TYPE_12','ROUTE_TYPE_04')
+                    AND r.CURRENT_INDICATOR_LF = 'Y')
+                    select * from (SELECT sp.ROUTE_ID, (sp.STATION-({KM})) DL, c.x_coord X, c.y_coord Y
+                    FROM my_routes r, PODS.STATION_POINT sp, pods.coordinate c
+                    WHERE sp.route_id = r.route_id and r.line_id={LINE_ID} and c.location_id = sp.location_id
+                    AND ((r.OBJ_CLS_GROUP_ID = 'G0000003'
+                    AND NOT EXISTS (SELECT 'x'
+                    FROM my_routes
+                    WHERE OBJ_CLS_GROUP_ID in ('G0000001','G0000002')))
+                    OR (r.OBJ_CLS_GROUP_ID = 'G0000002'
+                    AND NOT EXISTS (SELECT 'x'
+                    FROM my_routes
+                    WHERE OBJ_CLS_GROUP_ID = 'G0000001'))
+                    OR r.OBJ_CLS_GROUP_ID = 'G0000001')
+                    and ABS(sp.STATION-({KM})) &lt; 5
+                    order by ABS(sp.STATION-({KM}))  ASC ) d LIMIT 1
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+    <!-- Запросы для нового ПКА -->
+    <!-- Запрос нужен для новой ПКА и для центровки по трубопроводу на карте -->
+    <data id="FIND_PART_LINE" comment="Запрос для получения профиля трубы по LINE_ID, KM_START, KM_END">
+        <select>
+            <geoQuery idField="ID">
+                <param name="LINE_ID" type="Int64" direction="Input" />
+                <param name="KM_START" type="Decimal" direction="Input" />
+                <param name="KM_END" type="Decimal" direction="Input" />
+                <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+                <query>
+					SELECT :LINE_ID::integer||'_' || :KM_START::numeric||'_' || :KM_END::numeric ID
+					,c.x_coord X
+					,c.y_coord Y
+					FROM pods.line l
+					JOIN pods.route r
+					ON l.line_id = r.line_id
+					AND l.type_cl = CASE r.type_cl
+					WHEN 'ROUTE_TYPE_10' THEN 'LINE_TYPE_01'
+					WHEN 'ROUTE_TYPE_11' THEN 'LINE_TYPE_02'
+					WHEN 'ROUTE_TYPE_12' THEN 'LINE_TYPE_03'
+					WHEN 'ROUTE_TYPE_04' THEN 'LINE_TYPE_04'
+					END
+					JOIN pods.series s
+					ON s.route_id = r.route_id
+					JOIN pods.station_point sp
+					ON sp.series_id = s.series_id
+					JOIN pods.location lc
+					ON lc.location_id = sp.location_id
+					JOIN pods.coordinate c
+					ON c.location_id = lc.location_id
+					WHERE lc.srv_district_gcl IN ({LPU_ACCESS_FILTER})
+					AND l.line_id = :LINE_ID
+					AND sp.type_cl IN ('ST_POINT_TYPE_01', 'ST_POINT_TYPE_02', 'ST_POINT_TYPE_03')
+					AND ABS(s.station_begin - s.station_end) >= 0.9
+					AND sp.station BETWEEN  :KM_START AND :KM_END
+					ORDER BY R.sequence, sp.measure / 1000 + s.station_begin
+				</query>
+            </geoQuery>
+        </select>
+    </data>
+
+    <!-- запросы для вызова ПКА из виджета. переписать после изменения логики, если понадобится -->
+    <data id="CAS_FIND_OBJ_ID" comment="Запрос для получения идентификатора объекта по идентификатору Инфотех">
+        <select>
+            <dbQuery idField="ID">
+                <param name="SYSTEM_ID" type="String" />
+                <param name="OBJ_ID" type="String" />
+				<var name="KM_BEGIN" type="String" default="''"/>
+				<var name="KM_END" type="String" default="''"/>
+                <query>
+					SELECT DISTINCT 'MG' CAS_TYPE, g.obj_descr OBJ_NAME, {KM_BEGIN} KM_BEGIN, {KM_END} KM_END, r.line_id OBJ_ID from gis_integration50.gate g, pods.route r WHERE g.SYSTEM_ID = :SYSTEM_ID AND g.OBJ_ID = :OBJ_ID AND r.ROUTE_ID = (g.KEY_VALUES)::numeric and g.key_fields='ROUTE_ID'
+					union all
+					SELECT DISTINCT 'MG' CAS_TYPE, g.obj_descr OBJ_NAME, {KM_BEGIN} KM_BEGIN, {KM_END} KM_END, l.line_id OBJ_ID from gis_integration50.gate g, pods.line l WHERE g.SYSTEM_ID = :SYSTEM_ID AND g.OBJ_ID = :OBJ_ID AND l.LINE_ID = (g.KEY_VALUES)::numeric and g.key_fields='LINE_ID'
+					</query>
+            </dbQuery>
+        </select>
+    </data>
+    <data id="CAS_FIND_EXT_OBJ_ID" comment="Запрос для получения идентификатора объекта по идентификатору Инфотех">
+        <select>
+            <dbQuery idField="ID">
+                <param name="SYSTEM_ID" type="String" />
+                <param name="OBJ_ID" type="String" />
+                <var name="KM_BEGIN" type="String" default="''"/>
+                <var name="KM_END" type="String" default="''"/>
+                <query>
+                    SELECT DISTINCT KM_BEGIN, KM_END, OBJ_ID FROM (
+                    SELECT {KM_BEGIN} KM_BEGIN, {KM_END} KM_END, r.line_id OBJ_ID
+                    from gis_integration50.gate g, pods.line r
+                    WHERE g.SYSTEM_ID = :SYSTEM_ID AND g.OBJ_ID = :OBJ_ID AND r.LINE_ID = (g.KEY_VALUES)::numeric and g.key_fields='LINE_ID'
+                    ) x01  ORDER BY OBJ_ID
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+
+    <!-- Запросы для виджетов -->
+    <data id="GPXEXPORT_FIND_EXT_OBJ_ID" comment="Поиск идентификатора объекта внешней системы для выгрузки в GPX" schema="-" table="-">
+        <select>
+            <dbQuery idField="ID">
+                <param name="SYSTEM_ID" type="String" />
+                <param name="OBJ_ID" type="String" />
+                <query>select OWNER||'_GEO.xml' SOURCE, OWNER||'_'||TABLE_NAME "class", KEY_VALUES ID from gis_integration50.gate WHERE SYSTEM_ID = :SYSTEM_ID AND OBJ_ID = :OBJ_ID</query>
+            </dbQuery>
+        </select>
+    </data>
+    <data id="FIND_INF_IDS" comment="Поиск идентификаторов объектов в Инфотехе" schema="-" table="-">
+        <select>
+            <dbQuery idField="ID">
+                <param name="CLS" type="String" />
+                <param name="OBJ_ID" type="String" />
+                <query>
+                    SELECT g.TABLE_NAME CLS, g.KEY_VALUES ID, g.OBJ_ID OBJ_ID FROM GIS_INTEGRATION50.GATE g WHERE g.TABLE_NAME=(CASE :CLS WHEN 'ROUTE' THEN 'LINE' ELSE :CLS END) AND g.KEY_VALUES = (CASE :CLS WHEN 'ROUTE' THEN (SELECT (LINE_ID)::text FROM PODS.ROUTE WHERE ROUTE_ID=:OBJ_ID) ELSE :OBJ_ID END)
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+    <data id="FIND_LAYER_EXT_ID" comment="Поиск идентификаторов объектов для обновления слоя" schema="-" table="-">
+        <select>
+            <dbQuery idField="ID">
+                <param name="SYSTEM_ID" type="String" />
+                <param name="OBJ_ID" type="String" />
+                <query>
+                    SELECT g.OWNER "owner", g.TABLE_NAME CLS, g.KEY_FIELDS ID_FIELD, g.KEY_VALUES ID FROM GIS_INTEGRATION50.GATE g WHERE g.SYSTEM_ID=:SYSTEM_ID AND g.KEY_VALUES = :OBJ_ID
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+    <data id="IMG_FIND_OBJ_ID" comment="Поиск идентификатора карты для выгрузки IMG" schema="-" table="-">
+        <select>
+            <dbQuery idField="ID">
+                <param name="OBJ_ID" type="String" />
+                <query>
+                    SELECT ld.DOC_ID,
+                    ld.DOC_TYPE_ID,
+                    ld.STATUS_ID,
+                    ld.NAME,
+                    ld.DESCR,
+                    ldv.CTIME,
+                    ldv.DOC_VERSION_ID,
+                    ldv.FILE_NAME,
+                    ldtr.DESCR AS CATEGORY,
+                    usr.LOGIN AS USERNAME
+                    FROM WEB50.LIB_DOC ld
+                    JOIN WEB50.LIB_DOC_VERSION ldv
+                    ON (ld.DOC_ID = ldv.DOC_ID AND ldv.NEXT_DOC_VERSION_ID IS NULL)
+                    JOIN WEB50.LIB_DOC_TYPE_REF ldtr
+                    ON ld.DOC_TYPE_ID = ldtr.DOC_TYPE_ID
+                    JOIN WEB50.B_USER_PRIVATE usr
+                    ON usr.USER_ID = ldv.CUSER_ID
+                    WHERE ld.DOC_TYPE_ID = 38
+                    AND EXISTS (SELECT *
+                    FROM WEB50.LNK_GATE lg
+                    WHERE (LG.LEFT_OBJ_ID = 'WEB50_LIB_DOC/'||ld.DOC_ID AND LG.RIGHT_OBJ_ID = 'PODS_SRV_DISTRICT_GCL/'||:OBJ_ID)
+                    OR (LG.RIGHT_OBJ_ID = 'WEB50_LIB_DOC/'||ld.DOC_ID AND LG.LEFT_OBJ_ID = 'PODS_SRV_DISTRICT_GCL/'||:OBJ_ID)
+                    )
+                    ORDER BY ldv.DOC_VERSION_ID
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+    <data id="IMG_FIND_EXT_OBJ_ID" comment="Поиск идентификатора объекта внешней системы для вызова ПКА" schema="-" table="-">
+        <select>
+            <dbQuery idField="ID">
+                <param name="SYSTEM_ID" type="String" />
+                <param name="OBJ_ID" type="String" />
+                <query>SELECT ld.DOC_ID,
+                    ld.DOC_TYPE_ID,
+                    ld.STATUS_ID,
+                    ld.NAME,
+                    ld.DESCR,
+                    ldv.CTIME,
+                    ldv.DOC_VERSION_ID,
+                    ldv.FILE_NAME,
+                    ldtr.DESCR AS CATEGORY,
+                    usr.LOGIN AS USERNAME
+                    FROM WEB50.LIB_DOC ld
+                    JOIN WEB50.LIB_DOC_VERSION ldv
+                    ON (ld.DOC_ID = ldv.DOC_ID AND ldv.NEXT_DOC_VERSION_ID IS NULL)
+                    JOIN WEB50.LIB_DOC_TYPE_REF ldtr
+                    ON ld.DOC_TYPE_ID = ldtr.DOC_TYPE_ID
+                    JOIN WEB50.B_USER_PRIVATE usr
+                    ON usr.USER_ID = ldv.CUSER_ID
+                    WHERE ld.DOC_TYPE_ID = 38
+                    AND EXISTS (SELECT *
+                    FROM GIS_INTEGRATION50.GATE g
+                    JOIN WEB50.LNK_GATE lg
+                    ON LG.LEFT_OBJ_ID = 'PODS_SRV_DISTRICT_GCL/'||g.KEY_VALUES
+                    OR LG.RIGHT_OBJ_ID = 'PODS_SRV_DISTRICT_GCL/'||g.KEY_VALUES
+                    WHERE g.SYSTEM_ID = :SYSTEM_ID
+                    AND g.TABLE_NAME = 'SRV_DISTRICT_GCL'
+                    AND g.OBJ_ID = :OBJ_ID
+                    AND KEY_FIELDS = 'SRV_DISTRICT_ID'
+                    AND (LG.LEFT_OBJ_ID = 'WEB50_LIB_DOC/'||ld.DOC_ID
+                    OR LG.RIGHT_OBJ_ID = 'WEB50_LIB_DOC/'||ld.DOC_ID)
+                    )
+                    ORDER BY ldv.DOC_VERSION_ID</query>
+            </dbQuery>
+        </select>
+    </data>
+
+    <data id="EXCELEXPORT_FIND_OBJ_ID" comment="Поиск идентификатора объекта для экспорта в Excel" schema="-" table="-">
+        <select>
+            <dbQuery idField="ID">
+                <param name="OBJ_ID" type="String" />
+                <query>
+                    SELECT OWNER || '_' || TABLE_NAME "class", OWNER || '_' || TABLE_NAME EXCEL_TEMPLATE, KEY_VALUES ID, 'PODS_EXPORT.xml#'|| OWNER || '_' || TABLE_NAME EXT_DATA_ID FROM GIS_INTEGRATION50.GATE WHERE KEY_VALUES = :OBJ_ID
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+    <data id="EXCELEXPORT_FIND_EXT_OBJ_ID" comment="Поиск идентификатора объекта внешней системы для экспорта в Excel" schema="-" table="-">
+        <select>
+            <dbQuery idField="ID">
+                <param name="SYSTEM_ID" type="String" />
+                <param name="OBJ_ID" type="String" />
+                <query>
+                    SELECT OWNER || '_' || TABLE_NAME "class", OWNER || '_' || TABLE_NAME EXCEL_TEMPLATE, KEY_VALUES ID, 'PODS_EXPORT.xml#'|| OWNER || '_' || TABLE_NAME EXT_DATA_ID FROM GIS_INTEGRATION50.GATE WHERE SYSTEM_ID = :SYSTEM_ID AND OBJ_ID = :OBJ_ID
+                </query>
+            </dbQuery>
+        </select>
+    </data>
+    <data id="VRML_FIND_OBJ_ID" comment="Поиск идентификатора объекта внешней системы для вызова ПКА" schema="-" table="-">
+        <select>
+            <dbQuery idField="ID">
+                <param name="OBJ_ID" type="String" />
+                <query>SELECT ld.DOC_ID,
+                    ld.DOC_TYPE_ID,
+                    ld.STATUS_ID,
+                    ld.NAME,
+                    ld.DESCR,
+                    ldv.CTIME,
+                    ldv.DOC_VERSION_ID,
+                    ldv.FILE_NAME,
+                    ldtr.DESCR AS CATEGORY,
+                    usr.LOGIN AS USERNAME
+                    FROM WEB50.LIB_DOC ld
+                    JOIN WEB50.LIB_DOC_VERSION ldv
+                    ON (ld.DOC_ID = ldv.DOC_ID AND ldv.NEXT_DOC_VERSION_ID IS NULL)
+                    JOIN WEB50.LIB_DOC_TYPE_REF ldtr
+                    ON ld.DOC_TYPE_ID = ldtr.DOC_TYPE_ID
+                    JOIN WEB50.B_USER_PRIVATE usr
+                    ON usr.USER_ID = ldv.CUSER_ID
+                    WHERE ld.DOC_TYPE_ID = 37
+                    AND EXISTS (SELECT *
+                    FROM WEB50.LNK_GATE lg
+                    WHERE (LG.LEFT_OBJ_ID = 'WEB50_LIB_DOC/'||ld.DOC_ID AND LG.RIGHT_OBJ_ID = 'PODS_SRV_DISTRICT_GCL/'||:OBJ_ID)
+                    OR (LG.RIGHT_OBJ_ID = 'WEB50_LIB_DOC/'||ld.DOC_ID AND LG.LEFT_OBJ_ID = 'PODS_SRV_DISTRICT_GCL/'||:OBJ_ID)
+                    )
+                    ORDER BY ldv.DOC_VERSION_ID</query>
+            </dbQuery>
+        </select>
+    </data>
+    <data id="VRML_FIND_EXT_OBJ_ID" comment="Поиск идентификатора объекта внешней системы для вызова ПКА" schema="-" table="-">
+        <select>
+            <dbQuery idField="ID">
+                <param name="SYSTEM_ID" type="String" />
+                <param name="OBJ_ID" type="String" />
+                <query>SELECT ld.DOC_ID,
+                    ld.DOC_TYPE_ID,
+                    ld.STATUS_ID,
+                    ld.NAME,
+                    ld.DESCR,
+                    ldv.CTIME,
+                    ldv.DOC_VERSION_ID,
+                    ldv.FILE_NAME,
+                    ldtr.DESCR AS CATEGORY,
+                    usr.LOGIN AS USERNAME
+                    FROM WEB50.LIB_DOC ld
+                    JOIN WEB50.LIB_DOC_VERSION ldv
+                    ON (ld.DOC_ID = ldv.DOC_ID AND ldv.NEXT_DOC_VERSION_ID IS NULL)
+                    JOIN WEB50.LIB_DOC_TYPE_REF ldtr
+                    ON ld.DOC_TYPE_ID = ldtr.DOC_TYPE_ID
+                    JOIN WEB50.B_USER_PRIVATE usr
+                    ON usr.USER_ID = ldv.CUSER_ID
+                    WHERE ld.DOC_TYPE_ID = 37
+                    AND EXISTS (SELECT *
+                    FROM GIS_INTEGRATION50.GATE g
+                    JOIN WEB50.LNK_GATE lg
+                    ON LG.LEFT_OBJ_ID = 'PODS_SRV_DISTRICT_GCL/'||g.KEY_VALUES
+                    OR LG.RIGHT_OBJ_ID = 'PODS_SRV_DISTRICT_GCL/'||g.KEY_VALUES
+                    WHERE g.SYSTEM_ID = :SYSTEM_ID
+                    AND g.TABLE_NAME = 'SRV_DISTRICT_GCL'
+                    AND g.OBJ_ID = :OBJ_ID
+                    AND KEY_FIELDS = 'SRV_DISTRICT_ID'
+                    AND (LG.LEFT_OBJ_ID = 'WEB50_LIB_DOC/'||ld.DOC_ID
+                    OR LG.RIGHT_OBJ_ID = 'WEB50_LIB_DOC/'||ld.DOC_ID)
+                    )
+                    ORDER BY ldv.DOC_VERSION_ID</query>
+            </dbQuery>
+        </select>
+    </data>
+    <!-- ПОИСК ОБЪЕКТА НА КАРТЕ -->
+    <data id="FIND_EXT_OBJ_ID" comment="Поиск объекта для выделения" schema="-" table="-">
+        <select>
+            <dbQuery idField="ID">
+                <param name="OBJ_ID" type="String" />
+                <param name="SYSTEM_ID" type="String" />
+                <query>SELECT g.OWNER,g.TABLE_NAME,g.KEY_FIELDS,g.KEY_VALUES
+                    FROM GIS_INTEGRATION50.GATE g
+                    WHERE g.SYSTEM_ID = :SYSTEM_ID
+                    AND g.OBJ_ID = :OBJ_ID
+                    UNION ALL
+                    SELECT g.OWNER,'ROUTE' TABLE_NAME,'ROUTE_ID' KEY_FIELDS,(r.ROUTE_ID)::text KEY_VALUES
+                    FROM GIS_INTEGRATION50.GATE g
+                    JOIN pods.line l
+                    ON (l.line_id)::text = g.KEY_VALUES
+                    JOIN pods.route r
+                    ON r.line_id = l.line_id
+                    AND CASE l.type_cl
+                    WHEN 'LINE_TYPE_01' THEN 'ROUTE_TYPE_10'
+                    WHEN 'LINE_TYPE_02' THEN 'ROUTE_TYPE_11'
+                    WHEN 'LINE_TYPE_03' THEN 'ROUTE_TYPE_12'
+                    WHEN 'LINE_TYPE_04' THEN 'ROUTE_TYPE_04'
+                    ELSE 'SKIP'
+                    END = r.type_cl
+                    WHERE g.SYSTEM_ID = :SYSTEM_ID
+                    AND g.OBJ_ID = :OBJ_ID
+                    AND g.TABLE_NAME = 'LINE'
+                    AND g.OWNER = 'PODS'</query>
+            </dbQuery>
+        </select>
+    </data>
+    <data id="CHANGE_MAP_FIND_OBJ_ID" comment="Поиск объекта при смене схемы" schema="-" table="-">
+        <select>
+            <dbQuery idField="ID">
+                <param name="FULL_OBJ_ID" type="String" />
+                <query>select SYSTEM_ID, OBJ_ID from gis_integration50.gate where owner||'_'||table_name||'/'||key_values = :FULL_OBJ_ID</query>
+            </dbQuery>
+        </select>
+    </data>
+</root>

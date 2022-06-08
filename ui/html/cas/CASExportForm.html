@@ -1,0 +1,30 @@
+<form class="exportForm">
+    <div class="exportFormDiv">
+        <div class="exportFormCheckbox">
+            <div id="exportAddKm">Добавить километраж</div>
+        </div>
+        <div class="exportFormRadio">
+            <input name="exportRadio" id="exportAll" type="radio" checked value="1"/>
+            <label for="exportAll">Весь трубопровод</label>
+        </div>
+        <div class="exportFormRadio">
+            <input name="exportRadio" id="exportVisible" type="radio" value="2"/>
+            <label for="exportVisible">Отображаемый участок трубопровода</label>
+        </div>
+        <div class="exportFormRadio">
+            <input name="exportRadio" id="exportCustom" type="radio" value="3"/>
+            <label for="exportCustom">Участок трубопровода, указанный ниже</label>
+        </div>
+        <div class="exportFormRadio">
+            <label class="exportFormLabel" for="exportBeginKm">Начальный км.</label>
+            <div id="exportBeginKm" ></div>
+            <br/>
+            <label class="exportFormLabel" for="exportEndKm">Конечный км.</label>
+            <div id="exportEndKm" ></div>
+        </div>
+    </div>
+</form>
+<div class="layersButtons" style="margin-left: 50px; margin-top: 10px;">
+    <input type="button" name="apply" class="map-export-dialog-button" id="exportApply" value="Скопировать в буфер обмена">
+    <input type="button" name="cancel" class="map-dialog-button" id="exportCancel" value="Отмена">
+</div>

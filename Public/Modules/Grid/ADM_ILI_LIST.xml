@@ -1,0 +1,229 @@
+﻿<!--7.7.5.0-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="6"  headerVertSize="50"
+            id="ADM_ILI_LIST"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            excelTemplateName="PODS_ILI_INSPECTION_LIST"
+            layerId="PODS_ILI_INSPECTION" propertyPanelName="PODS_ILI_INSPECTION"
+            dataRequest="GAZPROM_ADM_SEM.xml#PODS_ILI_INSPECTION"
+            totalRecordsRequest="GAZPROM_ADM_SEM.xml#PODS_ILI_INSPECTION_CNT"
+            initialSortField="TYPE_CL_DESCR,ROUTE_DESCR,SERIES_STATION_BEGIN,SERIES_STATION_END,VENDOR,ID"
+            >
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/excel.png"
+        tooltip="Экспортировать в Excel"
+        clickEvent="ru.corelight.business.events.ExportToExcelEvent"
+        selectedObjects="this" />
+    <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+
+	<!--Не используется
+	<picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Импорт отчетов"
+        clickEvent="gridAdmIliImport"
+        isEnabled="true"
+        position="top"/>-->
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Импорт отчетов XML"
+        clickEvent="gridAdmIliImportXML"
+        isEnabled="true"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Привязать отчет к трубе"
+        clickEvent="gridAdmIliBindToRoute"
+        selectedObjects="this"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="Пересчет отчетов"
+        clickEvent="gridAdmIliCalc"
+        selectedObjects="this"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        tooltip="1. Группировка дефектов в кластеры"
+        clickEvent="gridAdmIliCalcCluster"
+        selectedObjects="this"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        width="240"
+        tooltip="2. Расчет точечных показателей в соответствии с СТО 112, 173, 292, 401, 595"
+        clickEvent="gridAdmIliCalcPressure"
+        selectedObjects="this"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        width="240"
+        tooltip="3. Расчет линейных показателей в соответствии с СТО 095, 292, 401"
+        clickEvent="gridAdmIliCalcSTO"
+        selectedObjects="this"
+        position="top"/>
+  <picPutton:GridButton source="../../Public/assets/template.png"
+        width="250"
+        tooltip="4. Расчет линейных показателей в соответствии с инструкцией ВНИИГАЗ 2004"
+        clickEvent="gridAdmIliCalcSTOforEHZ"
+        selectedObjects="this"
+        position="top"/>
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=showInfoEvent;toolTip=Показать информацию по объекту"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/excel.png;eventName=ru.corelight.business.events.ExportToExcelEvent;toolTip=Выгрузить в Excel;templateName=PODS_ILI_INSPECTION"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/delete.png;eventName=ru.corelight.business.events.RemoveGridRowEvent;toolTip=Удалить запись"
+                          editable="true"/>
+      <columns:GridColumn headerText="Отчет ИД\n(ILI_\nINSPECTION_\nID)" dataField="ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="60"/>
+      <columns:GridColumn headerText="Тип\nтрубопровода" dataField="TYPE_CL"
+                          filterRequestId="PODS_POLICY.xml#PODS_ROUTE_TYPE_GRID"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_POLICY.xml#PODS_ROUTE_TYPE_GRID"
+                          filterComparisionType="array"
+                          editable="true"
+                          sortField="TYPE_CL_DESCR"
+                          width="100"/>
+      <!--<columns:GridColumn headerText="Тип" dataField="TYPE_CL_DESCR"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="100"/>-->
+      <columns:GridColumn headerText="Трубопровод" dataField="LINE_ID"
+                          filterRequestId="GAZPROM_ADM_SEM.xml#PODS_LINE_WITHOUT_DEFAULT"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=GAZPROM_ADM_SEM.xml#PODS_LINE_WITHOUT_DEFAULT"
+                          filterComparisionType="array"
+                          editable="true"
+                          sortField="LINE_ID"
+                          width="100"/>
+      <columns:GridColumn headerText="Участок\n(ROUTE_DESCRIPTION)" dataField="ROUTE_DESCRIPTION"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="150"/>
+      <columns:GridColumn headerText="Уч.\nнач.\nкм." dataField="SERIES_STATION_BEGIN"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="40"/>
+      <columns:GridColumn headerText="Уч.\nкон.\nкм." dataField="SERIES_STATION_END"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="40"/>
+      <columns:GridColumn headerText="Участок по отчету\n(ILI_RANGE_DESCRIPTION)" dataField="ILI_RANGE_DESCRIPTION"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="150"/>
+      <columns:GridColumn headerText="Производитель ВТД" dataField="VENDOR"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="string"
+                          width="110"/>   
+      <columns:GridColumn headerText="Комментарии" dataField="COMMENTS"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="string"
+                          width="60"/>
+      <columns:GridColumn headerText="Отчет\nнач.\nкм." dataField="REPORT_KM_START"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="50"/>
+      <columns:GridColumn headerText="Отчет\nкон.\nкм." dataField="REPORT_KM_END"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="50"/>
+      <columns:GridColumn headerText="Деф-тов\nрассчит-\nано" dataField="ДЕФЕКТОВ_РАССЧИТАННО"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="40"/>
+      <columns:GridColumn headerText="Деф-тов\nне\nрассчит-\nано" dataField="ДЕФЕКТОВ_НЕ_РАССЧИТАННО"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="40"/>
+      <columns:GridColumn headerText="Деф-тов\nс КБД" dataField="ДЕФЕКТОВ_С_КБД"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="40"/>
+      <columns:GridColumn headerText="Деф-тов\nвсего" dataField="ДЕФЕКТОВ_ВСЕГО"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="40"/>   
+      <columns:GridColumn headerText="Швов\nрассчит-\nано" dataField="ШВОВ_РАССЧИТАННО"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="40"/>
+      <columns:GridColumn headerText="Швов\nне\nрассчит-\nано" dataField="ШВОВ_НЕ_РАССЧИТАННО"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="40"/>
+      <columns:GridColumn headerText="Швов\nвсего" dataField="ШВОВ_ВСЕГО"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="true"
+                          filterComparisionType="number"
+                          width="40"/>
+      <columns:GridColumn headerText="Всех\nданных\nрассчит-\nано" dataField="ВСЕХ_ДАННЫХ_РАССЧИТАННО"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="40"/>
+      <columns:GridColumn headerText="Всех\nданных\nне рас-\nсчитано" dataField="ВСЕХ_ДАННЫХ_НЕ_РАССЧИТАННО"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="40"/>   
+      <columns:GridColumn headerText="Всех\nданных\nвсего" dataField="ВСЕХ_ДАННЫХ_ВСЕГО"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="40"/>
+      <columns:GridColumn headerText="Данных\nне клас-\nсифицир-\nовано" dataField="ДАННЫХ_НЕ_КЛАССИФИЦИРОВАНО"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="true"
+                          filterComparisionType="number"
+                          width="40"/>
+      <columns:GridColumn headerText="Статус\nпривязки" dataField="ПРИВЯЗКА_ОТЧЕТА"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="60"/>   
+      <columns:GridColumn headerText="Статус\nрасчета" dataField="РАССЧИТАН"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="60"/>
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

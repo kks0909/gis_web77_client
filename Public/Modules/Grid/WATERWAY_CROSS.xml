@@ -1,0 +1,227 @@
+﻿<!--7.7.7.1-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="7"  headerVertSize="50"
+            id="WATERWAY_CROSS"
+            percentWidth="100"
+            percentHeight="100"
+            pageSize="10000"
+            styleName="dgInfoForm"
+            excelTemplateName="WATERWAY_CROSS"
+            layerId="WATERWAY_CROSS" propertyPanelName="WATERWAY_CROSS"
+            dataRequest="WATERWAY_GRID.xml#WATERWAY_CROSS" 
+ initialSortField="zone_id, line_id">
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/exportNAV.png"
+        tooltip="Экспорт/Импорт GPX,KML"
+        clickEvent="ru.corelight.business.events.ExportToGPXEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/createObject.png"
+        tooltip="Создать объект"
+        clickEvent="ru.corelight.business.events.CreateObjectEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../Public/assets/showOnMap.png"
+        tooltip="Показать на карте"
+        clickEvent="ru.corelight.business.events.ShowOnMapEvent"
+        isEnabled="length" />
+    <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/paste.png"
+        tooltip="Вставить данные из excel"
+        clickEvent="PasteFromExcelEvent"
+        isEnabled="null" />
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+<picPutton:GridButton source="../../ui/images/save.png"
+       tooltip="Сохранить изменения"
+       clickEvent="ApplyUpdatedCellEvent"
+       isEnabled="null" />
+       <picPutton:GridButton source="../../Public/assets/dashboard.png"
+       tooltip="Показать дашборд"
+       clickEvent="ShowDashboardEvent"
+       isEnabled="null" />
+<picPutton:GridButton source="../../ui/images/no.png"
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" />
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/info.png;eventName=showInfoEvent;toolTip=Показать информацию по объекту"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/photo.png;eventName=ShowCarouselEvent;toolTip=Показать документы по объекту;columns=LG_ATTACH"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/map.png;eventName=ru.corelight.business.events.ShowOnMapEvent;toolTip=Показать на карте;layerId=WATERWAY_CROSS"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/map_500.png;eventName=ShowMapEvent;toolTip=Показать карту водного перехода;layerId=WATERWAY_CROSS;openNewWnd=true;task=m_1;"
+                          editable="true"/>
+      <columns:GridColumn headerText="" width="10" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.ImageRenderer?path=Public/assets/showOnCas.png;eventName=ShowCasEvent;toolTip=Показать профиль водного перехода;layerId=WATERWAY_CROSS;openNewWnd=true;task=cas_waterway;"
+                          editable="true"/>
+    <columns:GridColumn headerText="Идентификатор" dataField="ID" itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          hidden="true" editable="false" filterComparisionType="number" width="60" />
+      <columns:GridColumn headerText="Трубопровод" dataField="LINE_ID"
+                          filterRequestId="PODS_POLICY.xml#PODS_LINE_GRID"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=PODS_POLICY.xml#PODS_LINE_GRID"
+                          filterComparisionType="array"
+                          editable="false"
+                          sortField="LINE_ID_LBL"
+                          width="160"/>
+      <columns:GridColumn headerText="Нач.км" dataField="STATION_BEGIN"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          filterComparisionType="number"
+                          editable="true" 
+                          width="50" />
+      <columns:GridColumn headerText="Кон.км" dataField="STATION_END"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          filterComparisionType="number"
+                          editable="true" 
+                          width="50" />                    
+      <columns:GridColumn headerText="Река" dataField="WATERWAY_ID"
+                          filterRequestId="WATERWAY_SEM.xml#WATERWAY_CL"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=WATERWAY_SEM.xml#WATERWAY_CL"
+                          filterComparisionType="array"
+                          editable="false"
+                          sortField="LINE_ID_LBL"
+                          width="100"/>
+      <columns:GridColumn headerText="Скорость \nтечения" dataField="WATER_SPEED"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          filterComparisionType="number"
+                          editable="true" 
+                          width="50" />
+      <columns:GridColumn headerText="Констр. \nтруб-да" dataField="PIPE_CONSTR"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          filterComparisionType="string"
+                          editable="true" 
+                          width="90" />
+      <columns:GridColumn headerText="Допустимое \nдавление" dataField="PIPE_PRESSURE"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          filterComparisionType="number"
+                          editable="true" 
+                          width="50" />
+      <columns:GridColumn headerText="Протяж. \nперехода" dataField="PIPE_LENGTH"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          filterComparisionType="number"
+                          editable="true" 
+                          width="50" /> 
+      <columns:GridColumn headerText="Протяж. \nподводной \nчасти" dataField="PIPE_LENGTH_UNDERWATER"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          filterComparisionType="number"
+                          editable="true" 
+                          width="50" />
+      <columns:GridColumn headerText="Глубина \nзаложения" dataField="PIPE_DEPTH"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          filterComparisionType="number"
+                          editable="true" 
+                          width="50" />
+      <columns:GridColumn headerText="Инв.номер" dataField="INV_NUM"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          filterComparisionType="string"
+                          editable="true" 
+                          width="80" />                    
+      <columns:GridColumn headerText="D нар. \nтрубы, \nмм" dataField="PIPE_DIAMETER"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          filterComparisionType="number"
+                          editable="true" 
+                          width="40" /> 
+      <columns:GridColumn headerText="Толщ. \nстенки \nтруб-да, \nмм" dataField="PIPE_THICKNESS"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          filterComparisionType="number"
+                          editable="true" 
+                          width="40" />
+       <columns:GridColumn headerText="Год ввода\nв экспл." dataField="DATE_INSTALLED"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer"
+                          filterComparisionType="date"
+                          editable="true" 
+                          width="60" />
+      <columns:GridColumn headerText="Тип ЭХЗ" dataField="PI_CP_TYPE"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          filterComparisionType="string"
+                          hidden="true" editable="true" 
+                          width="40" />
+      <columns:GridColumn headerText="Дата \nобследования" dataField="INSP_DATE"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer"
+                          filterComparisionType="date"
+                          hidden="true" editable="true" 
+                          width="60" />
+      <columns:GridColumn headerText="Обследование.\nИсполнитель" dataField="INSP_PERFORMED_BY"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          filterComparisionType="string"
+                          hidden="true" editable="true" 
+                          width="80" />
+      <columns:GridColumn headerText="Результаты обследования.\nПрочие дефекты,\nнарушения, несоответствия" dataField="INSP_RESULT_OTHER_DISORDER"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          filterComparisionType="string"
+                          editable="true" 
+                          width="160" >
+                          <colorValidation mode="row" min="Предельное (неработоспособное)" max="Предельное (неработоспособное)" type="string" color="FF463E" critical="5" preload="true" />
+                          <colorValidation mode="row" min="Работоспособное (Уровень 3)" max="Работоспособное (Уровень 3)" type="string" color="FFBC16" critical="4" preload="true" />
+                          <colorValidation mode="row" min="Работоспособное (Уровень 1)" max="Работоспособное (Уровень 1)" type="string" color="FFBC16" critical="3" preload="true" />
+                          <colorValidation mode="row" min="Работоспособное (Уровень 2)" max="Работоспособное (Уровень 2)" type="string" color="FFBC16" critical="2" preload="true" />
+                          <colorValidation mode="row" min="Исправное" max="Исправное" color="00FF00" type="string" critical="1" preload="true" />
+       </columns:GridColumn>                    
+      <columns:GridColumn headerText="Техн. сос. \nперехода" dataField="INSP_RESULT_CONDITION"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          filterComparisionType="string"
+                          editable="true" 
+                          width="190" />
+      <columns:GridColumn headerText="Дата \nпроведения \nремонта" dataField="REPAIR_DATE"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer"
+                          filterComparisionType="date"
+                          hidden="true" editable="true" 
+                          width="60" />
+      <columns:GridColumn headerText="Вид ремонта" dataField="REPAIR_TYPE"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          filterComparisionType="string"
+                          hidden="true" editable="true" 
+                          width="100" />
+      <columns:GridColumn headerText="Ремонт. \nИсполнитель" dataField="REPAIR_PERFORMED_BY"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          filterComparisionType="string"  
+                          hidden="true" editable="true" 
+                          width="80" />
+      <columns:GridColumn headerText="Ремонт. \nПеречень \nвыполненных работ" dataField="REPAIR_COMPLITED_WORK"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          filterComparisionType="string"
+                          hidden="true" editable="true" 
+                          width="150" />
+      <columns:GridColumn headerText="Ремонт.\nТех. состояние \nперехода" dataField="REPAIR_RESULT_CONDITION"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          filterComparisionType="string"
+                          hidden="true" editable="true" 
+                          width="150" />
+      <columns:GridColumn headerText="ЛПУ" dataField="SRV_DISTRICT"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          filterComparisionType="string"
+                          hidden="true" editable="true" 
+                          width="100" /> 
+      <columns:GridColumn headerText="ZONE_ID" dataField="ZONE_ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          filterComparisionType="number"
+                          hidden="true" editable="true" 
+                          width="40" /> 
+      <columns:GridColumn headerText="PIPE_TYPE" dataField="PIPE_TYPE"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          filterComparisionType="string"
+                          hidden="true" editable="true" 
+                          width="100" />                                                         
+      <columns:GridColumn headerText="" width="20" sortable="false" editable="true"
+                          columnWidthMode="percent"/>
+  </grids:columns>
+</grids:Grid>

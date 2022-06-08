@@ -1,0 +1,12 @@
+﻿<ROOT prevTask="close" version="6.0.2.0">
+  <hbox percentWidth="100" percentHeight="100">
+	<panel id="ADM_HODO" percentWidth="100" percentHeight="100" reload="true">
+		<settings>
+			<requestFilterByType>PODS_SEM_DICT.xml#PODS_ROUTE_TYPE_CL</requestFilterByType>
+			<requestFilterByLine>GAZPROM_ADM_SEM.xml#PODS_LINE_WITHOUT_DEFAULT</requestFilterByLine>
+			<requestGetRoutes>GAZPROM_ADM_SEM.xml#PODS_ROUTE_FOR_HODO</requestGetRoutes>
+			<requestGetInspectionsForRoute>GAZPROM_ADM_SEM.xml#PODS_ILI_INSPECTIONS_FOR_HODO</requestGetInspectionsForRoute>
+		</settings>
+	</panel>
+  </hbox>
+</ROOT>

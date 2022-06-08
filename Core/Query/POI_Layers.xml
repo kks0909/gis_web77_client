@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.7.4" descr="Спутниковый мониторинг">
+  <dataProvider type="style" source="POI_STYLE.xml" />
+  <layer id="WEB50_POI_POINT" comment="WEB50.POI_POINT" schema="WEB50" table="POI_POINT" descr="Точки интереса" projection="EPSG:4326" dataType="vector" type="common" labelField="NAME" classField="SYMBOL" spacing="POI_POINT" cover="false" fitMap="false" order="5" visible="false" topology="point">
+	  <!--Пустой фильтр, чтобы не учитывалось кеширование-->
+	  <filter>
+		  <pattern></pattern>
+		  <join></join>
+		  <field></field>
+		  <replace></replace>
+	  </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_POI_POINT" />
+    <dataProvider type="style" source="POI_STYLE.xml#WEB50_POI_POINT" />
+    <dataProvider type="semantic" source="POI_SEM.xml#WEB50_POI_POINT" />
+    <dataProvider type="spatial" source="POI_GEO.xml#WEB50_POI_POINT" />
+  </layer>
+  <layer id="WEB50_POI_TRACK" comment="WEB50.POI_TRACK" schema="WEB50" table="POI_TRACK" descr="Треки" projection="EPSG:4326" dataType="vector" type="common" labelField="NAME" classField="TYPE_CL" spacing="POI_TRACK" cover="false" fitMap="false" order="10" visible="false" topology="line">
+	  <!--Пустой фильтр, чтобы не учитывалось кеширование-->
+	  <filter>
+		  <pattern></pattern>
+		  <join></join>
+		  <field></field>
+		  <replace></replace>
+	  </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_POI_TRACK" />
+    <dataProvider type="style" source="POI_STYLE.xml#WEB50_POI_TRACK" />
+    <dataProvider type="semantic" source="POI_SEM.xml#WEB50_POI_TRACK" />
+    <dataProvider type="spatial" source="POI_GEO.xml#WEB50_POI_TRACK" />
+  </layer>
+  <layer id="WEB50_POI_DEBRIS" comment="WEB50.POI_DEBRIS" descr="Зоны вырубок" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="20" visible="false" topology="polygon"  classField="" schema="WEB50" table="POI_DEBRIS">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#WEB50_POI_DEBRIS" />
+    <dataProvider type="style" source="POI_STYLE.xml#WEB50_POI_DEBRIS" />
+    <dataProvider type="semantic" source="POI_SEM.xml#WEB50_POI_DEBRIS" />
+    <dataProvider type="spatial" source="POI_GEO.xml#WEB50_POI_DEBRIS" />
+  </layer>
+</root>

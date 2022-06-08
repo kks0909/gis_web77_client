@@ -1,0 +1,2453 @@
+﻿<root version="7.7.3.0">
+	<!-- GDAL_FILE_NAME - сам файл. Если приходит параметр с таким именем, то будем работать с файлом , а не с бд -->
+	<!-- GDAL_FILE_TYPE - название драйвера/флага, который скажет, как манипулировать с файлом -->
+	<!-- GDAL_LAYER_NAME - название слоя. Для открытия mif имя слоя совпадает с названием файла -->
+	<data table="GTS_PIPELINE_L" schema="GDAL" id="GTS_PIPELINE_L" comment="Трубопроводы ГТС">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER" />
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="pipelinename"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared_pipes.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="gts_pipeline_l" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared_pipes.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="gts_pipeline_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared_pipes.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="gts_pipeline_l" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared_pipes.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="gts_pipeline_l" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="AMBIT_BUILDINGS_A" schema="GDAL" id="AMBIT_BUILDINGS_A" comment="ОО_Строения">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_buildings_a" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_buildings_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_buildings_a" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_buildings_a" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="GTS_OBJECTS_P" schema="GDAL" id="GTS_OBJECTS_P" comment="Объекты ГТС, точечные">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="gts_objects_p" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="gts_objects_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="gts_objects_p" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="gts_objects_p" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="AMBIT_INDUSTRY_PIPELINE_P" schema="GDAL" id="AMBIT_INDUSTRY_PIPELINE_P" comment="ОО_Переходы и пересечения трубопровода">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_p" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_p" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_p" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="AMBIT_INDUSTRY_COMM_P" schema="GDAL" id="AMBIT_INDUSTRY_COMM_P" comment="ОО_Опоры">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_p" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_p" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_p" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>		
+	<data table="AMBIT_INDUSTRY_PIPE_UNITS_P" schema="GDAL" id="AMBIT_INDUSTRY_PIPE_UNITS_P" comment="ОО_Трубопроводная арматура">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_p" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_p" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_p" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>		
+	<data table="AMBIT_INDUSTRY_PROTECT_P" schema="GDAL" id="AMBIT_INDUSTRY_PROTECT_P" comment="ОО_СПКЗ">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_protect_p" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_protect_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_protect_p" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_protect_p" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="AMBIT_INDUSTRY_FILTERS_P" schema="GDAL" id="AMBIT_INDUSTRY_FILTERS_P" comment="ОО_Технологические объекты, не выражающиеся в масштабе">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_filters_p" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_filters_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_filters_p" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_filters_p" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="AMBIT_INDUSTRY_CAPACITIES_P" schema="GDAL" id="AMBIT_INDUSTRY_CAPACITIES_P" comment="ОО_Резервуары и ёмкости">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_capacities_p" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_capacities_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_capacities_p" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_capacities_p" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>		
+	<data table="AMBIT_INDUSTRY_ICS_P" schema="GDAL" id="AMBIT_INDUSTRY_ICS_P" comment="ОО_Мачты">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_ics_p" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_ics_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_ics_p" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_ics_p" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>		
+	<data table="GEO_BOUNDARIES_P" schema="GDAL" id="GEO_BOUNDARIES_P" comment="ОТ_Пограничные знаки">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_p" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_p" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_p" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_HYDRAULICSTRUCT_P" schema="GDAL" id="GEO_HYDRAULICSTRUCT_P" comment="ОТ_Гидротехнические сооружения">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_p" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_p" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_p" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_HYDROGRAPHY_P" schema="GDAL" id="GEO_HYDROGRAPHY_P" comment="ОТ_Водоёмы, не выражающиеся в масштабе">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_p" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_p" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_p" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_INDUCTRIALOBJ_P" schema="GDAL" id="GEO_INDUCTRIALOBJ_P" comment="ОТ_Промышленные и вспомогательные объекты, не выражающиеся в масштабе">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_p" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_p" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_p" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>		
+	<data table="GEO_ROADSTRUCTURES_P" schema="GDAL" id="GEO_ROADSTRUCTURES_P" comment="ОТ_Транспортные объекты, не выражающиеся в масштабе">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_p" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_p" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_p" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_ROADS_P" schema="GDAL" id="GEO_ROADS_P" comment="ОТ_Перевалы и съезды с автодорог">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roads_p" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roads_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roads_p" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roads_p" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>		
+	<data table="GEO_RELIEF_P" schema="GDAL" id="GEO_RELIEF_P" comment="ОТ_Элементарные формы рельефа">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_p" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_p" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_p" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_HYDROGRAPHYREL_P" schema="GDAL" id="GEO_HYDROGRAPHYREL_P" comment="ОТ_Водные преграды и направления течения">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_p" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_p" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_p" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_SETTLEMENTS_P" schema="GDAL" id="GEO_SETTLEMENTS_P" comment="ОТ_Стоянки юрт и чумов">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_p" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_p" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_p" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_VEGETATION_P" schema="GDAL" id="GEO_VEGETATION_P" comment="ОТ_Одиночная растительность">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_p" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_p" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_p" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_p" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>		
+	<data table="AMBIT_INDUSTRY_PIPELINE_L" schema="GDAL" id="AMBIT_INDUSTRY_PIPELINE_L" comment="ОО_Трубопроводы внешние">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_l" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_l" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipeline_l" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_ROADSTRUCTURES_L" schema="GDAL" id="GEO_ROADSTRUCTURES_L" comment="ОТ_Транспортные сооружения">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_l" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_l" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_l" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="AMBIT_INDUSTRY_COMM_L" schema="GDAL" id="AMBIT_INDUSTRY_COMM_L" comment="ОО_Линии электропередач и связи">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_l" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_l" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_comm_l" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>		
+	<data table="AMBIT_ROADS_L" schema="GDAL" id="AMBIT_ROADS_L" comment="ОО_Дорожная сеть">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_roads_l" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_roads_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_roads_l" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_roads_l" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_INDUCTRIALOBJ_L" schema="GDAL" id="GEO_INDUCTRIALOBJ_L" comment="ОТ_Вспомогательные трубопроводы и ограды">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_l" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_l" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_l" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_HYDRAULICSTRUCT_L" schema="GDAL" id="GEO_HYDRAULICSTRUCT_L" comment="ОТ_Водопроводящие и водоподпорные сооружения">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_l" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_l" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_l" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="AMBIT_HYDRO_L" schema="GDAL" id="AMBIT_HYDRO_L" comment="ОО_Реки и ручьи">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_l" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_l" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_l" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_HYDROGRAPHY_L" schema="GDAL" id="GEO_HYDROGRAPHY_L" comment="ОТ_Подземные участки рек, каналы и канавы">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_l" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_l" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrography_l" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_ROADS_L" schema="GDAL" id="GEO_ROADS_L" comment="ОТ_Вспомогательные дороги">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roads_l" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roads_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roads_l" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roads_l" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>		
+	<data table="GEO_BOUNDARIES_L" schema="GDAL" id="GEO_BOUNDARIES_L" comment="ОТ_Границы">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_l" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_l" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_l" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>		
+	<data table="GEO_VEGETATION_L" schema="GDAL" id="GEO_VEGETATION_L" comment="ОТ_Полосы древесных насаждений и просеки">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_l" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_l" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_l" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_HYDROGRAPHYREL_L" schema="GDAL" id="GEO_HYDROGRAPHYREL_L" comment="ОТ_Гидрографический рельеф">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_l" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_l" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_l" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_RELIEF_L" schema="GDAL" id="GEO_RELIEF_L" comment="ОТ_Рельеф">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_l" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_l" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_l" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_l" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="AMBIT_INDUSTRY_PIPE_UNITS_A" schema="GDAL" id="AMBIT_INDUSTRY_PIPE_UNITS_A" comment="ОО_Технологические узлы и ГИС">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_a" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_a" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_pipe_units_a" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="AMBIT_INDUSTRY_OILSTATIONS_A" schema="GDAL" id="AMBIT_INDUSTRY_OILSTATIONS_A" comment="ОО_АГНКС и АЗС">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_oilstations_a" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_oilstations_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_oilstations_a" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_industry_oilstations_a" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="AMBIT_PLATFORMS_A" schema="GDAL" id="AMBIT_PLATFORMS_A" comment="ОО_Площадки технологические и стоянки">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_platforms_a" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_platforms_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_platforms_a" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_platforms_a" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_ROADSTRUCTURES_A" schema="GDAL" id="GEO_ROADSTRUCTURES_A" comment="ОТ_Станции, платформы и стоянки">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_a" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_a" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_roadstructures_a" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_HYDRAULICSTRUCT_A" schema="GDAL" id="GEO_HYDRAULICSTRUCT_A" comment="ОТ_Судоремонтные сооружения и насосные станции">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_a" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_a" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydraulicstruct_a" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_INDUCTRIALOBJ_A" schema="GDAL" id="GEO_INDUCTRIALOBJ_A" comment="ОТ_Промышленные и вспомогательные сооружения и территории">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_a" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_a" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_inductrialobj_a" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_SETTLEMENTS_A" schema="GDAL" id="GEO_SETTLEMENTS_A" comment="ОТ_Кварталы и улицы, ОТ_Населенные пункты">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_a" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_a" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_settlements_a" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>	
+	<data table="GEO_HYDROGRAPHYREL_A" schema="GDAL" id="GEO_HYDROGRAPHYREL_A" comment="ОТ_Берега и водная растительность">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_a" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_a" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_hydrographyrel_a" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>			
+	<data table="GEO_SOIL_A" schema="GDAL" id="GEO_SOIL_A" comment="ОТ_Грунты и поверхности">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_soil_a" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_soil_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_soil_a" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_soil_a" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>		
+	</data>	
+	<data table="AMBIT_HYDRO_A" schema="GDAL" id="AMBIT_HYDRO_A" comment="ОО_Водоёмы">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_a" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_a" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_hydro_a" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>	
+	<data table="GEO_RELIEF_A" schema="GDAL" id="GEO_RELIEF_A" comment="ОТ_Поверхности рельефа">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_a" />
+			</geoQuery>
+		</select>		
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_a" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_relief_a" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data table="AMBIT_VEGETATION_FOREST_A" schema="GDAL" id="AMBIT_VEGETATION_FOREST_A" comment="ОО_Растительность лесная">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="label"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_forest_a" />
+			</geoQuery>
+		</select>	
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_forest_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_forest_a" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_forest_a" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>		
+	</data>	
+	<data table="AMBIT_VEGETATION_FIELDS_A" schema="GDAL" id="AMBIT_VEGETATION_FIELDS_A" comment="ОО_Растительность культурная">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_fields_a" />
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_fields_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_fields_a" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="ambit_vegetation_fields_a" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>			
+	</data>	
+	<data table="GEO_VEGETATION_A" schema="GDAL" id="GEO_VEGETATION_A" comment="ОТ_Растительность вспомогательная">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_a" />
+			</geoQuery>
+		</select>		
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_a" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_vegetation_a" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>	
+	</data>	
+	<data table="GEO_BOUNDARIES_A" schema="GDAL" id="GEO_BOUNDARIES_A" comment="ОТ_Административные территории">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="FILTER"/>
+				<param name="COLUMN_LIST" default="ID,LABEL,TYPE,STYLE"/>
+				<param name="TYPE_COLUMN" default="topocode"/>
+				<param name="ID_COLUMN" default="GUID"/>
+				<param name="LABEL_COLUMN" default="name"/>
+				<param name="STYLE_COLUMN" default="STYLE"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_a" />
+			</geoQuery>
+		</select>		
+		<insert>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_a" />
+				<param name="GDAL_COMMAND_TYPE" default="insert" />
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand proc="GET_LPU">
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_a" />
+				<param name="GDAL_COMMAND_TYPE" default="update" />
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="String"/>
+				<param name="ID_COLUMN" default="ID"/>
+				<param name="GEO_COLUMN" default="WKT"/>
+				<param name="GDAL_FILE_NAME" default="/../../../private/iust/IUST2_prepared.sqlite"/>
+				<param name="GDAL_FILE_TYPE" default="SQLite" />
+				<param name="GDAL_LAYER_NAME" default="geo_boundaries_a" />
+				<param name="GDAL_COMMAND_TYPE" default="delete" />
+				<query>					
+				</query>
+			</dbCommand>
+		</delete>	
+	</data>		
+</root>

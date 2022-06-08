@@ -1,0 +1,196 @@
+﻿<!--7.7.7.6-->
+<grids:Grid xmlns:grids="ru.corelight.grids.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:buttons="ru.corelight.grids.buttons.*" xmlns:columns="ru.corelight.grids.columns.*" lockedColumnCount="3" pageSize="10000" headerVertSize="50"
+            id="SUTSTPA_MISMATCH_INF_DATA"
+            percentWidth="100"
+            percentHeight="100"
+            styleName="dgInfoForm"
+            labelColumn="STATION"
+            layerId="SUTSTPA_MISMATCH_INF_DATA" propertyPanelName="SUTSTPA_MISMATCH_INF_DATA"
+            dataRequest="SUTSTPA_GRID.xml#SUTSTPA_MISMATCH_INF_DATA"
+            initialSortField="ID">
+<grids:buttons>
+  <picPutton:GridButton source="../../Public/assets/filter.png"
+        tooltip="Задать условия фильтрации"
+        clickEvent="ru.corelight.business.events.GridFilterEvent"
+        isEnabled="true" />
+  <picPutton:GridButton source="../../Public/assets/delete.png"
+        tooltip="Удалить выбранные объекты"
+        clickEvent="ru.corelight.business.events.RemoveGridRowEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/copy.png"
+        tooltip="Копировать данные для вставки в excel"
+        clickEvent="CopyToExcelEvent"
+        selectedObjects="this" />
+  <picPutton:GridButton source="../../ui/images/save.png"
+       tooltip="Сохранить изменения"
+       clickEvent="ApplyUpdatedCellEvent"
+       isEnabled="null" />
+   <picPutton:GridButton source="../../ui/images/forward.png"
+       tooltip="Выполнить сверку данных"
+       clickEvent="ExecuteQueryEvent?request=UTE_SEM.xml#SUTSTPA_INTEGR_AFTER"
+       isEnabled="null" />     
+  <picPutton:GridButton source="../../ui/images/no.png"       
+        tooltip="СОСТАВ КОЛОНОК"
+        text="СОСТАВ КОЛОНОК"
+        clickEvent="ManageColumnsEvent"
+        className="gridTextButton"
+        position="top|right"
+        isEnabled="true" width="120" />     
+</grids:buttons>
+  <grids:columns>
+      <columns:AllCheckBoxGridColumn columnWidthMode="fixed" width="15" sortable="false" selectedKeyField="ID"/>
+       <columns:GridColumn headerText="№" width="30" dataField="RWN" sortable="false"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="false"/>
+      <columns:GridColumn headerText="ID" dataField="ID" 
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterRenderer="string"
+            		  width="50" /> 
+      <columns:GridColumn headerText="Кран СУТСТПА" dataField="VALVE_ID"
+                          filterRequestId="SUTSTPA_SEM_DICT.xml#SUTSTPA_VALVE_GCL"
+                          itemRenderer="ru.corelight.view.renderer.BufferRenderer?filterRequestId=SUTSTPA_SEM_DICT.xml#SUTSTPA_VALVE_GCL"
+                          filterComparisionType="array"
+                          editable="true"
+                          sortField="VALVE_LBL"
+                          width="480"/> 
+      <columns:GridColumn headerText="ЛПУ" dataField="LPU"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterRenderer="string"
+                          width="110"/>
+      <columns:GridColumn headerText="Наименование газопровода" dataField="PIPE"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterRenderer="string"
+                          width="280"/>							
+      <columns:GridColumn headerText="КМ" dataField="STATION"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="40"/>
+      <columns:GridColumn headerText="Тип\nкрана" dataField="TYPE_ID"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterRenderer="string"
+                          width="75"/>	
+      <columns:GridColumn headerText="Тип\nпривода" dataField="OPER_TYPE_ID"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterRenderer="string"
+                          width="80"/>	
+     <columns:GridColumn headerText="Технологич.\nномер" dataField="TECH_NUM"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="52"/>		
+      <columns:GridColumn headerText="Тип \nприсоедин-я" dataField="JOINT_ID"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterRenderer="string"
+                          width="80"/>		
+      <columns:GridColumn headerText="Номин.\nдиаметр \nDN" dataField="NOM_DIAM_ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="40"/>		
+      <columns:GridColumn headerText="Номин.\nдавление \nPN" dataField="NOM_PRESS_ID"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          filterComparisionType="number"
+                          width="40"/>			
+      <columns:GridColumn headerText="Завод. номер" dataField="SERIAL_NUM"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="60"/>	
+      <columns:GridColumn headerText="Расположение крана" dataField="MEST"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="100"/>                     
+      <columns:GridColumn headerText="Наименование ТПА" dataField="NAME_ID"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="100"/>                    		
+      <columns:GridColumn headerText="Изготовитель ТПА" dataField="MANUF_ID"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="100"/>			
+      <columns:GridColumn headerText="Дата\nизготовления" dataField="DATE_MANUF"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer" 
+                          editable="false"
+                          filterComparisionType="date"
+                          dateFormat="number"
+                          width="50"/>
+            <columns:GridColumn headerText="Материал \nизготовления \nкорпуса" dataField="VALVE_MATERIAL_TYPE_CL"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="80"/>
+      <columns:GridColumn headerText="Тип \nустановки" dataField="INSTALL_TYPE_ID"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="75"/> 
+      <columns:GridColumn headerText="Маркир.ТПА\n(по конструкт.\nдокум.)" dataField="TPA_CONSTR_TYPE_ID"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="80"/>
+      <columns:GridColumn headerText="Дата врезки" dataField="DATE_INSTALL"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer" 
+                          editable="false"
+                          filterComparisionType="date"
+                          dateFormat="number"
+                          width="50"/>
+     <columns:GridColumn headerText="Год ввода\nв экспл.\nТПА" dataField="DATE_WORK_BEGIN"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer" 
+                          editable="false"
+                          filterComparisionType="date"
+                          dateFormat="number"
+                          width="50"/> 
+      <columns:GridColumn headerText="Год ввода\nв экспл.\nпривода" dataField="OPER_DATE_WORK_BEGIN"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer" 
+                          editable="false"
+                          filterComparisionType="date"
+                          dateFormat="number"
+                          width="50"/> 
+      <columns:GridColumn headerText="Климатич.\nисполнение\nкрана" dataField="CLIMATIC_TYPE_ID"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="100"/> 
+      <columns:GridColumn headerText="Инв.номер \nТПА" dataField="INVENT_NUMBER"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="60"/> 
+      <columns:GridColumn headerText="Изготовитель\nпривода" dataField="OPER_MANUF_ID"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          filterComparisionType="string"
+                          width="100"/> 
+      <columns:GridColumn headerText="Нормативный\nсрок\nслужбы" dataField="LIFETIME"
+                          itemRenderer="ru.corelight.view.renderer.NumberRenderer"
+                          editable="false"
+                          hidden="true"
+                          filterComparisionType="number"
+                          width="60"/> 
+      <columns:GridColumn headerText="Дата\nистеч.срока\nэксплуатации" dataField="DATE_EXP"
+                          itemRenderer="ru.corelight.view.renderer.DateRenderer" 
+                          editable="false"
+                          hidden="true"
+                          filterComparisionType="date"
+                          dateFormat="number"
+                          width="50"/>
+      <columns:GridColumn headerText="Примечание" dataField="PRIM"
+                          itemRenderer="ru.corelight.view.renderer.StringRenderer"
+                          editable="true"
+                          hidden="true"
+                          filterComparisionType="string"
+                          width="100"/> 
+    </grids:columns>
+</grids:Grid>

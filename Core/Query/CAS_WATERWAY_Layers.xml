@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root version="7.7.6.8" descr="Продольный профиль газопровода водного перехода">
+  <dataProvider type="style" source="CAS_WATERWAY_STYLE.xml" />
+	<layer id="CAS_MAIN" comment="CAS.MAIN" schema="WEB50" table="WATERWAY" descr="Продольный профиль газопровода водного перехода" projection="EPSG:5807" dataType="vector" type="system" spacing="common" cover="false" fitMap="false" order="10" visible="true" topology="polygon" labelField="LABEL" classField="TYPE_CL"  >
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#CAS_MAIN" />
+		<dataProvider type="semantic" source="CAS_WATERWAY_SEM.xml#CAS_MAIN" />
+		<dataProvider type="spatial" source="CAS_WATERWAY_GEO.xml#CAS_MAIN" />
+	</layer>
+ </root>

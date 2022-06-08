@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="760" xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml">
+  <dataProvider>ADM_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="100%">
+    <mx:HBox width="100%">
+      <mx:VBox width="50%">
+        <mx:HBox width="100%">
+          <mx:Text textAlign="right" text="Свойство" width="60" />
+          <mx:TextInput id="PROPERTY_ID" width="305" maxChars="254" height="40" />
+        </mx:HBox>
+        <mx:HBox width="100%">
+          <mx:Text textAlign="right" text="Оператор" width="60" />
+          <mx:TextInput id="OPERATOR" width="305" maxChars="254" height="40" />
+        </mx:HBox>
+        <mx:HBox width="100%">
+          <mx:Text textAlign="right" text="Значение" width="60" />
+          <mx:TextInput id="VALUE" width="305" maxChars="254" height="40" />
+        </mx:HBox>
+	  </mx:VBox>
+      <mx:VBox width="50%">
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Дата создания записи" width="140" />
+          <mx:DateField id="CTIME" width="90" editable="false" height="20" formatString="DD.MM.YYYY" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Кто создал" width="140" />
+          <mx:TextInput id="CUSER" editable="false" width="225" height="20" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Дата изменения записи" width="140" />
+          <mx:DateField id="MTIME" width="90" editable="false" height="20" formatString="DD.MM.YYYY" />
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+          <mx:Text textAlign="right" text="Кто изменил" width="140" />
+          <mx:TextInput id="MUSER" editable="false" width="225" height="20" />
+        </mx:HBox>
+		<mx:HBox width="100%" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Идентификатор правила" width="140" />
+          <controls:NumberInput id="RULE_ID" editable="false" width="225" maxChars="22" height="20" />
+        </mx:HBox>
+		<mx:HBox width="100%" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Идентификатор фильтра" width="140" />
+          <mx:TextInput id="RULE_FILTER_ID" editable="false" width="225" maxChars="22" height="20" />
+        </mx:HBox>
+      </mx:VBox>
+    </mx:HBox>
+  </mx:VBox>
+  <validatorsArray>
+    <controls:DefaultStringValidator source="{PROPERTY_ID}" property="text" enabled="false" minLength="1" requiredFieldError="Поле 'Свойство' обязательно для заполнения." tooShortError="Поле 'Свойство' обязательно для заполнения." defaultValue="1" />
+    <controls:DefaultStringValidator source="{OPERATOR}" property="text" enabled="false" minLength="1" requiredFieldError="Поле 'Оператор' обязательно для заполнения." tooShortError="Поле 'Оператор' обязательно для заполнения." defaultValue="=" />
+    <controls:DefaultStringValidator source="{VALUE}" property="text" enabled="false" minLength="1" requiredFieldError="Поле 'Значение' обязательно для заполнения." tooShortError="Поле 'Значение' обязательно для заполнения." defaultValue="1" />
+  </validatorsArray>
+</DATA_EDIT_FORM>

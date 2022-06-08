@@ -1,0 +1,334 @@
+﻿ <root version="postgres 7.7.5.0">
+	<data id="WEB50_KADASTR_KVARTAL"  table="KADASTR_KVARTAL" schema="WEB50" comment="WEB50.KADASTR_KVARTAL">
+		<select>
+			<dbQuery idField="ID">
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="FILTER" default="1=1"/>
+				<var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+				<query>
+					SELECT CAD_NUM,RAYON_NUM,ID FROM WEB50.KADASTR_KVARTAL WHERE {FILTER}
+				</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="CAD_NUM" default="" type="String"/>
+				<param name="RAYON_NUM" default="" type="String"/>					
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.KADASTR_KVARTAL"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#INSERT_KADASTR_SEM" />					
+				<query>
+ INSERT INTO WEB50.KADASTR_KVARTAL(CAD_NUM,RAYON_NUM) VALUES(:CAD_NUM,:RAYON_NUM)
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="CAD_NUM" default="" type="String"/>
+				<param name="RAYON_NUM" default="" type="String"/>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#UPDATE_KADASTR_SEM" />					
+				<query>
+ 				UPDATE WEB50.KADASTR_KVARTAL SET 
+ 				CAD_NUM=case when :CAD_NUM is null then CAD_NUM else :CAD_NUM end,
+ 				RAYON_NUM=case when :RAYON_NUM is null then RAYON_NUM else :RAYON_NUM end
+ 				WHERE ID = :ID
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#DELETE_KADASTR_SEM" />					
+				<query>
+ DELETE FROM WEB50.KADASTR_KVARTAL	WHERE ID = :ID
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+	<data id="WEB50_KADASTR_PODS_MDR" table="KADASTR_PODS_MDR" schema="WEB50" comment="WEB50.KADASTR_PODS_MDR">
+		<select>
+			<dbQuery idField="MDR_ID">
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="FILTER" default="1=1"/>
+				<query>
+					SELECT ID,OBJ_TYPE,DESCRIPTION, STATION_BEGIN, STATION_END 
+					FROM (SELECT MDR_ID ID,OBJ_TYPE,DESCRIPTION, STATION_BEGIN, STATION_END FROM WEB50.KADASTR_PODS_MDR) d
+					WHERE {FILTER}
+				</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="OBJ_TYPE" default="" type="String"/>
+				<param name="DESCRIPTION" default="" type="String"/>
+				<param name="STATION_BEGIN" default="" type="Decimal"/>
+				<param name="STATION_END" default="" type="Decimal"/>
+				<var name="MDR_ID" type="Int64" direction="Output" default="SELECT max(mdr_id) id from WEB50.KADASTR_PODS_MDR"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#INSERT_KADASTR_SEM" />					
+				<query>
+ INSERT INTO WEB50.KADASTR_PODS_MDR(OBJ_TYPE,DESCRIPTION,STATION_BEGIN,STATION_END) VALUES(:OBJ_TYPE,:DESCRIPTION,:STATION_BEGIN,:STATION_END)
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="OBJ_TYPE" default="" type="String"/>
+				<param name="DESCRIPTION" default="" type="String"/>
+				<param name="STATION_BEGIN" default="" type="Decimal"/>
+				<param name="STATION_END" default="" type="Decimal"/>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#UPDATE_KADASTR_SEM" />					
+				<query>
+				UPDATE WEB50.KADASTR_PODS_MDR
+				SET 
+				OBJ_TYPE=case when :OBJ_TYPE is null then OBJ_TYPE else :OBJ_TYPE end,
+				DESCRIPTION=case when :DESCRIPTION is null then DESCRIPTION else :DESCRIPTION end,
+				STATION_BEGIN=case when :STATION_BEGIN is null then STATION_BEGIN else :STATION_BEGIN end,
+				STATION_END=case when :STATION_END is null then STATION_END else :STATION_END end
+				WHERE MDR_ID = :ID
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#DELETE_KADASTR_SEM" />					
+				<query>
+	DELETE FROM WEB50.KADASTR_PODS_MDR	WHERE MDR_ID = :ID
+				</query>
+			</dbCommand>
+		</delete>
+  </data>
+<data id="WEB50_KADASTR_ALERT"  table="KADASTR_ALERT" schema="WEB50" comment="WEB50.KADASTR_ALERT">
+		<select>
+			<dbQuery idField="ID">
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="FILTER" default="1=1"/>
+				<var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+				<query>
+					SELECT ID,OBJ_TYPE,DESCRIPTION,STATION_BEGIN,STATION_END,
+CTIME,CUSER_ID,MTIME,MUSER_ID FROM WEB50.KADASTR_ALERT WHERE {FILTER}
+				</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<param name="OBJ_TYPE" default="" type="String"/>
+				<param name="DESCRIPTION" default="" type="String"/>
+				<param name="STATION_BEGIN" default="" type="Decimal"/>
+				<param name="STATION_END" default="" type="Decimal"/>
+				<var name="ID" type="Int64" direction="Output" default="SELECT max(id) id from WEB50.KADASTR_ALERT"/>
+				<param name="CTIME" default="" type="DateTime"/>
+				<param name="CUSER_ID" default="" type="Decimal"/>					
+				<param name="MTIME" default="" type="DateTime"/>
+				<param name="MUSER_ID" default="-1" type="Int64"/>
+				<param name="WKB_GEOMETRY" default="-1" type="String"/>			
+				<param name="USER_ID" default="-1" type="Int64"/>	
+				<var name="POLICY" default="POLICY.xml#INSERT_KADASTR_SEM" />					
+				<query>
+ INSERT INTO WEB50.KADASTR_ALERT(OBJ_TYPE,DESCRIPTION,STATION_BEGIN,STATION_END,CTIME, CUSER_ID, MTIME, MUSER_ID) VALUES(:OBJ_TYPE,:DESCRIPTION,:STATION_BEGIN,:STATION_END,current_timestamp,:USER_ID,NULL,NULL)
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="OBJ_TYPE" default="" type="String"/>
+				<param name="DESCRIPTION" default="" type="String"/>
+				<param name="STATION_BEGIN" default="" type="Decimal"/>
+				<param name="STATION_END" default="" type="Decimal"/>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="USER_ID" default="" type="Decimal"/>	
+				<var name="POLICY" default="POLICY.xml#UPDATE_KADASTR_SEM" />					
+				<query>
+ 				UPDATE WEB50.KADASTR_ALERT SET 
+ 				OBJ_TYPE=case when :OBJ_TYPE is null then OBJ_TYPE else :OBJ_TYPE end,
+ 				DESCRIPTION=case when :DESCRIPTION is null then DESCRIPTION else :DESCRIPTION end,
+ 				STATION_BEGIN=case when :STATION_BEGIN is null then STATION_BEGIN else :STATION_BEGIN end,
+ 				STATION_END=case when :STATION_END is null then STATION_END else :STATION_END end
+ 				WHERE ID = :ID
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<var name="ID" type="Int64" direction="Input"/>
+				<var name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#DELETE_KADASTR_SEM" />					
+				<query>
+				DO $$
+          			  DECLARE varDocId bigint;
+                  		BEGIN
+ 					DELETE FROM WEB50.KADASTR_ALERT	WHERE ID = {ID};
+					DELETE FROM WEB50.KADASTR_ALERT_OBJECT	WHERE ALERT_ID = {ID};
+				 END $$; 
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data id="WEB50_KADASTR_GKS_WAY"  table="KADASTR_GKS_WAY" schema="WEB50" comment="WEB50.KADASTR_GKS_WAY">
+		<select>
+			<dbQuery idField="ID">
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="FILTER" default="1=1"/>
+				<var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+				<query>
+					select ID,TRACK_ID,OBJ_TYPE,DESCRIPTION,STATION_BEGIN,STATION_END,
+DATE_BEGIN,DATE_END,CTIME,CUSER_ID,MTIME,MUSER_ID from (SELECT TRACK_ID ID,TRACK_ID,OBJ_TYPE,DESCRIPTION,STATION_BEGIN,STATION_END,
+DATE_BEGIN,DATE_END,CTIME,CUSER_ID,MTIME,MUSER_ID FROM WEB50.KADASTR_GKS_WAY) d WHERE {FILTER}
+				</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<var name="OBJ_TYPE" default="" type="String"/>
+				<var name="DESCRIPTION" default="" type="String"/>
+				<var name="STATION_BEGIN" default="" type="Decimal"/>
+				<var name="STATION_END" default="" type="Decimal"/>
+				<var name="DATE_BEGIN" default="" type="DateTime"/>
+				<var name="DATE_END" default="" type="DateTime"/>
+				<var name="TRACK_ID" type="Decimal"  direction="Output" default="SELECT max(track_id) id from WEB50.POI_TRACK"/>
+				<var name="CTIME"  default="" type="DateTime"/>
+				<var name="CUSER_ID" default="" type="Decimal"/>					
+				<var name="MTIME"  default="" type="DateTime"/>
+				<var name="MUSER_ID" default="-1" type="Decimal"/>
+				<var name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#INSERT_KADASTR_SEM" />					
+				<query>
+				DO $$
+          			  DECLARE v_track_id bigint;
+                  		BEGIN
+					INSERT INTO WEB50.POI_TRACK(NAME,DESCR,TYPE,STATUS_ID,CTIME,CUSER_ID)
+        				    VALUES('{DESCRIPTION}','{DESCRIPTION}','ГКС',1,current_timestamp,{USER_ID})
+          				  RETURNING TRACK_ID INTO v_track_id;
+ 					INSERT INTO WEB50.KADASTR_GKS_WAY(TRACK_ID,OBJ_TYPE,DESCRIPTION,STATION_BEGIN,STATION_END,
+						DATE_BEGIN,DATE_END,CTIME, CUSER_ID) VALUES(v_track_id,'{OBJ_TYPE}','{DESCRIPTION}',{STATION_BEGIN},{STATION_END},'{DATE_BEGIN}','{DATE_END}',current_timestamp,{USER_ID});
+				 END $$; 
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="OBJ_TYPE" default="" type="String"/>
+				<param name="DESCRIPTION" default="" type="String"/>
+				<param name="STATION_BEGIN" default="" type="Decimal"/>
+				<param name="STATION_END" default="" type="Decimal"/>
+				<param name="DATE_BEGIN" default="" type="DateTime"/>
+				<param name="DATE_END" default="" type="DateTime"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<param name="ID" type="Int64" direction="Input"/>
+				<var name="POLICY" default="POLICY.xml#UPDATE_KADASTR_SEM" />					
+				<query>
+ 				UPDATE WEB50.KADASTR_GKS_WAY SET 
+ 				OBJ_TYPE=case when :OBJ_TYPE is null then OBJ_TYPE else :OBJ_TYPE end,
+ 				DESCRIPTION=case when :DESCRIPTION is null then DESCRIPTION else :DESCRIPTION end,
+ 				STATION_BEGIN=case when :STATION_BEGIN is null then STATION_BEGIN else :STATION_BEGIN end,
+ 				STATION_END=case when :STATION_END is null then STATION_END else :STATION_END end,
+ 				DATE_BEGIN=case when :DATE_BEGIN is null then DATE_BEGIN else :DATE_BEGIN end,
+ 				DATE_END=case when :DATE_END is null then DATE_END else :DATE_END end
+ 				WHERE TRACK_ID = :ID
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<var name="ID" type="Int64" direction="Input"/>
+				<var name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#DELETE_KADASTR_SEM" />					
+				<query>
+				DO $$
+		        	BEGIN
+ 			  DELETE FROM WEB50.KADASTR_GKS_WAY	WHERE TRACK_ID ={ID};
+		          DELETE FROM WEB50.POI_TRACK_TO_POI_COORD WHERE TRACK_ID = {ID};
+		          DELETE FROM WEB50.POI_TRACK WHERE TRACK_ID = {ID};
+              /* удаляем связь с прикрепленным документом, если она была (когда к треку привязана видеозапись, например) */
+		          DELETE FROM WEB50.LNK_GATE     WHERE left_obj_id = 'WEB50_POI_TRACK/'||{ID}::text
+		          OR right_obj_id = 'WEB50_POI_TRACK/'||{ID}::text;
+		        END $$;
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+<data id="WEB50_KADASTR_ALERT_OBJECT"  table="KADASTR_ALERT_OBJECT" schema="WEB50" comment="WEB50.KADASTR_ALERT_OBJECT">
+		<select>
+			<dbQuery idField="ID">
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="FILTER" default="1=1"/>
+				<var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM PODS.SRV_DISTRICT_GCL"/>
+				<query>
+					SELECT ID, ALERT_ID, OBJ_TYPE, DESCRIPTION, OWNER_NAME, ADDRESS, SQUARE, CTIME, CUSER_ID, MTIME, MUSER_ID FROM WEB50.KADASTR_ALERT_OBJECT WHERE {FILTER}
+				</query>
+			</dbQuery>
+		</select>
+		<insert>
+			<dbCommand>
+				<var name="ID" type="Int64" direction="Output"  default="SELECT max(id) id from WEB50.KADASTR_ALERT_OBJECT"/>
+				<param name="ALERT_ID" default="" type="Decimal"/>				
+				<param name="OBJ_TYPE" default="" type="String"/>
+				<param name="DESCRIPTION" default="" type="String"/>
+				<param name="OWNER_NAME" default="" type="String"/>
+				<param name="ADDRESS" default="" type="String"/>
+				<param name="SQUARE" default="" type="Decimal"/>		
+				<var name="POLICY" default="POLICY.xml#INSERT_KADASTR_SEM" />					
+				<query>
+INSERT INTO 
+  WEB50.KADASTR_ALERT_OBJECT
+(
+  ALERT_ID,
+  OBJ_TYPE,
+  DESCRIPTION,
+  OWNER_NAME,
+  ADDRESS,
+  SQUARE
+)
+VALUES (
+  :ALERT_ID,
+  :OBJ_TYPE,
+  :DESCRIPTION,
+  :OWNER_NAME,
+  :ADDRESS,
+  :SQUARE
+)
+				</query>
+			</dbCommand>
+		</insert>
+		<update>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="ALERT_ID" default="" type="Decimal"/>				
+				<param name="OBJ_TYPE" default="" type="String"/>
+				<param name="DESCRIPTION" default="" type="String"/>
+				<param name="OWNER_NAME" default="" type="String"/>
+				<param name="ADDRESS" default="" type="String"/>
+				<param name="SQUARE" default="" type="Decimal"/>
+				<var name="POLICY" default="POLICY.xml#UPDATE_KADASTR_SEM" />					
+				<query>
+				UPDATE 
+				WEB50.KADASTR_ALERT_OBJECT 
+				SET 
+				ALERT_ID=case when :ALERT_ID is null then ALERT_ID else :ALERT_ID end,
+				OBJ_TYPE=case when :OBJ_TYPE is null then OBJ_TYPE else :OBJ_TYPE end,
+				DESCRIPTION=case when :DESCRIPTION is null then DESCRIPTION else :DESCRIPTION end,
+				OWNER_NAME=case when :OWNER_NAME is null then OWNER_NAME else :OWNER_NAME end,
+				ADDRESS=case when :ADDRESS is null then ADDRESS else :ADDRESS end,
+				SQUARE=case when :SQUARE is null then SQUARE else :SQUARE end
+				WHERE  ID = :ID
+				</query>
+			</dbCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<var name="POLICY" default="POLICY.xml#DELETE_KADASTR_SEM" />					
+				<query>
+ DELETE FROM WEB50.KADASTR_ALERT_OBJECT	WHERE ID = :ID
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+  </root>

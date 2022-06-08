@@ -1,0 +1,148 @@
+﻿<dataset name="МГ: Вдольтрассовые объекты" version="7.7.3.0">
+  <group comment="Команды">
+ <invoke id="gridToolModule" type="global" event_name="FULL_GRID_EVENT_ID_MODULE"
+				  tooltip="Показать списком"
+				  icon="Public/assets/GRID.png">
+	<!-- Общие параметры-->
+	<!-- имя функции открытия, если пустое, то всегда в новом окне -->
+	<var name="functionName" value=""/>
+	<!-- доп параметры открытия окна из windowsTemplates.xml -->
+	<var name="windowTemplateId" value="gridWindow"/>
+	<!-- Задача -->
+	<var name="task" value="GRID"/>
+<var name="mdl" value="Public/SWF/Grid_55.swf"/>
+	<!-- Необходимо ли в команды передавать фильтр верхнего уровня -->
+	<var name="needTopFilter" value="true"/>
+	<!-- Флаг указывает, всегда ли открывать в новом окне или можно использовать команды синхронизации -->
+	<var name="useSynchCommands" value="false"/>
+	<!-- шаблон грида -->
+	<var name="gridId" value=""/>
+	<!-- заголовок грида -->
+	<var name="title" value=""/>
+	<!-- полный идентификатор слоя -->
+	<var name="layerId" value=""/>
+</invoke>
+   <invoke id="showFilterModule" type="global" event_name="FULL_GRID_ROUGH_FILTER_MODULE" tooltip="Показать списком" icon="Public/assets/GRID.png">
+	  <!-- Общие параметры-->
+	  <!-- имя функции открытия, если пустое, то всегда в новом окне -->
+	  <var name="functionName" value=""/>
+	  <!-- доп параметры открытия окна из windowsTemplates.xml -->
+	  <var name="windowTemplateId" value="gridWindow"/>
+	  <!-- Задача -->
+	  <var name="task" value="GRID"/>
+<var name="mdl" value="Public/SWF/Grid_55.swf"/>
+	  <!-- Необходимо ли в команды передавать фильтр верхнего уровня -->
+	  <var name="needTopFilter" value="true"/>
+	  <!-- Флаг указывает, всегда ли открывать в новом окне или можно использовать команды синхронизации -->
+	  <var name="useSynchCommands" value="false"/>
+
+	  <!-- шаблон грида -->
+	  <var name="gridId" value=""/>
+	  <!-- заголовок грида -->
+	  <var name="title" value=""/>
+	  <!-- полный идентификатор слоя -->
+	  <var name="layerId" value=""/>
+
+	  <!-- Параметры для среднего фильтра -->
+	  <var name="requestId" value="PODS_SEM_DICT.xml#PODS_LINE" />
+	  <var name="variableName" value="LINE_ID" />
+	  <var name="winTitle" value="Трубопровод" />
+	  <var name="maxRecords" value="1" />
+	</invoke>
+    <invoke id="showGrid" type="global" event_name="FULL_GRID_EVENT_ID" tooltip="Показать списком" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="showFilter" type="global" event_name="FULL_GRID_ROUGH_FILTER" tooltip="Показать списком" icon="Public/assets/GRID.png">
+      <var name="gridId" value="DEFAULT_GRID" />
+      <var name="requestId" value="PODS_SEM_DICT.xml#PODS_LINE" />
+      <var name="variableName" value="LINE_ID" />
+      <var name="winTitle" value="Трубопровод" />
+      <var name="maxRecords" value="1" />
+    </invoke>
+    <invoke id="exportToExcel" type="global" event_name="exportToExcelFromTree" tooltip="Экспорт в Excel" icon="Public/assets/excel.png">
+      <var name="dataRequestId" value="" />
+    </invoke>
+    <invoke id="createNewObject" type="global" event_name="createObjectFromTree" tooltip="Добавить запись" icon="Public/assets/addObject.png">
+      <var name="classId" value="DEFAULT_GRID" />
+    </invoke>
+    <invoke id="checkBoxTool" type="global" event_name="checkBoxEvent" tooltip="Вкл/Выкл видимость слоя">
+      <var layerParams="" />
+    </invoke>
+  </group>
+  <tree max_items="20" toolbarStyle="toolbarStyle" toolbarButtonStyle="mapIcon">
+    <level format="Заселённые территории" icon="Public/assets/catalog.png" checkbox_type="childBased">
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_OFFLINE_Layers.xml#PODS_POPULATED_AREA;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_POPULATED_AREA" FILE_NAME="PODS_OFFLINE_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+		<context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_POPULATED_AREA" />
+		<context_menu run_invoke="createNewObject" classId="PODS_POPULATED_AREA"/>
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_POPULATED_AREA;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_POPULATED_AREA;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_OFFLINE_STYLE.xml" />
+        </level>
+      </level>
+    </level>
+    <level format="Зоны опасных последствий (HCA)" icon="Public/assets/catalog.png" checkbox_type="childBased">
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_OFFLINE_Layers.xml#PODS_HCA_CA_SEGMENT;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_HCA_CA_SEGMENT" FILE_NAME="PODS_OFFLINE_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+		<context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_HCA_CA_SEGMENT" />
+		<context_menu run_invoke="createNewObject" classId="PODS_HCA_CA_SEGMENT"/>
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_HCA_CA_SEGMENT;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_HCA_CA_SEGMENT;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_OFFLINE_STYLE.xml" />
+        </level>
+      </level>
+    </level>
+    <level format="Пересечения со сторонними объектами" icon="Public/assets/catalog.png" checkbox_type="childBased">
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_EQUIP_Layers.xml#PODS_ROAD;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_ROAD" FILE_NAME="PODS_EQUIP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+		<context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_ROAD" />
+		<context_menu run_invoke="createNewObject" classId="PODS_ROAD"/>
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_ROAD;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_ROAD;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_EQUIP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_EQUIP_Layers.xml#PODS_WATERWAY;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_WATERWAY" FILE_NAME="PODS_EQUIP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+		<context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_WATERWAY" />
+		<context_menu run_invoke="createNewObject" classId="PODS_WATERWAY"/>
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_WATERWAY;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_WATERWAY;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_EQUIP_STYLE.xml" />
+        </level>
+      </level>
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_EQUIP_Layers.xml#PODS_RAILROAD;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_RAILROAD" FILE_NAME="PODS_EQUIP_STYLE.xml" />
+        <context_menu run_invoke="gridToolModule" title="{descr}" gridId="PODS_{table}_LIST" />
+		<context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_RAILROAD" />
+		<context_menu run_invoke="createNewObject" classId="PODS_RAILROAD"/>
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_RAILROAD;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_RAILROAD;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_EQUIP_STYLE.xml" />
+        </level>
+      </level>
+    </level>
+    <level format="Прочие объекты" icon="Public/assets/catalog.png" checkbox_type="childBased">
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="" levelParams="layerId=PODS_EQUIP_Layers.xml#PODS_SHEET_NOTE;">
+        <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="PODS_SHEET_NOTE" FILE_NAME="PODS_OFFLINE_STYLE.xml" />
+        <context_menu run_invoke="showFilterModule" title="{descr}" gridId="PODS_{table}_LIST" />
+		<context_menu run_invoke="exportToExcel" dataRequestId="PODS_GRID.xml#PODS_SHEET_NOTE" />
+		<context_menu run_invoke="createNewObject" classId="PODS_SHEET_NOTE"/>
+        <on_check run_invoke="checkBoxTool" layerParams="layerId=PODS_SHEET_NOTE;" />
+        <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=PODS_SHEET_NOTE;" />
+        <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+          <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="PODS_OFFLINE_STYLE.xml" />
+        </level>
+      </level>
+    </level>
+  </tree>
+</dataset>

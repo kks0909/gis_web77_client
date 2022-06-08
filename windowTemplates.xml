@@ -1,0 +1,5 @@
+<root>
+  <data id="mapWindow" template="width=1000, height=800,resizable=yes, toolbar=yes, location=yes, directories=no, status=no, menubar=yes"/>
+  <data id="gridWindow" template="width=1000, height=800,resizable=yes, toolbar=yes, location=yes, directories=no, status=no, menubar=yes"/>
+  <data id="casWindow" template="width=1000, height=800,resizable=yes, toolbar=yes, location=yes, directories=no, status=no, menubar=yes"/>
+</root>

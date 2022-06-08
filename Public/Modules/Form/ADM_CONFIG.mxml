@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*"
+                xmlns="view.data.*"
+                title="Редактирование параметра конфигурации"
+                width="530">
+	  <dataProvider>ADM_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+	  <mx:VBox width="530">
+      <mx:Text textAlign="left" text="Внимание! После сохранения изменений, в том случае, если были допущены ошибки, приложение может перестать работать." width="100%"/>
+      <mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Название параметра" width="120"/>
+					<mx:Text id="KEY" width="395" height="20"/>
+			</mx:HBox>
+      <mx:HBox percentWidth="100">
+        <mx:Text textAlign="right" text="Описание параметра" width="120"/>
+        <mx:Text id="COMMENTS" width="395" height="20"/>
+      </mx:HBox>
+      <mx:HBox percentWidth="100">
+					<mx:Text textAlign="right" text="Значение параметра" width="120"/>
+					<mx:TextInput id="VALUE" width="395" height="20"/>
+			</mx:HBox>
+	  </mx:VBox>
+</DATA_EDIT_FORM>

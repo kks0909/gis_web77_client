@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.3.0" descr="Кадастровые слои" name="COSMETIC">   
+    <layer id="CADASTRE_DISTRICT" comment="COSMETIC.CADASTRE" descr="Кадастровый округ" projection="EPSG:3857"
+		dataType="vector" type="common" labelField="" classField="" spacing="common" cover="false"
+		zoomMin="NaN" zoomMax="NaN" fitMap="false" order="2000003" visible="true" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#CADASTRE_DISTRICT" />
+    </layer>	
+	<layer id="CADASTRE_RAYON" comment="COSMETIC.CADASTRE" descr="Кадастровый район" projection="EPSG:3857"
+		  dataType="vector" type="common" labelField="" classField="" spacing="common" cover="false"
+		  zoomMin="NaN" zoomMax="NaN" fitMap="false" order="2000004" visible="true" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#CADASTRE_RAYON" />
+	</layer>
+	<layer id="CADASTRE_KVARTAL" comment="COSMETIC.CADASTRE" descr="Кадастровый квартал" projection="EPSG:3857"
+		  dataType="vector" type="common" labelField="" classField="" spacing="common" cover="false"
+		  zoomMin="NaN" zoomMax="NaN" fitMap="false" order="2000005" visible="true" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#CADASTRE_KVARTAL" />
+	</layer>
+	<layer id="CADASTRE_PARCEL" comment="COSMETIC.CADASTRE" descr="Земельный участок" projection="EPSG:3857"
+		  dataType="vector" type="common" labelField="" classField="" spacing="common" cover="false"
+		  zoomMin="NaN" zoomMax="NaN" fitMap="false" order="2000006" visible="true" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#CADASTRE_PARCEL" />
+	</layer>
+	<layer id="CADASTRE_OKS" comment="COSMETIC.CADASTRE" descr="Объект капитального строительства" projection="EPSG:3857"
+		  dataType="vector" type="common" labelField="" classField="" spacing="common" cover="false"
+		  zoomMin="NaN" zoomMax="NaN" fitMap="false" order="2000007" visible="true" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#CADASTRE_OKS" />
+	</layer>
+	<layer id="CADASTRE_OBJECT" comment="COSMETIC.CADASTRE" descr="Кадастровый объект" projection="EPSG:3857"
+		  dataType="vector" type="common" labelField="" classField="" spacing="common" cover="false"
+		  zoomMin="NaN" zoomMax="NaN" fitMap="false" order="2000008" visible="true" topology="line">
+		<dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#CADASTRE_OBJECT" />
+	</layer>
+</root>

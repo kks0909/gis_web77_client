@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="363" xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml" title="Выберите файл для импорта">
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="720">
+	  <mx:HBox percentWidth="100">
+		  <mx:Text textAlign="right" text="Трубопровод" width="100" />
+		  <mx:ComboBox id="DESCR" width="600" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_LINE"/>
+	  </mx:HBox>
+	  <mx:HBox percentWidth="100"><mx:Text textAlign="right" text="Нач./кон. километр, км" width="150"/>
+		  <controls:NumberInput id="KM_START" width="85" maxChars="20" height="20"/>
+		  <mx:Text text="/"/>
+		  <controls:NumberInput id="KM_END" width="85" maxChars="20" height="20"/>		  
+	  </mx:HBox>
+	 
+	  <mx:HBox percentWidth="100">
+		  <mx:Text textAlign="right" text="Дата обследования" width="139" />
+		  <mx:DateField id="DATE" width="97" height="20" formatString="DD.MM.YYYY" />
+		  <mx:Text textAlign="right" text="Производитель работ" width="243" />
+		  <mx:TextInput id="PRODUCER" width="200" text="" height="20"/>
+	  </mx:HBox>	  
+	  <mx:HBox percentWidth="100">
+		  <mx:Text textAlign="right" text="Связывать только КИП" width="200" />
+		  <mx:CheckBox id="LINK_KIP" selected="true" />
+		  <mx:Text textAlign="right" text="Замеры только по КИП" width="200" />
+		  <mx:CheckBox id="JUST_KIP" selected="true" />
+		  <mx:Text textAlign="right" text="Координаты в WGS84" width="200" />
+		  <mx:CheckBox id="WGS" selected="true" />
+	  </mx:HBox>	  
+	  <mx:HBox percentWidth="100">
+		  <mx:Text textAlign="right" text="Критерий оценки" width="140" />
+		  <mx:ComboBox id="CRITERIA" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_CP_CRITERIA_CL"/>
+		  <mx:Text textAlign="right" text="Вид контроля" width="140" />
+		  <mx:ComboBox id="TYPE" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_CP_TYPE_CL"/>
+	  </mx:HBox>	  
+	  <mx:HBox percentWidth="100">
+		  <mx:Text textAlign="right" text="Вид заключения" width="140" />
+		  <mx:ComboBox id="RESULT" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_CP_RESULT_CL"/>
+		  <mx:Text textAlign="right" text="Тип измерительного прибора" width="140" />
+		  <mx:ComboBox id="TOOL" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_CP_TOOL_CL"/>
+	  </mx:HBox>	  
+	  <mx:HBox percentWidth="100">
+		  <mx:Text textAlign="right" text="Источник информации" width="140" />
+		  <mx:ComboBox id="SOURCE" width="200" height="20" dataProvider="PODS_SEM_DICT.xml#PODS_SOURCE_GCL"/>
+		  <mx:Text textAlign="right" text="Шаг измерения" width="140" />
+		  <controls:NumberInput id="NOMINAL_SPACING" maxChars="22" width="65" height="20"/>
+	  </mx:HBox>	  
+	  <mx:HBox percentWidth="100">
+		  <mx:Text textAlign="right" text="Брать основную информацию из XML(В случае, если флаг установлен, данные из формы будут игнорироваться)" width="313" />
+		  <mx:CheckBox id="USE_XML" selected="faulse" />
+		  <mx:Text textAlign="right" text="Выберите файл" width="100" />
+		  <controls:FileInput id="zip_file_name" saveOriginalFileName="true" width="250" height="20" fileFilterDescription="XML-файлы" fileFilterExtension="*.xml" uploadPath="UploadedFiles\" tabIndex="1"/>
+	  </mx:HBox>    
+    <mx:HBox percentWidth="100">
+      <mx:Text textAlign="left" text="" width="2" />
+      <mx:Text textAlign="left" text="Внимание! В диалоге выбора файла необходимо выбрать файл с расширением .xml" width="100%" />
+    </mx:HBox>
+  </mx:VBox>
+  <validatorsArray>
+    <controls:DefaultStringValidator source="{zip_file_name}" property="text" enabled="false" requiredFieldError="Поле 'Выберите файл' обязательно для заполнения."/>
+  </validatorsArray>
+</DATA_EDIT_FORM>

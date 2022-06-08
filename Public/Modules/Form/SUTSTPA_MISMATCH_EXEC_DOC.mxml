@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DATA_EDIT_FORM xmlns="view.data.*" xmlns:data="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" 
+						xmlns:controls="view.controls.*" 
+						xmlns:mx="http://www.adobe.com/2006/mxml" 
+						title="Различия с исп. документацией" 
+						width="760" 
+						ext_data_id="" 
+						excelTemplate="">
+	<dataProvider>SUTSTPA_SEM.xml</dataProvider>
+	<panel:buttons>
+		<picPutton:PanelButton source="../images/catalog.png" 
+			tooltip="Прикрепленные документы / комментарии" 
+			clickEvent="DocsEvent" />
+		<picPutton:PanelButton source="../images/save.png" 
+			tooltip="Сохранить" 
+			clickEvent="SaveEvent" />
+		<picPutton:PanelButton source="../images/undo.png" 
+			tooltip="Отменить изменения" 
+			clickEvent="UndoEvent" />
+		<picPutton:PanelButton source="../images/delete.png" 
+			tooltip="Удалить" 
+			clickEvent="DeleteEvent" />
+		<picPutton:PanelButton source="../images/excel.png" 
+			tooltip="Экспорт в Excel" 
+			clickEvent="ExportToExcelEvent" />
+		<picPutton:PanelButton source="../images/back.png" 
+			tooltip="Вернуться к предыдущему объекту" 
+			clickEvent="BackEvent" />
+		<picPutton:PanelButton source="../images/forward.png" 
+			tooltip="Отменить возврат к предыдущему объекту" 
+			clickEvent="ForwardEvent" />
+	</panel:buttons>
+	<mx:VBox width="790">
+		<mx:HBox percentWidth="100">
+				<mx:Text textAlign="right" text="Кран" width="140" />
+				<mx:HBox percentWidth="90" styleName="comboBoxUnit">
+					<mx:ComboBox id="VALVE_ID" width="600" maxChars="1000" height="20" dataProvider="SUTSTPA_SEM_DICT.xml#SUTSTPA_VALVE_GCL" selectedValue="VALVE_ID"/>
+						     <mx:Button id="BTN_LIST_VALVE_ID" selectedField="SUTSTPA_VALVE_GCL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>						   
+				</mx:HBox>
+			</mx:HBox>
+	<mx:HBox percentWidth="100">
+		<!--левая колонка полей-->
+		<mx:VBox percentWidth="50">
+			<mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Категория" width="60"/>
+                <mx:TextInput id="COLUMN_NAME" width="150" maxChars="255" height="20"/>
+            </mx:HBox>
+			<mx:HBox percentWidth="100">
+				<mx:Text textAlign="right" text="Вид правки" width="140" />
+				<mx:HBox percentWidth="80" styleName="comboBoxUnit">
+					<mx:ComboBox id="ACTION_ID" selectedIndex="1" width="225" maxChars="100" height="20" dataProvider="SUTSTPA_SEM_DICT.xml#SUTSTPA_SPRAV_MISMATCH_ACTION_GCL"/>
+						     <mx:Button id="BTN_LIST_ACTION_ID" selectedField="SUTSTPA_SUTSTPA_SPRAV_MISMATCH_ACTION_GCL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>						   
+				</mx:HBox>
+			</mx:HBox>
+			<mx:HBox percentWidth="100">
+				<mx:Text textAlign="right" text="Исполнитель" width="140" />
+				<mx:HBox percentWidth="90" styleName="comboBoxUnit">
+					<mx:ComboBox id="PERSON_ID" selectedIndex="1" width="225" maxChars="100" height="20" dataProvider="SUTSTPA_SEM_DICT.xml#SUTSTPA_PERSON_GCL"/>
+						     <mx:Button id="BTN_LIST_PERSON_ID" selectedField="SUTSTPA_PERSON_GCL" enabled="false"
+                             styleName="refList"
+                             toolTip="Перейти к редактированию справочника"
+                             width="16"
+                             height="16"/>						   
+				</mx:HBox>
+			</mx:HBox>
+		</mx:VBox>
+<!--Правая колонка полей-->
+		<mx:VBox percentWidth="50">
+			<mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Значение исп.док. верное" width="100"/>
+                <mx:TextInput id="COL_DESCR" width="200" maxChars="1000" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Значение исп.док. неверное" width="100"/>
+                <mx:TextInput id="COLUMN_VALUE" width="200" maxChars="1000" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100">
+                <mx:Text textAlign="right" text="Имя файла" width="100"/>
+                <mx:TextInput id="FILE_NAME" width="200" maxChars="1000" height="20"/>
+            </mx:HBox>
+            <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}" >
+				<mx:Text textAlign="right" text="ИД различия" width="80" />
+	            <controls:NumberInput id="ID" editable="false" width="85" maxChars="22" height="20" />
+	        </mx:HBox>
+	        	        	        
+		</mx:VBox>		
+	</mx:HBox>
+	</mx:VBox>
+	<validatorsArray>
+	<controls:ComboBoxValidator source="{VALVE_ID}" property="selectedItem" enabled="false" required="true" notDefaultError="В списке 'Кран' нужно выбрать значение."/> 
+	</validatorsArray>	
+</DATA_EDIT_FORM>

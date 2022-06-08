@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Файл описания слоёв "Подводные трубопроводы" -->
+<root version="7.7.7.4" descr="МГ: Подводные трубопроводы" name="PODS_SEA">
+  <dataProvider type="style" source="PODS_SEA_STYLE.xml" />
+  <layer id="PODS_COLLAR" comment="PODS.COLLAR" descr="Переходные муфты подводных скважин" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="220" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="COLLAR">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_COLLAR" />
+    <dataProvider type="style" source="PODS_SEA_STYLE.xml#PODS_COLLAR"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_COLLAR"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_COLLAR"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_COLLAR"/>
+  </layer>
+  <layer id="PODS_COLLET_CONNECTOR" comment="PODS.COLLET_CONNECTOR" descr="Цанговые муфты (соединители)" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="230" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="COLLET_CONNECTOR">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_COLLET_CONNECTOR" />
+    <dataProvider type="style" source="PODS_SEA_STYLE.xml#PODS_COLLET_CONNECTOR"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_COLLET_CONNECTOR"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_COLLET_CONNECTOR"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_COLLET_CONNECTOR"/>
+  </layer>
+  <layer id="PODS_FAIRING" comment="PODS.FAIRING" descr="Обтекатели" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="270" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="FAIRING">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_FAIRING" />
+    <dataProvider type="style" source="PODS_SEA_STYLE.xml#PODS_FAIRING"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_FAIRING"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_FAIRING"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_FAIRING"/>
+  </layer>
+  <layer id="PODS_OFFSHORE_RISER" comment="PODS.OFFSHORE_RISER" descr="Подъёмные трубопроводы - райзеры" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="420" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="OFFSHORE_RISER">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_OFFSHORE_RISER" />
+    <dataProvider type="style" source="PODS_SEA_STYLE.xml#PODS_OFFSHORE_RISER"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_OFFSHORE_RISER"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_OFFSHORE_RISER"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_OFFSHORE_RISER"/>
+  </layer>
+  <layer id="PODS_STABILIZATION" comment="PODS.STABILIZATION" descr="Стабилизирующие устройства подводных трубопроводов" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="350" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="STABILIZATION">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STABILIZATION" />
+    <dataProvider type="style" source="PODS_SEA_STYLE.xml#PODS_STABILIZATION"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STABILIZATION"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STABILIZATION"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_STABILIZATION"/>
+  </layer>
+  <layer id="PODS_STRAKE" comment="PODS.STRAKE" descr="Обшивки райзеров" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="920" visible="false" topology="point" classField="" schema="PODS" table="STRAKE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STRAKE" />
+    <dataProvider type="style" source="PODS_SEA_STYLE.xml#PODS_STRAKE"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STRAKE"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STRAKE"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_STRAKE"/>
+  </layer>
+  <layer id="PODS_SUBSEA_SLED_ASSEMBLY" comment="PODS.SUBSEA_SLED_ASSEMBLY" descr="Подводные переходные устройства между трубопроводами" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="940" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="SUBSEA_SLED_ASSEMBLY">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_SUBSEA_SLED_ASSEMBLY" />
+    <dataProvider type="style" source="PODS_SEA_STYLE.xml#PODS_SUBSEA_SLED_ASSEMBLY"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_SUBSEA_SLED_ASSEMBLY"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_SUBSEA_SLED_ASSEMBLY"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_SUBSEA_SLED_ASSEMBLY"/>
+  </layer>
+  <layer id="PODS_TAPERED_STRESS_JOINT" comment="PODS.TAPERED_STRESS_JOINT" descr="Трапецевидные стыки райзеров" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="370" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="TAPERED_STRESS_JOINT">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_TAPERED_STRESS_JOINT" />
+    <dataProvider type="style" source="PODS_SEA_STYLE.xml#PODS_TAPERED_STRESS_JOINT"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_TAPERED_STRESS_JOINT"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_TAPERED_STRESS_JOINT"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_TAPERED_STRESS_JOINT"/>
+  </layer>
+  <layer id="PODS_UMBILICAL" comment="PODS.UMBILICAL" descr="Подводные кабели-шланги" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1620" visible="false" topology="point,polygon" labelField="" classField="" schema="PODS" table="UMBILICAL">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_UMBILICAL" />
+    <dataProvider type="style" source="PODS_SEA_STYLE.xml#PODS_UMBILICAL"/>
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_UMBILICAL"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_UMBILICAL"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_UMBILICAL"/>
+  </layer>
+</root>

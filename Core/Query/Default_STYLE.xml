@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<kml version="7.7.4.9">
+  <Document>
+    <!-- Стили по умолчанию -->
+    <!-- Стиль линейного объекта -->
+    <Style id="" schema="" table="" comment="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <field>LABEL</field>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <parallel>1</parallel>
+        <auto>1</auto>
+        <offset>0</offset>
+        <duplicate>1</duplicate>
+        <overlap>0</overlap>
+        <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+      </LabelStyle>
+   <MIStyle>
+    <data>Pen (1,2,0)</data>
+   </MIStyle>
+    </Style>
+    <!-- Стиль площадного объекта -->
+    <Style id="" schema="" table="" comment="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <LineStyle>
+        <!-- стиль контура, линейный объект  -->
+        <color>FF000000</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <!-- цвет заливки -->
+        <color>66FFFFFF</color>
+        <!-- флаг заливки контура -->
+        <fill>1</fill>
+        <!-- флаг отрисовки контура -->
+        <outline>1</outline>
+		<!-- тип заливки объекта solid|bitmap -->
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <field>LABEL</field>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <parallel>1</parallel>
+        <auto>1</auto>
+        <offset>0</offset>
+        <duplicate>1</duplicate>
+        <overlap>0</overlap>
+        <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+      </LabelStyle>
+     <MIStyle>
+      <data>Pen (1,2,0) Brush (2,16777215,16777215)</data>
+     </MIStyle>
+    </Style>
+    <!-- Стиль точечного объекта -->
+    <Style id="" schema="" table="" comment="">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <!-- форма объекта, если это не картинка. Допустимые значения: square|circle|triangle|star|cross|x -->
+          <form>square</form>
+          <!-- размер в пикселах. Положительное число. 16 по умолчанию -->
+		  <size>8</size>
+        </Icon>
+        <!-- цвет заливки, если не картинка. По-умолчанию черная непрозрачная. -->
+        <color>FF000000</color>
+        <outline>1</outline>
+      </IconStyle>
+      <LineStyle>
+        <!-- стиль контура, линейный объект  -->
+        <color>FFFFFFFF</color>
+        <width>1</width>
+      </LineStyle>
+      <LabelStyle>
+        <zoomMin>NaN</zoomMin>
+        <zoomMax>NaN</zoomMax>
+        <field>LABEL</field>
+        <color>FF000000</color>
+        <fontSize>10</fontSize>
+        <bold>0</bold>
+        <italic>0</italic>
+        <underline>0</underline>
+        <parallel>1</parallel>
+        <auto>1</auto>
+        <offset>0</offset>
+        <duplicate>0</duplicate>
+        <overlap>0</overlap>
+      <MIStyle>Font("Arial Cyr",0,9,0)</MIStyle>
+      </LabelStyle>
+     <MIStyle>
+       <data>Symbol (35,0,12)</data>
+    </MIStyle>
+    </Style>
+	<!-- Стиль линейного объекта для выделения -->
+    <Style id="" schema="" table="" comment="">
+      <value>SELECTED</value>
+      <LineStyle>
+        <color>FFFFFFFF</color>
+        <width>2</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+      </LineStyle>
+    </Style>
+    <!-- Стиль площадного объекта для выделения -->
+    <Style id="" schema="" table="" comment="">
+      <value>SELECTED</value>
+      <LineStyle>
+        <color>FFFFFFFF</color>
+        <width>2</width>
+      </LineStyle>
+      <LineStyle>
+        <color>FF000000</color>
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <!-- цвет заливки -->
+        <color>20FFFFFF</color>
+        <!-- флаг заливки контура -->
+        <fill>1</fill>
+        <!-- флаг отрисовки контура -->
+        <outline>1</outline>
+		<!-- тип заливки объекта solid|bitmap -->
+        <fillPattern>solid</fillPattern>
+      </PolyStyle>
+    </Style>
+    <!-- Стиль точечного объекта для выделения -->
+    <Style id="" schema="" table="" comment="">
+      <value>SELECTED</value>
+      <IconStyle>
+        <Icon>
+          <!-- Иконка -->
+          <form>square</form>
+          <size>8</size>
+        </Icon>
+        <color>FFFC580C</color>
+        <!-- цвет заливки, если не картинка. По-умолчанию черная непрозрачная. -->
+        <outline>1</outline>
+      </IconStyle>
+      <LineStyle>
+        <!-- стиль контура, линейный объект  -->
+        <color>FFFFFFFF</color>
+        <width>1</width>
+      </LineStyle>
+    </Style>    
+    <!-- Стиль точки для информации по объектам -->
+    <Style id="" schema="" table="" comment="">
+      <value>INFO</value>
+      <IconStyle>
+        <Icon>
+          <!-- форма объекта, если это не картинка. Допустимые значения: square|circle|triangle|star|cross|x -->
+          <form>square</form>
+          <size>4</size>
+        </Icon>
+        <color>FFFC580C</color>
+        <outline>1</outline>
+      </IconStyle>
+      <LineStyle>
+        <color>FFFFFFFF</color>
+        <width>1</width>
+      </LineStyle>
+    </Style>
+    <!-- Стиль по-умолчанию для слоя с растром -->
+    <Style id="DEFAULT_RASTER" descr="Растр" comment="Стиль растрового слоя">
+      <zoomMin>0</zoomMin>
+      <zoomMax>25000</zoomMax>
+      <LabelStyle>
+      </LabelStyle>
+      <MIStyle />
+      <IMGStyle />
+      <VRMLStyle />
+    </Style>
+	<!-- Стиль для точки начала кратчайшего пути -->
+    <Style id="FIND_PATH_START" comment="Стиль для точки начала кратчайшего пути" descr="Стиль для точки начала кратчайшего пути">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/findPathStart.png</href>
+          <form>bitmap</form>
+          <size>72</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+    </Style>
+	<!-- Стиль для точки конца кратчайшего пути -->
+    <Style id="FIND_PATH_END" comment="Стиль для точки конца кратчайшего пути" descr="Стиль для точки конца кратчайшего пути">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/findPathEnd.png</href>
+          <form>bitmap</form>
+          <size>72</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+    </Style>
+<!-- Стиль для промежуточной точки кратчайшего пути -->
+    <Style id="FIND_PATH_MIDDLE" comment="Стиль для промежуточной точки кратчайшего пути" descr="Стиль для промежуточной точки кратчайшего пути">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/selection.png</href>
+          <form>bitmap</form>
+          <size>72</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+    </Style>
+	<!-- Стиль линии для кратчайшего пути -->
+    <Style id="FIND_PATH" comment="Стиль для линии кратчайшего пути" descr="Стиль для линии кратчайшего пути">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+	  <LineStyle>
+        <color>FF8000FF</color>
+        <width>7</width>
+         </LineStyle>
+    </Style>
+	<!-- Стиль линии для текущего маршрута видеомониторинга -->
+    <Style id="LIB_DOC_GEO_VIDEO_TRACK" comment="Стиль для линии текущего маршрута видеомониторинга" descr="Стиль для линии текущего маршрута видеомониторинга">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+	    <LineStyle>
+        <color>FF8000FF</color>
+        <width>2</width>
+        </LineStyle>
+    </Style>
+  <!-- Стиль точки, которая перемещается на карте вслед за видео -->
+    <Style id="LIB_DOC_GEO_VIDEO_POINT" comment="Стиль для точки текущего положения на треке видеомониторинга" descr="Стиль для точки текущего положения на треке видеомониторинга">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/HELICOPTER.png</href>
+          <form>bitmap</form>
+          <size>62</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+    </Style>
+	<!-- Стиль точки, которая выводится на карте, если у трека пробел по времени -->
+    <Style id="LIB_DOC_GEO_VIDEO_POINT_NO_TIME" comment="Стиль для точки разрыва по времени на треке видеомониторинга" descr="Стиль для точки разрыва по времени на треке видеомониторинга">
+      <zoomMin>NaN</zoomMin>
+      <zoomMax>NaN</zoomMax>
+      <IconStyle>
+        <Icon>
+          <href>Public/assets/NaN.png</href>
+          <form>bitmap</form>
+          <size>16</size>
+        </Icon>
+        <color>FF000000</color>
+        <outline>0</outline>
+      </IconStyle>
+    </Style>
+  </Document>
+</kml>

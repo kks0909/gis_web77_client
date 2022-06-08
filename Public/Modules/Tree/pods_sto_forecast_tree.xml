@@ -1,0 +1,19 @@
+﻿<dataset name="Тех.схема со сведениями по дефектности" version="7.7.3.0">
+	<group comment="Команды" >
+      <invoke id="checkBoxTool" type="global" event_name="checkBoxEvent"
+              tooltip="Вкл/Выкл видимость слоя">
+         <var layerParams=""/>
+      </invoke>
+   </group>
+<tree toolbarStyle="toolbarStyle" toolbarButtonStyle="mapIcon" max_items="20">
+	<level format="Объекты схемы" icon="OPENSCALE" levelParams="layerId=TR_MAPSHEM_VTD_Layers.xml#WKB_TR_MAPSHEM_ROUTE_PART" max_items="20">
+      <query source="COMMON_TREE.xml#LAYER_STYLE_BASE" LAYER_ID="WKB_TR_MAPSHEM_ROUTE_PART" FILE_NAME="TR_MAPSHEM_VTD_STYLE.xml" >  </query>
+      <on_check run_invoke="checkBoxTool" layerParams="layerId=WKB_TR_MAPSHEM_ROUTE_PART" />
+      <on_uncheck run_invoke="checkBoxTool" layerParams="layerId=WKB_TR_MAPSHEM_ROUTE_PART" />
+      <level format="{descr}" icon="OPENSCALE" max_items="20" checkbox_type="none">
+	        <query source="COMMON_TREE.xml#LAYER_STYLE_ALL" LAYER_ID="{id}" FILE_NAME="TR_MAPSHEM_VTD_STYLE.xml" />
+	      </level>
+    </level>
+    
+    </tree>  
+</dataset>

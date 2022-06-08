@@ -1,0 +1,57 @@
+﻿<!--  version 7.7.2.0 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./ui/build/js/lang-min-7.0.4.0.js"></script>
+<!--[if lt IE 8]><![endif]-->
+<link href="./ui/build/css/normalize.css" rel="stylesheet">
+<link href="./ui/build/css/core-styles-7.0.4.0.css" rel="stylesheet">
+<link href="./ui/build/css/login-styles-7.0.4.0.css" rel="stylesheet">
+
+<script src="./ui/lib/modernizr-2.6.2.min.js"></script>
+<script src="./ui/lib/jquery-1.9.1.js"></script>
+<script src="./ui/lib/jquery-ui-1.10.3/ui/jquery-ui.js"></script>
+<script src="./ui/lib/jquery-ui-1.10.3/ui/i18n/jquery.ui.datepicker-ru.js" type="text/javascript"></script>
+<link href="./ui/lib/jquery-ui-1.10.3/themes/base/jquery-ui.css" rel="stylesheet">
+<script src="./ui/lib/jquery.cookie.js"></script>
+<script src="./ui/lib/md5.js"></script>
+
+
+<script src="./ui/build/js/login-min-7.0.4.0.js"></script>
+</head>
+
+<body class="login">    
+    <div style="height:20px"></div>
+    <div class="page clearfix">    
+        <div class="side">     
+            <form class="login">
+                <div class="field">
+                    <div class="label">Имя</div>
+                    <div class="value"><input name="login" type="text" autocomplete="off" class="loginField"></div>
+                </div>
+
+                <div class="field">
+                    <div class="label">Пароль</div>
+                    <div class="value"><input name="password" type="password"  autocomplete="off" class="passwordField"></div>
+                </div>    
+
+                <div class="button" >
+                    <input type="submit" value="Войти">
+                    <input type="checkbox" name="remember" id="rememberCheckbox">
+                    <label for="rememberCheckbox" style="color:white">Запомнить пароль</label>
+                </div>
+            </form>
+            <div class="contacts">    
+            </div>            
+        </div>            
+        <div class="wide">       
+            <iframe src="Public/Help/History/index.html" class="lastUpdates"></iframe>
+        </div>        
+        
+    </div>    
+</body>
+</html>

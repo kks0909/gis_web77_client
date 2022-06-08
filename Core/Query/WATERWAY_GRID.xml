@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.7.1" descr="Водные переходы">
+  <data id="WATERWAY" comment="WATERWAY" schema="WEB50" table="WATERWAY">
+    <select>
+     <dbQuery>
+       <var name="FILTER" default="1=1"/>
+       <var name="ORDER_COLUMNS" default="description"/>
+       <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM WEB50.SRV_DISTRICT_GCL"/>
+       <var name="ROUTE_TYPE_FILTER" default="SELECT code FROM web50.route_type_cl"/>
+       <var name="LINE_ID_FILTER" default="SELECT line_id FROM web50.line"/>
+       <var name="LOW_LIMIT" default="1"/>
+       <var name="HIGH_LIMIT" default="65536"/>
+       <var name="COLUMNS_FILTER" default="*"/>
+       <query>
+        SELECT {COLUMNS_FILTER} FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN, id, waterway_id, description, category_id, osm_id, "comments"||'-'||category_id "TYPE"
+          FROM WEB50.waterway WHERE {FILTER}) dd
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+      </query>
+     </dbQuery>
+    </select>
+  </data>
+  <data id="WATERWAY_CROSS" comment="WATERWAY_CROSS" schema="WEB50" table="WATERWAY_CROSS">
+    <select>
+     <dbQuery>
+       <var name="FILTER" default="1=1"/>
+       <var name="ORDER_COLUMNS" default="zone_id,line_id"/>
+       <var name="LPU_ACCESS_FILTER" default="SELECT srv_district_id FROM WEB50.SRV_DISTRICT_GCL"/>
+       <var name="ROUTE_TYPE_FILTER" default="SELECT code FROM web50.route_type_cl"/>
+       <var name="LINE_ID_FILTER" default="SELECT line_id FROM web50.line"/>
+       <var name="LOW_LIMIT" default="1"/>
+       <var name="HIGH_LIMIT" default="65536"/>
+       <var name="COLUMNS_FILTER" default="*"/>
+       <query>
+        SELECT {COLUMNS_FILTER} FROM (
+          SELECT ROW_NUMBER() OVER (ORDER BY {ORDER_COLUMNS}) RWN, ww.* from 
+	  (select waterway_cross_id ID, 
+          line_id, waterway_id, station_begin, station_end, 
+          water_speed, pipe_constr, pipe_pressure, pipe_length,
+          pipe_length_underwater, pipe_depth,
+          inv_num, pipe_diameter, pipe_thickness,
+          date_installed, pi_cp_type, insp_date, insp_performed_by, 
+          insp_result_other_disorder, insp_result_condition, repair_date, repair_type, 
+          repair_performed_by, repair_complited_work, repair_result_condition, srv_district,zone_id
+          FROM WEB50.waterway_cross c WHERE {FILTER} and exists (select 1 from web50.waterway_cross_station_point s where s.waterway_cross_id=c.waterway_cross_id)) ww
+) dd
+          WHERE RWN BETWEEN {LOW_LIMIT}  AND {HIGH_LIMIT}
+      </query>
+     </dbQuery>
+    </select>
+  </data>
+</root>

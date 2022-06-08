@@ -1,0 +1,11 @@
+﻿<ROOT prevTask="close" version="6.0.2.0">
+  <hbox percentWidth="100" percentHeight="100">
+	<panel id="ADM_USER" percentWidth="100" percentHeight="100" reload="true">
+		<settings>
+			<requestFilterByRole>ADM_SEM.xml#WEB50_B_ROLES</requestFilterByRole>
+			<requestUsers>ADM_SEM.xml#WEB50_B_USER_PRIVATE</requestUsers>
+			<requestSetRoleToUser>ADM_SEM.xml#WEB50_USER_TO_ROLE</requestSetRoleToUser>
+		</settings>
+	</panel>
+  </hbox>
+</ROOT>

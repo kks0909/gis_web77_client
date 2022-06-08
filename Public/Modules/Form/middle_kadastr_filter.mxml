@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Форма фильтра для задачи кадастра -->
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" verticalGap="5" width="100%" height="100%" xmlns:components="ru.corelight.view.components.*" >
+    <!-- Кадастровые районы  -->
+	<components:FilterPopUpButton width="100%" isDropDown="false" minPopupWidth="610" height="22" title="Кадастровые районы" selectAllElements="false" minCnt="0"  maxCnt="5" id="RAYON_NUM" dataProvider="KADASTR_DICT.xml#WEB50_KADASTR_RAYONS" />
+</mx:VBox>

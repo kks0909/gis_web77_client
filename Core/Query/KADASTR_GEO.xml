@@ -1,0 +1,267 @@
+﻿<root version="postgres 7.7.3.0">
+	<data id="WEB50_KADASTR_KVARTAL" comment="WEB50.KADASTR_KVARTAL" schema="WEB50" table="KADASTR_KVARTAL">
+		<select>
+			<geoQuery idField="CAD_NUM" geoField="WKB_GEOMETRY">
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="FILTER" default="1=1"/>
+				<query>
+					SELECT ID, CAD_NUM "LABEL", CAD_NUM, RAYON_NUM, WKB_GEOMETRY  FROM
+					WEB50.KADASTR_KVARTAL
+					WHERE {FILTER} ORDER BY ID
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand>
+				<param name="ID" type="Int64" direction="Input"/>				
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#INSERT_KADASTR_GEO" />					
+				<object>
+  UPDATE WEB50.KADASTR_KVARTAL SET WKB_GEOMETRY=:WKB WHERE ID = :ID
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#UPDATE_KADASTR_GEO" />				
+				<object>
+     UPDATE WEB50.KADASTR_KVARTAL SET WKB_GEOMETRY=:WKB WHERE ID = :ID
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#DELETE_KADASTR_GEO" />				
+				<query>
+  UPDATE WEB50.KADASTR_KVARTAL SET WKB_GEOMETRY=NULL WHERE ID = :ID
+				</query>
+			</dbCommand>
+		</delete>
+	</data>
+
+	<data id="WEB50_KADASTR_PODS_MDR" comment="WEB50.KADASTR_PODS_MDR" schema="WEB50" table="KADASTR_PODS_MDR">
+		<select>
+			<geoQuery idField="MDR_ID" geoField="WKB_GEOMETRY">
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="FILTER" default="1=1"/>
+				<query>
+					select ID, MDR_ID, "LABEL", WKB_GEOMETRY, DESCRIPTION, STATION_BEGIN, STATION_END from
+					(SELECT MDR_ID ID, MDR_ID, OBJ_TYPE "LABEL", WKB_GEOMETRY, DESCRIPTION, STATION_BEGIN, STATION_END FROM
+					WEB50.KADASTR_PODS_MDR) d WHERE {FILTER} ORDER BY ID
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#INSERT_KADASTR_GEO" />				
+				<object>
+  UPDATE WEB50.KADASTR_PODS_MDR SET WKB_GEOMETRY=:WKB WHERE MDR_ID = :ID
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#UPDATE_KADASTR_GEO" />				
+				<object>
+     UPDATE WEB50.KADASTR_PODS_MDR SET WKB_GEOMETRY=:WKB WHERE MDR_ID = :ID
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#DELETE_KADASTR_GEO" />				
+				<query>
+  UPDATE WEB50.KADASTR_PODS_MDR SET WKB_GEOMETRY=NULL WHERE MDR_ID = :ID
+				</query>
+			</dbCommand>
+		</delete>
+  </data>
+
+<data id="WEB50_KADASTR_ALERT" comment="WEB50.KADASTR_ALERT" schema="WEB50" table="KADASTR_ALERT">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="FILTER" default="1=1"/>
+				<query>
+					select ID, "LABEL", WKB_GEOMETRY, DESCRIPTION, STATION_BEGIN, STATION_END from
+					(SELECT 
+ID, OBJ_TYPE "LABEL", WKB_GEOMETRY, DESCRIPTION, STATION_BEGIN, STATION_END FROM
+					WEB50.KADASTR_ALERT) d WHERE {FILTER} ORDER BY ID
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#INSERT_KADASTR_GEO" />				
+				<object>
+  UPDATE WEB50.KADASTR_ALERT SET WKB_GEOMETRY=:WKB WHERE ID = :ID
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#UPDATE_KADASTR_GEO" />				
+				<object>
+     UPDATE WEB50.KADASTR_ALERT SET WKB_GEOMETRY=:WKB WHERE ID = :ID
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#DELETE_KADASTR_GEO" />				
+				<query>
+  UPDATE WEB50.KADASTR_ALERT SET WKB_GEOMETRY=NULL WHERE ID = :ID
+				</query>
+			</dbCommand>
+		</delete>
+  </data>
+	
+<data id="WEB50_KADASTR_GKS_WAY" comment="WEB50.KADASTR_GKS_WAY" schema="WEB50" table="KADASTR_GKS_WAY">
+		<select>
+			<geoQuery idField="ID" geoField="X,Y">
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="FILTER" default="1=1"/>
+				<query>
+SELECT ID,X,Y,"TYPE","LABEL"      
+  FROM (SELECT t.TRACK_ID ID, c.X X, c.Y Y, t.STATUS_ID "TYPE", w.description "LABEL",tp.COORD_SEQ
+          FROM web50.POI_TRACK t
+          JOIN WEB50.KADASTR_GKS_WAY w
+            ON t.track_id=w.track_id
+          JOIN web50.POI_TRACK_TO_POI_COORD tp 
+            ON tp.TRACK_ID = t.TRACK_ID
+          JOIN web50.POI_COORD c 
+            ON c.COORD_ID = tp.COORD_ID
+          WHERE c.X IS NOT NULL 
+            AND c.Y IS NOT NULL 
+            ) d
+WHERE {FILTER}          
+ORDER BY ID, COORD_SEQ	
+				</query>
+			</geoQuery>
+		</select>
+		   <insert>
+      <geoCommand>
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <param name="ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#INSERT_KADASTR_GKS_GEO" />			       
+        <coord>
+	  DO $$
+          DECLARE VAR_COORD_ID bigint;
+          BEGIN
+          INSERT INTO WEB50.POI_COORD(X, Y, COORD_TYPE_ID, CTIME, CUSER_ID)
+          VALUES ({X}, {Y}, 1, current_timestamp,{USER_ID}) RETURNING COORD_ID INTO VAR_COORD_ID;
+          INSERT INTO WEB50.POI_TRACK_TO_POI_COORD(TRACK_ID, COORD_ID, COORD_SEQ, CTIME, CUSER_ID) VALUES ({ID}, VAR_COORD_ID, {SEQ}, current_timestamp,{USER_ID});
+          END $$;
+        </coord>
+      </geoCommand>
+    </insert>
+    <update>
+      <geoCommand>
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <param name="ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#UPDATE_KADASTR_GKS_GEO" />		
+        <coord>
+		DO $$
+			DECLARE VAR_COORD_ID numeric(16,0);
+			BEGIN
+			INSERT INTO WEB50.POI_COORD(X, Y, COORD_TYPE_ID, CTIME, CUSER_ID)
+			VALUES ({X}, {Y}, 1, current_timestamp,{USER_ID}) RETURNING COORD_ID INTO VAR_COORD_ID;
+			INSERT INTO WEB50.POI_TRACK_TO_POI_COORD(TRACK_ID, COORD_ID, COORD_SEQ, CTIME, CUSER_ID) VALUES ({ID}, VAR_COORD_ID, {SEQ}, current_timestamp,{USER_ID});
+			END $$;
+		</coord>
+      </geoCommand>
+    </update>
+		    <delete>
+      <dbCommand>
+        <param name="USER_ID" type="Int64" direction="Input" />
+        <param name="ID" type="Int64" direction="Input" />
+		<var name="POLICY" default="POLICY.xml#DELETE_KADASTR_GKS_GEO" />		
+      <query>
+		DO $$
+          DECLARE
+            v_permission_granted bigint;
+            v_object_exists bigint;
+			BEGIN
+         
+            SELECT COUNT(*)
+              INTO v_object_exists
+              FROM WEB50.POI_TRACK t 
+             WHERE t.track_id = {ID};
+              
+            IF v_object_exists = 0
+            THEN RETURN;
+            END IF;
+
+            /* удаляем связь с прикрепленным документом, если она была (когда к треку привязана видеозапись, например) */
+            DELETE FROM WEB50.LNK_GATE
+            WHERE left_obj_id = 'WEB50_POI_TRACK/'||TO_NUMBER({ID})
+               OR right_obj_id = 'WEB50_POI_TRACK/'||TO_NUMBER({ID});
+			END $$;
+      </query>
+      </dbCommand>
+    </delete>
+  </data>
+
+<data id="WEB50_KADASTR_ALERT_OBJECT" comment="WEB50.KADASTR_ALERT_OBJECT" schema="WEB50" table="KADASTR_ALERT_OBJECT">
+		<select>
+			<geoQuery idField="ID" geoField="WKB_GEOMETRY">
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="FILTER" default="1=1"/>
+				<query>
+
+select ID, "LABEL", WKB_GEOMETRY, DESCRIPTION from
+					(SELECT 
+ID, OBJ_TYPE "LABEL", WKB_GEOMETRY, DESCRIPTION FROM
+					WEB50.KADASTR_ALERT_OBJECT) d WHERE {FILTER} ORDER BY ID
+
+				</query>
+			</geoQuery>
+		</select>
+		<insert>
+			<geoCommand>
+				<param name="ID" type="Int64"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#INSERT_KADASTR_GEO" />				
+				<object>
+  UPDATE WEB50.KADASTR_ALERT_OBJECT SET WKB_GEOMETRY=:WKB WHERE ID = :ID
+				</object>
+			</geoCommand>
+		</insert>
+		<update>
+			<geoCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#UPDATE_KADASTR_GEO" />				
+				<object>
+     UPDATE WEB50.KADASTR_ALERT_OBJECT SET WKB_GEOMETRY=:WKB WHERE ID = :ID
+				</object>
+			</geoCommand>
+		</update>
+		<delete>
+			<dbCommand>
+				<param name="ID" type="Int64" direction="Input"/>
+				<param name="USER_ID" default="-1" type="Int64"/>
+				<var name="POLICY" default="POLICY.xml#DELETE_KADASTR_GEO" />				
+				<query>
+  UPDATE WEB50.KADASTR_ALERT_OBJECT SET WKB_GEOMETRY=NULL WHERE ID = :ID
+				</query>
+			</dbCommand>
+		</delete>
+  </data>
+</root>

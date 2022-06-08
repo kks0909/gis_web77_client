@@ -1,0 +1,22 @@
+﻿<ROOT prevTask="close" version="6.0.2.0">
+  <hbox percentWidth="100" percentHeight="100">
+	<panel id="ADM_PIPE_SYSTEM" percentWidth="100" percentHeight="100" reload="true">
+		<settings>
+			<requestGetPipeSystem>GAZPROM_ADM_SEM.xml#PODS_PIPE_SYSTEM_CL</requestGetPipeSystem>
+			<requestGetTemplates>GAZPROM_ADM_SEM.xml#WEB50_TEMPLATE_FOR_PIPE_SYSTEM_CL</requestGetTemplates>
+		</settings>
+	</panel>
+	  <hbox percentWidth="0" percentHeight="100">
+		  <panel id="PROP" percentWidth="100" percentHeight="100">
+			  <settings>
+				  <editable>true</editable>
+				  <title></title>
+				  <width>790</width>
+				  <height>250</height>
+				  <!-- Флаг отображения системных свойств в формах -->
+				  <add key="Show_System_Info" value="true" />
+			  </settings>
+		  </panel>
+	  </hbox>
+  </hbox>
+</ROOT>

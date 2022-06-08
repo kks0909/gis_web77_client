@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Файл описания слоёв "Схема ВТД" -->
+<root version="7.7.4.2" descr="Схема ВТД" name="PODS_STO_FORECAST">
+  <dataProvider type="style" source="STO_FORECAST_STYLE.xml" />   
+  <layer id="STO_FORECAST_SCHEMA_DECORATE" comment="PODS.STO_FORECAST_SCHEMA_DECORATE" schema="PODS" table="STO_FORECAST_SCHEMA_DECORATE" descr="Зарамочное оформление" 
+ projection="EPSG:5807" dataType="vector" type="system" labelField="LABEL" classField="TYPE" spacing="STO_FORECAST_SCHEMA_DECORATE" cover="true" fitMap="false" order="30" visible="true" topology="point,line,polygon">
+    <dataProvider type="spatial" source="STO_FORECAST_GEO.xml#STO_FORECAST_SCHEMA_DECORATE" />
+  </layer>
+   
+    <layer id="STO_FORECAST_ROUTE_PART" comment="PODS.STO_FORECAST_ROUTE_PART" schema="PODS" table="ILI_DATA" descr="Линии между объектами" 
+ projection="EPSG:5807" dataType="vector" type="system" labelField="LABEL" classField="TYPE" spacing="STO_FORECAST_ROUTE_PART" cover="true" fitMap="false" order="100" visible="true" topology="line">
+    <dataProvider type="spatial" source="STO_FORECAST_GEO.xml#STO_FORECAST_ROUTE_PART" />
+  </layer>
+</root>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.3.0" xmlns:cp="X3M.GeoLib.GeoProc.CoordProc" xmlns:op="X3M.GeoLib.GeoProc.ObjProc">
+  <cp:BufProcessor id="GET_LPU" IdField="LPU_ID" GeoField="WKB_GEOMETRY" Query="SELECT GID LPU_ID, WKB_GEOMETRY FROM PODS.SRV_DISTRICT_G"/>
+	
+  <op:BufProcessor id="GET_M_1_ZONE_ID" IdField="ZONE_ID" GeoField="WKB_GEOMETRY" Query="SELECT ZONE_ID, WKB_GEOMETRY FROM web50.m_1_zone WHERE WKB_GEOMETRY IS NOT NULL"/>
+  <op:BufProcessor id="GET_M_10_ZONE_ID" IdField="ZONE_ID" GeoField="WKB_GEOMETRY" Query="SELECT ZONE_ID, WKB_GEOMETRY FROM web50.m_10_zone WHERE WKB_GEOMETRY IS NOT NULL"/>
+  <op:BufProcessor id="GET_M_5_ZONE_ID" IdField="ZONE_ID" GeoField="WKB_GEOMETRY" Query="SELECT ZONE_ID, WKB_GEOMETRY FROM web50.m_5_zone WHERE WKB_GEOMETRY IS NOT NULL"/>
+  <op:BufProcessor id="GET_M_25_ZONE_ID" IdField="ZONE_ID" GeoField="WKB_GEOMETRY" Query="SELECT ZONE_ID, WKB_GEOMETRY FROM web50.m_25_zone WHERE WKB_GEOMETRY IS NOT NULL"/>
+  
+  <op:BufProcessor id="GET_M_100_NOMENCLATURE" IdField="NOMENCLATURE" GeoField="WKB_GEOMETRY" Query="SELECT n.nomenclature NOMENCLATURE, n.WKB_GEOMETRY WKB_GEOMETRY FROM web50.m_100_nomenclature_ref n WHERE n.WKB_GEOMETRY IS NOT NULL"/>
+  <op:BufProcessor id="GET_M_200_NOMENCLATURE" IdField="NOMENCLATURE" GeoField="WKB_GEOMETRY" Query="SELECT n.nomenclature NOMENCLATURE, n.WKB_GEOMETRY WKB_GEOMETRY FROM web50.m_200_nomenclature_ref n WHERE n.WKB_GEOMETRY IS NOT NULL"/>
+  <op:BufProcessor id="GET_M_1K_NOMENCLATURE" IdField="NOMENCLATURE" GeoField="WKB_GEOMETRY" Query="SELECT n.nomenclature NOMENCLATURE, n.WKB_GEOMETRY FROM web50.m_1k_nomenclature_ref n WHERE n.WKB_GEOMETRY IS NOT NULL"/>
+  
+  <cp:XYZProcessor id="XYZ" default="true"/>
+  <cp:LRSProcessor id="LRS" default="true"/>
+  <op:WKBProcessor id="WKB" default="true"/>
+  <op:BoundsProcessor id="BOUNDS" default="true"/>
+  <op:MetricsProcessor id="METRICS" default="true"/>
+</root>

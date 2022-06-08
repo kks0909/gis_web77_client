@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="760" xmlns="view.data.*" title="Ведомость МТР" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml">
+  <dataProvider>STO_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+   </panel:buttons>
+  <mx:VBox width="760">
+	<mx:HBox percentWidth="100">
+		<mx:Text textAlign="right" text="Отчет ВТД" width="140"/>
+		<mx:TextInput id="INSP_DESCRIPTION" width="585" maxChars="32" height="20" editable="false" />
+	</mx:HBox>    
+	<mx:HBox percentWidth="100">
+		<mx:Text textAlign="right" text="Участок, по которому сформирована ведомость" width="140"/>
+		<mx:TextInput id="INSP_ROUTE_DESCRIPTION" width="585" height="20" editable="false" />
+	</mx:HBox>
+    <mx:HBox percentWidth="100">
+      <mx:VBox percentWidth="50">
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Описание" width="140"/>
+	  <mx:TextInput id="DESCRIPTION" width="160" maxChars="32" height="20"/>
+        </mx:HBox>
+        <mx:HBox percentWidth="100">
+		<mx:Text textAlign="right" text="Тип ведомости" width="140"/>
+		<mx:HBox percentWidth="100" styleName="comboBoxUnit">
+		<mx:ComboBox id="TYPE_CL" width="200" height="20"
+		dataProvider="STO_SEM.xml#PODS_STO_SHEET_TYPE_CL"/>
+		<mx:Button id="BTN_LIST_TYPE_CL" selectedField="TYPE_CL" enabled="false"
+		styleName="refList"
+		toolTip="Перейти к редактированию справочника"
+		width="16"
+		height="16"/>
+		</mx:HBox>
+	</mx:HBox>
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Комментарии" width="140"/>
+	  <mx:TextInput id="COMMENTS" width="160" maxChars="32" height="20"/>
+        </mx:HBox>
+               
+      </mx:VBox>
+      <mx:VBox percentWidth="50">
+<mx:HBox percentWidth="100">	
+            		<mx:Text textAlign="right" text="Дата создания/ Кто создал" width="140"/>
+            		<mx:DateField id="CTIME" editable="false" width="96" height="20" formatString="DD.MM.YYYY"/>
+            		<mx:TextInput id="CUSER" editable="false" width="96" height="20" maxChars="80"/>
+         	</mx:HBox>
+		<mx:HBox percentWidth="100">
+            		<mx:Text textAlign="right" text="Дата изменения/ Кто изменил" width="140"/>
+            		<mx:DateField id="MTIME" editable="false" width="96" height="20" formatString="DD.MM.YYYY"/>
+            		<mx:TextInput id="MUSER" editable="false" width="96" height="20" maxChars="80"/>
+         	</mx:HBox>
+        <mx:HBox percentWidth="100" visible="{CONFIG.SHOW_SYSTEM_INFO}">
+          <mx:Text textAlign="right" text="Идентификатор" width="140" />
+          <controls:NumberInput id="ID" editable="false" width="225" maxChars="22" height="20" />
+        </mx:HBox>
+      </mx:VBox>
+    </mx:HBox>
+  </mx:VBox>
+    
+</DATA_EDIT_FORM>

@@ -1,0 +1,15 @@
+﻿<ROOT prevTask="close" version="6.0.2.0">
+  <hbox percentWidth="100" percentHeight="100">
+	<panel id="ADM_LPU_NOMENCLATURES" percentWidth="100" percentHeight="100" reload="true">
+		<settings>
+			<requestFilterByGtp>GAZPROM_ADM_SEM.xml#PODS_COMPANY_GCL</requestFilterByGtp>
+			<requestGetLpu>GAZPROM_ADM_SEM.xml#PODS_SRV_DISTRICT_GCL</requestGetLpu>
+			<requestGetNomGroups>GAZPROM_ADM_SEM.xml#NOM_GROUPS</requestGetNomGroups>
+			<requestGetNom1Groups>GAZPROM_ADM_SEM.xml#NOMS_1_GROUP</requestGetNom1Groups>
+			<requestGetNom2Groups>GAZPROM_ADM_SEM.xml#NOMS_2_GROUP</requestGetNom2Groups>
+			<requestGetNomRes>GAZPROM_ADM_SEM.xml#NOMS_3_RES</requestGetNomRes>
+			<requestGetLpuToNomenclatures>GAZPROM_ADM_SEM.xml#WEB50_LPU_TO_M_NOMENCLATURES</requestGetLpuToNomenclatures>
+		</settings>
+	</panel>
+  </hbox>
+</ROOT>

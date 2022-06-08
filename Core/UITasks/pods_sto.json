@@ -1,0 +1,65 @@
+﻿{
+  "code":200,
+  "version":"7.7.7.3",
+  "id":"MAPSERVICE",
+  "_comment":"Настройки рубрикатор",
+  "tree":{
+    "visible": false,
+    "isMaximized":true,
+    "treePercentWidth":30,
+    "trees":[{
+        "id":"PODS_STO_LIST",
+        "title":"Планирование шурфов",
+        "templateUrl":"Public/Modules/Tree/pods_sto_tree.xml",
+        "default":true,
+        "startupScenario":{         
+          "openLayers":[],
+          "filter":{
+            "type":"top",
+			      "topDataSource":"top_sto_filter",
+            "middleDataSource":"middle_sto_filter"
+          },          
+          "openTables":[
+            {
+              "title":"{descr}",
+              "gridId":"PODS_STO_SHURF_PLAN_LIST",
+              "levelParams":"layerId=STO_Layers.xml#PODS_STO_SHURF_PLAN;",
+              "query":
+              {
+                "source":"COMMON_TREE.xml#LAYER_STYLE_BASE",
+                "LAYER_ID":"PODS_STO_SHURF_PLAN",
+                "FILE_NAME":"STO_STYLE.xml"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "_comment":"Настройки панели свойств",
+  "ppanel":{
+    "showSystemInfo":false
+  },
+  "grid":{
+    "_comment": "Нужно ли показывать кнопки закрытия, сворачивания в гридах",
+    "titlebar":false,
+    "_comment": "Нужно ли показывать открывать гриды в одной вкладке с перезапрашиванием данных, либо в отдельных вкладках",
+    "duplicate": false,
+    "_comment": "Перечень кнопок быстрого доступа к гридам, которые расположены вверху карты",
+    "fast_buttons":[
+      {
+        "layer": "STO_Layers.xml#PODS_STO_SHURF_PLAN",
+        "title": "Участки пропуска снарядов"
+      },
+      {
+        "layer": "STO_Layers.xml#PODS_STO_SHEET_REPAIR",
+        "title": "Архив ведомостей ремонтов"
+      },
+      {
+        "layer": "STO_Layers.xml#PODS_STO_SHEET_MTR",
+        "title": "Архив ведомостей МТР"
+      }
+    ]
+  },
+  "vectorlayers":["STO_Layers.xml"]
+}

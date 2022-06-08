@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Файл описания слоёв "Планирование шурфов" -->
+<root version="7.7.7.4" descr="Планирование шурфов" name="PODS_STO">
+  <dataProvider type="style" source="STO_STYLE.xml" />
+   <layer id="PODS_STO_SHURF_PLAN" comment="PODS.STO_SHURF_PLAN" descr="Участки пропуска снарядов" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="STO_SHURF_PLAN" cover="false" order="400" visible="false" topology="point" fitMap="true" labelField="FEATURE_DESCRIPTION" classField="ANOMALY_TYPE_CL" events="" schema="PODS" table="STO_SHURF_PLAN">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>YEAR_INSP</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ILI_INSPECTION" />
+    <dataProvider type="semantic" source="STO_SEM.xml#PODS_STO_SHURF_PLAN" />
+    <dataProvider type="style" source="STO_STYLE.xml#PODS_STO_SHURF_PLAN" />
+  </layer>
+<layer id="PODS_STO_ILI_DATA_SHEET_BASE" comment="PODS.STO_ILI_DATA_SHEET_BASE" descr="Ведомость аномалий" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="STO_SHURF_PLAN" cover="false" order="400" visible="false" topology="point" fitMap="true" labelField="FEATURE_DESCRIPTION" classField="ANOMALY_TYPE_CL" events="" schema="PODS" table="STO_ILI_DATA_SHEET_BASE">
+    <filter>
+      <pattern>d.ILI_INSPECTION_ID IN ({FILTER})</pattern>
+      <join>,</join>
+      <field>PODS_ILI_INSPECTION</field>
+      <replace>FILTER</replace>
+    </filter>
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_ILI_DATA_SHEET_BASE" />
+    <dataProvider type="semantic" source="STO_SEM.xml#PODS_STO_ILI_DATA_SHEET_BASE" />
+    <dataProvider type="style" source="STO_STYLE.xml#PODS_STO_ILI_DATA_SHEET_BASE" />
+  </layer>
+<layer id="PODS_STO_SHEET_EXCAVATE" comment="PODS.STO_SHEET_EXCAVATE" descr="Архив ведомостей аномалий(шурфовок)" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="STO_SHURF_PLAN" cover="false" order="400" visible="false" topology="point" fitMap="true" labelField="FEATURE_DESCRIPTION" classField="ANOMALY_TYPE_CL" events="" schema="PODS" table="STO_SHEET_EXCAVATE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_SHEET_EXCAVATE" />
+    <dataProvider type="semantic" source="STO_SEM.xml#PODS_STO_SHEET_EXCAVATE" />
+    <dataProvider type="style" source="STO_STYLE.xml#PODS_STO_SHEET_EXCAVATE" />
+  </layer>
+  <layer id="PODS_STO_SHEET_MTR" comment="PODS.STO_SHEET_MTR" descr="Архив ведомостей МТР" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="STO_SHEET_MTR" cover="false" order="400" visible="false" topology="point" fitMap="true" labelField="FEATURE_DESCRIPTION" classField="ANOMALY_TYPE_CL" events="" schema="PODS" table="STO_SHEET_MTR">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_SHEET_MTR" />
+    <dataProvider type="semantic" source="STO_SEM.xml#PODS_STO_SHEET_MTR" />
+    <dataProvider type="style" source="STO_STYLE.xml#PODS_STO_SHEET_MTR" />
+  </layer>
+  <layer id="PODS_STO_SHEET_REPAIR" comment="PODS.STO_SHEET_REPAIR" descr="Архив ведомостей ремонтов" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_SHEET_REPAIR" cover="false" order="400" visible="false" topology="point" fitMap="true" labelField="FEATURE_DESCRIPTION" classField="ANOMALY_TYPE_CL" events="" schema="PODS" table="STO_SHEET_REPAIR">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_SHEET_REPAIR" />
+    <dataProvider type="semantic" source="STO_SEM.xml#PODS_STO_SHEET_REPAIR" />
+    <dataProvider type="style" source="STO_STYLE.xml#PODS_STO_SHEPODS_STO_SHEET_REPAIRET_MTR" />
+  </layer>
+<layer id="PODS_STO_SHEET_EXCAVATE_LIST" comment="PODS.STO_SHEET_EXCAVATE_LIST" descr="Сведения о выполненном наружном обследовании" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="STO_SHEET_EXCAVATE_LIST" cover="false" order="400" visible="false" topology="point" fitMap="true" labelField="FEATURE_DESCRIPTION" classField="ANOMALY_TYPE_CL" events="" schema="PODS" table="STO_SHEET_EXCAVATE_LIST">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_SHEET_EXCAVATE_LIST" />
+    <dataProvider type="semantic" source="STO_SEM.xml#STO_DATA_EXC" />
+    <dataProvider type="style" source="STO_STYLE.xml#PODS_STO_SHEET_EXCAVATE_LIST" />
+  </layer>
+<layer id="PODS_STO_SHEET_REPAIR_LIST" comment="PODS.STO_SHEET_REPAIR_LIST" descr="Сведения о выполненном наружном обследовании" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="STO_SHEET_REPAIR_LIST" cover="false" order="400" visible="false" topology="point" fitMap="true" labelField="FEATURE_DESCRIPTION" classField="ANOMALY_TYPE_CL" events="" schema="PODS" table="STO_SHEET_REPAIR_LIST">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STO_SHEET_REPAIR_LIST" />
+    <dataProvider type="semantic" source="STO_SEM.xml#STO_DATA_REPAIR" />
+    <dataProvider type="style" source="STO_STYLE.xml#PODS_STO_SHEET_REPAIR_LIST" />
+  </layer>
+
+<layer id="PODS_STO_ILI_DATA_SHEET_RELOAD"  synonym="PODS_ILI_DATA,PODS_STO_ILI_DATA_SHEET_RELOAD,PODS_STO_REPAIR_METHOD,PODS_STO_PERFORMANCE_EVAL,PODS_STO_DANGER_DEGREE,PODS_STO_DANGER_RANK,PODS_STO_FAIL_PROBABILITY,PODS_STO_DATE_TEST,PODS_LTG_KOCHETKOVA,PODS_STO_DATE_REPAIR,ILI_KBD,ILI_DEPTH,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_PERFORMANCE_EVAL,CAS_PODS_STO_DANGER_DEGREE,CAS_PODS_STO_DANGER_RANK,CAS_PODS_STO_FAIL_PROBABILITY,CAS_PODS_STO_DATE_TEST,CAS_PODS_LTG_KOCHETKOVA, CAS_PODS_STO_DATE_REPAIR,CAS_ILI_KBD,CAS_ILI_DEPTH"  comment="PODS.STO_ILI_DATA_SHEET_RELOAD" descr="Состав шурфовок" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_ILI_DATA_SHEET_RELOAD" cover="false" order="400" visible="false" topology="point" fitMap="true" labelField="FEATURE_DESCRIPTION" classField="ANOMALY_TYPE_CL" events="" schema="PODS" table="STO_ILI_DATA_SHEET_RELOAD">    
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ILI_DATA" />
+  </layer>
+<layer id="PODS_STO_ILI_DATA_SHEET_BASE"  synonym="PODS_ILI_DATA,PODS_STO_ILI_DATA_SHEET_RELOAD,PODS_STO_REPAIR_METHOD,PODS_STO_PERFORMANCE_EVAL,PODS_STO_DANGER_DEGREE,PODS_STO_DANGER_RANK,PODS_STO_FAIL_PROBABILITY,PODS_STO_DATE_TEST,PODS_LTG_KOCHETKOVA,PODS_STO_DATE_REPAIR,ILI_KBD,ILI_DEPTH,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_PERFORMANCE_EVAL,CAS_PODS_STO_DANGER_DEGREE,CAS_PODS_STO_DANGER_RANK,CAS_PODS_STO_FAIL_PROBABILITY,CAS_PODS_STO_DATE_TEST,CAS_PODS_LTG_KOCHETKOVA, CAS_PODS_STO_DATE_REPAIR,CAS_ILI_KBD,CAS_ILI_DEPTH"   comment="PODS.STO_ILI_DATA_SHEET_BASE" descr="Состав шурфовок" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="PODS_STO_ILI_DATA_SHEET_BASE" cover="false" order="400" visible="false" topology="point" fitMap="true" labelField="FEATURE_DESCRIPTION" classField="ANOMALY_TYPE_CL" events="" schema="PODS" table="STO_ILI_DATA_SHEET_BASE">    
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ILI_DATA" />
+  </layer>
+
+<layer id="PODS_STO_REPAIR_SHEET_RELOAD"  synonym="PODS_ILI_DATA,PODS_STO_ILI_DATA_SHEET_RELOAD,PODS_STO_REPAIR_METHOD,PODS_STO_PERFORMANCE_EVAL,PODS_STO_DANGER_DEGREE,PODS_STO_DANGER_RANK,PODS_STO_FAIL_PROBABILITY,PODS_STO_DATE_TEST,PODS_LTG_KOCHETKOVA,PODS_STO_DATE_REPAIR,ILI_KBD,ILI_DEPTH,CAS_PODS_STO_REPAIR_METHOD,CAS_PODS_STO_PERFORMANCE_EVAL,CAS_PODS_STO_DANGER_DEGREE,CAS_PODS_STO_DANGER_RANK,CAS_PODS_STO_FAIL_PROBABILITY,CAS_PODS_STO_DATE_TEST,CAS_PODS_LTG_KOCHETKOVA, CAS_PODS_STO_DATE_REPAIR,CAS_ILI_KBD,CAS_ILI_DEPTH"  comment="PODS.STO_REPAIR_SHEET_RELOAD" descr="Ведомость ремонтов" projection="EPSG:4326" zoomMin="25" zoomMax="1" dataType="vector" type="common" spacing="STO_REPAIR_SHEET_RELOAD" cover="false" order="400" visible="false" topology="point" fitMap="true" labelField="FEATURE_DESCRIPTION" classField="ANOMALY_TYPE_CL" events="" schema="PODS" table="STO_REPAIR_SHEET_RELOAD">    
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ILI_DATA" />
+  </layer>
+</root>

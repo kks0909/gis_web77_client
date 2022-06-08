@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Файл описания вкладок "Разграничения территорий" -->
+<root version="7.7.3.0">
+  <data id="PODS_ACTIVITY_ZONE">
+	<panel descr="Паспорт" source="PODS_ACTIVITY_ZONE.mxml" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST.mxml" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE.mxml" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST.mxml" order="15" />
+	<panel descr="Интеграция" source="INTEGRATION.mxml" order="20" />
+        <panel descr="Комментарии" source="PODS_COMMENT_LIST" order="25" />
+</data>
+  <data id="PODS_CATHODIC_PROTECTION_RANGE">
+	<panel descr="Паспорт" source="PODS_CATHODIC_PROTECTION_RANGE.mxml" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST.mxml" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE.mxml" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST.mxml" order="15" />
+	<panel descr="Интеграция" source="INTEGRATION.mxml" order="20" />
+        <panel descr="Комментарии" source="PODS_COMMENT_LIST" order="25" />
+</data>
+  <data id="PODS_COUNTY_BOUNDARY">
+	<panel descr="Паспорт" source="PODS_COUNTY_BOUNDARY.mxml" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST.mxml" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE.mxml" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST.mxml" order="15" />
+	<panel descr="Интеграция" source="INTEGRATION.mxml" order="20" />
+        <panel descr="Комментарии" source="PODS_COMMENT_LIST" order="25" />
+</data>
+  <data id="PODS_DEPTH_OF_COVER">
+	<panel descr="Паспорт" source="PODS_DEPTH_OF_COVER.mxml" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST.mxml" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE.mxml" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST.mxml" order="15" />
+	<panel descr="Интеграция" source="INTEGRATION.mxml" order="20" />
+        <panel descr="Комментарии" source="PODS_COMMENT_LIST" order="25" />
+</data>
+  <data id="PODS_FLOW_DIRECTION_RANGE">
+	<panel descr="Паспорт" source="PODS_FLOW_DIRECTION_RANGE.mxml" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST.mxml" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE.mxml" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST.mxml" order="15" />
+	<panel descr="Интеграция" source="INTEGRATION.mxml" order="20" />
+        <panel descr="Комментарии" source="PODS_COMMENT_LIST" order="25" />
+</data>
+  <data id="PODS_HCA_BOUNDARY">
+	<panel descr="Паспорт" source="PODS_HCA_BOUNDARY.mxml" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST.mxml" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE.mxml" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST.mxml" order="15" />
+	<panel descr="Интеграция" source="INTEGRATION.mxml" order="20" />
+        <panel descr="Комментарии" source="PODS_COMMENT_LIST" order="25" />
+</data>
+  <data id="PODS_ILI_RANGE">
+	<panel descr="Паспорт" source="PODS_ILI_RANGE.mxml" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST.mxml" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE.mxml" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST.mxml" order="15" />
+	<panel descr="Интеграция" source="INTEGRATION.mxml" order="20" />
+        <panel descr="Комментарии" source="PODS_COMMENT_LIST" order="25" />
+</data>
+  <data id="PODS_LAND_USE">
+	<panel descr="Паспорт" source="PODS_LAND_USE.mxml" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST.mxml" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE.mxml" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST.mxml" order="15" />
+	<panel descr="Интеграция" source="INTEGRATION.mxml" order="20" />
+        <panel descr="Комментарии" source="PODS_COMMENT_LIST" order="25" />
+</data>
+  <data id="PODS_LEGACY_LINE_BOUNDARY">
+	<panel descr="Паспорт" source="PODS_LEGACY_LINE_BOUNDARY.mxml" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST.mxml" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE.mxml" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST.mxml" order="15" />
+	<panel descr="Интеграция" source="INTEGRATION.mxml" order="20" />
+        <panel descr="Комментарии" source="PODS_COMMENT_LIST" order="25" />
+</data>
+  <data id="PODS_ODORANT_RANGE">
+	<panel descr="Паспорт" source="PODS_ODORANT_RANGE.mxml" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST.mxml" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE.mxml" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST.mxml" order="15" />
+	<panel descr="Интеграция" source="INTEGRATION.mxml" order="20" />
+        <panel descr="Комментарии" source="PODS_COMMENT_LIST" order="25" />
+</data>
+  <data id="PODS_OWNER_OPERATOR_RANGE">
+	<panel descr="Паспорт" source="PODS_OWNER_OPERATOR_RANGE.mxml" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST.mxml" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE.mxml" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST.mxml" order="15" />
+	<panel descr="Интеграция" source="INTEGRATION.mxml" order="20" />
+        <panel descr="Комментарии" source="PODS_COMMENT_LIST" order="25" />
+</data>
+  <data id="PODS_PIPE_SYSTEM_BOUNDARY">
+	<panel descr="Паспорт" source="PODS_OWNER_OPERATOR_RANGE.mxml" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST.mxml" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE.mxml" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST.mxml" order="15" />
+	<panel descr="Интеграция" source="INTEGRATION.mxml" order="20" />
+        <panel descr="Комментарии" source="PODS_COMMENT_LIST" order="25" />
+</data>
+  <data id="PODS_PRODUCT_RANGE">
+	<panel descr="Паспорт" source="PODS_PRODUCT_RANGE.mxml" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST.mxml" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE.mxml" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST.mxml" order="15" />
+	<panel descr="Интеграция" source="INTEGRATION.mxml" order="20" />
+        <panel descr="Комментарии" source="PODS_COMMENT_LIST" order="25" />
+</data>
+  <data id="PODS_SRV_DISTRICT_BOUNDARY">
+	<panel descr="Паспорт" source="PODS_SRV_DISTRICT_BOUNDARY.mxml" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST.mxml" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE.mxml" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST.mxml" order="15" />
+	<panel descr="Интеграция" source="INTEGRATION.mxml" order="20" />
+        <panel descr="Комментарии" source="PODS_COMMENT_LIST" order="25" />
+</data>
+  <data id="PODS_STATUS_RANGE">
+	<panel descr="Паспорт" source="PODS_STATUS_RANGE.mxml" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST.mxml" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE.mxml" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST.mxml" order="15" />
+	<panel descr="Интеграция" source="INTEGRATION.mxml" order="20" />
+        <panel descr="Комментарии" source="PODS_COMMENT_LIST" order="25" />
+</data>
+  <data id="PODS_TAX_DISTRICT_BOUNDARY">
+	<panel descr="Паспорт" source="PODS_TAX_DISTRICT_BOUNDARY.mxml" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST.mxml" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE.mxml" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST.mxml" order="15" />
+	<panel descr="Интеграция" source="INTEGRATION.mxml" order="20" />
+        <panel descr="Комментарии" source="PODS_COMMENT_LIST" order="25" />
+</data>
+  <data id="PODS_TOWNSHIP_BOUNDARY">
+	<panel descr="Паспорт" source="PODS_TOWNSHIP_BOUNDARY.mxml" default="true" order="1" />
+	<panel descr="Группы" source="PODS_EVENT_GROUP_LIST.mxml" order="2" />
+	<panel descr="Линейная/коридорная привязка" source="PODS_PS_LC_EVENT_RANGE.mxml" order="10" />
+	<panel descr="Координатная привязка" source="PODS_COORD_LINE_EVENT_LIST.mxml" order="15" />
+	<panel descr="Интеграция" source="INTEGRATION.mxml" order="20" />
+        <panel descr="Комментарии" source="PODS_COMMENT_LIST" order="25" />
+</data>
+</root>

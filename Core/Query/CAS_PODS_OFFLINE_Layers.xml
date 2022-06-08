@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="7.7.5.0" descr="Вдольтрассовые объекты">
+  <dataProvider type="style" source="PODS_OFFLINE_STYLE.xml" />
+  <dataProvider type="style" source="PODS_EQUIP_STYLE.xml" />
+  <layer id="PODS_HCA_CA_SEGMENT" visible="false" type="common" topology="point, line" table="HCA_CA_SEGMENT_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="10" labelField="LABEL" fitMap="false" descr="Участки трубопроводов, находящиеся в зонах опасных последствий" dataType="vector" cover="false" comment="PODS_HCA_CA_SEGMENT" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_HCA_CA_SEGMENT" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_HCA_CA_SEGMENT" />
+    <dataProvider type="spatial" source="CAS_PODS_OFFLINE_GEO.xml#CAS_PODS_HCA_CA_SEGMENT" />
+    <dataProvider type="style" source="PODS_OFFLINE_STYLE.xml#PODS_HCA_CA_SEGMENT" />
+  </layer>
+  <layer id="PODS_ROAD" visible="true" type="common" topology="point, line" table="ROAD_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="20" labelField="LABEL" fitMap="false" descr="Автомобильные дороги" dataType="vector" cover="false" comment="PODS_ROAD" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_ROAD" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_ROAD" />
+    <dataProvider type="spatial" source="CAS_PODS_OFFLINE_GEO.xml#CAS_PODS_ROAD" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_ROAD" />
+  </layer>
+  <layer id="PODS_WATERWAY" visible="true" type="common" topology="point, line" table="WATERWAY_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="30" labelField="LABEL" fitMap="false" descr="Водные преграды" dataType="vector" cover="false" comment="PODS_WATERWAY" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_WATERWAY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_WATERWAY" />
+    <dataProvider type="spatial" source="CAS_PODS_OFFLINE_GEO.xml#CAS_PODS_WATERWAY" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_WATERWAY" />
+  </layer>
+  <layer id="PODS_RAILROAD" visible="true" type="common" topology="point, line" table="RAILROAD_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="40" labelField="LABEL" fitMap="false" descr="Железные дороги" dataType="vector" cover="false" comment="PODS_RAILROAD" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_WATERWAY" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_RAILROAD" />
+    <dataProvider type="spatial" source="CAS_PODS_OFFLINE_GEO.xml#CAS_PODS_RAILROAD" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_RAILROAD" />
+  </layer>
+  <layer id="PODS_FOREIGN_LINE_CROSSING" visible="true" type="common" topology="point, line" table="FOREIGN_LINE_CROSSING_CAS" spacing="none" schema="CAS" projection="EPSG:5807" order="50" labelField="LABEL" fitMap="false" descr="Сторонние трубопроводы и кабели" dataType="vector" cover="false" comment="PODS_FOREIGN_LINE_CROSSING" classField="TYPE" >
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_FOREIGN_LINE_CROSSING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_FOREIGN_LINE_CROSSING" />
+    <dataProvider type="spatial" source="CAS_PODS_OFFLINE_GEO.xml#CAS_PODS_FOREIGN_LINE_CROSSING" />
+    <dataProvider type="style" source="PODS_OFFLINE_STYLE.xml#PODS_FOREIGN_LINE_CROSSING" />
+  </layer>
+</root>

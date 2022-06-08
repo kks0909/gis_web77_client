@@ -1,0 +1,43 @@
+﻿<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="ui/lib/jquery-1.9.1.js"></script>
+    <script src="test_sql.js"></script>
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body onload="">
+<h1>Проверка запроса</h1>
+<div>Идентификатор запроса: <input type="text" style="width: 500px;" id="query" value="POI_GEO.xml#WEB50_POI_POINT">
+    <button onclick="loadQuery()">Загрузить запрос</button>
+</div>
+<div>Тип запроса:
+    <select id="queryType" disabled style="width: 100px;" onchange="loadQueryType(this)">
+        <option value="no">Не выбрано</option>
+        <option value="select">Select</option>
+        <option value="update">Update</option>
+        <option value="insert">Insert</option>
+        <option value="delete">Delete</option>
+    </select>
+
+</div>
+<div >
+    <div id="queryVars" style=" overflow: auto;float:left;background: salmon;width: 500px;height: 400px"></div>
+    <div id="resultDiv" contenteditable="true" style="overflow:auto;width:700px;height: 400px;background: yellowgreen;display:inline-block;margin-left: 20px">
+
+    </div>
+</div>
+
+<div><button onclick="execQuery()">Выполнить</button></div>
+
+<br /><br />
+<div>
+    Руководство:<br/>
+    1) вводим идентификатор запроса в поле "Идентификатор запроса", например "POI_GEO.xml#WEB50_POI_POINT". Жмём кнопку "Загрузить запрос"<br/>
+    2) когда данные загружены, становится доступен выбор типа запроса. Выбираем Select/Update/Insert/Delete. В розовом блоке подгружаются параметры для этого типа запроса<br/>
+    3) вводим нужные значения или оставляем по умолчанию. Жмём кнопку "Выполнить"<br/>
+    4) в зеленом блоке показывается результат
+</div>
+
+</body>

@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Файл описания слоёв "Оборудование линейной части" -->
+<root version="7.7.7.4" descr="МГ: Оборудование линейной части" name="PODS_EQUIP">
+  <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml" />
+  <layer id="PODS_PIG_SIGNAL" comment="PODS.PIG_SIGNAL" descr="Датчики прохождения очистных устройств" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="130" visible="false" topology="point" labelField="DESCRIPTION" classField="TYPE_CL" schema="PODS" table="PIG_SIGNAL">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PIG_SIGNAL" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_PIG_SIGNAL" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PIG_SIGNAL"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PIG_SIGNAL"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PIG_SIGNAL"/>
+  </layer>
+  <layer id="PODS_GROUND_BED" comment="PODS.GROUND_BED" descr="Группы анодных заземлений" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="110" visible="true" topology="point" classField="TYPE_CL" schema="PODS" table="GROUND_BED">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_GROUND_BED" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_GROUND_BED" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_GROUND_BED"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_GROUND_BED"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_GROUND_BED"/>
+  </layer>
+  <layer id="PODS_COUPON_SITE" comment="PODS.COUPON_SITE" descr="Монтажные площадки контрольных пластин" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="450" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="COUPON_SITE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_COUPON_SITE" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_COUPON_SITE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_COUPON_SITE"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_COUPON_SITE"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_COUPON_SITE"/>
+  </layer>
+   <layer id="PODS_CHEMICAL_INJECTOR" comment="PODS.CHEMICAL_INJECTOR" descr="Нагнетатели химических реагентов" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="500" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="CHEMICAL_INJECTOR">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_CHEMICAL_INJECTOR" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_CHEMICAL_INJECTOR" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_CHEMICAL_INJECTOR"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_CHEMICAL_INJECTOR"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_CHEMICAL_INJECTOR"/>
+  </layer>
+  <layer id="PODS_BOND_LEAD" comment="PODS.BOND_LEAD" descr="Соединительные провода и кабели" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="170" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="BOND_LEAD">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_BOND_LEAD" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_BOND_LEAD" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_BOND_LEAD"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_BOND_LEAD"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_BOND_LEAD"/>
+  </layer>
+  <layer id="PODS_EXTRUSION" comment="PODS.EXTRUSION" descr="Распределители" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="260" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="EXTRUSION">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_EXTRUSION" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_EXTRUSION" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_EXTRUSION"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_EXTRUSION"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_EXTRUSION"/>
+  </layer>
+  <layer id="PODS_PRESSURE_CAP" comment="PODS.PRESSURE_CAP" descr="Герметичные крышки" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="300" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="PRESSURE_CAP">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_PRESSURE_CAP" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_PRESSURE_CAP" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_PRESSURE_CAP"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_PRESSURE_CAP"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_PRESSURE_CAP"/>
+  </layer>
+  <layer id="PODS_SLEEVE" comment="PODS.SLEEVE" descr="Рукава, втулки, муфты, манжеты" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="340" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="SLEEVE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_SLEEVE" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_SLEEVE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_SLEEVE"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_SLEEVE"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_SLEEVE"/>
+  </layer>
+   <layer id="PODS_VESSEL" comment="PODS.VESSEL" descr="Сосуды и аппараты высокого давления" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="380" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="VESSEL">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_VESSEL" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_VESSEL" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_VESSEL"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_VESSEL"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_VESSEL"/>
+  </layer>
+  <layer id="PODS_INTERFACE_DETECTOR" comment="PODS.INTERFACE_DETECTOR" descr="Сигнализаторы раздела сред" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="480" visible="false" topology="point" classField="TYPE_CL" schema="PODS" table="INTERFACE_DETECTOR">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_INTERFACE_DETECTOR" />
+    <dataProvider type="style" source="PODS_EQUIP_OTHER_STYLE.xml#PODS_INTERFACE_DETECTOR" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_INTERFACE_DETECTOR"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_INTERFACE_DETECTOR"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_INTERFACE_DETECTOR"/>
+  </layer>
+  <!-- Не описаны в рубрикаторе -->
+  <layer id="PODS_STATUS_RANGE" comment="PODS.STATUS_RANGE" descr="Операционный статус трубопровода" topology="line" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="1010" visible="false" labelField="DESCRIPTION" classField="" schema="PODS" table="STATUS_RANGE">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_STATUS_RANGE" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_STATUS_RANGE" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_STATUS_RANGE" />
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_STATUS_RANGE" />
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_STATUS_RANGE" />
+  </layer>
+  <layer id="PODS_EXTRUSION_OPENING" comment="PODS.EXTRUSION_OPENING" descr="Подсоединения к распределителям" projection="EPSG:4326" zoomMin="NaN" zoomMax="NaN" dataType="vector" type="common" spacing="common" cover="false" fitMap="false" order="410" visible="false" topology="point" classField="" schema="PODS" table="EXTRUSION_OPENING">
+    <dataProvider type="propertiesPanel" source="ALL_PROP_LIST.xml#PODS_EXTRUSION_OPENING" />
+    <dataProvider type="style" source="PODS_EQUIP_STYLE.xml#PODS_EXTRUSION_OPENING" />
+    <dataProvider type="semantic" source="PODS_SEM.xml#PODS_EXTRUSION_OPENING"/>
+    <dataProvider type="spatial" source="PODS_GEO.xml#PODS_EXTRUSION_OPENING"/>
+    <dataProvider type="spatial_3D" source="PODS_GEO_3D.xml#PODS_EXTRUSION_OPENING"/>
+  </layer>
+  
+</root>

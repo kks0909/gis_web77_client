@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DATA_EDIT_FORM width="325" xmlns="view.data.*" xmlns:picPutton="ru.corelight.view.controls.*" xmlns:panel="ru.corelight.grids.buttons.*" xmlns:controls="view.controls.*" xmlns:mx="http://www.adobe.com/2006/mxml">
+  <dataProvider>ADM_SEM.xml</dataProvider>
+   <panel:buttons>
+     <picPutton:PanelButton source="../images/catalog.png"
+           tooltip="Прикрепленные документы / комментарии"
+           clickEvent="DocsEvent" />
+     <picPutton:PanelButton source="../images/save.png"
+           tooltip="Сохранить"
+           clickEvent="SaveEvent" />
+     <picPutton:PanelButton source="../images/undo.png"
+           tooltip="Отменить изменения"
+           clickEvent="UndoEvent" />
+     <picPutton:PanelButton source="../images/delete.png"
+           tooltip="Удалить"
+           clickEvent="DeleteEvent"/>
+     <picPutton:PanelButton source="../images/excel.png"
+           tooltip="Экспорт в Excel"
+           clickEvent="ExportToExcelEvent" />
+     <picPutton:PanelButton source="../images/back.png"
+           tooltip="Вернуться к предыдущему объекту"
+           clickEvent="BackEvent"/>
+     <picPutton:PanelButton source="../images/forward.png"
+           tooltip="Отменить возврат к предыдущему объекту"
+           clickEvent="ForwardEvent"/>
+   </panel:buttons>
+  <mx:VBox width="325">
+    <mx:HBox percentWidth="100">
+      <mx:Text textAlign="right" text="Название" width="90" />
+      <mx:TextInput id="NAME" width="225" maxChars="250" height="20" tabIndex="1"/>
+    </mx:HBox>
+    <mx:HBox percentWidth="100">
+      <mx:Text textAlign="right" text="Описание" width="90" />
+      <mx:TextInput id="DESCR" width="225" maxChars="250" height="20" tabIndex="2"/>
+    </mx:HBox>
+	<mx:HBox percentWidth="100">
+	  <mx:Text textAlign="right" text="Идентификатор объекта" width="90" visible="false"/>
+	  <controls:NumberInput id="DOC_ID" editable="false" width="75" maxChars="22" height="20" tabIndex="12" visible="false"/>
+	  <controls:NumberInput id="PARENT_DOC_ID" editable="false" width="75" maxChars="22" height="20" tabIndex="12" visible="false"/>
+	</mx:HBox>
+  </mx:VBox>
+  <validatorsArray>
+    <controls:DefaultStringValidator source="{DESCR}" property="text" enabled="false" minLength="1" requiredFieldError="Поле 'Описание' обязательно для заполнения." tooShortError="Поле 'Описание' обязательно для заполнения." />
+    <controls:DefaultStringValidator source="{NAME}" property="text" enabled="false" minLength="1" requiredFieldError="Поле 'Название' обязательно для заполнения." tooShortError="Поле 'Название' обязательно для заполнения." />
+  </validatorsArray>
+</DATA_EDIT_FORM>
